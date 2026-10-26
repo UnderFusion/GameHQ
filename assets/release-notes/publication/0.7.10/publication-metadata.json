@@ -1,0 +1,630 @@
+{
+  "schema_version": 1,
+  "kind": "release-publication",
+  "version": "0.7.10",
+  "date": "2026-10-08",
+  "source_locale": "en-US",
+  "default_locale": "en-US",
+  "localization_policy": "complete",
+  "release_source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+  "release_body": {
+    "filename": "RELEASE_BODY.md",
+    "size": 2025,
+    "sha256": "49b75927b7f73a5055bdb0512c26237ecd6ceac5376011ef322f6cb3399ffacb"
+  },
+  "distribution": {
+    "localized_documents": "repository",
+    "github_release_assets": false,
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.10/assets/release-notes/publication/0.7.10"
+  },
+  "localized_documents": [
+    {
+      "canonical_locale": "en-US",
+      "requested_locale": "en-US",
+      "effective_locale": "en-US",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "English (United States)",
+      "language_native_name": "English",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.en-US.md",
+      "size": 845,
+      "sha256": "2709fcda4e35d531256a890e2626e4c1e2b6d532bbab1f89f02fbb6f073f8793",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hans",
+      "requested_locale": "zh-Hans",
+      "effective_locale": "zh-Hans",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Chinese (Simplified)",
+      "language_native_name": "简体中文",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.zh-Hans.md",
+      "size": 778,
+      "sha256": "eede51cc7d58396e2aa46511d616a229472ca95628ff049bbfa559a0cb11f6e9",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ru-RU",
+      "requested_locale": "ru-RU",
+      "effective_locale": "ru-RU",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Russian",
+      "language_native_name": "Русский",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.ru-RU.md",
+      "size": 1470,
+      "sha256": "58393403e8cbc0839ee63ee109650e91125edfac47d89339e331279a2c3adaa2",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-ES",
+      "requested_locale": "es-ES",
+      "effective_locale": "es-ES",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Spanish",
+      "language_native_name": "Español",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.es-ES.md",
+      "size": 991,
+      "sha256": "38e3f90b759eafc593247fb66a630e3333b43a8214e462c10a8e839732ed7782",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pt-BR",
+      "requested_locale": "pt-BR",
+      "effective_locale": "pt-BR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Portuguese (Brazil)",
+      "language_native_name": "Português (Brasil)",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.pt-BR.md",
+      "size": 911,
+      "sha256": "3173118d5b985e99099f30f9a85d05c8b2c59678b8545bd486c6a1fa1da73eb8",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "de-DE",
+      "requested_locale": "de-DE",
+      "effective_locale": "de-DE",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "German",
+      "language_native_name": "Deutsch",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.de-DE.md",
+      "size": 977,
+      "sha256": "26fb9292b6598cd7fbf989ef3d8d6145eda8b54431e40d0e744b13e3a2c40849",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ja-JP",
+      "requested_locale": "ja-JP",
+      "effective_locale": "ja-JP",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Japanese",
+      "language_native_name": "日本語",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.ja-JP.md",
+      "size": 1169,
+      "sha256": "da4e859baff066fbedea60a9245f71657b79b00a45906a839112f2894f0ac277",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "fr-FR",
+      "requested_locale": "fr-FR",
+      "effective_locale": "fr-FR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "French",
+      "language_native_name": "Français",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.fr-FR.md",
+      "size": 1012,
+      "sha256": "ba503001f7e115661202fe4f9517884c1fd156c4ee2de28fa09c660724e90114",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pl-PL",
+      "requested_locale": "pl-PL",
+      "effective_locale": "pl-PL",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Polish",
+      "language_native_name": "Polski",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.pl-PL.md",
+      "size": 912,
+      "sha256": "c9b1b3368efe521cde96e2d4d42adcfdae741e8f497ed29568b706969e24bc4d",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ko-KR",
+      "requested_locale": "ko-KR",
+      "effective_locale": "ko-KR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Korean",
+      "language_native_name": "한국어",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.ko-KR.md",
+      "size": 924,
+      "sha256": "c9bc8568f04ebb7217a34ac6cc824b4acd018efaa3ab8b371fdd00b96c699829",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hant",
+      "requested_locale": "zh-Hant",
+      "effective_locale": "zh-Hant",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Chinese (Traditional)",
+      "language_native_name": "繁體中文",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.zh-Hant.md",
+      "size": 853,
+      "sha256": "f3a39a76ee815388dc0992b54bfc42aec03c14f0e87a548aa76468d8c8e38b92",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "tr-TR",
+      "requested_locale": "tr-TR",
+      "effective_locale": "tr-TR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Turkish",
+      "language_native_name": "Türkçe",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.tr-TR.md",
+      "size": 955,
+      "sha256": "be3abfb2b4a47f999be8fd42df862ad583ff96cb507eda585fe56558e6453d02",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "th-TH",
+      "requested_locale": "th-TH",
+      "effective_locale": "th-TH",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Thai",
+      "language_native_name": "ไทย",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.th-TH.md",
+      "size": 1877,
+      "sha256": "4a85a5048bf844c45b9593e4d2261b8a8d5fb4f63b2708d951fb8c923a659dd3",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-419",
+      "requested_locale": "es-419",
+      "effective_locale": "es-419",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Spanish (Latin America)",
+      "language_native_name": "Español (Latinoamérica)",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.es-419.md",
+      "size": 960,
+      "sha256": "482789b014726a81b87cddafc3b5a12d62cfa36fe93d27fdd2f0b0eeac39dd2f",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "uk-UA",
+      "requested_locale": "uk-UA",
+      "effective_locale": "uk-UA",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Ukrainian",
+      "language_native_name": "Українська",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.uk-UA.md",
+      "size": 1434,
+      "sha256": "513ce41dd9490de3961cd754b6f40b8fe3dbe191e44ba0a2944b5cc1005f4055",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "it-IT",
+      "requested_locale": "it-IT",
+      "effective_locale": "it-IT",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Italian",
+      "language_native_name": "Italiano",
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "filename": "release-notes.it-IT.md",
+      "size": 909,
+      "sha256": "39cf97f99b9fd910a1f774d7e6a2f7ac38c4cb2b826f661c74871bd4ed163f40",
+      "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -136,7 +136,7 @@ public:
     Q_INVOKABLE void toggleFavorite(int row);
     // Pins a game above the unpinned ones in both sidebars (ui.pinned_games).
     Q_INVOKABLE void setGamePinned(int gameId, bool pinned);
-    Q_INVOKABLE void deleteCapture(int row);     // removes file + thumbnail, tombstones DB row
+    Q_INVOKABLE void deleteCapture(int row);     // GameHQ capture to the Recycle Bin, tombstones DB row
     Q_INVOKABLE void deleteCaptures(const QVariantList& rows);  // bulk: sorts desc, single refresh
     Q_INVOKABLE void openCapture(int row);       // default app (viewer/player)
     Q_INVOKABLE void showInFolder(int row);      // Explorer with file selected
@@ -190,7 +190,8 @@ public:
                                     const QString& thumbnailPath,
                                     const QString& executablePath = QString());
     void rememberGameExecutable(const QString& gameName, const QString& executablePath);
-    void updateForegroundGame(const QString& gameName, const QString& executablePath);
+    void updateForegroundGame(const QString& gameName, const QString& executablePath,
+                              bool recognizedGame);
     // Confirmed replay state; the compatibility bool is derived from this enum.
     void updateReplayBufferState(ReplayBufferState::State state, const QString& gameName);
     void retranslate();
@@ -203,6 +204,10 @@ public:
     Q_INVOKABLE void resetConfig(const QString& key);
     Q_INVOKABLE void resetConfigGroup(const QString& prefix);
     Q_INVOKABLE void resetAllConfig();
+    // Replay audio source: whether this Windows build can record one game's
+    // audio, and the concrete game/desktop/off choice a stored value means.
+    Q_INVOKABLE bool gameAudioSupported() const;
+    Q_INVOKABLE QString audioSourceSelection() const;
 
     // Wired after construction: App builds SoundEngine long after the
     // controller, and the preview is the only thing here that needs it.
@@ -232,6 +237,9 @@ signals:
     // At least one capture could not be deleted: its media file survived, so the
     // row stayed. Carries how many failed, so the UI can word it for one or many.
     void captureDeletionFailed(int count);
+    // Delete reached captures from imported folders and left them untouched by
+    // policy, so the user learns why they are still in the library.
+    void captureDeletionKeptImported(int count);
 
 private:
     void pollHdrStatus();
@@ -247,6 +255,7 @@ private:
     // Folder-watcher path: indexes new files, hides vanished ones and brings
     // restored ones back, then updates both galleries without a reset.
     void onCaptureFoldersChanged(const QStringList& roots);
+    void onScanFinished(int added);
 
     CaptureDatabase* m_db;
     CaptureScanner* m_scanner;

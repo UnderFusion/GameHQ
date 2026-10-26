@@ -1,6 +1,7 @@
 #include "integration/ExternalGameContext.h"
 
 #include <QJsonObject>
+#include <QDebug>
 #include <QDir>
 #include <QFileInfo>
 #include <QReadLocker>
@@ -50,6 +51,17 @@ bool pathInside(const QString &candidate, const QString &directory)
 
 namespace integration
 {
+bool isXboxShellSurface(const QString &processName, const QString &windowTitle)
+{
+    const QString exe = processName.toLower();
+    if (exe == QStringLiteral("xboxpcapp.exe") || exe == QStringLiteral("gamebar.exe"))
+        return true;
+    // ApplicationFrameHost hosts every packaged app; only its Xbox window
+    // counts, never Calculator, Settings or any other app it frames.
+    return exe == QStringLiteral("applicationframehost.exe")
+        && windowTitle.trimmed().compare(QStringLiteral("Xbox"), Qt::CaseInsensitive) == 0;
+}
+
 ExternalGameContext::ExternalGameContext(QObject *parent)
     : QObject(parent)
 {
@@ -100,11 +112,14 @@ bool ExternalGameContext::parseSession(const QString &sourceId, const QJsonObjec
     const QJsonValue processId = object.value(QStringLiteral("startedProcessId"));
     if (!processId.isUndefined()) {
         const double value = processId.toDouble(-1);
-        if (!processId.isDouble() || value <= 0 || std::floor(value) != value
+        if (!processId.isDouble() || value < 0 || std::floor(value) != value
             || value > std::numeric_limits<quint32>::max()) {
             error = QStringLiteral("startedProcessId is invalid");
             return false;
         }
+        // Playnite reports 0 when it could not identify the started process
+        // (folder- or script-tracked launches). That is "unknown", not a
+        // reason to drop the whole lifecycle message or state snapshot.
         session.startedProcessId = static_cast<quint32>(value);
     }
 
@@ -131,7 +146,26 @@ bool ExternalGameContext::upsert(const QString &sourceId, const QJsonObject &obj
     if (!parseSession(sourceId, object, phase, session, error))
         return false;
     QWriteLocker locker(&m_lock);
-    m_sessions.insert(key(sourceId, session.sessionId), session);
+    const QString sessionKey = key(sourceId, session.sessionId);
+    if (!m_sessions.contains(sessionKey)) {
+        int held = 0;
+        auto oldest = m_sessions.end();
+        for (auto it = m_sessions.begin(); it != m_sessions.end(); ++it) {
+            if (it->sourceId != sourceId)
+                continue;
+            ++held;
+            if (oldest == m_sessions.end() || it->sequence < oldest->sequence)
+                oldest = it;
+        }
+        if (held >= MaxSessionsPerSource && oldest != m_sessions.end()) {
+            // Quoted: the session id is client text and must not forge log lines.
+            qWarning() << "External game context for" << sourceId
+                       << "is full; dropping its oldest session" << oldest->sessionId;
+            m_sessions.erase(oldest);
+        }
+    }
+    session.sequence = m_nextSequence++;
+    m_sessions.insert(sessionKey, session);
     locker.unlock();
     emit changed();
     return true;
@@ -140,7 +174,7 @@ bool ExternalGameContext::upsert(const QString &sourceId, const QJsonObject &obj
 bool ExternalGameContext::replaceSource(const QString &sourceId, const QJsonArray &games,
                                         QString &error)
 {
-    if (games.size() > 64) {
+    if (games.size() > MaxSessionsPerSource) {
         error = QStringLiteral("state snapshot contains too many games");
         return false;
     }
@@ -171,8 +205,10 @@ bool ExternalGameContext::replaceSource(const QString &sourceId, const QJsonArra
             else
                 ++it;
         }
-        for (const ExternalGameSession &session : std::as_const(parsed))
+        for (ExternalGameSession &session : parsed) {
+            session.sequence = m_nextSequence++;
             m_sessions.insert(key(sourceId, session.sessionId), session);
+        }
     }
     emit changed();
     return true;
@@ -238,6 +274,16 @@ int ExternalGameContext::sessionCount() const
 {
     QReadLocker locker(&m_lock);
     return m_sessions.size();
+}
+
+QList<ExternalGameSession> ExternalGameContext::launchedSessions() const
+{
+    QList<ExternalGameSession> launched;
+    for (const ExternalGameSession &session : sessions()) {
+        if (session.startedProcessId != 0 && session.phase == QStringLiteral("started"))
+            launched.push_back(session);
+    }
+    return launched;
 }
 
 ExternalGameMatch ExternalGameContext::matchForeground(

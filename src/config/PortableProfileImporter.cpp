@@ -1,4 +1,7 @@
 #include "config/PortableProfileImporter.h"
+#include <QDebug>
+#include <QDirIterator>
+#include "security/ReleaseTrust.h"
 #include "localization/NativeText.h"
 
 #include <QCryptographicHash>
@@ -422,6 +425,101 @@ bool rewriteConfig(QJsonObject& config, const QString& sourceRoot, QString& erro
     return true;
 }
 
+const QString kReleaseTrustStateFile = QStringLiteral("release-trust-state.json");
+
+// ConfigManager keeps an unreadable settings file as
+// config.json.corrupt-<stamp>[-n].json. It is the user's, so it is kept.
+bool isQuarantinedConfig(const QString& fileName)
+{
+    return fileName.startsWith(QStringLiteral("config.json.corrupt-"))
+        && fileName.endsWith(QStringLiteral(".json"));
+}
+
+// True when share/ holds anything but empty files or empty JSON containers.
+bool shareHoldsUserData(const QString& shareRoot)
+{
+    QDirIterator it(shareRoot, QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden
+                                   | QDir::System, QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        const QFileInfo info(it.next());
+        if (info.isSymLink())
+            return true;
+        if (info.isDir())
+            continue;
+        if (info.size() == 0)
+            continue;
+        QFile file(info.absoluteFilePath());
+        if (!file.open(QIODevice::ReadOnly))
+            return true;
+        const QJsonDocument document = QJsonDocument::fromJson(file.readAll());
+        const bool empty = (document.isObject() && document.object().isEmpty())
+            || (document.isArray() && document.array().isEmpty());
+        if (!empty)
+            return true;
+    }
+    return false;
+}
+
+// Files that belong to the installed profile and survive the import as they
+// are: quarantined settings copies.
+QStringList keptDestinationFiles(const QString& root)
+{
+    QStringList kept;
+    for (const QFileInfo& entry : QDir(root).entryInfoList(QDir::Files | QDir::Hidden)) {
+        if (isQuarantinedConfig(entry.fileName()))
+            kept.append(entry.fileName());
+    }
+    return kept;
+}
+
+// The imported profile keeps whichever anti-rollback state is stricter: the
+// higher release sequence of the installed and the portable profile. An
+// unreadable state file fails the import instead of being replaced.
+bool stageReleaseTrustState(const QString& destinationRoot, const QString& sourceDataRoot,
+                            const QString& stageRoot, QString& error)
+{
+    const QString candidates[] = { destinationRoot + QLatin1Char('/') + kReleaseTrustStateFile,
+                                   sourceDataRoot + QLatin1Char('/') + kReleaseTrustStateFile };
+    QString chosen;
+    std::uint64_t highest = 0;
+    for (const QString& path : candidates) {
+        if (!QFileInfo::exists(path))
+            continue;
+        release_trust::SequenceState state;
+        std::string loadError;
+        if (!release_trust::loadSequenceState(path.toStdWString(), state, loadError)) {
+            // Existing messages: no new translatable text for a rare failure.
+            error = path.startsWith(destinationRoot)
+                ? NativeText::get(
+                      //% "The installed profile contains unsupported data: %1."
+                      QT_TRID_NOOP("gamehq.error.portable_import.destination_data_unsupported"),
+                      "The installed profile contains unsupported data: %1.")
+                      .arg(kReleaseTrustStateFile)
+                : NativeText::get(
+                      //% "Cannot read %1 for source verification."
+                      QT_TRID_NOOP("gamehq.error.portable_import.source_read_failed"),
+                      "Cannot read %1 for source verification.")
+                      .arg(kReleaseTrustStateFile);
+            return false;
+        }
+        if (chosen.isEmpty() || state.highestReleaseSequence > highest) {
+            chosen = path;
+            highest = state.highestReleaseSequence;
+        }
+    }
+    if (chosen.isEmpty())
+        return true;
+    if (!QFile::copy(chosen, stageRoot + QLatin1Char('/') + kReleaseTrustStateFile)) {
+        error = NativeText::get(
+                    //% "Cannot stage %1."
+                    QT_TRID_NOOP("gamehq.error.portable_import.stage_file_failed"),
+                    "Cannot stage %1.")
+            .arg(kReleaseTrustStateFile);
+        return false;
+    }
+    return true;
+}
+
 bool destinationIsEmpty(const QString& root, QString& error)
 {
     const QFileInfo rootInfo(root);
@@ -441,15 +539,23 @@ bool destinationIsEmpty(const QString& root, QString& error)
     // whatever they hold is a cache the import may replace.
     const QSet<QString> regenerableDirectories = {
         QStringLiteral("logs"), QStringLiteral("thumbnails"), QStringLiteral("game-icons"),
-        QStringLiteral("replay-cache")
+        QStringLiteral("replay-cache"), QStringLiteral("release-notes-cache")
+    };
+    // Per-run state that means nothing to another profile: the crash marker
+    // of an earlier session and the journal of .part files it reserved.
+    const QSet<QString> disposableFiles = {
+        QStringLiteral("session.marker"), QStringLiteral("pending-captures.journal")
     };
     // Nothing seeds sound-packs — every file in it was put there by the user,
     // and the import writes into that same folder. Allowing the directory
     // without looking inside it is how custom sounds got overwritten.
     const QSet<QString> mustBeEmptyDirectories = { QStringLiteral("sound-packs") };
+    // release-trust-state.json is anti-rollback state, not a cache: it is
+    // allowed here and carried into the imported profile (see
+    // stageReleaseTrustState), never dropped.
     const QSet<QString> allowedFiles = {
         QStringLiteral("config.json"), QStringLiteral("gamehq.db"),
-        QStringLiteral("import-evidence.json")
+        QStringLiteral("import-evidence.json"), kReleaseTrustStateFile
     };
     for (const QFileInfo& entry : directory.entryInfoList(QDir::NoDotAndDotDot | QDir::AllEntries)) {
         if (entry.isSymLink()) {
@@ -474,8 +580,22 @@ bool destinationIsEmpty(const QString& root, QString& error)
             continue;
         }
         if ((entry.isDir() && regenerableDirectories.contains(entry.fileName()))
-            || (entry.isFile() && allowedFiles.contains(entry.fileName())))
+            || (entry.isFile() && allowedFiles.contains(entry.fileName()))
+            || (entry.isFile() && disposableFiles.contains(entry.fileName()))
+            || (entry.isFile() && isQuarantinedConfig(entry.fileName())))
             continue;
+        // share/ is created at startup, but what it holds (webhooks, provider
+        // settings) is the user's. Only an empty or content-free share/ goes.
+        if (entry.isDir() && entry.fileName() == QStringLiteral("share")) {
+            if (!shareHoldsUserData(entry.absoluteFilePath()))
+                continue;
+            error = NativeText::get(
+                        //% "The installed profile already has its own %1."
+                        QT_TRID_NOOP("gamehq.error.portable_import.destination_file_exists"),
+                        "The installed profile already has its own %1.")
+                .arg(entry.fileName());
+            return false;
+        }
         error = NativeText::get(
             //: Portable-profile import destination validation failure; %1 is an unchanged file name.
             //% "The installed profile contains unsupported data: %1."
@@ -1015,6 +1135,24 @@ bool PortableProfileImporter::importProfile(const Options& options, Result& resu
         return false;
     }
 
+    if (!stageReleaseTrustState(destinationRoot, sourceRoot + QStringLiteral("/gamehq-data"),
+                                stageRoot, error)) {
+        rollback();
+        return false;
+    }
+    for (const QString& name : keptDestinationFiles(destinationRoot)) {
+        if (!QFile::copy(destinationRoot + QLatin1Char('/') + name,
+                         stageRoot + QLatin1Char('/') + name)) {
+            error = NativeText::get(
+                        //% "Cannot stage %1."
+                        QT_TRID_NOOP("gamehq.error.portable_import.stage_file_failed"),
+                        "Cannot stage %1.")
+                .arg(name);
+            rollback();
+            return false;
+        }
+    }
+
     QJsonObject evidence {
         { QStringLiteral("schemaVersion"), 1 },
         { QStringLiteral("completedAtUtc"), QDateTime::currentDateTimeUtc().toString(Qt::ISODate) },
@@ -1078,9 +1216,17 @@ bool PortableProfileImporter::importProfile(const Options& options, Result& resu
         rollback();
         return false;
     }
-    if (destinationBackedUp && !removeTree(backupRoot, error))
-        return false;
-    QFile::remove(transactionPath);
     result.evidencePath = destinationRoot + QStringLiteral("/import-evidence.json");
+    // The import is published and complete. A backup that cannot be removed
+    // now is only clutter: the journal stays in its "published" phase, so the
+    // next start's recovery removes it.
+    QString cleanupError;
+    if (destinationBackedUp && !removeTree(backupRoot, cleanupError)) {
+        result.warning = cleanupError;
+        qWarning() << "Portable import: published, but the old profile backup could not be removed:"
+                   << cleanupError;
+        return true;
+    }
+    QFile::remove(transactionPath);
     return true;
 }

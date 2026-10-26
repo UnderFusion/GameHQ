@@ -7,6 +7,8 @@
 #include <QSet>
 #include <QVector>
 
+#include <functional>
+
 namespace ModernInput {
 
 enum class ControllerProvider {
@@ -103,6 +105,14 @@ public:
                             const QString& controlId);
     MatchEvidence matchEvidence(ControllerProvider provider,
                                 const QString& providerDeviceId) const;
+    // Drops disconnected controllers that no future observation can match
+    // again: a weak identity without any app-local, endpoint, container or
+    // root key. Each reconnect of such a pad creates a fresh logical ID, so
+    // the old entry is dead bookkeeping. Connected controllers, every
+    // identity with a correlation key (it may come back and restore its
+    // profile) and anything `retain` vouches for (pinned, live route) stay.
+    // Returns the removed logical IDs so the caller can drop its own state.
+    QStringList pruneUnreachable(const std::function<bool(const QString&)>& retain = {});
 
 private:
     struct Match {

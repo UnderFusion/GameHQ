@@ -35,6 +35,67 @@ private slots:
         QCOMPARE(GameIdentity::folderName(input), expected);
     }
 
+    void pathComponent_data()
+    {
+        QTest::addColumn<QString>("input");
+        QTest::addColumn<QString>("expected");
+
+        // Ordinary names keep the folder they always had.
+        QTest::newRow("plain") << "Hades" << "Hades";
+        QTest::newRow("colon") << "Spider-Man: Miles" << "Spider-Man_ Miles";
+        QTest::newRow("inner dots") << "S.T.A.L.K.E.R. 2" << "S.T.A.L.K.E.R. 2";
+        // A dot-only name would climb out of (or be) the capture root.
+        QTest::newRow("dot dot") << ".." << "Unknown Game";
+        QTest::newRow("dot") << "." << "Unknown Game";
+        QTest::newRow("dots and spaces") << ". . ." << "Unknown Game";
+        QTest::newRow("trailing dot") << "Game." << "Game";
+        QTest::newRow("trailing space dot") << "Game . " << "Game";
+        QTest::newRow("control chars") << QStringLiteral("A\tB\x01") << "A_B_";
+        // Reserved device names, bare or with an extension, any case.
+        QTest::newRow("CON") << "CON" << "CON_";
+        QTest::newRow("nul lower") << "nul" << "nul_";
+        QTest::newRow("COM1") << "COM1" << "COM1_";
+        QTest::newRow("LPT9 ext") << "LPT9.txt" << "LPT9_.txt";
+        QTest::newRow("COM0 is fine") << "COM0" << "COM0";
+        QTest::newRow("CONTROL is fine") << "Control" << "Control";
+    }
+
+    void pathComponent()
+    {
+        QFETCH(QString, input);
+        QFETCH(QString, expected);
+        QCOMPARE(GameIdentity::pathComponent(input), expected);
+    }
+
+    void pathComponentNeverChangesTheStoredKey()
+    {
+        // key() is stored in the database; the path guard must not move it.
+        QCOMPARE(GameIdentity::key(QStringLiteral("Hades")), QStringLiteral("hades"));
+        QCOMPARE(GameIdentity::key(QStringLiteral("CON")), QStringLiteral("con"));
+    }
+
+    void isInsideRoot()
+    {
+        const QString root = QStringLiteral("D:/Captures");
+        QVERIFY(GameIdentity::isInsideRoot(root, root + QStringLiteral("/Hades/Clips")));
+        QVERIFY(GameIdentity::isInsideRoot(root + QLatin1Char('/'), root + QStringLiteral("/a")));
+        QVERIFY(GameIdentity::isInsideRoot(QStringLiteral("d:\\captures"),
+                                           QStringLiteral("D:/Captures/x")));
+        QVERIFY(!GameIdentity::isInsideRoot(root, root));
+        QVERIFY(!GameIdentity::isInsideRoot(root, root + QStringLiteral("/../Clips")));
+        QVERIFY(!GameIdentity::isInsideRoot(root, root + QStringLiteral("/a/../../x")));
+        QVERIFY(!GameIdentity::isInsideRoot(root, QStringLiteral("D:/CapturesOther/x")));
+        QVERIFY(!GameIdentity::isInsideRoot(QString(), QStringLiteral("D:/x")));
+        // Every component pathComponent() can produce stays inside.
+        for (const QString& name : { QStringLiteral(".."), QStringLiteral("."),
+                                     QStringLiteral("../.."), QStringLiteral("CON") }) {
+            QVERIFY2(GameIdentity::isInsideRoot(
+                         root, root + QLatin1Char('/') + GameIdentity::pathComponent(name)
+                                   + QStringLiteral("/Clips")),
+                     qPrintable(name));
+        }
+    }
+
     void key_foldsCaseAndWhitespace()
     {
         // The key exists so two spellings of one game collapse to one row.

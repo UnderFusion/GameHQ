@@ -1,8 +1,10 @@
 #include "input/SonyHidReader.h"
 
+#include <QDebug>
 #include <QElapsedTimer>
 #include <QVector>
 
+#include <mutex>
 #include <thread>
 
 #include <windows.h>
@@ -19,6 +21,11 @@ constexpr USHORT kUsageJoystick    = 0x04;
 constexpr USHORT kUsageGamepad     = 0x05;
 constexpr USHORT kUsageMultiAxis   = 0x08;
 
+// How long the owner (GUI thread) waits for the worker to leave after a stop
+// request. A cancelled HID read normally completes at once; a driver that
+// never completes it must not freeze the GUI thread.
+constexpr DWORD kStopTimeoutMs = 500;
+
 QString win32Error(const char* what, DWORD code)
 {
     return QStringLiteral("%1 failed (error %2)").arg(QLatin1String(what)).arg(code);
@@ -29,19 +36,47 @@ struct SonyHidReader::Impl {
     HANDLE file = INVALID_HANDLE_VALUE;
     HANDLE stopEvent = nullptr;
     HANDLE readEvent = nullptr;
+    HANDLE doneEvent = nullptr;   // set once run() has returned
     int reportLength = 0;
     SonyReportLayout::Family family = SonyReportLayout::Family::DualSense;
     Callbacks callbacks;
     std::thread worker;
+    // Lifetime handshake with ~SonyHidReader. When the worker does not exit
+    // within kStopTimeoutMs, the owner marks it abandoned and hands it this
+    // Impl: the kernel may still own `buffer`/`ov` on the worker's stack, so
+    // the thread keeps waiting for the cancelled read and frees Impl itself.
+    // Callbacks run under the mutex and never once abandoned, so none can
+    // reach the owner after its destructor returned.
+    std::mutex lifetimeMutex;
+    bool finished = false;
+    bool abandoned = false;
 
     ~Impl()
     {
+        if (doneEvent)
+            CloseHandle(doneEvent);
         if (readEvent)
             CloseHandle(readEvent);
         if (stopEvent)
             CloseHandle(stopEvent);
         if (file != INVALID_HANDLE_VALUE)
             CloseHandle(file);
+    }
+
+    // Thread entry: run the read loop, then either signal the waiting owner
+    // or, when the owner gave up on us, free the abandoned Impl.
+    static void threadMain(Impl* self)
+    {
+        self->run();
+        bool selfDelete = false;
+        {
+            std::lock_guard<std::mutex> lock(self->lifetimeMutex);
+            self->finished = true;
+            selfDelete = self->abandoned;
+            SetEvent(self->doneEvent);
+        }
+        if (selfDelete)
+            delete self;
     }
 
     void run()
@@ -95,10 +130,14 @@ struct SonyHidReader::Impl {
                 continue;
             lastSignature = sig;
             lastForwardMs = now;
+            std::lock_guard<std::mutex> lock(lifetimeMutex);
+            if (abandoned)
+                return;
             callbacks.report(QByteArray(reinterpret_cast<const char*>(buffer.constData()),
                                         int(got)));
         }
-        if (callbacks.failed)
+        std::lock_guard<std::mutex> lock(lifetimeMutex);
+        if (callbacks.failed && !abandoned)
             callbacks.failed(failure);
     }
 };
@@ -146,11 +185,12 @@ std::unique_ptr<SonyHidReader> SonyHidReader::open(const QString& devicePath,
 
     impl->stopEvent = CreateEventW(nullptr, TRUE, FALSE, nullptr);
     impl->readEvent = CreateEventW(nullptr, TRUE, FALSE, nullptr);
-    if (!impl->stopEvent || !impl->readEvent)
+    impl->doneEvent = CreateEventW(nullptr, TRUE, FALSE, nullptr);
+    if (!impl->stopEvent || !impl->readEvent || !impl->doneEvent)
         return fail(win32Error("CreateEvent", GetLastError()));
 
     Impl* raw = impl.get();
-    impl->worker = std::thread([raw] { raw->run(); });
+    impl->worker = std::thread([raw] { Impl::threadMain(raw); });
     return std::unique_ptr<SonyHidReader>(new SonyHidReader(std::move(impl)));
 }
 
@@ -161,7 +201,23 @@ SonyHidReader::SonyHidReader(std::unique_ptr<Impl> impl)
 
 SonyHidReader::~SonyHidReader()
 {
+    // The worker cancels its pending read (CancelIoEx) as soon as it sees the
+    // stop event; wait for that only for a bounded time.
     SetEvent(d->stopEvent);
-    if (d->worker.joinable())
-        d->worker.join();
+    if (!d->worker.joinable())
+        return;
+    if (WaitForSingleObject(d->doneEvent, kStopTimeoutMs) != WAIT_OBJECT_0) {
+        std::lock_guard<std::mutex> lock(d->lifetimeMutex);
+        if (!d->finished) {
+            // The cancelled read never completed. Leave the worker waiting
+            // for it; it frees Impl once the kernel lets go of its buffer.
+            qWarning() << "Gamepad: direct HID reader did not stop within"
+                       << kStopTimeoutMs << "ms; leaving its worker to finish";
+            d->abandoned = true;
+            d->worker.detach();
+            static_cast<void>(d.release());
+            return;
+        }
+    }
+    d->worker.join();
 }

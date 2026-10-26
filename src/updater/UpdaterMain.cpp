@@ -5,6 +5,7 @@
 #include "updater/UpdaterHealth.h"
 #include "updater/UpdaterRecovery.h"
 #include "core/UpdaterHandshake.h"
+#include "core/DllSearchPolicy.h"
 #include "core/UpdateMaintenance.h"
 #include "security/ReleaseTrust.h"
 #include "security/ReleaseManifest.h"
@@ -130,7 +131,7 @@ int runTransaction(const std::filesystem::path &transactionPath, const std::wstr
         return 0;
     }
     if (mode == L"--wait-health") {
-        if (!updater::launchAndWaitForHealth(transaction, 30000, error))
+        if (!updater::launchAndWaitForHealth(transaction, updater::kHealthTimeoutMs, error))
             return failWith(error, 9);
         note("UPDATED APPLICATION HEALTHY");
         return 0;
@@ -173,7 +174,7 @@ int runTransaction(const std::filesystem::path &transactionPath, const std::wstr
                         : "the wait for the running application failed");
             }
         }
-        if (!updater::applyUpdate(transaction, 30000, error))
+        if (!updater::applyUpdate(transaction, updater::kHealthTimeoutMs, error))
             return failWith(error, 10);
         note("UPDATE APPLIED AND HEALTHY");
         return 0;
@@ -193,6 +194,7 @@ int runTransaction(const std::filesystem::path &transactionPath, const std::wstr
 
 int wmain(int argc, wchar_t **argv)
 {
+    dll_search::restrictSearchPath();
     const std::wstring mode = argc >= 2 ? std::wstring(argv[1]) : std::wstring();
     if (argc == 2 && mode == L"--self-test") {
         std::cout << "GameHQUpdater " GAMEHQ_UPDATER_VERSION " ready\n";

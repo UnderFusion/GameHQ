@@ -1,4 +1,5 @@
 #include "core/UpdateMaintenance.h"
+#include "core/DurableFile.h"
 
 #include <fstream>
 #include <set>
@@ -41,17 +42,14 @@ bool begin(const std::filesystem::path &packageRoot, std::string &error)
     partial += L".partial";
     std::error_code ec;
     std::filesystem::create_directories(marker.parent_path(), ec);
-    std::ofstream output(partial, std::ios::binary | std::ios::trunc);
-    if (ec || !output) {
+    const durable_file::WriteResult written = ec
+        ? durable_file::WriteResult::CreateFailed
+        : durable_file::replace(marker, partial, "update\n");
+    if (written == durable_file::WriteResult::CreateFailed) {
         error = "could not create the update maintenance marker";
         return false;
     }
-    output << "update\n";
-    output.flush();
-    output.close();
-    if (!output || !MoveFileExW(partial.c_str(), marker.c_str(),
-                                MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH)) {
-        std::filesystem::remove(partial, ec);
+    if (written != durable_file::WriteResult::Written) {
         error = "could not publish the update maintenance marker";
         return false;
     }

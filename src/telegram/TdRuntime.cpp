@@ -10,6 +10,10 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+#ifdef Q_OS_WIN
+#include <windows.h>
+#endif
+
 namespace telegram
 {
 
@@ -20,6 +24,8 @@ TdRuntime::TdRuntime(QString dllPath, QString expectedSha256, QString expectedVe
 {
 }
 
+// Never unloads: once Ready the module is pinned for the process lifetime (see
+// load()), and QLibrary's destructor does not unload either.
 TdRuntime::~TdRuntime() = default;
 
 std::unique_ptr<TdRuntime> TdRuntime::forInstalledApp(const QString& applicationDir)
@@ -115,6 +121,19 @@ TdRuntime::Status TdRuntime::load()
         return finish(Status::Incompatible);
     }
 
+#ifdef Q_OS_WIN
+    // A transport worker can outlive its transport while a receive call is
+    // still inside tdjson.dll (TdJsonTransport::stop gives up after a bounded
+    // wait). Pin the module so nothing - not this object's destruction, not a
+    // later unload() - can unmap code that thread may still be running.
+    HMODULE pinned = nullptr;
+    if (!GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN,
+                            reinterpret_cast<LPCWSTR>(api.receive), &pinned)) {
+        qWarning() << "Telegram: could not pin the TDLib runtime, error" << GetLastError();
+        lib->unload();
+        return finish(Status::LoadFailed);
+    }
+#endif
     m_reportedVersion = version;
     m_api = api;
     m_library = std::move(lib);

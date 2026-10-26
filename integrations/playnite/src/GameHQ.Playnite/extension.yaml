@@ -3,7 +3,7 @@ Id: GameHQ_Integration
 # protected product name literal; runtime UI uses LOCGameHQIntegrationName.
 Name: GameHQ Integration
 Author: underfusion
-Version: 0.4.12
+Version: 0.4.13
 Module: GameHQ.Playnite.dll
 Icon: icon.png
 Type: GenericPlugin

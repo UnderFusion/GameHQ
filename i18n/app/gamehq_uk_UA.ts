@@ -4,109 +4,109 @@
   <context>
     <name>GameHQ</name>
     <message id="gamehq.about.enjoying_gamehq">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="829"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="827"></location>
       <source>Enjoying GameHQ?</source>
       <translation>Подобається GameHQ?</translation>
     </message>
     <message id="gamehq.about.full_release_notes">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="696"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="694"></location>
       <source>View full release notes</source>
       <translation>Переглянути повні примітки до випуску</translation>
     </message>
     <message id="gamehq.about.github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="788"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1126"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="786"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1124"></location>
       <source>GitHub</source>
       <translation>GitHub</translation>
     </message>
     <message id="gamehq.about.license">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="800"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="798"></location>
       <source>License</source>
       <translation>Ліцензія</translation>
     </message>
     <message id="gamehq.about.mode.installed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="533"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="531"></location>
       <source>Installed</source>
       <translation>Встановлено</translation>
     </message>
     <message id="gamehq.about.mode.portable">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="530"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="528"></location>
       <source>Portable</source>
       <translation>Портативний</translation>
     </message>
     <message id="gamehq.about.more_improvements">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="686"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
       <source>Plus more improvements and fixes.</source>
       <translation>А також інші покращення та виправлення.</translation>
     </message>
     <message id="gamehq.about.product_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="641"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="639"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
       <translation>Галерея знімків екрана, кліпів повтору та інших медіафайлів для ПК-ігор зі зручним керуванням геймпадом.</translation>
     </message>
     <message id="gamehq.about.product_updated">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="496"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="494"></location>
       <source>%1 updated</source>
       <translation>%1 оновлено</translation>
     </message>
     <message id="gamehq.about.project_links">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="772"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="770"></location>
       <source>PROJECT LINKS</source>
       <translation>ПОСИЛАННЯ ПРОЄКТУ</translation>
     </message>
     <message id="gamehq.about.quick_actions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="717"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="715"></location>
       <source>QUICK ACTIONS</source>
       <translation>ШВИДКІ ДІЇ</translation>
     </message>
     <message id="gamehq.about.report_issue">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="794"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="792"></location>
       <source>Report issue</source>
       <translation>Повідомити про проблему</translation>
     </message>
     <message id="gamehq.about.star_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="838"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="836"></location>
       <source>A GitHub star helps more players discover the project.</source>
       <translation>Зірка на GitHub допомагає більшій кількості гравців дізнатися про проєкт.</translation>
     </message>
     <message id="gamehq.about.star_on_github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="849"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="847"></location>
       <source>Star on GitHub</source>
       <translation>Поставити зірку на GitHub</translation>
     </message>
     <message id="gamehq.about.version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="511"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="878"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="17"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="509"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="876"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="18"></location>
       <source>Version %1</source>
       <translation>Версія %1</translation>
     </message>
     <message id="gamehq.about.whats_new_in">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="651"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="649"></location>
       <source>WHAT'S NEW IN %1</source>
       <translation>ЩО НОВОГО В %1</translation>
     </message>
     <message id="gamehq.action.back">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="587"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="585"></location>
       <source>Back</source>
       <translation>Назад</translation>
     </message>
     <message id="gamehq.action.back_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="584"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="582"></location>
       <source>%1  Back</source>
       <translation>%1  Назад</translation>
     </message>
     <message id="gamehq.action.cancel">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="623"></location>
-      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="19"></location>
-      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="25"></location>
-      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="14"></location>
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="35"></location>
-      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
-      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="21"></location>
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="28"></location>
+      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="15"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="34"></location>
+      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
+      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="23"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="174"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
@@ -114,13 +114,13 @@
       <translation>Скасувати</translation>
     </message>
     <message id="gamehq.action.delete">
+      <location filename="src/ui/qml/Main.qml" line="1290"></location>
+      <location filename="src/ui/qml/Main.qml" line="1309"></location>
       <location filename="src/ui/qml/Main.qml" line="1348"></location>
-      <location filename="src/ui/qml/Main.qml" line="1367"></location>
-      <location filename="src/ui/qml/Main.qml" line="1405"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
-      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1067"></location>
+      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="17"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
-      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
+      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="37"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="19"></location>
       <source>Delete</source>
       <translation>Видалити</translation>
@@ -343,7 +343,7 @@
     </message>
     <message id="gamehq.action.not_now">
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="108"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="182"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="187"></location>
       <source>Not now</source>
       <translation>Не зараз</translation>
     </message>
@@ -512,7 +512,7 @@
       <translation>Вилучити</translation>
     </message>
     <message id="gamehq.action.replace">
-      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="21"></location>
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="24"></location>
       <source>Replace</source>
       <translation>Замінити</translation>
     </message>
@@ -522,9 +522,9 @@
       <translation>Відновити</translation>
     </message>
     <message id="gamehq.action.restore_defaults">
-      <location filename="src/ui/qml/SettingsView.qml" line="501"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="518"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="532"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="508"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="525"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="539"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="857"></location>
@@ -538,7 +538,7 @@
     </message>
     <message id="gamehq.action.save">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
-      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="26"></location>
+      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="25"></location>
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="168"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="101"></location>
       <source>Save</source>
@@ -585,7 +585,7 @@
       <translation>Використати типовий</translation>
     </message>
     <message id="gamehq.dialog.confirm.default_title">
-      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="11"></location>
+      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="12"></location>
       <source>Are you sure?</source>
       <translation>Ви впевнені?</translation>
     </message>
@@ -648,351 +648,356 @@
       <translation>%1 с</translation>
     </message>
     <message id="gamehq.error.capture_location.create_failed">
-      <location filename="src/config/CaptureLocations.cpp" line="126"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="132"></location>
       <source>The selected folder could not be created.</source>
       <translation>Не вдалося створити вибрану папку.</translation>
     </message>
     <message id="gamehq.error.capture_location.folder_invalid">
-      <location filename="src/config/CaptureLocations.cpp" line="110"></location>
-      <location filename="src/config/CaptureLocations.cpp" line="118"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="116"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="124"></location>
       <source>The selected folder is invalid.</source>
       <translation>Вибрана папка недійсна.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="374"></location>
+      <location filename="src/ui/AppController_Settings.cpp" line="50"></location>
       <source>Choose a local folder.</source>
       <translation>Виберіть локальну папку.</translation>
     </message>
     <message id="gamehq.error.capture_location.not_writable">
-      <location filename="src/config/CaptureLocations.cpp" line="136"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="142"></location>
       <source>The selected folder is not writable.</source>
       <translation>Вибрана папка недоступна для запису.</translation>
     </message>
     <message id="gamehq.error.capture_location.restore_default_failed">
-      <location filename="src/config/CaptureLocations.cpp" line="202"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="208"></location>
       <source>GameHQ could not restore the default folder.</source>
       <translation>GameHQ не вдалося відновити типову папку.</translation>
     </message>
     <message id="gamehq.error.capture_location.save_failed">
-      <location filename="src/config/CaptureLocations.cpp" line="175"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="181"></location>
       <source>GameHQ could not save the selected folder.</source>
       <translation>GameHQ не вдалося зберегти вибрану папку.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="368"></location>
-      <location filename="src/ui/AppController.cpp" line="390"></location>
+      <location filename="src/ui/AppController_Settings.cpp" line="44"></location>
+      <location filename="src/ui/AppController_Settings.cpp" line="66"></location>
       <source>The capture type is invalid.</source>
       <translation>Тип захоплення недійсний.</translation>
     </message>
     <message id="gamehq.error.portable_import.backup_missing">
-      <location filename="src/config/PortableProfileImporter.cpp" line="303"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="306"></location>
       <source>The interrupted portable-import backup is missing.</source>
       <translation>Резервна копія перерваного портативного імпорту відсутня.</translation>
     </message>
     <message id="gamehq.error.portable_import.capture_history_value_invalid">
-      <location filename="src/config/PortableProfileImporter.cpp" line="391"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="394"></location>
       <source>Capture-root history contains a non-string value.</source>
       <translation>Історія кореневих папок для записів містить нерядкове значення.</translation>
     </message>
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="185"></location>
       <source>Cannot commit staged file %1.</source>
       <translation>Не вдалося перемістити підготовлений файл %1 до кінцевого розташування.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="346"></location>
       <source>The portable config.json is malformed.</source>
       <translation>Портативний config.json має некоректний формат.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_path_unsupported">
-      <location filename="src/config/PortableProfileImporter.cpp" line="417"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="420"></location>
       <source>Unsupported portable path in config key %1.</source>
       <translation>Непідтримуваний портативний шлях у ключі конфігурації %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_read_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="333"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="336"></location>
       <source>Cannot read the portable config.json.</source>
       <translation>Не вдалося прочитати портативний config.json.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_value_not_array">
-      <location filename="src/config/PortableProfileImporter.cpp" line="382"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="385"></location>
       <source>%1 must be an array.</source>
       <translation>%1 має бути масивом.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_value_not_string">
-      <location filename="src/config/PortableProfileImporter.cpp" line="364"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="367"></location>
       <source>%1 must be a string.</source>
       <translation>%1 має бути рядком.</translation>
     </message>
     <message id="gamehq.error.portable_import.data_directory_escapes_package">
-      <location filename="src/config/PortableProfileImporter.cpp" line="893"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1013"></location>
       <source>The portable data directory escapes the selected package root.</source>
       <translation>Портативний каталог даних виходить за межі вибраного кореня пакета.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_foreign_key_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="833"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="953"></location>
       <source>The staged database failed its foreign-key check.</source>
       <translation>Підготовлена база даних не пройшла перевірку зовнішніх ключів.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_integrity_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="822"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="942"></location>
       <source>The staged database failed its integrity check.</source>
       <translation>Підготовлена база даних не пройшла перевірку цілісності.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_missing">
-      <location filename="src/config/PortableProfileImporter.cpp" line="915"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1035"></location>
       <source>The portable profile has no gamehq.db.</source>
       <translation>Портативний профіль не містить gamehq.db.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_open_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="749"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="869"></location>
       <source>The staged portable database cannot be opened: %1</source>
       <translation>Не вдалося відкрити підготовлену портативну базу даних: %1</translation>
     </message>
     <message id="gamehq.error.portable_import.database_operation_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="28"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="31"></location>
       <source>A portable-profile database operation failed: %1</source>
       <translation>Помилка операції з базою даних портативного профілю: %1</translation>
     </message>
     <message id="gamehq.error.portable_import.database_path_unsupported">
-      <location filename="src/config/PortableProfileImporter.cpp" line="801"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="921"></location>
       <source>Unsupported portable path in database setting %1.</source>
       <translation>Непідтримуваний портативний шлях у налаштуванні бази даних %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_schema_read_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="757"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="877"></location>
       <source>The portable database schema cannot be read.</source>
       <translation>Не вдалося прочитати схему портативної бази даних.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_schema_unsupported">
-      <location filename="src/config/PortableProfileImporter.cpp" line="763"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="883"></location>
       <source>The portable database schema is unsupported.</source>
       <translation>Схема портативної бази даних не підтримується.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_stage_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="987"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1107"></location>
       <source>The portable database cannot be staged.</source>
       <translation>Не вдалося підготувати портативну базу даних.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_transaction_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="769"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="889"></location>
       <source>The portable database transaction cannot begin.</source>
       <translation>Не вдалося розпочати транзакцію портативної бази даних.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_backup_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="1038"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1176"></location>
       <source>The empty installed profile cannot be backed up for import.</source>
       <translation>Не вдалося створити резервну копію порожнього встановленого профілю для імпорту.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_config_not_default">
-      <location filename="src/config/PortableProfileImporter.cpp" line="501"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="621"></location>
       <source>The installed profile has non-default configuration.</source>
       <translation>Встановлений профіль має нетипову конфігурацію.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_contains_link">
-      <location filename="src/config/PortableProfileImporter.cpp" line="459"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="565"></location>
       <source>The installed profile contains a symbolic link or junction: %1.</source>
       <translation>Встановлений профіль містить символічне посилання або з'єднання (junction): %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_data_unsupported">
-      <location filename="src/config/PortableProfileImporter.cpp" line="482"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="495"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="602"></location>
       <source>The installed profile contains unsupported data: %1.</source>
       <translation>Встановлений профіль містить непідтримувані дані: %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_database_inspection_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="520"></location>
-      <location filename="src/config/PortableProfileImporter.cpp" line="542"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="640"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="662"></location>
       <source>The installed database cannot be inspected.</source>
       <translation>Не вдалося перевірити встановлену базу даних.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_file_exists">
-      <location filename="src/config/PortableProfileImporter.cpp" line="469"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="575"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="594"></location>
       <source>The installed profile already has its own %1.</source>
       <translation>Встановлений профіль уже має власний файл %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_not_empty">
-      <location filename="src/config/PortableProfileImporter.cpp" line="553"></location>
-      <location filename="src/config/PortableProfileImporter.cpp" line="567"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="673"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="687"></location>
       <source>The installed profile is not empty.</source>
       <translation>Встановлений профіль не порожній.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_restore_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="292"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="295"></location>
       <source>The interrupted portable import could not restore its destination backup.</source>
       <translation>Перерваному портативному імпорту не вдалося відновити резервну копію призначення.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_root_link">
-      <location filename="src/config/PortableProfileImporter.cpp" line="432"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="530"></location>
       <source>The installed profile root must not be a symbolic link or junction.</source>
       <translation>Корінь встановленого профілю не може бути символічним посиланням або з'єднанням (junction).</translation>
     </message>
     <message id="gamehq.error.portable_import.game_path_scheme_invalid">
-      <location filename="src/config/PortableProfileImporter.cpp" line="604"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="724"></location>
       <source>A game executable path incorrectly uses portable:/.</source>
       <translation>Шлях до виконуваного файлу гри помилково використовує portable:/.</translation>
     </message>
     <message id="gamehq.error.portable_import.hash_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="159"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="162"></location>
       <source>Cannot hash %1.</source>
       <translation>Не вдалося обчислити хеш %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="212"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="54"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Портативні профілі може імпортувати лише встановлена копія GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_invalid">
-      <location filename="src/config/PortableProfileImporter.cpp" line="263"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="266"></location>
       <source>The interrupted portable-import journal is invalid.</source>
       <translation>Журнал перерваного портативного імпорту недійсний.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_malformed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="242"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="245"></location>
       <source>The interrupted portable-import journal is malformed.</source>
       <translation>Журнал перерваного портативного імпорту має некоректний формат.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_read_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="231"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="234"></location>
       <source>The interrupted portable-import journal cannot be read.</source>
       <translation>Не вдалося прочитати журнал перерваного портативного імпорту.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_remove_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="315"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="318"></location>
       <source>The recovered portable-import journal could not be removed.</source>
       <translation>Не вдалося видалити відновлений журнал портативного імпорту.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="218"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="60"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Виберіть локальну папку з портативною версією GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="227"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="69"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>Вибрана папка не є портативним пакетом GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_root_canonicalize_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="56"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="59"></location>
       <source>The portable package root cannot be canonicalized.</source>
       <translation>Не вдалося отримати канонічний шлях кореня портативного пакета.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_escapes_package">
-      <location filename="src/config/PortableProfileImporter.cpp" line="73"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="76"></location>
       <source>A portable path escapes the selected package root.</source>
       <translation>Портативний шлях виходить за межі вибраного кореня пакета.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_invalid">
-      <location filename="src/config/PortableProfileImporter.cpp" line="106"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="109"></location>
       <source>A portable:/ path is empty or absolute.</source>
       <translation>Шлях portable:/ порожній або абсолютний.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_scheme_required">
-      <location filename="src/config/PortableProfileImporter.cpp" line="93"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="96"></location>
       <source>Imported paths must be absolute or use portable:/.</source>
       <translation>Імпортовані шляхи мають бути абсолютними або використовувати portable:/.</translation>
     </message>
     <message id="gamehq.error.portable_import.portable_path_escapes_package">
-      <location filename="src/config/PortableProfileImporter.cpp" line="117"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="120"></location>
       <source>A portable:/ path escapes the selected package root.</source>
       <translation>Шлях portable:/ виходить за межі вибраного кореня пакета.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="238"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="80"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ не вдалося ідентифікувати власний процес для імпорту.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="248"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="90"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ не вдалося запустити процес портативного імпорту.</translation>
     </message>
     <message id="gamehq.error.portable_import.publish_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="1062"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1200"></location>
       <source>The staged profile cannot be published.</source>
       <translation>Не вдалося застосувати підготовлений профіль у кінцевому розташуванні.</translation>
     </message>
     <message id="gamehq.error.portable_import.published_destination_missing">
-      <location filename="src/config/PortableProfileImporter.cpp" line="279"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="282"></location>
       <source>The published portable-import destination is missing.</source>
       <translation>Кінцеве місце призначення портативного імпорту відсутнє.</translation>
     </message>
     <message id="gamehq.error.portable_import.recovery_remove_directory_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="203"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="206"></location>
       <source>Portable-import recovery could not remove a transaction directory.</source>
       <translation>Під час відновлення портативного імпорту не вдалося видалити каталог транзакції.</translation>
     </message>
     <message id="gamehq.error.portable_import.recovery_required">
-      <location filename="src/config/PortableProfileImporter.cpp" line="973"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1093"></location>
       <source>%1 Recovery required: %2</source>
       <translation>%1 Потрібне відновлення: %2</translation>
     </message>
     <message id="gamehq.error.portable_import.rollback_restore_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="961"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1081"></location>
       <source>The installed profile backup could not be restored.</source>
       <translation>Не вдалося відновити резервну копію встановленого профілю.</translation>
     </message>
     <message id="gamehq.error.portable_import.sound_file_missing">
-      <location filename="src/config/PortableProfileImporter.cpp" line="706"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="826"></location>
       <source>A referenced portable sound file is missing.</source>
       <translation>Указаний портативний звуковий файл відсутній.</translation>
     </message>
     <message id="gamehq.error.portable_import.sound_file_stage_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="718"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="838"></location>
       <source>A referenced sound file could not be staged.</source>
       <translation>Не вдалося підготувати вказаний звуковий файл.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_changed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="1012"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1132"></location>
       <source>The portable source changed during import.</source>
       <translation>Портативне джерело змінилося під час імпорту.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_destination_overlap">
-      <location filename="src/config/PortableProfileImporter.cpp" line="901"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1021"></location>
       <source>Source and destination profiles must be separate.</source>
       <translation>Профілі джерела та призначення мають бути окремими.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_package_invalid">
-      <location filename="src/config/PortableProfileImporter.cpp" line="884"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1004"></location>
       <source>Select a valid GameHQ portable package root.</source>
       <translation>Виберіть дійсний корінь портативного пакета GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_read_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="150"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="153"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="500"></location>
       <source>Cannot read %1 for source verification.</source>
       <translation>Не вдалося прочитати %1 для перевірки джерела.</translation>
     </message>
     <message id="gamehq.error.portable_import.stage_file_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="173"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="176"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="515"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1148"></location>
       <source>Cannot stage %1.</source>
       <translation>Не вдалося підготувати %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.staging_directory_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="939"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1059"></location>
       <source>The import staging directory cannot be created.</source>
       <translation>Не вдалося створити каталог підготовки імпорту.</translation>
     </message>
     <message id="gamehq.error.portable_import.transaction_running">
-      <location filename="src/config/PortableProfileImporter.cpp" line="872"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="992"></location>
       <source>Another portable-profile import is already running.</source>
       <translation>Інший імпорт портативного профілю вже виконується.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="669"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="156"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Оновлення скасовано, оскільки робота із захопленням не встигла безпечно завершитися.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="380"></location>
+      <location filename="src/updates/UpdateService.cpp" line="420"></location>
       <source>Update check failed: %1</source>
       <translation>Не вдалося перевірити оновлення: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="143"></location>
+      <location filename="src/updates/UpdateService.cpp" line="182"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub тимчасово обмежив перевірки оновлень. GameHQ спробує знову пізніше.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="137"></location>
+      <location filename="src/updates/UpdateService.cpp" line="176"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub тимчасово обмежив перевірки оновлень. GameHQ спробує знову після %1.</translation>
     </message>
@@ -1162,73 +1167,73 @@
       <translation>GameHQ не вдалося записати завантажене оновлення на диск.</translation>
     </message>
     <message id="gamehq.error.update.install.handshake_failed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="183"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="186"></location>
       <source>GameHQ could not prepare the updater handshake.</source>
       <translation>GameHQ не вдалося підготувати з'єднання з помічником оновлення.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_missing">
-      <location filename="src/updates/UpdateInstaller.cpp" line="169"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="172"></location>
       <source>%1 is missing or cannot run.</source>
       <translation>%1 відсутній або не може запуститися.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_rejected">
-      <location filename="src/updates/UpdateInstaller.cpp" line="212"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="215"></location>
       <source>The updater helper rejected the update before it became ready.</source>
       <translation>Помічник оновлення відхилив оновлення до того, як воно стало готовим.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_start_failed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="195"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="198"></location>
       <source>GameHQ could not start the updater helper.</source>
       <translation>GameHQ не вдалося запустити помічник оновлення.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_timeout">
-      <location filename="src/updates/UpdateInstaller.cpp" line="217"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="220"></location>
       <source>The updater helper did not confirm it is ready in time.</source>
       <translation>Помічник оновлення вчасно не підтвердив свою готовність.</translation>
     </message>
     <message id="gamehq.error.update.install.manifest_mismatch">
-      <location filename="src/updates/UpdateInstaller.cpp" line="72"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="75"></location>
       <source>The staged package no longer matches the signed manifest.</source>
       <translation>Підготовлений пакет більше не відповідає підписаному маніфесту.</translation>
     </message>
     <message id="gamehq.error.update.install.metadata_incomplete">
-      <location filename="src/updates/UpdateInstaller.cpp" line="31"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="32"></location>
       <source>The verified update metadata is incomplete.</source>
       <translation>Перевірені метадані оновлення неповні.</translation>
     </message>
     <message id="gamehq.error.update.install.metadata_invalid">
-      <location filename="src/updates/UpdateInstaller.cpp" line="63"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="66"></location>
       <source>The verified update metadata is invalid.</source>
       <translation>Перевірені метадані оновлення недійсні.</translation>
     </message>
     <message id="gamehq.error.update.install.package_changed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="82"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="85"></location>
       <source>The update package changed before installation: %1</source>
       <translation>Пакет оновлення змінився перед встановленням: %1</translation>
     </message>
     <message id="gamehq.error.update.install.package_outside_staging">
-      <location filename="src/updates/UpdateInstaller.cpp" line="54"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="57"></location>
       <source>The verified update package is outside GameHQ's staging directory.</source>
       <translation>Перевірений пакет оновлення розташований поза каталогом підготовки GameHQ.</translation>
     </message>
     <message id="gamehq.error.update.install.process_identity_failed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="106"></location>
-      <location filename="src/updates/UpdateInstaller.cpp" line="115"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="109"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="118"></location>
       <source>GameHQ could not identify its own process for the update.</source>
       <translation>GameHQ не вдалося ідентифікувати власний процес для оновлення.</translation>
     </message>
     <message id="gamehq.error.update.install.transaction_directory_failed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="91"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="94"></location>
       <source>GameHQ could not create the update transaction directory.</source>
       <translation>GameHQ не вдалося створити каталог транзакції оновлення.</translation>
     </message>
     <message id="gamehq.error.update.install.transaction_publish_failed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="153"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="156"></location>
       <source>GameHQ could not publish the update transaction.</source>
       <translation>GameHQ не вдалося остаточно застосувати транзакцію оновлення.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="644"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="131"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ не вдалося розпочати обслуговування оновлення: %1</translation>
     </message>
@@ -1278,27 +1283,27 @@
       <translation>GameHQ не може безпечно записати файли оновлення в цьому встановленні.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="268"></location>
+      <location filename="src/updates/UpdateService.cpp" line="308"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>Випуск змінився після завантаження. Перевірте ще раз перед встановленням.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="328"></location>
+      <location filename="src/updates/UpdateService.cpp" line="368"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>Завантажений випуск було відкликано до встановлення.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="372"></location>
+      <location filename="src/updates/UpdateService.cpp" line="412"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>Не вдалося повторно перевірити випуск: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="297"></location>
+      <location filename="src/updates/UpdateService.cpp" line="337"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>Не вдалося заново перевірити випуск безпосередньо перед встановленням.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="350"></location>
+      <location filename="src/updates/UpdateService.cpp" line="390"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub не зміг повторно перевірити цей випуск перед встановленням. Спробуйте пізніше.</translation>
     </message>
@@ -1322,17 +1327,17 @@
       <translation>%1%</translation>
     </message>
     <message id="gamehq.format.size.bytes">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="44"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="49"></location>
       <source>%1 B</source>
       <translation>%1 Б</translation>
     </message>
     <message id="gamehq.format.size.kilobytes">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="40"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="45"></location>
       <source>%1 KB</source>
       <translation>%1 КБ</translation>
     </message>
     <message id="gamehq.format.size.megabytes">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="35"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="40"></location>
       <source>%1 MB</source>
       <translation>%1 МБ</translation>
     </message>
@@ -1349,58 +1354,62 @@
       <translation>Додати папку…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1407"></location>
+      <location filename="src/ui/qml/Main.qml" line="1350"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Масовий вибір</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1401"></location>
+      <location filename="src/ui/qml/Main.qml" line="1344"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Поділитися</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1403"></location>
+      <location filename="src/ui/qml/Main.qml" line="1346"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Показати в папці</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
-      <location filename="src/ui/qml/components/CaptureTile.qml" line="185"></location>
+      <location filename="src/ui/qml/components/CaptureTile.qml" line="188"></location>
       <location filename="src/ui/qml/components/Lightbox.qml" line="279"></location>
       <location filename="src/ui/qml/components/OverlayViewer.qml" line="179"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1336"></location>
+      <location filename="src/ui/qml/Main.qml" line="1278"></location>
       <source>%1 · %2
-This permanently deletes the file.</source>
+The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
+      <oldsource>%1 · %2
+The file will be moved to the Recycle Bin. Files in imported folders are left untouched.</oldsource>
       <translation>%1 · %2
-Це назавжди видалить файл.</translation>
+Файл буде переміщено до кошика. Файли у відстежуваних папках не змінюються.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1346"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
+      <location filename="src/ui/qml/Main.qml" line="1288"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1065"></location>
       <source>Delete capture?</source>
       <translation>Видалити медіафайл?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="492"></location>
-      <source>%n capture will be permanently deleted.
-This cannot be undone.</source>
+      <location filename="src/ui/qml/Main.qml" line="536"></location>
+      <source>%n capture will be moved to the Recycle Bin.
+Files in watched folders are left untouched.</source>
+      <oldsource>%n capture will be moved to the Recycle Bin.
+Files in imported folders are left untouched.</oldsource>
       <translation>
-        <numerusform>%n медіафайл буде видалено назавжди.
-Цю дію не можна скасувати.</numerusform>
-        <numerusform>%n медіафайли буде видалено назавжди.
-Цю дію не можна скасувати.</numerusform>
-        <numerusform>%n медіафайлів буде видалено назавжди.
-Цю дію не можна скасувати.</numerusform>
+        <numerusform>%n медіафайл буде переміщено до кошика.
+Файли у відстежуваних папках не змінюються.</numerusform>
+        <numerusform>%n медіафайли буде переміщено до кошика.
+Файли у відстежуваних папках не змінюються.</numerusform>
+        <numerusform>%n медіафайлів буде переміщено до кошика.
+Файли у відстежуваних папках не змінюються.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1365"></location>
+      <location filename="src/ui/qml/Main.qml" line="1307"></location>
       <source>Delete selected captures?</source>
       <translation>Видалити вибрані медіафайли?</translation>
     </message>
@@ -1454,27 +1463,27 @@ This cannot be undone.</source>
       <translation>%1 — переглядач</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController_Hdr.cpp" line="81"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Перевірити поточний стан HDR усіх дисплеїв.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="342"></location>
+      <location filename="src/ui/AppController_Hdr.cpp" line="67"></location>
       <source>Windows HDR is active</source>
       <translation>HDR у Windows увімкнено</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="347"></location>
+      <location filename="src/ui/AppController_Hdr.cpp" line="72"></location>
       <source>Windows HDR is inactive</source>
       <translation>HDR у Windows вимкнено</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="336"></location>
+      <location filename="src/ui/AppController_Hdr.cpp" line="61"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>Графічний драйвер не повідомив про жоден дисплей</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="330"></location>
+      <location filename="src/ui/AppController_Hdr.cpp" line="55"></location>
       <source>Not checked yet</source>
       <translation>Ще не перевірено</translation>
     </message>
@@ -1796,7 +1805,7 @@ This cannot be undone.</source>
       <translation>Одна кнопка</translation>
     </message>
     <message id="gamehq.input.assignment.replay_hold_hint">
-      <location filename="src/input/BindingEditorModel.cpp" line="1240"></location>
+      <location filename="src/input/BindingEditorModel_AssignmentEditor.cpp" line="90"></location>
       <source>Hold %1 for at least %2 ms to save a replay.</source>
       <translation>Утримуйте %1 щонайменше %2 мс, щоб зберегти повтор.</translation>
     </message>
@@ -1876,18 +1885,18 @@ This cannot be undone.</source>
       <translation>Не призначено</translation>
     </message>
     <message id="gamehq.input.choose_another">
-      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="17"></location>
-      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="23"></location>
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="19"></location>
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="26"></location>
       <source>Choose another</source>
       <translation>Вибрати інше</translation>
     </message>
     <message id="gamehq.input.compatibility.convert">
-      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="15"></location>
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="17"></location>
       <source>Convert &amp; add</source>
       <translation>Перетворити й додати</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
-      <location filename="src/input/BindingEditorModel.cpp" line="579"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="564"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1900,7 +1909,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 Тоді %2 активуватиметься після відпускання кнопки.</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press_with_wait">
-      <location filename="src/input/BindingEditorModel.cpp" line="571"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="556"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1913,22 +1922,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 Тоді %2 активуватиметься після відпускання кнопки й може очікувати до %4 мс, щоб переконатися, що це не дія %3.</translation>
     </message>
     <message id="gamehq.input.compatibility.title">
-      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="12"></location>
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="14"></location>
       <source>Make these assignments compatible?</source>
       <translation>Зробити ці призначення сумісними?</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="555"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="540"></location>
       <source>%1 · %2 is already assigned to %3 in this context.</source>
       <translation>%1 · %2 уже призначено для %3 у цьому контексті.</translation>
     </message>
     <message id="gamehq.input.conflict.press_timed">
-      <location filename="src/input/BindingEditorModel.cpp" line="548"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="533"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
       <translation>%1 використовує «Натискання» для %2. Його неможливо відрізнити від %3 у цьому контексті без зміни поведінки при натисканні кнопки.</translation>
     </message>
     <message id="gamehq.input.conflict.title">
-      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="18"></location>
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="21"></location>
       <source>These assignments conflict</source>
       <translation>Ці призначення конфліктують</translation>
     </message>
@@ -1964,108 +1973,108 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Потрійне натискання</translation>
     </message>
     <message id="gamehq.input.hidden.filter">
-      <location filename="src/input/InputEngine.cpp" line="459"></location>
+      <location filename="src/input/InputEngine.cpp" line="458"></location>
       <source>%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it.</source>
       <translation>%1 підключено до Windows, але він невидимий для програм: його приховує драйвер-фільтр HID.</translation>
     </message>
     <message id="gamehq.input.hidden.fix_applying">
-      <location filename="src/input/InputEngine.cpp" line="1690"></location>
+      <location filename="src/input/InputEngine_HidHide.cpp" line="35"></location>
       <source>Applying the fix (administrator prompt)...</source>
       <translation>Застосування виправлення (запит адміністратора)...</translation>
     </message>
     <message id="gamehq.input.hidden.fix_declined">
-      <location filename="src/input/InputEngine.cpp" line="1680"></location>
+      <location filename="src/input/InputEngine_HidHide.cpp" line="25"></location>
       <source>Administrator approval was declined — the controller stays hidden. You can whitelist GameHQ manually in the HidHide Configuration Client.</source>
       <translation>Дозвіл адміністратора не надано, контролер залишається прихованим. Ви можете вручну дозволити GameHQ у HidHide Configuration Client.</translation>
     </message>
     <message id="gamehq.input.hidden.fix_done">
-      <location filename="src/input/InputEngine.cpp" line="1711"></location>
+      <location filename="src/input/InputEngine_HidHide.cpp" line="56"></location>
       <source>GameHQ is now whitelisted in HidHide. Unplug and replug the controller if it does not appear within a few seconds.</source>
       <translation>GameHQ тепер дозволено в HidHide. Якщо контролер не з’явиться за кілька секунд, від’єднайте й знову під’єднайте його.</translation>
     </message>
     <message id="gamehq.input.hidden.fix_failed">
-      <location filename="src/input/InputEngine.cpp" line="1722"></location>
+      <location filename="src/input/InputEngine_HidHide.cpp" line="67"></location>
       <source>Automatic whitelisting failed (code %1). Add GameHQ.exe on the Applications tab of the HidHide Configuration Client instead.</source>
       <translation>Не вдалося дозволити автоматично (код %1). Додайте GameHQ.exe на вкладці «Applications» у HidHide Configuration Client.</translation>
     </message>
     <message id="gamehq.input.hidden.hidhide">
-      <location filename="src/input/InputEngine.cpp" line="450"></location>
+      <location filename="src/input/InputEngine.cpp" line="449"></location>
       <source>%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD).</source>
       <translation>%1 підключено, але драйвер HidHide (встановлюється разом із DSX, DS4Windows або reWASD) приховує його від програм.</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
-      <location filename="src/input/BindingEditorModel.cpp" line="398"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="383"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>Натисніть кнопку контролера для %1 · Комірка %2 · %3</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
-      <location filename="src/input/BindingEditorModel.cpp" line="405"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="390"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
       <translation>Натисніть клавішу або комбінацію для %1 · Комірка %2</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
-      <location filename="src/input/BindingEditorModel.cpp" line="412"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="397"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
       <translation>Натисніть середню кнопку миші або кнопку «Назад» чи «Вперед» для %1 · Комірка %2</translation>
     </message>
     <message id="gamehq.input.model.combination">
-      <location filename="src/input/BindingEditorModel.cpp" line="253"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="238"></location>
       <source>Combination</source>
       <translation>Комбінація</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
-      <location filename="src/input/BindingEditorModel.cpp" line="264"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="249"></location>
       <source>Hold · Default</source>
       <translation>Утримування · Типово</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
-      <location filename="src/input/BindingEditorModel.cpp" line="269"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="254"></location>
       <source>Hold · %1 s</source>
       <translation>Утримування · %1 с</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
-      <location filename="src/input/BindingEditorModel.cpp" line="1162"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="851"></location>
       <source>No action fired yet</source>
       <translation>Жодна дія ще не спрацювала</translation>
     </message>
     <message id="gamehq.input.model.scope.gallery">
-      <location filename="src/input/BindingEditorModel.cpp" line="216"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="201"></location>
       <source>Gallery</source>
       <translation>Галерея</translation>
     </message>
     <message id="gamehq.input.model.scope.global">
-      <location filename="src/input/BindingEditorModel.cpp" line="208"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="193"></location>
       <source>Global</source>
       <translation>Глобально</translation>
     </message>
     <message id="gamehq.input.model.scope.overlay">
-      <location filename="src/input/BindingEditorModel.cpp" line="212"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="197"></location>
       <source>Overlay</source>
       <translation>Оверлей</translation>
     </message>
     <message id="gamehq.input.model.scope.playback">
-      <location filename="src/input/BindingEditorModel.cpp" line="220"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="205"></location>
       <source>Playback</source>
       <translation>Відтворення</translation>
     </message>
     <message id="gamehq.input.model.status.added">
-      <location filename="src/input/BindingEditorModel.cpp" line="71"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="56"></location>
       <source>Added</source>
       <translation>Додано</translation>
     </message>
     <message id="gamehq.input.model.status.modified">
-      <location filename="src/input/BindingEditorModel.cpp" line="76"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="61"></location>
       <source>Modified</source>
       <translation>Змінено</translation>
     </message>
     <message id="gamehq.input.model.status.removed">
-      <location filename="src/input/BindingEditorModel.cpp" line="81"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="66"></location>
       <source>Removed</source>
       <translation>Видалено</translation>
     </message>
     <message id="gamehq.input.model.unassigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="240"></location>
-      <location filename="src/input/BindingEditorModel.cpp" line="340"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="225"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="325"></location>
       <source>Unassigned</source>
       <translation>Не призначено</translation>
     </message>
@@ -2075,7 +2084,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Ця дія очікує до %1 мс, оскільки ця кнопка починає комбінацію.</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
-      <location filename="src/input/BindingEditorModel.cpp" line="677"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="662"></location>
       <source>%1 replaces %2 while %3 is active. Both are saved.</source>
       <translation>%1 замінює %2, поки діє %3. Обидва варіанти збережено.</translation>
     </message>
@@ -2085,17 +2094,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Ця дія очікує до %1 мс, оскільки на цій кнопці є також призначення, яке потребує більшої кількості натискань.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
-      <location filename="src/input/BindingEditorModel.cpp" line="686"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="671"></location>
       <source>%1 already does the same thing here. The duplicate has no effect.</source>
       <translation>%1 вже виконує тут те саме. Дублікат не має ефекту.</translation>
     </message>
     <message id="gamehq.input.relation.shared_gesture">
-      <location filename="src/input/BindingEditorModel.cpp" line="693"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="678"></location>
       <source>%1 is shared: %2 = %3, %4 = %5.</source>
       <translation>%1 використовується спільно: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1316"></location>
+      <location filename="src/ui/qml/Main.qml" line="1258"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Виберіть папку для відстеження</translation>
@@ -2109,44 +2118,44 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Про програму</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="205"></location>
+      <location filename="src/ui/qml/Main.qml" line="206"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="160"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>Усі</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="213"></location>
+      <location filename="src/ui/qml/Main.qml" line="214"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="39"></location>
       <source>Clips</source>
       <translation>Кліпи</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="209"></location>
+      <location filename="src/ui/qml/Main.qml" line="210"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Favorites</source>
       <translation>Обране</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="215"></location>
+      <location filename="src/ui/qml/Main.qml" line="216"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="41"></location>
       <source>Game</source>
       <translation>Гра</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="217"></location>
+      <location filename="src/ui/qml/Main.qml" line="218"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="43"></location>
       <source>Game favorites</source>
       <translation>Обране гри</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="207"></location>
+      <location filename="src/ui/qml/Main.qml" line="208"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Recent</source>
       <translation>Останні</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="211"></location>
+      <location filename="src/ui/qml/Main.qml" line="212"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="37"></location>
       <source>Screenshots</source>
       <translation>Знімки екрана</translation>
@@ -2212,107 +2221,140 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Показати інструменти</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="489"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="321"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Деякі файли не вдалося видалити. Можливо, їх використовують інші програми. Закрийте програми, які їх використовують, і спробуйте ще раз.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="496"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="328"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Не вдалося видалити файл. Можливо, його використовує інша програма. Закрийте програму, яка його використовує, і спробуйте ще раз.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="502"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
       <source>Couldn't delete</source>
       <translation>Не вдалося видалити</translation>
     </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_many">
+      <location filename="src/app/App_CaptureWiring.cpp" line="352"></location>
+      <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
+      <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
+      <translation>Деякі файли розташовані у відстежуваних папках. GameHQ не видаляє звідти оригінали, тому їх не змінено.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_one">
+      <location filename="src/app/App_CaptureWiring.cpp" line="359"></location>
+      <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
+      <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
+      <translation>Цей файл розташований у відстежуваній папці. GameHQ не видаляє звідти оригінали, тому його не змінено.</translation>
+    </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="294"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>Його не додано до бібліотеки, і файлу немає на диску.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="288"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="120"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>Файл є в папці захоплення, але його не вдалося додати до бібліотеки.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="278"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="110"></location>
       <source>Saved to disk, not in library</source>
       <translation>Збережено на диск, немає в бібліотеці</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="401"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="233"></location>
       <source>Capture request received</source>
       <translation>Запит на захоплення отримано</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="464"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="296"></location>
       <source>Reason: %1</source>
       <translation>Причина: %1</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason_audio">
+      <location filename="src/app/App.cpp" line="87"></location>
+      <source>System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings</source>
+      <translation type="vanished">Не вдалося записати звук системи, тому кліп не збережено. Перевірте пристрій виведення звуку Windows або вимкніть «Звук системи» в налаштуваннях повторів</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="81"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="37"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>Збій буфера повторів; кліп не збережено</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="75"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="31"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>Буфер повторів накопичує матеріал; спробуйте зберегти ще раз за кілька секунд</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason_desktop_audio">
+      <location filename="src/app/App_CaptureWiring.cpp" line="43"></location>
+      <source>Desktop audio could not be recorded, so no clip was saved. Check the Windows sound output or change the audio source in Replay settings</source>
+      <translation>Не вдалося записати звук робочого столу, тому кліп не збережено. Перевірте пристрій виведення звуку Windows або змініть джерело звуку в налаштуваннях повторів</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="93"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="67"></location>
       <source>Replay buffer is empty</source>
       <translation>Буфер повторів порожній</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason_game_audio">
+      <location filename="src/app/App_CaptureWiring.cpp" line="49"></location>
+      <source>Game audio could not be recorded, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings</source>
+      <translation>Не вдалося записати звук гри, тому кліп не збережено. Виберіть «Звук робочого столу» або «Вимкнено» як джерело звуку в налаштуваннях повторів</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_game_audio_unsupported">
+      <location filename="src/app/App_CaptureWiring.cpp" line="55"></location>
+      <source>Game audio needs Windows 11, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings</source>
+      <translation>Для звуку гри потрібна Windows 11, тому кліп не збережено. Виберіть «Звук робочого столу» або «Вимкнено» як джерело звуку в налаштуваннях повторів</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="87"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="61"></location>
       <source>Replay buffer is not running</source>
       <translation>Буфер повторів не запущено</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="69"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="25"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>Буфер повторів запускається; спробуйте зберегти ще раз за кілька секунд</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="310"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="142"></location>
       <source>Replay failed</source>
       <translation>Помилка повтору</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="396"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="228"></location>
       <source>Replay save requested</source>
       <translation>Надіслано запит на збереження повтору</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="445"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="277"></location>
       <source>Replay saved</source>
       <translation>Повтор збережено</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="303"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="135"></location>
       <source>Screenshot failed</source>
       <translation>Не вдалося зробити знімок екрана</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="345"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="177"></location>
       <source>Screenshot saved</source>
       <translation>Знімок екрана збережено</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="547"></location>
+      <location filename="src/app/App.cpp" line="248"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ запустився з типовими налаштуваннями. Попередній файл налаштувань збережено, тож нічого не втрачено.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="542"></location>
+      <location filename="src/app/App.cpp" line="243"></location>
       <source>Settings could not be read</source>
       <translation>Не вдалося прочитати налаштування</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="711"></location>
+      <location filename="src/app/App.cpp" line="275"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Деякі звуки інтерфейсу недоступні</translation>
     </message>
@@ -2332,7 +2374,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Дії захоплення</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="273"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="297"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Гра все ще у фокусі й може реагувати на введення з контролера</translation>
     </message>
@@ -2453,12 +2495,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="130"></location>
+      <location filename="src/ui/AppController.cpp" line="116"></location>
       <source>Release notes</source>
       <translation>Нотатки до випуску</translation>
     </message>
     <message id="gamehq.settings.about.application.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="14"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="15"></location>
       <source>Application</source>
       <translation>Застосунок</translation>
     </message>
@@ -2468,7 +2510,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Спільнота</translation>
     </message>
     <message id="gamehq.settings.about.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="10"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="11"></location>
       <source>Version, update status, project resources, and ways to help.</source>
       <translation>Версія, стан оновлень, ресурси проєкту та способи допомогти.</translation>
     </message>
@@ -2483,12 +2525,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Ліцензія GNU GPL v3</translation>
     </message>
     <message id="gamehq.settings.about.license_summary">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="55"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="56"></location>
       <source>Free and open source under the GNU GPL version 3.</source>
       <translation>Вільне програмне забезпечення з відкритим кодом за ліцензією GNU GPL версії 3.</translation>
     </message>
     <message id="gamehq.settings.about.maintenance.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="66"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="67"></location>
       <source>Maintenance</source>
       <translation>Обслуговування</translation>
     </message>
@@ -2498,12 +2540,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Відкритий код</translation>
     </message>
     <message id="gamehq.settings.about.profile.installed">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="24"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="25"></location>
       <source>Installed profile</source>
       <translation>Установлений профіль</translation>
     </message>
     <message id="gamehq.settings.about.profile.portable">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="21"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="22"></location>
       <source>Portable profile</source>
       <translation>Портативний профіль</translation>
     </message>
@@ -2518,7 +2560,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Проєкт</translation>
     </message>
     <message id="gamehq.settings.about.ready">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="46"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="47"></location>
       <source>GameHQ is ready</source>
       <translation>GameHQ готовий</translation>
     </message>
@@ -2533,7 +2575,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Повідомити про проблему</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="806"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="804"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
       <source>Security &amp; privacy</source>
       <translation>Безпека та приватність</translation>
@@ -2559,12 +2601,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Підтримати проєкт</translation>
     </message>
     <message id="gamehq.settings.about.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="8"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="9"></location>
       <source>About</source>
       <translation>Про програму</translation>
     </message>
     <message id="gamehq.settings.about.updates.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="68"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="69"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="173"></location>
       <source>Updates</source>
       <translation>Оновлення</translation>
     </message>
@@ -3527,7 +3570,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Виправити автоматично</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/Main.qml" line="171"></location>
+      <location filename="src/ui/qml/Main.qml" line="172"></location>
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="69"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
@@ -3715,12 +3758,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Одна кнопка — кілька жестів</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="516"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="523"></location>
       <source>All controller, keyboard, and mouse overrides return to their built-in defaults.</source>
       <translation>Усі перевизначення для контролера, клавіатури та миші повернуться до вбудованих типових значень.</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="514"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="521"></location>
       <source>Restore all input bindings?</source>
       <translation>Відновити всі прив’язки введення?</translation>
     </message>
@@ -4040,22 +4083,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Бібліотека</translation>
     </message>
     <message id="gamehq.settings.portable_import.confirm">
-      <location filename="src/ui/qml/SettingsView.qml" line="481"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="488"></location>
       <source>Import and restart</source>
       <translation>Імпортувати й перезапустити</translation>
     </message>
     <message id="gamehq.settings.portable_import.failed">
-      <location filename="src/ui/qml/SettingsView.qml" line="486"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="493"></location>
       <source>Portable import failed</source>
       <translation>Не вдалося імпортувати портативний профіль</translation>
     </message>
     <message id="gamehq.settings.portable_import.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="479"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="486"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
       <translation>Імпорт можливий лише в чистий встановлений профіль. Портативні записи залишаються на місці, джерело не змінюється, а GameHQ перезапускається, щоб завершити імпорт.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="477"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="484"></location>
       <source>Import this portable profile?</source>
       <translation>Імпортувати цей портативний профіль?</translation>
     </message>
@@ -4065,13 +4108,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Призначити цьому пристрою</translation>
     </message>
     <message id="gamehq.settings.presets.action.delete">
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="33"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="32"></location>
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="508"></location>
       <source>Delete</source>
       <translation>Видалити</translation>
     </message>
     <message id="gamehq.settings.presets.action.duplicate">
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="31"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="30"></location>
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="506"></location>
       <source>Duplicate</source>
       <translation>Дублювати</translation>
@@ -4087,7 +4130,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Новий пресет</translation>
     </message>
     <message id="gamehq.settings.presets.action.rename">
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="29"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="28"></location>
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="504"></location>
       <source>Rename</source>
       <translation>Перейменувати</translation>
@@ -4165,17 +4208,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Пресет «%1» використовується в інших місцях. Виберіть пресет, який прийме його розкладки.</translation>
     </message>
     <message id="gamehq.settings.presets.delete.migration_blocked">
-      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="29"></location>
+      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="31"></location>
       <source>This preset records a migrated mapping set and cannot be deleted.</source>
       <translation>Цей пресет містить перенесений набір розкладок, і його не можна видалити.</translation>
     </message>
     <message id="gamehq.settings.presets.delete.move_label">
-      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="27"></location>
+      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="29"></location>
       <source>Move its users to</source>
       <translation>Передати його розкладки до</translation>
     </message>
     <message id="gamehq.settings.presets.delete.no_candidate">
-      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="31"></location>
+      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <source>There is no other preset in this group to move its users to. Create one first.</source>
       <translation>У цій групі немає іншого пресета, куди можна передати його розкладки. Спершу створіть його.</translation>
     </message>
@@ -4296,7 +4339,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Дії з пресетом</translation>
     </message>
     <message id="gamehq.settings.presets.name_label">
-      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="22"></location>
+      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="21"></location>
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="109"></location>
       <source>Name</source>
       <translation>Назва</translation>
@@ -4476,6 +4519,51 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Manage the rolling buffer used for instant replay clips.</source>
       <translation>Керуйте циклічним буфером для кліпів миттєвих повторів.</translation>
     </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.desktop">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="162"></location>
+      <source>Desktop audio</source>
+      <translation>Звук робочого столу</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.desktop_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
+      <source>Records everything on the default Windows output, including chat and music apps.</source>
+      <translation>Записує все, що звучить через типовий пристрій виведення Windows, зокрема чати й музичні застосунки.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="156"></location>
+      <source>Game audio</source>
+      <translation>Звук гри</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="146"></location>
+      <source>Records only the current game, whichever output device it plays on.</source>
+      <translation>Записує лише поточну гру, незалежно від пристрою виведення, на якому вона звучить.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game_unsupported">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="158"></location>
+      <source>Game audio (needs Windows 11)</source>
+      <translation>Звук гри (потрібна Windows 11)</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.label">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="131"></location>
+      <source>Audio source</source>
+      <translation>Джерело звуку</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.off">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="164"></location>
+      <source>Off</source>
+      <translation>Вимкнено</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.off_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="135"></location>
+      <source>Replay clips are saved without sound.</source>
+      <translation>Кліпи повторів зберігаються без звуку.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.unsupported_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="139"></location>
+      <source>Game audio needs Windows 11. Desktop audio records everything on the default Windows output.</source>
+      <translation>Для звуку гри потрібна Windows 11. Звук робочого столу записує все, що звучить через типовий пристрій виведення Windows.</translation>
+    </message>
     <message id="gamehq.settings.replay.encoding.bitrate">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="107"></location>
       <source>Video bitrate</source>
@@ -4509,12 +4597,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.encoding.system_audio.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="128"></location>
       <source>Include desktop audio in newly recorded replay segments.</source>
-      <translation>Додавати системний звук до нових записаних сегментів повтору.</translation>
+      <translation type="vanished">Додавати системний звук до нових записаних сегментів повтору.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.system_audio.label">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="126"></location>
       <source>System audio</source>
-      <translation>Звук системи</translation>
+      <translation type="vanished">Звук системи</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="77"></location>
@@ -4522,27 +4610,27 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Якість запису</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="140"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="188"></location>
       <source>Saved replays go to %1. Failures always notify you.</source>
       <translation>Збережені повтори потрапляють до %1. Про помилки завжди надходять сповіщення.</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="184"></location>
       <source>Feedback</source>
       <translation>Зворотний зв’язок</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.notification">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="148"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="196"></location>
       <source>Clip saved notification</source>
       <translation>Сповіщення про збережений кліп</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.sound">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="191"></location>
       <source>Clip saved sound</source>
       <translation>Звук збереження кліпу</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.title">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="186"></location>
       <source>After saving a clip</source>
       <translation>Після збереження кліпу</translation>
     </message>
@@ -4582,22 +4670,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Повтор</translation>
     </message>
     <message id="gamehq.settings.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="499"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="506"></location>
       <source>Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.</source>
       <translation>Налаштування вікна, поведінка запису, параметри повторів, сповіщення та звуки повернуться до типових значень. Записи та дані бібліотеки не видаляються.</translation>
     </message>
     <message id="gamehq.settings.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="497"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="504"></location>
       <source>Restore all settings?</source>
       <translation>Відновити всі налаштування?</translation>
     </message>
     <message id="gamehq.settings.restore_category.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="530"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="537"></location>
       <source>%1 options return to defaults. Captures and library data are not deleted.</source>
       <translation>Параметри «%1» буде повернуто до типових значень. Медіафайли та дані бібліотеки не видаляються.</translation>
     </message>
     <message id="gamehq.settings.restore_category.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="528"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="535"></location>
       <source>Restore %1 settings?</source>
       <translation>Відновити налаштування «%1»?</translation>
     </message>
@@ -4943,12 +5031,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Закрити</translation>
     </message>
     <message id="gamehq.share.discord_desktop.not_installed">
-      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="125"></location>
+      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="137"></location>
       <source>Discord Desktop isn't installed.</source>
       <translation>Discord Desktop не встановлено.</translation>
     </message>
     <message id="gamehq.share.discord_desktop.privacy">
-      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="134"></location>
+      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="146"></location>
       <source>Copies the file and opens Discord so you can paste it. GameHQ never signs in to Discord.</source>
       <translation>Копіює файл і відкриває Discord, щоб ви його вставили. GameHQ ніколи не входить у Discord.</translation>
     </message>
@@ -5138,12 +5226,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Посилання вебхука</translation>
     </message>
     <message id="gamehq.share.telegram_desktop.not_installed">
-      <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="123"></location>
+      <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="125"></location>
       <source>Telegram Desktop isn't installed.</source>
       <translation>Telegram Desktop не встановлено.</translation>
     </message>
     <message id="gamehq.share.telegram_desktop.privacy">
-      <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="132"></location>
+      <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="134"></location>
       <source>Opens Telegram to choose the chat. GameHQ never signs in to Telegram.</source>
       <translation>Відкриває Telegram, щоб ви вибрали чат. GameHQ ніколи не входить у Telegram.</translation>
     </message>
@@ -5172,44 +5260,69 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Share</source>
       <translation>Поділитися</translation>
     </message>
+    <message id="gamehq.startup.fatal.another_copy_running">
+      <location filename="src/main.cpp" line="381"></location>
+      <source>GameHQ cannot start while another copy of GameHQ or its installer is running.</source>
+      <translation>GameHQ не може запуститися, доки працює інша копія GameHQ або її інсталятор.</translation>
+    </message>
+    <message id="gamehq.startup.fatal.details_hint">
+      <location filename="src/main.cpp" line="98"></location>
+      <source>For details, see:</source>
+      <translation>Докладніше див. тут:</translation>
+    </message>
+    <message id="gamehq.startup.fatal.init_failed">
+      <location filename="src/main.cpp" line="444"></location>
+      <source>GameHQ could not start.</source>
+      <translation>Не вдалося запустити GameHQ.</translation>
+    </message>
+    <message id="gamehq.startup.fatal.update_in_progress">
+      <location filename="src/main.cpp" line="345"></location>
+      <source>A GameHQ update is being installed. Start GameHQ again when it has finished.</source>
+      <translation>Встановлюється оновлення GameHQ. Запустіть GameHQ знову, коли встановлення завершиться.</translation>
+    </message>
+    <message id="gamehq.startup.fatal.update_recovery_failed">
+      <location filename="src/main.cpp" line="313"></location>
+      <source>GameHQ could not finish recovering from an interrupted update, so it cannot start.</source>
+      <translation>GameHQ не вдалося завершити відновлення після перерваного оновлення, тому запуск неможливий.</translation>
+    </message>
     <message id="gamehq.startup.portable_import.failed_title">
-      <location filename="src/main.cpp" line="238"></location>
+      <location filename="src/main.cpp" line="280"></location>
       <source>Portable import failed</source>
       <translation>Не вдалося виконати портативний імпорт</translation>
     </message>
     <message id="gamehq.startup.portable_import.installed_copy_required">
-      <location filename="src/main.cpp" line="205"></location>
+      <location filename="src/main.cpp" line="247"></location>
       <source>Run portable import from an installed copy of GameHQ.</source>
       <translation>Запустіть портативний імпорт із встановленої копії GameHQ.</translation>
     </message>
     <message id="gamehq.startup.portable_import.instance_running">
-      <location filename="src/main.cpp" line="217"></location>
+      <location filename="src/main.cpp" line="259"></location>
       <source>Another GameHQ instance is running, so the portable import cannot start.</source>
       <translation>Запущено інший екземпляр GameHQ, тому портативний імпорт не може розпочатися.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_argument_incomplete">
-      <location filename="src/main.cpp" line="85"></location>
+      <location filename="src/main.cpp" line="119"></location>
       <source>The portable import parent-process argument is incomplete.</source>
       <translation>Аргумент батьківського процесу портативного імпорту неповний.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_identifier_invalid">
-      <location filename="src/main.cpp" line="113"></location>
-      <location filename="src/main.cpp" line="119"></location>
+      <location filename="src/main.cpp" line="147"></location>
+      <location filename="src/main.cpp" line="153"></location>
       <source>The portable import parent-process identifier is invalid.</source>
       <translation>Ідентифікатор батьківського процесу портативного імпорту недійсний.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_still_running">
-      <location filename="src/main.cpp" line="99"></location>
+      <location filename="src/main.cpp" line="133"></location>
       <source>The running GameHQ instance did not close in time.</source>
       <translation>Запущений екземпляр GameHQ не закрився вчасно.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_unverifiable">
-      <location filename="src/main.cpp" line="106"></location>
+      <location filename="src/main.cpp" line="140"></location>
       <source>GameHQ could not confirm that the previous instance has closed.</source>
       <translation>GameHQ не зміг підтвердити, що попередній екземпляр закрито.</translation>
     </message>
     <message id="gamehq.startup.portable_import.source_missing">
-      <location filename="src/main.cpp" line="199"></location>
+      <location filename="src/main.cpp" line="241"></location>
       <source>The portable import source folder is missing.</source>
       <translation>Вихідну папку портативного імпорту не знайдено.</translation>
     </message>
@@ -5264,57 +5377,57 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ застосовує оновлення й перезапуститься.</translation>
     </message>
     <message id="gamehq.update.available_version_short">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="128"></location>
       <source>%1 available</source>
       <translation>Доступна версія %1</translation>
     </message>
     <message id="gamehq.update.banner.available">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="67"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="72"></location>
       <source>%1 %2 is available</source>
       <translation>Доступне оновлення %1 %2</translation>
     </message>
     <message id="gamehq.update.banner.download_verified">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="79"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="84"></location>
       <source>Download verified and ready to install.</source>
       <translation>Завантаження перевірено й готове до встановлення.</translation>
     </message>
     <message id="gamehq.update.banner.downloading">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="51"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="56"></location>
       <source>Downloading %1 %2</source>
       <translation>Завантаження %1 %2</translation>
     </message>
     <message id="gamehq.update.banner.installing">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="61"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="66"></location>
       <source>Installing %1 %2</source>
       <translation>Встановлення %1 %2</translation>
     </message>
     <message id="gamehq.update.banner.needs_attention">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="64"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="69"></location>
       <source>The update needs attention</source>
       <translation>Оновлення потребує уваги</translation>
     </message>
     <message id="gamehq.update.banner.open_details">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="89"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="94"></location>
       <source>Open the update details to continue.</source>
       <translation>Відкрийте деталі оновлення, щоб продовжити.</translation>
     </message>
     <message id="gamehq.update.banner.preparing">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="58"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="63"></location>
       <source>Preparing %1 %2</source>
       <translation>Підготовка %1 %2</translation>
     </message>
     <message id="gamehq.update.banner.ready">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="54"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="59"></location>
       <source>%1 %2 is ready</source>
       <translation>%1 %2 готово до встановлення</translation>
     </message>
     <message id="gamehq.update.banner.restart_when_finished">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="86"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="91"></location>
       <source>GameHQ will restart when installation finishes.</source>
       <translation>GameHQ перезапуститься після завершення встановлення.</translation>
     </message>
     <message id="gamehq.update.banner.waiting_for_capture">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="83"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="88"></location>
       <source>Waiting for capture work to finish safely.</source>
       <translation>Очікування безпечного завершення операцій захоплення.</translation>
     </message>
@@ -5324,66 +5437,68 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Завантаження бета-оновлення</translation>
     </message>
     <message id="gamehq.update.bundled_with_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="153"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="152"></location>
       <source>Bundled with GameHQ %1</source>
       <translation>Постачається з GameHQ %1</translation>
     </message>
     <message id="gamehq.update.cancel_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="225"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="223"></location>
       <source>Cancel download</source>
       <translation>Скасувати завантаження</translation>
     </message>
     <message id="gamehq.update.check.label">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="245"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="243"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="124"></location>
       <source>Check for updates</source>
       <translation>Перевірити наявність оновлень</translation>
     </message>
     <message id="gamehq.update.check_again">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="239"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1075"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="237"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1073"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
       <source>Check again</source>
       <translation>Перевірити ще раз</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
       <source>At most once every 24 hours, in the background.</source>
       <translation>Не частіше ніж раз на 24 години, у фоновому режимі.</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="116"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
       <source>Check automatically</source>
       <translation>Перевіряти автоматично</translation>
     </message>
     <message id="gamehq.update.check_failed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="180"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="179"></location>
       <source>Update check failed</source>
       <translation>Не вдалося перевірити оновлення</translation>
     </message>
     <message id="gamehq.update.check_now">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="141"></location>
       <source>Check now</source>
       <translation>Перевірити зараз</translation>
     </message>
     <message id="gamehq.update.checking">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="219"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="217"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="138"></location>
       <source>Checking...</source>
       <translation>Перевірка...</translation>
     </message>
     <message id="gamehq.update.checking_for_updates">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="80"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="81"></location>
       <source>Checking for updates...</source>
       <translation>Перевірка наявності оновлень...</translation>
     </message>
     <message id="gamehq.update.checking_for_updates_short">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="160"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="159"></location>
       <source>Checking for updates</source>
       <translation>Перевірка наявності оновлень</translation>
     </message>
     <message id="gamehq.update.choose_install_time">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="920"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="918"></location>
       <source>Choose when to install %1 %2.</source>
       <translation>Виберіть, коли встановити %1 %2.</translation>
     </message>
@@ -5393,127 +5508,137 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Хід завантаження</translation>
     </message>
     <message id="gamehq.update.download_verified_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="94"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="95"></location>
       <source>GameHQ %1 is downloaded and SHA-256 verified.</source>
       <translation>GameHQ %1 завантажено та перевірено за SHA-256.</translation>
     </message>
     <message id="gamehq.update.download_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="222"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
       <source>Download update %1</source>
       <translation>Завантажити оновлення %1</translation>
     </message>
     <message id="gamehq.update.downloading_percent">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="166"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="165"></location>
       <source>Downloading %1%</source>
       <translation>Завантаження %1%</translation>
     </message>
     <message id="gamehq.update.downloading_version_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="88"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="89"></location>
       <source>Downloading GameHQ %1... %2%</source>
       <translation>Завантаження GameHQ %1... %2%</translation>
     </message>
     <message id="gamehq.update.github_check_description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="111"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="112"></location>
       <source>GameHQ can check GitHub for newer stable releases.</source>
       <translation>GameHQ може перевіряти на GitHub наявність новіших стабільних випусків.</translation>
     </message>
+    <message id="gamehq.update.include_betas.description">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="10"></location>
+      <source>Also offer test pre-releases. They get new fixes sooner but may be less stable.</source>
+      <translation>Пропонувати також тестові попередні версії. Вони раніше отримують виправлення, але можуть бути менш стабільними.</translation>
+    </message>
+    <message id="gamehq.update.include_betas.label">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="8"></location>
+      <source>Include beta versions</source>
+      <translation>Включати бета-версії</translation>
+    </message>
     <message id="gamehq.update.install_and_restart">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="228"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="172"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="226"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="177"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
       <source>Install and restart</source>
       <translation>Встановити й перезапустити</translation>
     </message>
     <message id="gamehq.update.installed_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="131"></location>
       <source>Installed: %1</source>
       <translation>Встановлено: %1</translation>
     </message>
     <message id="gamehq.update.installing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="177"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="176"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="163"></location>
       <source>Installing</source>
       <translation>Встановлення</translation>
     </message>
     <message id="gamehq.update.installing_progress">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="235"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="233"></location>
       <source>Installing...</source>
       <translation>Встановлення...</translation>
     </message>
     <message id="gamehq.update.installing_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="102"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="103"></location>
       <source>Installing GameHQ %1...</source>
       <translation>Встановлення GameHQ %1...</translation>
     </message>
     <message id="gamehq.update.last_checked">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="211"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="209"></location>
       <source>Last checked %1</source>
       <translation>Остання перевірка: %1</translation>
     </message>
     <message id="gamehq.update.last_checked_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="566"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="564"></location>
       <source>%1  %2</source>
       <translation>%1  %2</translation>
     </message>
     <message id="gamehq.update.new_version_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="595"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="593"></location>
       <source>New version available</source>
       <translation>Доступна нова версія</translation>
     </message>
     <message id="gamehq.update.not_checked_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="208"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="206"></location>
       <source>Updates have not been checked yet</source>
       <translation>Наявність оновлень ще не перевірялася</translation>
     </message>
     <message id="gamehq.update.not_checked_yet">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="190"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="189"></location>
       <source>Not checked yet</source>
       <translation>Ще не перевірено</translation>
     </message>
     <message id="gamehq.update.preparing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="232"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="230"></location>
       <source>Preparing...</source>
       <translation>Підготовка...</translation>
     </message>
     <message id="gamehq.update.preparing_to_install">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="174"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="173"></location>
       <source>Preparing to install</source>
       <translation>Підготовка до встановлення</translation>
     </message>
     <message id="gamehq.update.preparing_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="99"></location>
       <source>Getting ready to install GameHQ %1...</source>
       <translation>Підготовка до встановлення GameHQ %1...</translation>
     </message>
     <message id="gamehq.update.progress_percent">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="75"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="80"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="173"></location>
       <source>%1% complete</source>
       <translation>Виконано %1%</translation>
     </message>
     <message id="gamehq.update.published_on">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="144"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="143"></location>
       <source>Published %1</source>
       <translation>Опубліковано %1</translation>
     </message>
     <message id="gamehq.update.ready_to_install">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="170"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="158"></location>
       <source>Ready to install</source>
       <translation>Готово до встановлення</translation>
     </message>
     <message id="gamehq.update.release_metadata">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="95"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="100"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.update.released_on">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="150"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="149"></location>
       <source>Released %1</source>
       <translation>Випущено %1</translation>
     </message>
     <message id="gamehq.update.remind_later">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="945"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="943"></location>
       <source>Remind me later</source>
       <translation>Нагадати пізніше</translation>
     </message>
@@ -5523,18 +5648,18 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ перезапуститься, щоб застосувати оновлення.</translation>
     </message>
     <message id="gamehq.update.retry_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="242"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="240"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
       <source>Retry download</source>
       <translation>Повторити завантаження</translation>
     </message>
     <message id="gamehq.update.see_whats_new">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="156"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="161"></location>
       <source>See what's new</source>
       <translation>Дізнатися, що нового</translation>
     </message>
     <message id="gamehq.update.settings">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="740"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="738"></location>
       <source>Update settings</source>
       <translation>Налаштування оновлень</translation>
     </message>
@@ -5544,71 +5669,71 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>SHA-256 виявляє пошкодження даних, але не скомпрометований обліковий запис GitHub.</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="959"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="957"></location>
       <source>Skip this version</source>
       <translation>Пропустити цю версію</translation>
     </message>
     <message id="gamehq.update.skip_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="750"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="748"></location>
       <source>Skip version %1</source>
       <translation>Пропустити версію %1</translation>
     </message>
     <message id="gamehq.update.status.available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="124"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="72"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="123"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="73"></location>
       <source>Available</source>
       <translation>Доступна</translation>
     </message>
     <message id="gamehq.update.status.current">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="128"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="75"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="127"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="76"></location>
       <source>Current</source>
       <translation>Поточна</translation>
     </message>
     <message id="gamehq.update.status.previous">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="131"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="130"></location>
       <source>Previous</source>
       <translation>Попередня</translation>
     </message>
     <message id="gamehq.update.status.update_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="163"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="162"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="211"></location>
       <source>Update available</source>
       <translation>Доступне оновлення</translation>
     </message>
     <message id="gamehq.update.suffix.available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="48"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="47"></location>
       <source>(Available)</source>
       <translation>(Доступна)</translation>
     </message>
     <message id="gamehq.update.suffix.current">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="53"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="52"></location>
       <source>(Current)</source>
       <translation>(Поточна)</translation>
     </message>
     <message id="gamehq.update.up_to_date">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="183"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="187"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="182"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="186"></location>
       <source>Up to date</source>
       <translation>Актуальна версія</translation>
     </message>
     <message id="gamehq.update.up_to_date_last_checked">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="107"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="108"></location>
       <source>Up to date, last checked %1</source>
       <translation>Актуальна версія, остання перевірка: %1</translation>
     </message>
     <message id="gamehq.update.version_available">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="43"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="44"></location>
       <source>GameHQ %1 is available</source>
       <translation>Доступна версія GameHQ %1</translation>
     </message>
     <message id="gamehq.update.version_available_sentence">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="84"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="85"></location>
       <source>GameHQ %1 is available.</source>
       <translation>Доступна версія GameHQ %1.</translation>
     </message>
     <message id="gamehq.update.versions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="976"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="974"></location>
       <source>VERSIONS</source>
       <translation>ВЕРСІЇ</translation>
     </message>
@@ -5618,7 +5743,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Переглянути примітки до випуску</translation>
     </message>
     <message id="gamehq.update.view_update">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="159"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="164"></location>
       <source>View update</source>
       <translation>Переглянути оновлення</translation>
     </message>

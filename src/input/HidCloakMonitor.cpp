@@ -1,4 +1,5 @@
 #include "input/HidCloakMonitor.h"
+#include "input/SupportedPads.h"
 
 #include <QVarLengthArray>
 
@@ -11,20 +12,8 @@
 
 namespace
 {
-struct KnownPad { quint32 vid; quint32 pid; const char* name; };
-
-// Mirrors supportedReportLayout() in DualSenseDevice.cpp. 054C:0ECC is
-// deliberately absent: on PlayStation Link hardware that PID exposes only
-// vendor-defined collections which Raw Input legitimately lists, so a
-// PnP-vs-Raw-Input comparison on it would never be meaningful.
-constexpr KnownPad kKnownPads[] = {
-    { 0x054C, 0x0CE6, "DualSense" },
-    { 0x054C, 0x0DF2, "DualSense Edge" },
-    { 0x054C, 0x05C4, "DualShock 4" },
-    { 0x054C, 0x09CC, "DualShock 4 v2" },
-    { 0x11FF, 0x0847, "DSX virtual DS4" },
-    { 0x3670, 0x0902, "DSX virtual DS4" },
-};
+// The PnP-vs-Raw-Input comparison set lives in SupportedPads.h.
+using SupportedPads::kCloakComparablePads;
 
 QString vidPidToken(quint32 vid, quint32 pid)
 {
@@ -134,7 +123,7 @@ HidCloakMonitor::ScanResult HidCloakMonitor::scan(const QSet<QString>& visibleRa
         rawJoined += QLatin1Char('\n');
     }
 
-    for (const auto& pad : kKnownPads) {
+    for (const auto& pad : kCloakComparablePads) {
         const QString token = vidPidToken(pad.vid, pad.pid);
         const QStringList tokens = vidPidTokens(pad.vid, pad.pid);
         if (containsAny(pnpJoined, tokens) && !containsAny(rawJoined, tokens))
@@ -166,8 +155,8 @@ HidCloakMonitor::hiddenPadInterfaces(const QSet<QString>& visibleRawPathsLower)
         const QString lower = path.toLower();
         if (lower.contains(QLatin1String("ig_")) || visibleRawPathsLower.contains(lower))
             continue;
-        for (const auto& pad : kKnownPads) {
-            if (pad.vid != 0x054C)
+        for (const auto& pad : kCloakComparablePads) {
+            if (pad.vid != SupportedPads::kSonyVid)
                 continue;   // physical Sony hardware only
             if (containsAny(lower, vidPidTokens(pad.vid, pad.pid))) {
                 out.append({ path, pad.vid, pad.pid });

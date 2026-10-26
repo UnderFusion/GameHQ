@@ -43,7 +43,13 @@ void discard(const Reservation& reservation);
 // _2, _3 the reservation had to add and can never land on another capture's.
 QString companionPath(const QString& finalPath, const QString& dir, const QString& suffix);
 
+// Where reservations are recorded (one path per line). Set once at startup,
+// before any capture service runs. Without a journal the sweep deletes nothing.
+void setOwnershipJournal(const QString& journalPath);
 // Removes .part files under `root` older than `maxAgeSecs` — what a crash or a
-// power cut leaves behind. Returns how many were removed.
+// power cut leaves behind. Only files the ownership journal shows GameHQ
+// reserved are candidates, never one this process is still writing; any other
+// .part under the root (a browser download, another app's) is left alone.
+// Returns how many were removed.
 int sweepStale(const QString& root, qint64 maxAgeSecs);
 }

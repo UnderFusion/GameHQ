@@ -122,12 +122,60 @@ SettingsPage {
             }
         }
         SettingsRow {
-            //% "System audio"
-            label: qsTrId("gamehq.settings.replay.encoding.system_audio.label")
-            //% "Include desktop audio in newly recorded replay segments."
-            description: qsTrId("gamehq.settings.replay.encoding.system_audio.description")
+            id: audioSourceRow
+            // "auto" and the legacy on/off switch resolve to a concrete choice
+            // in C++, so the dropdown always shows what will be recorded.
+            property string selection: app.audioSourceSelection()
+            readonly property bool gameAudioSupported: app.gameAudioSupported()
+            //% "Audio source"
+            label: qsTrId("gamehq.settings.replay.encoding.audio_source.label")
+            description: {
+                if (selection === "off") {
+                    //% "Replay clips are saved without sound."
+                    return qsTrId("gamehq.settings.replay.encoding.audio_source.off_description")
+                }
+                if (!gameAudioSupported) {
+                    //% "Game audio needs Windows 11. Desktop audio records everything on the default Windows output."
+                    return qsTrId("gamehq.settings.replay.encoding.audio_source.unsupported_description")
+                }
+                if (selection === "desktop") {
+                    //% "Records everything on the default Windows output, including chat and music apps."
+                    return qsTrId("gamehq.settings.replay.encoding.audio_source.desktop_description")
+                }
+                //% "Records only the current game, whichever output device it plays on."
+                return qsTrId("gamehq.settings.replay.encoding.audio_source.game_description")
+            }
             showDivider: false
-            SettingsToggle { configKey: "audio.enabled"; defaultValue: false }
+            SettingsCombo {
+                id: audioSourceCombo
+                defaultValue: audioSourceRow.selection
+                options: [
+                    {
+                        label: audioSourceRow.gameAudioSupported
+                            //% "Game audio"
+                            ? qsTrId("gamehq.settings.replay.encoding.audio_source.game")
+                            //% "Game audio (needs Windows 11)"
+                            : qsTrId("gamehq.settings.replay.encoding.audio_source.game_unsupported"),
+                        value: "game"
+                    },
+                    //% "Desktop audio"
+                    { label: qsTrId("gamehq.settings.replay.encoding.audio_source.desktop"), value: "desktop" },
+                    //% "Off"
+                    { label: qsTrId("gamehq.settings.replay.encoding.audio_source.off"), value: "off" }
+                ]
+                onValueCommitted: function(value) { app.setConfig("audio.source", value) }
+
+                Connections {
+                    target: app
+                    function onConfigChanged(key, value) {
+                        if (key === "audio.source" || key === "audio.enabled")
+                            audioSourceRow.selection = app.audioSourceSelection()
+                    }
+                    function onConfigGroupReset(prefix) {
+                        audioSourceRow.selection = app.audioSourceSelection()
+                    }
+                }
+            }
         }
     }
 

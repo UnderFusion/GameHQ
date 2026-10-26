@@ -6,18 +6,35 @@ Module map and repo layout. Each module should keep one primary responsibility. 
 
 ```txt
 GameHQ.exe
-|-- app/          App lifecycle and service wiring
-|-- ui/           QML windows/components + AppController + GalleryModel + UI facade helpers
-|-- overlay/      OverlayManager: lazy overlay load, topmost show/hide, focus return
-|-- capture/      ScreenshotService, FramePumpService, SegmentRecorder, ReplayExporter, AudioCapture, CaptureUtil
-|-- core/         Shared cross-module helpers such as GameIdentity
-|-- sound/        SoundEngine for UI sounds
-|-- input/        InputEngine, DualSenseDevice (behind the RawInputApi seam), InputRateMonitor, XInputDevice, WinMMDevice, HotkeyManager
-|-- games/        GameDetector: foreground process, title resolution (cached per process), fullscreen heuristic
-|-- storage/      CaptureDatabase, CaptureQueries, CaptureScanner, ThumbnailService, GameIconCache, GameMetadataBackfill, GameRowRepair
-|-- config/       ConfigManager, ConfigKeys, SettingsCategories, CaptureLocations, LegacyMigration, and Paths
-|-- tray/         TrayIcon and menu
-`-- diagnostics/  Logger
+|-- app/           App lifecycle and service wiring, StartupManager (Windows Run entry), ReleaseNotes
+|-- ui/            QML windows/components + AppController + GalleryModel + UI facade helpers
+|                  (CaptureLibraryService, CurrentGameService, NavigationState, SettingsRouter, ShellActions)
+|-- overlay/       OverlayManager, OverlayPresenter, ForegroundAcquirer: lazy overlay load, topmost show/hide, focus return
+|-- notify/        NotificationCenter + ToastModel: non-activating, capture-excluded toast window
+|-- capture/       ScreenshotService, FramePumpService, SegmentRecorder, ReplayExporter, ReplayExportTask, AudioCapture, CaptureUtil
+|-- core/          Shared helpers: GameIdentity, GamePins, ProcessIdentity, WindowPlacement, ApplicationMutex, UpdateMaintenance
+|-- sound/         SoundEngine for UI sounds
+|-- input/         InputEngine, DualSenseDevice (behind the RawInputApi seam) with the opt-in SonyHidReader,
+|                  XInputDevice, WinMMDevice, MouseHookDevice, HotkeyManager, ControllerArbitration,
+|                  PhysicalControllerRegistry, binding resolution/runtime, mapping presets, HidCloakMonitor
+|-- gameinput/     GameInputRouter over Microsoft GameInput (IGameInputApi seam, GameInputQtDispatcher)
+|-- games/         GameDetector: foreground process, title resolution (cached per process), fullscreen heuristic; SteamAppLookup
+|-- storage/       CaptureDatabase, CaptureQueries, CaptureScanner, CaptureFolderWatcher, ThumbnailService, GameIconCache,
+|                  GameMetadataBackfill, GameRowRepair
+|-- config/        ConfigManager, ConfigKeys, SettingsCategories, SettingsApplyPolicy, CaptureLocations, LegacyMigration,
+|                  PortableProfileImporter, and Paths
+|-- localization/  LanguageManager, LocaleRegistry, StartupLocalization: UI language selection and translators
+|-- share/         ShareService + ShareProviderRegistry; built-in providers and the external provider host
+|-- telegram/      TDLib runtime loader, transport and TelegramAccount for Telegram Integrated (dormant unless built in)
+|-- integration/   IntegrationService over LocalIntegrationServer (`GameHQ.Local.v1` pipe, e.g. Playnite plugin)
+|-- updates/       UpdateService: GitHub release check, download, SHA-256 verification, hand-off to the updater
+|-- security/      ReleaseManifest + ReleaseTrust: signed release manifest verification (shared with GameHQUpdater)
+|-- tray/          TrayIcon and menu
+`-- diagnostics/   Logger
+
+Separate executables built from src/:
+|-- launcher/      GameHQLauncher: package entry point that forwards its command line to app\GameHQ.exe
+`-- updater/       GameHQUpdater: staged, transactional package swap with data snapshot, health check and recovery
 ```
 
 ## Dependency Rules
@@ -44,12 +61,18 @@ GameHQ/
 |-- docs/                 technical documentation
 |-- src/
 |   |-- main.cpp
-|   |-- app/ ui/ overlay/ capture/ core/ sound/
-|   |-- input/ games/ storage/ config/ tray/ diagnostics/
+|   |-- app/ ui/ overlay/ notify/ capture/ core/ sound/
+|   |-- input/ gameinput/ games/ storage/ config/ localization/
+|   |-- share/ telegram/ integration/ updates/ security/ tray/ diagnostics/
+|   `-- launcher/ updater/   separate GameHQLauncher / GameHQUpdater executables
 |-- tests/                opt-in pure-logic tests (-DGAMEHQ_BUILD_TESTS=ON)
 |-- assets/
-|   |-- icons/
+|   |-- icons/  installer/  release-notes/
 |   `-- sounds/
+|-- i18n/                 translation catalogs and localization state
+|-- integrations/         Playnite companion plugin and share-provider samples
+|-- third_party/          vendored GameInput and TDLib inputs
+|-- tools/                i18n, release-manifest, input-receiver and manual-validation tooling
 |-- site/
 |-- packaging/            guarded local/release package assembly
 |-- out/                  git-ignored CMake/Ninja compiler workspace
@@ -69,10 +92,14 @@ GameHQ/
 
 ## Threading Model
 
-- UI thread: Qt/QML, AppController, model refresh, and most short DB calls.
-- Screenshot worker: PNG/JPEG encoding after an SDR GDI grab or HDR tone-mapped WGC readback.
-- Replay worker: WGC frame pump, HDR tone mapping/readback, D3D access, Media Foundation segment writing, optional audio capture, and replay export.
-- Input/hotkeys: native events and device polling feed Qt signals.
+Details (which object lives on which thread, shutdown order, file deletion rules, crash recovery, error/logging conventions) live in [threading-and-lifecycle.md](threading-and-lifecycle.md). In short:
+
+- UI thread: Qt/QML, AppController and its helpers, models, overlay/toast windows, tray, sound, hotkeys, Raw Input/XInput polling, folder watching, network checks, and most short DB calls.
+- Frame pump (`FramePumpService`, a `QThread` with a moved worker): WGC frame pump, HDR tone mapping/readback, D3D access, and Media Foundation segment writing (`SegmentRecorder`). The recorder prepares the next segment on its own `std::thread`; `AudioCapture` drains game-audio loopback on its own `std::thread`; each replay export runs on a `ReplayExportTask` (`QThread`) owned and joined by the worker.
+- Screenshot encoding: `ScreenshotService` thread pool (2 threads) writes PNG/JPEG after the SDR GDI grab or HDR readback.
+- Library scan: `CaptureScanner` thread pool (1 thread) walks capture roots and creates thumbnails; clip thumbnails grab a frame on a short-lived COM thread that the caller waits for.
+- Input devices: `WinMMDevice`, `MouseHookDevice` (WH_MOUSE_LL), the opt-in `SonyHidReader`, and `GameInputQtDispatcher` each run one `std::thread` and hand events to the UI thread.
+- Telegram Integrated (dormant unless built in): `TdJsonTransport` runs the TDLib receive loop on its own `QThread`.
 
 Current DB access stays behind the storage API. `CaptureDatabase` owns the public database facade, mutations, and migrations; read-only capture/game listing SQL lives in `CaptureQueries`. Keep queries short on the UI path; if scanning or repair work grows, move that work behind a worker boundary.
 
@@ -88,7 +115,7 @@ The desktop gallery entry point remains `src/ui/qml/Main.qml`, but presentationa
 - `components/OverlaySidebar.qml`, `OverlayCaptureStrip.qml`, `OverlayPreview.qml`, and `OverlayFooter.qml` own the overlay's presentational panels.
 - `components/MediaStage.qml` is the double-buffered still/clip stage shared by `OverlayPreview.qml` and the desktop `Lightbox.qml`. It owns the async decode-then-promote handoff (the previous capture stays painted until the next one reaches `Image.Ready`) and the media-player/end-of-media wiring. The rules that differ between the two surfaces — what the loader decodes, what paints behind a clip, whether the committed still clears on an empty target — are properties set by each caller.
 - `components/OverlayActionMenu.qml` is shared by the overlay and desktop pad action menu.
-- `SettingsView.qml` owns the settings category rail while focused page files under `ui/qml/settings/` own General, Capture, Replay, Input, Library, Feedback, and Advanced content.
+- `SettingsView.qml` owns the settings category rail while focused page files under `ui/qml/settings/` own General, Capture, Replay, Input, Library, Sharing, Feedback, Advanced, and About content.
 - Shared settings page, section, row, toggle, category, and combo controls live under `ui/qml/components/` and update from `AppController::configChanged`.
 - `helpers/SidebarCategories.js` owns shared desktop/overlay category definitions (`categories()`) and the key→filter mapping behind them (`resolveFilter()`). Every sidebar — desktop mouse click, desktop pad nav, overlay pad nav — resolves a row through it and then applies the result on its own surface: the desktop via `AppController::setGameCategory`, the overlay via its gallery's `setFilter`. Both land on `GalleryModel::setFilter` with the same pair. Do not re-implement the `game` / `game_favorites` special cases in a sidebar.
 - `themes/Skin.qml` declares the skinnable surface — colors plus font family, radii, border weight, motion and backdrop — with the Blue theme's values as defaults; the thirteen skins override from it, so an omitted token falls back to those valid base values. `Theme.qml` binds every token through the active skin (`Theme.skins` map, `Theme.skinOrder` for presentation), defaults fresh installs and unknown keys to Obsidian, and re-assigns `activeSkin` on `configChanged` (`theme.active_skin`), which repaints live. Spacing, font sizes and control sizes are deliberately NOT skinnable: a skin restyles, it must not re-lay-out. `components/ThemeBackdrop.qml` paints the window per `backdropStyle` (flat/gradient/wash/scanlines). See docs/design-system.md §0.

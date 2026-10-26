@@ -1,4 +1,5 @@
 #include "updater/UpdaterSwap.h"
+#include "core/DurableFile.h"
 #include <array>
 #include <chrono>
 #include <filesystem>
@@ -49,30 +50,40 @@ bool writeJournal(const updater::Transaction &tx, std::string &error)
     partial += L".partial";
     std::error_code ec;
     std::filesystem::create_directories(journal.parent_path(), ec);
-    std::ofstream output(partial, std::ios::binary | std::ios::trunc);
-    if (ec || !output) {
+    if (ec) {
         error = "could not create the program swap journal";
         return false;
     }
+    // A presence bit that could not be determined must not be recorded as
+    // "absent": rollback would then skip restoring that path.
+    std::ostringstream output;
     output << "GAMEHQ_PROGRAM_SWAP_V1\n";
     for (const wchar_t *name : kOwned) {
-        output << (std::filesystem::exists(tx.packageRoot / name) ? '1' : '0') << ' '
-               << (std::filesystem::exists(tx.stagingDir / name) ? '1' : '0') << ' '
+        const bool oldPresent = std::filesystem::exists(tx.packageRoot / name, ec);
+        if (ec) break;
+        const bool newPresent = std::filesystem::exists(tx.stagingDir / name, ec);
+        if (ec) break;
+        output << (oldPresent ? '1' : '0') << ' ' << (newPresent ? '1' : '0') << ' '
                << std::filesystem::path(name).string() << '\n';
     }
-    output.flush();
-    if (!output) {
+    if (ec) {
+        error = "could not inspect program files for the swap journal";
+        return false;
+    }
+    switch (durable_file::replace(journal, partial, output.str())) {
+    case durable_file::WriteResult::Written:
+        return true;
+    case durable_file::WriteResult::CreateFailed:
+        error = "could not create the program swap journal";
+        return false;
+    case durable_file::WriteResult::WriteFailed:
         error = "could not finish the program swap journal";
         return false;
+    case durable_file::WriteResult::PublishFailed:
+        break;
     }
-    output.close();
-    if (!MoveFileExW(partial.c_str(), journal.c_str(),
-                     MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH)) {
-        std::filesystem::remove(partial, ec);
-        error = "could not publish the program swap journal";
-        return false;
-    }
-    return true;
+    error = "could not publish the program swap journal";
+    return false;
 }
 
 struct JournalEntry

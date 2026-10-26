@@ -227,10 +227,21 @@ public:
         return out;
     }
 
-    CloakScan scanHiddenPads(const QSet<QString>&) override { return {}; }
+    // PnP scans run on a worker thread; record where so a test can prove it.
+    std::atomic<QThread*> scanThread{nullptr};
+    CloakScan cloak;
+    CloakScan scanHiddenPads(const QSet<QString>&) override
+    {
+        scanThread = QThread::currentThread();
+        return cloak;
+    }
 
     QList<HiddenInterface> hidden;   // HidHide-cloaked pads PnP still lists
-    QList<HiddenInterface> hiddenPadInterfaces(const QSet<QString>&) override { return hidden; }
+    QList<HiddenInterface> hiddenPadInterfaces(const QSet<QString>&) override
+    {
+        scanThread = QThread::currentThread();
+        return hidden;
+    }
 
     // Selective Raw HID fallback: the fake "parses" the report descriptor by
     // returning the pressed usages staged on the device.
@@ -1392,6 +1403,154 @@ private slots:
         pad.rescan();
         QTRY_COMPARE(pad.hidReaderCount(), 0);
         QCOMPARE(readers.created, readers.destroyed);
+    }
+
+    // The CfgMgr cross-check is slow, so it runs off the GUI thread; the
+    // verdict and every device-state change land back on the GUI thread.
+    void pnpCloakScanRunsOffTheGuiThread()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory(), /*forVisibleEndpoints=*/false);
+        QSignalSpy hiddenPads(&pad, &DualSenseDevice::hiddenPadsChanged);
+        QThread* signalThread = nullptr;
+        connect(&pad, &DualSenseDevice::hiddenPadsChanged, &pad,
+                [&signalThread] { signalThread = QThread::currentThread(); },
+                Qt::DirectConnection);
+
+        api->hidden = { { kBtPath, kSonyVid, kDualSensePid } };
+        api->cloak.hiddenPads = { QStringLiteral("DualSense (VID_054C&PID_0CE6)") };
+        pad.rescan();
+        QTRY_COMPARE(pad.hidReaderCount(), 1);
+        QVERIFY(api->scanThread.load() != nullptr);
+        QVERIFY(api->scanThread.load() != QThread::currentThread());
+        // A pad is tracked (via direct HID), so the cloak is not alarming.
+        QCOMPARE(hiddenPads.size(), 0);
+
+        api->hidden.clear();
+        pad.rescan();
+        QTRY_COMPARE(pad.hidReaderCount(), 0);
+        QTRY_COMPARE(hiddenPads.size(), 1);
+        QCOMPARE(signalThread, QThread::currentThread());
+        QCOMPARE(readers.created, readers.destroyed);
+    }
+
+    // A visible pad whose Raw Input stream stops while it is still present
+    // (observed while a non-Steam game held focus) gets a read-only reader
+    // even when readers are limited to hidden pads, and the reader then
+    // carries the Share press Raw Input no longer delivers.
+    void silentRawInputStreamIsRescuedByHidReader()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory(), /*forVisibleEndpoints=*/false);
+        void* bt = handle(0x8281);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kBtPath);
+        device.report = dsReport(DsTransport::BtFull, 0x08);
+        api->devices.insert(bt, device);
+        pad.onRawInput(bt);
+        QCOMPARE(pad.hidReaderCount(), 0);
+
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        pad.onRawInputStreamSilent(bt);
+        QCOMPARE(readers.alive.values(), QStringList{kBtPath});
+        pad.onRawInputStreamSilent(bt);   // idempotent
+        QCOMPARE(pad.hidReaderCount(), 1);
+
+        const quint64 reader = readers.idFor(kBtPath);
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08));
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08, 0x10));
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+
+        pad.onRawInputStreamSilent(handle(0x8282));   // untracked: no-op
+        QCOMPARE(pad.hidReaderCount(), 1);
+    }
+
+    // Raw Input stays preferred: once it streams steadily again the rescue
+    // reader closes. A Share held across the handoff is pressed once and
+    // released once — no duplicate press, no phantom release.
+    void rescueHandsBackToRawInputWhenItResumes()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory(), /*forVisibleEndpoints=*/false);
+        void* bt = handle(0x8291);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kBtPath);
+        device.report = dsReport(DsTransport::BtFull, 0x08);
+        api->devices.insert(bt, device);
+        pad.onRawInput(bt);
+        pad.onRawInputStreamSilent(bt);
+        const quint64 reader = readers.idFor(kBtPath);
+
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        QSignalSpy released(&pad, &Gamepad::controlReleased);
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08, 0x10));   // Share down
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+
+        // A single stray WM_INPUT does not hand back.
+        api->devices[bt].report = dsReport(DsTransport::BtFull, 0x08, 0x10);
+        pad.onRawInput(bt);
+        QCOMPARE(pad.hidReaderCount(), 1);
+
+        // Steady Raw Input for over a second (reader still fresh) hands back.
+        QElapsedTimer steady;
+        steady.start();
+        while (pad.hidReaderCount() == 1 && steady.elapsed() < 3000) {
+            pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08, 0x10));
+            pad.onRawInput(bt);
+            QTest::qWait(40);
+        }
+        QCOMPARE(pad.hidReaderCount(), 0);
+        QCOMPARE(readers.created, readers.destroyed);
+        QCOMPARE(pressed.size(), 1);
+        QCOMPARE(released.size(), 0);
+
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08));   // fenced late delivery
+        QCOMPARE(released.size(), 0);
+        api->devices[bt].report = dsReport(DsTransport::BtFull, 0x08);   // Share up via Raw Input
+        pad.onRawInput(bt);
+        QCOMPARE(pressed.size(), 1);
+        QCOMPARE(controlIds(released), QStringList{ControlId::Capture});
+    }
+
+    // GAMEHQ_SONY_HID_READER=0 installs no factory at all (production
+    // constructor), so the rescue has nothing to open.
+    void rescueIsOffWithoutAReaderFactory()
+    {
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        void* usb = handle(0x82a1);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kUsbPath);
+        device.report = dsReport(DsTransport::Usb, 0x08);
+        api->devices.insert(usb, device);
+        pad.onRawInput(usb);
+        pad.onRawInputStreamSilent(usb);
+        QVERIFY(!pad.hidReaderEnabled());
+        QCOMPARE(pad.hidReaderCount(), 0);
+    }
+
+    // A rescue that cannot open the pad leaves Raw Input driving it.
+    void failedRescueOpenLeavesRawInputInCharge()
+    {
+        FakeHidReaders readers;
+        readers.failOpen = true;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory(), /*forVisibleEndpoints=*/false);
+        void* usb = handle(0x82b1);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kUsbPath);
+        device.report = dsReport(DsTransport::Usb, 0x08);
+        api->devices.insert(usb, device);
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        pad.onRawInput(usb);
+        pad.onRawInputStreamSilent(usb);
+        QCOMPARE(pad.hidReaderCount(), 0);
+        api->devices[usb].report = dsReport(DsTransport::Usb, 0x08, 0x10);
+        pad.onRawInput(usb);
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
     }
 
     // A reader that cannot open (exclusive access, HidHide) leaves Raw Input

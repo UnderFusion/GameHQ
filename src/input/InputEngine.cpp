@@ -7,10 +7,10 @@
 #include "input/ControllerArbitration.h"
 #include "input/ControllerIdentity.h"
 #include "input/BindingEditorModel.h"
+#include "input/BindingPattern.h"
 #include "input/DualSenseDevice.h"
 #include "input/GestureTiming.h"
 #include "input/Gamepad.h"
-#include "input/HidCloakMonitor.h"
 #include "input/HotkeyManager.h"
 #include "input/EventLoopStallMonitor.h"
 #include "input/InputDiagnostics.h"
@@ -54,8 +54,6 @@ QString gameInputDeviceKey(const QString& logicalId)
 #include <QVariantMap>
 
 #include <windows.h>
-
-#include <limits>
 
 namespace {
 QString keyboardTrigger(int key, int modifiers)
@@ -245,8 +243,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 // unpressed control is a safe no-op, dropping a real one
                 // risks a stuck control.
                 m_runtime->release(QStringLiteral("mouse"), {}, code);
-                if (code == m_repeatTrigger)
-                    stopNavRepeat();
+                stopNavRepeatOnRelease(code);
             });
     // Capturing a first mouse binding must see the buttons before any mouse
     // binding exists, so the hook follows the editor's capture state too.
@@ -330,6 +327,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 m_held.noteReleased(gameInputDeviceKey(logicalId), control);
                 m_runtime->release(QStringLiteral("controller"), gameInputProfile(logicalId),
                                    control);
+                stopNavRepeatOnRelease(control);
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::sessionFallback,
             this, [this](const QString& reason) {
@@ -355,6 +353,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 m_held.noteDeviceGone(gameInputDeviceKey(previous));
                 m_held.noteDevicePresent(gameInputDeviceKey(logicalId));
                 configureLogicalProfile(logicalId, {previous});
+                m_bindingEditor->rekeyController(previous, logicalId);
                 traceProviderLifecycle(QStringLiteral("rekey"));
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::statusChanged,
@@ -420,8 +419,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                                      primaryScope(), fallbackScope());
                 } else {
                     m_runtime->release(QStringLiteral("controller"), logicalId, control);
-                    if (control == m_repeatTrigger)
-                        stopNavRepeat();
+                    stopNavRepeatOnRelease(control);
                 }
             });
     connect(m_sonyPad, &DualSenseDevice::rawHidDeviceRemoved, this,
@@ -431,6 +429,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 const QStringList releases = m_providers.removeRawHid(identity);
                 for (const QString& control : releases) {
                     m_runtime->release(QStringLiteral("controller"), logicalId, control);
+                    stopNavRepeatOnRelease(control);
                 }
             });
 
@@ -644,16 +643,44 @@ bool InputEngine::handleKeyPressed(int key, int modifiers, bool autoRepeat)
         }
         return false;
     }
+    m_heldKeyTriggers.insert(key, { trigger, modifiers });
     return m_runtime->press(QStringLiteral("keyboard"), {}, trigger,
                             primaryScope(), fallbackScope());
 }
 
 bool InputEngine::handleKeyReleased(int key, int modifiers)
 {
-    const QString trigger = keyboardTrigger(key, modifiers);
-    const bool handled = m_runtime->release(QStringLiteral("keyboard"), {}, trigger);
-    if (trigger == m_repeatTrigger)
-        stopNavRepeat();
+    // Release exactly what this key pressed. Rebuilt from the release-time
+    // modifiers, Ctrl let go before the arrow turned "Ctrl+Left" into "Left",
+    // which matched nothing: the shortcut stayed held and kept repeating.
+    const HeldKeyTrigger held = m_heldKeyTriggers.take(key);
+    const QString trigger = held.trigger.isEmpty() ? keyboardTrigger(key, modifiers) : held.trigger;
+    bool handled = false;
+    if (!trigger.isEmpty()) {
+        handled = m_runtime->release(QStringLiteral("keyboard"), {}, trigger);
+        stopNavRepeatOnRelease(trigger);
+    }
+    // A modifier released first ends every shortcut that needed it; the key
+    // still down does not start its unmodified binding (it was never pressed).
+    int modifier = 0;
+    switch (key) {
+    case Qt::Key_Control: modifier = Qt::ControlModifier; break;
+    case Qt::Key_Shift:   modifier = Qt::ShiftModifier; break;
+    case Qt::Key_Alt:     modifier = Qt::AltModifier; break;
+    case Qt::Key_Meta:    modifier = Qt::MetaModifier; break;
+    default: break;
+    }
+    if (modifier) {
+        for (auto it = m_heldKeyTriggers.begin(); it != m_heldKeyTriggers.end();) {
+            if (!(it->modifiers & modifier)) {
+                ++it;
+                continue;
+            }
+            handled = m_runtime->release(QStringLiteral("keyboard"), {}, it->trigger) || handled;
+            stopNavRepeatOnRelease(it->trigger);
+            it = m_heldKeyTriggers.erase(it);
+        }
+    }
     return handled;
 }
 
@@ -764,6 +791,35 @@ void InputEngine::removeLegacyBackend(Gamepad* pad, const QString& providerDevic
     if (m_legacyObservedIds.value(pad).isEmpty())
         m_legacyObservedIds.remove(pad);
     traceProviderLifecycle(QStringLiteral("legacy-removed"));
+    pruneStaleControllers();
+}
+
+void InputEngine::pruneStaleControllers()
+{
+    if (m_shuttingDown || m_mappingSwitchRunning)
+        return;   // never reshape the tracked chains mid-switch or in teardown
+    const QString controller = QStringLiteral("controller");
+    const QString pinned = m_bindingEditor->pinnedProfile();
+    const QString pendingProfile = m_pending.source
+        ? canonicalProfile(m_pending.source, m_pending.fingerprint) : QString();
+    const QStringList pruned = m_providers.registry().pruneUnreachable(
+        [&](const QString& logicalId) {
+            return logicalId == pinned || logicalId == m_lastControllerRoute
+                || logicalId == pendingProfile
+                || !m_runtime->downControls(controller, logicalId).isEmpty();
+        });
+    for (const QString& logicalId : pruned) {
+        m_profileMigrationAliases.remove(logicalId);
+        m_legacyViewFallbackHeld.remove(logicalId);
+        // Nothing can press this route again, so a table installed for it
+        // would only be re-planned on every refresh forever.
+        const auto chain = m_mappingChains.constFind(mappingChainKey(controller, logicalId));
+        if (chain != m_mappingChains.cend()) {
+            if (chain->owned)
+                m_runtime->uninstallPresetTable(controller, logicalId);
+            m_mappingChains.erase(chain);
+        }
+    }
 }
 
 QString InputEngine::canonicalProfile(Gamepad* pad, const QString& providerDeviceId) const
@@ -825,196 +881,6 @@ bool InputEngine::hasExplicitViewBinding(const QString& logicalProfile) const
             return true;
     }
     return false;
-}
-
-// Keep the current backend while it remains connected. Sony > XInput > WinMM
-// is only the initial/fallback choice; real control activity may move the
-// active role later. This avoids a stale Raw Input or virtual-device path
-// suppressing the backend a game is actually using.
-void InputEngine::updateActiveBackend()
-{
-    if (backendConnected(m_activeBackend))
-        return;
-
-    Gamepad* pick = nullptr;
-    if (m_sonyConnected)
-        pick = m_sonyPad;
-    else if (m_xinputConnected)
-        pick = m_xinputPad;
-    else if (m_winmmConnected)
-        pick = m_winmmPad;
-
-    activateBackend(pick, QStringLiteral("connection fallback"));
-}
-
-// A backend the takeover gate refused is tracked as a pending candidate: the
-// role still cannot move on one event, but it no longer has to wait out a full
-// second of silence either. The run restarts the moment the active backend
-// reports again, which is what makes this safe against mirrored input — a
-// remapper feeding two APIs keeps both of them talking.
-bool InputEngine::confirmCandidate(Gamepad* source, qint64 now,
-                                   qint64 activeLastControlMs)
-{
-    const auto firstIt = m_backendCandidateFirstMs.constFind(source);
-    if (firstIt == m_backendCandidateFirstMs.cend() || *firstIt <= activeLastControlMs) {
-        m_backendCandidateFirstMs.insert(source, now);
-        return false;
-    }
-    if (!ControllerArbitration::candidateMayConfirm(*firstIt, now, activeLastControlMs))
-        return false;
-    m_backendCandidateFirstMs.remove(source);
-    return true;
-}
-
-// Buffer the first press of a candidate run. XInput and WinMM report state
-// *changes*, so a user who presses once and lets go produces exactly one event
-// — waiting for a second one would lose that press forever. The press is held
-// for BackendCandidateConfirmMs and then either delivered (active backend
-// stayed silent: this was a real switch) or dropped (active backend spoke: it
-// was a mirror). Only one press is ever held; a further control from the same
-// candidate resolves the run immediately through confirmCandidate().
-void InputEngine::holdCandidatePress(Gamepad* source, const QString& controlId,
-                                     int family, const QString& fingerprint,
-                                     qint64 pressedMs)
-{
-    if (m_pending.source == source && !m_pending.controlId.isEmpty())
-        return;   // already holding this candidate's first press
-    m_pending.source = source;
-    m_pending.controlId = controlId;
-    m_pending.family = family;
-    m_pending.fingerprint = fingerprint;
-    m_pending.pressedMs = pressedMs;
-    m_pending.released = false;
-    const int generation = ++m_pendingGeneration;
-    QTimer::singleShot(ControllerArbitration::BackendCandidateConfirmMs, this,
-                       [this, generation] { resolvePendingCandidate(generation); });
-    ++m_candidateRuns;
-    publishControllerRouting();
-}
-
-void InputEngine::clearPendingCandidate()
-{
-    ++m_pendingGeneration;   // orphan the timer still counting down
-    m_pending = {};
-}
-
-// The confirmation window closed with the candidate still unanswered: the
-// active backend never spoke, so the held press was real input on a backend
-// that has genuinely taken over.
-void InputEngine::resolvePendingCandidate(int generation)
-{
-    if (generation != m_pendingGeneration || !m_pending.source)
-        return;
-    Gamepad* source = m_pending.source;
-    if (!backendConnected(source)) {
-        clearPendingCandidate();
-        publishControllerRouting();
-        return;
-    }
-    const auto activeIt = m_backendLastControlMs.constFind(m_activeBackend);
-    qint64 activeLastMs = activeIt != m_backendLastControlMs.cend()
-        ? *activeIt : std::numeric_limits<qint64>::min();
-    const auto releases = m_backendLastReleaseMs.constFind(m_activeBackend);
-    if (releases != m_backendLastReleaseMs.cend()) {
-        const auto released = releases->constFind(m_pending.controlId);
-        if (released != releases->cend())
-            activeLastMs = qMax(activeLastMs, *released);
-    }
-    if (!ControllerArbitration::heldPressSurvives(m_pending.pressedMs, activeLastMs,
-                                                  m_controllerClock.elapsed())) {
-        clearPendingCandidate();   // the active backend answered after all
-        publishControllerRouting();
-        return;
-    }
-
-    const PendingPress press = m_pending;
-    clearPendingCandidate();
-    m_backendCandidateFirstMs.clear();
-    activateBackend(source, QStringLiteral("sustained candidate"));
-    m_backendLastControlMs.insert(source, m_controllerClock.elapsed());
-    replayPendingPress(press);
-}
-
-void InputEngine::replayPendingPress(const PendingPress& press)
-{
-    deliverPress(press.source, press.controlId, press.family, press.fingerprint);
-    // Replayed back to back so a tap stays a tap: the runtime measures hold
-    // time from the press it just saw, and this release arrives immediately.
-    if (press.released) {
-        // The buffered press entered the capability router too. Close that
-        // cycle before releasing the recognizer, or the next real PS/Share
-        // press is mistaken for an echo of a button still held.
-        if ((press.controlId == ControlId::Capture || press.controlId == ControlId::Guide)
-            && !routeLegacySystemEdge(press.source, press.fingerprint,
-                                      press.controlId, false))
-            return;
-        m_runtime->release(QStringLiteral("controller"),
-                           canonicalProfile(press.source, press.fingerprint),
-                           press.controlId);
-        if (press.controlId == m_repeatTrigger)
-            stopNavRepeat();
-    }
-}
-
-void InputEngine::activateBackend(Gamepad* pick, const QString& reason)
-{
-    if (pick == m_activeBackend)
-        return;
-    stopNavRepeat();
-    m_runtime->cancelAll();
-    m_legacyViewFallbackHeld.clear();
-    m_activeBackend = pick;
-    m_lastBackendSwitchReason = reason;
-
-    if (pick) {
-        auto profile = pick->profile();
-        profile.fingerprint = canonicalProfile(pick, profile.fingerprint);
-        m_bindingEditor->setControllerProfile(profile);
-        const QString name = backendDisplayName(pick);
-        InputDiagnostics::instance().noteBackendSwitch(name, reason);
-        qInfo() << "Input: active controller backend ->" << name
-                << "(" << reason << ")";
-        setControllerStatus(name + QStringLiteral(" connected"));
-        setLastInput(name + QStringLiteral(" connected"));
-    } else {
-        m_bindingEditor->setControllerProfile({});
-        qInfo() << "Input: no controller backend connected";
-        setControllerStatus(QStringLiteral("No controller detected"));
-    }
-    publishControllerRouting();
-}
-
-bool InputEngine::backendConnected(const Gamepad* pad) const
-{
-    if (pad == m_sonyPad)
-        return m_sonyConnected;
-    if (pad == m_xinputPad)
-        return m_xinputConnected;
-    if (pad == m_winmmPad)
-        return m_winmmConnected;
-    return false;
-}
-
-QString InputEngine::backendDisplayName(const Gamepad* pad) const
-{
-    if (pad == m_sonyPad)
-        return QStringLiteral("Sony controller");
-    if (pad == m_xinputPad)
-        return QStringLiteral("XInput controller");
-    if (pad == m_winmmPad)
-        return QStringLiteral("WinMM joystick");
-    return QStringLiteral("Controller");
-}
-
-int InputEngine::backendPriority(const Gamepad* pad) const
-{
-    if (pad == m_sonyPad)
-        return 3;
-    if (pad == m_xinputPad)
-        return 2;
-    if (pad == m_winmmPad)
-        return 1;
-    return 0;
 }
 
 namespace {
@@ -1433,8 +1299,7 @@ void InputEngine::onControlReleased(const QString& controlId, int, const QString
     if (controlId == ControlId::ViewBack
         && m_legacyViewFallbackHeld.remove(logicalProfile))
         m_runtime->release(QStringLiteral("controller"), logicalProfile, ControlId::Capture);
-    if (controlId == m_repeatTrigger)
-        stopNavRepeat();
+    stopNavRepeatOnRelease(controlId);
 }
 
 void InputEngine::startNavRepeat(const QString& triggerCode, int direction,
@@ -1444,6 +1309,11 @@ void InputEngine::startNavRepeat(const QString& triggerCode, int direction,
     emitter(direction);
     // Record what we're now repeating — stopNavRepeat() uses m_repeatButton.
     m_repeatTrigger = triggerCode;
+    // A chord trigger serializes both controls, but releases arrive one
+    // control at a time: letting go of either part must end the repeat.
+    const auto parsed = TriggerSpec::parse(triggerCode);
+    m_repeatControls = parsed.ok && parsed.trigger.isChord()
+        ? parsed.trigger.controls : QStringList{triggerCode};
     // ...and which mapping route it belongs to: a cpo-p05 switch may only end
     // the repeat of the route whose table it actually replaced. The origin is
     // the dispatch in progress (m_dispatchGroup/m_dispatchProfile); a repeat
@@ -1462,10 +1332,17 @@ void InputEngine::startNavRepeat(const QString& triggerCode, int direction,
     m_repeatTick->start();
 }
 
+void InputEngine::stopNavRepeatOnRelease(const QString& control)
+{
+    if (!control.isEmpty() && m_repeatControls.contains(control))
+        stopNavRepeat();
+}
+
 void InputEngine::stopNavRepeat()
 {
     m_repeatTick->stop();
     m_repeatTrigger.clear();
+    m_repeatControls.clear();
     m_repeatRouteGroup.clear();
     m_repeatRouteProfile.clear();
     m_repeatDirection = 0;
@@ -1667,69 +1544,6 @@ void InputEngine::confirmModernControllerLayout(const QString& logicalId)
     }
 }
 
-void InputEngine::fixHiddenController()
-{
-    if (m_fixProcess)
-        return;   // helper already in flight
-
-    void* process = HidCloakMonitor::launchElevatedWhitelistHelper();
-    if (!process) {
-        setControllerWarning(
-            //: Hidden-controller fix result when the UAC prompt is declined.
-            //% "Administrator approval was declined — the controller stays hidden. You can whitelist GameHQ manually in the HidHide Configuration Client."
-            NativeText::get(QT_TRID_NOOP("gamehq.input.hidden.fix_declined"),
-                            "Administrator approval was declined — the controller stays "
-                            "hidden. You can whitelist GameHQ manually in the HidHide "
-                            "Configuration Client."),
-            true);
-        return;
-    }
-    m_fixProcess = process;
-    //: Hidden-controller fix in progress while the UAC prompt is shown.
-    //% "Applying the fix (administrator prompt)..."
-    setControllerWarning(NativeText::get(QT_TRID_NOOP("gamehq.input.hidden.fix_applying"),
-                                         "Applying the fix (administrator prompt)..."),
-                         false);
-
-    if (!m_fixWatch) {
-        m_fixWatch = new QTimer(this);
-        m_fixWatch->setInterval(500);
-        connect(m_fixWatch, &QTimer::timeout, this, [this] {
-            HANDLE h = static_cast<HANDLE>(m_fixProcess);
-            if (WaitForSingleObject(h, 0) != WAIT_OBJECT_0)
-                return;   // still running
-            DWORD code = 1;
-            GetExitCodeProcess(h, &code);
-            CloseHandle(h);
-            m_fixProcess = nullptr;
-            m_fixWatch->stop();
-            if (code == 0) {
-                qInfo() << "Input: GameHQ whitelisted in HidHide";
-                setControllerWarning(
-                    //: Hidden-controller fix succeeded.
-                    //% "GameHQ is now whitelisted in HidHide. Unplug and replug the controller if it does not appear within a few seconds."
-                    NativeText::get(QT_TRID_NOOP("gamehq.input.hidden.fix_done"),
-                                    "GameHQ is now whitelisted in HidHide. Unplug and replug "
-                                    "the controller if it does not appear within a few "
-                                    "seconds."),
-                    false);
-                m_sonyPad->rescan();
-            } else {
-                qWarning() << "Input: HidHide whitelist helper failed, code" << code;
-                setControllerWarning(
-                    //: Hidden-controller fix failed; %1 is the helper exit code.
-                    //% "Automatic whitelisting failed (code %1). Add GameHQ.exe on the Applications tab of the HidHide Configuration Client instead."
-                    NativeText::get(QT_TRID_NOOP("gamehq.input.hidden.fix_failed"),
-                                    "Automatic whitelisting failed (code %1). Add GameHQ.exe "
-                                    "on the Applications tab of the HidHide Configuration "
-                                    "Client instead.").arg(code),
-                    true);
-            }
-        });
-    }
-    m_fixWatch->start();
-}
-
 bool InputEngine::desktopCanReceiveInput() const
 {
     if (!m_desktopFocused)
@@ -1785,395 +1599,4 @@ void InputEngine::applyGestureTiming()
     m_lastTimingDescription = description;
     qInfo() << "Input: gesture timing —" << description;
     InputDiagnostics::instance().setGestureTiming(description);
-}
-
-// ---------------------------------------------------------------------- cpo-p05
-// Switching the resolved mapping at a safe input boundary.
-//
-// The invariant: changing the resolved preset must never let an input that
-// began under the old mapping complete under the new one, and a refresh that
-// resolves to the same winner with the same content must not disturb an active
-// gesture at all. The order below is the whole guarantee:
-//   prepare -> compare -> snapshot -> invalidate -> publish -> gate.
-
-QString InputEngine::mappingChainKey(const QString& group, const QString& profile) const
-{
-    return group + QChar(0x1f) + profile;
-}
-
-QVector<MappingAssignmentResolver::IdentityCandidate> InputEngine::controllerIdentityChain(
-    const QString& profile) const
-{
-    QVector<MappingAssignmentResolver::IdentityCandidate> chain;
-    if (profile.isEmpty())
-        return chain;
-    // Provenance, not syntax: only a registry identity with strong confidence
-    // is presented as a persisted "controller" target. A weak or session-local
-    // logical id is a compatibility key and is presented as "legacy_slot".
-    const auto* logical = m_providers.registry().controller(profile);
-    const bool durable = logical
-        && logical->confidence == ModernInput::IdentityConfidence::Strong;
-    chain.append({durable ? QStringLiteral("controller") : QStringLiteral("legacy_slot"),
-                  profile});
-    const QStringList aliases = m_runtime->resolver().aliasesFor(profile);
-    for (const QString& alias : aliases) {
-        if (alias.isEmpty() || alias == profile)
-            continue;
-        chain.append({QStringLiteral("legacy_slot"), alias});
-    }
-    return chain;
-}
-
-InputEngine::PlannedChain InputEngine::planMappingChain(const QString& group,
-                                                        const QString& profile) const
-{
-    PlannedChain plan;
-    plan.group = group;
-    plan.profile = profile;
-
-    const MappingAssignmentResolver::Resolution resolution =
-        m_assignmentResolver->resolve(group, controllerIdentityChain(profile), m_runningGameKey);
-
-    const bool materialized = m_runtime->resolver().isMaterialized(group, profile);
-    // The cpo-p03 migration bridge stays the effective source for a controller
-    // chain that still has unretired DEVICE-SPECIFIC legacy rows: the winner
-    // layer must not flatten behavior the migration has not proven yet.
-    const bool bridgeOwned = group == QLatin1String("controller") && !profile.isEmpty()
-        && !materialized && m_runtime->resolver().hasUnretiredSpecificLegacy(group, profile);
-
-    bool presetServes = false;
-    if (!resolution.presetId.isEmpty()) {
-        const bool explicitWinner = resolution.source == QLatin1String("game")
-            || resolution.source == QLatin1String("controller");
-        if (explicitWinner) {
-            // An explicit assignment always wins, including over an unresolved
-            // bridge and over a materialized chain.
-            presetServes = true;
-        } else if (resolution.source == QLatin1String("group_default")) {
-            // Keyboard and mouse group defaults are activated by the migration
-            // only when a MIGRATION preset is proven equal to the stored group
-            // rows; one that failed that proof keeps legacy resolution, exactly
-            // as cpo-p03 left it.
-            bool migrationRefuted = false;
-            if (group != QLatin1String("controller")) {
-                const MappingPreset preset = m_db->mappingPreset(resolution.presetId);
-                migrationRefuted = !materialized
-                    && preset.origin == QLatin1String("migration");
-            }
-            presetServes = !bridgeOwned && !materialized && !migrationRefuted;
-        }
-    }
-
-    if (presetServes) {
-        plan.install = true;
-        plan.presetId = resolution.presetId;
-        plan.source = resolution.source;
-        plan.table = BindingResolver::chainTableFromRows(
-            BindingResolver::defaultBindings(), group, profile,
-            m_db->mappingPresetRows(resolution.presetId));
-        plan.fingerprint = BindingRuntime::tableFingerprint(plan.table);
-        return plan;
-    }
-
-    // No winner preset serves. The effective source below is the honest label
-    // of what actually provides this chain's behavior now:
-    //  - materialized: the proven cpo-p03 view keeps serving, and a group
-    //    default must not flatten it;
-    //  - migration_bridge: device-specific legacy rows the migration has not
-    //    proven yet keep legacy resolution;
-    //  - local_legacy: no assignment, but retained binding_overrides for this
-    //    chain still provide behavior - a TRANSITIONAL compatibility source
-    //    (the binding editor still writes plain rows; cpo-p06 moves those edits
-    //    into presets, and this label retires with it). Retained rows are
-    //    recovery evidence, never an invisible permanent layer behind builtin;
-    //  - builtin: nothing else applies, so the chain serves shipped defaults
-    //    ONLY. The switch layer OWNS an explicitly prepared table for it, pinned
-    //    to the code-owned rows instead of to whatever the legacy merge would
-    //    produce - which is why ownership can never be inferred from a
-    //    non-empty preset id.
-    if (materialized || bridgeOwned) {
-        plan.install = false;
-        plan.source = materialized ? QStringLiteral("materialized")
-                                   : QStringLiteral("migration_bridge");
-        plan.table = m_runtime->resolver().inheritedTable(group, profile);
-        plan.fingerprint = BindingRuntime::tableFingerprint(plan.table);
-        return plan;
-    }
-
-    if (m_runtime->resolver().hasRetainedLocalRows(group, profile)) {
-        plan.install = false;
-        plan.source = QStringLiteral("local_legacy");
-        plan.table = m_runtime->resolver().inheritedTable(group, profile);
-        plan.fingerprint = BindingRuntime::tableFingerprint(plan.table);
-        return plan;
-    }
-
-    plan.install = true;
-    plan.presetId.clear();   // builtin: an owned table with no preset identity
-    plan.source = QStringLiteral("builtin");
-    plan.table = BindingResolver::chainTableFromRows(BindingResolver::defaultBindings(),
-                                                     group, profile, {});
-    plan.fingerprint = BindingRuntime::tableFingerprint(plan.table);
-    return plan;
-}
-
-void InputEngine::setRunningGameKey(const QString& executablePathOrKey)
-{
-    const QString key = MappingAssignmentResolver::canonicalGameKey(executablePathOrKey);
-    if (key == m_runningGameKey)
-        return;
-    m_runningGameKey = key;
-    refreshResolvedPreset();
-}
-
-// cpo-p05: the ONE route-ensure seam. The legacy pad path, GameInput and
-// selective Raw-HID all call it before dispatching a press, so a route's winner
-// is planned and published BEFORE the first press on it can act under an older
-// table. It is deliberately cheap after the first registration: an already
-// tracked route answers with one hash lookup, so the per-event path never
-// re-resolves assignments or preset content.
-bool InputEngine::ensureMappingRoute(const QString& logicalProfile)
-{
-    if (logicalProfile.isEmpty())
-        return false;
-    // Whatever happens next, this is the pad whose presses are arriving now, so
-    // the next refresh plans this route even when it needed no refresh itself.
-    if (m_lastControllerRoute != logicalProfile) {
-        m_lastControllerRoute = logicalProfile;
-        emit mappingTablesChanged();   // another pad's table may bind other buttons
-    }
-    if (m_mappingChains.contains(mappingChainKey(QStringLiteral("controller"), logicalProfile)))
-        return false;
-    refreshResolvedPreset();
-    return true;
-}
-
-QStringList InputEngine::steamAdvisedBoundControls() const
-{
-    return SteamInputAdvice::boundControls(
-        m_runtime->effectiveBindings(QStringLiteral("controller"), m_lastControllerRoute));
-}
-
-void InputEngine::refreshResolvedPreset()
-{
-    if (!m_db || !m_assignmentResolver || m_mappingSwitchRunning)
-        return;
-
-    m_mappingSwitchRunning = true;
-
-    // The buffered provider candidate (if any) is a live route too: the pad is
-    // delivering input right now, so its route is planned with every other live
-    // one, and the candidate is dropped the moment THAT route's table changes.
-    // `released` only decides whether a gate is needed - a press the user
-    // already let go of cannot be held down.
-    QString pendingGroup;
-    QString pendingProfile;
-    QString pendingControl;
-    if (m_pending.source && !m_pending.controlId.isEmpty()) {
-        pendingGroup = QStringLiteral("controller");
-        pendingProfile = canonicalProfile(m_pending.source, m_pending.fingerprint);
-        if (!m_pending.released)
-            pendingControl = m_pending.controlId;
-    }
-
-    // 1. Prepare. Every chain this engine tracks is re-planned: the two groups
-    //    without per-device identity, the active controller route, any route a
-    //    preset is installed for, and the route of a buffered candidate - so a
-    //    winner installed for a pad that went away is retired instead of leaking
-    //    onto a later press. Nothing prepared here is visible anywhere yet.
-    QSet<QString> keys;
-    for (auto it = m_mappingChains.cbegin(); it != m_mappingChains.cend(); ++it)
-        keys.insert(it.key());
-    keys.insert(mappingChainKey(QStringLiteral("keyboard"), QString()));
-    keys.insert(mappingChainKey(QStringLiteral("mouse"), QString()));
-    if (!m_lastControllerRoute.isEmpty())
-        keys.insert(mappingChainKey(QStringLiteral("controller"), m_lastControllerRoute));
-    if (!pendingGroup.isEmpty())
-        keys.insert(mappingChainKey(pendingGroup, pendingProfile));
-    QStringList ordered = keys.values();
-    ordered.sort();   // deterministic prepare order
-
-    QVector<PlannedChain> plans;
-    for (const QString& key : ordered) {
-        const int separator = key.indexOf(QChar(0x1f));
-        plans.append(planMappingChain(key.left(separator), key.mid(separator + 1)));
-    }
-
-    // 2. Is anything actually changing? A refresh that resolves to the same
-    //    effective state AND the same table content is a true no-op: it must not
-    //    destroy an active gesture, arm a gate or drop a candidate. The same
-    //    preset id with rewritten rows is NOT a no-op - the content fingerprint
-    //    is what separates the two. Everything a switch layer already planned is
-    //    compared by the complete state: owned/installed, effective source,
-    //    preset identity and table fingerprint, with no source special-cased, so
-    //    a transition between two inherited states (bridge -> materialized,
-    //    either -> builtin, builtin defaults rewritten) is the real switch it is.
-    //    A chain this layer has never planned was served by the resolver's
-    //    inherited view, so its first plan is compared by table CONTENT: merely
-    //    finding an owner for the table the route already serves is bookkeeping,
-    //    not a boundary, and must not cancel a buffered provider candidate that
-    //    has yet to be dispatched at all.
-    QVector<PlannedChain> switches;    // routes whose served table this refresh changes
-    QVector<PlannedChain> firstPlans;  // routes planned for the first time
-    QSet<QString> firstPlanKeys;
-    QSet<QString> switchKeys;
-    for (const PlannedChain& plan : plans) {
-        const QString key = mappingChainKey(plan.group, plan.profile);
-        const auto previousIt = m_mappingChains.constFind(key);
-        if (previousIt == m_mappingChains.cend()) {
-            firstPlans.append(plan);
-            firstPlanKeys.insert(key);
-            const QVector<BindingResolver::Binding> served =
-                m_runtime->resolver().inheritedTable(plan.group, plan.profile);
-            if (!BindingResolver::chainTablesEqual(served, plan.table)) {
-                switches.append(plan);
-                switchKeys.insert(key);
-            }
-            continue;
-        }
-        if (previousIt->owned != plan.install
-            || previousIt->source != plan.source
-            || previousIt->presetId != plan.presetId
-            || previousIt->fingerprint != plan.fingerprint) {
-            switches.append(plan);
-            switchKeys.insert(key);
-        }
-    }
-    if (switches.isEmpty() && firstPlans.isEmpty()) {
-        for (const PlannedChain& plan : plans) {
-            MappingChainState state;
-            state.group = plan.group;
-            state.profile = plan.profile;
-            state.source = plan.source;
-            state.owned = plan.install;
-            state.presetId = plan.presetId;
-            state.fingerprint = plan.fingerprint;
-            m_mappingChains.insert(mappingChainKey(plan.group, plan.profile), state);
-        }
-        // The served state did not change, but the game context may have: the
-        // export still gets the current snapshot.
-        publishMappingDiagnostics();
-        m_mappingSwitchRunning = false;
-        return;
-    }
-
-    // 3. Snapshot the boundary before anything is invalidated. Only meant
-    //    controls are gated: a control that is down in a chain whose table did
-    //    not change keeps its own gesture, and gates are keyed by logical route
-    //    so two pads holding the same button never block one another. A
-    //    buffered provider-candidate press belongs to the moment before the
-    //    switch either way: it is cancelled here and gated only when its
-    //    physical control is still down.
-    struct Gate {
-        QString group;
-        QString profile;
-        QString control;
-    };
-    QVector<Gate> gates;
-    for (const PlannedChain& plan : switches) {
-        const QStringList down = m_runtime->downControls(plan.group, plan.profile);
-        for (const QString& control : down) {
-            if (!control.isEmpty())
-                gates.append({plan.group, plan.profile, control});
-        }
-    }
-
-    // Does this refresh change the chain that serves one specific route? The
-    // scoped invalidation below is exactly "for every route where this is true".
-    const auto routeChanged = [&switches](const QString& group, const QString& profile) {
-        for (const PlannedChain& plan : switches) {
-            if (plan.group == group && plan.profile == profile)
-                return true;
-        }
-        return false;
-    };
-    const bool pendingRouteChanged = !pendingGroup.isEmpty()
-        && routeChanged(pendingGroup, pendingProfile);
-
-    // 4. Invalidate exactly the routes that are changing. The new table must
-    //    never be visible while gesture state resolved from the old one could
-    //    still complete - but a route whose table did NOT change keeps every
-    //    pattern it is in the middle of: the other pad, keyboard and mouse are
-    //    untouched. The global form of invalidation is reserved for
-    //    whole-runtime events (reload, shutdown, backend lifecycle resets).
-    //    Engine-owned transient state follows the same rule.
-    for (const PlannedChain& plan : switches)
-        m_runtime->invalidateGestureStateFor(plan.group, plan.profile);
-    // The mapping-derived navigation repeat is a press of one table still
-    // ticking: it ends only when THAT route changed, never because some other
-    // route did.
-    if (!m_repeatTrigger.isEmpty() && routeChanged(m_repeatRouteGroup, m_repeatRouteProfile))
-        stopNavRepeat();
-    // The legacy View/Back capability fallback belongs to one controller
-    // profile: only that profile's entry is stale.
-    for (const PlannedChain& plan : switches) {
-        if (plan.group == QLatin1String("controller"))
-            m_legacyViewFallbackHeld.remove(plan.profile);
-    }
-    // A buffered provider candidate is dropped only when its own logical route
-    // changed; on any other route it is still a valid press of a table that is
-    // still current.
-    if (pendingRouteChanged)
-        clearPendingCandidate();
-
-    // 5. Publish. Every chain changes together, inside this one turn. A route
-    //    planned for the first time is published too, even when its table did
-    //    not change: `owned` in the recorded state has to be backed by an
-    //    actually installed table, or a later raw write could leak into a route
-    //    the state claims this layer serves - while every already-tracked route
-    //    publishes only when it is a real switch.
-    for (const PlannedChain& plan : plans) {
-        const QString key = mappingChainKey(plan.group, plan.profile);
-        if (!firstPlanKeys.contains(key) && !switchKeys.contains(key))
-            continue;
-        if (plan.install) {
-            m_runtime->installPresetTable(plan.group, plan.profile, plan.presetId, plan.source,
-                                          plan.table);
-        } else {
-            m_runtime->uninstallPresetTable(plan.group, plan.profile);
-        }
-    }
-
-    // 6. Gate controls held across the boundary: their press ended with the
-    //    old table, so they stay inert until a real release arrives. A pending
-    //    candidate on an UNCHANGED route is not gated - it was never cancelled.
-    for (const Gate& gate : gates)
-        m_runtime->armReleaseGate(gate.group, gate.profile, gate.control);
-    if (pendingRouteChanged)
-        m_runtime->armReleaseGate(pendingGroup, pendingProfile, pendingControl);
-
-    // 7. Record what each chain now serves, and republish diagnostics.
-    for (const PlannedChain& plan : plans) {
-        MappingChainState state;
-        state.group = plan.group;
-        state.profile = plan.profile;
-        state.source = plan.source;
-        state.owned = plan.install;
-        state.presetId = plan.presetId;
-        state.fingerprint = plan.fingerprint;
-        m_mappingChains.insert(mappingChainKey(plan.group, plan.profile), state);
-    }
-    m_runtime->refreshPatternDiagnostics();
-    publishMappingDiagnostics();
-    m_mappingSwitchRunning = false;
-    emit mappingTablesChanged();
-}
-
-QString InputEngine::mappingEffectiveSource(const QString& deviceGroup,
-                                            const QString& deviceProfile) const
-{
-    const auto it = m_mappingChains.constFind(mappingChainKey(deviceGroup, deviceProfile));
-    return it == m_mappingChains.cend() ? QString() : it->source;
-}
-
-QString InputEngine::mappingInstalledPresetId(const QString& deviceGroup,
-                                              const QString& deviceProfile) const
-{
-    const auto it = m_mappingChains.constFind(mappingChainKey(deviceGroup, deviceProfile));
-    return it == m_mappingChains.cend() ? QString() : it->presetId;
-}
-
-QStringList InputEngine::mappingArmedReleaseGates() const
-{
-    return m_runtime->armedReleaseGates();
 }

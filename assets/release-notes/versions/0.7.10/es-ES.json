@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.10",
+  "locale": "es-ES",
+  "date": "2026-10-08",
+  "mode": "localized",
+  "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "Correcciones de errores",
+      "items": [
+        {
+          "id": "fixes-01",
+          "text": "Las capturas de pantalla ya no incluyen las notificaciones propias de GameHQ, como el aviso de que se guardó la captura anterior. Las notificaciones siguen apareciendo en tu pantalla."
+        },
+        {
+          "id": "fixes-02",
+          "text": "Modo Xbox de Windows (experiencia a pantalla completa) con Playnite: cuando Windows indica que la ventana activa es la aplicación Xbox en lugar de un juego iniciado desde Playnite, GameHQ sigue reconociendo el juego, así que las capturas y los clips funcionan. Úsalo junto con GameHQ Playnite Integration 0.4.13."
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "title": "Cambios y mejoras",
+      "items": [
+        {
+          "id": "changes-01",
+          "text": "Las aplicaciones de grabación y de streaming que capturan toda la pantalla tampoco muestran ya las notificaciones de GameHQ."
+        }
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "Limitaciones conocidas",
+      "items": [
+        {
+          "id": "limitations-01",
+          "text": "Las ventanas emergentes de otras aplicaciones, como las notificaciones de Windows, Steam o Discord, pueden seguir apareciendo en las capturas."
+        },
+        {
+          "id": "limitations-02",
+          "text": "La compatibilidad con el modo Xbox es nueva y todavía no se ha confirmado en un PC con el modo Xbox."
+        }
+      ]
+    }
+  ]
+}

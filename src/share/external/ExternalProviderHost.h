@@ -62,6 +62,7 @@ private:
         QLocalSocket* socket = nullptr;
         FrameDecoder decoder;
         QTimer* handshakeTimer = nullptr;
+        QString peer;   // the client process, for attributing it in the log
         ExternalProvider* provider = nullptr;
         int violations = 0;
         bool handshaken = false;

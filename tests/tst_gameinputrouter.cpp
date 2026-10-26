@@ -198,6 +198,68 @@ private slots:
         QVERIFY(!pressed.at(0).at(1).toString().isEmpty());
     }
 
+    void readingsObserveTheDeviceOnlyWhenItChanges()
+    {
+        ProviderIntegration integration;
+        auto api = std::make_unique<FakeGameInputApi>();
+        auto* raw = api.get();
+        GameInputRouter router(std::move(api));
+        router.setProviderIntegration(&integration);
+        QVERIFY(router.start());
+
+        raw->emitDevice(makeEvent(GameInputEventKind::DeviceAdded));
+        QTRY_COMPARE(router.deviceObservationCount(), 1);
+        for (int i = 0; i < 10; ++i) {
+            raw->emitReading(makeEvent(GameInputEventKind::Reading));
+            QTRY_COMPARE(router.shadowReadingCount(), i + 1);
+        }
+        QSignalSpy pressed(&router, &GameInputRouter::systemControlPressed);
+        raw->emitSystem(makeEvent(GameInputEventKind::SystemButtonPressed, ControlId::Guide));
+        QTRY_COMPARE(pressed.size(), 1);
+        QCOMPARE(router.deviceObservationCount(), 1);
+
+        // A changed descriptor (capability callback racing the reading) still
+        // reaches the registry.
+        auto changed = makeEvent(GameInputEventKind::Reading);
+        changed.device.supportedSystemButtons = 0x1;
+        raw->emitReading(changed);
+        QTRY_COMPARE(router.deviceObservationCount(), 2);
+        const QString logicalId = integration.registry().logicalIdFor(
+            ControllerProvider::GameInput, QStringLiteral("device-a"));
+        QVERIFY(!integration.registry().controller(logicalId)->capabilities()
+                     .testFlag(ControllerCapability::SystemShare));
+
+        // An attachment that left the registry behind our back is restored by
+        // the next reading, exactly as before.
+        integration.registry().removeProvider(ControllerProvider::GameInput,
+                                               QStringLiteral("device-a"));
+        raw->emitReading(changed);
+        QTRY_COMPARE(router.deviceObservationCount(), 3);
+        QCOMPARE(integration.registry().logicalIdFor(ControllerProvider::GameInput,
+                                                     QStringLiteral("device-a")),
+                 logicalId);
+    }
+
+    void switchingOffClearsTheFailedSession()
+    {
+        auto api = std::make_unique<FakeGameInputApi>();
+        auto* raw = api.get();
+        GameInputRouter router(std::move(api));
+        QVERIFY(router.start());
+        raw->emitDevice(makeEvent(GameInputEventKind::RecoveryRequired));
+        QTRY_VERIFY(router.failedForSession());
+        QVERIFY(!router.start());   // the same session stays on the fallback
+
+        router.setMode(GameInputRouter::SupportMode::Off);
+        QVERIFY(!router.failedForSession());
+        QCOMPARE(router.runtimeStatus(), QStringLiteral("Off"));
+        router.setMode(GameInputRouter::SupportMode::Auto);
+        QVERIFY(router.active());
+        raw->emitDevice(makeEvent(GameInputEventKind::DeviceAdded));
+        QTRY_VERIFY(!router.registry().logicalIdFor(ControllerProvider::GameInput,
+                                                    QStringLiteral("device-a")).isEmpty());
+    }
+
     void uncertainStateReleasesHeldControlsAndFallsBack()
     {
         auto api = std::make_unique<FakeGameInputApi>();

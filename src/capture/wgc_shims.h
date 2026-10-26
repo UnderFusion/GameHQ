@@ -62,6 +62,13 @@ struct IDirect3D11CaptureFrame;
 struct IDirect3D11CaptureFramePool;
 struct IDispatcherQueue;  // Windows.System.IDispatcherQueue — opaque, only returned by pointer
 
+// GCC ignores __declspec(uuid) and warns; the annotations document the IIDs
+// only - the code uses the explicit IID constants below, never __uuidof.
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wattributes"
+#endif
+
 // ============================================================================
 //  Direct3D bridging interfaces
 // ============================================================================
@@ -249,6 +256,10 @@ enum WgcAsyncStatus : INT32 {
     WgcAsyncStatus_Canceled  = 2,
     WgcAsyncStatus_Error     = 3,
 };
+
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic pop
+#endif
 
 // ============================================================================
 //  IID constants (C initializer form — explicit, not reliant on __uuidof under MinGW)

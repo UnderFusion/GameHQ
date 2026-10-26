@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import GameHQ
 import "../components"
+import "../helpers/UpdateUi.js" as UpdateUi
 
 SettingsPage {
     //% "About"
@@ -14,7 +15,7 @@ SettingsPage {
         eyebrow: qsTrId("gamehq.settings.about.application.eyebrow")
         title: Brand.name
         //% "Version %1"
-        status: qsTrId("gamehq.about.version").arg(app.version)
+        status: qsTrId("gamehq.about.version").arg(updates.installedVersion)
         description: {
             if (app.portableMode) {
                 //% "Portable profile"
@@ -117,6 +118,7 @@ SettingsPage {
             description: qsTrId("gamehq.update.check_automatically.description")
             SettingsToggle { configKey: "updates.check_automatically"; defaultValue: true }
         }
+        BetaUpdatesRow {}
         SettingsRow {
             //% "Check for updates"
             label: qsTrId("gamehq.update.check.label")
@@ -126,7 +128,7 @@ SettingsPage {
                     return qsTrId("gamehq.update.available_version_short").arg(updates.latestVersion)
                 }
                 //% "Installed: %1"
-                return qsTrId("gamehq.update.installed_version").arg(app.version)
+                return qsTrId("gamehq.update.installed_version").arg(updates.installedVersion)
             }
             AccentButton {
                 id: checkButton
@@ -138,16 +140,14 @@ SettingsPage {
                     //% "Check now"
                     return qsTrId("gamehq.update.check_now")
                 }
-                primary: !["UpdateAvailable", "Downloading", "ReadyToInstall", "PreparingForUpdate",
-                           "Quiescent", "Installing", "Failed"].includes(updates.stateName)
+                primary: !UpdateUi.hasRelease(updates.stateName)
                 quiet: !primary
                 enabled: updates.stateName !== "Checking" && updates.stateName !== "Downloading"
                 onClicked: updates.checkNow()
             }
         }
         SettingsRow {
-            visible: ["UpdateAvailable", "Downloading", "ReadyToInstall", "PreparingForUpdate",
-                      "Quiescent", "Installing", "Failed"].includes(updates.stateName)
+            visible: UpdateUi.hasRelease(updates.stateName)
             label: {
                 switch (updates.stateName) {
                 case "Downloading":
@@ -188,7 +188,7 @@ SettingsPage {
                 }
             }
             AccentButton {
-                visible: !["PreparingForUpdate", "Quiescent", "Installing"].includes(updates.stateName)
+                visible: !UpdateUi.installing(updates.stateName)
                 label: {
                     switch (updates.stateName) {
                     case "Downloading":

@@ -210,41 +210,78 @@ private slots:
         QVERIFY(secondThumb.endsWith(QStringLiteral("_2_clip.png")));
     }
 
-    void sweepRemovesOnlyAbandonedFiles()
+    static void writeAged(const QString& path, const QByteArray& data)
+    {
+        QFile file(path);
+        QVERIFY(file.open(QIODevice::WriteOnly));
+        file.write(data);
+        // setFileTime needs the handle, so age it before closing.
+        QVERIFY(file.setFileTime(QDateTime::currentDateTime().addSecs(-3600),
+                                 QFileDevice::FileModificationTime));
+    }
+
+    // A capture root can be Videos or Downloads, where a browser leaves its own
+    // .part files. Only a .part the journal shows GameHQ reserved may go.
+    void sweepRemovesOnlyAbandonedFilesGameHQOwns()
     {
         QTemporaryDir dir;
-        QVERIFY(dir.isValid());
+        QTemporaryDir data;
+        QVERIFY(dir.isValid() && data.isValid());
+        const QString journal = data.path() + QStringLiteral("/pending-captures.journal");
+        CapturePublisher::setOwnershipJournal(journal);
         QVERIFY(QDir(dir.path()).mkpath(QStringLiteral("Some Game/Screenshots")));
         const QString nested = dir.path() + QStringLiteral("/Some Game/Screenshots");
 
         const CapturePublisher::Reservation running = CapturePublisher::reserve(
             nested, QStringLiteral("yyyy-MM-dd_HH-mm-ss"), QStringLiteral(".png"));
         QVERIFY(running.isValid());
+        // Even an old file this process is still writing is never swept.
+        writeAged(running.pendingPath, "encoding");
 
-        // A leftover from a crash: same shape, but old.
+        // A leftover from a crashed GameHQ: recorded in the journal by the
+        // previous run, and old.
         const QString abandoned = nested + QStringLiteral("/2020-01-01_00-00-00.png")
             + CapturePublisher::kPendingSuffix;
+        writeAged(abandoned, "stale");
         {
-            QFile file(abandoned);
-            QVERIFY(file.open(QIODevice::WriteOnly));
-            file.write("stale");
-            // setFileTime needs the handle, so age it before closing.
-            QVERIFY(file.setFileTime(QDateTime::currentDateTime().addSecs(-3600),
-                                     QFileDevice::FileModificationTime));
+            QFile file(journal);
+            QVERIFY(file.open(QIODevice::Append | QIODevice::Text));
+            file.write(abandoned.toUtf8() + '\n');
         }
+
+        // Another program's download: same suffix, same age, never ours.
+        const QString foreign = nested + QStringLiteral("/movie.mkv")
+            + CapturePublisher::kPendingSuffix;
+        writeAged(foreign, "someone else's");
 
         // A real capture next to them must not be touched.
         const QString keeper = nested + QStringLiteral("/keep-me.png");
-        {
-            QFile file(keeper);
-            QVERIFY(file.open(QIODevice::WriteOnly));
-            file.write("image");
-        }
+        writeAged(keeper, "image");
 
         QCOMPARE(CapturePublisher::sweepStale(dir.path(), 600), 1);
         QVERIFY(!QFileInfo::exists(abandoned));
-        QVERIFY(QFileInfo::exists(running.pendingPath));   // too young to be abandoned
+        QVERIFY(QFileInfo::exists(running.pendingPath));
+        QVERIFY(QFileInfo::exists(foreign));
         QVERIFY(QFileInfo::exists(keeper));
+
+        // Publishing drops the entry, so nothing of it is left to sweep.
+        QVERIFY(CapturePublisher::publish(running));
+        QFile file(journal);
+        QVERIFY(file.open(QIODevice::ReadOnly));
+        QVERIFY(file.readAll().trimmed().isEmpty());
+        CapturePublisher::setOwnershipJournal({});
+    }
+
+    void sweepWithoutAJournalDeletesNothing()
+    {
+        QTemporaryDir dir;
+        QVERIFY(dir.isValid());
+        CapturePublisher::setOwnershipJournal({});
+        const QString stale = dir.path() + QStringLiteral("/2020-01-01_00-00-00.png")
+            + CapturePublisher::kPendingSuffix;
+        writeAged(stale, "stale");
+        QCOMPARE(CapturePublisher::sweepStale(dir.path(), 600), 0);
+        QVERIFY(QFileInfo::exists(stale));
     }
 };
 

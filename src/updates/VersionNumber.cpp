@@ -1,6 +1,7 @@
 #include "updates/VersionNumber.h"
 
 #include <QRegularExpression>
+#include <climits>
 #include <tuple>
 
 namespace
@@ -72,4 +73,41 @@ bool operator<=(const VersionNumber &a, const VersionNumber &b)
 bool operator>=(const VersionNumber &a, const VersionNumber &b)
 {
     return !(a < b);
+}
+
+ReleaseIdentity::ReleaseIdentity(VersionNumber version, int beta)
+    : m_version(version), m_beta(beta)
+{
+}
+
+std::optional<ReleaseIdentity> ReleaseIdentity::parse(const QString &text)
+{
+    static const QRegularExpression betaSuffix(QStringLiteral("-beta([1-9]\\d{0,3})$"));
+    const QRegularExpressionMatch match = betaSuffix.match(text);
+    const QString base = match.hasMatch() ? text.left(match.capturedStart()) : text;
+    const auto version = VersionNumber::parse(base);
+    if (!version.has_value())
+        return std::nullopt;
+    return ReleaseIdentity(*version, match.hasMatch() ? match.captured(1).toInt() : 0);
+}
+
+QString ReleaseIdentity::toString() const
+{
+    return m_beta > 0 ? QStringLiteral("%1-beta%2").arg(m_version.toString()).arg(m_beta)
+                      : m_version.toString();
+}
+
+bool operator==(const ReleaseIdentity &a, const ReleaseIdentity &b)
+{
+    return a.m_version == b.m_version && a.m_beta == b.m_beta;
+}
+
+bool operator<(const ReleaseIdentity &a, const ReleaseIdentity &b)
+{
+    if (a.m_version != b.m_version)
+        return a.m_version < b.m_version;
+    // Same version: a stable release (beta 0) is newer than any of its betas.
+    const int rankA = a.m_beta == 0 ? INT_MAX : a.m_beta;
+    const int rankB = b.m_beta == 0 ? INT_MAX : b.m_beta;
+    return rankA < rankB;
 }

@@ -2,11 +2,14 @@
 
 #include "integration/IntegrationProtocol.h"
 #include "integration/IntegrationService.h"
+#include "integration/LocalPeer.h"
 
 #include <QCoreApplication>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QLocalServer>
 #include <QLocalSocket>
+#include <QRegularExpression>
 #include <QtEndian>
 
 class IntegrationServiceTest : public QObject
@@ -17,8 +20,12 @@ private slots:
     void incompatibleHandshakeCloses();
     void lifecycleSyncAndDisconnectExpiry();
     void externalIdentityRequiresProcessOrSafeGamePath();
+    void unknownStartedProcessIdKeepsTheSession();
+    void xboxShellFallbackStaysNarrow();
     void overlappingPlayniteReconnectKeepsLiveState();
     void handlerDisconnectDuringBufferedFramesIsSafe();
+    void sessionsPerSourceAreCappedOldestFirst();
+    void pipeClientsAreIdentifiedByProcessPath();
 };
 
 namespace
@@ -180,6 +187,39 @@ void IntegrationServiceTest::lifecycleSyncAndDisconnectExpiry()
     QTRY_COMPARE_WITH_TIMEOUT(service.externalContext()->sessionCount(), 0, 1000);
 }
 
+// Playnite reports PID 0 when it cannot identify the started process; the
+// session must survive (and authorize nothing by PID), not reject the message.
+void IntegrationServiceTest::unknownStartedProcessIdKeepsTheSession()
+{
+    integration::ExternalGameContext context;
+    QString error;
+    QVERIFY2(context.upsert(QStringLiteral("GameHQ.Playnite"), {
+        { QStringLiteral("sessionId"), QStringLiteral("session-zero") },
+        { QStringLiteral("name"), QStringLiteral("Local Exe Game") },
+        { QStringLiteral("installDirectory"), QStringLiteral("C:/Games/LocalExe") },
+        { QStringLiteral("startedProcessId"), 0 }
+    }, QStringLiteral("started"), error), qPrintable(error));
+    QCOMPARE(context.sessionCount(), 1);
+    QVERIFY(context.launchedSessions().isEmpty());
+    auto noDescendant = [](quint32, quint32) { return false; };
+    QCOMPARE(context.matchForeground(0, QString(), false, noDescendant).confidence,
+             integration::MatchConfidence::None);
+    QCOMPARE(context.matchForeground(42, QStringLiteral("C:/Games/LocalExe/game.exe"),
+                                     true, noDescendant).confidence,
+             integration::MatchConfidence::InstallDirectory);
+
+    QVERIFY2(context.replaceSource(QStringLiteral("GameHQ.Playnite"), QJsonArray{
+        QJsonObject{ { QStringLiteral("sessionId"), QStringLiteral("s1") },
+                     { QStringLiteral("startedProcessId"), 0 } },
+        QJsonObject{ { QStringLiteral("sessionId"), QStringLiteral("s2") },
+                     { QStringLiteral("startedProcessId"), 77 } } }, error),
+             qPrintable(error));
+    QCOMPARE(context.sessionCount(), 2);
+    QVERIFY(!context.upsert(QStringLiteral("GameHQ.Playnite"), {
+        { QStringLiteral("sessionId"), QStringLiteral("bad") },
+        { QStringLiteral("startedProcessId"), -1 } }, QStringLiteral("started"), error));
+}
+
 void IntegrationServiceTest::externalIdentityRequiresProcessOrSafeGamePath()
 {
     integration::ExternalGameContext context;
@@ -223,6 +263,37 @@ void IntegrationServiceTest::externalIdentityRequiresProcessOrSafeGamePath()
     QCOMPARE(crossDrive.confidence, integration::MatchConfidence::None);
 }
 
+void IntegrationServiceTest::xboxShellFallbackStaysNarrow()
+{
+    // Only Xbox mode surfaces may hand the capture gate to a Playnite game.
+    QVERIFY(integration::isXboxShellSurface(QStringLiteral("XboxPcApp.exe"), {}));
+    QVERIFY(integration::isXboxShellSurface(QStringLiteral("GameBar.exe"), {}));
+    QVERIFY(integration::isXboxShellSurface(QStringLiteral("ApplicationFrameHost.exe"),
+                                            QStringLiteral("XBOX")));
+    QVERIFY(!integration::isXboxShellSurface(QStringLiteral("ApplicationFrameHost.exe"),
+                                             QStringLiteral("Calculator")));
+    QVERIFY(!integration::isXboxShellSurface(QStringLiteral("explorer.exe"), {}));
+    QVERIFY(!integration::isXboxShellSurface(QStringLiteral("brave.exe"),
+                                             QStringLiteral("Xbox")));
+
+    // Only started sessions with a launched process id can be verified.
+    integration::ExternalGameContext context;
+    QString error;
+    QVERIFY(context.upsert(QStringLiteral("GameHQ.Playnite"), {
+        { QStringLiteral("sessionId"), QStringLiteral("launched") },
+        { QStringLiteral("startedProcessId"), 55 }
+    }, QStringLiteral("started"), error));
+    QVERIFY(context.upsert(QStringLiteral("GameHQ.Playnite"), {
+        { QStringLiteral("sessionId"), QStringLiteral("no-pid") }
+    }, QStringLiteral("started"), error));
+    QVERIFY(context.upsert(QStringLiteral("GameHQ.Playnite"), {
+        { QStringLiteral("sessionId"), QStringLiteral("starting") },
+        { QStringLiteral("startedProcessId"), 77 }
+    }, QStringLiteral("starting"), error));
+    const QList<integration::ExternalGameSession> launched = context.launchedSessions();
+    QCOMPARE(launched.size(), 1);
+    QCOMPARE(launched.first().sessionId, QStringLiteral("launched"));
+}
 
 void IntegrationServiceTest::overlappingPlayniteReconnectKeepsLiveState()
 {
@@ -312,6 +383,102 @@ void IntegrationServiceTest::handlerDisconnectDuringBufferedFramesIsSafe()
     sendObject(fresh, hello(1, 1, QStringLiteral("GameHQ.Test")));
     QTRY_VERIFY_WITH_TIMEOUT(fresh.bytesAvailable() >= 4, 1000);
     QVERIFY(takeObject(fresh, reply));
+    QCOMPARE(reply.value(QStringLiteral("type")).toString(), QStringLiteral("hello.ack"));
+}
+
+void IntegrationServiceTest::sessionsPerSourceAreCappedOldestFirst()
+{
+    const QString playnite = QStringLiteral("GameHQ.Playnite");
+    const int cap = integration::ExternalGameContext::MaxSessionsPerSource;
+    integration::ExternalGameContext context;
+    QString error;
+    auto game = [](int index) {
+        return QJsonObject{ { QStringLiteral("sessionId"), QStringLiteral("s%1").arg(index) } };
+    };
+    QVERIFY2(context.upsert(QStringLiteral("Other"), game(0), QStringLiteral("started"), error),
+             qPrintable(error));
+    for (int i = 0; i < cap; ++i)
+        QVERIFY2(context.upsert(playnite, game(i), QStringLiteral("starting"), error),
+                 qPrintable(error));
+    QCOMPARE(context.sessionCount(), cap + 1);
+
+    // Updating a held session refreshes it instead of growing the source,
+    // and leaves s1 as its oldest.
+    QVERIFY(context.upsert(playnite, game(0), QStringLiteral("started"), error));
+    QCOMPARE(context.sessionCount(), cap + 1);
+
+    auto heldSessions = [&context, &playnite] {
+        QSet<QString> held;
+        for (const integration::ExternalGameSession &session : context.sessions()) {
+            if (session.sourceId == playnite)
+                held.insert(session.sessionId);
+        }
+        return held;
+    };
+    QVERIFY(context.upsert(playnite, game(cap), QStringLiteral("starting"), error));
+    QCOMPARE(context.sessionCount(), cap + 1);
+    QSet<QString> held = heldSessions();
+    QVERIFY(held.contains(QStringLiteral("s0")));
+    QVERIFY(!held.contains(QStringLiteral("s1")));
+
+    // A flood of new sessions never grows past the cap.
+    for (int i = cap + 1; i < cap * 4; ++i)
+        QVERIFY(context.upsert(playnite, game(i), QStringLiteral("starting"), error));
+    QCOMPARE(context.sessionCount(), cap + 1);
+    held = heldSessions();
+    QCOMPARE(held.size(), cap);
+    QVERIFY(!held.contains(QStringLiteral("s0")));
+    QVERIFY(!held.contains(QStringLiteral("s1")));
+    QVERIFY(held.contains(QStringLiteral("s%1").arg(cap * 3)));
+    QVERIFY(held.contains(QStringLiteral("s%1").arg(cap * 4 - 1)));
+    // Another source's entry is never evicted by Playnite's flood.
+    QCOMPARE(context.sessionCount() - held.size(), 1);
+}
+
+void IntegrationServiceTest::pipeClientsAreIdentifiedByProcessPath()
+{
+    QLocalServer server;
+    const QString name = testServerName() + QStringLiteral(".peer");
+    QVERIFY(server.listen(name));
+    QLocalSocket client;
+    client.connectToServer(name);
+    QVERIFY(client.waitForConnected(1000));
+    QTRY_VERIFY_WITH_TIMEOUT(server.hasPendingConnections(), 1000);
+    QLocalSocket *accepted = server.nextPendingConnection();
+    QVERIFY(accepted);
+    const integration::LocalPeer peer = integration::identifyLocalPeer(accepted);
+    QCOMPARE(peer.processId, quint32(QCoreApplication::applicationPid()));
+    QCOMPARE(peer.executablePath.toLower(), QCoreApplication::applicationFilePath().toLower());
+    QVERIFY(integration::describeLocalPeer(peer).contains(peer.executablePath));
+    QVERIFY(integration::identifyLocalPeer(nullptr).executablePath.isEmpty());
+
+    QVERIFY(IntegrationService::isExpectedPlayniteHost(
+        QStringLiteral("Apps/Playnite/Playnite.DesktopApp.exe")));
+    QVERIFY(IntegrationService::isExpectedPlayniteHost(
+        QStringLiteral("Apps/Playnite/playnite.fullscreenapp.EXE")));
+    QVERIFY(!IntegrationService::isExpectedPlayniteHost(QString()));
+    QVERIFY(!IntegrationService::isExpectedPlayniteHost(QStringLiteral("Tools/NotPlaynite.exe")));
+    QVERIFY(!IntegrationService::isExpectedPlayniteHost(
+        QStringLiteral("Apps/Playnite.Data/helper.exe")));
+
+    // A client claiming the Playnite name from another program is tagged in
+    // the log with its real executable, but not refused.
+    IntegrationService service(QStringLiteral("1.0"));
+    QString error;
+    const QString serviceName = testServerName();
+    QVERIFY2(service.start(error, serviceName), qPrintable(error));
+    QLocalSocket impostor;
+    impostor.connectToServer(serviceName);
+    QVERIFY(impostor.waitForConnected(1000));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+        QStringLiteral("claims to be Playnite but runs as .*%1")
+            .arg(QRegularExpression::escape(
+                QFileInfo(QCoreApplication::applicationFilePath()).fileName())),
+        QRegularExpression::CaseInsensitiveOption));
+    sendObject(impostor, hello(1, 1, QStringLiteral("GameHQ.Playnite")));
+    QJsonObject reply;
+    QTRY_VERIFY_WITH_TIMEOUT(impostor.bytesAvailable() >= 4, 1000);
+    QVERIFY(takeObject(impostor, reply));
     QCOMPARE(reply.value(QStringLiteral("type")).toString(), QStringLiteral("hello.ack"));
 }
 

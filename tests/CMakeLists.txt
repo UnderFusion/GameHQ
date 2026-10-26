@@ -39,6 +39,12 @@ gamehq_add_test(tst_recentui tst_recentui.cpp)
 target_link_libraries(tst_recentui PRIVATE Qt6::Qml)
 target_compile_definitions(tst_recentui PRIVATE GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
 
+# Main-window controller routing with the real delete confirmation and focus.
+gamehq_add_test(tst_maindeleteui tst_maindeleteui.cpp)
+target_link_libraries(tst_maindeleteui PRIVATE Qt6::Quick Qt6::Qml)
+target_compile_definitions(tst_maindeleteui PRIVATE GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
+set_tests_properties(tst_maindeleteui PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_QUICK_BACKEND=software")
+
 # Include the existing QML layout suites in the complete CTest run.
 find_program(GAMEHQ_QMLTESTRUNNER NAMES qmltestrunner HINTS "${CMAKE_PREFIX_PATH}/bin" REQUIRED)
 foreach(suite IN ITEMS interfacescaling overlaylayout)
@@ -92,6 +98,9 @@ gamehq_add_test(tst_providercontrolmap
     "${CMAKE_SOURCE_DIR}/src/input/WinMMDevice.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/XInputDevice.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_RawInputWindow.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_SourceArbitration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_ReportDecoding.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/SonyHidReader.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputRateMonitor.cpp"
@@ -210,6 +219,9 @@ gamehq_add_test(tst_gameinputrouter
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -273,6 +285,9 @@ gamehq_add_test(tst_controlleracceptance
     "${CMAKE_SOURCE_DIR}/src/input/CapabilityEventRouter.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/PhysicalControllerRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -367,6 +382,9 @@ gamehq_add_test(tst_rawinputflood
     # the header is listed here explicitly.
     "${CMAKE_SOURCE_DIR}/src/input/Gamepad.h"
     "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_RawInputWindow.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_SourceArbitration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_ReportDecoding.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/SonyHidReader.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputRateMonitor.cpp"
@@ -397,11 +415,14 @@ gamehq_add_test(tst_inputengineshutdown
     tst_inputengineshutdown.cpp
     "${CMAKE_SOURCE_DIR}/src/input/Gamepad.h")
 foreach(unit IN ITEMS
-    InputEngine MouseHookDevice BindingRuntime BindingEditorModel BindingResolver
+    InputEngine InputEngine_Arbitration InputEngine_HidHide InputEngine_Mapping
+    MouseHookDevice BindingRuntime BindingEditorModel BindingResolver
+    BindingEditorModel_Persistence BindingEditorModel_AssignmentEditor
     MappingPresetMaterializer MappingAssignmentResolver MappingPresetModel
     BindingPattern BindingRelation ContextOverrideCatalog InputPatternRecognizer
     ActionCatalog ControlId ControllerIdentity GestureTiming HotkeyManager
-    DualSenseDevice SonyHidReader XInputDevice WinMMDevice RawInputApi HidCloakMonitor
+    DualSenseDevice DualSenseDevice_RawInputWindow DualSenseDevice_SourceArbitration
+    DualSenseDevice_ReportDecoding SonyHidReader XInputDevice WinMMDevice RawInputApi HidCloakMonitor
     SelectiveRawHidFallback RawHidBindingCatalog ProviderIntegration
     PhysicalControllerRegistry CapabilityEventRouter ExtraButtonCatalog
     InputDiagnostics InputRateMonitor PerfTrace EventLoopStallMonitor
@@ -420,6 +441,9 @@ target_sources(tst_inputengineshutdown PRIVATE
     "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
     "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -450,7 +474,7 @@ gamehq_add_test(tst_gamepins
 gamehq_add_test(tst_portableprofileimporter
     tst_portableprofileimporter.cpp
     "${CMAKE_SOURCE_DIR}/src/config/PortableProfileImporter.cpp")
-target_link_libraries(tst_portableprofileimporter PRIVATE Qt6::Sql)
+target_link_libraries(tst_portableprofileimporter PRIVATE Qt6::Sql gamehq_release_trust)
 
 gamehq_add_test(tst_gamerowrepair
     tst_gamerowrepair.cpp
@@ -517,6 +541,7 @@ gamehq_add_test(tst_applicationmutex
 gamehq_add_test(tst_integrationprotocol
     tst_integrationprotocol.cpp
     "${CMAKE_SOURCE_DIR}/src/integration/IntegrationProtocol.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.h")
 target_link_libraries(tst_integrationprotocol PRIVATE Qt6::Network)
@@ -524,6 +549,7 @@ target_link_libraries(tst_integrationprotocol PRIVATE Qt6::Network)
 gamehq_add_test(tst_integrationservice
     tst_integrationservice.cpp
     "${CMAKE_SOURCE_DIR}/src/integration/IntegrationProtocol.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.h"
     "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp"
@@ -535,6 +561,7 @@ target_link_libraries(tst_integrationservice PRIVATE Qt6::Network)
 add_executable(integration_server_fixture
     integration_server_fixture.cpp
     "${CMAKE_SOURCE_DIR}/src/integration/IntegrationProtocol.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.h"
     "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp"
@@ -576,6 +603,9 @@ gamehq_add_test(tst_captureiconrefresh
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -597,6 +627,9 @@ gamehq_add_test(tst_capturelibrarydeletion
     "${CMAKE_SOURCE_DIR}/src/storage/ThumbnailService.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -621,6 +654,9 @@ gamehq_add_test(tst_capturecommitoutcome
     "${CMAKE_SOURCE_DIR}/src/storage/ThumbnailService.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -643,6 +679,9 @@ gamehq_add_test(tst_capturefilesync
     "${CMAKE_SOURCE_DIR}/src/storage/ThumbnailService.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -659,6 +698,9 @@ gamehq_add_test(tst_capturedatabaserepair
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -673,6 +715,8 @@ gamehq_add_test(tst_bindingeditor
     "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputPatternRecognizer.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingEditorModel.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingEditorModel_Persistence.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingEditorModel_AssignmentEditor.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
@@ -686,6 +730,9 @@ gamehq_add_test(tst_bindingeditor
     "${CMAKE_SOURCE_DIR}/src/input/RawHidBindingCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/SelectiveRawHidFallback.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -719,6 +766,9 @@ gamehq_add_test(tst_actioncatalog
     "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -741,6 +791,9 @@ gamehq_add_test(tst_bindingmigration
     "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -764,6 +817,9 @@ gamehq_add_test(tst_mappingpresetstorage
     "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -790,6 +846,9 @@ gamehq_add_test(tst_mappingpresetmodel
     "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -817,6 +876,9 @@ gamehq_add_test(tst_mappingpresetsection
     "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -849,6 +911,9 @@ gamehq_add_test(tst_presetmaterializer
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/MappingPresetMaterializer.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -874,6 +939,9 @@ gamehq_add_test(tst_mappingassignmentresolver
     "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_MappingPresets.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
@@ -898,6 +966,21 @@ gamehq_add_test(tst_logrotation
     tst_logrotation.cpp
     "${CMAKE_SOURCE_DIR}/src/diagnostics/Logger.cpp")
 
+# Crash-dump naming and retention (pure helpers; nothing crashes here).
+# Child process that installs CrashDump and then really crashes.
+add_executable(crashdump_fixture crashdump_fixture.cpp
+    "${CMAKE_SOURCE_DIR}/src/diagnostics/CrashDump.cpp")
+target_include_directories(crashdump_fixture PRIVATE "${CMAKE_SOURCE_DIR}/src")
+target_link_libraries(crashdump_fixture PRIVATE Qt6::Core)
+set_target_properties(crashdump_fixture PROPERTIES WIN32_EXECUTABLE FALSE)
+
+gamehq_add_test(tst_crashdump
+    tst_crashdump.cpp
+    "${CMAKE_SOURCE_DIR}/src/diagnostics/CrashDump.cpp")
+target_compile_definitions(tst_crashdump PRIVATE
+    CRASHDUMP_FIXTURE="$<TARGET_FILE:crashdump_fixture>")
+add_dependencies(tst_crashdump crashdump_fixture)
+
 add_executable(process_identity_fixture process_identity_fixture.cpp)
 target_link_options(process_identity_fixture PRIVATE -static -municode)
 set_target_properties(process_identity_fixture PROPERTIES WIN32_EXECUTABLE FALSE)
@@ -919,16 +1002,30 @@ gamehq_add_test(tst_capturepublisher
     "${CMAKE_SOURCE_DIR}/src/capture/CapturePublisher.cpp")
 
 # Recorder restore/trim and export-task lifetime with file fixtures, plus
-# partial-segment encoding with a synthetic D3D texture (no capture device).
+# partial-segment encoding/remux with synthetic video and audio, plus bounded
+# desktop and game-audio WASAPI initialization checks (no window or playback).
 gamehq_add_test(tst_segmentrecorder
     tst_segmentrecorder.cpp
+    "${CMAKE_SOURCE_DIR}/src/capture/AudioCapture.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/AudioSourcePolicy.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentRecorder.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentLease.cpp")
 target_link_libraries(tst_segmentrecorder PRIVATE
-    d3d11 dxguid ole32 mfplat mfreadwrite mfuuid)
+    Qt6::Gui d3d11 dxguid ole32 oleaut32 mfplat mfreadwrite mfuuid uuid ksuser mmdevapi)
+# Separate tone-playing process for the opt-in game-audio test: process
+# loopback must capture it on any output device and nothing else.
+add_executable(audio_tone_fixture audio_tone_fixture.cpp)
+target_link_options(audio_tone_fixture PRIVATE -static -municode)
+target_link_libraries(audio_tone_fixture PRIVATE ole32 uuid ksuser)
+set_target_properties(audio_tone_fixture PROPERTIES WIN32_EXECUTABLE FALSE)
+target_compile_definitions(tst_segmentrecorder PRIVATE
+    AUDIO_TONE_FIXTURE="$<TARGET_FILE:audio_tone_fixture>")
+add_dependencies(tst_segmentrecorder audio_tone_fixture)
 
 gamehq_add_test(tst_framepumpservice
     tst_framepumpservice.cpp
+    "${CMAKE_SOURCE_DIR}/src/capture/AudioSourcePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayBufferState.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayBufferState.h")
 
@@ -1017,6 +1114,7 @@ gamehq_add_test(tst_shareexternalprovider
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderProtocol.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProvider.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderHost.cpp")
 target_link_libraries(tst_shareexternalprovider PRIVATE Qt6::Network advapi32)
 
@@ -1033,6 +1131,7 @@ gamehq_add_test(tst_shareexternalconformance
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderProtocol.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProvider.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderHost.cpp")
 target_link_libraries(tst_shareexternalconformance PRIVATE Qt6::Network advapi32)
 target_compile_definitions(tst_shareexternalconformance PRIVATE
@@ -1121,7 +1220,7 @@ gamehq_add_test(tst_updateinstaller
     "${CMAKE_SOURCE_DIR}/src/updates/UpdateDownloader.cpp"
     "${CMAKE_SOURCE_DIR}/src/updater/UpdaterTransaction.cpp"
     "${CMAKE_SOURCE_DIR}/src/core/UpdaterHandshake.cpp")
-target_link_libraries(tst_updateinstaller PRIVATE Qt6::Network gamehq_test_release_signer)
+target_link_libraries(tst_updateinstaller PRIVATE Qt6::Network gamehq_test_release_signer shell32 ole32)
 
 gamehq_add_test(tst_updatertransaction
     tst_updatertransaction.cpp
@@ -1146,7 +1245,7 @@ target_compile_definitions(tst_updatertransaction PRIVATE
     GAMEHQ_UPDATER_VERSION="${GAMEHQ_VERSION_FULL}")
 add_dependencies(tst_updatertransaction GameHQUpdater updater_test_trust_fixture
                  updater_health_fixture)
-target_link_libraries(tst_updatertransaction PRIVATE miniz bcrypt Qt6::Sql gamehq_test_release_signer)
+target_link_libraries(tst_updatertransaction PRIVATE miniz bcrypt shell32 ole32 Qt6::Sql gamehq_test_release_signer)
 
 # The end-to-end updater tests drive real child processes through swap,
 # rollback and recovery, so they need more than the default bound - especially
@@ -1379,6 +1478,8 @@ set_tests_properties(tst_i18nlocalelifecycle PROPERTIES TIMEOUT 180)
 gamehq_add_test(tst_captureacknowledgement
     tst_captureacknowledgement.cpp
     "${CMAKE_SOURCE_DIR}/src/capture/FramePumpService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/FramePumpPipeline.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/ReplaySaveCoordinator.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ScreenshotService.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureRequest.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.cpp"
@@ -1388,6 +1489,7 @@ gamehq_add_test(tst_captureacknowledgement
     "${CMAKE_SOURCE_DIR}/src/capture/hdr/GpuToneMapper.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/hdr/HdrToneMapMath.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/AudioCapture.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/AudioSourcePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentRecorder.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentLease.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
@@ -1497,7 +1599,27 @@ gamehq_add_test(tst_notificationcenter tst_notificationcenter.cpp
     "${CMAKE_SOURCE_DIR}/src/notify/ToastModel.cpp")
 target_link_libraries(tst_notificationcenter PRIVATE Qt6::Quick user32)
 target_compile_definitions(tst_notificationcenter PRIVATE
-    GAMEHQ_APP_SOURCE="${CMAKE_SOURCE_DIR}/src/app/App.cpp")
+    GAMEHQ_APP_SOURCE="${CMAKE_SOURCE_DIR}/src/app/App_CaptureWiring.cpp")
+
+# Toast capture exclusion: the real NotificationCenter drives a solid-colour
+# stub ToastWindow and the test judges screen-DC BitBlt pixels. Never activates.
+gamehq_add_test(tst_toastcaptureexclusion tst_toastcaptureexclusion.cpp
+    "${CMAKE_SOURCE_DIR}/src/notify/NotificationCenter.cpp"
+    "${CMAKE_SOURCE_DIR}/src/notify/ToastModel.cpp")
+target_link_libraries(tst_toastcaptureexclusion PRIVATE Qt6::Quick Qt6::Qml user32 gdi32)
+file(GENERATE
+    OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/toast_capture_module/qmldir"
+    CONTENT "module GameHQ
+ToastWindow 1.0 ToastWindow.qml
+")
+qt_add_resources(tst_toastcaptureexclusion "toast_capture_module"
+    PREFIX "/qt/qml/GameHQ"
+    BASE "${CMAKE_CURRENT_BINARY_DIR}/toast_capture_module"
+    FILES "${CMAKE_CURRENT_BINARY_DIR}/toast_capture_module/qmldir")
+qt_add_resources(tst_toastcaptureexclusion "toast_capture_qml"
+    PREFIX "/qt/qml/GameHQ"
+    BASE "${CMAKE_SOURCE_DIR}/tests/fixtures/toast-capture"
+    FILES "${CMAKE_SOURCE_DIR}/tests/fixtures/toast-capture/ToastWindow.qml")
 
 # cpo-o05: native overlay acceptance. The overlay window, manager and presenter
 # are the shipped sources (OverlayManager, OverlayPresenter, OverlayLifetimePolicy,
@@ -1518,6 +1640,10 @@ gamehq_add_test(tst_overlaynative
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayFocusTrace.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayLifetimePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayManager.cpp"
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayManager_Close.cpp"
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayManager_ExternalApp.cpp"
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayManager_GameWindow.cpp"
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayManager_Probe.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayPresenter.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoff.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoffRunner.cpp"
@@ -1571,6 +1697,7 @@ qt_add_resources(tst_overlaynative "overlay_qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/MediaStage.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/PlayerControls.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlayPreview.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/DialogShell.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/ConfirmDialog.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlayFooter.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlayActionMenu.qml"
@@ -1659,6 +1786,13 @@ gamehq_add_test(tst_tdruntime
     tst_tdruntime.cpp
     "${CMAKE_SOURCE_DIR}/src/telegram/TdRuntime.cpp")
 add_dependencies(tst_tdruntime fake_tdjson_ok fake_tdjson_oldver fake_tdjson_partial)
+
+# TDLib receive-thread ownership: a late td_receive must not outlive stop()
+# unsafely (aud-b9).
+gamehq_add_test(tst_tdjsontransport
+    tst_tdjsontransport.cpp
+    "${CMAKE_SOURCE_DIR}/src/telegram/TdTransport.h"
+    "${CMAKE_SOURCE_DIR}/src/telegram/TdJsonTransport.cpp")
 
 # Telegram Integrated auth/session lifecycle (t23) against a scripted TDLib.
 gamehq_add_test(tst_telegramaccount

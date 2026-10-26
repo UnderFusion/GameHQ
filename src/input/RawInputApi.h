@@ -89,6 +89,9 @@ public:
     // prune cached classifications for handles Windows no longer knows).
     virtual QList<EnumeratedDevice> enumerateDevices() = 0;
 
+    // Both PnP queries below are called from a worker thread (never two at
+    // once) while the GUI thread keeps using the rest of this interface, so
+    // an implementation must not share mutable state between them and it.
     virtual CloakScan scanHiddenPads(const QSet<QString>& visibleRawPathsLower) = 0;
 
     // Physical Sony pad HID interfaces present in Windows PnP but absent from

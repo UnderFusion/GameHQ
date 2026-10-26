@@ -258,6 +258,12 @@ private:
     ModernInput::ControllerProvider providerFor(const Gamepad* pad) const;
     void observeLegacyBackend(Gamepad* pad, const ControlId::DeviceProfile& profile);
     void removeLegacyBackend(Gamepad* pad, const QString& providerDeviceId = {});
+    // Forget weak logical controllers that disconnected and can never be
+    // matched again (each replug of such a pad mints a new id), together with
+    // the per-route state this engine kept for them. Bounded by design: the
+    // pinned profile, the live route, a buffered candidate's route and any
+    // route still holding a control are always kept.
+    void pruneStaleControllers();
     QString canonicalProfile(Gamepad* pad, const QString& providerDeviceId) const;
     void configureLogicalProfile(const QString& logicalId,
                                  const QStringList& migrationAliases = {});
@@ -367,6 +373,16 @@ private:
     void startNavRepeat(const QString& triggerCode, int direction,
                         std::function<void(int)> emitter);
     void stopNavRepeat();
+    // Ends the repeat when `control` is any part of the repeating trigger.
+    void stopNavRepeatOnRelease(const QString& control);
+    // Keyboard trigger each physical key pressed, so its release (and a
+    // modifier released first) ends exactly that binding.
+    struct HeldKeyTrigger
+    {
+        QString trigger;
+        int modifiers = 0;
+    };
+    QHash<int, HeldKeyTrigger> m_heldKeyTriggers;
 
     ConfigManager* m_config;
     CaptureDatabase* m_db;
@@ -497,7 +513,8 @@ private:
     void* m_fixProcess = nullptr;        // HANDLE of the elevated helper (or null)
 
     QTimer* m_repeatTick = nullptr;      // accelerating repeat timer
-    QString m_repeatTrigger;             // canonical control currently held
+    QString m_repeatTrigger;             // trigger code currently repeating
+    QStringList m_repeatControls;        // its controls (both parts of a chord)
     // The mapping route the running repeat started from (device group +
     // canonical logical profile). A cpo-p05 switch ends a repeat whose own
     // table was replaced and leaves a repeat belonging to any other route

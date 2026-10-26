@@ -28,6 +28,33 @@ private:
     }
 
 private slots:
+    // Runs first: buffering only applies before any install().
+    void messagesBeforeInstallReachTheLogFile()
+    {
+        QTemporaryDir dir;
+        QVERIFY(dir.isValid());
+        Logger::beginBuffering();
+        qWarning() << "logged before the log directory was known";
+
+        const QString logs = dir.filePath(QStringLiteral("logs"));
+        Logger::install(logs);
+        QVERIFY(Logger::writingToFile());
+        qInfo() << "logged after install";
+
+        QFile file(Logger::filePath(logs));
+        QVERIFY(file.open(QIODevice::ReadOnly));
+        const QByteArray contents = file.readAll();
+        file.close();
+        const qsizetype early = contents.indexOf("logged before the log directory was known");
+        QVERIFY(early >= 0);
+        QVERIFY(contents.indexOf("logged after install") > early);
+
+        // Release the file so the temporary directory can be removed.
+        const QString blocked = dir.filePath(QStringLiteral("not-a-directory"));
+        QVERIFY(write(blocked, 4));
+        Logger::install(blocked);
+    }
+
     void aLogUnderTheLimitIsLeftAlone()
     {
         QTemporaryDir dir;

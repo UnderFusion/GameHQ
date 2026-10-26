@@ -17,10 +17,6 @@ public:
     explicit HotkeyManager(QObject* parent = nullptr);
     ~HotkeyManager() override;
 
-    bool registerOverlayToggle();   // Ctrl+Shift+G -> action "global.toggle_overlay"
-    bool registerScreenshot();      // Ctrl+Shift+S -> action "global.screenshot"
-    bool registerSaveReplay();      // Ctrl+Shift+E -> action "global.save_replay"
-
     // Result of parseChord(): a validated modifier+key pair, or invalid with
     // a human-readable reason (shown by a future binding editor).
     struct ParsedChord
@@ -72,8 +68,6 @@ private:
         QElapsedTimer lastFire;
     };
 
-    bool registerDefault(const QString& actionId, quint32 modifiers, quint32 vk,
-                         const QString& chordLabel, const QString& description);
     void dispatch(const QString& actionId);
 
     QHash<QString, Binding> m_bindings;   // keyed by action id

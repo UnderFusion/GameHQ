@@ -26,6 +26,7 @@ void SettingsApplyPolicyTest::restartKeysAreExplicit()
         ConfigKeys::ReplaySegmentSeconds,
         ConfigKeys::ReplayAuto,
         ConfigKeys::AudioEnabled,
+        ConfigKeys::AudioSource,
     };
     for (const QString& key : keys)
         QVERIFY2(SettingsApplyPolicy::requiresReplayBufferRestart(key), qPrintable(key));

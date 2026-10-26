@@ -1,6 +1,7 @@
 #include "overlay/ForegroundAcquirer.h"
 #include "overlay/ForegroundApi.h"
 
+#include <QHash>
 #include <QSignalSpy>
 #include <QtTest>
 
@@ -14,8 +15,16 @@ public:
     void* current = nullptr;
     int succeedOnAttempt = 1;
     int attempts = 0;
+    void* hung = nullptr;            // window reported as not responding
+    int hangAfterAttempts = -1;      // `hung` starts hanging after N attempts
+    QHash<void*, unsigned long> pids;
 
     void* foregroundWindow() override { return current; }
+    bool isHung(void* window) override
+    {
+        return window && window == hung && attempts >= hangAfterAttempts;
+    }
+    unsigned long windowProcessId(void* window) override { return pids.value(window, 0); }
     bool forceForeground(void* target) override
     {
         ++attempts;
@@ -119,6 +128,49 @@ private slots:
         acquirer.acquire(hwnd(0x22), QStringLiteral("overlay show"));
         QCOMPARE(api->current, hwnd(0x22));
         QCOMPARE(spy.count(), 1);
+    }
+    void hungTargetIsNeverTouched()
+    {
+        auto* api = new FakeForegroundApi;
+        api->hung = hwnd(0x30);
+        api->hangAfterAttempts = 0;
+        ForegroundAcquirer acquirer(api);
+        QSignalSpy spy(&acquirer, &ForegroundAcquirer::finished);
+
+        acquirer.acquire(hwnd(0x30), QStringLiteral("overlay hide"));
+        QCOMPARE(spy.count(), 1);
+        QCOMPARE(spy.first().at(2).toBool(), false);
+        QCOMPARE(spy.first().at(3).toInt(), 0);
+        QCOMPARE(api->attempts, 0);
+        QVERIFY(!acquirer.lastAcquired());
+    }
+
+    void targetThatHangsMidRetryStopsRetrying()
+    {
+        auto* api = new FakeForegroundApi;
+        api->succeedOnAttempt = 0;
+        api->hung = hwnd(0x31);
+        api->hangAfterAttempts = 1;   // freezes after the first denial
+        ForegroundAcquirer acquirer(api);
+        QSignalSpy spy(&acquirer, &ForegroundAcquirer::finished);
+
+        acquirer.acquire(hwnd(0x31), QStringLiteral("overlay hide"));
+        QTRY_COMPARE_WITH_TIMEOUT(spy.count(), 1, 2000);
+        QCOMPARE(api->attempts, 1);
+        QCOMPARE(spy.first().at(2).toBool(), false);
+        QTest::qWait(300);
+        QCOMPARE(api->attempts, 1);
+    }
+
+    void rememberedWindowMustKeepItsProcess()
+    {
+        FakeForegroundApi api;
+        api.pids.insert(hwnd(0x40), 1234);
+        QVERIFY(isSameWindow(api, hwnd(0x40), 1234));
+        QVERIFY(!isSameWindow(api, hwnd(0x40), 999));    // HWND recycled
+        QVERIFY(!isSameWindow(api, hwnd(0x41), 1234));   // window gone
+        QVERIFY(!isSameWindow(api, hwnd(0x40), 0));      // pid never known
+        QVERIFY(!isSameWindow(api, nullptr, 1234));
     }
 };
 

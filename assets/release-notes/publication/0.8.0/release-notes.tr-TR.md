@@ -1,0 +1,72 @@
+# GameHQ 0.8.0 (2026-10-26)
+
+## Özel teşekkür
+
+- GameHQ'yu test ettiği, değerli geri bildirimler paylaştığı ve harika bir Playnite entegrasyonu geliştirdiği için [Console Overlay for Playnite](https://github.com/galcn10/ConsoleOverlay) yaratıcısı [@galcn10](https://github.com/galcn10)'a çok teşekkürler. Desteğiniz GameHQ 0.8.0'ın daha iyi olmasına yardımcı oldu!
+
+## Öne çıkanlar
+
+- Klipler oyunun kendi sesini kaydedebilir. Yeni Oyun sesi kaynağıyla GameHQ, oyunun sesi hangi cihazdan çıkıyorsa (kulaklık, Bluetooth, HDMI veya hoparlör) oyunu o cihazda kaydeder ve Discord veya Spotify gibi diğer uygulamaları dışarıda bırakır.
+- Ses kaydı sorunları artık algılanıp bildiriliyor. Seçilen ses kaynağı kaydedilemiyorsa anında tekrar arabelleği, klipleri fark ettirmeden sessiz kaydetmek yerine durur ve nedenini ve bunun yerine hangi kaynağı seçmeniz gerektiğini söyler. GameHQ ses kaynağını asla kendiliğinden değiştirmez.
+- Ses ve görüntü senkron kalır. Yükleme ekranı, duraklatma veya uzun bir takılmanın ardından kaydedilen klipler doğru zamanlamayı korur ve bir oyun çözünürlüğü değiştirdiğinde anında tekrar arabelleği kendiliğinden yeniden başlar.
+- HDR ekran görüntüleri artık takılıp kalmıyor. HDR'de duraklatılmış bir oyunun veya sabit bir menünün ekran görüntüsü hemen kaydedilir. Hiç kare gelmezse deneme birkaç saniye sonra düzgün şekilde başarısız olur ve sonraki basış çalışır.
+- Kumandayla daha güvenli silme. Silme onayında Cross artık vurgulanan düğmeye basar, Circle ise iptal eder. Önceden İptal vurgulanmışken bile Cross dosyayı silebiliyordu.
+- Silme işlemi orijinallerinizi korur. GameHQ'nun oluşturduğu bir çekimi sildiğinizde artık Geri Dönüşüm Kutusu'na taşınır, böylece geri yükleyebilirsiniz. İzlenen klasörlerdeki dosyalar asla silinmez.
+
+## Yenilikler
+
+- Ayarlar › Anında tekrar › Ses kaynağı bölümünde Oyun sesi, Masaüstü sesi ve Kapalı seçenekleri bulunur. Windows 11'de varsayılan seçenek Oyun sesidir. Masaüstü sesi, diğer uygulamalar dahil varsayılan Windows çıkışındaki her şeyi kaydeder ve eski Windows sürümlerinde varsayılandır.
+- Oyun sesi, Windows'un kendi uygulama başına ses yakalama özelliğini kullanır ve oyun işlemine asla dokunmaz. Önceki bir sürümde sistem sesini bilerek kapattıysanız kapalı kalır.
+- İsteğe bağlı beta güncellemeleri: Ayarlar › Genel bölümündeki ve Hakkında'daki yeni Beta sürümlerini dahil et anahtarı, güncelleyicinin beta sürümleri sunmasına izin verir. Varsayılan olarak kapalıdır; böylece kararlı kurulumlar yalnızca kararlı güncellemeler alır.
+- GameHQ çöktüğünde, sorunun teşhisine yardımcı olmak için günlükler klasörüne küçük bir çökme dökümü kaydetmeye çalışır. Hiçbir şey karşıya yüklenmez. Windows'un anında sonlandırdığı çökmeler gibi bazı çökmeler GameHQ'yu yine de döküm oluşturmadan kapatabilir.
+- Günlük, kaydedilen ekran görüntüleri ve başlatma hataları hakkında daha fazla ayrıntı kaydeder; böylece bir sorun bildirimini anlamak için tek bir günlük dosyası daha sık yeterli olur.
+
+## Düzeltmeler ve iyileştirmeler
+
+- Masaüstü sesini varsayılan olarak kapalı tutan eski bir dahili ayar nedeniyle klipler artık sessiz kaydedilmiyor.
+- Herhangi bir Windows oynatma biçimindeki ses, ses parçası kaybolmak yerine doğru şekilde dönüştürülür.
+- Sessiz anlar sessizlik olarak kaydedilir; böylece sessiz bir bölümden sonraki ses görüntüyle hizalı kalır.
+- Bir oyun yeniden başladığında veya oyun değiştirdiğinizde oyun sesi kaydı daha güvenilir şekilde yeniden başlar.
+- Anında tekrar arabelleğinin kaydedilemeyen veya geri okunamayan bölümleri dışarıda bırakılır; böylece kaydedilen bir klibi bozamazlar.
+- Ekran görüntüsünün kaydedildiğini bildiren uyarı gibi GameHQ'nun kendi bildirimleri artık ekran görüntülerinizde veya tüm ekran kayıtlarında ve yayınlarında görünmez.
+- Aynı dosya adına sahip başka bir görüntüyle değiştirilen ekran görüntüsü, sonraki kitaplık taramasında yeni bir küçük resim alır.
+- Çekim klasörleri arka planda taranır; böylece GameHQ büyük koleksiyonlarda da hızlı yanıt vermeye devam eder.
+- Tarayıcılar, düzenleyiciler ve oyun olmayan diğer pencereler artık kitaplığınızda oyun olarak görünmez.
+- Toplu silme sırasında onay açıkken seçim sabit kalır; böylece arka plandaki kumanda işlemleri hangi dosyaların silineceğini değiştiremez.
+- Oyun içi arayüzün silme iletişim kutusu, açık olduğu sürece kumanda girişini alır ve oyun içi arayüz gizlendiğinde kapanır.
+- Oyun içi arayüz, yanıt vermeyi durduran pencereleri beklemek yerine atlar.
+- GameHQ'ya geri döndükten sonra fareyle kaydırdığınızda Ayarlar artık en üste geri atlamaz.
+- Kumanda eşleme düzenleyicisinde Yerleşik varsayılanlar seçeneğini seçmek veya bir ön ayarı kaldırmak artık ön ayar seçimini dondurmaz.
+
+## Kumandalar ve Playnite
+
+- Kumanda kısayolları, Playnite'tan başlatılan yerel bir oyun gibi Steam dışında başlatılan oyunlarda da çalışmaya devam eder. Oyun odaktayken Windows bağlı bir DualSense'i GameHQ'ya iletmeyi bırakırsa GameHQ kumandayı doğrudan ve salt okunur olarak okur; Windows kumandayı yeniden iletmeye başladığında normal girişe geri döner.
+- Kısayollar ve basılı tutulan düğme tekrarları her zaman aynı basışın bırakılmasıyla sona erer; buna GameInput üzerinden bildirilen bırakmalar ve bir düğme basılıyken çıkarılan kumandalar da dahildir.
+- Kalıcı olarak bağlantısı kesilen kumandalar temizlenir, HidHide denetimi artık arayüzü yavaşlatmaz ve GameInput cihazları yalnızca bir şey değiştiğinde yeniden denetlenir.
+- Playnite oyunun işlemini tanımlayamadığında bile Playnite oyunları tanınmaya devam eder.
+- Windows'un Xbox tam ekran deneyimi: Xbox kabuğu öndeyken GameHQ, ekran görüntüleri ve klipler için Playnite'tan başlatılan oyunu kullanır. Ayrıca ön sürüm olarak sunulan GameHQ Playnite Integration 0.4.13, Xbox modu oturum açılışında GameHQ'nun başlamasını geciktirdiğinde GameHQ'yu da başlatır.
+
+## Kararlılık ve güvenilirlik
+
+- Tamamlanmamış kayıtların temizliği yalnızca GameHQ'nun kendi oluşturduğu geçici dosyaları kaldırır.
+- Oyun çekim klasörleri her zaman çekim klasörünüzün içinde kalır.
+- Kitaplık yinelenen klasör yolları içerdiğinde başlatma artık başarısız olmaz; bunun yerine girişler birleştirilir.
+- GameHQ başlatılamazsa nedenini sizin dilinizde açıklar ve nedeni günlükte saklar.
+- Taşınabilir bir profili kurulu bir GameHQ'ya aktarmak, kurulu kopya daha önce başlatılmış olsa bile artık çalışır.
+- Güçlendirilmiş güvenlik: daha güvenli DLL yükleme, yerel entegrasyon bağlantılarında daha sıkı denetimler ve güncelleme dosyalarının daha güvenli işlenmesi.
+- Güncelleyici yavaş bir ilk başlatmayla daha iyi başa çıkar ve kesintiye uğrarsa kayıtlarını bozulmadan korur.
+- Telegram paylaşımı daha güvenli şekilde kapanır.
+
+## Kurulum ve güncelleme
+
+- 0.7.9'dan güncelleme: 0.8.0 yükleyicisini mevcut kurulumunuzun üzerine çalıştırın.
+- Yükleyici: geçerli kullanıcı için kurulum yapar ve kurulu 0.7.9'u veya daha önceki bir beta sürümünü değiştirir.
+- Taşınabilir: ZIP dosyasını yeni bir klasöre çıkarın ve GameHQ.exe'yi çalıştırın.
+- 0.8.0 Beta 2, 3 veya 4'ü test ettiyseniz 0.8.0'ı yükleyiciyle veya yeni bir taşınabilir ZIP ile kurun; çünkü bu beta sürümleri güncelleyici üzerinden sunulmadı.
+
+## Bilinen sınırlamalar
+
+- Oyun sesi Windows 11 gerektirir. Eski Windows sürümlerinde GameHQ, varsayılan çıkışta ses çalan diğer uygulamaları da kaydeden Masaüstü sesi kaynağını kullanır.
+- Bir kumandanın denetimini tek başına ele geçiren bir oyun, arka plan kısayollarını yine de engelleyebilir.
+- Windows'un Xbox tam ekran deneyimi desteği, bu deneyimi çalıştıran bir bilgisayarda test edenler tarafından henüz doğrulanmadı.
+- Windows ikili dosyaları Authenticode ile imzalanmamıştır; Windows SmartScreen, Bilinmeyen yayımcı uyarısı gösterebilir.

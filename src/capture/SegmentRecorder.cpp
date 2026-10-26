@@ -1,4 +1,5 @@
 #include "capture/SegmentRecorder.h"
+#include "capture/ReplayExporter.h"
 #include "capture/CaptureUtil.h"
 
 #include <windows.h>
@@ -16,7 +17,9 @@
 #include <QFile>
 #include <QFileInfo>
 
+#include <algorithm>
 #include <cstring>
+#include <vector>
 #include <string>
 
 namespace {
@@ -101,10 +104,13 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
     if (m_keepSegments < 1) m_keepSegments = 1;
     m_audioRate     = audioRateHz;
     m_audioChannels = audioChannels;
+    m_audioLost     = false;
     m_segments.clear();
     m_curPath.clear();
     m_lastClosedMediaPath.clear();
     m_discardCurrentSegment = false;
+    m_segmentWriteFailed = false;
+    m_failedSegmentsInARow = 0;
     m_cacheDir = cacheDir;
     m_segIndex = 0;
     m_originTime = -1;
@@ -173,6 +179,18 @@ void SegmentRecorder::restoreRing()
             const qint64 ageSecs = nowSecs - QFileInfo(full).lastModified().toSecsSinceEpoch();
             if (ageSecs > staleSecs && SegmentLease::removeIfUnleased(full))
                 continue;
+            // A crash can leave an empty or truncated segment (the prepared
+            // writer's file, a segment cut mid-write). The exporter refuses
+            // any bad input, so admitting one would fail every save until the
+            // ring rolled past it. Only segments with real video rejoin.
+            const auto probe = m_segmentProbe ? m_segmentProbe : &ReplayExporter::hasReadableVideo;
+            if (!probe(full)) {
+                qWarning().noquote() << QStringLiteral(
+                    "SegmentRecorder: not restoring unreadable segment %1 (bytes=%2)")
+                    .arg(full).arg(QFileInfo(full).size());
+                SegmentLease::removeIfUnleased(full);
+                continue;
+            }
             m_segments.append(full);
         }
         // entryList already sorted chronologically; trim oldest if over capacity.
@@ -507,6 +525,7 @@ bool SegmentRecorder::openSegment()
     // rejected — stay video-only for the rest of this recorder.
     if (m_audioRate > 0 && pw.audioStream == 0) {
         qWarning() << "SegmentRecorder: audio disabled for this session (input rejected)";
+        m_audioLost = true;
         m_audioRate = 0;
         m_audioChannels = 0;
     }
@@ -532,14 +551,21 @@ void SegmentRecorder::closeSegment()
     if (!m_writer)
         return;
 
+    const bool writeFailed = m_segmentWriteFailed;
+    m_segmentWriteFailed = false;
+    if (writeFailed) {
+        m_discardCurrentSegment = true;
+        ++m_failedSegmentsInARow;
+    }
     if (m_discardCurrentSegment) {
         m_writer->Release();
         m_writer = nullptr;
         m_videoStream = 0;
         m_audioStream = 0;
         qWarning().noquote()
-            << QStringLiteral("SegmentRecorder: discarded in-flight segment after capture "
-                              "discontinuity: %1")
+            << QStringLiteral("SegmentRecorder: discarded in-flight segment after %1: %2")
+                   .arg(writeFailed ? QStringLiteral("a write failure")
+                                    : QStringLiteral("capture discontinuity"))
                    .arg(QDir(m_cacheDir).relativeFilePath(m_curPath));
         if (!m_curPath.isEmpty())
             QFile::remove(m_curPath);
@@ -565,6 +591,7 @@ void SegmentRecorder::closeSegment()
         return;
     }
 
+    m_failedSegmentsInARow = 0;
     if (!m_curPath.isEmpty()) {
         m_segments.append(m_curPath);
         if (m_segVideoFrames > 0)
@@ -590,12 +617,19 @@ SegmentLease SegmentRecorder::snapshotForSave()
         return {};
     // Finalize the in-flight segment so its frames are on disk + in the ring,
     // snapshot the whole ring, then reopen a new segment to keep recording.
+    // A poisoned segment is discarded by closeSegment() and never in the clip.
+    if (!m_segmentWriteFailed)
+        fillSilentAudioTail();
     QElapsedTimer rollTimer;
     rollTimer.start();
     closeSegment();
     // Older leased files can remain in m_segments, but are not part of a new
     // save. Acquire before reopening/returning to the worker event loop.
     SegmentLease clip(m_segments.last(qMin(qsizetype(m_keepSegments), m_segments.size())));
+    if (m_failedSegmentsInARow >= kMaxFailedSegmentsInARow) {
+        m_active = false;
+        return clip;
+    }
     ++m_segIndex;
     if (!openSegment()) { m_active = false; return clip; }
     m_segStartPts = m_lastGlobalPts;   // provisional base until the next frame
@@ -611,11 +645,21 @@ void SegmentRecorder::rollIfDue()
 {
     if (!m_active || !m_writer)
         return;
-    if (m_lastGlobalPts - m_segStartPts < m_segTicks)
+    // A poisoned segment rolls at once instead of waiting out its window.
+    if (!m_segmentWriteFailed && m_lastGlobalPts - m_segStartPts < m_segTicks)
         return;
+    if (!m_segmentWriteFailed)
+        fillSilentAudioTail();
     QElapsedTimer rollTimer;
     rollTimer.start();
     closeSegment();
+    if (m_failedSegmentsInARow >= kMaxFailedSegmentsInARow) {
+        qCritical().noquote() << QStringLiteral(
+            "SegmentRecorder: %1 segments in a row failed to write - stopping the replay buffer")
+            .arg(m_failedSegmentsInARow);
+        m_active = false;
+        return;
+    }
     ++m_segIndex;
     if (!openSegment()) { m_active = false; return; }
     m_segStartPts = m_lastGlobalPts;   // provisional base until the next frame
@@ -737,11 +781,16 @@ void SegmentRecorder::writeFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
 
     if (built) {
         const long long segPts = gpts - m_segStartPts;
-        long long dur = (m_lastSegPts >= 0 && segPts > m_lastSegPts)
-                            ? segPts - m_lastSegPts : m_frameInterval;
+        // Nominal duration, never "time since the previous frame": after a
+        // capture gap (worker stall, loading screen, WGC sending no frames)
+        // the H.264 encoder already holds the previous frame across the gap
+        // in its timestamps. Stamping the next frame with the gap length as
+        // well made it count the gap twice, so the segment's video ran longer
+        // than real time and drifted behind the audio until the next roll.
+        const long long dur = m_frameInterval;
         sample->SetSampleTime(segPts);
         sample->SetSampleDuration(dur);
-        if (ok("WriteSample(video)", m_writer->WriteSample(DWORD(m_videoStream), sample))) {
+        if (ok("WriteSample(video)", writeSample(DWORD(m_videoStream), sample))) {
             m_lastSegPts = segPts;
             ++m_segVideoFrames;
             // Schedule-anchored cadence: advance by exactly one interval so
@@ -752,6 +801,8 @@ void SegmentRecorder::writeFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
             m_nextDuePts += m_frameInterval;
             if (m_nextDuePts <= gpts)
                 m_nextDuePts = gpts + m_frameInterval;
+        } else {
+            noteWriteFailure("video");
         }
     }
 
@@ -783,17 +834,69 @@ void SegmentRecorder::writeAudio(const float* samples, unsigned numFrames, qint6
     // audible/visible as the clip "pausing" every few seconds. The clock
     // anchors on the first packet, advances by exactly numFrames/rate per
     // packet, and re-anchors only on real drift (device stall > 0.5 s).
+    // A forward gap is real silence (loopback sends nothing while no stream
+    // renders) and is filled with zeros so the track stays continuous.
     if (m_audioClockPts < 0) {
         m_audioClockPts = wall;
-    } else if (qAbs(wall - m_audioClockPts) > 5000000LL) {
+    } else if (wall - m_audioClockPts > kAudioGapFill100ns) {
+        fillAudioSilence(wall);
+    } else if (m_audioClockPts - wall > 5000000LL) {
         qInfo() << "SegmentRecorder: audio clock re-anchored, drift was"
                 << (wall - m_audioClockPts) / 10000 << "ms";
         m_audioClockPts = wall;
     }
+    writeAudioAt(samples, numFrames);
+}
+
+void SegmentRecorder::padAudioSilence(qint64 audioTime100ns)
+{
+    if (!m_active || !m_writer || m_audioStream == 0 || m_audioRate == 0 || m_originTime < 0)
+        return;
+    const long long wall = audioTime100ns - m_originTime;
+    if (wall <= 0)
+        return;
+    if (m_audioClockPts < 0)
+        m_audioClockPts = 0;   // silent from the first video frame
+    if (wall - m_audioClockPts > kAudioGapFill100ns)
+        fillAudioSilence(wall);
+}
+
+// During a silent stretch the padded audio trails the video by the latency
+// headroom. Fill it up to the segment boundary before closing; written after
+// the roll it would count as too late and be dropped, leaving a hole.
+void SegmentRecorder::fillSilentAudioTail()
+{
+    if (m_audioStream > 0 && m_audioRate > 0 && m_audioClockPts >= 0
+        && m_lastGlobalPts - m_audioClockPts > kAudioGapFill100ns)
+        fillAudioSilence(m_lastGlobalPts, false);
+}
+
+void SegmentRecorder::fillAudioSilence(long long untilPts, bool allowRoll)
+{
+    if (untilPts - m_audioClockPts > kAudioMaxGapFill100ns) {
+        qInfo() << "SegmentRecorder: audio clock re-anchored after a"
+                << (untilPts - m_audioClockPts) / 10000 << "ms stall instead of filling it";
+        m_audioClockPts = untilPts;
+        return;
+    }
+    constexpr unsigned kChunkFrames = 4800;   // 100 ms at 48 kHz
+    std::vector<float> zeros(size_t(kChunkFrames) * m_audioChannels, 0.0f);
+    while (m_writer && untilPts > m_audioClockPts) {
+        const long long frames = (untilPts - m_audioClockPts) * m_audioRate / 10000000LL;
+        if (frames <= 0)
+            break;
+        writeAudioAt(zeros.data(), unsigned(std::min<long long>(frames, kChunkFrames)),
+                     allowRoll);
+    }
+}
+
+void SegmentRecorder::writeAudioAt(const float* samples, unsigned numFrames, bool allowRoll)
+{
     const long long gpts = m_audioClockPts;
     m_audioClockPts += (static_cast<long long>(numFrames) * 10000000LL) / m_audioRate;
 
-    rollIfDue();
+    if (allowRoll)
+        rollIfDue();
     if (!m_writer)
         return;
 
@@ -805,6 +908,11 @@ void SegmentRecorder::writeAudio(const float* samples, unsigned numFrames, qint6
             return;
         segPts = 0;
     }
+    // After a stall the re-anchored audio can run ahead of a segment whose
+    // video has not rolled yet. Written there it would stretch the segment
+    // across the whole stall; the next video frame rolls and rebases.
+    if (segPts > m_segTicks + kAudioMaxGapFill100ns)
+        return;
 
     const DWORD numSamples = DWORD(numFrames) * m_audioChannels;
     const DWORD bytes = numSamples * sizeof(short);   // PCM-16 for the AAC encoder
@@ -835,12 +943,38 @@ void SegmentRecorder::writeAudio(const float* samples, unsigned numFrames, qint6
         const long long dur = (static_cast<long long>(numFrames) * 10000000LL) / m_audioRate;
         sample->SetSampleTime(segPts);
         sample->SetSampleDuration(dur);
-        if (ok("WriteSample(audio)", m_writer->WriteSample(DWORD(m_audioStream), sample)))
+        if (ok("WriteSample(audio)", writeSample(DWORD(m_audioStream), sample)))
             ++m_segAudioPackets;
+        else
+            noteWriteFailure("audio");
+    } else {
+        // The audio clock already advanced past this packet: without it the
+        // segment's audio is short and drifts against the video.
+        noteWriteFailure("audio buffer");
     }
 
     if (buffer) buffer->Release();
     if (sample) sample->Release();
+}
+
+long SegmentRecorder::writeSample(unsigned long stream, IMFSample* sample)
+{
+    if (m_injectWriteFailures > 0) {
+        --m_injectWriteFailures;
+        return E_FAIL;
+    }
+    return m_writer->WriteSample(DWORD(stream), sample);
+}
+
+void SegmentRecorder::noteWriteFailure(const char* what)
+{
+    if (m_segmentWriteFailed)
+        return;   // one report per segment
+    m_segmentWriteFailed = true;
+    qWarning().noquote() << QStringLiteral(
+        "SegmentRecorder: %1 write failed - segment %2 will be discarded, not saved")
+        .arg(QString::fromLatin1(what))
+        .arg(QDir(m_cacheDir).relativeFilePath(m_curPath));
 }
 
 void SegmentRecorder::trimRing()

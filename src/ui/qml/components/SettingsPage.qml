@@ -75,7 +75,12 @@ Item {
             const item = root.Window.window.activeFocusItem
             // Pointer interaction already targets the visible area. Revealing
             // its focus can fight scrolling; only navigation needs assistance.
-            if (!item || item.focusReason === Qt.MouseFocusReason)
+            // Focus coming back with the window or a closed popup is the same
+            // control the user scrolled away from, and must not drag the page
+            // back to it.
+            if (!item || item.focusReason === Qt.MouseFocusReason
+                    || item.focusReason === Qt.ActiveWindowFocusReason
+                    || item.focusReason === Qt.PopupFocusReason)
                 return
             Qt.callLater(function() {
                 if (root.Window.window && root.Window.window.activeFocusItem === item)

@@ -16,6 +16,11 @@ NeutralHandoffRunner::NeutralHandoffRunner(QObject* parent)
 
 void NeutralHandoffRunner::setSource(NeutralHandoffSource* source)
 {
+    // A wait in flight belongs to the old source: end it there, lifting its
+    // quiesce, before letting go. Shutdown detaches the input engine this way
+    // so nothing can call into it after it is destroyed.
+    if (source != m_source && m_running)
+        cancel();
     m_source = source;
 }
 

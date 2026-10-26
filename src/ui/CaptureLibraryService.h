@@ -18,6 +18,7 @@ struct CaptureDeletionResult
     int removed = 0;        // library rows actually tombstoned
     int failed = 0;         // nothing removed; row and thumbnail kept
     int inconsistent = 0;   // media gone but the row could not be tombstoned
+    int keptImported = 0;   // imported original: file and row deliberately left alone
 
     // The library changed, so views and game lists must be refreshed.
     bool libraryChanged() const { return removed > 0; }
@@ -38,11 +39,14 @@ enum class CaptureCommitOutcome
 };
 
 // Filesystem seam. Production passes the QFile-backed default; tests inject
-// deterministic failures instead of racing real Windows file locks.
+// deterministic failures instead of racing real Windows file locks. Capture
+// media only ever goes to the Recycle Bin (trash); remove is for GameHQ's own
+// regenerable thumbnails.
 struct CaptureFileOps
 {
     std::function<bool(const QString&)> exists;
     std::function<bool(const QString&)> remove;
+    std::function<bool(const QString&)> trash;
 
     static CaptureFileOps systemOps();
 };
@@ -71,9 +75,12 @@ private:
         MediaFailed,   // media still on disk; row untouched
         DbFailed,      // media was already absent and the row survived
         Inconsistent,  // media deleted but the row survived
+        KeptImported,  // not a GameHQ capture: nothing touched
     };
 
-    ItemOutcome deleteItem(int id, const QString& file, const QString& thumb);
+    ItemOutcome deleteItem(int id, const QString& file, const QString& thumb,
+                           const QString& source);
+    static void count(ItemOutcome outcome, CaptureDeletionResult& result);
     CaptureCommitOutcome commitOutcome(int insertedId, const QString& filePath) const;
     void refreshGalleries();
 

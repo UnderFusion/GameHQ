@@ -202,6 +202,7 @@ inline QString normalizedLabel(GI::GameInputLabel label)
     case GI::GameInputLabelPaddleLeft2: return QStringLiteral("Left Paddle 2");
     case GI::GameInputLabelPaddleRight1: return QStringLiteral("Right Paddle 1");
     case GI::GameInputLabelPaddleRight2: return QStringLiteral("Right Paddle 2");
+    default: break; // letters and digits are mapped by range above
     }
     return QStringLiteral("GameInput Label %1").arg(value);
 }

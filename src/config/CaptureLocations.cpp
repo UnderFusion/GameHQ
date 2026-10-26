@@ -45,16 +45,22 @@ QString CaptureLocations::configuredRoot(const QString& key) const
 QString CaptureLocations::screenshotsBaseRoot() const { return configuredRoot(kScreenshotRoot); }
 QString CaptureLocations::clipsBaseRoot() const { return configuredRoot(kClipRoot); }
 
+// Empty when the result would not stay inside the root, which callers treat
+// as an uncreatable folder.
 QString CaptureLocations::screenshotDir(const QString& gameName) const
 {
-    return screenshotsBaseRoot() + QLatin1Char('/') + GameIdentity::folderName(gameName)
-           + QStringLiteral("/Screenshots");
+    const QString root = screenshotsBaseRoot();
+    const QString dir = root + QLatin1Char('/') + GameIdentity::pathComponent(gameName)
+                        + QStringLiteral("/Screenshots");
+    return GameIdentity::isInsideRoot(root, dir) ? dir : QString();
 }
 
 QString CaptureLocations::clipsDir(const QString& gameName) const
 {
-    return clipsBaseRoot() + QLatin1Char('/') + GameIdentity::folderName(gameName)
-           + QStringLiteral("/Clips");
+    const QString root = clipsBaseRoot();
+    const QString dir = root + QLatin1Char('/') + GameIdentity::pathComponent(gameName)
+                        + QStringLiteral("/Clips");
+    return GameIdentity::isInsideRoot(root, dir) ? dir : QString();
 }
 
 QStringList CaptureLocations::managedRoots() const

@@ -6,7 +6,11 @@
     (p1-1) haven't drifted.
 #>
 [CmdletBinding()]
-param()
+param(
+    # A GitHub pre-release package is validated without exposing it: the public
+    # installer manifest must still name only older versions.
+    [switch]$Prerelease
+)
 
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
@@ -47,7 +51,15 @@ $installerManifest = Get-Content $installerManifestPath -Raw
 if ($installerManifest -notmatch "AddonId:\s*GameHQ_Integration") {
     $failures += "InstallerManifest.yaml AddonId must be GameHQ_Integration"
 }
-if ($installerManifest -notmatch "Version:\s*$([regex]::Escape($version))") {
+$manifestVersions = @([regex]::Matches($installerManifest, '(?m)^\s*-\s+Version:\s*(?<version>\d+\.\d+\.\d+)\s*$') |
+    ForEach-Object { $_.Groups['version'].Value })
+if ($Prerelease) {
+    if ($manifestVersions -contains $version) {
+        $failures += "Pre-release $version must not be listed in InstallerManifest.yaml yet"
+    } elseif ($manifestVersions.Count -eq 0 -or [version]$manifestVersions[0] -ge [version]$version) {
+        $failures += "InstallerManifest.yaml newest version must be older than pre-release $version"
+    }
+} elseif ($installerManifest -notmatch "Version:\s*$([regex]::Escape($version))") {
     $failures += "InstallerManifest.yaml Version does not match VERSION ($version)"
 }
 if ($sdkMatch.Success -and
@@ -115,4 +127,5 @@ if ($failures.Count -gt 0) {
     exit 1
 }
 
-Write-Host "[playnite-verify] OK (version $version)"
+$mode = if ($Prerelease) { ', pre-release, public manifest offers ' + $manifestVersions[0] } else { '' }
+Write-Host "[playnite-verify] OK (version $version$mode)"

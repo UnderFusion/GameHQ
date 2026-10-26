@@ -18,7 +18,15 @@ class QImage;
 // Both use Media Foundation and must run on an MTA thread (the frame-pump worker).
 namespace ReplayExporter
 {
+    // Audio presence must match across all inputs in either case; Required also
+    // refuses a clip whose segments carry no audio track or no audio samples.
+    enum class Audio { Any, Required };
+
     bool concat(const QStringList& inputFiles, const QString& outputFile,
-                const QString& traceId = QString());
+                const QString& traceId = QString(), Audio audio = Audio::Any);
     bool grabThumbnail(const QString& file, QImage& out);
+    // True when `file` opens as a segment and yields at least one video
+    // sample. Used to vet segments left on disk before they rejoin the ring;
+    // concat() itself stays strict and refuses any bad input.
+    bool hasReadableVideo(const QString& file);
 }

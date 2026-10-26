@@ -7,6 +7,21 @@ is versioned and released independently of the main GameHQ application (see
 `../../VERSION` for that) — releases are tagged `playnite-vX.Y.Z` in this
 same repository.
 
+## [0.4.13] - 2026-10-08
+
+Published first as a GitHub pre-release for Windows Xbox mode testing; the
+public installer manifest keeps offering 0.4.12 until it is confirmed.
+
+### Changed
+
+- Windows Xbox mode (full screen experience): Windows holds back startup apps
+  until you first switch to the desktop, so GameHQ could be missing after
+  booting straight into Playnite. The plugin now checks again 15, 45 and 90
+  seconds after Playnite starts and when a game starts, starts GameHQ if it is
+  not running, and never launches a second copy when GameHQ is already running.
+- The Playnite log says whether GameHQ is not running or running but not
+  connected.
+
 ## [0.4.12] - 2026-07-22
 
 ### Added

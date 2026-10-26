@@ -6,6 +6,7 @@
 #include <QThread>
 
 #include <atomic>
+#include <memory>
 
 namespace telegram
 {
@@ -19,6 +20,9 @@ class TdJsonTransport : public TdTransport
 public:
     // `runtime` must outlive the transport and already be Ready.
     explicit TdJsonTransport(TdRuntime* runtime, QObject* parent = nullptr);
+    // Drives the given entry points directly instead of a loaded runtime
+    // (tests script td_receive this way).
+    explicit TdJsonTransport(const TdJsonApi& api, QObject* parent = nullptr);
     ~TdJsonTransport() override;
 
     bool start() override;
@@ -26,9 +30,14 @@ public:
     void stop() override;
 
 private:
-    TdRuntime* m_runtime;
+    struct WorkerState;
+    const TdJsonApi* readyApi() const;
+
+    TdRuntime* m_runtime = nullptr;
+    TdJsonApi m_injectedApi;
     int m_clientId = 0;
-    std::atomic_bool m_running{ false };
+    // Shared with the receive thread, which may outlive a stop() that timed out.
+    std::shared_ptr<WorkerState> m_state;
     QThread* m_thread = nullptr;
 };
 

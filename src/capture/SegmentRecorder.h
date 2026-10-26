@@ -20,6 +20,7 @@ struct ID3D11VideoProcessor;
 struct ID3D11VideoProcessorEnumerator;
 struct ID3D11VideoProcessorOutputView;
 struct IMFSinkWriter;
+struct IMFSample;
 
 // 0.5 Step 4/7 — rolling H.264+AAC / fragmented-MP4 replay segment writer.
 //
@@ -77,6 +78,11 @@ public:
     // first video frame are dropped.
     void writeAudio(const float* samples, unsigned numFrames, qint64 audioTime100ns);
 
+    // Loopback delivers no packets while nothing plays. Extend the audio
+    // track with digital silence up to audioTime100ns (same clock as
+    // writeAudio) so a quiet stretch still yields a continuous AAC track.
+    void padAudioSilence(qint64 audioTime100ns);
+
     // Opportunistic cleanup after export; never releases another task's lease.
     void trimRing();
 
@@ -96,9 +102,21 @@ public:
     bool hasClosedMedia() const;
     unsigned segmentCount() const { return m_segIndex + (m_writer ? 1 : 0); }
     bool hasAudio() const { return m_audioStream > 0; }
+    // Audio was requested but the encoder rejected it, so segments are now
+    // video-only. Callers that require audio must treat this as a failure.
+    bool audioLost() const { return m_audioLost; }
 
 private:
     friend class TestSegmentRecorder;
+    // Forward audio gaps longer than this are real silence and get zero-filled.
+    static constexpr long long kAudioGapFill100ns = 1000000;   // 100 ms
+    // Past this a gap is not silence to fill but a stall (sleep, a frozen
+    // capture, a suspended process): the audio clock re-anchors instead, or
+    // waking from hours of sleep would encode hours of zeros in one call.
+    static constexpr long long kAudioMaxGapFill100ns = 20000000;   // 2 s
+    void fillSilentAudioTail();
+    void fillAudioSilence(long long untilPts, bool allowRoll = true);
+    void writeAudioAt(const float* samples, unsigned numFrames, bool allowRoll = true);
     void restoreRing();
     // A fully-built sink writer for one segment (streams added, BeginWriting
     // done). Built either synchronously (first segment, fallback) or by the
@@ -142,13 +160,28 @@ private:
     unsigned  m_audioRate     = 0;
     unsigned  m_audioChannels = 0;
     unsigned  m_audioBitrate  = 192000;       // 192 kbps AAC
+    bool      m_audioLost     = false;
 
     // on-disk ring (Step 5): finalized segment file paths, oldest first
     QStringList m_segments;
     QString     m_curPath;                   // current in-flight segment file
     int         m_keepSegments = 12;         // ceil(lengthSeconds / segmentSeconds)
+    // Vets a segment found on disk before restoreRing() admits it; null means
+    // ReplayExporter::hasReadableVideo. Tests with placeholder files swap it.
+    bool (*m_segmentProbe)(const QString&) = nullptr;
     bool        m_discardCurrentSegment = false;
     QString     m_lastClosedMediaPath;
+    // A failed sample write leaves a hole the segment can never recover from
+    // (missing video, or audio that drifts out of sync). The segment is
+    // poisoned: the next roll comes at once and discards it, so it never
+    // reaches a clip. Consecutive poisoned segments stop the recorder, which
+    // the replay buffer state reports as failed.
+    static constexpr int kMaxFailedSegmentsInARow = 3;
+    bool        m_segmentWriteFailed = false;
+    int         m_failedSegmentsInARow = 0;
+    int         m_injectWriteFailures = 0;   // tests: fail the next N writes
+    long        writeSample(unsigned long stream, IMFSample* sample);
+    void        noteWriteFailure(const char* what);
 
     // current segment
     IMFSinkWriter* m_writer = nullptr;

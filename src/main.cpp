@@ -21,8 +21,12 @@
 #include "localization/NativeText.h"
 #include "localization/StartupLocalization.h"
 #include "core/ApplicationMutex.h"
+#include "core/DllSearchPolicy.h"
+#include "core/PathContainment.h"
 #include "core/ProcessIdentity.h"
 #include "core/UpdateMaintenance.h"
+#include "diagnostics/CrashDump.h"
+#include "diagnostics/Logger.h"
 #include "security/ReleaseTrust.h"
 
 #include <cstring>
@@ -36,10 +40,9 @@ bool isPostUpdateTokenPath(const QString& path)
     const QString updateRoot = QFileInfo(Paths::packageRoot()
         + QStringLiteral("/.update")).absoluteFilePath();
     const QString token = QFileInfo(path).absoluteFilePath();
-    const QString relative = QDir(updateRoot).relativeFilePath(token);
-    return relative != QStringLiteral("..")
-        && !relative.startsWith(QStringLiteral("../"))
-        && relative != QStringLiteral(".");
+    // QDir::relativeFilePath answers with an absolute path across drives or
+    // shares, which a parent-prefix test accepted; compare components instead.
+    return path_containment::isWithinRoot(updateRoot.toStdWString(), token.toStdWString());
 }
 
 QString updatePhase()
@@ -71,6 +74,37 @@ void cleanCompletedUpdateArtifacts()
                                  QStringLiteral("transaction.phase"),
                                  QStringLiteral("transaction.json") })
         QFile::remove(update + QLatin1Char('/') + name);
+}
+
+// A start that cannot continue used to exit with no word at all. Record why,
+// flush the early log buffer to disk so the reason survives, and - unless an
+// automated caller (smoke test, the updater's post-update run) is waiting on
+// this process - tell the user where to look. `reason` goes to the log in
+// English; `message` is the localized dialog text. Every interactive caller
+// runs after StartupLocalization is initialized, and NativeText falls back to
+// English if the embedded catalogs could not be loaded.
+int failStartup(int exitCode, const QString& reason, const QString& message,
+                bool interactive, QMessageBox::Icon icon = QMessageBox::Critical,
+                const QString& extraLog = {})
+{
+    qCritical().noquote() << "Startup:" << reason << "(exit code" << exitCode << ')';
+    Logger::install(Paths::logsDir());
+    if (!interactive)
+        return exitCode;
+    QString text = message + QStringLiteral("\n\n")
+        + NativeText::get(
+            //: Fatal start-up dialog; one or more log file paths follow on the next lines.
+            //% "For details, see:"
+            QT_TRID_NOOP("gamehq.startup.fatal.details_hint"),
+            "For details, see:")
+        + QLatin1Char('\n')
+        + QDir::toNativeSeparators(Logger::filePath(Paths::logsDir()));
+    if (!extraLog.isEmpty())
+        text += QLatin1Char('\n') + QDir::toNativeSeparators(extraLog);
+    QMessageBox box(icon, QString::fromLatin1(Brand::Name), text, QMessageBox::Ok);
+    box.setTextInteractionFlags(Qt::TextSelectableByMouse);
+    box.exec();
+    return exitCode;
 }
 
 bool waitForParentProcess(const QStringList& arguments, QString& error)
@@ -124,6 +158,8 @@ bool waitForParentProcess(const QStringList& arguments, QString& error)
 
 int main(int argc, char* argv[])
 {
+    dll_search::restrictSearchPath();
+
     // Parse this packaging probe from the raw Windows command line. GUI-
     // subsystem CRT wrappers are not consistent about populating narrow argv
     // before QApplication exists.
@@ -165,6 +201,12 @@ int main(int argc, char* argv[])
         if (std::strcmp(argv[i], "--hidhide-allow-self") == 0)
             return HidCloakMonitor::applyWhitelistSelfElevated();
     }
+
+    // Capture every message from here on. The file is opened only once this
+    // process owns the instance lock (or must exit): portable import replaces
+    // the data folder that holds the log, and a rejected second instance must
+    // not write into the running instance's log.
+    Logger::beginBuffering();
 
     QApplication qtApp(argc, argv);
     QApplication::setApplicationName(QString::fromLatin1(Brand::Name));
@@ -245,24 +287,45 @@ int main(int argc, char* argv[])
     }
     const qsizetype postUpdateAt = arguments.indexOf(QStringLiteral("--post-update"));
     if (postUpdateAt >= 0) {
+        // Only the updater passes --post-update and it judges the outcome
+        // itself, so these exits are logged but never block on a dialog.
         if (postUpdateAt + 2 >= arguments.size())
-            return 2;
+            return failStartup(2, QStringLiteral("The post-update arguments are incomplete."),
+                               {}, false);
         postUpdateVersion = arguments.at(postUpdateAt + 1);
         postUpdateToken = arguments.at(postUpdateAt + 2);
         if (postUpdateVersion != QStringLiteral(GAMEHQ_VERSION)
             || !isPostUpdateTokenPath(postUpdateToken))
-            return 2;
+            return failStartup(2, QStringLiteral("The post-update arguments do not match this build."),
+                               {}, false);
         postUpdateValidation = true;
     }
 
     if (!postUpdateValidation && interruptedUpdateExists()) {
         const QString helper = Paths::packageRoot() + QStringLiteral("/GameHQUpdater.exe");
         const QString transaction = Paths::packageRoot() + QStringLiteral("/.update/transaction.json");
-        if (!QFileInfo(helper).isExecutable() || !QFileInfo(transaction).isFile())
-            return 3;
+        const QString updaterLog = Paths::packageRoot() + QStringLiteral("/.update/updater.log");
+        const QString recoveryFailed = QStringLiteral(
+            "GameHQ could not finish recovering from an interrupted update, so it cannot start.");
+        const QString recoveryFailedMessage = NativeText::get(
+            //: Fatal start-up dialog shown when an interrupted update cannot be recovered.
+            //% "GameHQ could not finish recovering from an interrupted update, so it cannot start."
+            QT_TRID_NOOP("gamehq.startup.fatal.update_recovery_failed"),
+            "GameHQ could not finish recovering from an interrupted update, so it cannot start.");
+        if (!QFileInfo(helper).isExecutable() || !QFileInfo(transaction).isFile()) {
+            qCritical() << "Startup: interrupted update found but the updater helper or its"
+                           " transaction is missing";
+            return failStartup(3, recoveryFailed, recoveryFailedMessage, !smokeTest,
+                               QMessageBox::Critical, updaterLog);
+        }
         // Recovery restarts the previous version itself. Run before taking the
         // app lock so that restarted process is not rejected as a duplicate.
-        return QProcess::execute(helper, { QStringLiteral("--recover"), transaction }) == 0 ? 0 : 3;
+        const int recovery = QProcess::execute(helper, { QStringLiteral("--recover"), transaction });
+        if (recovery == 0)
+            return 0;
+        qCritical() << "Startup: update recovery helper exited with" << recovery;
+        return failStartup(3, recoveryFailed, recoveryFailedMessage, !smokeTest,
+                           QMessageBox::Critical, updaterLog);
     }
     const QString phaseAtStart = updatePhase();
     const bool completedUpdateAtStart = !postUpdateValidation
@@ -273,7 +336,16 @@ int main(int argc, char* argv[])
         const maintenance::Info state = maintenance::inspect(
             Paths::packageRoot().toStdWString());
         if (state.state == maintenance::State::Active)
-            return 4;
+            return failStartup(4, QStringLiteral(
+                                   "A GameHQ update is being installed. Start GameHQ again "
+                                   "when it has finished."),
+                               NativeText::get(
+                                   //: Start-up dialog shown while the updater is replacing files.
+                                   //% "A GameHQ update is being installed. Start GameHQ again when it has finished."
+                                   QT_TRID_NOOP("gamehq.startup.fatal.update_in_progress"),
+                                   "A GameHQ update is being installed. Start GameHQ again "
+                                   "when it has finished."),
+                               !smokeTest, QMessageBox::Information);
     }
 
     // QLockFile remains the source of truth. A rejected second process only
@@ -289,49 +361,88 @@ int main(int argc, char* argv[])
         }
         return 0;
     }
+    // This copy owns the instance lock, so the log file is now ours to write;
+    // everything buffered since startup goes out first.
+    Logger::install(Paths::logsDir());
+    // From here an unhandled crash leaves a small local minidump next to the log.
+    CrashDump::install(Paths::logsDir());
 
     // Setup and Uninstall observe this process-lifetime mutex. It is acquired
     // only after QLockFile accepts this copy, so rejected second instances do
     // not make the installer think GameHQ is still running.
     ApplicationMutex applicationMutex;
     if (!applicationMutex.acquired())
-        return 5;
+        return failStartup(5, QStringLiteral(
+                               "GameHQ cannot start while another copy of GameHQ or its "
+                               "installer is running."),
+                           NativeText::get(
+                               //: Fatal start-up dialog; another GameHQ copy or Setup/Uninstall holds the application mutex.
+                               //% "GameHQ cannot start while another copy of GameHQ or its installer is running."
+                               QT_TRID_NOOP("gamehq.startup.fatal.another_copy_running"),
+                               "GameHQ cannot start while another copy of GameHQ or its "
+                               "installer is running."),
+                           !smokeTest && !postUpdateValidation);
 
-    App app;
-    app.setPostUpdateValidation(postUpdateValidation);
-    if (!app.init())
-        return 1;
+    // The session marker says "this run never reached an orderly shutdown".
+    // It goes only after App and everything it owns are destroyed, so a crash
+    // anywhere in teardown still shows up as a crash on the next launch.
+    const auto finish = [](int exitCode) {
+        QFile::remove(Paths::dataDir() + QStringLiteral("/session.marker"));
+        return exitCode;
+    };
+    int exitCode = 0;
+    bool initFailed = false;
+    {
+        App app;
+        app.setPostUpdateValidation(postUpdateValidation);
+        // A failed init still tears App down before the marker goes.
+        if (!app.init()) {
+            exitCode = 1;
+            initFailed = true;
+        } else {
+            // Local/CI packaged-layout acceptance: exercise normal initialization,
+            // enter the Qt event loop, then take the same orderly teardown path as the
+            // tray Exit action. The session marker and log prove destruction ran.
+            if (smokeTest)
+                QTimer::singleShot(2000, &qtApp, &QCoreApplication::quit);
 
-    // Local/CI packaged-layout acceptance: exercise normal initialization,
-    // enter the Qt event loop, then take the same orderly teardown path as the
-    // tray Exit action. The session marker and log prove destruction ran.
-    if (smokeTest)
-        QTimer::singleShot(2000, &qtApp, &QCoreApplication::quit);
-
-    if (postUpdateValidation) {
-        QTimer::singleShot(7000, &app, [&app, postUpdateVersion, postUpdateToken] {
-            // Persist the one-time greeting before publishing health: a token
-            // means all post-update bookkeeping is durable too.
-            app.recordPostUpdateSuccess(postUpdateVersion);
-            QSaveFile token(postUpdateToken);
-            const QByteArray contents = postUpdateVersion.toUtf8() + '\n';
-            if (!token.open(QIODevice::WriteOnly)
-                || token.write(contents) != contents.size()
-                || !token.commit()) {
-                qCritical() << "Post-update validation could not publish its health token";
-                return;
+            if (postUpdateValidation) {
+                QTimer::singleShot(7000, &app, [&app, postUpdateVersion, postUpdateToken] {
+                    // Persist the one-time greeting before publishing health: a token
+                    // means all post-update bookkeeping is durable too.
+                    app.recordPostUpdateSuccess(postUpdateVersion);
+                    QSaveFile token(postUpdateToken);
+                    const QByteArray contents = postUpdateVersion.toUtf8() + '\n';
+                    if (!token.open(QIODevice::WriteOnly)
+                        || token.write(contents) != contents.size()
+                        || !token.commit()) {
+                        qCritical() << "Post-update validation could not publish its health token";
+                        return;
+                    }
+                    qInfo() << "Post-update validation succeeded for" << postUpdateVersion;
+                    app.completePostUpdateValidation();
+                });
+            } else if (completedUpdateAtStart) {
+                // Retain rollback material through the first validation run. Only a
+                // subsequent start that also survives seven seconds may discard it.
+                QTimer::singleShot(7000, &app, [] {
+                    cleanCompletedUpdateArtifacts();
+                    qInfo() << "Previous update recovery artifacts cleaned after a second healthy start";
+                });
             }
-            qInfo() << "Post-update validation succeeded for" << postUpdateVersion;
-            app.completePostUpdateValidation();
-        });
-    } else if (completedUpdateAtStart) {
-        // Retain rollback material through the first validation run. Only a
-        // subsequent start that also survives seven seconds may discard it.
-        QTimer::singleShot(7000, &app, [] {
-            cleanCompletedUpdateArtifacts();
-            qInfo() << "Previous update recovery artifacts cleaned after a second healthy start";
-        });
-    }
 
-    return qtApp.exec();
+            exitCode = qtApp.exec();
+        }
+    }
+    // Reported only after App and its windows are gone; init() has already
+    // logged the specific reason.
+    if (initFailed)
+        failStartup(exitCode, QStringLiteral("GameHQ could not start."),
+                    NativeText::get(
+                        //: Fatal start-up dialog shown when application initialization fails.
+                        //% "GameHQ could not start."
+                        QT_TRID_NOOP("gamehq.startup.fatal.init_failed"),
+                        "GameHQ could not start."),
+                    !smokeTest && !postUpdateValidation);
+    return finish(exitCode);
 }

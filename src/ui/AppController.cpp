@@ -1,5 +1,7 @@
 #include "ui/AppController.h"
 #include "app/StartupManager.h"
+#include "capture/AudioSourcePolicy.h"
+#include "capture/CaptureUtil.h"
 #include "capture/ScreenshotService.h"
 #include "config/CaptureLocations.h"
 #include "config/ConfigKeys.h"
@@ -46,23 +48,6 @@
 
 #include <utility>
 
-namespace
-{
-bool parseCaptureKind(const QString& value, CaptureLocations::Kind& kind)
-{
-    if (value == QStringLiteral("screenshots")) {
-        kind = CaptureLocations::Kind::Screenshots;
-        return true;
-    }
-    if (value == QStringLiteral("clips")) {
-        kind = CaptureLocations::Kind::Clips;
-        return true;
-    }
-    return false;
-}
-
-}
-
 AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
                              GalleryModel* gallery, GalleryModel* overlayGallery,
                              ConfigManager* config, CaptureLocations* locations,
@@ -102,6 +87,7 @@ AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
     connect(m_locations, &CaptureLocations::locationsChanged,
             this, &AppController::captureLocationsChanged);
 
+    connect(m_scanner, &CaptureScanner::scanFinished, this, &AppController::onScanFinished);
     // Armed by rescan(), which runs whenever the set of capture roots can change.
     m_folderWatcher = new CaptureFolderWatcher(this);
     connect(m_folderWatcher, &CaptureFolderWatcher::rootsChanged,
@@ -178,336 +164,6 @@ bool AppController::startMinimized() const
     return m_config->value(ConfigKeys::StartupMinimized, false).toBool();
 }
 
-bool AppController::portableMode() const
-{
-    return Paths::isPortable();
-}
-
-QString AppController::dataRoot() const
-{
-    return QDir::toNativeSeparators(Paths::dataDir());
-}
-
-QString AppController::logsRoot() const
-{
-    return QDir::toNativeSeparators(Paths::logsDir());
-}
-
-void AppController::openDataFolder()
-{
-    ShellActions::openFile(Paths::dataDir());
-}
-
-void AppController::openLogsFolder()
-{
-    ShellActions::openFile(Paths::logsDir());
-}
-
-QString AppController::beginPortableImport(const QUrl& folderUrl)
-{
-    if (portableMode())
-        return NativeText::get(
-            //: Validation error shown in Settings before starting portable-profile import.
-            //% "Portable profiles can only be imported by an installed copy of GameHQ."
-            QT_TRID_NOOP("gamehq.error.portable_import.installed_copy_required"),
-            "Portable profiles can only be imported by an installed copy of GameHQ.");
-    if (!folderUrl.isLocalFile())
-        return NativeText::get(
-            //: Validation error shown in Settings before starting portable-profile import.
-            //% "Select a local folder containing portable GameHQ."
-            QT_TRID_NOOP("gamehq.error.portable_import.local_folder_required"),
-            "Select a local folder containing portable GameHQ.");
-    const QString source = QDir::cleanPath(folderUrl.toLocalFile());
-    if (!QFileInfo(source + QStringLiteral("/portable.flag")).isFile()
-        || !QFileInfo(source + QStringLiteral("/GameHQ.exe")).isFile()
-        || !QFileInfo(source + QStringLiteral("/gamehq-data")).isDir())
-        return NativeText::get(
-            //: Validation error shown in Settings before starting portable-profile import.
-            //% "The selected folder is not a GameHQ portable package."
-            QT_TRID_NOOP("gamehq.error.portable_import.package_invalid"),
-            "The selected folder is not a GameHQ portable package.");
-
-    // Identify this process by more than its id: the importer refuses to start
-    // until it can prove *this* instance has exited, and a bare id can name a
-    // different program once Windows recycles it.
-    const QString identity = ProcessIdentity::currentToken();
-    if (identity.isEmpty())
-        return NativeText::get(
-            //: Portable-profile import launch failure shown in Settings.
-            //% "GameHQ could not identify its own process for the import."
-            QT_TRID_NOOP("gamehq.error.portable_import.process_identity_failed"),
-            "GameHQ could not identify its own process for the import.");
-    const QStringList arguments {
-        QStringLiteral("--import-portable"), source,
-        QStringLiteral("--wait-for-pid"), identity
-    };
-    if (!QProcess::startDetached(QCoreApplication::applicationFilePath(), arguments))
-        return NativeText::get(
-            //: Portable-profile import launch failure shown in Settings.
-            //% "GameHQ could not start the portable import process."
-            QT_TRID_NOOP("gamehq.error.portable_import.process_start_failed"),
-            "GameHQ could not start the portable import process.");
-    QCoreApplication::quit();
-    return {};
-}
-
-void AppController::quitApplication()
-{
-    QCoreApplication::quit();
-}
-
-void AppController::copyDiagnosticSummary() const
-{
-    QVariantMap relevant;
-    for (const auto& key : {ConfigKeys::CaptureMode, ConfigKeys::ReplayAuto,
-            ConfigKeys::ReplayClipNotify, ConfigKeys::ReplayClipSound,
-            ConfigKeys::ReplayLengthSeconds, ConfigKeys::ReplayManualIdleSeconds,
-            ConfigKeys::InputDefaultHoldMs, ConfigKeys::InputMultiTapIntervalMs})
-        relevant.insert(QString(key), m_config->value(key));
-    QFile log(QDir(logsRoot()).filePath(QStringLiteral("gamehq.log")));
-    QByteArray tail;
-    if (log.open(QIODevice::ReadOnly)) {
-        log.seek(qMax<qint64>(0, log.size() - InputDiagnostics::kMaxTraceBytes));
-        tail = log.read(InputDiagnostics::kMaxTraceBytes);
-    }
-    QString build = version() + QStringLiteral(" compiled " __DATE__ " " __TIME__ " Qt " QT_VERSION_STR);
-    QFile executable(QCoreApplication::applicationFilePath());
-    QCryptographicHash digest(QCryptographicHash::Sha256);
-    build += executable.open(QIODevice::ReadOnly) && digest.addData(&executable)
-        ? QStringLiteral(" binary-sha256=") + QString::fromLatin1(digest.result().toHex())
-        : QStringLiteral(" binary-sha256=unavailable");
-    const QString summary = InputDiagnostics::instance().exportBetaText(
-        build, QSysInfo::kernelVersion(), relevant, QString::fromUtf8(tail));
-    QGuiApplication::clipboard()->setText(summary);
-}
-
-void AppController::refreshHdrStatus()
-{
-    const bool experimentalHdrEnabled =
-        m_config->value(ConfigKeys::InternalCaptureExperimentalHdr,
-                        ConfigKeys::InternalCaptureExperimentalHdrDefault).toBool();
-    const capture::HdrReport refreshed =
-        capture::HdrCapabilities::query(experimentalHdrEnabled);
-    const bool displayChanged =
-        m_hdrProbed && !capture::HdrCapabilities::sameDisplayState(m_hdr, refreshed);
-    m_hdr = refreshed;
-    m_hdrProbed = true;
-    capture::HdrCapabilities::logReport(m_hdr);
-    emit hdrStatusChanged();
-    if (displayChanged)
-        emit hdrDisplayConfigurationChanged();
-}
-
-void AppController::pollHdrStatus()
-{
-    if (!m_hdrProbed)
-        return;
-
-    const bool experimentalHdrEnabled =
-        m_config->value(ConfigKeys::InternalCaptureExperimentalHdr,
-                        ConfigKeys::InternalCaptureExperimentalHdrDefault).toBool();
-    capture::HdrReport refreshed =
-        capture::HdrCapabilities::refreshDisplayState(m_hdr, experimentalHdrEnabled);
-    if (capture::HdrCapabilities::sameDisplayState(m_hdr, refreshed))
-        return;
-
-    m_hdr = std::move(refreshed);
-    capture::HdrCapabilities::logReport(m_hdr);
-    emit hdrStatusChanged();
-    emit hdrDisplayConfigurationChanged();
-}
-
-bool AppController::hdrDisplayActive() const
-{
-    return m_hdr.anyHdrActive;
-}
-
-QString AppController::hdrStatusText() const
-{
-    if (!m_hdrProbed) {
-        //: HDR status before GameHQ has queried the graphics driver.
-        //% "Not checked yet"
-        return NativeText::get(QT_TRID_NOOP("gamehq.hdr.status.not_checked"),
-                               "Not checked yet");
-    }
-    if (m_hdr.outputs.isEmpty()) {
-        //: HDR status when the graphics driver reports no displays.
-        //% "No displays reported by the graphics driver"
-        return NativeText::get(QT_TRID_NOOP("gamehq.hdr.status.no_displays"),
-                               "No displays reported by the graphics driver");
-    }
-    if (m_hdr.anyHdrActive) {
-        //: HDR status when Windows HDR is active on at least one display.
-        //% "Windows HDR is active"
-        return NativeText::get(QT_TRID_NOOP("gamehq.hdr.status.active"),
-                               "Windows HDR is active");
-    }
-    //: HDR status when Windows HDR is inactive on every display.
-    //% "Windows HDR is inactive"
-    return NativeText::get(QT_TRID_NOOP("gamehq.hdr.status.inactive"),
-                           "Windows HDR is inactive");
-}
-
-QString AppController::hdrDetailText() const
-{
-    if (!m_hdrProbed)
-        //: HDR detail shown before the first graphics-driver query.
-        //% "Check the current HDR state of every display."
-        return NativeText::get(QT_TRID_NOOP("gamehq.hdr.detail.not_checked"),
-                               "Check the current HDR state of every display.");
-    return m_hdr.summaryLines().join(QLatin1Char('\n'));
-}
-
-QString AppController::setCaptureRoot(const QString& kindValue, const QUrl& folderUrl)
-{
-    CaptureLocations::Kind kind;
-    if (!parseCaptureKind(kindValue, kind))
-        return NativeText::get(
-            //: Internal capture-location validation failure shown in Settings.
-            //% "The capture type is invalid."
-            QT_TRID_NOOP("gamehq.error.capture_location.type_invalid"),
-            "The capture type is invalid.");
-    if (!folderUrl.isLocalFile())
-        return NativeText::get(
-            //: Capture-location validation error shown in Settings.
-            //% "Choose a local folder."
-            QT_TRID_NOOP("gamehq.error.capture_location.local_folder_required"),
-            "Choose a local folder.");
-
-    QString error;
-    if (!m_locations->setBaseRoot(kind, folderUrl.toLocalFile(), &error))
-        return error;
-    rescan();
-    return {};
-}
-
-QString AppController::resetCaptureRoot(const QString& kindValue)
-{
-    CaptureLocations::Kind kind;
-    if (!parseCaptureKind(kindValue, kind))
-        return NativeText::get(
-            //% "The capture type is invalid."
-            QT_TRID_NOOP("gamehq.error.capture_location.type_invalid"),
-            "The capture type is invalid.");
-
-    QString error;
-    if (!m_locations->resetBaseRoot(kind, &error))
-        return error;
-    rescan();
-    return {};
-}
-
-void AppController::removeWatchedFolder(const QString& path)
-{
-    m_db->removeWatchedFolder(path);
-    emit foldersChanged();
-}
-
-QVariant AppController::config(const QString& key, const QVariant& fallback) const
-{
-    return m_config->value(key, fallback);
-}
-
-void AppController::setConfig(const QString& key, const QVariant& value)
-{
-    switch (m_settings->change(key, value)) {
-    case SettingsRouter::Outcome::Rejected:
-        emit configChanged(key, m_config->value(key, false));
-        return;
-    case SettingsRouter::Outcome::Rescan:
-        rescan();
-        return;
-    case SettingsRouter::Outcome::Consumed:
-        return;
-    case SettingsRouter::Outcome::Plain:
-        break;
-    }
-    m_config->setValue(key, value);
-    m_config->save();
-    if (SettingsApplyPolicy::requiresReplayBufferRestart(key))
-        emit replaySettingsChanged();
-}
-
-QVariant AppController::configDefault(const QString& key, const QVariant& fallback) const
-{
-    return m_config->defaultValue(key, fallback);
-}
-
-bool AppController::configIsDefault(const QString& key) const
-{
-    return m_config->isDefault(key);
-}
-
-void AppController::resetConfig(const QString& key)
-{
-    switch (m_settings->reset(key)) {
-    case SettingsRouter::Outcome::Rejected:
-        emit configChanged(key, m_config->value(key, false));
-        return;
-    case SettingsRouter::Outcome::Rescan:
-        rescan();
-        return;
-    case SettingsRouter::Outcome::Consumed:
-        return;
-    case SettingsRouter::Outcome::Plain:
-        break;
-    }
-    if (!m_config->resetValue(key))
-        return;
-    m_config->save();
-    if (SettingsApplyPolicy::requiresReplayBufferRestart(key))
-        emit replaySettingsChanged();
-}
-
-void AppController::resetConfigGroup(const QString& prefix)
-{
-    const QStringList changedKeys = m_config->overriddenKeys(prefix);
-    if (prefix == QStringLiteral("startup") || prefix.isEmpty())
-        m_startup->setEnabled(false);
-    if (prefix == QStringLiteral("storage") || prefix.isEmpty())
-        m_locations->preserveCurrentRoots();
-    if (!m_config->resetGroup(prefix))
-        return;
-    m_config->save();
-    if (SettingsApplyPolicy::requiresReplayBufferRestart(changedKeys))
-        emit replaySettingsChanged();
-    if (prefix == QStringLiteral("storage") || prefix.isEmpty())
-        rescan();
-}
-
-void AppController::resetAllConfig()
-{
-    const QStringList changedKeys = m_config->overriddenKeys();
-    m_startup->setEnabled(false);
-    m_locations->preserveCurrentRoots();
-    if (!m_config->resetAll())
-        return;
-    m_config->save();
-    if (SettingsApplyPolicy::requiresReplayBufferRestart(changedKeys))
-        emit replaySettingsChanged();
-    rescan();
-}
-
-// The preview deliberately goes through the ordinary play path: it obeys the
-// UI-sounds master switch and the capture level exactly as a real capture
-// does, so what the user hears here is what a capture will sound like.
-void AppController::previewCaptureSound()
-{
-    if (!m_sounds) {
-        qWarning() << "Sound preview requested before the sound engine exists";
-        return;
-    }
-    m_sounds->play(SoundLevels::previewEvent());
-}
-
-void AppController::resetCategory(const QString& category)
-{
-    for (const QString& prefix : SettingsCategories::groups().value(category))
-        resetConfigGroup(prefix);
-    for (const QString& key : SettingsCategories::keys().value(category))
-        resetConfig(key);
-}
-
 QString AppController::version() const
 {
     return QStringLiteral(GAMEHQ_VERSION);
@@ -578,132 +234,6 @@ void AppController::setGamePinned(int gameId, bool pinned)
     }
 }
 
-void AppController::applyFilter(const QString& category, int gameId,
-                                NavigationState::Persist persist)
-{
-    m_category = category;
-    m_gameId = gameId;
-    m_gallery->setFilter(m_category, m_gameId);
-    m_navigation->setGalleryFilter(m_category, m_gameId, persist);
-    if (persist == NavigationState::Persist::Yes)
-        scheduleNavigationSave();
-    emit filterChanged();
-}
-
-void AppController::setCategory(const QString& category)
-{
-    applyFilter(category, -1, NavigationState::Persist::Yes);
-}
-
-void AppController::setGame(int gameId)
-{
-    applyFilter(QStringLiteral("all"), gameId, NavigationState::Persist::Yes);
-}
-
-void AppController::setGameCategory(const QString& category, int gameId)
-{
-    applyFilter(category, gameId, NavigationState::Persist::Yes);
-}
-
-void AppController::setGameCategoryTransient(const QString& category, int gameId)
-{
-    applyFilter(category, gameId, NavigationState::Persist::No);
-}
-
-QList<int> AppController::knownGameIds() const
-{
-    QList<int> ids;
-    const auto entries = m_db->listGames();
-    ids.reserve(entries.size());
-    for (const GameEntry& g : entries)
-        ids.append(g.id);
-    return ids;
-}
-
-// The saved filter can only be trusted once the first scan has published the
-// library: restoring it earlier would silently drop a valid game id just
-// because its row was not read yet.
-void AppController::restoreGalleryFilter()
-{
-    const NavigationState::GalleryFilter saved = m_navigation->galleryFilter(knownGameIds());
-    qInfo() << "Navigation: restored view — page" << m_navigation->page()
-            << "settings category" << m_navigation->settingsCategory()
-            << "gallery filter" << saved.category << "game" << saved.gameId;
-    if (saved.category == m_category && saved.gameId == m_gameId)
-        return;
-    applyFilter(saved.category, saved.gameId, NavigationState::Persist::No);
-}
-
-QString AppController::restoredPage() const
-{
-    return m_navigation->page();
-}
-
-QRect AppController::restoredWindowGeometry() const
-{
-    WindowPlacement::Saved saved;
-    saved.x = m_config->value(ConfigKeys::UiWindowX).toInt();
-    saved.y = m_config->value(ConfigKeys::UiWindowY).toInt();
-    saved.width = m_config->value(ConfigKeys::UiWindowWidth).toInt();
-    saved.height = m_config->value(ConfigKeys::UiWindowHeight).toInt();
-
-    // Per-screen work areas, not the virtual bounding box: the bounding box of
-    // an L-shaped desktop covers gaps where no monitor exists, and a window
-    // "restored" into a gap is invisible.
-    QList<QRect> screens;
-    const auto available = QGuiApplication::screens();
-    screens.reserve(available.size());
-    for (const QScreen* screen : available)
-        screens.append(screen->availableGeometry());
-    const QScreen* primary = QGuiApplication::primaryScreen();
-    const QRect fallback = primary ? primary->availableGeometry() : QRect();
-
-    const QRect restored = WindowPlacement::restore(saved, screens, fallback);
-    qInfo() << "Window: restored geometry" << restored << "from saved" << saved.x << saved.y
-            << saved.width << "x" << saved.height << "screens" << screens;
-    return restored;
-}
-
-void AppController::setPage(const QString& page)
-{
-    m_navigation->setPage(page);
-    scheduleNavigationSave();
-}
-
-void AppController::scheduleNavigationSave()
-{
-    m_navigationSaveTimer->start();
-}
-
-QString AppController::settingsCategory() const
-{
-    return m_navigation->settingsCategory();
-}
-
-void AppController::setSettingsCategory(const QString& category)
-{
-    m_navigation->setSettingsCategory(category);
-    scheduleNavigationSave();
-}
-
-QString AppController::overlayCategory(int gameId) const
-{
-    return m_navigation->overlayCategory(gameId);
-}
-
-void AppController::setOverlayCategory(int gameId, const QString& category)
-{
-    m_navigation->setOverlayCategory(gameId, category);
-    scheduleNavigationSave();
-}
-
-void AppController::persistNavigationState(const QString& page)
-{
-    m_navigation->flush(page, m_navigation->settingsCategory(), m_category, m_gameId);
-    m_navigationSaveTimer->stop();
-    m_config->save();
-}
-
 void AppController::syncOverlayToForegroundGame()
 {
     const bool stateChanged = m_currentGame->syncToForegroundGame();
@@ -740,9 +270,10 @@ void AppController::saveVideoFrame(QObject* videoSink, const QString& gameName,
     m_screenshots->saveImage(frame, gameName, executablePath);
 }
 
-void AppController::updateForegroundGame(const QString& gameName, const QString& executablePath)
+void AppController::updateForegroundGame(const QString& gameName, const QString& executablePath,
+                                         bool recognizedGame)
 {
-    const bool stateChanged = m_currentGame->update(gameName, executablePath);
+    const bool stateChanged = m_currentGame->update(gameName, executablePath, recognizedGame);
     if (stateChanged) {
         emit currentGameChanged();
         emit overlayGameChanged();
@@ -763,11 +294,18 @@ void AppController::updateReplayBufferState(ReplayBufferState::State state, cons
 
 void AppController::rescan()
 {
-    m_lastScanAdded = m_scanner->scanAll();
+    // The roots can change right now (a folder added or removed); the watcher
+    // follows at once, the walk itself runs in the background.
     QStringList roots;
     for (const CaptureScanner::Root& root : m_scanner->roots())
         roots.append(root.path);
     m_folderWatcher->setRoots(roots);
+    m_scanner->scanAllAsync();
+}
+
+void AppController::onScanFinished(int added)
+{
+    m_lastScanAdded = added;
     m_gallery->refresh();
     if (m_overlayGallery)
         m_overlayGallery->sync();
@@ -825,10 +363,13 @@ void AppController::deleteCaptureFrom(GalleryModel* model, int row)
 // A kept row is the recovery, not the explanation: without this the delete
 // looks like it did nothing at all. Only the "file still in use" case is
 // user-actionable; an inconsistent row is a rescan matter and stays in the log.
+// Imported originals kept by policy get their own explanation.
 void AppController::reportDeletionFailures(const CaptureDeletionResult& result)
 {
     if (result.failed > 0)
         emit captureDeletionFailed(result.failed);
+    if (result.keptImported > 0)
+        emit captureDeletionKeptImported(result.keptImported);
 }
 
 void AppController::openCaptureFrom(GalleryModel* model, int row)
@@ -847,7 +388,8 @@ CaptureCommitOutcome AppController::commitCapture(const QString& filePath, const
 {
     const CaptureCommitOutcome outcome =
         m_captureLibrary->commitCapture(filePath, type, gameName, executablePath);
-    const bool stateChanged = m_currentGame->update(gameName, executablePath);
+    // The capture just made this a library game, so it may own a row.
+    const bool stateChanged = m_currentGame->update(gameName, executablePath, true);
     if (stateChanged) {
         emit currentGameChanged();
         emit overlayGameChanged();
@@ -862,7 +404,8 @@ CaptureCommitOutcome AppController::commitClip(const QString& filePath, const QS
 {
     const CaptureCommitOutcome outcome =
         m_captureLibrary->commitClip(filePath, gameName, thumbnailPath, executablePath);
-    const bool stateChanged = m_currentGame->update(gameName, executablePath);
+    // The capture just made this a library game, so it may own a row.
+    const bool stateChanged = m_currentGame->update(gameName, executablePath, true);
     if (stateChanged) {
         emit currentGameChanged();
         emit overlayGameChanged();

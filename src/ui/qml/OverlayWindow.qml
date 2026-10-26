@@ -63,6 +63,12 @@ Window {
             // A finished or unstarted Share never survives a hide; a send in
             // flight keeps running and shows its result on the next open.
             overlayShare.close()
+            // A delete confirmation never survives a hide: reopening must not
+            // land on a dialog asking about a capture the user left behind.
+            if (deleteDialog.visible) {
+                deleteDialog.close()
+                overlayWindow.pendingDeletePath = ""
+            }
             viewer.close()
             content.stopVideoFocus()
             content.collapseAutoSidebar()
@@ -92,6 +98,24 @@ Window {
     // Keyed by file path, not row: the gallery follows the disk live, so rows
     // can shift while the confirmation is open.
     property string pendingDeletePath: ""
+
+    // The delete confirmation is modal: while it is visible every pad (and
+    // keyboard, which emits the same signals) command goes to it or is
+    // dropped, so nothing behind it can change or act on the gallery.
+    // Returns true when the dialog consumed the command.
+    function deleteDialogTakesInput(command, direction) {
+        if (!deleteDialog.visible)
+            return false
+        if (command === "navigate")
+            deleteDialog.padHorizontal(direction)
+        else if (command === "navigateVertical")
+            deleteDialog.padStep(direction)
+        else if (command === "confirm")
+            deleteDialog.padConfirm()
+        else if (command === "back")
+            deleteDialog.padBack()
+        return true
+    }
 
     Connections {
         target: app
@@ -299,6 +323,7 @@ Window {
         // Cross must pick their entry, not play/pause the clip behind them.
         readonly property bool playbackActive: !content.menuOpen
             && !content.layoutPanelOpen && !overlayShare.isOpen
+            && !deleteDialog.visible
             && (content.videoFocused || (viewer.open && viewer.currentIsVideo))
         onPlaybackActiveChanged: input.setPlaybackActive(content.playbackActive)
         property var categories: SidebarCategories.categories(app.currentGameAvailable)
@@ -731,25 +756,35 @@ Window {
             // seeks once a clip is playing (see handleSeekStep).
             function onOverlayNavigate(direction) {
                 overlayWindow.notePadInput()
+                if (overlayWindow.deleteDialogTakesInput("navigate", direction))
+                    return
                 content.handleSeekStep(direction)
             }
             function onOverlayNavigateVertical(direction) {
                 overlayWindow.notePadInput()
+                if (overlayWindow.deleteDialogTakesInput("navigateVertical", direction))
+                    return
                 content.revealControls()
                 content.handleNavigateVertical(direction)
             }
             function onOverlayConfirm() {
                 overlayWindow.notePadInput()
+                if (overlayWindow.deleteDialogTakesInput("confirm", 0))
+                    return
                 content.revealControls()
                 content.handleConfirm()
             }
             function onOverlayFavorite() {
                 overlayWindow.notePadInput()
+                if (overlayWindow.deleteDialogTakesInput("favorite", 0))
+                    return
                 content.revealControls()
                 content.handleFavorite()
             }
             function onOverlayMenu() {
                 overlayWindow.notePadInput()
+                if (overlayWindow.deleteDialogTakesInput("menu", 0))
+                    return
                 content.revealControls()
                 content.toggleMenu()
             }
@@ -759,26 +794,36 @@ Window {
             // above), so the two stay fully independent.
             function onOverlayGameStep(direction) {
                 overlayWindow.notePadInput()
+                if (overlayWindow.deleteDialogTakesInput("gameStep", direction))
+                    return
                 content.revealControls()
                 content.handleCaptureStep(direction)
             }
             function onOverlayHideRequested() {
                 overlayWindow.notePadInput()
+                if (overlayWindow.deleteDialogTakesInput("back", 0))
+                    return
                 content.revealControls()
                 content.handleBack()
             }
             function onPlaybackPlayPause() {
                 overlayWindow.notePadInput()
+                if (overlayWindow.deleteDialogTakesInput("playPause", 0))
+                    return
                 content.togglePlayback()
             }
             function onPlaybackSeek(direction) {
                 overlayWindow.notePadInput()
+                if (overlayWindow.deleteDialogTakesInput("seek", direction))
+                    return
                 content.handleSeekStep(direction)
             }
             // Share while a clip is focused: grab the on-screen frame as a
             // screenshot instead of the global foreground screenshot.
             function onFrameGrabRequested() {
                 overlayWindow.notePadInput()
+                if (overlayWindow.deleteDialogTakesInput("frameGrab", 0))
+                    return
                 if (overlayShare.isOpen)
                     return
                 if (viewer.open)

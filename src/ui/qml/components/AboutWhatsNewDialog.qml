@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls.Basic as QC
 import QtQuick.Layouts
 import GameHQ
+import "../helpers/UpdateUi.js" as UpdateUi
 
 FocusScope {
     id: root
@@ -20,9 +21,7 @@ FocusScope {
     focus: visible
 
     function hasUpdateRelease() {
-        return updates.latestVersion !== ""
-            && ["UpdateAvailable", "Downloading", "ReadyToInstall", "PreparingForUpdate",
-                "Quiescent", "Installing", "Failed"].includes(updates.stateName)
+        return UpdateUi.releaseVisible(updates)
     }
 
     function updateVersion() {
@@ -194,8 +193,7 @@ FocusScope {
     function statusColor() {
         if (updates.stateName === "Failed")
             return Theme.danger
-        if (["UpdateAvailable", "Downloading", "ReadyToInstall", "PreparingForUpdate",
-             "Quiescent", "Installing"].includes(updates.stateName))
+        if (UpdateUi.inProgress(updates.stateName))
             return Theme.warning
         if (updates.stateName === "UpToDate" || updates.lastChecked.getTime() > 0)
             return Theme.success
@@ -247,7 +245,7 @@ FocusScope {
     }
 
     function primaryEnabled() {
-        return !["Checking", "PreparingForUpdate", "Quiescent", "Installing"].includes(updates.stateName)
+        return updates.stateName !== "Checking" && !UpdateUi.installing(updates.stateName)
     }
 
     function runPrimaryAction() {

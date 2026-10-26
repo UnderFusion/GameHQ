@@ -30,7 +30,7 @@ class ReplayExportTask;
 // thread is initialised as an STA, which is incompatible with RoInitialize(MTA) and
 // the free-threaded frame pool. FramePumpService is the GUI-thread front-end.
 
-// Runs on its own thread; owns all WGC/D3D state (opaque Pipeline, defined in the .cpp).
+// Runs on its own thread; owns all WGC/D3D state (opaque Pipeline, defined in FramePumpPipeline.h).
 class FramePumpWorker : public QObject
 {
     Q_OBJECT
@@ -44,7 +44,7 @@ public slots:
     void startPump(quint64 generation, qulonglong hwnd, unsigned long pid, int encodeWidth, int encodeHeight,
                    int fps, int bitrateMbps, int segmentSeconds, int lengthSeconds,
                    const QString& gameName, const QString& executablePath,
-                   bool audioEnabled,
+                   int audioSource,          // AudioSourcePolicy::Source
                    bool hdrExperimentalEnabled = false,
                    CaptureBorder::SessionPolicy borderPolicy = CaptureBorder::SessionPolicy{}); // build pipeline + start polling/encoding
     void stopPump();                 // stop polling + tear down the pipeline
@@ -54,6 +54,7 @@ public slots:
     void saveReplayOnWorker(const QString& clipsBaseRoot, quint64 generation,
                             quint64 requestId, quint64 chainId);
     void captureScreenshotOnWorker(quint64 generation, quint64 requestId);
+    void cancelHdrScreenshotOnWorker(quint64 requestId);
     void prepareForUpdate(quint64 generation);
     void cancelUpdatePreparation();
 
@@ -83,21 +84,22 @@ signals:
 
 private:
     friend class TestReplayThumbnail;
-    struct Pipeline;                 // all WGC/D3D pointers + timer + fps state (.cpp)
+    struct Pipeline;                 // all WGC/D3D pointers + timer + fps state (FramePumpPipeline.h)
     void teardown();                 // delete m_pipe (releases everything, reverse order)
     void finishExport();             // join before worker/apartment shutdown
     bool failStep(const char* step, long hr);
     void reportBufferState(ReplayBufferState::State state, const QString& reason = {});
     void checkReplayReadiness();     // low-frequency lifecycle check, outside poll()
+    void resolveStaleHdrScreenshot(); // static scene: WGC sends no new frame, use the last one
 
     // startPump bring-up, one phase per step, in call order. Each reports its own
     // failure via failStep() and returns false; startPump owns the single
-    // `delete pipe` cleanup, so no phase frees anything it did not create.
+    // cleanup of the half-built pipe, so no phase frees anything it did not create.
     bool createDevices(Pipeline* pipe);                        // D3D11 + WinRT bridge
     bool createCaptureItem(Pipeline* pipe, void* hwnd, int* outW, int* outH);
     void attachRecorder(Pipeline* pipe, unsigned long pid, int srcW, int srcH,
                         int encodeWidth, int encodeHeight, int fps, int bitrateMbps,
-                        int segmentSeconds, int lengthSeconds, bool audioEnabled);
+                        int segmentSeconds, int lengthSeconds, int audioSource);
     bool createSession(Pipeline* pipe, void* hwnd, int srcW, int srcH,
                        bool hdrExperimentalEnabled,
                        const CaptureBorder::SessionPolicy& borderPolicy); // frame pool + session
@@ -109,7 +111,8 @@ private:
                              const QString& saveId);
     void runExport(SegmentLease lease, const CapturePublisher::Reservation& reservation,
                    const QString& thumbPath,
-                   const QString& game, const QString& exePath, const QString& saveId, quint64 requestId);
+                   const QString& game, const QString& exePath, const QString& saveId,
+                   quint64 requestId, bool requireAudio);
 
     Pipeline* m_pipe = nullptr;
     bool m_apartmentReady = false;
@@ -122,6 +125,13 @@ private:
     quint64 m_updateGeneration = 0; // request may follow a GUI-side start rejection
     bool m_hdrScreenshotPending = false;
     quint64 m_hdrRequestId = 0;
+    QElapsedTimer m_hdrPendingClock;
+    // Runtime audio read failures that already forced a re-arm, in a short
+    // window; past the limit the buffer fails instead of re-arming forever.
+    QString m_audioFailure;          // reason while the current Failed state is an audio failure
+    ReplayBufferState::AudioRearmBudget m_audioRearmBudget;
+    // Same bound for a frame pool that keeps failing after re-arms.
+    ReplayBufferState::AudioRearmBudget m_captureRearmBudget;
 };
 
 // GUI-thread owner: constructs the worker on a dedicated thread and relays toggle().
@@ -169,7 +179,11 @@ signals:
     void hdrScreenshotReady(const QImage& image, const QString& gameName,
                             const QString& executablePath, quint64 operationId = 0);
     void hdrScreenshotFailed(const QString& reason, quint64 operationId = 0);
-    void foregroundGameDetected(const QString& gameName, const QString& executablePath);
+    // Every valid, non-excluded foreground window. `recognizedGame` says
+    // whether it passes the game heuristic or has an external game identity;
+    // only such a window may become a new library game row.
+    void foregroundGameDetected(const QString& gameName, const QString& executablePath,
+                                bool recognizedGame);
     // Rolling buffer armed/disarmed — drives the Settings "buffer state" row.
     void recordingStateChanged(bool active, const QString& gameName);
     void bufferStateChanged(ReplayBufferState::State state, const QString& gameName);

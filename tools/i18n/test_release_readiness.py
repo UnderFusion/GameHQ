@@ -51,6 +51,17 @@ READINESS_INPUTS = (
 NOTE_SURFACE = "release_notes"
 
 
+def setUpModule() -> None:
+    # These fixtures are built from the live 0.7.7 candidate snapshot, which only a
+    # pre-launch checkout carries. ci.ps1 already runs this suite in candidate mode
+    # only; a direct run on a released checkout skips instead of reporting failures.
+    launch = readiness.read_json(ROOT / "assets/release-notes/manifest.json")["localization_launch"]
+    if launch.get("status") != "designated":
+        raise unittest.SkipTest(
+            f"candidate-only suite: localization launch {launch.get('version')} is "
+            f"{launch.get('status')}; use tools/i18n/ci.ps1 -Mode post-launch")
+
+
 def copy_readiness_inputs(source: Path, destination: Path) -> None:
     for relative in READINESS_INPUTS:
         origin = source / relative

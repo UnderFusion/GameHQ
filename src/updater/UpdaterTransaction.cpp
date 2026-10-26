@@ -1,5 +1,6 @@
 #include "updater/UpdaterTransaction.h"
 
+#include "core/PathContainment.h"
 #include "security/ReleaseManifest.h"
 
 #include <algorithm>
@@ -12,6 +13,7 @@
 #include <system_error>
 #include <variant>
 #include <windows.h>
+#include <shlobj.h>
 
 namespace
 {
@@ -248,13 +250,41 @@ std::filesystem::path normalizedPath(const std::filesystem::path &path, std::str
 bool pathWithin(const std::filesystem::path &root, const std::filesystem::path &candidate,
                 bool allowRoot)
 {
-    auto rootIt = root.begin();
-    auto candidateIt = candidate.begin();
-    for (; rootIt != root.end(); ++rootIt, ++candidateIt) {
-        if (candidateIt == candidate.end() || _wcsicmp(rootIt->c_str(), candidateIt->c_str()) != 0)
-            return false;
+    return path_containment::isWithinRoot(root, candidate, allowRoot);
+}
+
+std::filesystem::path knownFolder(REFKNOWNFOLDERID id)
+{
+    PWSTR raw = nullptr;
+    std::filesystem::path result;
+    if (SUCCEEDED(SHGetKnownFolderPath(id, KF_FLAG_DEFAULT, nullptr, &raw)) && raw) {
+        std::error_code ec;
+        result = std::filesystem::weakly_canonical(std::filesystem::path(raw), ec);
+        if (ec)
+            result.clear();
     }
-    return allowRoot || candidateIt != candidate.end();
+    CoTaskMemFree(raw);
+    return result;
+}
+
+// The helper snapshots dataDir and restores it on rollback, so it must name a
+// real GameHQ data location: below the package root (portable) or below the
+// user's own AppData (installed; Qt's AppDataLocation and the legacy
+// GenericDataLocation copies). It may never cover the program files or the
+// update working area it would otherwise restore over.
+bool dataDirAllowed(const updater::Transaction &tx)
+{
+    const std::filesystem::path updateArea = tx.healthTokenPath.parent_path();
+    if (pathWithin(tx.dataDir, tx.packageRoot, true) || pathWithin(updateArea, tx.dataDir, true))
+        return false;
+    if (pathWithin(tx.packageRoot, tx.dataDir, false))
+        return true;
+    for (const auto &root : { knownFolder(FOLDERID_RoamingAppData),
+                              knownFolder(FOLDERID_LocalAppData) }) {
+        if (!root.empty() && pathWithin(root, tx.dataDir, false))
+            return true;
+    }
+    return false;
 }
 } // namespace
 
@@ -404,6 +434,10 @@ bool loadAndValidateTransaction(const std::filesystem::path &transactionPath,
             error = "transaction path escapes the package root: " + pathToUtf8(candidate);
             return false;
         }
+    }
+    if (!dataDirAllowed(out)) {
+        error = "transaction data directory is not a GameHQ data location: " + pathToUtf8(out.dataDir);
+        return false;
     }
     if (out.stagingDir == out.backupDir) {
         error = "staging and backup directories must be different";

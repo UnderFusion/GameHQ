@@ -1,4 +1,5 @@
 #include "security/ReleaseTrust.h"
+#include "core/DurableFile.h"
 
 #include <monocypher-ed25519.h>
 
@@ -235,9 +236,23 @@ VerifyResult verify(const std::vector<std::uint8_t> &manifestBytes,
 
 bool loadSequenceState(const std::filesystem::path &path, SequenceState &out, std::string &error)
 {
-    if (!std::filesystem::exists(path)) {
+    // Runs inside a Qt slot in the app, so only non-throwing overloads here.
+    std::error_code ec;
+    const bool present = std::filesystem::exists(path, ec);
+    if (ec) {
+        error = "could not inspect release trust state";
+        return false;
+    }
+    if (!present) {
         out = {};
         return true;
+    }
+    // The canonical state is about 120 bytes. Anything far larger is corrupt
+    // and must not reach the recursive std::regex matcher below.
+    const auto size = std::filesystem::file_size(path, ec);
+    if (ec || size > 1024) {
+        error = ec ? "could not read release trust state" : "release trust state is corrupt";
+        return false;
     }
     std::ifstream input(path, std::ios::binary);
     std::ostringstream buffer;
@@ -249,7 +264,10 @@ bool loadSequenceState(const std::filesystem::path &path, SequenceState &out, st
     const std::string text = buffer.str();
     const std::regex canonical(R"STATE(\{"schemaVersion":1,"highestReleaseSequence":([0-9]+),"manifestSha256":"([0-9a-f]{64})"\}\n?)STATE");
     std::smatch match;
-    if (!std::regex_match(text, match, canonical)) {
+    bool matched = false;
+    try { matched = std::regex_match(text, match, canonical); }
+    catch (const std::regex_error &) { matched = false; }
+    if (!matched) {
         error = "release trust state is corrupt";
         return false;
     }
@@ -273,20 +291,16 @@ bool storeSequenceStateAtomically(const std::filesystem::path &path,
     const std::string text = "{\"schemaVersion\":1,\"highestReleaseSequence\":"
         + std::to_string(state.highestReleaseSequence) + ",\"manifestSha256\":\""
         + state.manifestSha256 + "\"}\n";
-    HANDLE file = CreateFileW(pending.c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS,
-                              FILE_ATTRIBUTE_NORMAL | FILE_FLAG_WRITE_THROUGH, nullptr);
-    if (file == INVALID_HANDLE_VALUE) { error = "could not create release trust state"; return false; }
-    DWORD written = 0;
-    const bool wrote = WriteFile(file, text.data(), static_cast<DWORD>(text.size()), &written, nullptr)
-        && written == text.size() && FlushFileBuffers(file);
-    CloseHandle(file);
-    if (!wrote) {
-        DeleteFileW(pending.c_str());
+    switch (durable_file::replace(path, pending, text)) {
+    case durable_file::WriteResult::Written:
+        break;
+    case durable_file::WriteResult::CreateFailed:
+        error = "could not create release trust state";
+        return false;
+    case durable_file::WriteResult::WriteFailed:
         error = "could not flush release trust state";
         return false;
-    }
-    if (!MoveFileExW(pending.c_str(), path.c_str(), MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH)) {
-        DeleteFileW(pending.c_str());
+    case durable_file::WriteResult::PublishFailed:
         error = "could not publish release trust state";
         return false;
     }

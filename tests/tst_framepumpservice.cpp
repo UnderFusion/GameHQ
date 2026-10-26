@@ -1,5 +1,6 @@
 #include "capture/ReplayBufferState.h"
 #include "capture/ReplayBufferOwners.h"
+#include "capture/AudioSourcePolicy.h"
 
 #include <QMetaEnum>
 #include <QSignalSpy>
@@ -12,6 +13,91 @@ class TestFramePumpService : public QObject
 {
     Q_OBJECT
 private slots:
+    void audioRearmsAreBoundedForCaptureAndEncoderFailures()
+    {
+        // One budget serves both failure kinds: a repeating AAC encoder drop
+        // must stop after three re-arms just like a failing WASAPI stream.
+        ReplayBufferState::AudioRearmBudget budget;
+        QVERIFY(budget.allow(1000));      // capture read failure
+        QVERIFY(budget.allow(5000));      // encoder lost audio
+        QVERIFY(budget.allow(9000));      // encoder lost audio
+        QVERIFY(!budget.allow(13000));    // fourth in the window: fail
+        QVERIFY(!budget.allow(60000));
+        // A quiet window restores recovery.
+        QVERIFY(budget.allow(13000 + ReplayBufferState::AudioRearmBudget::kWindowMs + 1));
+    }
+    void audioFailureStaysTheSaveAnswerAcrossRearm()
+    {
+        ReplayBufferState buffer;
+        quint64 generation = buffer.requestStart(QStringLiteral("Game"));
+        QVERIFY(buffer.confirm(generation, ReplayBufferState::Failed,
+                               ReplayBufferState::audioFailure()));
+        QCOMPARE(buffer.saveRejection(), ReplayBufferState::audioFailure());
+        // A save on a failed buffer re-arms it; the user must still learn why.
+        generation = buffer.requestStart(QStringLiteral("Game"));
+        QCOMPARE(buffer.saveRejection(), ReplayBufferState::audioFailure());
+        QVERIFY(buffer.confirm(generation, ReplayBufferState::Recording));
+        QCOMPARE(buffer.saveRejection(),
+                 ReplayBufferState::saveRejection(ReplayBufferState::Recording));
+        QVERIFY(buffer.confirm(generation, ReplayBufferState::Failed, "recorder failed"));
+        QCOMPARE(buffer.saveRejection(),
+                 ReplayBufferState::saveRejection(ReplayBufferState::Failed));
+    }
+
+    void audioSourceResolvesWithoutSilentDesktopFallback_data()
+    {
+        QTest::addColumn<QString>("configured");
+        QTest::addColumn<bool>("legacyEnabled");
+        QTest::addColumn<bool>("supported");
+        QTest::addColumn<QString>("expected");
+        QTest::addColumn<bool>("unsupported");
+        QTest::newRow("auto-prefers-game") << "auto" << true << true << "game" << false;
+        QTest::newRow("auto-old-windows-uses-desktop") << "auto" << true << false << "desktop" << false;
+        QTest::newRow("auto-keeps-legacy-off") << "auto" << false << true << "off" << false;
+        QTest::newRow("unknown-value-is-auto") << "bogus" << true << true << "game" << false;
+        QTest::newRow("explicit-desktop") << "desktop" << false << true << "desktop" << false;
+        QTest::newRow("explicit-off") << "off" << true << true << "off" << false;
+        QTest::newRow("explicit-game") << "game" << false << true << "game" << false;
+        // Never quietly records unrelated apps: an explicit game choice on an
+        // old build stays game and reports why it cannot record.
+        QTest::newRow("explicit-game-old-windows") << "game" << true << false << "game" << true;
+    }
+    void audioSourceResolvesWithoutSilentDesktopFallback()
+    {
+        QFETCH(QString, configured);
+        QFETCH(bool, legacyEnabled);
+        QFETCH(bool, supported);
+        QFETCH(QString, expected);
+        QFETCH(bool, unsupported);
+        const auto resolution = AudioSourcePolicy::resolve(configured, legacyEnabled, supported);
+        QCOMPARE(AudioSourcePolicy::toConfigValue(resolution.source), expected);
+        QCOMPARE(resolution.gameAudioUnsupported, unsupported);
+        QCOMPARE(AudioSourcePolicy::effectiveSelection(configured, legacyEnabled, supported),
+                 expected);
+    }
+    void processLoopbackNeedsBuild20348()
+    {
+        QVERIFY(!AudioSourcePolicy::isProcessLoopbackBuild(0));
+        QVERIFY(!AudioSourcePolicy::isProcessLoopbackBuild(19045));   // Windows 10 22H2
+        QVERIFY(AudioSourcePolicy::isProcessLoopbackBuild(20348));
+        QVERIFY(AudioSourcePolicy::isProcessLoopbackBuild(22631));    // Windows 11
+    }
+    void gameAudioFailureKeepsItsOwnReason()
+    {
+        ReplayBufferState buffer;
+        for (const QString& reason : { ReplayBufferState::gameAudioFailure(),
+                                       ReplayBufferState::gameAudioUnsupported() }) {
+            QVERIFY(ReplayBufferState::isAudioFailure(reason));
+            quint64 generation = buffer.requestStart(QStringLiteral("Game"));
+            QVERIFY(buffer.confirm(generation, ReplayBufferState::Failed, reason));
+            QCOMPARE(buffer.saveRejection(), reason);
+            generation = buffer.requestStart(QStringLiteral("Game"));
+            QCOMPARE(buffer.saveRejection(), reason);
+            QVERIFY(buffer.confirm(generation, ReplayBufferState::Recording));
+        }
+        QVERIFY(!ReplayBufferState::isAudioFailure(QStringLiteral("recorder failed")));
+    }
+
     void manualColdArmBecomesReadyAndSaves()
     {
         ReplayBufferState buffer;

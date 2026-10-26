@@ -54,6 +54,14 @@ private:
     void openGallery();
     void toggleDesktopWindow();
 
+    // init() wiring steps, each in its own App_*Wiring.cpp. init() calls them
+    // at fixed points; their order and position there are part of the startup
+    // contract (object creation and connection order), so do not reorder.
+    void wireCaptureFeedback();
+    void wireUpdates();
+    void wireInput();
+    void wireShare();
+
     std::unique_ptr<ConfigManager> m_config;
     std::unique_ptr<LocaleRegistry> m_localeRegistry;
     std::unique_ptr<LanguageManager> m_languageManager;
@@ -92,7 +100,7 @@ private:
     // Telegram providers' owned helpers; declared after m_share so they go first.
     std::unique_ptr<share::TelegramWiring> m_telegramWiring;
     // Wakes periodically to see if the 24h automatic-check window has passed
-    // (see the update-check policy block in init()). Manual checkNow() from
+    // (see the update-check policy block in wireUpdates()). Manual checkNow() from
     // QML bypasses this entirely.
     QTimer* m_updateCheckTimer = nullptr;
     QTimer* m_updatePreparationTimer = nullptr;
@@ -107,9 +115,11 @@ private:
     bool m_pendingOpenGallery = false;
     // Hold-PS desktop summon: the foreground reader, the retrying focus
     // acquirer, and the window the foreground was taken from ("return
-    // address" for the second hold).
+    // address" for the second hold, validated by pid before it is used).
     std::unique_ptr<ForegroundApi> m_foregroundApi;
     ForegroundAcquirer* m_desktopFocus = nullptr;
     void* m_desktopReturnTarget = nullptr;
+    // Owning process of m_desktopReturnTarget, checked before reuse.
+    unsigned long m_desktopReturnPid = 0;
     QQmlApplicationEngine m_engine;
 };

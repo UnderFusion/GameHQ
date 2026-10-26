@@ -16,6 +16,7 @@ constexpr std::array restartKeys{
     ConfigKeys::ReplaySegmentSeconds,
     ConfigKeys::ReplayAuto,
     ConfigKeys::AudioEnabled,
+    ConfigKeys::AudioSource,
 };
 
 constexpr std::array liveKeys{
@@ -77,6 +78,7 @@ constexpr std::array liveKeys{
     ConfigKeys::ThemeOverlayScrimStrength,
     ConfigKeys::UpdatesCheckAutomatically,
     ConfigKeys::UpdatesSkippedVersion,
+    ConfigKeys::UpdatesIncludeBetas,
 };
 
 template<std::size_t Size>

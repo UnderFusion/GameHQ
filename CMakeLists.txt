@@ -78,6 +78,14 @@ FetchContent_MakeAvailable(monocypher)
 option(GAMEHQ_BUILD_TESTS "Build the automated test target" OFF)
 # Explicitly enabled only by the Beta 4 packaging build; normal builds stay OFF.
 option(GAMEHQ_SONY_HID_READER_DEFAULT "Enable the bounded Sony HID reader by build default" OFF)
+# Beta number of a GitHub pre-release build ("beta3" for tag v<VERSION>-beta3),
+# empty for stable and development builds. VERSION never carries it; the
+# updater needs it to tell betas of one version apart. validate-release.ps1
+# requires it to match the tag being packaged.
+set(GAMEHQ_PRERELEASE "" CACHE STRING "Pre-release suffix of this build, e.g. beta3; empty for stable")
+if(NOT GAMEHQ_PRERELEASE STREQUAL "" AND NOT GAMEHQ_PRERELEASE MATCHES "^beta[1-9][0-9]*$")
+    message(FATAL_ERROR "GAMEHQ_PRERELEASE must be empty or betaN, got '${GAMEHQ_PRERELEASE}'")
+endif()
 # Telegram Integrated (TDLib account sharing) is owner-deferred (plan t13/t25).
 # Developer-only: a standard build never registers it, whatever config.json says.
 option(GAMEHQ_TELEGRAM_INTEGRATED
@@ -145,6 +153,19 @@ endif()
 configure_file(src/security/ReleaseTrustConfig.h.in
     generated/ReleaseTrustConfig.h @ONLY)
 
+# Compiler warnings for GameHQ's own targets (never -Werror). Applied per
+# target and to C++ only, so the FetchContent dependencies (miniz, the
+# monocypher C sources compiled into the trust library) and third_party code
+# keep their upstream flags. Two cosmetic categories stay off:
+#  - missing-field-initializers: aggregate initializers deliberately leave the
+#    trailing QString members of structs like ControlId::DeviceProfile empty;
+#  - cast-function-type: the FARPROC casts of the GetProcAddress idiom.
+function(gamehq_enable_warnings target)
+    target_compile_options(${target} PRIVATE
+        $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:GNU,Clang>>:-Wall -Wextra
+            -Wno-missing-field-initializers -Wno-cast-function-type>)
+endfunction()
+
 # One definition of the trust library, instantiated at most twice from the same
 # sources: the shipped gamehq_release_trust, and - only in a test build - the
 # TEST-ONLY gamehq_release_trust_testkeys (src/CMakeLists.txt). Keeping both on
@@ -164,6 +185,7 @@ function(gamehq_add_release_trust_library target trust_test_keys)
                 "${GAMEHQ_MONOCYPHER_SOURCE_DIR}/src"
                 "${GAMEHQ_MONOCYPHER_SOURCE_DIR}/src/optional")
     target_link_libraries(${target} PUBLIC bcrypt)
+    gamehq_enable_warnings(${target})
     if(trust_test_keys)
         target_compile_definitions(${target} PUBLIC GAMEHQ_RELEASE_TRUST_TEST_KEYS)
     endif()

@@ -52,6 +52,38 @@ private slots:
         QVERIFY(parsed.launchArgs.isEmpty());
 
         QVERIFY(!DiscordDesktopProvider::parseHandlerCommand(QString()).isValid());
+
+        // --processStart must name a bare executable, never a path or script.
+        parsed = DiscordDesktopProvider::parseHandlerCommand(QStringLiteral(
+            "\"C:\\Discord\\Update.exe\" --processStart ..\\..\\evil.exe"));
+        QVERIFY(parsed.launchArgs.isEmpty());
+        parsed = DiscordDesktopProvider::parseHandlerCommand(QStringLiteral(
+            "\"C:\\Discord\\Update.exe\" --processStart Discord.cmd"));
+        QVERIFY(parsed.launchArgs.isEmpty());
+    }
+
+    void handlerTargetMustBeAnExistingDiscordExe()
+    {
+        // The HKCU handler is writable by any program of the user, so its
+        // target is only accepted when it is a real Discord launcher .exe.
+        QVERIFY(QDir().mkpath(m_dir.filePath("Discord")));
+        auto touch = [this](const QString& name) {
+            const QString path = m_dir.filePath(QStringLiteral("Discord/") + name);
+            QFile f(path);
+            f.open(QIODevice::WriteOnly);
+            f.write("MZ");
+            return path;
+        };
+        QVERIFY(DiscordDesktopProvider::isDiscordLauncher(touch("Update.exe")));
+        QVERIFY(DiscordDesktopProvider::isDiscordLauncher(touch("DiscordPTB.exe")));
+        QVERIFY(!DiscordDesktopProvider::isDiscordLauncher(touch("Discord.bat")));
+        QVERIFY(!DiscordDesktopProvider::isDiscordLauncher(touch("Discord.cmd")));
+        QVERIFY(!DiscordDesktopProvider::isDiscordLauncher(touch("Other.exe")));
+        QVERIFY(!DiscordDesktopProvider::isDiscordLauncher(
+            m_dir.filePath("Discord/Missing/Discord.exe")));
+        QVERIFY(!DiscordDesktopProvider::isDiscordLauncher(QStringLiteral("Discord.exe")));
+        QVERIFY(!DiscordDesktopProvider::isDiscordLauncher(QString()));
+        QVERIFY(!DiscordDesktopProvider::isDiscordLauncher(m_dir.filePath("Discord")));
     }
 
     void notInstalledIsListedButUnavailable()

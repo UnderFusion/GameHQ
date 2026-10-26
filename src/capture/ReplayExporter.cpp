@@ -68,40 +68,62 @@ bool openSegment(const std::wstring& path, int segmentIndex, const QString& tag,
                              .arg(fi.exists() ? QStringLiteral("yes") : QStringLiteral("no"))
                              .arg(fi.exists() ? fi.size() : -1);
 
+    const auto fail = [&](const char* stage, HRESULT error) {
+        qWarning().nospace() << "ReplaySave[" << tag
+                             << "]: segment " << segmentIndex
+                             << " rejected - " << stage << " hr=0x"
+                             << Qt::hex << quint32(error);
+        src.release();
+        return false;
+    };
+
     IMFAttributes* rattr = nullptr;
-    MFCreateAttributes(&rattr, 1);
+    HRESULT hr = MFCreateAttributes(&rattr, 1);
+    if (FAILED(hr))
+        return fail("reader attributes", hr);
     rattr->SetUINT32(MF_SOURCE_READER_ENABLE_ADVANCED_VIDEO_PROCESSING, FALSE);
 
-    HRESULT hr = MFCreateSourceReaderFromURL(path.c_str(), rattr, &src.reader);
+    hr = MFCreateSourceReaderFromURL(path.c_str(), rattr, &src.reader);
     if (rattr) rattr->Release();
     if (FAILED(hr) || !src.reader) {
         qWarning().nospace() << "ReplaySave[" << tag
                              << "]: segment " << segmentIndex
                              << " skipped - open failed hr=0x"
                              << Qt::hex << quint32(hr);
-        src.reader = nullptr;
+        src.release();
         return false;
     }
 
-    src.reader->SetStreamSelection((DWORD)MF_SOURCE_READER_ALL_STREAMS,        FALSE);
-    src.reader->SetStreamSelection((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM, TRUE);
-    src.reader->SetStreamSelection((DWORD)MF_SOURCE_READER_FIRST_AUDIO_STREAM, TRUE);
+    hr = src.reader->SetStreamSelection((DWORD)MF_SOURCE_READER_ALL_STREAMS, FALSE);
+    if (SUCCEEDED(hr))
+        hr = src.reader->SetStreamSelection((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM, TRUE);
+    if (FAILED(hr))
+        return fail("video stream selection", hr);
 
     // Pin the native compressed type => no decoder inserted (passthrough).
     hr = src.reader->GetNativeMediaType((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM, 0, &src.videoType);
     if (FAILED(hr) || !src.videoType) {
         qWarning() << "ReplayExporter: skipping segment — no native video type";
-        src.videoType = nullptr;
         src.release();
         return false;
     }
-    src.reader->SetCurrentMediaType((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM, nullptr, src.videoType);
+    hr = src.reader->SetCurrentMediaType((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM, nullptr, src.videoType);
+    if (FAILED(hr))
+        return fail("compressed video type", hr);
 
-    src.hasAudio =
-        SUCCEEDED(src.reader->GetNativeMediaType((DWORD)MF_SOURCE_READER_FIRST_AUDIO_STREAM, 0, &src.audioType))
-        && src.audioType;
-    if (src.hasAudio)
-        src.reader->SetCurrentMediaType((DWORD)MF_SOURCE_READER_FIRST_AUDIO_STREAM, nullptr, src.audioType);
+    hr = src.reader->GetNativeMediaType((DWORD)MF_SOURCE_READER_FIRST_AUDIO_STREAM, 0, &src.audioType);
+    // Only an absent stream means video-only. A damaged audio type must not
+    // silently turn a clip with audio into a successful silent export.
+    if (hr != MF_E_INVALIDSTREAMNUMBER) {
+        if (FAILED(hr) || !src.audioType)
+            return fail("native audio type", FAILED(hr) ? hr : E_UNEXPECTED);
+        src.hasAudio = true;
+        hr = src.reader->SetStreamSelection((DWORD)MF_SOURCE_READER_FIRST_AUDIO_STREAM, TRUE);
+        if (SUCCEEDED(hr))
+            hr = src.reader->SetCurrentMediaType((DWORD)MF_SOURCE_READER_FIRST_AUDIO_STREAM, nullptr, src.audioType);
+        if (FAILED(hr))
+            return fail("compressed audio setup", hr);
+    }
 
     UINT32 segW = 0, segH = 0, fpsNum = 0, fpsDen = 0;
     MFGetAttributeSize(src.videoType, MF_MT_FRAME_SIZE, &segW, &segH);
@@ -121,19 +143,22 @@ bool openSegment(const std::wstring& path, int segmentIndex, const QString& tag,
 bool beginConcatWriter(const std::wstring& outFile, const SegmentSource& src, ConcatWriter& w)
 {
     IMFAttributes* wattr = nullptr;
-    MFCreateAttributes(&wattr, 2);
+    HRESULT hr = MFCreateAttributes(&wattr, 2);
+    if (FAILED(hr)) return false;
     wattr->SetGUID  (MF_TRANSCODE_CONTAINERTYPE,        MFTranscodeContainerType_MPEG4);
     wattr->SetUINT32(MF_SINK_WRITER_DISABLE_THROTTLING, TRUE);
 
-    HRESULT hr = MFCreateSinkWriterFromURL(outFile.c_str(), nullptr, wattr, &w.writer);
+    hr = MFCreateSinkWriterFromURL(outFile.c_str(), nullptr, wattr, &w.writer);
     if (wattr) wattr->Release();
     if (FAILED(hr) || !w.writer) return false;
 
     IMFMediaType* outType = nullptr;
-    MFCreateMediaType(&outType);
-    src.videoType->CopyAllItems(outType);
+    hr = MFCreateMediaType(&outType);
+    if (FAILED(hr)) return false;
+    hr = src.videoType->CopyAllItems(outType);
 
-    hr = w.writer->AddStream(outType, &w.videoStream);
+    if (SUCCEEDED(hr))
+        hr = w.writer->AddStream(outType, &w.videoStream);
     if (SUCCEEDED(hr))
         hr = w.writer->SetInputMediaType(w.videoStream, outType, nullptr); // same type => no encoder
     outType->Release();
@@ -141,17 +166,20 @@ bool beginConcatWriter(const std::wstring& outFile, const SegmentSource& src, Co
 
     if (src.hasAudio) {
         IMFMediaType* outAudioType = nullptr;
-        MFCreateMediaType(&outAudioType);
-        src.audioType->CopyAllItems(outAudioType);
-        hr = w.writer->AddStream(outAudioType, &w.audioStream);
+        hr = MFCreateMediaType(&outAudioType);
+        if (SUCCEEDED(hr))
+            hr = src.audioType->CopyAllItems(outAudioType);
+        if (SUCCEEDED(hr))
+            hr = w.writer->AddStream(outAudioType, &w.audioStream);
         if (SUCCEEDED(hr))
             hr = w.writer->SetInputMediaType(w.audioStream, outAudioType, nullptr);
-        outAudioType->Release();
-        if (SUCCEEDED(hr))
-            w.haveAudio = true;
-        else
-            qWarning().nospace() << "ReplayExporter: audio stream copy disabled hr=0x"
+        if (outAudioType) outAudioType->Release();
+        if (FAILED(hr)) {
+            qWarning().nospace() << "ReplayExporter: audio stream setup failed hr=0x"
                                  << Qt::hex << quint32(hr);
+            return false;
+        }
+        w.haveAudio = true;
     }
 
     UINT32 num = 0, den = 0;
@@ -179,9 +207,10 @@ CopyStatus copySamples(IMFSourceReader* reader, DWORD srcStream, IMFSinkWriter* 
         LONGLONG   ts          = 0;
         IMFSample* sample      = nullptr;
         HRESULT hr = reader->ReadSample(srcStream, 0, nullptr, &streamFlags, &ts, &sample);
-        if (FAILED(hr)) {
+        if (FAILED(hr) || (streamFlags & MF_SOURCE_READERF_ERROR)) {
             qWarning().nospace() << "ReplayExporter: " << what << " read failed hr=0x"
                                  << Qt::hex << quint32(hr);
+            if (sample) sample->Release();
             return CopyStatus::ReadFailed;
         }
         if (streamFlags & MF_SOURCE_READERF_ENDOFSTREAM) { if (sample) sample->Release(); return CopyStatus::Ok; }
@@ -212,7 +241,7 @@ CopyStatus copySamples(IMFSourceReader* reader, DWORD srcStream, IMFSinkWriter* 
 }
 
 bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstring& outFile,
-                     const QString& traceId)
+                     const QString& traceId, bool requireAudio)
 {
     QElapsedTimer totalTimer;
     totalTimer.start();
@@ -237,6 +266,7 @@ bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstrin
                                       // clear failure when the configured ring
                                       // should contain 30+ seconds.
     bool     writeFailed    = false;
+    int      totalAudioSamples = 0;
 
     int segmentIndex = 0;
     for (const std::wstring& path : inFiles) {
@@ -250,6 +280,19 @@ bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstrin
             continue;
         }
         if (!w.ready && !beginConcatWriter(outFile, src, w)) {
+            src.release();
+            break;
+        }
+        // The first segment fixes the output's streams. Any later segment
+        // with a different audio presence (either direction) would leave a
+        // silent stretch or drop audio, so the whole export is refused.
+        if (src.hasAudio != w.haveAudio || (requireAudio && !src.hasAudio)) {
+            qWarning().noquote() << QStringLiteral("ReplaySave[%1]: segment %2 audio=%3 but output audio=%4%5 - refusing mixed or silent clip")
+                                        .arg(tag).arg(segmentIndex)
+                                        .arg(src.hasAudio ? QStringLiteral("yes") : QStringLiteral("no"))
+                                        .arg(w.haveAudio ? QStringLiteral("yes") : QStringLiteral("no"))
+                                        .arg(requireAudio ? QStringLiteral(" (required)") : QString());
+            writeFailed = true;
             src.release();
             break;
         }
@@ -275,6 +318,7 @@ bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstrin
             if (as != CopyStatus::Ok)
                 writeFailed = true;
         }
+        totalAudioSamples += audioSamples;
 
         if (videoSamples == 0) {
             skippedSegment = true;
@@ -300,7 +344,12 @@ bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstrin
 
     if (w.writer) w.writer->Release();
     if (startedMf) MFShutdown();
-    const bool ok = SUCCEEDED(hr) && wroteAnything && !skippedSegment && !writeFailed;
+    const bool audioMissing = requireAudio && totalAudioSamples == 0;
+    if (audioMissing)
+        qWarning().noquote() << QStringLiteral("ReplaySave[%1]: audio was required but no audio samples were exported")
+                                    .arg(tag);
+    const bool ok = SUCCEEDED(hr) && wroteAnything && !skippedSegment && !writeFailed
+                 && !audioMissing;
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: concat end ok=%2 wroteAnything=%3 skipped=%4 writeFailed=%5 finalHr=0x%6 durationMs=%7 totalMs=%8")
                              .arg(tag)
                              .arg(ok ? QStringLiteral("yes") : QStringLiteral("no"))
@@ -314,12 +363,50 @@ bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstrin
 }
 
 // Decode the first frame of an MP4 to RGB32 (== BGRA == QImage::Format_RGB32).
+bool hasReadableVideoImpl(const std::wstring& path)
+{
+    if (QFileInfo(fromWide(path)).size() <= 0)
+        return false;   // the empty fMP4 a crash leaves behind
+    const HRESULT hrCo = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+    const bool startedMf = SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE));
+    bool readable = false;
+    SegmentSource src;
+    if (openSegment(path, 0, QStringLiteral("restore-check"), src)) {
+        // The first reads can be stream ticks or format changes without a
+        // sample; a few attempts are enough to reach a frame or the end.
+        for (int attempt = 0; attempt < 8 && !readable; ++attempt) {
+            DWORD flags = 0;
+            LONGLONG timestamp = 0;
+            IMFSample* sample = nullptr;
+            const HRESULT hr = src.reader->ReadSample((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM,
+                                                      0, nullptr, &flags, &timestamp, &sample);
+            if (sample) {
+                readable = SUCCEEDED(hr);
+                sample->Release();
+            }
+            if (FAILED(hr) || (flags & (MF_SOURCE_READERF_ENDOFSTREAM | MF_SOURCE_READERF_ERROR)))
+                break;
+        }
+        src.release();
+    }
+    if (startedMf)
+        MFShutdown();
+    if (SUCCEEDED(hrCo))
+        CoUninitialize();
+    return readable;
+}
+
 bool grabThumbnailImpl(const std::wstring& file, QImage& out)
 {
     const bool startedMf = SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE));
 
+    // The scanner feeds this any video file in a watched folder, so every
+    // step is checked and nothing trusts the file's own sizes.
     IMFAttributes* rattr = nullptr;
-    MFCreateAttributes(&rattr, 1);
+    if (FAILED(MFCreateAttributes(&rattr, 1)) || !rattr) {
+        if (startedMf) MFShutdown();
+        return false;
+    }
     rattr->SetUINT32(MF_SOURCE_READER_ENABLE_ADVANCED_VIDEO_PROCESSING, TRUE);
 
     IMFSourceReader* reader = nullptr;
@@ -331,7 +418,11 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
     reader->SetStreamSelection((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM, TRUE);
 
     IMFMediaType* want = nullptr;
-    MFCreateMediaType(&want);
+    if (FAILED(MFCreateMediaType(&want)) || !want) {
+        reader->Release();
+        if (startedMf) MFShutdown();
+        return false;
+    }
     want->SetGUID(MF_MT_MAJOR_TYPE, MFMediaType_Video);
     want->SetGUID(MF_MT_SUBTYPE,    MFVideoFormat_RGB32);
     hr = reader->SetCurrentMediaType((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM, nullptr, want);
@@ -350,10 +441,16 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
             MFGetStrideForBitmapInfoHeader(MFVideoFormat_RGB32.Data1, width, &defStride);
         cur->Release();
     }
-    if (width == 0 || height == 0) { reader->Release(); if (startedMf) MFShutdown(); return false; }
+    constexpr UINT32 kMaxDimension = 16384;
+    if (width == 0 || height == 0 || width > kMaxDimension || height > kMaxDimension) {
+        reader->Release();
+        if (startedMf) MFShutdown();
+        return false;
+    }
 
+    // A stream of empty reads (format changes, gaps) must not spin forever.
     IMFSample* sample = nullptr;
-    for (;;) {
+    for (int attempt = 0; attempt < 64; ++attempt) {
         DWORD    flags = 0;
         LONGLONG ts    = 0;
         hr = reader->ReadSample((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM,
@@ -373,18 +470,25 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
     if (SUCCEEDED(buf->QueryInterface(IID_IMF2DBuffer, (void**)&buf2d)) && buf2d) {
         BYTE* scan0 = nullptr;
         LONG  pitch = 0;
+        DWORD contiguous = 0;
+        buf->GetCurrentLength(&contiguous);
         if (SUCCEEDED(buf2d->Lock2D(&scan0, &pitch))) {
             QImage img((int)width, (int)height, QImage::Format_RGB32);
             const bool bottomUp = pitch < 0;
             const LONG absPitch = pitch < 0 ? -pitch : pitch;
-            for (UINT y = 0; y < height; ++y) {
+            const quint64 needed = quint64(absPitch) * (height - 1) + quint64(width) * 4;
+            const bool fits = !img.isNull() && quint64(absPitch) >= quint64(width) * 4
+                && (contiguous == 0 || needed <= contiguous);
+            for (UINT y = 0; fits && y < height; ++y) {
                 const BYTE* srcRow = bottomUp
                     ? scan0 - (LONG)y * absPitch
                     : scan0 + (LONG)y * absPitch;
                 memcpy(img.scanLine((int)y), srcRow, (size_t)width * 4);
             }
-            out = img.copy();                                // detach before Unlock
-            okResult = true;
+            if (fits) {
+                out = img.copy();                            // detach before Unlock
+                okResult = true;
+            }
             buf2d->Unlock2D();
         }
         buf2d->Release();
@@ -394,12 +498,17 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
             const bool bottomUp = defStride < 0;
             const LONG absStride = defStride < 0 ? -defStride : (defStride ? defStride : (LONG)width * 4);
             QImage img((int)width, (int)height, QImage::Format_RGB32);
-            for (UINT y = 0; y < height; ++y) {
+            const quint64 needed = quint64(absStride) * (height - 1) + quint64(width) * 4;
+            const bool fits = !img.isNull() && quint64(absStride) >= quint64(width) * 4
+                && needed <= len;
+            for (UINT y = 0; fits && y < height; ++y) {
                 const UINT srcY = bottomUp ? (height - 1 - y) : y;
                 memcpy(img.scanLine((int)y), data + (size_t)srcY * absStride, (size_t)width * 4);
             }
-            out = img.copy();
-            okResult = true;
+            if (fits) {
+                out = img.copy();
+                okResult = true;
+            }
             buf->Unlock();
         }
     }
@@ -415,18 +524,24 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
 
 namespace ReplayExporter {
 
-bool concat(const QStringList& inputFiles, const QString& outputFile, const QString& traceId)
+bool concat(const QStringList& inputFiles, const QString& outputFile, const QString& traceId,
+            Audio audio)
 {
     std::vector<std::wstring> in;
     in.reserve(inputFiles.size());
     for (const QString& f : inputFiles)
         in.push_back(f.toStdWString());
-    return remuxConcatImpl(in, outputFile.toStdWString(), traceId);
+    return remuxConcatImpl(in, outputFile.toStdWString(), traceId, audio == Audio::Required);
 }
 
 bool grabThumbnail(const QString& file, QImage& out)
 {
     return grabThumbnailImpl(file.toStdWString(), out);
+}
+
+bool hasReadableVideo(const QString& file)
+{
+    return hasReadableVideoImpl(file.toStdWString());
 }
 
 } // namespace ReplayExporter

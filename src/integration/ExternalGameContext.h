@@ -27,6 +27,7 @@ struct ExternalGameSession
     quint32 startedProcessId = 0;
     QDateTime occurredAtUtc;
     QString phase;
+    quint64 sequence = 0;   // insertion/update order, for evicting the oldest
 };
 
 enum class MatchConfidence { None, InstallDirectory, DescendantProcess, ExactProcess };
@@ -42,10 +43,20 @@ struct ExternalGameMatch
     }
 };
 
+// Xbox full screen experience surfaces (the Xbox app home, Game Bar) that can
+// hold the foreground while a game launched from Playnite is running. Only
+// these may hand the capture gate over to a verified Playnite game window.
+bool isXboxShellSurface(const QString &processName, const QString &windowTitle);
+
 class ExternalGameContext final : public QObject
 {
     Q_OBJECT
 public:
+    // Most sessions one source may hold. A lifecycle message for a new
+    // session beyond this evicts that source's least recently updated one, so
+    // a client cannot grow GameHQ's memory without limit.
+    static constexpr int MaxSessionsPerSource = 64;
+
     explicit ExternalGameContext(QObject *parent = nullptr);
 
     bool upsert(const QString &sourceId, const QJsonObject &object,
@@ -59,6 +70,9 @@ public:
 
     QList<ExternalGameSession> sessions() const;
     int sessionCount() const;
+    // Started sessions whose launched process id is known: the only ones whose
+    // windows can be verified by process identity rather than by name or path.
+    QList<ExternalGameSession> launchedSessions() const;
     ExternalGameMatch matchForeground(
         quint32 foregroundPid, const QString &executablePath, bool alreadyGame,
         const std::function<bool(quint32, quint32)> &isDescendant) const;
@@ -73,6 +87,7 @@ private:
     static QString key(const QString &sourceId, const QString &sessionId);
 
     QHash<QString, ExternalGameSession> m_sessions;
+    quint64 m_nextSequence = 1;
     mutable QReadWriteLock m_lock;
     QHash<QString, QTimer *> m_expiryTimers;
 };

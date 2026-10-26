@@ -1,3 +1,4 @@
 module GameHQ.helpers
 SidebarCategories 1.0 SidebarCategories.js
 PadNav 1.0 PadNav.js
+UpdateUi 1.0 UpdateUi.js

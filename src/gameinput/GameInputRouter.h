@@ -62,6 +62,9 @@ public:
     bool failedForSession() const { return m_failedForSession; }
     QString runtimeStatus() const { return m_runtimeStatus; }
     int shadowReadingCount() const { return m_shadowReadingCount; }
+    // Registry observations performed (lifecycle events and descriptor
+    // changes only, never once per reading). Diagnostics/tests.
+    int deviceObservationCount() const { return m_deviceObservations; }
     const PhysicalControllerRegistry& registry() const;
     QString controllerSummary() const;
     QString compatibilityReport() const;
@@ -82,6 +85,7 @@ signals:
 
 private:
     void handleBatch(const GameInputEventBatch& batch);
+    bool needsObservation(const GameInputEvent& event) const;
     QString observeDevice(const GameInputDeviceDescriptor& device);
     void detachFromRegistry(const QString& reason);
     void failSession(const QString& reason);
@@ -106,9 +110,13 @@ private:
     bool m_failedForSession = false;
     QString m_runtimeStatus = QStringLiteral("Not started");
     int m_shadowReadingCount = 0;
+    int m_deviceObservations = 0;
     int m_shadowedSystemEdges = 0;
     QHash<QString, QSet<QString>> m_heldSystemControls;
     QHash<QString, QString> m_deviceLogicalIds;
+    // Descriptor last fed to the registry per GameInput device id; readings
+    // with an identical descriptor skip re-observation.
+    QHash<QString, GameInputDeviceDescriptor> m_observedDescriptors;
     QHash<QString, QString> m_deviceNames;
     QHash<QString, QVector<quint8>> m_deviceExtraStates;
     QHash<QString, QStringList> m_deviceExtraControls;

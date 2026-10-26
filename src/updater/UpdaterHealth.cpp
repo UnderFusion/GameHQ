@@ -31,6 +31,19 @@ std::wstring quoteArgument(const std::wstring &value)
     return quoted;
 }
 
+// Counts every process still running in the supervision job: the launcher
+// exits as soon as it has started app/GameHQ.exe, so the process handle alone
+// says nothing about whether the application is still starting. A failed query
+// is treated as "still running" so it can only lengthen the wait, never cut it.
+DWORD activeProcessCount(HANDLE job)
+{
+    JOBOBJECT_BASIC_ACCOUNTING_INFORMATION accounting{};
+    if (!QueryInformationJobObject(job, JobObjectBasicAccountingInformation,
+                                   &accounting, sizeof(accounting), nullptr))
+        return 1;
+    return accounting.ActiveProcesses;
+}
+
 std::string trimmedToken(const std::filesystem::path &path)
 {
     std::ifstream stream(path, std::ios::binary);
@@ -90,12 +103,19 @@ bool launchAndWaitForHealth(const Transaction &transaction, int timeoutMs,
     }
     CloseHandle(process.hThread);
 
+    // The deadline is a generous upper bound for a slow first start, not the
+    // expected wait: a process tree that has already exited can never publish
+    // the token, so it is reported at once instead of waiting out the bound.
     const auto deadline = std::chrono::steady_clock::now()
         + std::chrono::milliseconds(timeoutMs);
+    bool treeExited = false;
     while (std::chrono::steady_clock::now() < deadline) {
+        // Sampled before the token check, so a process that publishes the
+        // token and then exits is still seen as healthy on this pass.
+        treeExited = activeProcessCount(job) == 0;
         if (std::filesystem::is_regular_file(transaction.healthTokenPath, ec)) {
             const std::string token = trimmedToken(transaction.healthTokenPath);
-            if (token.empty()) {
+            if (token.empty() && !treeExited) {
                 std::this_thread::sleep_for(std::chrono::milliseconds(25));
                 continue;
             }
@@ -122,12 +142,16 @@ bool launchAndWaitForHealth(const Transaction &transaction, int timeoutMs,
             return false;
         }
         ec.clear();
+        if (treeExited)
+            break;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     CloseHandle(job); // JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE stops launcher + child
     WaitForSingleObject(process.hProcess, 5000);
     CloseHandle(process.hProcess);
-    errorOut = "timed out waiting for the updated application health token";
+    errorOut = treeExited
+        ? "the updated application exited without publishing its health token"
+        : "timed out waiting for the updated application health token";
     return false;
 }
 }

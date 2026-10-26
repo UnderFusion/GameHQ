@@ -6,6 +6,7 @@ import QtQuick.Window
 import GameHQ
 import "components"
 import "helpers/SidebarCategories.js" as SidebarCategories
+import "helpers/UpdateUi.js" as UpdateUi
 
 // Desktop gallery window: dark gradient background,
 // thin display type, sidebar → grid → preview.
@@ -429,7 +430,34 @@ ApplicationWindow {
         return bulkSelection.allSelected()
     }
 
+    // A delete confirmation owns all input while it is visible: nothing behind
+    // it may change the selection, open menus or switch pages.
+    function activeConfirmDialog() {
+        if (deleteDialog.visible)
+            return deleteDialog
+        return bulkDeleteDialog.visible ? bulkDeleteDialog : null
+    }
+
+    function confirmDialogOpen() {
+        return window.activeConfirmDialog() !== null
+    }
+
+    // The in-window modal that owns pad input, or null: a delete
+    // confirmation, then Help, then About / What's New. Background shortcuts
+    // are dropped while one is up. Share and the lightbox are routed before
+    // any of this runs (DesktopPadRouter).
+    function activeModal() {
+        const confirm = window.activeConfirmDialog()
+        if (confirm)
+            return confirm
+        if (helpDialog.visible)
+            return helpDialog
+        return aboutDialog.visible ? aboutDialog : null
+    }
+
     function bulkToggle(index, extendRange) {
+        if (window.confirmDialogOpen())
+            return
         if (bulkSelection.toggle(index, extendRange))
             sounds.play("nav_tick")
     }
@@ -469,6 +497,8 @@ ApplicationWindow {
     }
 
     function padBulkToggle() {
+        if (window.confirmDialogOpen())
+            return
         if (window.bulkMode)
             window.bulkExit()
         else
@@ -477,6 +507,8 @@ ApplicationWindow {
     }
 
     function bulkSelectAll() {
+        if (window.confirmDialogOpen())
+            return
         sounds.play(bulkSelection.selectAll() ? "nav_tick" : "favorite")
     }
 
@@ -484,17 +516,36 @@ ApplicationWindow {
         return bulkSelection.rows()
     }
 
+    // The files the open bulk confirmation listed, frozen by path when it
+    // opened. Confirm deletes exactly these, re-resolved to current rows, so a
+    // selection change or gallery refresh behind the dialog cannot widen it.
+    property var pendingBulkDeletePaths: []
+
     function bulkAskDelete() {
-        var n = window.bulkCount()
+        if (window.confirmDialogOpen())
+            return
+        var rows = window.bulkRows()
+        var paths = []
+        for (var i = 0; i < rows.length; ++i)
+            paths.push(app.gallery.get(rows[i]).filePath)
+        var n = paths.length
         if (n === 0)
             return
-        //% "%n capture will be permanently deleted.\nThis cannot be undone."
+        window.pendingBulkDeletePaths = paths
+        //% "%n capture will be moved to the Recycle Bin.\nFiles in watched folders are left untouched."
         bulkDeleteDialog.message = qsTrId("gamehq.gallery.delete_selected.message", n)
         bulkDeleteDialog.open()
     }
 
     function bulkConfirmDelete() {
-        var rows = window.bulkRows()
+        var paths = window.pendingBulkDeletePaths
+        window.pendingBulkDeletePaths = []
+        var rows = []
+        for (var i = 0; i < paths.length; ++i) {
+            var row = app.gallery.rowOf(paths[i])
+            if (row >= 0)
+                rows.push(row)
+        }
         if (rows.length === 0) {
             window.bulkExit()
             return
@@ -670,6 +721,8 @@ ApplicationWindow {
     }
 
     function padTabStep(direction) {
+        if (window.confirmDialogOpen())
+            return
         if (window.sidebarLanguageListOpen())
             return
         if (helpDialog.visible)
@@ -710,6 +763,8 @@ ApplicationWindow {
     }
 
     function padNavigate(direction) {
+        const confirm = window.activeConfirmDialog()
+        if (confirm) { confirm.padHorizontal(direction); return }
         if (window.sidebarLanguageListOpen())
             return
         if (helpDialog.visible)
@@ -737,8 +792,6 @@ ApplicationWindow {
             return
         }
         if (window.menuOpen || window.helpOpen)
-            return
-        if (deleteDialog.visible || bulkDeleteDialog.visible)
             return
         if (window.sidebarFocused) {
             // RIGHT returns to the grid — the mirror of LEFT-at-the-edge
@@ -783,6 +836,8 @@ ApplicationWindow {
     }
 
     function padNavigateVertical(direction) {
+        const confirm = window.activeConfirmDialog()
+        if (confirm) { confirm.padStep(direction); return }
         if (window.sidebarLanguageListOpen()) {
             desktopSidebar.languageCombo.padStep(direction)
             sounds.play("nav_tick")
@@ -805,8 +860,6 @@ ApplicationWindow {
             return
         }
         if (window.helpOpen)
-            return
-        if (deleteDialog.visible || bulkDeleteDialog.visible)
             return
         if (window.menuOpen) {
             const menuCount = padMenu.entries.length
@@ -853,7 +906,7 @@ ApplicationWindow {
                 aboutDialog.padVertical(direction)
             return
         }
-        if (deleteDialog.visible || bulkDeleteDialog.visible)
+        if (window.confirmDialogOpen())
             return
         if (window.settingsOpen) {
             settingsView.padScroll(direction)
@@ -866,6 +919,8 @@ ApplicationWindow {
     }
 
     function padConfirm() {
+        const confirm = window.activeConfirmDialog()
+        if (confirm) { confirm.padConfirm(); return }
         if (window.sidebarLanguageListOpen()) {
             sounds.play("confirm")
             desktopSidebar.languageCombo.padCommitHighlighted()
@@ -873,8 +928,6 @@ ApplicationWindow {
         }
         if (helpDialog.visible) { helpDialog.padConfirm(); return }
         if (aboutDialog.visible) { aboutDialog.padConfirm(); return }
-        if (deleteDialog.visible) { deleteDialog.confirmed(); deleteDialog.close(); return }
-        if (bulkDeleteDialog.visible) { window.bulkConfirmDelete(); bulkDeleteDialog.close(); return }
         if (window.settingsOpen) {
             // On the sidebar, Cross still activates the sidebar row (it is the
             // app's nav, not a settings control).
@@ -903,7 +956,7 @@ ApplicationWindow {
     }
 
     function padFavorite() {
-        if (aboutDialog.visible || window.menuOpen || window.settingsOpen || window.helpOpen)
+        if (window.activeModal() || window.menuOpen || window.settingsOpen || window.helpOpen)
             return
         if (window.sidebarFocused) {
             window.toggleSidebarGamePin(window.sidebarHoverIndex)
@@ -918,7 +971,7 @@ ApplicationWindow {
     }
 
     function padToggleMenu() {
-        if (aboutDialog.visible || helpDialog.visible || window.settingsOpen || grid.count === 0)
+        if (window.activeModal() || window.settingsOpen || grid.count === 0)
             return
         if (window.sidebarFocused)
             return  // action menu only acts on a grid tile
@@ -975,11 +1028,11 @@ ApplicationWindow {
     }
 
     function padBack() {
+        const confirm = window.activeConfirmDialog()
+        if (confirm) { confirm.padBack(); return }
         if (window.sidebarLanguageListOpen()) { window.closeSidebarLanguageList(); return }
         if (helpDialog.visible) { helpDialog.close(); return }
         if (aboutDialog.visible) { aboutDialog.close(); return }
-        if (deleteDialog.visible) { deleteDialog.canceled(); deleteDialog.close(); return }
-        if (bulkDeleteDialog.visible) { bulkDeleteDialog.canceled(); bulkDeleteDialog.close(); return }
         if (window.settingsOpen) {
             // Circle unwinds one step at a time: dropdown → options →
             // categories → out of Settings entirely.
@@ -997,124 +1050,16 @@ ApplicationWindow {
         } else if (window.menuOpen) {
             window.menuOpen = false
         } else if (lightbox.visible) {
-            if (lightbox.visible)
-                lightbox.close()
+            lightbox.close()
         }
     }
 
-    Connections {
+    // Controller commands: Share, then the lightbox, then the pad* handlers
+    // above (see DesktopPadRouter).
+    DesktopPadRouter {
         target: input
-        function onDesktopNavigate(direction) {
-            if (window.activeShareDialog()) { window.usingGamepad = true; return }
-            window.usingGamepad = true
-            if (lightbox.visible) {
-                lightbox.padNavigate(direction)
-                return
-            }
-            window.padNavigate(direction)
-        }
-        function onDesktopNavigateVertical(direction) {
-            const share = window.activeShareDialog()
-            if (share) { window.usingGamepad = true; share.padNavigate(direction); return }
-            window.usingGamepad = true
-            if (lightbox.visible) {
-                lightbox.padReveal()
-                return
-            }
-            window.padNavigateVertical(direction)
-        }
-        function onDesktopConfirm() {
-            const share = window.activeShareDialog()
-            if (share) { window.usingGamepad = true; share.padConfirm(); return }
-            window.usingGamepad = true
-            if (lightbox.visible) {
-                lightbox.padConfirm()
-                return
-            }
-            window.padConfirm()
-        }
-        function onDesktopFavorite() {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible) {
-                lightbox.padReveal()
-                lightbox.toggleFavorite()
-                return
-            }
-            window.padFavorite()
-        }
-        function onDesktopMenu() {
-            window.usingGamepad = true
-            if (window.activeShareDialog())
-                return   // Share is modal
-            if (lightbox.visible) {
-                lightbox.openShare()
-                return
-            }
-            window.padToggleMenu()
-        }
-        function onDesktopTabStep(direction) {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible) {
-                lightbox.padStep(direction)
-                return
-            }
-            window.padTabStep(direction)
-        }
-        function onDesktopBack() {
-            window.usingGamepad = true
-            const share = window.activeShareDialog()
-            if (share) { share.padBack(); return }
-            window.padBack()
-        }
-        function onDesktopSettings() {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible || aboutDialog.visible || helpDialog.visible)
-                return
-            window.openSettings()
-        }
-        function onDesktopZoom(direction) {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible || aboutDialog.visible || window.settingsOpen || window.helpOpen)
-                return
-            if (direction > 0)
-                window.zoomIn()
-            else
-                window.zoomOut()
-        }
-        function onDesktopScroll(direction) {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible)
-                return
-            window.padScroll(direction)
-        }
-        function onDesktopBulkToggle() {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible || aboutDialog.visible || window.settingsOpen || window.helpOpen)
-                return
-            window.padBulkToggle()
-        }
-        function onPlaybackPlayPause() {
-            if (window.activeShareDialog()) return   // Share is modal
-            if (lightbox.visible)
-                lightbox.toggleVideoPlayback()
-        }
-        function onPlaybackSeek(direction) {
-            if (window.activeShareDialog()) return   // Share is modal
-            if (lightbox.visible)
-                lightbox.padNavigate(direction)
-        }
-        // Share on a focused clip in the lightbox: save the on-screen frame.
-        function onFrameGrabRequested() {
-            if (window.activeShareDialog()) return   // Share is modal
-            if (lightbox.visible)
-                lightbox.saveCurrentFrame()
-        }
+        host: window
+        viewer: lightbox
     }
 
     Connections {
@@ -1184,10 +1129,7 @@ ApplicationWindow {
             settingsOpen: window.settingsOpen
             helpOpen: window.helpOpen
             aboutUnread: window.whatsNewSeenVersion !== app.version
-            updateAvailable: updates.latestVersion !== ""
-                             && ["UpdateAvailable", "Downloading", "ReadyToInstall",
-                                 "PreparingForUpdate", "Quiescent", "Installing",
-                                 "Failed"].includes(updates.stateName)
+            updateAvailable: UpdateUi.releaseVisible(updates)
             availableVersion: updates.latestVersion
             sidebarFocused: window.sidebarFocused
             sidebarHoverIndex: window.sidebarHoverIndex
@@ -1332,7 +1274,7 @@ ApplicationWindow {
 
     function askDelete(row, name, date) {
         window.pendingDeletePath = app.gallery.get(row).filePath || ""
-        //% "%1 · %2\nThis permanently deletes the file."
+        //% "%1 · %2\nThe file will be moved to the Recycle Bin. Files in watched folders are left untouched."
         deleteDialog.message = qsTrId("gamehq.gallery.delete_capture.message").arg(name).arg(date)
         deleteDialog.open()
     }
@@ -1366,6 +1308,7 @@ ApplicationWindow {
         //% "Delete"
         confirmLabel: qsTrId("gamehq.action.delete")
         onConfirmed: window.bulkConfirmDelete()
+        onCanceled: window.pendingBulkDeletePaths = []
     }
 
     AboutWhatsNewDialog {
@@ -1375,7 +1318,7 @@ ApplicationWindow {
         z: 500
         onClosed: window.finishAbout()
         onUpdateSettingsRequested: window.openAboutSettings()
-        onUpdateDeferred: updateBanner.dismissed = true
+        onUpdateDeferred: updateBanner.dismiss()
     }
 
     HelpDialog {

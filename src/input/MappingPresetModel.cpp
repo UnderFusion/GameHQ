@@ -711,9 +711,10 @@ bool MappingPresetModel::applyAssignment(const QString& presetId)
         return setNotice(QStringLiteral("write_failed"),
                          noticeWriteFailed());
     }
-    if (!presetId.isEmpty() && presetId != builtinChoiceToken())
+    if (!presetId.isEmpty() && presetId != builtinChoiceToken()) {
         m_selectedPresetId = presetId;
         m_selectionChosen = true;
+    }
     refresh();
     notifyRuntimeChange();
     return true;

@@ -1,5 +1,6 @@
 #include "updates/UpdateInstaller.h"
 #include "updates/UpdateDownloader.h"
+#include "core/PathContainment.h"
 #include "core/UpdaterHandshake.h"
 #include "localization/NativeText.h"
 
@@ -37,10 +38,12 @@ bool prepareTransaction(const QString &packageRoot, const QString &dataDir,
     const QString root = QDir::cleanPath(QFileInfo(packageRoot).absoluteFilePath());
     const QString package = QDir::cleanPath(QFileInfo(verified.packagePath).absoluteFilePath());
     const QString downloads = QDir(root).filePath(QStringLiteral(".update/downloads"));
+    // Component-wise: QDir::relativeFilePath returns an absolute path for
+    // another drive or share, which slipped past a parent-prefix test.
     const auto insideDownloads = [&downloads](const QString &candidate) {
-        const QString relative = QDir(downloads).relativeFilePath(
-            QDir::cleanPath(QFileInfo(candidate).absoluteFilePath()));
-        return relative != QStringLiteral("..") && !relative.startsWith(QStringLiteral("../"));
+        return path_containment::isWithinRoot(
+            downloads.toStdWString(),
+            QDir::cleanPath(QFileInfo(candidate).absoluteFilePath()).toStdWString());
     };
     // The manifest and signature travel with the package so the helper can
     // repeat the whole verification without trusting anything this process

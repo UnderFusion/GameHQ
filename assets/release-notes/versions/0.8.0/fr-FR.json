@@ -1,0 +1,247 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.8.0",
+  "locale": "fr-FR",
+  "date": "2026-10-26",
+  "mode": "localized",
+  "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+  "sections": [
+    {
+      "id": "thanks",
+      "title": "Remerciements particuliers",
+      "items": [
+        {
+          "id": "thanks-01",
+          "text": "Un grand merci à [@galcn10](https://github.com/galcn10), créateur de [Console Overlay for Playnite](https://github.com/galcn10/ConsoleOverlay), pour avoir testé GameHQ, partagé de précieux retours et créé une excellente intégration Playnite. Votre soutien a contribué à améliorer GameHQ 0.8.0 !"
+        }
+      ]
+    },
+    {
+      "id": "highlights",
+      "title": "Points forts",
+      "items": [
+        {
+          "id": "highlights-01",
+          "text": "Les clips peuvent enregistrer le son de votre jeu lui-même. Avec la nouvelle source Son du jeu, GameHQ enregistre le jeu sur l’appareil par lequel il est diffusé, quel qu’il soit (casque, Bluetooth, HDMI ou haut-parleurs), et laisse de côté les autres applications comme Discord ou Spotify."
+        },
+        {
+          "id": "highlights-02",
+          "text": "Les problèmes d’enregistrement audio sont désormais détectés et signalés. Si la source audio sélectionnée ne peut pas être enregistrée, le tampon de replay s’arrête et vous indique pourquoi et quelle source choisir à la place, au lieu d’enregistrer discrètement des clips sans son. GameHQ ne change jamais la source audio de lui-même."
+        },
+        {
+          "id": "highlights-03",
+          "text": "Le son et l’image restent synchronisés. Les clips enregistrés après un écran de chargement, une pause ou un long blocage conservent un minutage correct, et le tampon de replay redémarre de lui-même lorsqu’un jeu change de résolution."
+        },
+        {
+          "id": "highlights-04",
+          "text": "Les captures d’écran HDR ne restent plus bloquées. Une capture d’écran d’un jeu en pause ou d’un menu statique en HDR est enregistrée immédiatement. Si aucune image n’arrive, la tentative échoue proprement au bout de quelques secondes et l’appui suivant fonctionne."
+        },
+        {
+          "id": "highlights-05",
+          "text": "Suppression plus sûre à la manette. Dans une confirmation de suppression, Croix appuie désormais sur le bouton en surbrillance et Cercle annule. Auparavant, Croix pouvait supprimer le fichier même lorsque Annuler était en surbrillance."
+        },
+        {
+          "id": "highlights-06",
+          "text": "La suppression protège vos originaux. Une capture créée par GameHQ est désormais déplacée dans la Corbeille lorsque vous la supprimez : vous pouvez donc la restaurer. Les fichiers des dossiers surveillés ne sont jamais supprimés."
+        }
+      ]
+    },
+    {
+      "id": "new",
+      "title": "Nouveautés",
+      "items": [
+        {
+          "id": "new-01",
+          "text": "Paramètres › Replay › Source audio propose Son du jeu, Son du bureau et Désactivé. Son du jeu est l’option par défaut sous Windows 11. Son du bureau enregistre tout ce qui passe par la sortie Windows par défaut, y compris les autres applications, et c’est l’option par défaut sur les versions plus anciennes de Windows."
+        },
+        {
+          "id": "new-02",
+          "text": "Son du jeu utilise la capture audio par application intégrée à Windows et ne touche jamais au processus du jeu. Si vous aviez volontairement désactivé le son du système dans une version précédente, il reste désactivé."
+        },
+        {
+          "id": "new-03",
+          "text": "Mises à jour bêta facultatives : un nouvel interrupteur Inclure les versions bêta dans Paramètres › Général et dans À propos permet au programme de mise à jour de proposer des versions bêta. Il est désactivé par défaut, de sorte que les installations stables ne reçoivent que des mises à jour stables."
+        },
+        {
+          "id": "new-04",
+          "text": "Lorsque GameHQ plante, il tente d’enregistrer un petit fichier de vidage sur incident dans son dossier des journaux pour aider à diagnostiquer le problème. Rien n’est envoyé. Certains plantages, comme ceux auxquels Windows met fin immédiatement, peuvent encore fermer GameHQ sans fichier de vidage."
+        },
+        {
+          "id": "new-05",
+          "text": "Le journal consigne davantage de détails sur les captures d’écran enregistrées et les échecs de démarrage, si bien qu’un seul fichier journal suffit plus souvent pour comprendre un signalement de problème."
+        }
+      ]
+    },
+    {
+      "id": "fixes",
+      "title": "Corrections et améliorations",
+      "items": [
+        {
+          "id": "fixes-01",
+          "text": "Les clips ne sont plus muets à cause d’un ancien paramètre interne qui laissait le son du bureau désactivé par défaut."
+        },
+        {
+          "id": "fixes-02",
+          "text": "L’audio dans n’importe quel format de lecture Windows est correctement converti au lieu que la piste audio soit perdue."
+        },
+        {
+          "id": "fixes-03",
+          "text": "Les moments calmes sont enregistrés comme du silence, de sorte que le son qui suit un passage calme reste aligné sur l’image."
+        },
+        {
+          "id": "fixes-04",
+          "text": "L’enregistrement du son du jeu redémarre de façon plus fiable lorsqu’un jeu redémarre ou que vous changez de jeu."
+        },
+        {
+          "id": "fixes-05",
+          "text": "Les parties du tampon de replay qui n’ont pas pu être enregistrées ou ne peuvent pas être relues sont écartées, afin qu’elles ne puissent pas endommager un clip enregistré."
+        },
+        {
+          "id": "fixes-06",
+          "text": "Les notifications propres à GameHQ, comme l’avis indiquant qu’une capture d’écran a été enregistrée, n’apparaissent plus dans vos captures d’écran ni dans les enregistrements et les diffusions de l’écran entier."
+        },
+        {
+          "id": "fixes-07",
+          "text": "Une capture d’écran remplacée par une autre image portant le même nom de fichier reçoit une nouvelle vignette lors de la prochaine analyse de la bibliothèque."
+        },
+        {
+          "id": "fixes-08",
+          "text": "Les dossiers de capture sont analysés en arrière-plan, si bien que GameHQ reste réactif avec de grandes collections."
+        },
+        {
+          "id": "fixes-09",
+          "text": "Les navigateurs, les éditeurs et les autres fenêtres qui ne sont pas des jeux n’apparaissent plus comme des jeux dans votre bibliothèque."
+        },
+        {
+          "id": "fixes-10",
+          "text": "Lors d’une suppression groupée, la sélection reste figée tant que la confirmation est ouverte, de sorte que des actions de la manette en arrière-plan ne peuvent pas changer les fichiers supprimés."
+        },
+        {
+          "id": "fixes-11",
+          "text": "La boîte de dialogue de suppression de la surcouche reçoit les entrées de la manette tant qu’elle est ouverte et se ferme lorsque la surcouche est masquée."
+        },
+        {
+          "id": "fixes-12",
+          "text": "La surcouche ignore les fenêtres qui ne répondent plus au lieu de les attendre."
+        },
+        {
+          "id": "fixes-13",
+          "text": "La page Paramètres ne remonte plus tout en haut lorsque vous faites défiler avec la souris après être revenu sur GameHQ."
+        },
+        {
+          "id": "fixes-14",
+          "text": "Choisir Valeurs par défaut intégrées ou supprimer un préréglage dans l’éditeur d’assignation de la manette ne fige plus la sélection du préréglage."
+        }
+      ]
+    },
+    {
+      "id": "controllers",
+      "title": "Manettes et Playnite",
+      "items": [
+        {
+          "id": "controllers-01",
+          "text": "Les raccourcis de la manette continuent de fonctionner dans les jeux lancés en dehors de Steam, comme un jeu local démarré depuis Playnite. Lorsque Windows cesse de transmettre à GameHQ une DualSense connectée pendant que le jeu a le focus, GameHQ lit la manette directement, en lecture seule, et revient à l’entrée normale dès que Windows la transmet de nouveau."
+        },
+        {
+          "id": "controllers-02",
+          "text": "Les raccourcis et les répétitions de bouton maintenu se terminent toujours au relâchement de la même pression, y compris lorsque le relâchement est signalé via GameInput ou que la manette est débranchée pendant qu’un bouton est maintenu."
+        },
+        {
+          "id": "controllers-03",
+          "text": "Les manettes déconnectées définitivement sont nettoyées, la vérification HidHide ne ralentit plus l’interface, et les périphériques GameInput ne sont revérifiés que lorsque quelque chose change."
+        },
+        {
+          "id": "controllers-04",
+          "text": "Les jeux Playnite restent reconnus même lorsque Playnite ne parvient pas à identifier le processus du jeu."
+        },
+        {
+          "id": "controllers-05",
+          "text": "Expérience plein écran Xbox de Windows : lorsque l’interface Xbox est au premier plan, GameHQ utilise le jeu lancé depuis Playnite pour les captures d’écran et les clips. GameHQ Playnite Integration 0.4.13, disponible séparément en préversion, démarre également GameHQ lorsque le mode Xbox retarde son lancement à l’ouverture de session."
+        }
+      ]
+    },
+    {
+      "id": "stability",
+      "title": "Stabilité et fiabilité",
+      "items": [
+        {
+          "id": "stability-01",
+          "text": "Le nettoyage des enregistrements inachevés ne supprime que les fichiers temporaires créés par GameHQ lui-même."
+        },
+        {
+          "id": "stability-02",
+          "text": "Les dossiers de capture des jeux restent toujours à l’intérieur de votre dossier de capture."
+        },
+        {
+          "id": "stability-03",
+          "text": "Le démarrage n’échoue plus lorsque la bibliothèque contient des chemins de dossier en double ; les entrées sont fusionnées à la place."
+        },
+        {
+          "id": "stability-04",
+          "text": "Si GameHQ ne peut pas démarrer, il en explique la raison dans votre langue et la consigne dans le journal."
+        },
+        {
+          "id": "stability-05",
+          "text": "L’importation d’un profil portable dans un GameHQ installé fonctionne désormais lorsque la copie installée a déjà été lancée."
+        },
+        {
+          "id": "stability-06",
+          "text": "Sécurité renforcée : chargement des DLL plus sûr, contrôles plus stricts des connexions d’intégration locales et gestion plus sûre des fichiers de mise à jour."
+        },
+        {
+          "id": "stability-07",
+          "text": "Le programme de mise à jour gère mieux un premier démarrage lent et conserve ses données intactes s’il est interrompu."
+        },
+        {
+          "id": "stability-08",
+          "text": "Le partage vers Telegram s’arrête de manière plus sûre."
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "Installation et mise à jour",
+      "items": [
+        {
+          "id": "install-01",
+          "text": "Mise à jour depuis la 0.7.9 : exécutez le programme d’installation de la 0.8.0 par-dessus votre installation actuelle."
+        },
+        {
+          "id": "install-02",
+          "text": "Programme d’installation : installe pour l’utilisateur actuel et remplace une version 0.7.9 installée ou une bêta antérieure."
+        },
+        {
+          "id": "install-03",
+          "text": "Version portable : extrayez le ZIP dans un nouveau dossier et lancez GameHQ.exe."
+        },
+        {
+          "id": "install-04",
+          "text": "Si vous avez testé la 0.8.0 Beta 2, 3 ou 4, installez la 0.8.0 avec le programme d’installation ou un nouveau ZIP portable, car ces bêtas n’ont pas été proposées par le programme de mise à jour."
+        }
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "Limitations connues",
+      "items": [
+        {
+          "id": "limitations-01",
+          "text": "Son du jeu nécessite Windows 11. Sur les versions plus anciennes de Windows, GameHQ utilise Son du bureau, qui enregistre aussi les autres applications diffusées sur la sortie par défaut."
+        },
+        {
+          "id": "limitations-02",
+          "text": "Un jeu qui prend le contrôle exclusif d’une manette peut encore empêcher les raccourcis en arrière-plan."
+        },
+        {
+          "id": "limitations-03",
+          "text": "La prise en charge de l’expérience plein écran Xbox de Windows n’a pas encore été confirmée par des testeurs sur un PC qui l’utilise."
+        },
+        {
+          "id": "limitations-04",
+          "text": "Les binaires Windows ne sont pas signés avec Authenticode ; Windows SmartScreen peut afficher un avertissement Éditeur inconnu."
+        }
+      ]
+    }
+  ]
+}

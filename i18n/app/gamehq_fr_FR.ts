@@ -4,104 +4,104 @@
   <context>
     <name>GameHQ</name>
     <message id="gamehq.about.enjoying_gamehq">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="829"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="827"></location>
       <source>Enjoying GameHQ?</source>
       <translation>Vous aimez GameHQ ?</translation>
     </message>
     <message id="gamehq.about.github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="788"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1126"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="786"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1124"></location>
       <source>GitHub</source>
       <translation>GitHub</translation>
     </message>
     <message id="gamehq.about.license">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="800"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="798"></location>
       <source>License</source>
       <translation>Licence</translation>
     </message>
     <message id="gamehq.about.mode.installed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="533"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="531"></location>
       <source>Installed</source>
       <translation>Version installée</translation>
     </message>
     <message id="gamehq.about.mode.portable">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="530"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="528"></location>
       <source>Portable</source>
       <translation>Version portable</translation>
     </message>
     <message id="gamehq.about.more_improvements">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="686"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
       <source>Plus more improvements and fixes.</source>
       <translation>Et de nombreuses autres améliorations et corrections.</translation>
     </message>
     <message id="gamehq.about.product_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="641"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="639"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
       <translation>Une galerie multimédia de captures d’écran et de replays pour jeux PC, conçue pour la manette.</translation>
     </message>
     <message id="gamehq.about.product_updated">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="496"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="494"></location>
       <source>%1 updated</source>
       <translation>%1 mis à jour</translation>
     </message>
     <message id="gamehq.about.project_links">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="772"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="770"></location>
       <source>PROJECT LINKS</source>
       <translation>LIENS DU PROJET</translation>
     </message>
     <message id="gamehq.about.quick_actions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="717"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="715"></location>
       <source>QUICK ACTIONS</source>
       <translation>ACTIONS RAPIDES</translation>
     </message>
     <message id="gamehq.about.report_issue">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="794"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="792"></location>
       <source>Report issue</source>
       <translation>Signaler un problème</translation>
     </message>
     <message id="gamehq.about.star_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="838"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="836"></location>
       <source>A GitHub star helps more players discover the project.</source>
       <translation>Une étoile sur GitHub aide davantage de joueurs à découvrir le projet.</translation>
     </message>
     <message id="gamehq.about.star_on_github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="849"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="847"></location>
       <source>Star on GitHub</source>
       <translation>Ajouter une étoile sur GitHub</translation>
     </message>
     <message id="gamehq.about.version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="511"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="878"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="17"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="509"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="876"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="18"></location>
       <source>Version %1</source>
       <translation>Version %1</translation>
     </message>
     <message id="gamehq.about.whats_new_in">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="651"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="649"></location>
       <source>WHAT'S NEW IN %1</source>
       <translation>NOUVEAUTÉS DE %1</translation>
     </message>
     <message id="gamehq.action.back">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="587"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="585"></location>
       <source>Back</source>
       <translation>Retour</translation>
     </message>
     <message id="gamehq.action.back_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="584"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="582"></location>
       <source>%1  Back</source>
       <translation>%1  Retour</translation>
     </message>
     <message id="gamehq.action.cancel">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="623"></location>
-      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="19"></location>
-      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="25"></location>
-      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="14"></location>
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="35"></location>
-      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
-      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="21"></location>
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="28"></location>
+      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="15"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="34"></location>
+      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
+      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="23"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="174"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
@@ -109,13 +109,13 @@
       <translation>Annuler</translation>
     </message>
     <message id="gamehq.action.delete">
+      <location filename="src/ui/qml/Main.qml" line="1290"></location>
+      <location filename="src/ui/qml/Main.qml" line="1309"></location>
       <location filename="src/ui/qml/Main.qml" line="1348"></location>
-      <location filename="src/ui/qml/Main.qml" line="1367"></location>
-      <location filename="src/ui/qml/Main.qml" line="1405"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
-      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1067"></location>
+      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="17"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
-      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
+      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="37"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="19"></location>
       <source>Delete</source>
       <translation>Supprimer</translation>
@@ -338,7 +338,7 @@
     </message>
     <message id="gamehq.action.not_now">
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="108"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="182"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="187"></location>
       <source>Not now</source>
       <translation>Plus tard</translation>
     </message>
@@ -507,7 +507,7 @@
       <translation>Supprimer</translation>
     </message>
     <message id="gamehq.action.replace">
-      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="21"></location>
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="24"></location>
       <source>Replace</source>
       <translation>Remplacer</translation>
     </message>
@@ -517,9 +517,9 @@
       <translation>Restaurer</translation>
     </message>
     <message id="gamehq.action.restore_defaults">
-      <location filename="src/ui/qml/SettingsView.qml" line="501"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="518"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="532"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="508"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="525"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="539"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="857"></location>
@@ -533,7 +533,7 @@
     </message>
     <message id="gamehq.action.save">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
-      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="26"></location>
+      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="25"></location>
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="168"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="101"></location>
       <source>Save</source>
@@ -575,7 +575,7 @@
       <translation>Utiliser la valeur par défaut</translation>
     </message>
     <message id="gamehq.dialog.confirm.default_title">
-      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="11"></location>
+      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="12"></location>
       <source>Are you sure?</source>
       <translation>Confirmer ?</translation>
     </message>
@@ -636,351 +636,356 @@
       <translation>%1 s</translation>
     </message>
     <message id="gamehq.error.capture_location.create_failed">
-      <location filename="src/config/CaptureLocations.cpp" line="126"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="132"></location>
       <source>The selected folder could not be created.</source>
       <translation>Impossible de créer le dossier sélectionné.</translation>
     </message>
     <message id="gamehq.error.capture_location.folder_invalid">
-      <location filename="src/config/CaptureLocations.cpp" line="110"></location>
-      <location filename="src/config/CaptureLocations.cpp" line="118"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="116"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="124"></location>
       <source>The selected folder is invalid.</source>
       <translation>Le dossier sélectionné n’est pas valide.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="374"></location>
+      <location filename="src/ui/AppController_Settings.cpp" line="50"></location>
       <source>Choose a local folder.</source>
       <translation>Choisissez un dossier local.</translation>
     </message>
     <message id="gamehq.error.capture_location.not_writable">
-      <location filename="src/config/CaptureLocations.cpp" line="136"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="142"></location>
       <source>The selected folder is not writable.</source>
       <translation>Le dossier sélectionné n’est pas accessible en écriture.</translation>
     </message>
     <message id="gamehq.error.capture_location.restore_default_failed">
-      <location filename="src/config/CaptureLocations.cpp" line="202"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="208"></location>
       <source>GameHQ could not restore the default folder.</source>
       <translation>GameHQ n’a pas pu restaurer le dossier par défaut.</translation>
     </message>
     <message id="gamehq.error.capture_location.save_failed">
-      <location filename="src/config/CaptureLocations.cpp" line="175"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="181"></location>
       <source>GameHQ could not save the selected folder.</source>
       <translation>GameHQ n’a pas pu enregistrer le dossier sélectionné.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="368"></location>
-      <location filename="src/ui/AppController.cpp" line="390"></location>
+      <location filename="src/ui/AppController_Settings.cpp" line="44"></location>
+      <location filename="src/ui/AppController_Settings.cpp" line="66"></location>
       <source>The capture type is invalid.</source>
       <translation>Le type de capture n’est pas valide.</translation>
     </message>
     <message id="gamehq.error.portable_import.backup_missing">
-      <location filename="src/config/PortableProfileImporter.cpp" line="303"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="306"></location>
       <source>The interrupted portable-import backup is missing.</source>
       <translation>La sauvegarde de l’importation portable interrompue est introuvable.</translation>
     </message>
     <message id="gamehq.error.portable_import.capture_history_value_invalid">
-      <location filename="src/config/PortableProfileImporter.cpp" line="391"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="394"></location>
       <source>Capture-root history contains a non-string value.</source>
       <translation>L’historique des dossiers racines de capture contient une valeur qui n’est pas une chaîne.</translation>
     </message>
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="185"></location>
       <source>Cannot commit staged file %1.</source>
       <translation>Impossible de finaliser le fichier préparé %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="346"></location>
       <source>The portable config.json is malformed.</source>
       <translation>Le fichier config.json portable est mal formé.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_path_unsupported">
-      <location filename="src/config/PortableProfileImporter.cpp" line="417"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="420"></location>
       <source>Unsupported portable path in config key %1.</source>
       <translation>La clé de configuration %1 contient un chemin portable non pris en charge.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_read_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="333"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="336"></location>
       <source>Cannot read the portable config.json.</source>
       <translation>Impossible de lire le fichier config.json portable.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_value_not_array">
-      <location filename="src/config/PortableProfileImporter.cpp" line="382"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="385"></location>
       <source>%1 must be an array.</source>
       <translation>%1 doit être un tableau.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_value_not_string">
-      <location filename="src/config/PortableProfileImporter.cpp" line="364"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="367"></location>
       <source>%1 must be a string.</source>
       <translation>%1 doit être une chaîne.</translation>
     </message>
     <message id="gamehq.error.portable_import.data_directory_escapes_package">
-      <location filename="src/config/PortableProfileImporter.cpp" line="893"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1013"></location>
       <source>The portable data directory escapes the selected package root.</source>
       <translation>Le répertoire de données portable se trouve en dehors de la racine du paquet sélectionné.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_foreign_key_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="833"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="953"></location>
       <source>The staged database failed its foreign-key check.</source>
       <translation>La vérification des clés étrangères de la base de données préparée a échoué.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_integrity_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="822"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="942"></location>
       <source>The staged database failed its integrity check.</source>
       <translation>La vérification d’intégrité de la base de données préparée a échoué.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_missing">
-      <location filename="src/config/PortableProfileImporter.cpp" line="915"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1035"></location>
       <source>The portable profile has no gamehq.db.</source>
       <translation>Le profil portable ne contient aucun fichier gamehq.db.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_open_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="749"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="869"></location>
       <source>The staged portable database cannot be opened: %1</source>
       <translation>Impossible d’ouvrir la base de données portable préparée : %1</translation>
     </message>
     <message id="gamehq.error.portable_import.database_operation_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="28"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="31"></location>
       <source>A portable-profile database operation failed: %1</source>
       <translation>Une opération sur la base de données du profil portable a échoué : %1</translation>
     </message>
     <message id="gamehq.error.portable_import.database_path_unsupported">
-      <location filename="src/config/PortableProfileImporter.cpp" line="801"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="921"></location>
       <source>Unsupported portable path in database setting %1.</source>
       <translation>Le paramètre de base de données %1 contient un chemin portable non pris en charge.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_schema_read_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="757"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="877"></location>
       <source>The portable database schema cannot be read.</source>
       <translation>Impossible de lire le schéma de la base de données portable.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_schema_unsupported">
-      <location filename="src/config/PortableProfileImporter.cpp" line="763"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="883"></location>
       <source>The portable database schema is unsupported.</source>
       <translation>Le schéma de la base de données portable n’est pas pris en charge.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_stage_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="987"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1107"></location>
       <source>The portable database cannot be staged.</source>
       <translation>Impossible de préparer la base de données portable.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_transaction_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="769"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="889"></location>
       <source>The portable database transaction cannot begin.</source>
       <translation>Impossible de démarrer la transaction de la base de données portable.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_backup_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="1038"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1176"></location>
       <source>The empty installed profile cannot be backed up for import.</source>
       <translation>Impossible de sauvegarder le profil installé vide avant l’importation.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_config_not_default">
-      <location filename="src/config/PortableProfileImporter.cpp" line="501"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="621"></location>
       <source>The installed profile has non-default configuration.</source>
       <translation>La configuration du profil installé n’utilise pas les valeurs par défaut.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_contains_link">
-      <location filename="src/config/PortableProfileImporter.cpp" line="459"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="565"></location>
       <source>The installed profile contains a symbolic link or junction: %1.</source>
       <translation>Le profil installé contient un lien symbolique ou une jonction : %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_data_unsupported">
-      <location filename="src/config/PortableProfileImporter.cpp" line="482"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="495"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="602"></location>
       <source>The installed profile contains unsupported data: %1.</source>
       <translation>Le profil installé contient des données non prises en charge : %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_database_inspection_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="520"></location>
-      <location filename="src/config/PortableProfileImporter.cpp" line="542"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="640"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="662"></location>
       <source>The installed database cannot be inspected.</source>
       <translation>Impossible d’inspecter la base de données installée.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_file_exists">
-      <location filename="src/config/PortableProfileImporter.cpp" line="469"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="575"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="594"></location>
       <source>The installed profile already has its own %1.</source>
       <translation>Le profil installé possède déjà son propre fichier %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_not_empty">
-      <location filename="src/config/PortableProfileImporter.cpp" line="553"></location>
-      <location filename="src/config/PortableProfileImporter.cpp" line="567"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="673"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="687"></location>
       <source>The installed profile is not empty.</source>
       <translation>Le profil installé n’est pas vide.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_restore_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="292"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="295"></location>
       <source>The interrupted portable import could not restore its destination backup.</source>
       <translation>L’importation portable interrompue n’a pas pu restaurer la sauvegarde de destination.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_root_link">
-      <location filename="src/config/PortableProfileImporter.cpp" line="432"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="530"></location>
       <source>The installed profile root must not be a symbolic link or junction.</source>
       <translation>La racine du profil installé ne doit pas être un lien symbolique ni une jonction.</translation>
     </message>
     <message id="gamehq.error.portable_import.game_path_scheme_invalid">
-      <location filename="src/config/PortableProfileImporter.cpp" line="604"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="724"></location>
       <source>A game executable path incorrectly uses portable:/.</source>
       <translation>Un chemin d’exécutable de jeu utilise portable:/ à tort.</translation>
     </message>
     <message id="gamehq.error.portable_import.hash_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="159"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="162"></location>
       <source>Cannot hash %1.</source>
       <translation>Impossible de calculer le hachage de %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="212"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="54"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Les profils portables ne peuvent être importés que depuis une version installée de GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_invalid">
-      <location filename="src/config/PortableProfileImporter.cpp" line="263"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="266"></location>
       <source>The interrupted portable-import journal is invalid.</source>
       <translation>Le journal de l’importation portable interrompue n’est pas valide.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_malformed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="242"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="245"></location>
       <source>The interrupted portable-import journal is malformed.</source>
       <translation>Le journal de l’importation portable interrompue est mal formé.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_read_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="231"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="234"></location>
       <source>The interrupted portable-import journal cannot be read.</source>
       <translation>Impossible de lire le journal de l’importation portable interrompue.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_remove_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="315"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="318"></location>
       <source>The recovered portable-import journal could not be removed.</source>
       <translation>Impossible de supprimer le journal d’importation portable après la récupération.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="218"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="60"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Sélectionnez un dossier local contenant la version portable de GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="227"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="69"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>Le dossier sélectionné n’est pas un paquet portable GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_root_canonicalize_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="56"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="59"></location>
       <source>The portable package root cannot be canonicalized.</source>
       <translation>Impossible de normaliser le chemin racine du paquet portable.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_escapes_package">
-      <location filename="src/config/PortableProfileImporter.cpp" line="73"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="76"></location>
       <source>A portable path escapes the selected package root.</source>
       <translation>Un chemin portable se trouve en dehors de la racine du paquet sélectionné.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_invalid">
-      <location filename="src/config/PortableProfileImporter.cpp" line="106"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="109"></location>
       <source>A portable:/ path is empty or absolute.</source>
       <translation>Un chemin portable:/ est vide ou absolu.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_scheme_required">
-      <location filename="src/config/PortableProfileImporter.cpp" line="93"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="96"></location>
       <source>Imported paths must be absolute or use portable:/.</source>
       <translation>Les chemins importés doivent être absolus ou utiliser portable:/.</translation>
     </message>
     <message id="gamehq.error.portable_import.portable_path_escapes_package">
-      <location filename="src/config/PortableProfileImporter.cpp" line="117"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="120"></location>
       <source>A portable:/ path escapes the selected package root.</source>
       <translation>Un chemin portable:/ se trouve en dehors de la racine du paquet sélectionné.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="238"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="80"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ n’a pas pu identifier son propre processus pour l’importation.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="248"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="90"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ n’a pas pu démarrer le processus d’importation portable.</translation>
     </message>
     <message id="gamehq.error.portable_import.publish_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="1062"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1200"></location>
       <source>The staged profile cannot be published.</source>
       <translation>Impossible de publier le profil préparé.</translation>
     </message>
     <message id="gamehq.error.portable_import.published_destination_missing">
-      <location filename="src/config/PortableProfileImporter.cpp" line="279"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="282"></location>
       <source>The published portable-import destination is missing.</source>
       <translation>La destination publiée de l’importation portable est introuvable.</translation>
     </message>
     <message id="gamehq.error.portable_import.recovery_remove_directory_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="203"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="206"></location>
       <source>Portable-import recovery could not remove a transaction directory.</source>
       <translation>La récupération de l’importation portable n’a pas pu supprimer un répertoire de transaction.</translation>
     </message>
     <message id="gamehq.error.portable_import.recovery_required">
-      <location filename="src/config/PortableProfileImporter.cpp" line="973"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1093"></location>
       <source>%1 Recovery required: %2</source>
       <translation>%1 Récupération requise : %2</translation>
     </message>
     <message id="gamehq.error.portable_import.rollback_restore_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="961"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1081"></location>
       <source>The installed profile backup could not be restored.</source>
       <translation>Impossible de restaurer la sauvegarde du profil installé.</translation>
     </message>
     <message id="gamehq.error.portable_import.sound_file_missing">
-      <location filename="src/config/PortableProfileImporter.cpp" line="706"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="826"></location>
       <source>A referenced portable sound file is missing.</source>
       <translation>Un fichier audio portable référencé est introuvable.</translation>
     </message>
     <message id="gamehq.error.portable_import.sound_file_stage_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="718"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="838"></location>
       <source>A referenced sound file could not be staged.</source>
       <translation>Impossible de préparer un fichier audio référencé.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_changed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="1012"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1132"></location>
       <source>The portable source changed during import.</source>
       <translation>La source portable a changé pendant l’importation.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_destination_overlap">
-      <location filename="src/config/PortableProfileImporter.cpp" line="901"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1021"></location>
       <source>Source and destination profiles must be separate.</source>
       <translation>Les profils source et destination doivent être distincts.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_package_invalid">
-      <location filename="src/config/PortableProfileImporter.cpp" line="884"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1004"></location>
       <source>Select a valid GameHQ portable package root.</source>
       <translation>Sélectionnez une racine de paquet portable GameHQ valide.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_read_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="150"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="153"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="500"></location>
       <source>Cannot read %1 for source verification.</source>
       <translation>Impossible de lire %1 pour vérifier la source.</translation>
     </message>
     <message id="gamehq.error.portable_import.stage_file_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="173"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="176"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="515"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1148"></location>
       <source>Cannot stage %1.</source>
       <translation>Impossible de préparer %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.staging_directory_failed">
-      <location filename="src/config/PortableProfileImporter.cpp" line="939"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="1059"></location>
       <source>The import staging directory cannot be created.</source>
       <translation>Impossible de créer le répertoire de préparation de l’importation.</translation>
     </message>
     <message id="gamehq.error.portable_import.transaction_running">
-      <location filename="src/config/PortableProfileImporter.cpp" line="872"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="992"></location>
       <source>Another portable-profile import is already running.</source>
       <translation>Une autre importation de profil portable est déjà en cours.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="669"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="156"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>La mise à jour a été annulée car les opérations de capture ne se sont pas terminées à temps en toute sécurité.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="380"></location>
+      <location filename="src/updates/UpdateService.cpp" line="420"></location>
       <source>Update check failed: %1</source>
       <translation>La recherche de mises à jour a échoué : %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="143"></location>
+      <location filename="src/updates/UpdateService.cpp" line="182"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub a temporairement limité les recherches de mises à jour. GameHQ réessaiera plus tard.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="137"></location>
+      <location filename="src/updates/UpdateService.cpp" line="176"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub a temporairement limité les recherches de mises à jour. GameHQ réessaiera après %1.</translation>
     </message>
@@ -1150,73 +1155,73 @@
       <translation>GameHQ n’a pas pu écrire le téléchargement de la mise à jour sur le disque.</translation>
     </message>
     <message id="gamehq.error.update.install.handshake_failed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="183"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="186"></location>
       <source>GameHQ could not prepare the updater handshake.</source>
       <translation>GameHQ n’a pas pu préparer la communication avec l’utilitaire de mise à jour.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_missing">
-      <location filename="src/updates/UpdateInstaller.cpp" line="169"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="172"></location>
       <source>%1 is missing or cannot run.</source>
       <translation>%1 est introuvable ou ne peut pas être exécuté.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_rejected">
-      <location filename="src/updates/UpdateInstaller.cpp" line="212"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="215"></location>
       <source>The updater helper rejected the update before it became ready.</source>
       <translation>L’utilitaire de mise à jour a rejeté la mise à jour avant d’être prêt.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_start_failed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="195"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="198"></location>
       <source>GameHQ could not start the updater helper.</source>
       <translation>GameHQ n’a pas pu démarrer l’utilitaire de mise à jour.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_timeout">
-      <location filename="src/updates/UpdateInstaller.cpp" line="217"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="220"></location>
       <source>The updater helper did not confirm it is ready in time.</source>
       <translation>L’utilitaire de mise à jour n’a pas confirmé à temps qu’il était prêt.</translation>
     </message>
     <message id="gamehq.error.update.install.manifest_mismatch">
-      <location filename="src/updates/UpdateInstaller.cpp" line="72"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="75"></location>
       <source>The staged package no longer matches the signed manifest.</source>
       <translation>Le paquet préparé ne correspond plus au manifeste signé.</translation>
     </message>
     <message id="gamehq.error.update.install.metadata_incomplete">
-      <location filename="src/updates/UpdateInstaller.cpp" line="31"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="32"></location>
       <source>The verified update metadata is incomplete.</source>
       <translation>Les métadonnées vérifiées de la mise à jour sont incomplètes.</translation>
     </message>
     <message id="gamehq.error.update.install.metadata_invalid">
-      <location filename="src/updates/UpdateInstaller.cpp" line="63"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="66"></location>
       <source>The verified update metadata is invalid.</source>
       <translation>Les métadonnées vérifiées de la mise à jour ne sont pas valides.</translation>
     </message>
     <message id="gamehq.error.update.install.package_changed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="82"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="85"></location>
       <source>The update package changed before installation: %1</source>
       <translation>Le paquet de mise à jour a changé avant l’installation : %1</translation>
     </message>
     <message id="gamehq.error.update.install.package_outside_staging">
-      <location filename="src/updates/UpdateInstaller.cpp" line="54"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="57"></location>
       <source>The verified update package is outside GameHQ's staging directory.</source>
       <translation>Le paquet de mise à jour vérifié se trouve en dehors du répertoire de préparation de GameHQ.</translation>
     </message>
     <message id="gamehq.error.update.install.process_identity_failed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="106"></location>
-      <location filename="src/updates/UpdateInstaller.cpp" line="115"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="109"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="118"></location>
       <source>GameHQ could not identify its own process for the update.</source>
       <translation>GameHQ n’a pas pu identifier son propre processus pour la mise à jour.</translation>
     </message>
     <message id="gamehq.error.update.install.transaction_directory_failed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="91"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="94"></location>
       <source>GameHQ could not create the update transaction directory.</source>
       <translation>GameHQ n’a pas pu créer le répertoire de transaction de la mise à jour.</translation>
     </message>
     <message id="gamehq.error.update.install.transaction_publish_failed">
-      <location filename="src/updates/UpdateInstaller.cpp" line="153"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="156"></location>
       <source>GameHQ could not publish the update transaction.</source>
       <translation>GameHQ n’a pas pu publier la transaction de mise à jour.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="644"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="131"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ n’a pas pu démarrer la maintenance de mise à jour : %1</translation>
     </message>
@@ -1266,27 +1271,27 @@
       <translation>GameHQ ne peut pas écrire les fichiers de mise à jour en toute sécurité dans cette installation.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="268"></location>
+      <location filename="src/updates/UpdateService.cpp" line="308"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>La version a changé après son téléchargement. Recherchez à nouveau les mises à jour avant de l’installer.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="328"></location>
+      <location filename="src/updates/UpdateService.cpp" line="368"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>La version téléchargée a été retirée avant l’installation.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="372"></location>
+      <location filename="src/updates/UpdateService.cpp" line="412"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>La version n’a pas pu être revalidée : %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="297"></location>
+      <location filename="src/updates/UpdateService.cpp" line="337"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>La version n’a pas pu faire l’objet d’une nouvelle validation avant l’installation.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="350"></location>
+      <location filename="src/updates/UpdateService.cpp" line="390"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub n’a pas pu revalider cette version avant l’installation. Réessayez plus tard.</translation>
     </message>
@@ -1310,17 +1315,17 @@
       <translation>%1 %</translation>
     </message>
     <message id="gamehq.format.size.bytes">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="44"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="49"></location>
       <source>%1 B</source>
       <translation>%1 o</translation>
     </message>
     <message id="gamehq.format.size.kilobytes">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="40"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="45"></location>
       <source>%1 KB</source>
       <translation>%1 Ko</translation>
     </message>
     <message id="gamehq.format.size.megabytes">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="35"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="40"></location>
       <source>%1 MB</source>
       <translation>%1 Mo</translation>
     </message>
@@ -1337,56 +1342,60 @@
       <translation>Ajouter un dossier…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1407"></location>
+      <location filename="src/ui/qml/Main.qml" line="1350"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Sélection multiple</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1401"></location>
+      <location filename="src/ui/qml/Main.qml" line="1344"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Partager</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1403"></location>
+      <location filename="src/ui/qml/Main.qml" line="1346"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Afficher dans le dossier</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
-      <location filename="src/ui/qml/components/CaptureTile.qml" line="185"></location>
+      <location filename="src/ui/qml/components/CaptureTile.qml" line="188"></location>
       <location filename="src/ui/qml/components/Lightbox.qml" line="279"></location>
       <location filename="src/ui/qml/components/OverlayViewer.qml" line="179"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1336"></location>
+      <location filename="src/ui/qml/Main.qml" line="1278"></location>
       <source>%1 · %2
-This permanently deletes the file.</source>
+The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
+      <oldsource>%1 · %2
+The file will be moved to the Recycle Bin. Files in imported folders are left untouched.</oldsource>
       <translation>%1 · %2
-Cette action supprime définitivement le fichier.</translation>
+Le fichier sera déplacé dans la Corbeille. Les fichiers des dossiers surveillés ne sont pas modifiés.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1346"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
+      <location filename="src/ui/qml/Main.qml" line="1288"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1065"></location>
       <source>Delete capture?</source>
       <translation>Supprimer la capture ?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="492"></location>
-      <source>%n capture will be permanently deleted.
-This cannot be undone.</source>
+      <location filename="src/ui/qml/Main.qml" line="536"></location>
+      <source>%n capture will be moved to the Recycle Bin.
+Files in watched folders are left untouched.</source>
+      <oldsource>%n capture will be moved to the Recycle Bin.
+Files in imported folders are left untouched.</oldsource>
       <translation>
-        <numerusform>%n capture sera définitivement supprimée.
-Cette action est irréversible.</numerusform>
-        <numerusform>%n captures seront définitivement supprimées.
-Cette action est irréversible.</numerusform>
+        <numerusform>%n capture sera déplacée dans la Corbeille.
+Les fichiers des dossiers surveillés ne sont pas modifiés.</numerusform>
+        <numerusform>%n captures seront déplacées dans la Corbeille.
+Les fichiers des dossiers surveillés ne sont pas modifiés.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1365"></location>
+      <location filename="src/ui/qml/Main.qml" line="1307"></location>
       <source>Delete selected captures?</source>
       <translation>Supprimer les captures sélectionnées ?</translation>
     </message>
@@ -1439,27 +1448,27 @@ Cette action est irréversible.</numerusform>
       <translation>Visionneuse %1</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController_Hdr.cpp" line="81"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Vérifier l’état HDR actuel de chaque écran.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="342"></location>
+      <location filename="src/ui/AppController_Hdr.cpp" line="67"></location>
       <source>Windows HDR is active</source>
       <translation>Le HDR de Windows est actif</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="347"></location>
+      <location filename="src/ui/AppController_Hdr.cpp" line="72"></location>
       <source>Windows HDR is inactive</source>
       <translation>Le HDR de Windows est inactif</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="336"></location>
+      <location filename="src/ui/AppController_Hdr.cpp" line="61"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>Aucun écran signalé par le pilote graphique</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="330"></location>
+      <location filename="src/ui/AppController_Hdr.cpp" line="55"></location>
       <source>Not checked yet</source>
       <translation>Pas encore vérifié</translation>
     </message>
@@ -1781,7 +1790,7 @@ Cette action est irréversible.</numerusform>
       <translation>Bouton unique</translation>
     </message>
     <message id="gamehq.input.assignment.replay_hold_hint">
-      <location filename="src/input/BindingEditorModel.cpp" line="1240"></location>
+      <location filename="src/input/BindingEditorModel_AssignmentEditor.cpp" line="90"></location>
       <source>Hold %1 for at least %2 ms to save a replay.</source>
       <translation>Maintenez %1 enfoncé pendant au moins %2 ms pour enregistrer un replay.</translation>
     </message>
@@ -1861,18 +1870,18 @@ Cette action est irréversible.</numerusform>
       <translation>Non affecté</translation>
     </message>
     <message id="gamehq.input.choose_another">
-      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="17"></location>
-      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="23"></location>
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="19"></location>
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="26"></location>
       <source>Choose another</source>
       <translation>En choisir un autre</translation>
     </message>
     <message id="gamehq.input.compatibility.convert">
-      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="15"></location>
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="17"></location>
       <source>Convert &amp; add</source>
       <translation>Convertir et ajouter</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
-      <location filename="src/input/BindingEditorModel.cpp" line="579"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="564"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1885,7 +1894,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
 %2 s’activera alors lorsque le bouton sera relâché.</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press_with_wait">
-      <location filename="src/input/BindingEditorModel.cpp" line="571"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="556"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1898,22 +1907,22 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
 %2 s’activera alors lorsque le bouton sera relâché et pourra attendre jusqu’à %4 ms pour exclure l’action %3.</translation>
     </message>
     <message id="gamehq.input.compatibility.title">
-      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="12"></location>
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="14"></location>
       <source>Make these assignments compatible?</source>
       <translation>Rendre ces affectations compatibles ?</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="555"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="540"></location>
       <source>%1 · %2 is already assigned to %3 in this context.</source>
       <translation>%1 · %2 est déjà affecté à %3 dans ce contexte.</translation>
     </message>
     <message id="gamehq.input.conflict.press_timed">
-      <location filename="src/input/BindingEditorModel.cpp" line="548"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="533"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
       <translation>%1 utilise « Appui » pour %2. Il est impossible de le distinguer de %3 dans ce contexte sans modifier son comportement à l’enfoncement du bouton.</translation>
     </message>
     <message id="gamehq.input.conflict.title">
-      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="18"></location>
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="21"></location>
       <source>These assignments conflict</source>
       <translation>Ces affectations sont en conflit</translation>
     </message>
@@ -1949,108 +1958,108 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Triple appui</translation>
     </message>
     <message id="gamehq.input.hidden.filter">
-      <location filename="src/input/InputEngine.cpp" line="459"></location>
+      <location filename="src/input/InputEngine.cpp" line="458"></location>
       <source>%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it.</source>
       <translation>%1 est connecté à Windows mais invisible pour les applications : un pilote de filtre HID le masque.</translation>
     </message>
     <message id="gamehq.input.hidden.fix_applying">
-      <location filename="src/input/InputEngine.cpp" line="1690"></location>
+      <location filename="src/input/InputEngine_HidHide.cpp" line="35"></location>
       <source>Applying the fix (administrator prompt)...</source>
       <translation>Application du correctif (invite administrateur)...</translation>
     </message>
     <message id="gamehq.input.hidden.fix_declined">
-      <location filename="src/input/InputEngine.cpp" line="1680"></location>
+      <location filename="src/input/InputEngine_HidHide.cpp" line="25"></location>
       <source>Administrator approval was declined — the controller stays hidden. You can whitelist GameHQ manually in the HidHide Configuration Client.</source>
       <translation>L’autorisation administrateur a été refusée : la manette reste masquée. Vous pouvez autoriser GameHQ manuellement dans HidHide Configuration Client.</translation>
     </message>
     <message id="gamehq.input.hidden.fix_done">
-      <location filename="src/input/InputEngine.cpp" line="1711"></location>
+      <location filename="src/input/InputEngine_HidHide.cpp" line="56"></location>
       <source>GameHQ is now whitelisted in HidHide. Unplug and replug the controller if it does not appear within a few seconds.</source>
       <translation>GameHQ est désormais autorisé dans HidHide. Débranchez puis rebranchez la manette si elle n’apparaît pas d’ici quelques secondes.</translation>
     </message>
     <message id="gamehq.input.hidden.fix_failed">
-      <location filename="src/input/InputEngine.cpp" line="1722"></location>
+      <location filename="src/input/InputEngine_HidHide.cpp" line="67"></location>
       <source>Automatic whitelisting failed (code %1). Add GameHQ.exe on the Applications tab of the HidHide Configuration Client instead.</source>
       <translation>L’autorisation automatique a échoué (code %1). Ajoutez plutôt GameHQ.exe dans l’onglet « Applications » de HidHide Configuration Client.</translation>
     </message>
     <message id="gamehq.input.hidden.hidhide">
-      <location filename="src/input/InputEngine.cpp" line="450"></location>
+      <location filename="src/input/InputEngine.cpp" line="449"></location>
       <source>%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD).</source>
       <translation>%1 est connecté, mais le pilote HidHide (installé avec DSX, DS4Windows ou reWASD) le masque aux applications.</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
-      <location filename="src/input/BindingEditorModel.cpp" line="398"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="383"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>Appuyez sur un bouton de la manette pour %1 · Emplacement %2 · %3</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
-      <location filename="src/input/BindingEditorModel.cpp" line="405"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="390"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
       <translation>Appuyez sur une touche ou un raccourci pour %1 · Emplacement %2</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
-      <location filename="src/input/BindingEditorModel.cpp" line="412"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="397"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
       <translation>Appuyez sur le bouton central, Back ou Forward de la souris pour %1 · Emplacement %2</translation>
     </message>
     <message id="gamehq.input.model.combination">
-      <location filename="src/input/BindingEditorModel.cpp" line="253"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="238"></location>
       <source>Combination</source>
       <translation>Combinaison</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
-      <location filename="src/input/BindingEditorModel.cpp" line="264"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="249"></location>
       <source>Hold · Default</source>
       <translation>Appui long · Par défaut</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
-      <location filename="src/input/BindingEditorModel.cpp" line="269"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="254"></location>
       <source>Hold · %1 s</source>
       <translation>Appui long · %1 s</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
-      <location filename="src/input/BindingEditorModel.cpp" line="1162"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="851"></location>
       <source>No action fired yet</source>
       <translation>Aucune action déclenchée</translation>
     </message>
     <message id="gamehq.input.model.scope.gallery">
-      <location filename="src/input/BindingEditorModel.cpp" line="216"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="201"></location>
       <source>Gallery</source>
       <translation>Galerie</translation>
     </message>
     <message id="gamehq.input.model.scope.global">
-      <location filename="src/input/BindingEditorModel.cpp" line="208"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="193"></location>
       <source>Global</source>
       <translation>Global</translation>
     </message>
     <message id="gamehq.input.model.scope.overlay">
-      <location filename="src/input/BindingEditorModel.cpp" line="212"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="197"></location>
       <source>Overlay</source>
       <translation>Surcouche</translation>
     </message>
     <message id="gamehq.input.model.scope.playback">
-      <location filename="src/input/BindingEditorModel.cpp" line="220"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="205"></location>
       <source>Playback</source>
       <translation>Lecture</translation>
     </message>
     <message id="gamehq.input.model.status.added">
-      <location filename="src/input/BindingEditorModel.cpp" line="71"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="56"></location>
       <source>Added</source>
       <translation>Ajouté</translation>
     </message>
     <message id="gamehq.input.model.status.modified">
-      <location filename="src/input/BindingEditorModel.cpp" line="76"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="61"></location>
       <source>Modified</source>
       <translation>Modifié</translation>
     </message>
     <message id="gamehq.input.model.status.removed">
-      <location filename="src/input/BindingEditorModel.cpp" line="81"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="66"></location>
       <source>Removed</source>
       <translation>Supprimé</translation>
     </message>
     <message id="gamehq.input.model.unassigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="240"></location>
-      <location filename="src/input/BindingEditorModel.cpp" line="340"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="225"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="325"></location>
       <source>Unassigned</source>
       <translation>Non affecté</translation>
     </message>
@@ -2060,7 +2069,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Cette action attend jusqu’à %1 ms, car ce bouton est le premier d’une combinaison.</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
-      <location filename="src/input/BindingEditorModel.cpp" line="677"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="662"></location>
       <source>%1 replaces %2 while %3 is active. Both are saved.</source>
       <translation>%1 remplace %2 lorsque %3 est actif. Les deux affectations sont enregistrées.</translation>
     </message>
@@ -2070,17 +2079,17 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Cette action attend jusqu’à %1 ms, car le même bouton possède aussi une affectation nécessitant davantage d’appuis.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
-      <location filename="src/input/BindingEditorModel.cpp" line="686"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="671"></location>
       <source>%1 already does the same thing here. The duplicate has no effect.</source>
       <translation>%1 effectue déjà la même action ici. Le doublon est sans effet.</translation>
     </message>
     <message id="gamehq.input.relation.shared_gesture">
-      <location filename="src/input/BindingEditorModel.cpp" line="693"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="678"></location>
       <source>%1 is shared: %2 = %3, %4 = %5.</source>
       <translation>%1 est partagé : %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1316"></location>
+      <location filename="src/ui/qml/Main.qml" line="1258"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Choisir un dossier à surveiller</translation>
@@ -2094,44 +2103,44 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>À propos</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="205"></location>
+      <location filename="src/ui/qml/Main.qml" line="206"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="160"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>Tout</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="213"></location>
+      <location filename="src/ui/qml/Main.qml" line="214"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="39"></location>
       <source>Clips</source>
       <translation>Clips</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="209"></location>
+      <location filename="src/ui/qml/Main.qml" line="210"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Favorites</source>
       <translation>Favoris</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="215"></location>
+      <location filename="src/ui/qml/Main.qml" line="216"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="41"></location>
       <source>Game</source>
       <translation>Jeu</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="217"></location>
+      <location filename="src/ui/qml/Main.qml" line="218"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="43"></location>
       <source>Game favorites</source>
       <translation>Favoris du jeu</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="207"></location>
+      <location filename="src/ui/qml/Main.qml" line="208"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Recent</source>
       <translation>Récentes</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="211"></location>
+      <location filename="src/ui/qml/Main.qml" line="212"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="37"></location>
       <source>Screenshots</source>
       <translation>Captures d’écran</translation>
@@ -2197,107 +2206,140 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Afficher les outils</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="489"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="321"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Impossible de supprimer certains fichiers. Ils sont peut-être utilisés par d’autres programmes. Fermez les programmes qui les utilisent, puis réessayez.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="496"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="328"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Impossible de supprimer le fichier. Il est peut-être utilisé par un autre programme. Fermez le programme qui l’utilise, puis réessayez.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="502"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
       <source>Couldn't delete</source>
       <translation>Échec de la suppression</translation>
     </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_many">
+      <location filename="src/app/App_CaptureWiring.cpp" line="352"></location>
+      <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
+      <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
+      <translation>Certains fichiers se trouvent dans des dossiers surveillés. GameHQ n’y supprime pas les originaux : ils n’ont donc pas été modifiés.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_one">
+      <location filename="src/app/App_CaptureWiring.cpp" line="359"></location>
+      <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
+      <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
+      <translation>Ce fichier se trouve dans un dossier surveillé. GameHQ n’y supprime pas les originaux : il n’a donc pas été modifié.</translation>
+    </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="294"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>Elle n’a pas été ajoutée à la bibliothèque et le fichier est absent du disque.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="288"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="120"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>Le fichier se trouve dans votre dossier de captures, mais il n’a pas pu être ajouté à la bibliothèque.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="278"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="110"></location>
       <source>Saved to disk, not in library</source>
       <translation>Enregistré sur le disque, absent de la bibliothèque</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="401"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="233"></location>
       <source>Capture request received</source>
       <translation>Demande de capture reçue</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="464"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="296"></location>
       <source>Reason: %1</source>
       <translation>Raison : %1</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason_audio">
+      <location filename="src/app/App.cpp" line="87"></location>
+      <source>System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings</source>
+      <translation type="vanished">Le son du système n’a pas pu être enregistré, donc aucun clip n’a été enregistré. Vérifiez la sortie audio de Windows ou désactivez Son du système dans les paramètres Replay</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="81"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="37"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>Le tampon de replay a échoué ; aucun clip n’a été enregistré</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="75"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="31"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>Le tampon de replay collecte des images ; réessayez d’enregistrer dans quelques secondes</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason_desktop_audio">
+      <location filename="src/app/App_CaptureWiring.cpp" line="43"></location>
+      <source>Desktop audio could not be recorded, so no clip was saved. Check the Windows sound output or change the audio source in Replay settings</source>
+      <translation>Le son du bureau n’a pas pu être enregistré, donc aucun clip n’a été enregistré. Vérifiez la sortie audio de Windows ou changez la source audio dans les paramètres Replay</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="93"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="67"></location>
       <source>Replay buffer is empty</source>
       <translation>Le tampon de replay est vide</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason_game_audio">
+      <location filename="src/app/App_CaptureWiring.cpp" line="49"></location>
+      <source>Game audio could not be recorded, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings</source>
+      <translation>Le son du jeu n’a pas pu être enregistré, donc aucun clip n’a été enregistré. Choisissez Son du bureau ou Désactivé comme source audio dans les paramètres Replay</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_game_audio_unsupported">
+      <location filename="src/app/App_CaptureWiring.cpp" line="55"></location>
+      <source>Game audio needs Windows 11, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings</source>
+      <translation>Le son du jeu nécessite Windows 11, donc aucun clip n’a été enregistré. Choisissez Son du bureau ou Désactivé comme source audio dans les paramètres Replay</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="87"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="61"></location>
       <source>Replay buffer is not running</source>
       <translation>Le tampon de replay n’est pas actif</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="69"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="25"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>Le tampon de replay démarre ; réessayez d’enregistrer dans quelques secondes</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="310"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="142"></location>
       <source>Replay failed</source>
       <translation>Échec du replay</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="396"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="228"></location>
       <source>Replay save requested</source>
       <translation>Enregistrement du replay demandé</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="445"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="277"></location>
       <source>Replay saved</source>
       <translation>Replay enregistré</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="303"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="135"></location>
       <source>Screenshot failed</source>
       <translation>Échec de la capture d’écran</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="345"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="177"></location>
       <source>Screenshot saved</source>
       <translation>Capture d’écran enregistrée</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="547"></location>
+      <location filename="src/app/App.cpp" line="248"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ a démarré avec les paramètres par défaut. Votre ancien fichier de paramètres a été conservé afin de ne rien perdre.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="542"></location>
+      <location filename="src/app/App.cpp" line="243"></location>
       <source>Settings could not be read</source>
       <translation>Impossible de lire les paramètres</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="711"></location>
+      <location filename="src/app/App.cpp" line="275"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Certains sons d’interface sont indisponibles</translation>
     </message>
@@ -2317,7 +2359,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Actions de capture</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="273"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="297"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Le jeu a toujours le focus et peut réagir aux entrées de la manette</translation>
     </message>
@@ -2438,7 +2480,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.settings.about.application.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="14"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="15"></location>
       <source>Application</source>
       <translation>Application</translation>
     </message>
@@ -2448,7 +2490,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Communauté</translation>
     </message>
     <message id="gamehq.settings.about.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="10"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="11"></location>
       <source>Version, update status, project resources, and ways to help.</source>
       <translation>Version, état des mises à jour, ressources du projet et moyens de contribuer.</translation>
     </message>
@@ -2463,12 +2505,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Licence GNU GPL v3</translation>
     </message>
     <message id="gamehq.settings.about.license_summary">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="55"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="56"></location>
       <source>Free and open source under the GNU GPL version 3.</source>
       <translation>Logiciel libre et open source sous licence GNU GPL version 3.</translation>
     </message>
     <message id="gamehq.settings.about.maintenance.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="66"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="67"></location>
       <source>Maintenance</source>
       <translation>Maintenance</translation>
     </message>
@@ -2478,12 +2520,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Open source</translation>
     </message>
     <message id="gamehq.settings.about.profile.installed">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="24"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="25"></location>
       <source>Installed profile</source>
       <translation>Profil installé</translation>
     </message>
     <message id="gamehq.settings.about.profile.portable">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="21"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="22"></location>
       <source>Portable profile</source>
       <translation>Profil portable</translation>
     </message>
@@ -2498,7 +2540,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Projet</translation>
     </message>
     <message id="gamehq.settings.about.ready">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="46"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="47"></location>
       <source>GameHQ is ready</source>
       <translation>GameHQ est prêt</translation>
     </message>
@@ -2513,7 +2555,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Signaler un problème</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="806"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="804"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
       <source>Security &amp; privacy</source>
       <translation>Sécurité et confidentialité</translation>
@@ -2539,12 +2581,13 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Soutenir le projet</translation>
     </message>
     <message id="gamehq.settings.about.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="8"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="9"></location>
       <source>About</source>
       <translation>À propos</translation>
     </message>
     <message id="gamehq.settings.about.updates.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="68"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="69"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="173"></location>
       <source>Updates</source>
       <translation>Mises à jour</translation>
     </message>
@@ -3507,7 +3550,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Corriger automatiquement</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/Main.qml" line="171"></location>
+      <location filename="src/ui/qml/Main.qml" line="172"></location>
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="69"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
@@ -3695,12 +3738,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Un bouton, plusieurs gestes</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="516"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="523"></location>
       <source>All controller, keyboard, and mouse overrides return to their built-in defaults.</source>
       <translation>Toutes les personnalisations de manette, clavier et souris seront rétablies aux valeurs intégrées.</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="514"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="521"></location>
       <source>Restore all input bindings?</source>
       <translation>Restaurer toutes les affectations d’entrée ?</translation>
     </message>
@@ -4018,22 +4061,22 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Bibliothèque</translation>
     </message>
     <message id="gamehq.settings.portable_import.confirm">
-      <location filename="src/ui/qml/SettingsView.qml" line="481"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="488"></location>
       <source>Import and restart</source>
       <translation>Importer et redémarrer</translation>
     </message>
     <message id="gamehq.settings.portable_import.failed">
-      <location filename="src/ui/qml/SettingsView.qml" line="486"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="493"></location>
       <source>Portable import failed</source>
       <translation>Échec de l’importation portable</translation>
     </message>
     <message id="gamehq.settings.portable_import.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="479"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="486"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
       <translation>L’importation n’est possible que dans un profil installé vide. Les captures portables restent à leur emplacement, la source n’est jamais modifiée et GameHQ redémarre pour terminer l’importation.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="477"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="484"></location>
       <source>Import this portable profile?</source>
       <translation>Importer ce profil portable ?</translation>
     </message>
@@ -4043,13 +4086,13 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Affecter à ce périphérique</translation>
     </message>
     <message id="gamehq.settings.presets.action.delete">
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="33"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="32"></location>
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="508"></location>
       <source>Delete</source>
       <translation>Supprimer</translation>
     </message>
     <message id="gamehq.settings.presets.action.duplicate">
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="31"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="30"></location>
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="506"></location>
       <source>Duplicate</source>
       <translation>Dupliquer</translation>
@@ -4065,7 +4108,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Nouveau préréglage</translation>
     </message>
     <message id="gamehq.settings.presets.action.rename">
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="29"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="28"></location>
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="504"></location>
       <source>Rename</source>
       <translation>Renommer</translation>
@@ -4143,17 +4186,17 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>« %1 » est utilisé ailleurs. Choisissez le préréglage qui reprend ses affectations.</translation>
     </message>
     <message id="gamehq.settings.presets.delete.migration_blocked">
-      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="29"></location>
+      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="31"></location>
       <source>This preset records a migrated mapping set and cannot be deleted.</source>
       <translation>Ce préréglage contient un ensemble d’affectations migré et ne peut pas être supprimé.</translation>
     </message>
     <message id="gamehq.settings.presets.delete.move_label">
-      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="27"></location>
+      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="29"></location>
       <source>Move its users to</source>
       <translation>Déplacer ses affectations vers</translation>
     </message>
     <message id="gamehq.settings.presets.delete.no_candidate">
-      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="31"></location>
+      <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <source>There is no other preset in this group to move its users to. Create one first.</source>
       <translation>Aucun autre préréglage de ce groupe ne peut reprendre ses affectations. Créez-en un d’abord.</translation>
     </message>
@@ -4274,7 +4317,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Actions du préréglage</translation>
     </message>
     <message id="gamehq.settings.presets.name_label">
-      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="22"></location>
+      <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="21"></location>
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="109"></location>
       <source>Name</source>
       <translation>Nom</translation>
@@ -4454,6 +4497,51 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <source>Manage the rolling buffer used for instant replay clips.</source>
       <translation>Gérer le tampon continu utilisé pour les clips de replay instantané.</translation>
     </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.desktop">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="162"></location>
+      <source>Desktop audio</source>
+      <translation>Son du bureau</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.desktop_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
+      <source>Records everything on the default Windows output, including chat and music apps.</source>
+      <translation>Enregistre tout ce qui passe par la sortie audio par défaut de Windows, y compris les applications de discussion et de musique.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="156"></location>
+      <source>Game audio</source>
+      <translation>Son du jeu</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="146"></location>
+      <source>Records only the current game, whichever output device it plays on.</source>
+      <translation>Enregistre uniquement le jeu en cours, quel que soit le périphérique de sortie utilisé.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game_unsupported">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="158"></location>
+      <source>Game audio (needs Windows 11)</source>
+      <translation>Son du jeu (Windows 11 requis)</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.label">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="131"></location>
+      <source>Audio source</source>
+      <translation>Source audio</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.off">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="164"></location>
+      <source>Off</source>
+      <translation>Désactivé</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.off_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="135"></location>
+      <source>Replay clips are saved without sound.</source>
+      <translation>Les clips Replay sont enregistrés sans son.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.unsupported_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="139"></location>
+      <source>Game audio needs Windows 11. Desktop audio records everything on the default Windows output.</source>
+      <translation>Le son du jeu nécessite Windows 11. Le son du bureau enregistre tout ce qui passe par la sortie audio par défaut de Windows.</translation>
+    </message>
     <message id="gamehq.settings.replay.encoding.bitrate">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="107"></location>
       <source>Video bitrate</source>
@@ -4487,12 +4575,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.replay.encoding.system_audio.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="128"></location>
       <source>Include desktop audio in newly recorded replay segments.</source>
-      <translation>Inclure le son du bureau dans les nouveaux segments de replay enregistrés.</translation>
+      <translation type="vanished">Inclure le son du bureau dans les nouveaux segments de replay enregistrés.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.system_audio.label">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="126"></location>
       <source>System audio</source>
-      <translation>Son du système</translation>
+      <translation type="vanished">Son du système</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="77"></location>
@@ -4500,27 +4588,27 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Qualité d’enregistrement</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="140"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="188"></location>
       <source>Saved replays go to %1. Failures always notify you.</source>
       <translation>Les replays enregistrés sont placés dans %1. Les échecs déclenchent toujours une notification.</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="184"></location>
       <source>Feedback</source>
       <translation>Retours</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.notification">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="148"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="196"></location>
       <source>Clip saved notification</source>
       <translation>Notification de clip enregistré</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.sound">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="191"></location>
       <source>Clip saved sound</source>
       <translation>Son de clip enregistré</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.title">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="186"></location>
       <source>After saving a clip</source>
       <translation>Après l’enregistrement d’un clip</translation>
     </message>
@@ -4560,22 +4648,22 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Replay</translation>
     </message>
     <message id="gamehq.settings.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="499"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="506"></location>
       <source>Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.</source>
       <translation>Les préférences de fenêtre, le comportement de capture, les options de replay, les notifications et les sons retrouvent leurs valeurs par défaut. Les captures et les données de la bibliothèque ne sont pas supprimées.</translation>
     </message>
     <message id="gamehq.settings.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="497"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="504"></location>
       <source>Restore all settings?</source>
       <translation>Restaurer tous les paramètres ?</translation>
     </message>
     <message id="gamehq.settings.restore_category.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="530"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="537"></location>
       <source>%1 options return to defaults. Captures and library data are not deleted.</source>
       <translation>Les options de %1 retrouvent leurs valeurs par défaut. Les captures et les données de la bibliothèque ne sont pas supprimées.</translation>
     </message>
     <message id="gamehq.settings.restore_category.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="528"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="535"></location>
       <source>Restore %1 settings?</source>
       <translation>Restaurer les paramètres de %1 ?</translation>
     </message>
@@ -4921,12 +5009,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Fermer</translation>
     </message>
     <message id="gamehq.share.discord_desktop.not_installed">
-      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="125"></location>
+      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="137"></location>
       <source>Discord Desktop isn't installed.</source>
       <translation>Discord Desktop n’est pas installé.</translation>
     </message>
     <message id="gamehq.share.discord_desktop.privacy">
-      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="134"></location>
+      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="146"></location>
       <source>Copies the file and opens Discord so you can paste it. GameHQ never signs in to Discord.</source>
       <translation>Copie le fichier et ouvre Discord pour que vous puissiez le coller. GameHQ ne se connecte jamais à Discord.</translation>
     </message>
@@ -5116,12 +5204,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Lien du webhook</translation>
     </message>
     <message id="gamehq.share.telegram_desktop.not_installed">
-      <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="123"></location>
+      <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="125"></location>
       <source>Telegram Desktop isn't installed.</source>
       <translation>Telegram Desktop n’est pas installé.</translation>
     </message>
     <message id="gamehq.share.telegram_desktop.privacy">
-      <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="132"></location>
+      <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="134"></location>
       <source>Opens Telegram to choose the chat. GameHQ never signs in to Telegram.</source>
       <translation>Ouvre Telegram pour choisir la discussion. GameHQ ne se connecte jamais à Telegram.</translation>
     </message>
@@ -5150,44 +5238,69 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <source>Share</source>
       <translation>Partager</translation>
     </message>
+    <message id="gamehq.startup.fatal.another_copy_running">
+      <location filename="src/main.cpp" line="381"></location>
+      <source>GameHQ cannot start while another copy of GameHQ or its installer is running.</source>
+      <translation>GameHQ ne peut pas démarrer tant qu’une autre copie de GameHQ ou son programme d’installation est en cours d’exécution.</translation>
+    </message>
+    <message id="gamehq.startup.fatal.details_hint">
+      <location filename="src/main.cpp" line="98"></location>
+      <source>For details, see:</source>
+      <translation>Pour plus de détails, consultez :</translation>
+    </message>
+    <message id="gamehq.startup.fatal.init_failed">
+      <location filename="src/main.cpp" line="444"></location>
+      <source>GameHQ could not start.</source>
+      <translation>GameHQ n’a pas pu démarrer.</translation>
+    </message>
+    <message id="gamehq.startup.fatal.update_in_progress">
+      <location filename="src/main.cpp" line="345"></location>
+      <source>A GameHQ update is being installed. Start GameHQ again when it has finished.</source>
+      <translation>Une mise à jour de GameHQ est en cours d’installation. Relancez GameHQ une fois qu’elle est terminée.</translation>
+    </message>
+    <message id="gamehq.startup.fatal.update_recovery_failed">
+      <location filename="src/main.cpp" line="313"></location>
+      <source>GameHQ could not finish recovering from an interrupted update, so it cannot start.</source>
+      <translation>GameHQ n’a pas pu terminer la récupération après une mise à jour interrompue ; il ne peut donc pas démarrer.</translation>
+    </message>
     <message id="gamehq.startup.portable_import.failed_title">
-      <location filename="src/main.cpp" line="238"></location>
+      <location filename="src/main.cpp" line="280"></location>
       <source>Portable import failed</source>
       <translation>Échec de l’importation portable</translation>
     </message>
     <message id="gamehq.startup.portable_import.installed_copy_required">
-      <location filename="src/main.cpp" line="205"></location>
+      <location filename="src/main.cpp" line="247"></location>
       <source>Run portable import from an installed copy of GameHQ.</source>
       <translation>Lancez l’importation portable depuis une version installée de GameHQ.</translation>
     </message>
     <message id="gamehq.startup.portable_import.instance_running">
-      <location filename="src/main.cpp" line="217"></location>
+      <location filename="src/main.cpp" line="259"></location>
       <source>Another GameHQ instance is running, so the portable import cannot start.</source>
       <translation>Une autre instance de GameHQ est en cours d’exécution ; l’importation portable ne peut pas démarrer.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_argument_incomplete">
-      <location filename="src/main.cpp" line="85"></location>
+      <location filename="src/main.cpp" line="119"></location>
       <source>The portable import parent-process argument is incomplete.</source>
       <translation>L’argument du processus parent de l’importation portable est incomplet.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_identifier_invalid">
-      <location filename="src/main.cpp" line="113"></location>
-      <location filename="src/main.cpp" line="119"></location>
+      <location filename="src/main.cpp" line="147"></location>
+      <location filename="src/main.cpp" line="153"></location>
       <source>The portable import parent-process identifier is invalid.</source>
       <translation>L’identifiant du processus parent de l’importation portable n’est pas valide.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_still_running">
-      <location filename="src/main.cpp" line="99"></location>
+      <location filename="src/main.cpp" line="133"></location>
       <source>The running GameHQ instance did not close in time.</source>
       <translation>L’instance de GameHQ en cours d’exécution ne s’est pas fermée à temps.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_unverifiable">
-      <location filename="src/main.cpp" line="106"></location>
+      <location filename="src/main.cpp" line="140"></location>
       <source>GameHQ could not confirm that the previous instance has closed.</source>
       <translation>GameHQ n’a pas pu confirmer la fermeture de l’instance précédente.</translation>
     </message>
     <message id="gamehq.startup.portable_import.source_missing">
-      <location filename="src/main.cpp" line="199"></location>
+      <location filename="src/main.cpp" line="241"></location>
       <source>The portable import source folder is missing.</source>
       <translation>Le dossier source de l’importation portable est introuvable.</translation>
     </message>
@@ -5237,57 +5350,57 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>GameHQ applique la mise à jour et va redémarrer.</translation>
     </message>
     <message id="gamehq.update.available_version_short">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="128"></location>
       <source>%1 available</source>
       <translation>%1 disponible</translation>
     </message>
     <message id="gamehq.update.banner.available">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="67"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="72"></location>
       <source>%1 %2 is available</source>
       <translation>%1 %2 est disponible</translation>
     </message>
     <message id="gamehq.update.banner.download_verified">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="79"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="84"></location>
       <source>Download verified and ready to install.</source>
       <translation>Téléchargement vérifié et prêt à être installé.</translation>
     </message>
     <message id="gamehq.update.banner.downloading">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="51"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="56"></location>
       <source>Downloading %1 %2</source>
       <translation>Téléchargement de %1 %2</translation>
     </message>
     <message id="gamehq.update.banner.installing">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="61"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="66"></location>
       <source>Installing %1 %2</source>
       <translation>Installation de %1 %2</translation>
     </message>
     <message id="gamehq.update.banner.needs_attention">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="64"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="69"></location>
       <source>The update needs attention</source>
       <translation>La mise à jour nécessite votre attention</translation>
     </message>
     <message id="gamehq.update.banner.open_details">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="89"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="94"></location>
       <source>Open the update details to continue.</source>
       <translation>Ouvrez les détails de la mise à jour pour continuer.</translation>
     </message>
     <message id="gamehq.update.banner.preparing">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="58"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="63"></location>
       <source>Preparing %1 %2</source>
       <translation>Préparation de %1 %2</translation>
     </message>
     <message id="gamehq.update.banner.ready">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="54"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="59"></location>
       <source>%1 %2 is ready</source>
       <translation>%1 %2 est prêt</translation>
     </message>
     <message id="gamehq.update.banner.restart_when_finished">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="86"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="91"></location>
       <source>GameHQ will restart when installation finishes.</source>
       <translation>GameHQ redémarrera une fois l’installation terminée.</translation>
     </message>
     <message id="gamehq.update.banner.waiting_for_capture">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="83"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="88"></location>
       <source>Waiting for capture work to finish safely.</source>
       <translation>En attente de la fin sécurisée des opérations de capture.</translation>
     </message>
@@ -5297,66 +5410,68 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Téléchargement de la mise à jour bêta</translation>
     </message>
     <message id="gamehq.update.bundled_with_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="153"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="152"></location>
       <source>Bundled with GameHQ %1</source>
       <translation>Fourni avec GameHQ %1</translation>
     </message>
     <message id="gamehq.update.cancel_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="225"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="223"></location>
       <source>Cancel download</source>
       <translation>Annuler le téléchargement</translation>
     </message>
     <message id="gamehq.update.check.label">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="245"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="243"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="124"></location>
       <source>Check for updates</source>
       <translation>Rechercher des mises à jour</translation>
     </message>
     <message id="gamehq.update.check_again">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="239"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1075"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="237"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1073"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
       <source>Check again</source>
       <translation>Rechercher à nouveau</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
       <source>At most once every 24 hours, in the background.</source>
       <translation>Au maximum une fois toutes les 24 heures, en arrière-plan.</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="116"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
       <source>Check automatically</source>
       <translation>Rechercher automatiquement</translation>
     </message>
     <message id="gamehq.update.check_failed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="180"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="179"></location>
       <source>Update check failed</source>
       <translation>Échec de la recherche de mises à jour</translation>
     </message>
     <message id="gamehq.update.check_now">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="141"></location>
       <source>Check now</source>
       <translation>Rechercher maintenant</translation>
     </message>
     <message id="gamehq.update.checking">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="219"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="217"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="138"></location>
       <source>Checking...</source>
       <translation>Vérification…</translation>
     </message>
     <message id="gamehq.update.checking_for_updates">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="80"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="81"></location>
       <source>Checking for updates...</source>
       <translation>Recherche de mises à jour…</translation>
     </message>
     <message id="gamehq.update.checking_for_updates_short">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="160"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="159"></location>
       <source>Checking for updates</source>
       <translation>Recherche de mises à jour</translation>
     </message>
     <message id="gamehq.update.choose_install_time">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="920"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="918"></location>
       <source>Choose when to install %1 %2.</source>
       <translation>Choisissez quand installer %1 %2.</translation>
     </message>
@@ -5366,127 +5481,137 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Progression du téléchargement</translation>
     </message>
     <message id="gamehq.update.download_verified_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="94"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="95"></location>
       <source>GameHQ %1 is downloaded and SHA-256 verified.</source>
       <translation>GameHQ %1 a été téléchargé et vérifié par SHA-256.</translation>
     </message>
     <message id="gamehq.update.download_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="222"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
       <source>Download update %1</source>
       <translation>Télécharger la mise à jour %1</translation>
     </message>
     <message id="gamehq.update.downloading_percent">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="166"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="165"></location>
       <source>Downloading %1%</source>
       <translation>Téléchargement : %1 %</translation>
     </message>
     <message id="gamehq.update.downloading_version_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="88"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="89"></location>
       <source>Downloading GameHQ %1... %2%</source>
       <translation>Téléchargement de GameHQ %1… %2 %</translation>
     </message>
     <message id="gamehq.update.github_check_description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="111"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="112"></location>
       <source>GameHQ can check GitHub for newer stable releases.</source>
       <translation>GameHQ peut rechercher sur GitHub de nouvelles versions stables.</translation>
     </message>
+    <message id="gamehq.update.include_betas.description">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="10"></location>
+      <source>Also offer test pre-releases. They get new fixes sooner but may be less stable.</source>
+      <translation>Proposer aussi les préversions de test. Elles reçoivent les correctifs plus tôt, mais peuvent être moins stables.</translation>
+    </message>
+    <message id="gamehq.update.include_betas.label">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="8"></location>
+      <source>Include beta versions</source>
+      <translation>Inclure les versions bêta</translation>
+    </message>
     <message id="gamehq.update.install_and_restart">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="228"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="172"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="226"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="177"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
       <source>Install and restart</source>
       <translation>Installer et redémarrer</translation>
     </message>
     <message id="gamehq.update.installed_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="131"></location>
       <source>Installed: %1</source>
       <translation>Installée : %1</translation>
     </message>
     <message id="gamehq.update.installing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="177"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="176"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="163"></location>
       <source>Installing</source>
       <translation>Installation</translation>
     </message>
     <message id="gamehq.update.installing_progress">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="235"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="233"></location>
       <source>Installing...</source>
       <translation>Installation…</translation>
     </message>
     <message id="gamehq.update.installing_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="102"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="103"></location>
       <source>Installing GameHQ %1...</source>
       <translation>Installation de GameHQ %1…</translation>
     </message>
     <message id="gamehq.update.last_checked">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="211"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="209"></location>
       <source>Last checked %1</source>
       <translation>Dernière vérification %1</translation>
     </message>
     <message id="gamehq.update.last_checked_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="566"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="564"></location>
       <source>%1  %2</source>
       <translation>%1  %2</translation>
     </message>
     <message id="gamehq.update.new_version_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="595"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="593"></location>
       <source>New version available</source>
       <translation>Nouvelle version disponible</translation>
     </message>
     <message id="gamehq.update.not_checked_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="208"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="206"></location>
       <source>Updates have not been checked yet</source>
       <translation>Les mises à jour n’ont pas encore été recherchées</translation>
     </message>
     <message id="gamehq.update.not_checked_yet">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="190"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="189"></location>
       <source>Not checked yet</source>
       <translation>Pas encore vérifié</translation>
     </message>
     <message id="gamehq.update.preparing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="232"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="230"></location>
       <source>Preparing...</source>
       <translation>Préparation…</translation>
     </message>
     <message id="gamehq.update.preparing_to_install">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="174"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="173"></location>
       <source>Preparing to install</source>
       <translation>Préparation de l’installation</translation>
     </message>
     <message id="gamehq.update.preparing_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="99"></location>
       <source>Getting ready to install GameHQ %1...</source>
       <translation>Préparation de l’installation de GameHQ %1…</translation>
     </message>
     <message id="gamehq.update.progress_percent">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="75"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="80"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="173"></location>
       <source>%1% complete</source>
       <translation>%1 % terminé</translation>
     </message>
     <message id="gamehq.update.published_on">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="144"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="143"></location>
       <source>Published %1</source>
       <translation>Publiée le %1</translation>
     </message>
     <message id="gamehq.update.ready_to_install">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="170"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="158"></location>
       <source>Ready to install</source>
       <translation>Prêt à installer</translation>
     </message>
     <message id="gamehq.update.release_metadata">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="95"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="100"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.update.released_on">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="150"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="149"></location>
       <source>Released %1</source>
       <translation>Sortie le %1</translation>
     </message>
     <message id="gamehq.update.remind_later">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="945"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="943"></location>
       <source>Remind me later</source>
       <translation>Me le rappeler plus tard</translation>
     </message>
@@ -5496,18 +5621,18 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>GameHQ redémarrera pour appliquer la mise à jour.</translation>
     </message>
     <message id="gamehq.update.retry_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="242"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="240"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
       <source>Retry download</source>
       <translation>Réessayer le téléchargement</translation>
     </message>
     <message id="gamehq.update.see_whats_new">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="156"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="161"></location>
       <source>See what's new</source>
       <translation>Voir les nouveautés</translation>
     </message>
     <message id="gamehq.update.settings">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="740"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="738"></location>
       <source>Update settings</source>
       <translation>Paramètres des mises à jour</translation>
     </message>
@@ -5517,71 +5642,71 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>SHA-256 détecte les données corrompues, mais pas un compte GitHub compromis.</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="959"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="957"></location>
       <source>Skip this version</source>
       <translation>Ignorer cette version</translation>
     </message>
     <message id="gamehq.update.skip_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="750"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="748"></location>
       <source>Skip version %1</source>
       <translation>Ignorer la version %1</translation>
     </message>
     <message id="gamehq.update.status.available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="124"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="72"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="123"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="73"></location>
       <source>Available</source>
       <translation>Disponible</translation>
     </message>
     <message id="gamehq.update.status.current">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="128"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="75"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="127"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="76"></location>
       <source>Current</source>
       <translation>Actuelle</translation>
     </message>
     <message id="gamehq.update.status.previous">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="131"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="130"></location>
       <source>Previous</source>
       <translation>Précédente</translation>
     </message>
     <message id="gamehq.update.status.update_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="163"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="162"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="211"></location>
       <source>Update available</source>
       <translation>Mise à jour disponible</translation>
     </message>
     <message id="gamehq.update.suffix.available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="48"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="47"></location>
       <source>(Available)</source>
       <translation>(Disponible)</translation>
     </message>
     <message id="gamehq.update.suffix.current">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="53"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="52"></location>
       <source>(Current)</source>
       <translation>(Actuelle)</translation>
     </message>
     <message id="gamehq.update.up_to_date">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="183"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="187"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="182"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="186"></location>
       <source>Up to date</source>
       <translation>À jour</translation>
     </message>
     <message id="gamehq.update.up_to_date_last_checked">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="107"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="108"></location>
       <source>Up to date, last checked %1</source>
       <translation>À jour, dernière vérification %1</translation>
     </message>
     <message id="gamehq.update.version_available">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="43"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="44"></location>
       <source>GameHQ %1 is available</source>
       <translation>GameHQ %1 est disponible</translation>
     </message>
     <message id="gamehq.update.version_available_sentence">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="84"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="85"></location>
       <source>GameHQ %1 is available.</source>
       <translation>GameHQ %1 est disponible.</translation>
     </message>
     <message id="gamehq.update.versions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="976"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="974"></location>
       <source>VERSIONS</source>
       <translation>VERSIONS</translation>
     </message>
@@ -5591,7 +5716,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Afficher les notes de version</translation>
     </message>
     <message id="gamehq.update.view_update">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="159"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="164"></location>
       <source>View update</source>
       <translation>Afficher la mise à jour</translation>
     </message>
@@ -5604,7 +5729,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
   <context>
     <name>GameHQLiveRetranslation</name>
     <message id="gamehq.about.full_release_notes">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="696"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="694"></location>
       <source>View full release notes</source>
       <translation>Afficher toutes les notes de version</translation>
     </message>
@@ -5614,7 +5739,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Capture d’écran</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="130"></location>
+      <location filename="src/ui/AppController.cpp" line="116"></location>
       <source>Release notes</source>
       <translation>Notes de version</translation>
     </message>

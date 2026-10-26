@@ -6,6 +6,18 @@ namespace GameIdentity
 {
 QString folderName(const QString& name);
 QString key(const QString& name);
+
+// The one directory component a game's capture folder may use. folderName()
+// stays the identity (key() is built from it and stored), so this only adds
+// what Windows also refuses or misreads: control characters, trailing dots
+// and spaces, a dot-only name such as ".." that would climb out of the root,
+// and reserved device names (CON, NUL, COM1, LPT1, ... also with an
+// extension), which get a '_' before any extension. Ordinary names come back unchanged,
+// so existing folders keep being found.
+QString pathComponent(const QString& name);
+// True when `path` lies strictly inside `root` after both are cleaned. The
+// second, independent guard every final capture path goes through.
+bool isInsideRoot(const QString& root, const QString& path);
 bool hasFolderForbiddenChar(const QString& name);
 
 // Canonical executable identity for game matching (docs/mapping-presets.md

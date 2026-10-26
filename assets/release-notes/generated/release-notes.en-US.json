@@ -1,100 +1,219 @@
 {
-  "version": "0.7.9",
-  "date": "2026-10-02",
+  "version": "0.8.0",
+  "date": "2026-10-26",
   "sections": [
+    {
+      "title": "Special Thanks",
+      "items": [
+        "A big thank you to [@galcn10](https://github.com/galcn10), creator of [Console Overlay for Playnite](https://github.com/galcn10/ConsoleOverlay), for testing GameHQ, sharing valuable feedback, and building a great Playnite integration. Your support helped make GameHQ 0.8.0 better!"
+      ]
+    },
     {
       "title": "Highlights",
       "items": [
-        "Share your captures. Send a screenshot or clip from the gallery, the full-screen viewer or the overlay to Telegram Desktop, Discord, a Discord channel or the clipboard, without signing in to anything through GameHQ.",
-        "Reliable DualSense over USB and Bluetooth. Bluetooth buttons and sticks are read correctly, switching between cable and Bluetooth no longer needs a restart, and unplugging the controller during a game no longer crashes GameHQ. DualSense and DualShock 4 controllers hidden by HidHide can still be used once GameHQ is allowed through HidHide.",
-        "An overlay you can shape. A live Overlay options panel sets margins, spacing, thumbnail size, interface size and control hints, and the sidebar can be expanded, collapsed, set to Auto or resized.",
-        "Full-screen viewing in the overlay. Open a screenshot full screen over your game, step through screenshots and clips with L1/R1, and mark favorites from the viewer.",
-        "A gallery that follows your files. Captures deleted, restored or copied in Explorer appear and disappear right away, and games can be pinned to the top of the list.",
-        "Smaller screenshot files. JPEG at 90% quality is now the default, while PNG remains available.",
-        "More control over notifications. Capture-request, Steam Input conflict and controller-hidden notices can be controlled individually, and mouse users can dismiss notifications early.",
-        "More of the interface works with a controller, including the language selector, Support, Tools and every Share step."
+        "Clips can record your game's own sound. With the new Game audio source, GameHQ records the game on whatever device it plays through (headphones, Bluetooth, HDMI or speakers) and leaves out other apps such as Discord or Spotify.",
+        "Audio recording problems are now detected and reported. If the selected audio source cannot be recorded, the replay buffer stops and tells you why, and which source to choose instead, rather than quietly saving clips without sound. GameHQ never switches the audio source on its own.",
+        "Sound and picture stay in sync. Clips saved after a loading screen, a pause or a long stall keep correct timing, and the replay buffer restarts on its own when a game changes resolution.",
+        "HDR screenshots no longer get stuck. A screenshot of a paused game or a static menu in HDR is saved right away. If no frame arrives at all, the attempt fails cleanly after a few seconds and the next press works.",
+        "Safer deleting with a controller. Cross in a delete confirmation now presses the highlighted button and Circle cancels. Previously, Cross could delete the file even when Cancel was highlighted.",
+        "Deleting protects your originals. Deleting a capture that GameHQ made now moves it to the Recycle Bin, so you can restore it. Files in watched folders are never deleted."
       ]
     },
     {
-      "title": "Sharing",
+      "title": "What's New",
       "items": [
-        "Share any saved screenshot or clip: press Square on a capture and choose Share, click the Share icon on a capture tile, or use the Share button in the full-screen viewer. It works the same in the gallery, the viewer and the overlay, and is fully usable with a controller (Cross selects, Circle goes back).",
-        "Telegram Desktop opens its own chat picker with that one file. GameHQ never signs in to Telegram.",
-        "Discord copies the capture, opens Discord and lets you paste it into any chat. GameHQ never signs in to Discord.",
-        "Discord channels post a capture straight to a channel through a webhook link added in Settings › Sharing. Pin the channels you use most. The post appears as the webhook, not as your Discord account, and the link is kept in Windows Credential Manager.",
-        "Copy to clipboard is available as its own destination.",
-        "When you share from the overlay, Telegram or Discord comes to the front over your game so you can finish sending.",
-        "GameHQ only says Sent when a service confirms delivery, and asks before sharing the same capture to the same place twice.",
-        "Settings › Sharing is a new page with a switch for each destination; turning one off keeps its configuration.",
-        "Other programs on your PC can add their own Share destinations. This is off by default: turn on Allow add-ons from other programs in Settings › Sharing and restart GameHQ."
+        "Settings › Replay › Audio source offers Game audio, Desktop audio and Off. Game audio is the default on Windows 11. Desktop audio records everything on the default Windows output, including other apps, and is the default on older Windows versions.",
+        "Game audio uses Windows' own per-app audio capture and never touches the game process. If you turned system audio off on purpose in an earlier version, it stays off.",
+        "Optional beta updates: a new Include beta versions switch in Settings › General and in About lets the updater offer beta releases. It is off by default, so stable installations only receive stable updates.",
+        "When GameHQ crashes, it tries to save a small crash dump in its logs folder to help diagnose the problem. Nothing is uploaded. Some crashes, such as ones Windows ends immediately, can still close GameHQ without a dump.",
+        "The log records more detail about saved screenshots and start-up failures, so a single log file is more often enough to understand a problem report."
       ]
     },
     {
-      "title": "Overlay",
+      "title": "Fixes and Improvements",
       "items": [
-        "Cross on a screenshot opens it full screen. L1/R1 or D-pad left/right step through screenshots and clips (clips play full screen), and Circle returns to the capture strip on the item you ended on. Cross on a clip still plays it in the preview, and left/right then seek it.",
-        "A gear above the sidebar toggle opens Overlay options: control hints on or off, the four outer margins (down to 0), interface size (now including 75% and 90%), thumbnail size and the spacing between the sidebar, thumbnails and preview. Changes show live and are remembered; Reset overlay layout restores the defaults. Works with the controller, mouse and keyboard."
+        "Clips no longer come out silent because of an old internal setting that kept desktop audio off by default.",
+        "Audio in any Windows playback format is converted correctly instead of the audio track being lost.",
+        "Quiet moments are recorded as silence, so sound after a quiet stretch stays aligned with the picture.",
+        "Game audio recording restarts more reliably when a game restarts or you switch games.",
+        "Parts of the replay buffer that failed to save or cannot be read back are left out, so they cannot break a saved clip.",
+        "GameHQ's own notifications, such as the notice that a screenshot was saved, no longer appear in your screenshots or in whole-screen recordings and streams.",
+        "A screenshot replaced by another image with the same file name gets a fresh thumbnail on the next library scan.",
+        "Capture folders are scanned in the background, so GameHQ stays responsive with large collections.",
+        "Browsers, editors and other windows that are not games no longer appear as games in your library.",
+        "During a bulk delete, the selection stays fixed while the confirmation is open, so background controller actions cannot change which files are deleted.",
+        "The overlay's delete dialog takes the controller's input while it is open and closes when the overlay hides.",
+        "The overlay skips windows that have stopped responding instead of waiting on them.",
+        "Settings no longer jumps back to the top when you scroll with the mouse after switching back to GameHQ.",
+        "Choosing Built-in defaults or removing a preset in the controller mapping editor no longer freezes the preset selection."
       ]
     },
     {
-      "title": "Gallery & Interface",
+      "title": "Controllers and Playnite",
       "items": [
-        "Pin games: hover a game in the sidebar and click the pin, or move the controller cursor onto it and press Triangle. Pinned games stay at the top of the list in both the main window and the overlay.",
-        "In the full-screen viewer, Triangle (or the button you assigned to favorites) marks the shown screenshot or clip as a favorite and removes it again. A heart shows the state and can be clicked.",
-        "Collapsible sidebar in the main window and the overlay. A button cycles through Expanded (the default), Auto and Collapsed. Auto shows a narrow icon rail while you browse and opens the full sidebar when you move into it. Each window remembers its own choice.",
-        "Drag the sidebar's edge to make it narrower or wider; double-click the edge to restore the default width.",
-        "A small arrow above Tools folds Help, About, Support and the language selector away, leaving Settings and the sidebar mode button."
+        "Controller shortcuts keep working in games launched outside Steam, such as a local game started from Playnite. When Windows stops delivering a connected DualSense to GameHQ while the game has focus, GameHQ reads the controller directly, read-only, and returns to normal input once Windows delivers it again.",
+        "Shortcuts and held-button repeats always end on the release of the same press, including releases reported through GameInput and controllers unplugged while a button is held.",
+        "Controllers that were disconnected for good are cleaned up, the HidHide check no longer slows down the interface, and GameInput devices are only checked again when something changes.",
+        "Playnite games stay recognized even when Playnite cannot identify the game's process.",
+        "Windows Xbox full screen experience: when the Xbox shell is in front, GameHQ uses the game started from Playnite for screenshots and clips. GameHQ Playnite Integration 0.4.13, available separately as a pre-release, also starts GameHQ when Xbox mode delays it at sign-in."
       ]
     },
     {
-      "title": "Changes & Improvements",
+      "title": "Stability and Reliability",
       "items": [
-        "Screenshots are saved as JPEG at 90% quality by default instead of PNG, so each file is several times smaller. If you never changed the format you get JPEG automatically; PNG is still available in Settings › Capture.",
-        "The gallery and overlay follow your capture folders live. A capture deleted in Explorer disappears right away, and when it is restored from the Recycle Bin it comes back with its favorite mark and history intact. New files copied into a capture folder appear without Rescan. An open viewer stays on the capture it shows, and a delete confirmation always deletes the capture it named.",
-        "Settings › Notifications & Sound has separate switches for the Capture request received, Steam Input conflict and Controller hidden notices.",
-        "When you use the mouse, notifications show an X to close them early, and hovering one keeps it on screen. Nothing changes for controller-only play, and a game that hides the cursor never shows the X.",
-        "Warning notifications stay on screen for 10 seconds and carry a caution icon.",
-        "The new Sharing, interface, controller and notification text has been reviewed in all supported interface languages.",
-        "The main window's full-screen viewer uses half the margins, so captures appear larger.",
-        "Full-screen viewer hints switch to arrow and Esc keys as soon as you use the keyboard or mouse.",
-        "The language selector, Support GameHQ and the Tools group in the main sidebar can be reached with the controller. In the collapsed sidebar the language selector stays available as an icon.",
-        "Capture menus, Share and Overlay options now take priority over video playback in the overlay, so Cross selects the menu entry instead of playing the clip behind it."
+        "Cleanup of unfinished recordings only removes temporary files that GameHQ itself created.",
+        "Game capture folders always stay inside your capture folder.",
+        "Start-up no longer fails when the library contains duplicate folder paths; the entries are merged instead.",
+        "If GameHQ cannot start, it explains why in your language and keeps the reason in the log.",
+        "Importing a portable profile into an installed GameHQ now works when the installed copy has already been started.",
+        "Hardened security: safer DLL loading, stricter checks on local integration connections and safer handling of update files.",
+        "The updater copes better with a slow first start and keeps its records intact if it is interrupted.",
+        "Telegram sharing shuts down more safely."
       ]
     },
     {
-      "title": "Bug Fixes",
+      "title": "Installation and Updating",
       "items": [
-        "DualSense over Bluetooth: sticks and buttons are read correctly in GameHQ. Bluetooth reports were read one byte off, so stick up/down registered as left/right and buttons were misread. USB was not affected.",
-        "L3 and R3 (stick clicks) now work on DualSense and DualShock 4 controllers read directly by GameHQ.",
-        "Switching a controller between USB and Bluetooth while GameHQ is running no longer leaves it unresponsive.",
-        "Unplugging a controller during in-game capture no longer crashes GameHQ.",
-        "Quick taps on controllers that use the Windows joystick fallback are no longer dropped.",
-        "Closing the overlay no longer stalls when a button was already held before it opened.",
-        "Settings › Input › Mapping presets: the Assignments list now shows and edits the preset chosen under Editing preset. Before, presets used by a game or not assigned to this controller could not be edited, and custom mappings such as a double tap could not be removed or reverted.",
-        "Start with Windows: another GameHQ copy (a portable build, or a copy with its own settings) no longer removes or takes over the installed copy's startup entry, which could stop the installed GameHQ from starting after a restart."
-      ]
-    },
-    {
-      "title": "Controller & Compatibility",
-      "items": [
-        "Sony controllers are read through the standard Windows input path, as before.",
-        "A DualSense or DualShock 4 hidden by HidHide, over USB or Bluetooth, is detected and reported. Once GameHQ is allowed in HidHide (Fix automatically does this), GameHQ reads the controller directly, the same way DSX does, while it stays hidden from games.",
-        "When a hidden-controller driver (HidHide, installed with DSX, DS4Windows or reWASD) hides your controller from GameHQ, a bar across the top of the main window explains it and offers Fix automatically, Settings and Not now.",
-        "GameHQ does not install or remove HidHide and does not change which controllers it hides. If you choose Fix automatically, it only adds GameHQ to HidHide's allowed applications.",
-        "Steam Input guidance: when a Steam game is running and a GameHQ shortcut uses Create / Share or PS, GameHQ explains that Steam Input may also send that button to the game and offers buttons that open the game's Steam controller layout or Steam's controller settings. GameHQ never reads or changes Steam's settings. It can be switched off or hidden per game."
+        "Updating from 0.7.9: run the 0.8.0 installer over your current installation.",
+        "Installer: installs for the current user and replaces an installed 0.7.9 or an earlier beta.",
+        "Portable: extract the ZIP to a new folder and run GameHQ.exe.",
+        "If you tested 0.8.0 Beta 2, 3 or 4, install 0.8.0 with the installer or a fresh portable ZIP, because those betas were not offered through the updater."
       ]
     },
     {
       "title": "Known Limitations",
       "items": [
-        "Whether the overlay keeps controller input away from the game depends on the game and how it reads the controller. A wired DualSense using GameInput is well tested; it isn't guaranteed for XInput, Raw Input, direct HID, Steam Input or virtual controllers.",
-        "With Telegram Desktop and Discord, GameHQ opens the app and you finish sending there; it can't see whether you actually sent the capture, so it never reports Sent for them. With Discord you paste the capture into a chat yourself.",
-        "Discord channel uploads are limited by the server's file size limit.",
-        "Some games pause or react when they lose focus, for example when Telegram or Discord comes to the front after sharing. Windows or another capture app may keep the yellow recording border visible."
+        "Game audio needs Windows 11. On older Windows versions GameHQ uses Desktop audio, which also records other apps playing on the default output.",
+        "A game that takes exclusive control of a controller may still prevent background shortcuts.",
+        "Support for the Windows Xbox full screen experience has not yet been confirmed by testers on a PC running it.",
+        "Windows binaries are not Authenticode-signed; Windows SmartScreen may show an Unknown Publisher warning."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "sections": [
+        {
+          "title": "Bug Fixes",
+          "items": [
+            "Screenshots no longer include GameHQ's own notifications, such as the notice that the previous screenshot was saved. The notifications still appear on your screen.",
+            "Windows Xbox mode (full screen experience) with Playnite: when Windows reports the Xbox app as the active window instead of a game started from Playnite, GameHQ still recognizes the game, so screenshots and clips work. Use it together with GameHQ Playnite Integration 0.4.13."
+          ]
+        },
+        {
+          "title": "Changes & Improvements",
+          "items": [
+            "Screen recorders and streaming apps that capture the whole screen no longer show GameHQ notifications either."
+          ]
+        },
+        {
+          "title": "Known Limitations",
+          "items": [
+            "Pop-ups from other apps, such as Windows, Steam or Discord notifications, can still appear in screenshots.",
+            "Xbox mode support is new and has not yet been confirmed on a PC running Xbox mode."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.7.9",
+      "date": "2026-10-02",
+      "sections": [
+        {
+          "title": "Highlights",
+          "items": [
+            "Share your captures. Send a screenshot or clip from the gallery, the full-screen viewer or the overlay to Telegram Desktop, Discord, a Discord channel or the clipboard, without signing in to anything through GameHQ.",
+            "Reliable DualSense over USB and Bluetooth. Bluetooth buttons and sticks are read correctly, switching between cable and Bluetooth no longer needs a restart, and unplugging the controller during a game no longer crashes GameHQ. DualSense and DualShock 4 controllers hidden by HidHide can still be used once GameHQ is allowed through HidHide.",
+            "An overlay you can shape. A live Overlay options panel sets margins, spacing, thumbnail size, interface size and control hints, and the sidebar can be expanded, collapsed, set to Auto or resized.",
+            "Full-screen viewing in the overlay. Open a screenshot full screen over your game, step through screenshots and clips with L1/R1, and mark favorites from the viewer.",
+            "A gallery that follows your files. Captures deleted, restored or copied in Explorer appear and disappear right away, and games can be pinned to the top of the list.",
+            "Smaller screenshot files. JPEG at 90% quality is now the default, while PNG remains available.",
+            "More control over notifications. Capture-request, Steam Input conflict and controller-hidden notices can be controlled individually, and mouse users can dismiss notifications early.",
+            "More of the interface works with a controller, including the language selector, Support, Tools and every Share step."
+          ]
+        },
+        {
+          "title": "Sharing",
+          "items": [
+            "Share any saved screenshot or clip: press Square on a capture and choose Share, click the Share icon on a capture tile, or use the Share button in the full-screen viewer. It works the same in the gallery, the viewer and the overlay, and is fully usable with a controller (Cross selects, Circle goes back).",
+            "Telegram Desktop opens its own chat picker with that one file. GameHQ never signs in to Telegram.",
+            "Discord copies the capture, opens Discord and lets you paste it into any chat. GameHQ never signs in to Discord.",
+            "Discord channels post a capture straight to a channel through a webhook link added in Settings › Sharing. Pin the channels you use most. The post appears as the webhook, not as your Discord account, and the link is kept in Windows Credential Manager.",
+            "Copy to clipboard is available as its own destination.",
+            "When you share from the overlay, Telegram or Discord comes to the front over your game so you can finish sending.",
+            "GameHQ only says Sent when a service confirms delivery, and asks before sharing the same capture to the same place twice.",
+            "Settings › Sharing is a new page with a switch for each destination; turning one off keeps its configuration.",
+            "Other programs on your PC can add their own Share destinations. This is off by default: turn on Allow add-ons from other programs in Settings › Sharing and restart GameHQ."
+          ]
+        },
+        {
+          "title": "Overlay",
+          "items": [
+            "Cross on a screenshot opens it full screen. L1/R1 or D-pad left/right step through screenshots and clips (clips play full screen), and Circle returns to the capture strip on the item you ended on. Cross on a clip still plays it in the preview, and left/right then seek it.",
+            "A gear above the sidebar toggle opens Overlay options: control hints on or off, the four outer margins (down to 0), interface size (now including 75% and 90%), thumbnail size and the spacing between the sidebar, thumbnails and preview. Changes show live and are remembered; Reset overlay layout restores the defaults. Works with the controller, mouse and keyboard."
+          ]
+        },
+        {
+          "title": "Gallery & Interface",
+          "items": [
+            "Pin games: hover a game in the sidebar and click the pin, or move the controller cursor onto it and press Triangle. Pinned games stay at the top of the list in both the main window and the overlay.",
+            "In the full-screen viewer, Triangle (or the button you assigned to favorites) marks the shown screenshot or clip as a favorite and removes it again. A heart shows the state and can be clicked.",
+            "Collapsible sidebar in the main window and the overlay. A button cycles through Expanded (the default), Auto and Collapsed. Auto shows a narrow icon rail while you browse and opens the full sidebar when you move into it. Each window remembers its own choice.",
+            "Drag the sidebar's edge to make it narrower or wider; double-click the edge to restore the default width.",
+            "A small arrow above Tools folds Help, About, Support and the language selector away, leaving Settings and the sidebar mode button."
+          ]
+        },
+        {
+          "title": "Changes & Improvements",
+          "items": [
+            "Screenshots are saved as JPEG at 90% quality by default instead of PNG, so each file is several times smaller. If you never changed the format you get JPEG automatically; PNG is still available in Settings › Capture.",
+            "The gallery and overlay follow your capture folders live. A capture deleted in Explorer disappears right away, and when it is restored from the Recycle Bin it comes back with its favorite mark and history intact. New files copied into a capture folder appear without Rescan. An open viewer stays on the capture it shows, and a delete confirmation always deletes the capture it named.",
+            "Settings › Notifications & Sound has separate switches for the Capture request received, Steam Input conflict and Controller hidden notices.",
+            "When you use the mouse, notifications show an X to close them early, and hovering one keeps it on screen. Nothing changes for controller-only play, and a game that hides the cursor never shows the X.",
+            "Warning notifications stay on screen for 10 seconds and carry a caution icon.",
+            "The new Sharing, interface, controller and notification text has been reviewed in all supported interface languages.",
+            "The main window's full-screen viewer uses half the margins, so captures appear larger.",
+            "Full-screen viewer hints switch to arrow and Esc keys as soon as you use the keyboard or mouse.",
+            "The language selector, Support GameHQ and the Tools group in the main sidebar can be reached with the controller. In the collapsed sidebar the language selector stays available as an icon.",
+            "Capture menus, Share and Overlay options now take priority over video playback in the overlay, so Cross selects the menu entry instead of playing the clip behind it."
+          ]
+        },
+        {
+          "title": "Bug Fixes",
+          "items": [
+            "DualSense over Bluetooth: sticks and buttons are read correctly in GameHQ. Bluetooth reports were read one byte off, so stick up/down registered as left/right and buttons were misread. USB was not affected.",
+            "L3 and R3 (stick clicks) now work on DualSense and DualShock 4 controllers read directly by GameHQ.",
+            "Switching a controller between USB and Bluetooth while GameHQ is running no longer leaves it unresponsive.",
+            "Unplugging a controller during in-game capture no longer crashes GameHQ.",
+            "Quick taps on controllers that use the Windows joystick fallback are no longer dropped.",
+            "Closing the overlay no longer stalls when a button was already held before it opened.",
+            "Settings › Input › Mapping presets: the Assignments list now shows and edits the preset chosen under Editing preset. Before, presets used by a game or not assigned to this controller could not be edited, and custom mappings such as a double tap could not be removed or reverted.",
+            "Start with Windows: another GameHQ copy (a portable build, or a copy with its own settings) no longer removes or takes over the installed copy's startup entry, which could stop the installed GameHQ from starting after a restart."
+          ]
+        },
+        {
+          "title": "Controller & Compatibility",
+          "items": [
+            "Sony controllers are read through the standard Windows input path, as before.",
+            "A DualSense or DualShock 4 hidden by HidHide, over USB or Bluetooth, is detected and reported. Once GameHQ is allowed in HidHide (Fix automatically does this), GameHQ reads the controller directly, the same way DSX does, while it stays hidden from games.",
+            "When a hidden-controller driver (HidHide, installed with DSX, DS4Windows or reWASD) hides your controller from GameHQ, a bar across the top of the main window explains it and offers Fix automatically, Settings and Not now.",
+            "GameHQ does not install or remove HidHide and does not change which controllers it hides. If you choose Fix automatically, it only adds GameHQ to HidHide's allowed applications.",
+            "Steam Input guidance: when a Steam game is running and a GameHQ shortcut uses Create / Share or PS, GameHQ explains that Steam Input may also send that button to the game and offers buttons that open the game's Steam controller layout or Steam's controller settings. GameHQ never reads or changes Steam's settings. It can be switched off or hidden per game."
+          ]
+        },
+        {
+          "title": "Known Limitations",
+          "items": [
+            "Whether the overlay keeps controller input away from the game depends on the game and how it reads the controller. A wired DualSense using GameInput is well tested; it isn't guaranteed for XInput, Raw Input, direct HID, Steam Input or virtual controllers.",
+            "With Telegram Desktop and Discord, GameHQ opens the app and you finish sending there; it can't see whether you actually sent the capture, so it never reports Sent for them. With Discord you paste the capture into a chat yourself.",
+            "Discord channel uploads are limited by the server's file size limit.",
+            "Some games pause or react when they lose focus, for example when Telegram or Discord comes to the front after sharing. Windows or another capture app may keep the yellow recording border visible."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.8",
       "date": "2026-09-22",
@@ -373,6 +492,20 @@
     "requested_locale": "en-US",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.8.0",
+        "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+        "resolved_locale": "en-US",
+        "fallback": false,
+        "fallback_reason": null
+      },
+      {
+        "version": "0.7.10",
+        "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+        "resolved_locale": "en-US",
+        "fallback": false,
+        "fallback_reason": null
+      },
       {
         "version": "0.7.9",
         "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",

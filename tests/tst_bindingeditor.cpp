@@ -375,6 +375,29 @@ private slots:
                             QStringLiteral("desktop.favorite"), 2, custom));
     }
 
+    // aud-b4: a re-identified controller (new logical id, same pad) keeps the
+    // pin; an unrelated rekey leaves it alone.
+    void pinnedControllerFollowsItsOwnRekey()
+    {
+        const ControlId::DeviceProfile pad{
+            QStringLiteral("GameInput"), QStringLiteral("gi:old"),
+            ControlId::ControllerFamily::Generic, QStringLiteral("Pad")};
+        m_editor->setControllerProfile(pad);
+        m_editor->setControllerSpecific(true);
+        QCOMPARE(m_editor->pinnedProfile(), QStringLiteral("gi:old"));
+
+        m_editor->rekeyController(QStringLiteral("gi:other"), QStringLiteral("gi:else"));
+        QCOMPARE(m_editor->pinnedProfile(), QStringLiteral("gi:old"));
+        m_editor->rekeyController(QStringLiteral("gi:old"), QStringLiteral("gi:new"));
+        QCOMPARE(m_editor->pinnedProfile(), QStringLiteral("gi:new"));
+        // The new id is now the pin: events from it are accepted again.
+        m_editor->setControllerProfile({QStringLiteral("GameInput"), QStringLiteral("gi:new"),
+                                        ControlId::ControllerFamily::Generic,
+                                        QStringLiteral("Pad")});
+        QVERIFY(m_editor->controllerSpecific());
+        QCOMPARE(m_editor->pinnedProfile(), QStringLiteral("gi:new"));
+    }
+
     // cpo-c05: while controller-specific editing is on, the edited controller
     // is pinned. A second provider speaking or the selected pad disconnecting
     // is diagnostics — it must not silently retarget the editor or downgrade

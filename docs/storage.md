@@ -3,10 +3,12 @@
 ## Managed capture trees
 
 ```txt
-<ScreenshotsRoot>/<Game Name>/Screenshots/*.png
-<ClipsRoot>/<Game Name>/Clips/*.mp4
+<ScreenshotsRoot>/<Game Name>/Screenshots/<yyyy-MM-dd_HH-mm-ss>.png   (.jpg when JPEG is selected)
+<ClipsRoot>/<Game Name>/Clips/<yyyy-MM-dd_HH-mm-ss>.mp4
 <EitherRoot>/Unknown Game/{Screenshots,Clips}/
 ```
+
+A name already taken in the same second gets `_2`, `_3`, ... appended. `<Game Name>` is the folder-safe form of the display name (Windows-forbidden characters replaced).
 
 Screenshots and clips share the same default root: `%USERPROFILE%\Videos\GameHQ` (never Game Bar's `Videos\Captures`). Full-portable mode defaults both to `Captures/` next to the portable root. Settings may override them independently through `storage.screenshots_root` and `storage.clips_root`; an empty value means the current portable/installed default, so moving a portable package does not bake in its old absolute path.
 
@@ -18,7 +20,7 @@ Changing a root affects new writes only. GameHQ never auto-moves or deletes exis
 2. `portable.flag` in the exe's **parent** directory (dist package: root launcher + `app/GameHQ.exe`, see [packaging.md](packaging.md)) ⇒ data at the package root: `<root>/gamehq-data/` + `<root>/Captures/`.
 3. Otherwise: data in `%APPDATA%\GameHQ\`, default screenshot and clip output in `Videos\GameHQ`.
 
-`gamehq-data/`: `config.json`, `gamehq.db`, `thumbnails/`, `game-icons/` (cached foreground executable icons, including icons recovered from historical detector logs), `logs/`, `replay-cache/`, `sound-packs/`.
+`gamehq-data/`: `config.json`, `gamehq.db`, `pending-captures.journal` (see below), `thumbnails/`, `game-icons/` (cached foreground executable icons, including icons recovered from historical detector logs), `logs/`, `replay-cache/`, `sound-packs/`.
 
 ### Stored paths
 
@@ -36,7 +38,7 @@ Each helper is a no-op once the current path exists, so later starts cost only a
 
 ## Watched/import folders
 
-Game Bar Captures, Steam Screenshots, NVIDIA Gallery, OBS, custom — rows in `folders` table, captures tagged with `source`. **Imported folders are read-only unless the user explicitly enables management.**
+Any local folder the user adds (e.g. Game Bar Captures, Steam screenshots, NVIDIA ShadowPlay output) is a row in the `folders` table with `source = 'Imported'`; captures found there are tagged `source = 'Imported'`, captures under managed roots `GameHQ`. The scanner indexes images (`png`, `jpg`, `jpeg`, `bmp`, `webp`) and videos (`mp4`, `mkv`, `mov`, `avi`, `webm`). **GameHQ never writes, moves or deletes files in imported folders on its own**; the only removal is an explicit user delete of a capture ([database.md](database.md#hard-rules)). Removing a watched folder only deletes its `folders` row.
 
 ## Log retention (`Logger.cpp`)
 
@@ -44,6 +46,11 @@ Game Bar Captures, Steam Screenshots, NVIDIA Gallery, OBS, custom — rows in `f
 
 If the log directory cannot be created or the file cannot be opened, GameHQ still starts and writes diagnostics to stderr instead of running silently, and the copied diagnostic summary says so on its "Logs folder" line.
 
-## Cleanup rules (0.7)
+## Cleanup
 
-Max storage 10/25/50/100 GB/unlimited · auto-cleanup modes: off / oldest non-favorites / clips only / both · **favorites never auto-deleted** · confirm before deleting anything outside managed folders · warn on low disk.
+GameHQ has no storage quota and no automatic deletion of finished captures: screenshots and clips are only removed by an explicit user delete. **Favorites are never auto-deleted.** The only automatic cleanup is of GameHQ's own temporary files:
+
+- **Unfinished captures (`.part`, `CapturePublisher`).** A screenshot or clip is encoded into `<final name>.part` and only renamed to its final name when complete; the scanner does not index `.part`. Every reservation is appended to `gamehq-data/pending-captures.journal` and dropped from it once published or discarded. On startup, `ScreenshotService` and `FramePumpService` sweep the current screenshot and clip base roots and delete `.part` files older than 10 minutes, but only those listed in the journal and not being written by this process; any other `.part` (a browser download, another app's) is left alone, and without a journal nothing is deleted. A `.part` whose publish failed stays on disk and keeps its journal entry until a later sweep.
+- **Replay cache.** When the capture worker thread starts, `*_clip.mp4` segments in `gamehq-data/replay-cache/` older than 10 minutes and not leased are removed, and emptied per-game cache folders are pruned.
+- **Thumbnails.** A capture's thumbnail is removed with it on user delete (best effort).
+- **Logs.** See *Log retention* above.

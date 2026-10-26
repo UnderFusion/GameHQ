@@ -15,6 +15,7 @@
 #include <map>
 #include <memory>
 
+class QThreadPool;
 class QTimer;
 class SonyHidReaderHandle;
 
@@ -112,6 +113,11 @@ public:
     // is dropped by its readerId.
     void onHidReport(quint64 readerId, const QByteArray& report);
     void onHidReaderFailed(quint64 readerId, const QString& reason);
+    // Called by the rate sampler when a tracked pad's Raw Input stream stops
+    // while the pad is still present; public for tests. Some games launched
+    // outside Steam stop WM_INPUT reaching background apps, so the read-only
+    // direct HID reader takes over that endpoint.
+    void onRawInputStreamSilent(void* handle);
 
 signals:
     // Debounced hint that the HID device topology changed (any arrival or
@@ -158,6 +164,9 @@ private:
         qint64 lastHidMs = 0;       // last report forwarded by the reader
         qint64 rawWhileHidQuietMs = 0; // first Raw Input report the reader has not matched
         bool hidOnly = false;       // cloaked from Raw Input; keyed by a synthetic handle
+        bool hidRescue = false;     // reader opened only because Raw Input went silent
+        qint64 rawResumeMs = 0;     // start of the current unbroken Raw Input run (rescue)
+        qint64 lastRawMs = 0;       // last Raw Input report seen while rescued
     };
 
     bool registerRawInput(bool remove = false);
@@ -175,18 +184,37 @@ private:
     QString deviceLabel(void* handle, bool ignored) const;
     void removeDevice(void* handle);
     void reconcileDevices();                  // debounced full-list sync (prune stale handles)
+    // Windows PnP cross-check (HidHide cloak detection + hidden HID-only
+    // interfaces). CfgMgr enumeration is slow, so it runs on m_pnpScanPool
+    // against a snapshot of the Raw Input paths; the result comes back as a
+    // queued call and every device-state change stays on the GUI thread.
+    struct PnpScan {
+        QSet<QString> rawPathsLower;
+        bool interfacesScanned = false;
+        QList<RawInputApi::HiddenInterface> hidden;
+        RawInputApi::CloakScan cloak;
+    };
+    void requestPnpScan(const QSet<QString>& rawPathsLower);
+    void applyPnpScan(const PnpScan& scan);
     void failoverOrScheduleDisconnect();
     void finishDisconnect();
     void parseReport(void* handle, DeviceState& st, const unsigned char* data, int len,
                      const char* provider = "Sony Raw Input");
-    void startHidReader(void* handle, DeviceState& st);
+    // `rescue` opens a reader for a Raw-Input-visible endpoint even when
+    // readers are limited to hidden pads (see onRawInputStreamSilent).
+    void startHidReader(void* handle, DeviceState& st, bool rescue = false);
+    // Raw Input delivers steadily again: close the rescue reader and keep the
+    // decoded state, so held controls neither release nor press twice.
+    void endHidRescue(DeviceState& st);
     // Track/prune HID-only endpoints against the current PnP view. Returns
     // true if the active pad was pruned.
-    bool syncHiddenInterfaces(const QSet<QString>& rawPathsLower);
+    bool syncHiddenInterfaces(const QList<RawInputApi::HiddenInterface>& hiddenInterfaces,
+                              const QSet<QString>& rawPathsLower);
     void stopHidReader(void* handle, DeviceState& st, const char* why);
     // Reader lost the endpoint: stop preferring it and release whatever it
     // held so no button stays logically pressed across the source change.
-    void demoteHidSource(void* handle, DeviceState& st, const char* why);
+    void demoteHidSource(void* handle, DeviceState& st, const char* why,
+                         bool releaseHeld = true);
     // parseReport stages, in call order. The decoders are pure (static);
     // routeReport owns the active-pad selection/steal side effects.
     static quint32 decodeStickNav(const DeviceState& st, const unsigned char* d, int axisBase, int len);
@@ -238,6 +266,10 @@ private:
     qint64 m_lastReceiptMs = 0;
     bool m_silenceFollowupPending = false;
     QStringList m_lastHiddenPads;            // last cloak-scan result (change detection)
+    std::unique_ptr<QThreadPool> m_pnpScanPool;   // one PnP scan at a time, off the GUI thread
+    bool m_pnpScanRunning = false;
+    bool m_pnpScanQueued = false;            // a newer reconcile arrived while scanning
+    QSet<QString> m_queuedRawPaths;          // its Raw Input path snapshot
 
     HidReaderFactory m_hidReaderFactory;     // empty = spike disabled
     bool m_hidReaderForVisible = true;       // false = HID-only (cloaked) endpoints only

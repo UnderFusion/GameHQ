@@ -4,6 +4,7 @@
 #include <QHash>
 #include <QObject>
 #include <QSet>
+#include <QThreadPool>
 #include <QString>
 #include <QStringList>
 #include <QVector>
@@ -44,10 +45,16 @@ public:
     // Managed roots first, then watched folders, de-duplicated.
     QVector<Root> roots() const;
 
+    ~CaptureScanner() override;
+
     // Synchronous full scan; returns number of newly added captures.
-    // Called at startup and from the UI "Rescan" action; move to a worker
-    // thread once libraries grow beyond a few thousand files.
     int scanAll();
+    // The same full scan without blocking the caller: the directory walk and
+    // thumbnail decoding run on a worker, only the database writes come back
+    // to this thread. Emits scanFinished(). A request while one runs is
+    // folded into a single follow-up pass.
+    void scanAllAsync();
+    bool scanInProgress() const { return m_asyncRunning; }
 
     // Rescans only the given roots (as reported by CaptureFolderWatcher).
     // Files modified less than settleMs ago are left for a later pass so a
@@ -58,12 +65,32 @@ signals:
     void scanFinished(int added);
 
 private:
-    // index is the whole-table snapshot taken by scanAll(); scanFolder reads it
-    // instead of querying per file and keeps it current as it inserts.
-    // seen collects the stored key of every media file the walk found.
-    int scanFolder(const QString& root, const QString& source,
-                   QHash<QString, CaptureIndexEntry>& index, QSet<QString>& seen,
-                   qint64 settleMs, bool* deferred);
+    struct FoundCapture
+    {
+        QString path;
+        QString key;
+        QString type;
+        QString game;
+        QString createdAt;
+        QString source;
+        QString thumbnail;
+    };
+    struct WalkResult
+    {
+        QVector<FoundCapture> found;              // not in the index yet
+        QVector<QPair<QString, QString>> thumbnailFixes;   // known path -> new thumbnail
+        QSet<QString> seen;                       // stored key of every media file found
+        bool deferred = false;                    // a file was too fresh to index
+    };
+    // The filesystem half of a scan: walks the roots against an index
+    // snapshot and decodes thumbnails. Touches no database, so it is safe on
+    // a worker thread.
+    static WalkResult walk(const QVector<Root>& roots, const QHash<QString, CaptureIndexEntry>& index,
+                           qint64 settleMs, const QString& thumbnailsDir);
+    // The database half, on this thread. Re-reads the index so a capture
+    // another pass inserted in the meantime is not inserted twice.
+    int apply(const WalkResult& result, const QStringList& scope, Delta& delta);
+    void finishAsyncScan(const WalkResult& result);
     // Syncs the missing list for live rows; scope limits it to rows under
     // those roots (empty = every row).
     void refreshMissing(const QHash<QString, CaptureIndexEntry>& index,
@@ -72,4 +99,7 @@ private:
     CaptureDatabase* m_db;
     CaptureLocations* m_locations;
     QString m_thumbnailsDir;
+    QThreadPool m_pool;   // one worker; the destructor waits for it
+    bool m_asyncRunning = false;
+    bool m_asyncQueued = false;
 };

@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QMutex>
+#include <QStringList>
 #include <QTextStream>
 
 #include <cstdio>
@@ -16,6 +17,10 @@ QMutex g_mutex;
 QtMessageHandler g_previous = nullptr;
 QString g_logDirectory;
 bool g_handlerInstalled = false;
+// Lines logged between beginBuffering() and install(). Bounded so a process
+// that never reaches install() cannot grow without limit.
+QStringList g_pending;
+constexpr qsizetype kMaxPendingLines = 1000;
 // Tracked rather than stat'ed: every line is flushed already, and asking the
 // filesystem for the size on each one would double that cost.
 qint64 g_bytesInFile = 0;
@@ -51,6 +56,22 @@ bool openLogFile()
 }
 
 // Caller holds g_mutex.
+void writeLine(const QString& line)
+{
+    QTextStream out(&g_logFile);
+    out << line << '\n';
+    out.flush();
+    g_bytesInFile += line.size() + 1;
+}
+
+// Caller holds g_mutex.
+void writeLineToStderr(const QString& line)
+{
+    std::fputs(qPrintable(line), stderr);
+    std::fputc('\n', stderr);
+}
+
+// Caller holds g_mutex.
 void rotateIfFull()
 {
     if (g_bytesInFile < Logger::kMaxLogBytes)
@@ -71,17 +92,14 @@ void handler(QtMsgType type, const QMessageLogContext& ctx, const QString& msg)
         QMutexLocker lock(&g_mutex);
         if (g_logFile.isOpen()) {
             rotateIfFull();
-            if (g_logFile.isOpen()) {
-                QTextStream out(&g_logFile);
-                out << line << '\n';
-                out.flush();
-                g_bytesInFile += line.size() + 1;
-            }
+            if (g_logFile.isOpen())
+                writeLine(line);
         } else if (!g_logDirectory.isEmpty()) {
             // The log could not be opened. Say it somewhere rather than run a
             // whole session silently.
-            std::fputs(qPrintable(line), stderr);
-            std::fputc('\n', stderr);
+            writeLineToStderr(line);
+        } else if (g_pending.size() < kMaxPendingLines) {
+            g_pending.append(line);
         }
     }
 #ifdef QT_DEBUG
@@ -96,12 +114,25 @@ void handler(QtMsgType type, const QMessageLogContext& ctx, const QString& msg)
 namespace Logger
 {
 
+void beginBuffering()
+{
+    {
+        QMutexLocker lock(&g_mutex);
+        if (g_handlerInstalled)
+            return;
+        g_handlerInstalled = true;
+    }
+    g_previous = qInstallMessageHandler(handler);
+}
+
 void install(const QString& logsDir)
 {
     bool alreadyInstalled = false;
     bool opened = false;
     {
         QMutexLocker lock(&g_mutex);
+        if (g_logFile.isOpen() && g_logDirectory == logsDir)
+            return;
         alreadyInstalled = g_handlerInstalled;
         g_handlerInstalled = true;
         if (g_logFile.isOpen())
@@ -109,6 +140,18 @@ void install(const QString& logsDir)
         g_logDirectory = logsDir;
         QDir().mkpath(logsDir);
         opened = openLogFile();
+        // Buffered lines keep their original timestamps and go first, in
+        // order, so the file reads as if it had been open all along.
+        for (const QString& line : std::as_const(g_pending)) {
+            if (opened) {
+                rotateIfFull();
+                if (g_logFile.isOpen())
+                    writeLine(line);
+            } else {
+                writeLineToStderr(line);
+            }
+        }
+        g_pending.clear();
     }
     if (!opened) {
         std::fputs("GameHQ: the log file could not be opened; "
@@ -119,6 +162,11 @@ void install(const QString& logsDir)
     // unbounded recursion.
     if (!alreadyInstalled)
         g_previous = qInstallMessageHandler(handler);
+}
+
+QString filePath(const QString& logsDir)
+{
+    return logsDir + QLatin1Char('/') + logFileName();
 }
 
 bool writingToFile()

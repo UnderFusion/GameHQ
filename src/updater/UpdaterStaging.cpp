@@ -1,4 +1,5 @@
 #include "updater/UpdaterStaging.h"
+#include "core/PathContainment.h"
 
 #include <algorithm>
 #include <array>
@@ -30,6 +31,8 @@ bool hasPrefix(const std::string &value, const std::string &prefix)
     return value.size() >= prefix.size() && value.compare(0, prefix.size(), prefix) == 0;
 }
 
+bool componentIsWindowsSafe(const std::string &part);
+
 bool validateEntryName(std::string name, std::string &normalized, std::string &error)
 {
     std::replace(name.begin(), name.end(), '\\', '/');
@@ -46,6 +49,10 @@ bool validateEntryName(std::string name, std::string &normalized, std::string &e
         const std::string part = name.substr(begin, end == std::string::npos ? end : end - begin);
         if (part.empty() || part == "." || part == ".." || part.find(':') != std::string::npos) {
             error = "archive contains a traversal or invalid path component";
+            return false;
+        }
+        if (!componentIsWindowsSafe(part)) {
+            error = "archive contains a reserved or invalid Windows file name: " + name;
             return false;
         }
         if (end == std::string::npos)
@@ -76,15 +83,112 @@ bool validateEntryName(std::string name, std::string &normalized, std::string &e
     return true;
 }
 
-bool pathWithin(const std::filesystem::path &root, const std::filesystem::path &candidate)
+// Windows silently maps these names to devices or strips the trailing
+// characters, so "app/CON" or "app/GameHQ.exe." would not land where the
+// archive says. Checked per component on the UTF-8 entry name.
+bool componentIsWindowsSafe(const std::string &part)
 {
-    auto rootIt = root.begin();
-    auto candidateIt = candidate.begin();
-    for (; rootIt != root.end(); ++rootIt, ++candidateIt) {
-        if (candidateIt == candidate.end() || _wcsicmp(rootIt->c_str(), candidateIt->c_str()) != 0)
+    if (part.back() == '.' || part.back() == ' ')
+        return false;
+    for (unsigned char ch : part) {
+        if (ch < 0x20 || ch == '<' || ch == '>' || ch == '"' || ch == '|' || ch == '?'
+            || ch == '*')
             return false;
     }
-    return candidateIt != candidate.end();
+    std::string stem = lower(part.substr(0, part.find('.')));
+    while (!stem.empty() && stem.back() == ' ')
+        stem.pop_back();
+    static const std::set<std::string> reserved = {
+        "con", "prn", "aux", "nul", "conin$", "conout$", "clock$"
+    };
+    if (reserved.contains(stem))
+        return false;
+    if (stem.size() >= 4 && (hasPrefix(stem, "com") || hasPrefix(stem, "lpt"))) {
+        const std::string suffix = stem.substr(3);
+        // COM0-9 / LPT0-9 plus the superscript digits 1-3 Windows also maps.
+        if ((suffix.size() == 1 && suffix[0] >= '0' && suffix[0] <= '9')
+            || suffix == "\xC2\xB9" || suffix == "\xC2\xB2" || suffix == "\xC2\xB3")
+            return false;
+    }
+    return true;
+}
+
+bool pathWithin(const std::filesystem::path &root, const std::filesystem::path &candidate)
+{
+    return path_containment::isWithinRoot(root, candidate);
+}
+
+// The package is opened once, denying writers and deletion, and both the
+// SHA-256 check and every ZIP read go through that one handle. A same-user
+// process can therefore not swap the bytes between verification and
+// extraction.
+struct PackageFile
+{
+    HANDLE handle = INVALID_HANDLE_VALUE;
+    mz_uint64 size = 0;
+    PackageFile() = default;
+    PackageFile(const PackageFile &) = delete;
+    PackageFile &operator=(const PackageFile &) = delete;
+    ~PackageFile() { if (handle != INVALID_HANDLE_VALUE) CloseHandle(handle); }
+};
+
+size_t readPackageAt(void *opaque, mz_uint64 offset, void *buffer, size_t count)
+{
+    const auto *package = static_cast<const PackageFile *>(opaque);
+    size_t done = 0;
+    while (done < count && offset + done < package->size) {
+        const size_t remaining = count - done;
+        const DWORD chunk = static_cast<DWORD>(remaining < (1u << 24) ? remaining : (1u << 24));
+        const mz_uint64 position = offset + done;
+        OVERLAPPED at{};
+        at.Offset = static_cast<DWORD>(position & 0xffffffffULL);
+        at.OffsetHigh = static_cast<DWORD>(position >> 32);
+        DWORD read = 0;
+        if (!ReadFile(package->handle, static_cast<char *>(buffer) + done, chunk, &read, &at)
+            || read == 0)
+            break;
+        done += read;
+    }
+    return done;
+}
+
+bool openPackage(const std::filesystem::path &path, PackageFile &package, std::string &error)
+{
+    package.handle = CreateFileW(path.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr,
+                                 OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+    if (package.handle == INVALID_HANDLE_VALUE) {
+        error = "could not open the verified update package exclusively (Windows error "
+            + std::to_string(GetLastError()) + ")";
+        return false;
+    }
+    BY_HANDLE_FILE_INFORMATION info{};
+    LARGE_INTEGER size{};
+    if (!GetFileInformationByHandle(package.handle, &info)
+        || (info.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+        || !GetFileSizeEx(package.handle, &size) || size.QuadPart <= 0) {
+        error = "the verified update package is not a readable file";
+        return false;
+    }
+    package.size = static_cast<mz_uint64>(size.QuadPart);
+    return true;
+}
+
+// Compares only the X.Y.Z prefix; anything unparsable compares as 0.0.0.
+std::array<unsigned long, 3> versionParts(const std::string &value)
+{
+    std::array<unsigned long, 3> result{};
+    std::size_t index = 0;
+    for (char ch : value) {
+        if (ch >= '0' && ch <= '9') {
+            if (result[index] < 100000000UL)
+                result[index] = result[index] * 10 + static_cast<unsigned long>(ch - '0');
+        } else if (ch == '.' && index < result.size() - 1) {
+            ++index;
+        } else {
+            break;
+        }
+    }
+    return result;
 }
 
 bool utf8Path(const std::string &value, std::filesystem::path &path, std::string &error)
@@ -127,7 +231,7 @@ bool readText(const std::filesystem::path &path, std::string &out)
     return out.size() <= 64 * 1024;
 }
 
-bool verifySha256(const std::filesystem::path &path, const std::string &expected, std::string &error)
+bool verifySha256(const PackageFile &package, const std::string &expected, std::string &error)
 {
     BCRYPT_ALG_HANDLE algorithm = nullptr;
     BCRYPT_HASH_HANDLE hash = nullptr;
@@ -150,16 +254,16 @@ bool verifySha256(const std::filesystem::path &path, const std::string &expected
         error = "could not initialize the package hash";
         return false;
     }
-    std::ifstream input(path, std::ios::binary);
     std::vector<unsigned char> buffer(1024 * 1024);
-    bool ok = static_cast<bool>(input);
-    while (ok && input) {
-        input.read(reinterpret_cast<char *>(buffer.data()), static_cast<std::streamsize>(buffer.size()));
-        const std::streamsize count = input.gcount();
-        if (count > 0 && !BCRYPT_SUCCESS(BCryptHashData(hash, buffer.data(), static_cast<ULONG>(count), 0)))
+    bool ok = true;
+    for (mz_uint64 offset = 0; ok && offset < package.size;) {
+        const size_t count = readPackageAt(const_cast<PackageFile *>(&package), offset,
+                                           buffer.data(), buffer.size());
+        if (count == 0 || !BCRYPT_SUCCESS(BCryptHashData(hash, buffer.data(), static_cast<ULONG>(count), 0)))
             ok = false;
+        offset += count;
     }
-    if (input.bad() || !ok || !BCRYPT_SUCCESS(BCryptFinishHash(hash, digest.data(), digestBytes, 0)))
+    if (!ok || !BCRYPT_SUCCESS(BCryptFinishHash(hash, digest.data(), digestBytes, 0)))
         ok = false;
     BCryptDestroyHash(hash);
     BCryptCloseAlgorithmProvider(algorithm, 0);
@@ -202,17 +306,7 @@ bool validateManifest(const std::filesystem::path &path, const updater::Transact
         error = "update-package.json does not match this update transaction";
         return false;
     }
-    auto parts = [](const std::string &value) {
-        std::array<unsigned long, 3> result{};
-        std::size_t start = 0;
-        for (std::size_t i = 0; i < result.size(); ++i) {
-            const std::size_t end = value.find('.', start);
-            result[i] = std::stoul(value.substr(start, end - start));
-            start = end == std::string::npos ? value.size() : end + 1;
-        }
-        return result;
-    };
-    if (parts(GAMEHQ_UPDATER_VERSION) < parts(minimumUpdater)) {
+    if (versionParts(GAMEHQ_UPDATER_VERSION) < versionParts(minimumUpdater)) {
         error = "this package requires a newer updater helper; use the manual update download";
         return false;
     }
@@ -224,6 +318,15 @@ namespace updater
 {
 bool extractAndValidatePackage(const Transaction &tx, std::string &error)
 {
+    // This helper ships with the installed release, so its own version is the
+    // installed floor. The app only offers newer releases; refusing older ones
+    // here keeps a hand-written transaction from installing an older (still
+    // validly signed) build. Equal versions stay allowed for beta -> stable.
+    if (versionParts(tx.expectedVersion) < versionParts(GAMEHQ_UPDATER_VERSION)) {
+        error = "the update package is older than the installed version "
+                GAMEHQ_UPDATER_VERSION;
+        return false;
+    }
     std::error_code ec;
     if (std::filesystem::exists(tx.stagingDir)) {
         error = "staging directory already exists";
@@ -240,12 +343,16 @@ bool extractAndValidatePackage(const Transaction &tx, std::string &error)
         return false;
     };
 
-    if (!verifySha256(tx.packagePath, tx.expectedSha256, error))
+    PackageFile package;
+    if (!openPackage(tx.packagePath, package, error))
+        return reject(error);
+    if (!verifySha256(package, tx.expectedSha256, error))
         return reject(error);
 
     mz_zip_archive zip{};
-    const std::string package = pathToUtf8(tx.packagePath);
-    if (!mz_zip_reader_init_file(&zip, package.c_str(), 0))
+    zip.m_pRead = readPackageAt;
+    zip.m_pIO_opaque = &package;
+    if (!mz_zip_reader_init(&zip, package.size, 0))
         return reject("update package is not a readable ZIP archive");
     struct ZipEnder { mz_zip_archive *zip; ~ZipEnder() { mz_zip_reader_end(zip); } } ender{&zip};
 
@@ -306,7 +413,11 @@ bool extractAndValidatePackage(const Transaction &tx, std::string &error)
         OutputFile output{std::ofstream(target, std::ios::binary | std::ios::trunc)};
         if (!output.stream || !mz_zip_reader_extract_to_callback(&zip, index, writeExtracted, &output, 0))
             return reject("archive extraction failed");
+        // close() flushes the last buffered bytes; a failure there (disk
+        // full, AV lock) would otherwise leave a silently truncated file.
         output.stream.close();
+        if (!output.stream)
+            return reject("could not finish writing archive entry '" + name + "' to staging");
         const DWORD attributes = GetFileAttributesW(target.c_str());
         if (attributes == INVALID_FILE_ATTRIBUTES || (attributes & FILE_ATTRIBUTE_REPARSE_POINT))
             return reject("staged output became a reparse point");

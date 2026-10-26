@@ -91,7 +91,9 @@ bool XInputDevice::start()
 {
     const wchar_t* dlls[] = { L"xinput1_4.dll", L"xinput1_3.dll", L"xinput9_1_0.dll" };
     for (const wchar_t* dll : dlls) {
-        HMODULE lib = LoadLibraryW(dll);
+        // XInput is a system component: load it from System32 only, so a
+        // same-named DLL planted next to the exe or on PATH is never used.
+        HMODULE lib = LoadLibraryExW(dll, nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
         if (!lib)
             continue;
         // Ordinal 100 = XInputGetStateEx: same signature as XInputGetState

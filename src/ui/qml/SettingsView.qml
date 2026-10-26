@@ -370,8 +370,15 @@ Item {
     }
 
     onVisibleChanged: {
-        if (!visible)
+        if (!visible) {
+            // A confirmation never survives Settings hiding: coming back must
+            // not land on a reset or import prompt the user walked away from.
+            portableImportDialog.close()
+            resetAllDialog.close()
+            resetInputDialog.close()
+            restoreCategoryDialog.close()
             return
+        }
         activePanel = panelCategories
         padCombo = null
         Qt.callLater(activate)

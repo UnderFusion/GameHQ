@@ -66,8 +66,8 @@ FocusScope {
     Rectangle {
         id: card
         anchors.centerIn: parent
-        width: Math.min(760, root.width - Theme.s48)
-        height: Math.min(660, root.height - Theme.s48)
+        width: Math.min(Theme.helpDialogMaxWidth, root.width - Theme.s48)
+        height: Math.min(Theme.helpDialogMaxHeight, root.height - Theme.s48)
         radius: Theme.radiusL
         color: Theme.surface
         border.width: 1

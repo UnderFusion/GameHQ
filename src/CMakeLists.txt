@@ -1,6 +1,8 @@
 qt_add_executable(GameHQ
     main.cpp
     app/App.cpp            app/App.h
+    app/App_CaptureWiring.cpp app/App_InputWiring.cpp
+    app/App_ShareWiring.cpp app/App_UpdateWiring.cpp
     app/PackagedLocalizationProbe.cpp app/PackagedLocalizationProbe.h
     app/ReleaseNotes.cpp   app/ReleaseNotes.h
     app/StartupManager.cpp app/StartupManager.h
@@ -9,6 +11,7 @@ qt_add_executable(GameHQ
       capture/HdrCapabilities.cpp capture/HdrCapabilities.h capture/hdr/HdrStateResolver.h
     capture/ScreenshotService.cpp capture/ScreenshotService.h
     capture/FramePumpService.cpp capture/FramePumpService.h capture/wgc_shims.h
+    capture/FramePumpPipeline.cpp capture/FramePumpPipeline.h capture/ReplaySaveCoordinator.cpp
     capture/CaptureBorderState.cpp capture/CaptureBorderState.h
     capture/CaptureRequest.cpp  capture/CaptureRequest.h
     capture/ReplayBufferState.cpp capture/ReplayBufferState.h
@@ -16,6 +19,7 @@ qt_add_executable(GameHQ
     capture/hdr/HdrToneMapMath.cpp capture/hdr/HdrToneMapMath.h
     capture/hdr/GpuToneMapper.cpp capture/hdr/GpuToneMapper.h
     capture/AudioCapture.cpp capture/AudioCapture.h capture/wasapi_shims.h
+    capture/AudioSourcePolicy.cpp capture/AudioSourcePolicy.h
     capture/SegmentRecorder.cpp capture/SegmentRecorder.h
     capture/SegmentLease.cpp capture/SegmentLease.h capture/ReplayExportTask.h
     capture/ReplayExporter.cpp capture/ReplayExporter.h
@@ -32,6 +36,7 @@ qt_add_executable(GameHQ
     core/UpdaterHandshake.cpp core/UpdaterHandshake.h
     core/WindowPlacement.cpp core/WindowPlacement.h
     core/GamePins.cpp core/GamePins.h
+    diagnostics/CrashDump.cpp diagnostics/CrashDump.h
     diagnostics/Logger.cpp diagnostics/Logger.h
     gameinput/GameInputEvent.h
     gameinput/IGameInputApi.h
@@ -69,6 +74,8 @@ qt_add_executable(GameHQ
     input/InputPatternRecognizer.cpp input/InputPatternRecognizer.h
     input/GestureTiming.cpp input/GestureTiming.h
     input/BindingEditorModel.cpp input/BindingEditorModel.h
+    input/BindingEditorModel_Persistence.cpp input/BindingEditorModel_AssignmentEditor.cpp
+    input/BindingEditorModelInternal.h
     input/ControlId.cpp input/ControlId.h
     input/SteamInputAdvice.cpp input/SteamInputAdvice.h
     input/ControllerIdentity.cpp input/ControllerIdentity.h
@@ -83,12 +90,16 @@ qt_add_executable(GameHQ
     input/RawInputApi.cpp input/RawInputApi.h
     input/PnpDeviceApi.cpp input/PnpDeviceApi.h
     input/DualSenseDevice.cpp input/DualSenseDevice.h
+    input/DualSenseDevice_RawInputWindow.cpp input/DualSenseDevice_SourceArbitration.cpp
+    input/DualSenseDevice_ReportDecoding.cpp input/DualSenseDeviceInternal.h
+    input/SupportedPads.h
     input/SonyHidReader.cpp input/SonyHidReader.h
     input/HidCloakMonitor.cpp input/HidCloakMonitor.h
     input/XInputDevice.cpp input/XInputDevice.h
     input/WinMMDevice.cpp input/WinMMDevice.h
     integration/IntegrationMessage.h
     integration/IntegrationProtocol.cpp integration/IntegrationProtocol.h
+    integration/LocalPeer.cpp integration/LocalPeer.h
     integration/LocalIntegrationServer.cpp integration/LocalIntegrationServer.h
     integration/ExternalGameContext.cpp integration/ExternalGameContext.h
     integration/IntegrationService.cpp integration/IntegrationService.h
@@ -103,13 +114,17 @@ qt_add_executable(GameHQ
     input/PerfTrace.cpp input/PerfTrace.h
     input/EventLoopStallMonitor.cpp input/EventLoopStallMonitor.h
     input/InputEngine.cpp input/InputEngine.h
+    input/InputEngine_Arbitration.cpp input/InputEngine_HidHide.cpp
+    input/InputEngine_Mapping.cpp
     notify/NotificationCenter.cpp notify/NotificationCenter.h
     notify/ToastModel.cpp notify/ToastModel.h
     overlay/ForegroundAcquirer.cpp overlay/ForegroundAcquirer.h
     overlay/ForegroundApi.cpp overlay/ForegroundApi.h
     overlay/OverlayFocusTrace.cpp overlay/OverlayFocusTrace.h
     overlay/OverlayLifetimePolicy.cpp overlay/OverlayLifetimePolicy.h
-    overlay/OverlayManager.cpp overlay/OverlayManager.h
+    overlay/OverlayManager.cpp overlay/OverlayManager.h overlay/OverlayManagerInternal.h
+    overlay/OverlayManager_Close.cpp overlay/OverlayManager_ExternalApp.cpp
+    overlay/OverlayManager_GameWindow.cpp overlay/OverlayManager_Probe.cpp
     overlay/OverlayPresenter.cpp overlay/OverlayPresenter.h
     sound/SoundEngine.cpp  sound/SoundEngine.h
     sound/SoundLevels.cpp  sound/SoundLevels.h
@@ -134,6 +149,8 @@ qt_add_executable(GameHQ
     telegram/TdTransport.h telegram/TdJsonTransport.cpp telegram/TdJsonTransport.h
     telegram/TelegramAccount.cpp telegram/TelegramAccount.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
+    storage/CaptureDatabase_Migrations.cpp storage/CaptureDatabase_Bindings.cpp
+    storage/CaptureDatabase_MappingPresets.cpp storage/SqlTransaction.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
     storage/CaptureFolderWatcher.cpp storage/CaptureFolderWatcher.h
     storage/CaptureScanner.cpp  storage/CaptureScanner.h
@@ -143,6 +160,8 @@ qt_add_executable(GameHQ
     storage/ThumbnailService.cpp storage/ThumbnailService.h
     tray/TrayIcon.cpp      tray/TrayIcon.h
     ui/AppController.cpp   ui/AppController.h
+    ui/AppController_Hdr.cpp ui/AppController_Navigation.cpp
+    ui/AppController_Profile.cpp ui/AppController_Settings.cpp
     ui/NavigationState.cpp ui/NavigationState.h
     ui/CaptureLibraryService.cpp ui/CaptureLibraryService.h
     ui/SettingsRouter.cpp ui/SettingsRouter.h
@@ -182,6 +201,7 @@ qt_add_qml_module(GameHQ
         ui/qml/Brand.qml
         ui/qml/helpers/SidebarCategories.js
         ui/qml/helpers/PadNav.js
+        ui/qml/helpers/UpdateUi.js
         ui/qml/themes/Skin.qml
         ui/qml/themes/DarkSkin.qml
         ui/qml/themes/LightSkin.qml
@@ -206,6 +226,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/DesktopGalleryHeader.qml
         ui/qml/components/DesktopGalleryFooter.qml
         ui/qml/components/DesktopGalleryGrid.qml
+        ui/qml/components/DesktopPadRouter.qml
         ui/qml/components/DesktopEmptyState.qml
         ui/qml/components/OverlaySidebar.qml
         ui/qml/components/OverlayCaptureStrip.qml
@@ -225,6 +246,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/BindingAssignmentDialog.qml
         ui/qml/components/BindingConflictDialog.qml
         ui/qml/components/BindingCompatibilityDialog.qml
+        ui/qml/components/DialogShell.qml
         ui/qml/components/ConfirmDialog.qml
         ui/qml/components/ShareDialog.qml
         ui/qml/components/MappingPresetNameDialog.qml
@@ -241,6 +263,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/MediaStage.qml
         ui/qml/components/PlayerControls.qml
         ui/qml/components/NavRepeat.qml
+        ui/qml/components/BetaUpdatesRow.qml
         ui/qml/components/SettingsCombo.qml
         ui/qml/components/SettingsPage.qml
         ui/qml/components/SettingsPageHeader.qml
@@ -369,6 +392,7 @@ target_include_directories(GameHQ PRIVATE
 
 target_compile_definitions(GameHQ PRIVATE
     GAMEHQ_VERSION="${GAMEHQ_VERSION_FULL}"
+    GAMEHQ_PRERELEASE="${GAMEHQ_PRERELEASE}"
     GAMEHQ_TELEGRAM_INTEGRATED_BUILD=$<BOOL:${GAMEHQ_TELEGRAM_INTEGRATED}>
     UNICODE _UNICODE
 )
@@ -425,7 +449,7 @@ set(GAMEHQ_UPDATER_SOURCES
 )
 add_executable(GameHQUpdater ${GAMEHQ_UPDATER_SOURCES})
 target_include_directories(GameHQUpdater PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(GameHQUpdater PRIVATE miniz bcrypt)
+target_link_libraries(GameHQUpdater PRIVATE miniz bcrypt shell32 ole32)
 target_link_libraries(GameHQUpdater PRIVATE gamehq_release_trust)
 target_link_options(GameHQUpdater PRIVATE -static -municode)
 target_compile_definitions(GameHQUpdater PRIVATE
@@ -441,7 +465,7 @@ if(GAMEHQ_BUILD_TESTS)
     gamehq_add_release_trust_library(gamehq_release_trust_testkeys ON)
     add_executable(updater_test_trust_fixture ${GAMEHQ_UPDATER_SOURCES})
     target_include_directories(updater_test_trust_fixture PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-    target_link_libraries(updater_test_trust_fixture PRIVATE miniz bcrypt)
+    target_link_libraries(updater_test_trust_fixture PRIVATE miniz bcrypt shell32 ole32)
     target_link_libraries(updater_test_trust_fixture PRIVATE gamehq_release_trust_testkeys)
     target_link_options(updater_test_trust_fixture PRIVATE -static -municode)
     target_compile_definitions(updater_test_trust_fixture PRIVATE
@@ -457,9 +481,22 @@ add_executable(GameInputRuntimeProbe
     ${CMAKE_SOURCE_DIR}/third_party/gameinput/src/GameInput.cpp
 )
 target_include_directories(GameInputRuntimeProbe PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/third_party/gameinput/include)
 target_compile_definitions(GameInputRuntimeProbe PRIVATE UNICODE _UNICODE)
 target_link_options(GameInputRuntimeProbe PRIVATE -static)
+
+# The vendored GameInput loader is upstream code compiled into the probe; keep
+# its diagnostics silent instead of patching third_party/.
+set_source_files_properties(
+    ${CMAKE_SOURCE_DIR}/third_party/gameinput/src/GameInput.cpp
+    PROPERTIES COMPILE_OPTIONS "-w")
+foreach(gamehq_warning_target GameHQ GameHQLauncher GameHQUpdater GameInputRuntimeProbe)
+    gamehq_enable_warnings(${gamehq_warning_target})
+endforeach()
+if(GAMEHQ_BUILD_TESTS)
+    gamehq_enable_warnings(updater_test_trust_fixture)
+endif()
 
 # Keep this channel choice private to the shipped application, not test fixtures.
 target_compile_definitions(GameHQ PRIVATE

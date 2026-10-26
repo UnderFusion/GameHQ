@@ -135,7 +135,12 @@ QStringList p4ThreeSourceFiles()
     return {
         root + QStringLiteral("main.cpp"),
         root + QStringLiteral("app/App.cpp"),
+        root + QStringLiteral("app/App_CaptureWiring.cpp"),
+        root + QStringLiteral("app/App_UpdateWiring.cpp"),
         root + QStringLiteral("ui/AppController.cpp"),
+        root + QStringLiteral("ui/AppController_Hdr.cpp"),
+        root + QStringLiteral("ui/AppController_Profile.cpp"),
+        root + QStringLiteral("ui/AppController_Settings.cpp"),
         root + QStringLiteral("config/CaptureLocations.cpp"),
         root + QStringLiteral("config/PortableProfileImporter.cpp"),
         root + QStringLiteral("updates/UpdateService.cpp"),
@@ -154,6 +159,9 @@ QStringList p4FourSourceFiles()
         root + QStringLiteral("input/BindingPattern.cpp"),
         root + QStringLiteral("tray/TrayIcon.cpp"),
         root + QStringLiteral("ui/AppController.cpp"),
+        root + QStringLiteral("ui/AppController_Hdr.cpp"),
+        root + QStringLiteral("ui/AppController_Profile.cpp"),
+        root + QStringLiteral("ui/AppController_Settings.cpp"),
     };
 }
 
@@ -184,20 +192,52 @@ QStringList allLaunchCatalogs()
     return catalogs;
 }
 
-QSet<QString> translationIdsIn(const QStringList &paths)
+// Collects the translation IDs used by the given source files. A file that
+// cannot be read, or (with requireIdsPerFile) contributes no ID at all, is
+// reported in *unscanned so a renamed or moved source cannot silently shrink
+// the set the coverage tests check.
+QSet<QString> translationIdsIn(const QStringList &paths, QStringList *unscanned = nullptr,
+                               bool requireIdsPerFile = false)
 {
     const QRegularExpression pattern(
         QStringLiteral("(?:qsTrId|qtTrId|QT_TRID_NOOP)\\s*\\(\\s*\"([^\"]+)\""));
     QSet<QString> ids;
     for (const QString &path : paths) {
         QFile file(path);
-        if (!file.open(QIODevice::ReadOnly))
+        if (!file.open(QIODevice::ReadOnly)) {
+            if (unscanned)
+                unscanned->append(path + QStringLiteral(" (unreadable)"));
             continue;
+        }
         auto matches = pattern.globalMatch(QString::fromUtf8(file.readAll()));
-        while (matches.hasNext())
+        bool found = false;
+        while (matches.hasNext()) {
             ids.insert(matches.next().captured(1));
+            found = true;
+        }
+        if (requireIdsPerFile && !found && unscanned)
+            unscanned->append(path + QStringLiteral(" (no translation IDs)"));
     }
     return ids;
+}
+
+// Lists the IDs only one side has, for a readable failure message.
+QString idSetDifference(const QSet<QString> &expected, const QSet<QString> &actual)
+{
+    QStringList missing = QSet<QString>(expected).subtract(actual).values();
+    QStringList extra = QSet<QString>(actual).subtract(expected).values();
+    missing.sort();
+    extra.sort();
+    return QStringLiteral("missing: %1; unexpected: %2")
+        .arg(missing.join(QStringLiteral(", ")), extra.join(QStringLiteral(", ")));
+}
+
+QSet<QString> keySet(const QHash<QString, CatalogEntry> &catalog)
+{
+    QSet<QString> keys;
+    for (auto it = catalog.cbegin(); it != catalog.cend(); ++it)
+        keys.insert(it.key());
+    return keys;
 }
 
 LookupResult lookupFixture(const char *id)
@@ -228,6 +268,7 @@ class LocalizationCatalogTest : public QObject
 
 private slots:
     void productionEnglishCatalogCoversActiveIds();
+    void everyLaunchCatalogMatchesTheSourceIdSet();
     void nonEnglishCatalogLoads();
     void targetMissFallsBackToEnglish();
     void publicIdsNeverReachTheRenderedText();
@@ -263,6 +304,28 @@ void LocalizationCatalogTest::productionEnglishCatalogCoversActiveIds()
         QVERIFY2(!entry.translation.trimmed().isEmpty(),
                  qPrintable(QStringLiteral("Missing en-US translation: ") + id));
         QVERIFY2(!entry.translation.startsWith(QStringLiteral("gamehq.")), qPrintable(id));
+    }
+}
+
+void LocalizationCatalogTest::everyLaunchCatalogMatchesTheSourceIdSet()
+{
+    // The live (non-vanished) ID set of every shipped catalog must equal the
+    // IDs the sources use: sync.py adds new IDs to all catalogs and retires
+    // removed ones as vanished, so any drift means a catalog was not synced.
+    const QSet<QString> activeIds = activeProductionIds();
+    QVERIFY(!activeIds.isEmpty());
+    for (const QString &catalogName : allLaunchCatalogs()) {
+        QString error;
+        const auto catalog = readTsCatalog(
+            QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
+        QVERIFY2(error.isEmpty(), qPrintable(catalogName + QStringLiteral(": ") + error));
+        const QSet<QString> catalogIds = keySet(catalog);
+        QVERIFY2(catalogIds == activeIds,
+                 qPrintable(catalogName + QStringLiteral(" ") + idSetDifference(activeIds, catalogIds)));
+        for (auto it = catalog.cbegin(); it != catalog.cend(); ++it) {
+            QVERIFY2(!it->unfinished && !it->translation.trimmed().isEmpty(),
+                     qPrintable(catalogName + QStringLiteral(" incomplete ") + it.key()));
+        }
     }
 }
 
@@ -325,14 +388,17 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndTranslated
     const auto english = readTsCatalog(
         QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/gamehq_en_US.ts"), &error);
     QVERIFY2(error.isEmpty(), qPrintable(error));
-    QCOMPARE(english.size(), 1084);
     const QSet<QString> activeIds = activeProductionIds();
+    const QSet<QString> englishIds = keySet(english);
+    QVERIFY2(englishIds == activeIds, qPrintable(idSetDifference(activeIds, englishIds)));
 
     for (const QString& catalogName : promotedLaunchCatalogs()) {
         const auto catalog = readTsCatalog(
             QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
         QVERIFY2(error.isEmpty(), qPrintable(catalogName + QStringLiteral(": ") + error));
-        QCOMPARE(catalog.size(), english.size());
+        const QSet<QString> catalogIds = keySet(catalog);
+        QVERIFY2(catalogIds == englishIds,
+                 qPrintable(catalogName + QStringLiteral(" ") + idSetDifference(englishIds, catalogIds)));
         for (const QString& id : activeIds) {
             QVERIFY2(catalog.contains(id), qPrintable(catalogName + QStringLiteral(" missing ") + id));
             QCOMPARE(catalog[id].source, english[id].source);
@@ -367,11 +433,15 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndTranslated
 
 void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 {
-    const QSet<QString> ids = translationIdsIn(p4OneSourceFiles());
     // Main.qml and SettingsView.qml also contribute feature/dialog IDs owned
     // by adjacent localization units to this shared source-file set, and the
-    // sidebar's Tools heading reuses the Advanced diagnostics title.
-    QCOMPARE(ids.size(), 228);
+    // sidebar's Tools heading reuses the Advanced diagnostics title. Every
+    // listed file must still exist and use IDs, so a rename cannot quietly
+    // drop it from coverage.
+    QStringList unscanned;
+    const QSet<QString> ids = translationIdsIn(p4OneSourceFiles(), &unscanned, true);
+    QVERIFY2(unscanned.isEmpty(), qPrintable(unscanned.join(u'\n')));
+    QVERIFY(!ids.isEmpty());
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
@@ -393,8 +463,13 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 
 void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
 {
-    const QSet<QString> ids = translationIdsIn(productionQmlFiles());
-    QCOMPARE(ids.size(), 781);
+    QStringList unscanned;
+    const QSet<QString> ids = translationIdsIn(productionQmlFiles(), &unscanned);
+    QVERIFY2(unscanned.isEmpty(), qPrintable(unscanned.join(u'\n')));
+    // The recursive scan must reach every subdirectory the P4.1 files live in.
+    const QSet<QString> p4OneIds = translationIdsIn(p4OneSourceFiles());
+    QVERIFY(!p4OneIds.isEmpty());
+    QVERIFY2(ids.contains(p4OneIds), qPrintable(idSetDifference(p4OneIds, ids)));
 
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;
@@ -417,15 +492,18 @@ void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
 
 void LocalizationCatalogTest::migratedP4ThreeCppIdsCoverEveryLaunchLocale()
 {
+    QStringList unscanned;
+    const QSet<QString> scanned = translationIdsIn(p4ThreeSourceFiles(), &unscanned, true);
+    QVERIFY2(unscanned.isEmpty(), qPrintable(unscanned.join(u'\n')));
     QSet<QString> ids;
-    for (const QString &id : translationIdsIn(p4ThreeSourceFiles())) {
+    for (const QString &id : scanned) {
         if (id.startsWith(QStringLiteral("gamehq.error."))
             || id.startsWith(QStringLiteral("gamehq.notification."))
             || id.startsWith(QStringLiteral("gamehq.startup."))) {
             ids.insert(id);
         }
     }
-    QCOMPARE(ids.size(), 159);
+    QVERIFY(!ids.isEmpty());
 
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;
@@ -470,8 +548,11 @@ void LocalizationCatalogTest::migratedP4ThreeCppHasNoHardcodedErrorAssignments()
 
 void LocalizationCatalogTest::migratedP4FourNativeIdsCoverEveryLaunchLocale()
 {
+    QStringList unscanned;
+    const QSet<QString> scanned = translationIdsIn(p4FourSourceFiles(), &unscanned, true);
+    QVERIFY2(unscanned.isEmpty(), qPrintable(unscanned.join(u'\n')));
     QSet<QString> ids;
-    for (const QString& id : translationIdsIn(p4FourSourceFiles())) {
+    for (const QString& id : scanned) {
         if (id.startsWith(QStringLiteral("gamehq.action."))
             || id.startsWith(QStringLiteral("gamehq.tray."))
             || id.startsWith(QStringLiteral("gamehq.input.model."))
@@ -481,7 +562,7 @@ void LocalizationCatalogTest::migratedP4FourNativeIdsCoverEveryLaunchLocale()
             ids.insert(id);
         }
     }
-    QCOMPARE(ids.size(), 101);
+    QVERIFY(!ids.isEmpty());
 
     for (const QString& catalogName : translatedCatalogs()) {
         QString error;
@@ -514,7 +595,8 @@ void LocalizationCatalogTest::p4FourCachedPresentationIsIdDriven()
     const QString actionCatalog = readSource(QStringLiteral("input/ActionCatalog.cpp"));
     const QString tray = readSource(QStringLiteral("tray/TrayIcon.cpp"));
     const QString editorHeader = readSource(QStringLiteral("input/BindingEditorModel.h"));
-    const QString controller = readSource(QStringLiteral("ui/AppController.cpp"));
+    const QString controller = readSource(QStringLiteral("ui/AppController.cpp"))
+        + readSource(QStringLiteral("ui/AppController_Hdr.cpp"));
     QVERIFY(!actionCatalog.isEmpty());
     QVERIFY(actionCatalog.contains(QStringLiteral("PresentationSpec")));
     QVERIFY(!actionCatalog.contains(QStringLiteral("QStringLiteral(\"Screenshot\")")));

@@ -17,6 +17,7 @@ CaptureFileOps CaptureFileOps::systemOps()
     return CaptureFileOps{
         [](const QString& path) { return QFile::exists(path); },
         [](const QString& path) { return QFile::remove(path); },
+        [](const QString& path) { return QFile::moveToTrash(path); },
     };
 }
 
@@ -30,17 +31,29 @@ CaptureLibraryService::CaptureLibraryService(CaptureDatabase* db, GalleryModel* 
 }
 
 // One capture, in the only order that stays recoverable: the media file first
-// (a file that cannot be removed keeps its library row, so the capture never
+// (a file that cannot be moved keeps its library row, so the capture never
 // silently vanishes from the library while still occupying disk), then the row,
 // and only then the thumbnail — a thumbnail is regenerable, but while the row
 // is still there it is the only preview the library has.
+//
+// Only captures GameHQ wrote itself are deleted, and only into the Recycle Bin.
+// Files found in imported or watched folders belong to the user or another
+// app, so delete leaves both the original and its row alone. A failed move is
+// a failure: there is never a fallback to a permanent delete.
 CaptureLibraryService::ItemOutcome CaptureLibraryService::deleteItem(int id, const QString& file,
-                                                                    const QString& thumb)
+                                                                    const QString& thumb,
+                                                                    const QString& source)
 {
+    if (source != QLatin1String("GameHQ")) {
+        qInfo() << "Delete: kept imported original and its library entry" << id << file << source;
+        return ItemOutcome::KeptImported;
+    }
+
     bool mediaRemoved = false;
     if (!file.isEmpty() && m_fileOps.exists(file)) {
-        if (!m_fileOps.remove(file)) {
-            qWarning() << "Delete: could not remove file, keeping library entry" << id << file;
+        if (!m_fileOps.trash(file)) {
+            qWarning() << "Delete: could not move file to the Recycle Bin, keeping library entry"
+                       << id << file;
             return ItemOutcome::MediaFailed;
         }
         mediaRemoved = true;
@@ -50,8 +63,8 @@ CaptureLibraryService::ItemOutcome CaptureLibraryService::deleteItem(int id, con
         if (mediaRemoved) {
             // The file is gone and the row is not: report it loudly and keep the
             // row plus its thumbnail so a rescan can reconcile the difference.
-            qCritical() << "Delete: file removed but library row survived, rescan needed"
-                        << id << file << thumb;
+            qCritical() << "Delete: file moved to the Recycle Bin but library row survived,"
+                           " rescan needed" << id << file << thumb;
             return ItemOutcome::Inconsistent;
         }
         qWarning() << "Delete: library row could not be removed" << id << file;
@@ -61,6 +74,25 @@ CaptureLibraryService::ItemOutcome CaptureLibraryService::deleteItem(int id, con
     if (!thumb.isEmpty() && m_fileOps.exists(thumb) && !m_fileOps.remove(thumb))
         qWarning() << "Delete: could not remove thumbnail (regenerated on demand)" << thumb;
     return ItemOutcome::Removed;
+}
+
+void CaptureLibraryService::count(ItemOutcome outcome, CaptureDeletionResult& result)
+{
+    switch (outcome) {
+    case ItemOutcome::Removed:
+        ++result.removed;
+        break;
+    case ItemOutcome::Inconsistent:
+        ++result.inconsistent;
+        break;
+    case ItemOutcome::KeptImported:
+        ++result.keptImported;
+        break;
+    case ItemOutcome::MediaFailed:
+    case ItemOutcome::DbFailed:
+        ++result.failed;
+        break;
+    }
 }
 
 CaptureDeletionResult CaptureLibraryService::deleteCapture(GalleryModel* model, int row)
@@ -74,22 +106,12 @@ CaptureDeletionResult CaptureLibraryService::deleteCapture(GalleryModel* model, 
 
     const int id = r->id;
     const QString file = r->filePath;
-    const QString thumb = r->thumbnailPath;
 
     result.requested = 1;
-    switch (deleteItem(id, file, thumb)) {
-    case ItemOutcome::Removed:
-        ++result.removed;
-        qInfo() << "Deleted capture" << id << file;
-        break;
-    case ItemOutcome::Inconsistent:
-        ++result.inconsistent;
-        break;
-    case ItemOutcome::MediaFailed:
-    case ItemOutcome::DbFailed:
-        ++result.failed;
-        break;
-    }
+    const ItemOutcome outcome = deleteItem(id, file, r->thumbnailPath, r->source);
+    count(outcome, result);
+    if (outcome == ItemOutcome::Removed)
+        qInfo() << "Deleted capture to the Recycle Bin" << id << file;
 
     refreshGalleries();
     return result;
@@ -102,7 +124,7 @@ CaptureDeletionResult CaptureLibraryService::deleteCaptures(GalleryModel* model,
     if (!model)
         return result;
 
-    struct Item { int row; int id; QString file; QString thumb; };
+    struct Item { int row; int id; QString file; QString thumb; QString source; };
     QList<Item> items;
     items.reserve(rows.size());
     for (const QVariant& v : rows) {
@@ -113,7 +135,7 @@ CaptureDeletionResult CaptureLibraryService::deleteCaptures(GalleryModel* model,
         const CaptureRecord* r = model->record(row);
         if (!r)
             continue;
-        items.append({ row, r->id, r->filePath, r->thumbnailPath });
+        items.append({ row, r->id, r->filePath, r->thumbnailPath, r->source });
     }
     if (items.isEmpty())
         return result;
@@ -122,24 +144,14 @@ CaptureDeletionResult CaptureLibraryService::deleteCaptures(GalleryModel* model,
               [](const Item& a, const Item& b) { return a.row > b.row; });
 
     result.requested = int(items.size());
-    for (const Item& it : items) {
-        switch (deleteItem(it.id, it.file, it.thumb)) {
-        case ItemOutcome::Removed:
-            ++result.removed;
-            break;
-        case ItemOutcome::Inconsistent:
-            ++result.inconsistent;
-            break;
-        case ItemOutcome::MediaFailed:
-        case ItemOutcome::DbFailed:
-            ++result.failed;
-            break;
-        }
-    }
+    for (const Item& it : items)
+        count(deleteItem(it.id, it.file, it.thumb, it.source), result);
 
     refreshGalleries();
-    qInfo() << "Bulk delete:" << result.removed << "of" << result.requested << "removed,"
-            << result.failed << "failed," << result.inconsistent << "inconsistent";
+    qInfo() << "Bulk delete:" << result.removed << "of" << result.requested
+            << "moved to the Recycle Bin," << result.failed << "failed,"
+            << result.inconsistent << "inconsistent," << result.keptImported
+            << "imported originals kept";
     return result;
 }
 
