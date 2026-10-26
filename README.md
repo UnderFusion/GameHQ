@@ -19,7 +19,7 @@ overlay, and Settings - can be driven from the controller alone.</p>
   <a href="https://github.com/underfusion/GameHQ/releases/latest"><img src="docs/assets/download-portable.svg" width="230" alt="Download GameHQ Portable ZIP"></a>
 </p>
 <p align="center"><sub>Windows 10+ &middot; Latest stable &middot; GPL-3.0 &middot; No telemetry</sub></p>
-<p align="center"><sub>Using Playnite? <a href="https://github.com/underfusion/GameHQ/releases/download/playnite-v0.4.12/GameHQ_Playnite_Integration_0_4_12.pext">Get the GameHQ Integration &rarr;</a></sub></p>
+<p align="center"><sub>Using Playnite? <a href="https://github.com/underfusion/GameHQ/releases/download/playnite-v0.4.13/GameHQ_Playnite_Integration_0_4_13.pext">Get the GameHQ Integration &rarr;</a></sub></p>
 <!-- public-downloads:end -->
 
 <p><strong>Available in 16 languages · Controller-first · No telemetry · Open source</strong></p>
@@ -151,7 +151,7 @@ Bindings, mapping presets, and gesture timing can be changed from
 beside the application and can run from any folder.
 
 Using Playnite? Install the
-[GameHQ Integration](https://github.com/underfusion/GameHQ/releases/download/playnite-v0.4.12/GameHQ_Playnite_Integration_0_4_12.pext)
+[GameHQ Integration](https://github.com/underfusion/GameHQ/releases/download/playnite-v0.4.13/GameHQ_Playnite_Integration_0_4_13.pext)
 by opening the downloaded `.pext` file with Playnite.
 
 > **Unsigned Windows binaries:** Windows may show Unknown Publisher or

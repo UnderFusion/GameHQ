@@ -9,8 +9,9 @@ same repository.
 
 ## [0.4.13] - 2026-10-08
 
-Published first as a GitHub pre-release for Windows Xbox mode testing; the
-public installer manifest keeps offering 0.4.12 until it is confirmed.
+Published first as a GitHub pre-release for Windows Xbox mode testing on
+2026-10-08, then offered to everyone through Playnite add-on updates on
+2026-10-26 together with GameHQ 0.8.0.
 
 ### Changed
 

@@ -3,6 +3,13 @@
 # Package URLs must be immutable playnite-v* GitHub release assets.
 AddonId: GameHQ_Integration
 Packages:
+  - Version: 0.4.13
+    RequiredApiVersion: 6.16.0
+    ReleaseDate: 2026-10-26
+    PackageUrl: "https://github.com/underfusion/GameHQ/releases/download/playnite-v0.4.13/GameHQ_Playnite_Integration_0_4_13.pext"
+    Changelog:
+      - Starts GameHQ when Windows Xbox mode delays it at sign-in, without ever launching a second copy.
+      - The Playnite log says whether GameHQ is not running or running but not connected.
   - Version: 0.4.12
     RequiredApiVersion: 6.16.0
     ReleaseDate: 2026-07-22
