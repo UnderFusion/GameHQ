@@ -11,6 +11,7 @@
 - Le son et l’image restent synchronisés. Les clips enregistrés après un écran de chargement, une pause ou un long blocage conservent un minutage correct, et le tampon de replay redémarre de lui-même lorsqu’un jeu change de résolution.
 - Les captures d’écran HDR ne restent plus bloquées. Une capture d’écran d’un jeu en pause ou d’un menu statique en HDR est enregistrée immédiatement. Si aucune image n’arrive, la tentative échoue proprement au bout de quelques secondes et l’appui suivant fonctionne.
 - Suppression plus sûre à la manette. Dans une confirmation de suppression, Croix appuie désormais sur le bouton en surbrillance et Cercle annule. Auparavant, Croix pouvait supprimer le fichier même lorsque Annuler était en surbrillance.
+- La suppression protège vos originaux. Une capture créée par GameHQ est désormais déplacée dans la Corbeille lorsque vous la supprimez : vous pouvez donc la restaurer. Les fichiers des dossiers surveillés ne sont jamais supprimés.
 
 ## Nouveautés
 
@@ -58,7 +59,7 @@
 
 ## Installation et mise à jour
 
-- Mise à jour depuis la 0.7.9 : le programme de mise à jour intégré propose la 0.8.0, ou vous pouvez exécuter le programme d’installation par-dessus votre installation actuelle. Vos paramètres, votre bibliothèque et vos captures sont conservés.
+- Mise à jour depuis la 0.7.9 : exécutez le programme d’installation de la 0.8.0 par-dessus votre installation actuelle.
 - Programme d’installation : installe pour l’utilisateur actuel et remplace une version 0.7.9 installée ou une bêta antérieure.
 - Version portable : extrayez le ZIP dans un nouveau dossier et lancez GameHQ.exe.
 - Si vous avez testé la 0.8.0 Beta 2, 3 ou 4, installez la 0.8.0 avec le programme d’installation ou un nouveau ZIP portable, car ces bêtas n’ont pas été proposées par le programme de mise à jour.

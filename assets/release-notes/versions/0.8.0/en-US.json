@@ -38,6 +38,10 @@
         {
           "id": "highlights-05",
           "text": "Safer deleting with a controller. Cross in a delete confirmation now presses the highlighted button and Circle cancels. Previously, Cross could delete the file even when Cancel was highlighted."
+        },
+        {
+          "id": "highlights-06",
+          "text": "Deleting protects your originals. Deleting a capture that GameHQ made now moves it to the Recycle Bin, so you can restore it. Files in watched folders are never deleted."
         }
       ]
     },
@@ -199,7 +203,7 @@
       "items": [
         {
           "id": "install-01",
-          "text": "Updating from 0.7.9: the built-in updater offers 0.8.0, or you can run the installer over your current installation. Your settings, library and captures are kept."
+          "text": "Updating from 0.7.9: run the 0.8.0 installer over your current installation."
         },
         {
           "id": "install-02",

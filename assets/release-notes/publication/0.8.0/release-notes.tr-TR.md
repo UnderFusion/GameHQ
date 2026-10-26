@@ -11,6 +11,7 @@
 - Ses ve görüntü senkron kalır. Yükleme ekranı, duraklatma veya uzun bir takılmanın ardından kaydedilen klipler doğru zamanlamayı korur ve bir oyun çözünürlüğü değiştirdiğinde anında tekrar arabelleği kendiliğinden yeniden başlar.
 - HDR ekran görüntüleri artık takılıp kalmıyor. HDR'de duraklatılmış bir oyunun veya sabit bir menünün ekran görüntüsü hemen kaydedilir. Hiç kare gelmezse deneme birkaç saniye sonra düzgün şekilde başarısız olur ve sonraki basış çalışır.
 - Kumandayla daha güvenli silme. Silme onayında Cross artık vurgulanan düğmeye basar, Circle ise iptal eder. Önceden İptal vurgulanmışken bile Cross dosyayı silebiliyordu.
+- Silme işlemi orijinallerinizi korur. GameHQ'nun oluşturduğu bir çekimi sildiğinizde artık Geri Dönüşüm Kutusu'na taşınır, böylece geri yükleyebilirsiniz. İzlenen klasörlerdeki dosyalar asla silinmez.
 
 ## Yenilikler
 
@@ -58,7 +59,7 @@
 
 ## Kurulum ve güncelleme
 
-- 0.7.9'dan güncelleme: yerleşik güncelleyici 0.8.0'ı sunar veya yükleyiciyi mevcut kurulumunuzun üzerine çalıştırabilirsiniz. Ayarlarınız, kitaplığınız ve çekimleriniz korunur.
+- 0.7.9'dan güncelleme: 0.8.0 yükleyicisini mevcut kurulumunuzun üzerine çalıştırın.
 - Yükleyici: geçerli kullanıcı için kurulum yapar ve kurulu 0.7.9'u veya daha önceki bir beta sürümünü değiştirir.
 - Taşınabilir: ZIP dosyasını yeni bir klasöre çıkarın ve GameHQ.exe'yi çalıştırın.
 - 0.8.0 Beta 2, 3 veya 4'ü test ettiyseniz 0.8.0'ı yükleyiciyle veya yeni bir taşınabilir ZIP ile kurun; çünkü bu beta sürümleri güncelleyici üzerinden sunulmadı.

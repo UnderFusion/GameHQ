@@ -11,6 +11,7 @@
 - Ton und Bild bleiben synchron. Clips, die nach einem Ladebildschirm, einer Pause oder einem langen Hänger gespeichert werden, behalten das richtige Timing, und der Replay-Puffer startet von selbst neu, wenn ein Spiel die Auflösung ändert.
 - HDR-Screenshots bleiben nicht mehr hängen. Ein Screenshot eines pausierten Spiels oder eines statischen Menüs in HDR wird sofort gespeichert. Kommt überhaupt kein Bild an, schlägt der Versuch nach einigen Sekunden sauber fehl, und der nächste Tastendruck funktioniert.
 - Sichereres Löschen mit dem Controller. Kreuz in einer Löschbestätigung betätigt jetzt die hervorgehobene Schaltfläche, und Kreis bricht ab. Bisher konnte Kreuz die Datei selbst dann löschen, wenn Abbrechen hervorgehoben war.
+- Löschen schützt Ihre Originale. Eine von GameHQ erstellte Aufnahme wird beim Löschen jetzt in den Papierkorb verschoben, sodass Sie sie wiederherstellen können. Dateien in überwachten Ordnern werden nie gelöscht.
 
 ## Neue Funktionen
 
@@ -58,7 +59,7 @@
 
 ## Installation und Aktualisierung
 
-- Aktualisierung von 0.7.9: Der integrierte Updater bietet 0.8.0 an, oder Sie führen das Installationsprogramm über Ihre bestehende Installation aus. Ihre Einstellungen, Ihre Bibliothek und Ihre Aufnahmen bleiben erhalten.
+- Aktualisierung von 0.7.9: Führen Sie das Installationsprogramm von 0.8.0 über Ihre bestehende Installation aus.
 - Installationsprogramm: Installiert für den aktuellen Benutzer und ersetzt eine installierte 0.7.9 oder eine frühere Beta.
 - Portable Version: Entpacken Sie die ZIP-Datei in einen neuen Ordner und führen Sie GameHQ.exe aus.
 - Wenn Sie 0.8.0 Beta 2, 3 oder 4 getestet haben, installieren Sie 0.8.0 mit dem Installationsprogramm oder einer frischen portablen ZIP-Datei, da diese Betas nicht über den Updater angeboten wurden.

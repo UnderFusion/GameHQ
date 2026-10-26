@@ -11,6 +11,7 @@
 - Dźwięk i obraz pozostają zsynchronizowane. Klipy zapisane po ekranie ładowania, pauzie lub długim przestoju zachowują prawidłową synchronizację czasową, a bufor powtórek sam uruchamia się ponownie, gdy gra zmienia rozdzielczość.
 - Zrzuty ekranu HDR już się nie zawieszają. Zrzut ekranu wstrzymanej gry lub statycznego menu w HDR jest zapisywany od razu. Jeśli nie nadejdzie żadna klatka, próba po kilku sekundach bezpiecznie kończy się niepowodzeniem, a kolejne naciśnięcie działa.
 - Bezpieczniejsze usuwanie kontrolerem. Krzyżyk w potwierdzeniu usunięcia naciska teraz podświetlony przycisk, a Kółko anuluje. Wcześniej Krzyżyk mógł usunąć plik nawet wtedy, gdy podświetlony był przycisk Anuluj.
+- Usuwanie chroni Twoje oryginały. Usunięty materiał utworzony przez GameHQ trafia teraz do Kosza, więc możesz go przywrócić. Pliki w obserwowanych folderach nigdy nie są usuwane.
 
 ## Nowości
 
@@ -58,7 +59,7 @@
 
 ## Instalacja i aktualizacja
 
-- Aktualizacja z wersji 0.7.9: wbudowany aktualizator proponuje wersję 0.8.0; możesz też uruchomić instalator na obecnej instalacji. Ustawienia, biblioteka i materiały zostają zachowane.
+- Aktualizacja z wersji 0.7.9: uruchom instalator wersji 0.8.0 na obecnej instalacji.
 - Instalator: instaluje program dla bieżącego użytkownika i zastępuje zainstalowaną wersję 0.7.9 lub wcześniejszą betę.
 - Wersja przenośna: rozpakuj archiwum ZIP do nowego folderu i uruchom GameHQ.exe.
 - Po testach wersji 0.8.0 Beta 2, 3 lub 4 zainstaluj 0.8.0 za pomocą instalatora lub nowego archiwum ZIP wersji przenośnej, ponieważ te bety nie były oferowane przez aktualizator.

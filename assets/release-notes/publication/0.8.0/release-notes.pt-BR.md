@@ -11,6 +11,7 @@
 - Som e imagem ficam sincronizados. Clipes salvos depois de uma tela de carregamento, uma pausa ou um travamento longo mantêm o tempo correto, e o buffer de replay reinicia sozinho quando um jogo muda de resolução.
 - Capturas de tela em HDR não travam mais. Uma captura de tela de um jogo pausado ou de um menu estático em HDR é salva na hora. Se nenhum quadro chegar, a tentativa falha de forma limpa após alguns segundos e o próximo acionamento funciona.
 - Exclusão mais segura com o controle. Na confirmação de exclusão, Cruz agora pressiona o botão destacado e Círculo cancela. Antes, Cruz podia excluir o arquivo mesmo com Cancelar destacado.
+- Excluir protege seus originais. Ao excluir uma captura criada pelo GameHQ, ela agora vai para a Lixeira, para que você possa restaurá-la. Os arquivos das pastas monitoradas nunca são excluídos.
 
 ## Novidades
 
@@ -58,7 +59,7 @@
 
 ## Instalação e atualização
 
-- Atualizando a partir da 0.7.9: o atualizador integrado oferece a 0.8.0, ou você pode executar o instalador sobre a instalação atual. Suas configurações, sua biblioteca e suas capturas são mantidas.
+- Atualizando a partir da 0.7.9: execute o instalador da 0.8.0 sobre a instalação atual.
 - Instalador: instala para o usuário atual e substitui uma 0.7.9 instalada ou uma beta anterior.
 - Portátil: extraia o ZIP em uma pasta nova e execute o GameHQ.exe.
 - Se você testou a 0.8.0 Beta 2, 3 ou 4, instale a 0.8.0 com o instalador ou um ZIP portátil novo, porque essas betas não foram oferecidas pelo atualizador.

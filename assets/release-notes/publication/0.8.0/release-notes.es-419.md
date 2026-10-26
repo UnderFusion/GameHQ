@@ -11,6 +11,7 @@
 - El sonido y la imagen se mantienen sincronizados. Los clips guardados después de una pantalla de carga, una pausa o un bloqueo prolongado conservan los tiempos correctos, y el búfer de repetición se reinicia solo cuando un juego cambia de resolución.
 - Las capturas de pantalla HDR ya no se quedan trabadas. Una captura de pantalla de un juego en pausa o de un menú estático en HDR se guarda al instante. Si no llega ningún fotograma, el intento falla limpiamente después de unos segundos y la siguiente vez que presionas el botón funciona.
 - Eliminación más segura con el control. En una confirmación de eliminación, Cruz ahora presiona el botón resaltado y Círculo cancela. Antes, Cruz podía eliminar el archivo incluso con Cancelar resaltado.
+- Eliminar protege tus originales. Al eliminar una captura creada por GameHQ, ahora se mueve a la Papelera de reciclaje, así que puedes restaurarla. Los archivos de las carpetas supervisadas nunca se eliminan.
 
 ## Novedades
 
@@ -58,7 +59,7 @@
 
 ## Instalación y actualización
 
-- Actualizar desde 0.7.9: el actualizador integrado ofrece la 0.8.0, o puedes ejecutar el instalador sobre tu instalación actual. Se conservan tu configuración, tu biblioteca y tus capturas.
+- Actualizar desde 0.7.9: ejecuta el instalador de la 0.8.0 sobre tu instalación actual.
 - Instalador: instala para el usuario actual y reemplaza una 0.7.9 instalada o una beta anterior.
 - Versión portátil: extrae el ZIP en una carpeta nueva y ejecuta GameHQ.exe.
 - Si probaste la 0.8.0 Beta 2, 3 o 4, instala la 0.8.0 con el instalador o con un ZIP portátil nuevo, porque esas betas no se ofrecieron a través del actualizador.

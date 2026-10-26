@@ -11,6 +11,7 @@
 - Audio e video restano sincronizzati. Le clip salvate dopo una schermata di caricamento, una pausa o un lungo blocco mantengono i tempi corretti, e il buffer di replay si riavvia da solo quando un gioco cambia risoluzione.
 - Gli screenshot HDR non si bloccano più. Uno screenshot di un gioco in pausa o di un menu statico in HDR viene salvato subito. Se non arriva alcun fotogramma, il tentativo fallisce in modo pulito dopo qualche secondo e la pressione successiva funziona.
 - Eliminazione più sicura con il controller. Nella conferma di eliminazione, Croce ora preme il pulsante evidenziato e Cerchio annulla. In precedenza, Croce poteva eliminare il file anche quando era evidenziato Annulla.
+- L'eliminazione protegge i tuoi originali. Un'acquisizione creata da GameHQ ora viene spostata nel Cestino quando la elimini, così puoi ripristinarla. I file nelle cartelle monitorate non vengono mai eliminati.
 
 ## Novità
 
@@ -58,7 +59,7 @@
 
 ## Installazione e aggiornamento
 
-- Aggiornamento dalla 0.7.9: il programma di aggiornamento integrato propone la 0.8.0, oppure puoi eseguire il programma di installazione sopra l'installazione attuale. Impostazioni, libreria e acquisizioni vengono mantenute.
+- Aggiornamento dalla 0.7.9: esegui il programma di installazione della 0.8.0 sopra l'installazione attuale.
 - Programma di installazione: installa per l'utente corrente e sostituisce una 0.7.9 installata o una beta precedente.
 - Versione portatile: estrai lo ZIP in una nuova cartella ed esegui GameHQ.exe.
 - Se hai testato la 0.8.0 Beta 2, 3 o 4, installa la 0.8.0 con il programma di installazione o con un nuovo ZIP portatile, perché quelle beta non sono state proposte tramite il programma di aggiornamento.

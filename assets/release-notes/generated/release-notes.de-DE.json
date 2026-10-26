@@ -15,7 +15,8 @@
         "Probleme bei der Audioaufnahme werden jetzt erkannt und gemeldet. Wenn die ausgewählte Audioquelle nicht aufgenommen werden kann, stoppt der Replay-Puffer und nennt Ihnen den Grund sowie die Quelle, die Sie stattdessen wählen sollten, statt stillschweigend Clips ohne Ton zu speichern. GameHQ wechselt die Audioquelle nie von selbst.",
         "Ton und Bild bleiben synchron. Clips, die nach einem Ladebildschirm, einer Pause oder einem langen Hänger gespeichert werden, behalten das richtige Timing, und der Replay-Puffer startet von selbst neu, wenn ein Spiel die Auflösung ändert.",
         "HDR-Screenshots bleiben nicht mehr hängen. Ein Screenshot eines pausierten Spiels oder eines statischen Menüs in HDR wird sofort gespeichert. Kommt überhaupt kein Bild an, schlägt der Versuch nach einigen Sekunden sauber fehl, und der nächste Tastendruck funktioniert.",
-        "Sichereres Löschen mit dem Controller. Kreuz in einer Löschbestätigung betätigt jetzt die hervorgehobene Schaltfläche, und Kreis bricht ab. Bisher konnte Kreuz die Datei selbst dann löschen, wenn Abbrechen hervorgehoben war."
+        "Sichereres Löschen mit dem Controller. Kreuz in einer Löschbestätigung betätigt jetzt die hervorgehobene Schaltfläche, und Kreis bricht ab. Bisher konnte Kreuz die Datei selbst dann löschen, wenn Abbrechen hervorgehoben war.",
+        "Löschen schützt Ihre Originale. Eine von GameHQ erstellte Aufnahme wird beim Löschen jetzt in den Papierkorb verschoben, sodass Sie sie wiederherstellen können. Dateien in überwachten Ordnern werden nie gelöscht."
       ]
     },
     {
@@ -73,7 +74,7 @@
     {
       "title": "Installation und Aktualisierung",
       "items": [
-        "Aktualisierung von 0.7.9: Der integrierte Updater bietet 0.8.0 an, oder Sie führen das Installationsprogramm über Ihre bestehende Installation aus. Ihre Einstellungen, Ihre Bibliothek und Ihre Aufnahmen bleiben erhalten.",
+        "Aktualisierung von 0.7.9: Führen Sie das Installationsprogramm von 0.8.0 über Ihre bestehende Installation aus.",
         "Installationsprogramm: Installiert für den aktuellen Benutzer und ersetzt eine installierte 0.7.9 oder eine frühere Beta.",
         "Portable Version: Entpacken Sie die ZIP-Datei in einen neuen Ordner und führen Sie GameHQ.exe aus.",
         "Wenn Sie 0.8.0 Beta 2, 3 oder 4 getestet haben, installieren Sie 0.8.0 mit dem Installationsprogramm oder einer frischen portablen ZIP-Datei, da diese Betas nicht über den Updater angeboten wurden."
@@ -493,7 +494,7 @@
     "documents": [
       {
         "version": "0.8.0",
-        "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
+        "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
         "resolved_locale": "de-DE",
         "fallback": false,
         "fallback_reason": null

@@ -15,7 +15,8 @@
         "Problemas na gravação de áudio agora são detectados e informados. Se a fonte de áudio selecionada não puder ser gravada, o buffer de replay para e explica o motivo e qual fonte escolher no lugar, em vez de salvar clipes sem som sem avisar. O GameHQ nunca troca a fonte de áudio por conta própria.",
         "Som e imagem ficam sincronizados. Clipes salvos depois de uma tela de carregamento, uma pausa ou um travamento longo mantêm o tempo correto, e o buffer de replay reinicia sozinho quando um jogo muda de resolução.",
         "Capturas de tela em HDR não travam mais. Uma captura de tela de um jogo pausado ou de um menu estático em HDR é salva na hora. Se nenhum quadro chegar, a tentativa falha de forma limpa após alguns segundos e o próximo acionamento funciona.",
-        "Exclusão mais segura com o controle. Na confirmação de exclusão, Cruz agora pressiona o botão destacado e Círculo cancela. Antes, Cruz podia excluir o arquivo mesmo com Cancelar destacado."
+        "Exclusão mais segura com o controle. Na confirmação de exclusão, Cruz agora pressiona o botão destacado e Círculo cancela. Antes, Cruz podia excluir o arquivo mesmo com Cancelar destacado.",
+        "Excluir protege seus originais. Ao excluir uma captura criada pelo GameHQ, ela agora vai para a Lixeira, para que você possa restaurá-la. Os arquivos das pastas monitoradas nunca são excluídos."
       ]
     },
     {
@@ -73,7 +74,7 @@
     {
       "title": "Instalação e atualização",
       "items": [
-        "Atualizando a partir da 0.7.9: o atualizador integrado oferece a 0.8.0, ou você pode executar o instalador sobre a instalação atual. Suas configurações, sua biblioteca e suas capturas são mantidas.",
+        "Atualizando a partir da 0.7.9: execute o instalador da 0.8.0 sobre a instalação atual.",
         "Instalador: instala para o usuário atual e substitui uma 0.7.9 instalada ou uma beta anterior.",
         "Portátil: extraia o ZIP em uma pasta nova e execute o GameHQ.exe.",
         "Se você testou a 0.8.0 Beta 2, 3 ou 4, instale a 0.8.0 com o instalador ou um ZIP portátil novo, porque essas betas não foram oferecidas pelo atualizador."
@@ -493,7 +494,7 @@
     "documents": [
       {
         "version": "0.8.0",
-        "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
+        "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
         "resolved_locale": "pt-BR",
         "fallback": false,
         "fallback_reason": null

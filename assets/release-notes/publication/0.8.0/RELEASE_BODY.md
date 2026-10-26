@@ -11,6 +11,7 @@
 - Sound and picture stay in sync. Clips saved after a loading screen, a pause or a long stall keep correct timing, and the replay buffer restarts on its own when a game changes resolution.
 - HDR screenshots no longer get stuck. A screenshot of a paused game or a static menu in HDR is saved right away. If no frame arrives at all, the attempt fails cleanly after a few seconds and the next press works.
 - Safer deleting with a controller. Cross in a delete confirmation now presses the highlighted button and Circle cancels. Previously, Cross could delete the file even when Cancel was highlighted.
+- Deleting protects your originals. Deleting a capture that GameHQ made now moves it to the Recycle Bin, so you can restore it. Files in watched folders are never deleted.
 
 ## What's New
 
@@ -58,7 +59,7 @@
 
 ## Installation and Updating
 
-- Updating from 0.7.9: the built-in updater offers 0.8.0, or you can run the installer over your current installation. Your settings, library and captures are kept.
+- Updating from 0.7.9: run the 0.8.0 installer over your current installation.
 - Installer: installs for the current user and replaces an installed 0.7.9 or an earlier beta.
 - Portable: extract the ZIP to a new folder and run GameHQ.exe.
 - If you tested 0.8.0 Beta 2, 3 or 4, install 0.8.0 with the installer or a fresh portable ZIP, because those betas were not offered through the updater.

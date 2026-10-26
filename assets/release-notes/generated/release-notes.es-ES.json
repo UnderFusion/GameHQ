@@ -15,7 +15,8 @@
         "Ahora se detectan y se notifican los problemas de grabación de audio. Si no se puede grabar la fuente de audio seleccionada, el búfer de repetición se detiene y te indica el motivo y qué fuente elegir en su lugar, en vez de guardar sin avisar clips sin sonido. GameHQ nunca cambia la fuente de audio por su cuenta.",
         "El sonido y la imagen se mantienen sincronizados. Los clips guardados después de una pantalla de carga, una pausa o un bloqueo prolongado conservan los tiempos correctos, y el búfer de repetición se reinicia solo cuando un juego cambia de resolución.",
         "Las capturas de pantalla HDR ya no se quedan atascadas. Una captura de pantalla de un juego en pausa o de un menú estático en HDR se guarda al instante. Si no llega ningún fotograma, el intento falla limpiamente al cabo de unos segundos y la siguiente pulsación funciona.",
-        "Eliminación más segura con el mando. En una confirmación de eliminación, Cruz ahora pulsa el botón resaltado y Círculo cancela. Antes, Cruz podía eliminar el archivo incluso con Cancelar resaltado."
+        "Eliminación más segura con el mando. En una confirmación de eliminación, Cruz ahora pulsa el botón resaltado y Círculo cancela. Antes, Cruz podía eliminar el archivo incluso con Cancelar resaltado.",
+        "Eliminar protege tus originales. Al eliminar una captura creada por GameHQ, ahora se mueve a la Papelera de reciclaje, así que puedes restaurarla. Los archivos de las carpetas supervisadas nunca se eliminan."
       ]
     },
     {
@@ -73,7 +74,7 @@
     {
       "title": "Instalación y actualización",
       "items": [
-        "Actualizar desde 0.7.9: el actualizador integrado ofrece la 0.8.0, o puedes ejecutar el instalador sobre tu instalación actual. Se conservan tu configuración, tu biblioteca y tus capturas.",
+        "Actualizar desde 0.7.9: ejecuta el instalador de la 0.8.0 sobre tu instalación actual.",
         "Instalador: instala para el usuario actual y sustituye una 0.7.9 instalada o una beta anterior.",
         "Versión portátil: extrae el ZIP en una carpeta nueva y ejecuta GameHQ.exe.",
         "Si has probado la 0.8.0 Beta 2, 3 o 4, instala la 0.8.0 con el instalador o con un ZIP portátil nuevo, porque esas betas no se ofrecieron a través del actualizador."
@@ -493,7 +494,7 @@
     "documents": [
       {
         "version": "0.8.0",
-        "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
+        "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
         "resolved_locale": "es-ES",
         "fallback": false,
         "fallback_reason": null
