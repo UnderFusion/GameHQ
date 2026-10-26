@@ -107,6 +107,11 @@ public:
     QString conditionalEtag() const;
 
     Q_INVOKABLE void checkNow();
+    // True while a check, download or install owns the service. Automatic
+    // checks wait instead of interrupting it.
+    bool busy() const;
+    // Test hook: send release discovery to a local fixture instead of GitHub.
+    void setReleaseApiBase(const QString &base);
     Q_INVOKABLE void downloadUpdate();
     Q_INVOKABLE void cancelDownload();
     Q_INVOKABLE void installAndRestart();

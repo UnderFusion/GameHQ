@@ -6,6 +6,7 @@
 
 ## Destaques
 
+- Detecção automática de atualizações aprimorada. O GameHQ agora procura novas versões logo após cada inicialização e a cada hora enquanto está em execução, para que você descubra as atualizações muito antes.
 - Os clipes podem gravar o som do próprio jogo. Com a nova fonte Áudio do jogo, o GameHQ grava o jogo em qualquer dispositivo pelo qual ele toque (fones de ouvido, Bluetooth, HDMI ou alto-falantes) e deixa de fora outros aplicativos, como o Discord ou o Spotify.
 - Problemas na gravação de áudio agora são detectados e informados. Se a fonte de áudio selecionada não puder ser gravada, o buffer de replay para e explica o motivo e qual fonte escolher no lugar, em vez de salvar clipes sem som sem avisar. O GameHQ nunca troca a fonte de áudio por conta própria.
 - Som e imagem ficam sincronizados. Clipes salvos depois de uma tela de carregamento, uma pausa ou um travamento longo mantêm o tempo correto, e o buffer de replay reinicia sozinho quando um jogo muda de resolução.

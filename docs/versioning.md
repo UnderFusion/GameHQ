@@ -1,6 +1,8 @@
 # Versioning & Documentation Rules
 
-> **Owner policy (2026-10-26):** Betas 1-4 of 0.8.0 are published. Stable 0.8.0 is prepared as a release candidate (`v0.8.0`, release sequence 36, `unsigned-stable` trust with the production manifest) and is published only after the owner approves it. Its release notes collect every change since stable 0.7.9 and open with the Special Thanks to @galcn10.
+> **Owner policy (2026-10-26, update-detection rebuild):** The first stable 0.8.0 publication (sequence 36, commit 456f2d5) was withdrawn because 0.7.9-style 24-hour gating hid it from running installs. 0.8.0 is republished from the fixed commit with release sequence 37 and the `v0.8.0` tag moved to that commit by the owner; the version stays 0.8.0 by owner decision.
+>
+> **Earlier owner policy (2026-10-26):** Betas 1-4 of 0.8.0 are published. Stable 0.8.0 is prepared as a release candidate (`v0.8.0`, release sequence 36, `unsigned-stable` trust with the production manifest) and is published only after the owner approves it. Its release notes collect every change since stable 0.7.9 and open with the Special Thanks to @galcn10.
 >
 > **Earlier owner policy (2026-10-19):** 0.7.9 remains the published stable release. The next development line is **0.8.0**, starting with `v0.8.0-beta1` for the silent-clip audio repair. Its release notes collect changes since stable 0.7.9, including the 0.7.10 betas, with the reporter thank-you reserved for stable 0.8.0. Stable 0.8.0 is a later release decision; preparing Beta 1 does not promote it to stable.
 >

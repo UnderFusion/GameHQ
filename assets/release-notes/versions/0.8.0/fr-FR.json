@@ -5,7 +5,7 @@
   "locale": "fr-FR",
   "date": "2026-10-26",
   "mode": "localized",
-  "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+  "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
   "sections": [
     {
       "id": "thanks",
@@ -23,26 +23,30 @@
       "items": [
         {
           "id": "highlights-01",
-          "text": "Les clips peuvent enregistrer le son de votre jeu lui-même. Avec la nouvelle source Son du jeu, GameHQ enregistre le jeu sur l’appareil par lequel il est diffusé, quel qu’il soit (casque, Bluetooth, HDMI ou haut-parleurs), et laisse de côté les autres applications comme Discord ou Spotify."
+          "text": "Détection automatique des mises à jour améliorée. GameHQ recherche désormais les nouvelles versions peu après chaque démarrage, puis toutes les heures pendant son exécution, pour que vous découvriez les mises à jour bien plus tôt."
         },
         {
           "id": "highlights-02",
-          "text": "Les problèmes d’enregistrement audio sont désormais détectés et signalés. Si la source audio sélectionnée ne peut pas être enregistrée, le tampon de replay s’arrête et vous indique pourquoi et quelle source choisir à la place, au lieu d’enregistrer discrètement des clips sans son. GameHQ ne change jamais la source audio de lui-même."
+          "text": "Les clips peuvent enregistrer le son de votre jeu lui-même. Avec la nouvelle source Son du jeu, GameHQ enregistre le jeu sur l’appareil par lequel il est diffusé, quel qu’il soit (casque, Bluetooth, HDMI ou haut-parleurs), et laisse de côté les autres applications comme Discord ou Spotify."
         },
         {
           "id": "highlights-03",
-          "text": "Le son et l’image restent synchronisés. Les clips enregistrés après un écran de chargement, une pause ou un long blocage conservent un minutage correct, et le tampon de replay redémarre de lui-même lorsqu’un jeu change de résolution."
+          "text": "Les problèmes d’enregistrement audio sont désormais détectés et signalés. Si la source audio sélectionnée ne peut pas être enregistrée, le tampon de replay s’arrête et vous indique pourquoi et quelle source choisir à la place, au lieu d’enregistrer discrètement des clips sans son. GameHQ ne change jamais la source audio de lui-même."
         },
         {
           "id": "highlights-04",
-          "text": "Les captures d’écran HDR ne restent plus bloquées. Une capture d’écran d’un jeu en pause ou d’un menu statique en HDR est enregistrée immédiatement. Si aucune image n’arrive, la tentative échoue proprement au bout de quelques secondes et l’appui suivant fonctionne."
+          "text": "Le son et l’image restent synchronisés. Les clips enregistrés après un écran de chargement, une pause ou un long blocage conservent un minutage correct, et le tampon de replay redémarre de lui-même lorsqu’un jeu change de résolution."
         },
         {
           "id": "highlights-05",
-          "text": "Suppression plus sûre à la manette. Dans une confirmation de suppression, Croix appuie désormais sur le bouton en surbrillance et Cercle annule. Auparavant, Croix pouvait supprimer le fichier même lorsque Annuler était en surbrillance."
+          "text": "Les captures d’écran HDR ne restent plus bloquées. Une capture d’écran d’un jeu en pause ou d’un menu statique en HDR est enregistrée immédiatement. Si aucune image n’arrive, la tentative échoue proprement au bout de quelques secondes et l’appui suivant fonctionne."
         },
         {
           "id": "highlights-06",
+          "text": "Suppression plus sûre à la manette. Dans une confirmation de suppression, Croix appuie désormais sur le bouton en surbrillance et Cercle annule. Auparavant, Croix pouvait supprimer le fichier même lorsque Annuler était en surbrillance."
+        },
+        {
+          "id": "highlights-07",
           "text": "La suppression protège vos originaux. Une capture créée par GameHQ est désormais déplacée dans la Corbeille lorsque vous la supprimez : vous pouvez donc la restaurer. Les fichiers des dossiers surveillés ne sont jamais supprimés."
         }
       ]

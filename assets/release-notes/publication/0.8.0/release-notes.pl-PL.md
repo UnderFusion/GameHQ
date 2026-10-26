@@ -6,6 +6,7 @@
 
 ## Najważniejsze zmiany
 
+- Lepsze automatyczne wykrywanie aktualizacji. GameHQ sprawdza teraz dostępność nowych wersji tuż po każdym uruchomieniu i co godzinę podczas działania, dzięki czemu dowiesz się o aktualizacjach znacznie szybciej.
 - Klipy mogą nagrywać dźwięk samej gry. Dzięki nowemu źródłu Dźwięk gry GameHQ nagrywa grę niezależnie od urządzenia, na którym gra odtwarza dźwięk (słuchawki, Bluetooth, HDMI lub głośniki), i pomija inne aplikacje, takie jak Discord czy Spotify.
 - Problemy z nagrywaniem dźwięku są teraz wykrywane i zgłaszane. Jeśli wybranego źródła dźwięku nie da się nagrać, bufor powtórek zatrzymuje się i informuje o przyczynie oraz o tym, które źródło wybrać zamiast niego, zamiast po cichu zapisywać klipy bez dźwięku. GameHQ nigdy samodzielnie nie zmienia źródła dźwięku.
 - Dźwięk i obraz pozostają zsynchronizowane. Klipy zapisane po ekranie ładowania, pauzie lub długim przestoju zachowują prawidłową synchronizację czasową, a bufor powtórek sam uruchamia się ponownie, gdy gra zmienia rozdzielczość.

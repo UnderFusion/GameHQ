@@ -33,8 +33,8 @@ void App::wireUpdates()
     });
     // Update-check policy (docs/updater.md "Discovery"): prime the cached ETag
     // and skip flag from config, persist whatever the service later reports,
-    // and gate automatic checks to at most once every 24h. Manual checkNow()
-    // from QML always bypasses this cache.
+    // and check on every launch, then hourly. Startup and manual checkNow()
+    // bypass the recent-check interval, but always respect GitHub cooldowns.
     m_updates->primeCachedEtag(m_config->value(ConfigKeys::InternalUpdatesEtag, QString()).toString());
     m_updates->primeSkippedVersion(m_config->value(ConfigKeys::UpdatesSkippedVersion, QString()).toString());
     m_updates->primeLastChecked(QDateTime::fromString(
@@ -157,22 +157,48 @@ void App::wireUpdates()
             "The update was canceled because capture work did not finish safely in time."));
         qWarning() << "Update preparation timed out; update cancelled without stopping capture work";
     });
-    auto maybeAutoCheckForUpdate = [this] {
-        if (!m_config->value(ConfigKeys::UpdatesCheckAutomatically, true).toBool())
-            return;
+    auto maybeAutoCheckForUpdate = [this](UpdateSchedule::Trigger trigger) {
+        const char* name = trigger == UpdateSchedule::Trigger::Startup ? "startup" : "periodic";
         const QDateTime last = QDateTime::fromString(
             m_config->value(ConfigKeys::InternalUpdatesLastCheckUtc, QString()).toString(), Qt::ISODate);
-        // Two limits: GameHQ's own daily interval, and any cooldown GitHub
-        // imposed. Automatic checks stay silent during a cooldown - the user
-        // only sees a retry time if they ask for a check themselves.
-        if (!UpdateSchedule::automaticCheckAllowed(last, m_updates->nextAllowedCheck(),
-                                                   QDateTime::currentDateTimeUtc()))
+        // A launch must discover releases published since the previous check.
+        // GitHub's cooldown still wins, including across application restarts.
+        switch (UpdateSchedule::decideAutomaticCheck(
+                    trigger, m_config->value(ConfigKeys::UpdatesCheckAutomatically, true).toBool(),
+                    m_updates->busy(), last, m_updates->nextAllowedCheck(),
+                    QDateTime::currentDateTimeUtc())) {
+        case UpdateSchedule::AutomaticDecision::Disabled:
+            qInfo() << "Update check:" << name << "skipped; automatic checks are disabled";
             return;
+        case UpdateSchedule::AutomaticDecision::Busy:
+            qInfo() << "Update check:" << name << "skipped; update service is busy in state"
+                    << m_updates->stateName();
+            return;
+        case UpdateSchedule::AutomaticDecision::Cooldown:
+            qInfo() << "Update check:" << name << "waiting for GitHub cooldown until"
+                    << m_updates->nextAllowedCheck();
+            return;
+        case UpdateSchedule::AutomaticDecision::RecentCheck:
+            qInfo() << "Update check:" << name << "waiting for hourly interval; last check" << last;
+            return;
+        case UpdateSchedule::AutomaticDecision::Request:
+            break;
+        }
+        qInfo() << "Update check:" << name << "requesting release metadata";
         m_updates->checkNow();
     };
-    QTimer::singleShot(20000, m_updates.get(), maybeAutoCheckForUpdate); // 15-30s after startup
+    QTimer::singleShot(UpdateSchedule::kStartupDelayMs, m_updates.get(),
+                       [maybeAutoCheckForUpdate] { maybeAutoCheckForUpdate(UpdateSchedule::Trigger::Startup); });
     m_updateCheckTimer = new QTimer(this);
-    m_updateCheckTimer->setInterval(60 * 60 * 1000); // hourly wake; the 24h gate above does the real throttling
-    connect(m_updateCheckTimer, &QTimer::timeout, this, maybeAutoCheckForUpdate);
+    m_updateCheckTimer->setTimerType(Qt::PreciseTimer);
+    m_updateCheckTimer->setInterval(UpdateSchedule::kAutomaticIntervalSecs * 1000);
+    connect(m_updateCheckTimer, &QTimer::timeout, this,
+            [maybeAutoCheckForUpdate] {
+        maybeAutoCheckForUpdate(UpdateSchedule::Trigger::Periodic);
+    });
+    // Measure the next hour from the completed startup/manual check. Otherwise
+    // the timer can fire a few seconds too early and skip a whole extra hour.
+    connect(m_updates.get(), &UpdateService::lastCheckedChanged, m_updateCheckTimer,
+            [this] { m_updateCheckTimer->start(); });
     m_updateCheckTimer->start();
 }

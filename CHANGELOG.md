@@ -14,6 +14,7 @@ GameHQ 0.8.0 records your game's own sound, reports audio recording problems ins
 
 ### Highlights
 
+- **Improved automatic update detection.** GameHQ now checks for new releases shortly after every startup and every hour while running, so you can discover updates much sooner. An update offer stays visible across hourly re-checks, and GitHub rate limits and the automatic-check setting are still respected.
 - **Clips can record your game's own sound.** With the new Game audio source, GameHQ records the game on whatever device it plays through (headphones, Bluetooth, HDMI or speakers) and leaves out other apps such as Discord or Spotify.
 - **Audio recording problems are now detected and reported.** If the selected audio source cannot be recorded, the replay buffer stops and tells you why, and which source to choose instead, rather than quietly saving clips without sound. GameHQ never switches the audio source on its own.
 - **Sound and picture stay in sync.** Clips saved after a loading screen, a pause or a long stall keep correct timing, and the replay buffer restarts on its own when a game changes resolution.

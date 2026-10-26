@@ -80,14 +80,16 @@ identical after any update, successful or rolled back.
    latest stable release, compares it against the installed `VERSION`, and
    surfaces a non-modal banner and a distinct About-sidebar state when a newer
    stable release exists. Automatic
-   checks run at most once every 24 hours and are silent on failure. The
-   first automatic check fires 15-30s after startup (`App::init()`); a
-   coarse hourly timer then re-checks the 24h window rather than scheduling
-   a single long-lived timer. `updates.check_automatically` (default on)
+   checks run two seconds after every startup and hourly while GameHQ runs;
+   the startup check bypasses the previous successful-check timestamp. Network
+   requests are asynchronous and automatic failures do not open a dialog. A
+   precise hourly timer is restarted after each completed check, including a
+   manual check, so an early timer wake cannot skip another hour.
+   `updates.check_automatically` (default on)
    lets the user turn automatic checks off entirely; `updates.skipped_version`
    suppresses the banner for a release the user dismissed with "Skip this
    version" until a newer one ships. Manual "Check now" (Settings → About)
-   always bypasses the 24h cache and surfaces real errors. A compact banner
+   always bypasses the hourly interval and surfaces real errors. A compact banner
    lives only in the desktop gallery window (`Main.qml`), never in
    `OverlayWindow.qml`, so it cannot appear over a running game or the pad
    overlay. Its details action opens the update-aware About / What's New modal
@@ -124,7 +126,8 @@ identical after any update, successful or rolled back.
      and resolve to "up to date", hiding a genuinely available update; a 304
      that arrives with no cached release now triggers exactly one unconditional
      re-request. `internal.updates.last_check_utc` is also read back at startup
-     (`App::init()`), so the 24-hour gate no longer restarts on every launch.
+     (`App::wireUpdates()`) for periodic scheduling; it never suppresses the
+     fresh startup check.
    - **Rate limits.** GitHub's primary limit sends `x-ratelimit-remaining: 0`
      and its secondary limit sends `Retry-After` with no counter; both are
      honoured, with the reset time derived from whichever header is present. A
@@ -136,10 +139,11 @@ identical after any update, successful or rolled back.
      reset time into a cooldown — 15 minutes when GitHub declines to say when,
      or when the reset it gives has already passed. It is persisted to
      `internal.updates.next_allowed_check_utc`, so restarting GameHQ is not a
-     way to keep asking, and it outranks the daily interval. Automatic checks
+     way to bypass GitHub's limit, and it outranks both startup and hourly checks. Automatic checks
      stay silent during a cooldown; a manual check reports the retry time
      instead of firing a request that cannot succeed. Any non-limited answer
-     clears it.
+     clears it. Logs distinguish startup and periodic requests, disabled
+     automatic checking, recent-check intervals and GitHub cooldowns.
    - **Overlap.** `checkNow()` is refused while a pre-install revalidation is
      outstanding, so its answer cannot be applied to the wrong request.
 2. **Download** — the signed manifest and its detached signature are fetched

@@ -32,8 +32,8 @@ void GitHubReleaseSource::checkLatest(const QString &ifNoneMatchEtag)
 
 void GitHubReleaseSource::sendRequest(const QString &ifNoneMatchEtag, int attemptsLeft, int page)
 {
-    const QString url = QStringLiteral("https://api.github.com/repos/%1/%2/releases?per_page=%3&page=%4")
-                            .arg(m_owner, m_repo)
+    const QString url = QStringLiteral("%1/repos/%2/%3/releases?per_page=%4&page=%5")
+                            .arg(m_apiBase, m_owner, m_repo)
                             .arg(ReleaseCatalog::kPageSize)
                             .arg(page);
     QNetworkRequest request{QUrl(url)};

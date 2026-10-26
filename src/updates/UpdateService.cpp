@@ -183,6 +183,26 @@ QString UpdateService::cooldownMessage() const
               "GitHub temporarily limited update checks. GameHQ will try again later.");
 }
 
+bool UpdateService::busy() const
+{
+    switch (m_state) {
+    case State::Checking:
+    case State::Downloading:
+    case State::ReadyToInstall:
+    case State::PreparingForUpdate:
+    case State::Quiescent:
+    case State::Installing:
+        return true;
+    default:
+        return m_revalidatingInstall;
+    }
+}
+
+void UpdateService::setReleaseApiBase(const QString &base)
+{
+    m_source->setApiBase(base);
+}
+
 void UpdateService::checkNow()
 {
     if (m_state == State::Checking)
@@ -269,6 +289,8 @@ void UpdateService::applyRelease(const ReleaseInfo &release)
     const QByteArray snapshot = ReleaseCatalog::cacheSnapshot(release);
     if (cached.open(QIODevice::WriteOnly) && cached.write(snapshot) == snapshot.size())
         cached.commit();
+    qInfo() << "UpdateService: offering update" << identityOf(release) << "over installed"
+            << m_installedVersion;
     Q_EMIT releaseChanged();
     setState(State::UpdateAvailable);
 }
@@ -282,6 +304,7 @@ void UpdateService::onSucceeded(const ReleaseInfo &release, const QString &etag)
     const bool offerable = channelAccepts(release) && releaseIsNewerThanInstalled(release);
     const bool incomplete = offerable && !release.hasCompleteUpdateAssets();
     m_retriedWithoutCache = false;
+    qInfo() << "UpdateService: release metadata unchanged (HTTP 304)";
     setNextAllowedCheck({});   // GitHub answered, so any cooldown is over
     if (!incomplete) {
         m_lastChecked = QDateTime::currentDateTimeUtc();
@@ -348,9 +371,11 @@ void UpdateService::onUnchanged(const QString & /*etag*/)
         m_source->checkLatest(QString());
         return;
     }
+    // 304 means the cached release is still the latest one, so an offer stays
+    // visible. Hourly checks get 304 most of the time; clearing the release
+    // here made an available update vanish an hour after it was found.
     m_retriedWithoutCache = false;
-    m_release.reset();
-    Q_EMIT releaseChanged();
+    qInfo() << "UpdateService: release metadata unchanged (HTTP 304)";
     setNextAllowedCheck({});   // GitHub answered, so any cooldown is over
     m_lastChecked = QDateTime::currentDateTimeUtc();
     Q_EMIT lastCheckedChanged();

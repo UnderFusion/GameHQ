@@ -6,6 +6,7 @@
 
 ## Öne çıkanlar
 
+- Geliştirilmiş otomatik güncelleme algılama. GameHQ artık her başlatmadan kısa süre sonra ve çalışırken saatte bir yeni sürümleri denetler; böylece güncellemelerden çok daha erken haberdar olursunuz.
 - Klipler oyunun kendi sesini kaydedebilir. Yeni Oyun sesi kaynağıyla GameHQ, oyunun sesi hangi cihazdan çıkıyorsa (kulaklık, Bluetooth, HDMI veya hoparlör) oyunu o cihazda kaydeder ve Discord veya Spotify gibi diğer uygulamaları dışarıda bırakır.
 - Ses kaydı sorunları artık algılanıp bildiriliyor. Seçilen ses kaynağı kaydedilemiyorsa anında tekrar arabelleği, klipleri fark ettirmeden sessiz kaydetmek yerine durur ve nedenini ve bunun yerine hangi kaynağı seçmeniz gerektiğini söyler. GameHQ ses kaynağını asla kendiliğinden değiştirmez.
 - Ses ve görüntü senkron kalır. Yükleme ekranı, duraklatma veya uzun bir takılmanın ardından kaydedilen klipler doğru zamanlamayı korur ve bir oyun çözünürlüğü değiştirdiğinde anında tekrar arabelleği kendiliğinden yeniden başlar.

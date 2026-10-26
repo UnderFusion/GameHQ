@@ -6,11 +6,11 @@
   "source_locale": "en-US",
   "default_locale": "en-US",
   "localization_policy": "complete",
-  "release_source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+  "release_source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 8173,
-    "sha256": "8c17b58d857df30635ca09ae98f01ea33b3842e68d75b8205beeb9770f775935"
+    "size": 8346,
+    "sha256": "470ed5efc4d3dce69c9a50849d65fb4dc12858168e75c172da71e213fdcc9fa8"
   },
   "distribution": {
     "localized_documents": "repository",
@@ -30,9 +30,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.en-US.md",
-      "size": 6995,
-      "sha256": "771d9e4ff8b78c8554e75c5a7809b1291690c0f11017b145d0c849a6e9e1b7ae",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 7168,
+      "sha256": "e2ebed9dde5b360cd218aad39a2d55882b8e6b433e0edb87febbcfb64e7fcaee",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -48,7 +48,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -135,9 +136,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.zh-Hans.md",
-      "size": 6939,
-      "sha256": "ab068df7b6fe74f1ab93d101baa1dfc097e32d561808e9ff8214d3804d645591",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 7090,
+      "sha256": "40bcce25fe6027af133bc9c8ab77addb6762ae79b7083343f7e6839f92f645ae",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -153,7 +154,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -240,9 +242,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.ru-RU.md",
-      "size": 13927,
-      "sha256": "53afc0f36dd244d7c379e6f3ac16bc7d75049297bf0702a365f5014ca10fe0ff",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 14301,
+      "sha256": "2c97720051c4cd1578979ef31f0b9295a6544c02d38b9dd2cb02ab83449a03d7",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -258,7 +260,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -345,9 +348,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.es-ES.md",
-      "size": 8567,
-      "sha256": "fbda680a1789f75f079bd584f8882ecf1bed1a4b5d0b0959da225998f219db28",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 8771,
+      "sha256": "1d83ce0dfc3db48f13399ad7440c3bab53cb6a5c5c1d84e17e294e81f4edbc01",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -363,7 +366,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -450,9 +454,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.pt-BR.md",
-      "size": 8240,
-      "sha256": "d9b2005553b419af2d5931c5924f14e4019879002e333069ae187ee59fabbe45",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 8464,
+      "sha256": "19799a169d13b34d439ae2c140ef539b424a0dba19687dd06fe762091e9a391e",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -468,7 +472,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -555,9 +560,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.de-DE.md",
-      "size": 8776,
-      "sha256": "b665fdaaefae35732e2176c0d96c518a9bd75a60da2ecdec3ed2ab13b82a1633",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 8967,
+      "sha256": "88df91c50699a4829beea1c12308d8c2b77e28ccc0ceaf8037ea08976ff0eff6",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -573,7 +578,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -660,9 +666,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.ja-JP.md",
-      "size": 10813,
-      "sha256": "8f9d48611d828d9f5061bd7c2cd021c7d42618b55b1f49633d45fc088ec8962c",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 11057,
+      "sha256": "bc2a193f19f180d78e5a8619fe87a3f25b5ad481f3625a19db61dfacac5ab1fc",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -678,7 +684,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -765,9 +772,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.fr-FR.md",
-      "size": 9163,
-      "sha256": "265b868fd3f0ecb31dae3d25a5fcef85f108e6f856d0aa91df72246e8a05fdd6",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 9407,
+      "sha256": "2b97418882134608132627fac560e0f60778ae8c2d34f270d7ccb71cff96f70e",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -783,7 +790,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -870,9 +878,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.pl-PL.md",
-      "size": 8423,
-      "sha256": "334a97acb85f5c7027234e5b1a213dda3351ca8b419fc481d93771e51b317be1",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 8646,
+      "sha256": "9380ebc90ff2e6ba681aeadc746fd90bd70c2c6183b222817935a006a34a9e2e",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -888,7 +896,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -975,9 +984,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.ko-KR.md",
-      "size": 9029,
-      "sha256": "ce424938a7e0211286120fa466adb2ef0bd1e57e7a4d474c20892d12b0532710",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 9240,
+      "sha256": "437c7fc9741ea2d0126a5943137a5a6ac9b411541a1c8fd4cb338529de0b11e4",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -993,7 +1002,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -1080,9 +1090,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.zh-Hant.md",
-      "size": 7093,
-      "sha256": "38d72b838f8c0d35aa6686e2ae33db2c3120b6cb26937cf779fe1e1734bf561e",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 7241,
+      "sha256": "d4da7373a973a52ab077ed3199c7ca347e474b5d93543696b684b2fa1fa5737b",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -1098,7 +1108,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -1185,9 +1196,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.tr-TR.md",
-      "size": 8358,
-      "sha256": "a74718c8810e2ee1863f963444a66a21a2e0055f30a6f09d231591fa733be7b2",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 8576,
+      "sha256": "aeeb4a541a02cc1d5efdb31ba139e199e78bbafbdc12538efa59a1d5d0efe29a",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -1203,7 +1214,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -1290,9 +1302,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.th-TH.md",
-      "size": 17672,
-      "sha256": "1c3f7b52de65cb89529d71900913d3f2c3346b616748ce8bfe8731e18e72f72e",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 18142,
+      "sha256": "16e14a62f559a569fe99c7a88d423ceeadc966abd120f2d070e6650be8ec1920",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -1308,7 +1320,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -1395,9 +1408,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.es-419.md",
-      "size": 8598,
-      "sha256": "0b93e8fa69d9bccdb34d257562ffeee0806a8179e5e850c045a1bb9dae731a3f",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 8802,
+      "sha256": "be567990bbfc82689ee7c53634ca39ca83195e3215da725c1f794515546cfb70",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -1413,7 +1426,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -1500,9 +1514,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.uk-UA.md",
-      "size": 13658,
-      "sha256": "bee46fafa8463b0cb95b3b385ef47327a530b02b854951a50de1ab253798a367",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 14017,
+      "sha256": "5f3c78941208f11468cdc626dd01be0017ba5e7eb254d7ebc53dda190d41e389",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -1518,7 +1532,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
@@ -1605,9 +1620,9 @@
       "version": "0.8.0",
       "date": "2026-10-26",
       "filename": "release-notes.it-IT.md",
-      "size": 8560,
-      "sha256": "05c84218acc9167e48654ec3763dd5677eb9f2a50e325db7f1d152a9b8f2edff",
-      "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+      "size": 8750,
+      "sha256": "d035eadc3bcb9f904e38970419ed5f5d2f9127a152ae9149cc76d3bc89260a9a",
+      "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
       "structure": [
         {
           "section_id": "thanks",
@@ -1623,7 +1638,8 @@
             "highlights-03",
             "highlights-04",
             "highlights-05",
-            "highlights-06"
+            "highlights-06",
+            "highlights-07"
           ]
         },
         {
