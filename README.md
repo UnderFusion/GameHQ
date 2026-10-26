@@ -35,7 +35,9 @@ overlay, and Settings - can be driven from the controller alone.</p>
 ## Highlights
 
 - **Save recent gameplay after it happens** - the rolling buffer turns the
-  previous configurable minutes into a normal MP4 with system audio.
+  previous configurable minutes into a normal MP4. On Windows 11 it records
+  only the game's own sound, on any output device; desktop audio or no audio
+  are available too.
 - **Instant screenshots and frame capture** - save PNG or JPEG images, including
   the exact displayed frame from a recorded clip. JPEG at 90% quality is the
   default for smaller files; PNG remains available.
@@ -96,7 +98,7 @@ overlay, and Settings - can be driven from the controller alone.</p>
 - Separate switches for capture-request, Steam Input conflict, and
   controller-hidden notices, plus early dismissal with the mouse.
 
-See [what's new in 0.7.9](https://github.com/underfusion/GameHQ/releases/tag/v0.7.9)
+See [what's new in 0.8.0](https://github.com/underfusion/GameHQ/releases/tag/v0.8.0)
 for the full release notes and links to all 16 reviewed translations.
 
 ## Languages
