@@ -6,6 +6,7 @@
 
 ## Die wichtigsten Neuerungen
 
+- Verbesserte automatische Update-Erkennung. GameHQ sucht jetzt kurz nach jedem Start und stündlich während der Ausführung nach neuen Versionen, sodass Sie Updates viel früher entdecken.
 - Clips können den eigenen Ton Ihres Spiels aufnehmen. Mit der neuen Audioquelle Spielaudio nimmt GameHQ das Spiel auf dem Gerät auf, über das es wiedergegeben wird (Kopfhörer, Bluetooth, HDMI oder Lautsprecher), und lässt andere Apps wie Discord oder Spotify außen vor.
 - Probleme bei der Audioaufnahme werden jetzt erkannt und gemeldet. Wenn die ausgewählte Audioquelle nicht aufgenommen werden kann, stoppt der Replay-Puffer und nennt Ihnen den Grund sowie die Quelle, die Sie stattdessen wählen sollten, statt stillschweigend Clips ohne Ton zu speichern. GameHQ wechselt die Audioquelle nie von selbst.
 - Ton und Bild bleiben synchron. Clips, die nach einem Ladebildschirm, einer Pause oder einem langen Hänger gespeichert werden, behalten das richtige Timing, und der Replay-Puffer startet von selbst neu, wenn ein Spiel die Auflösung ändert.

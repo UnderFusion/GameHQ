@@ -5,7 +5,7 @@
   "locale": "es-419",
   "date": "2026-10-26",
   "mode": "localized",
-  "source_integrity": "sha256:fe52c680743611fab892a78d2e882ecf32c42bf1f63cdba06292f75bfed7f3db",
+  "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",
   "sections": [
     {
       "id": "thanks",
@@ -23,26 +23,30 @@
       "items": [
         {
           "id": "highlights-01",
-          "text": "Los clips pueden grabar el sonido propio del juego. Con la nueva fuente Audio del juego, GameHQ graba el juego en el dispositivo por el que se reproduzca (audífonos, Bluetooth, HDMI o altavoces) y deja fuera otras aplicaciones como Discord o Spotify."
+          "text": "Detección automática de actualizaciones mejorada. GameHQ ahora busca nuevas versiones poco después de cada inicio y cada hora mientras se ejecuta, para que descubras las actualizaciones mucho antes."
         },
         {
           "id": "highlights-02",
-          "text": "Ahora se detectan y se informan los problemas de grabación de audio. Si no se puede grabar la fuente de audio seleccionada, el búfer de repetición se detiene y te indica el motivo y qué fuente elegir en su lugar, en vez de guardar sin avisar clips sin sonido. GameHQ nunca cambia la fuente de audio por su cuenta."
+          "text": "Los clips pueden grabar el sonido propio del juego. Con la nueva fuente Audio del juego, GameHQ graba el juego en el dispositivo por el que se reproduzca (audífonos, Bluetooth, HDMI o altavoces) y deja fuera otras aplicaciones como Discord o Spotify."
         },
         {
           "id": "highlights-03",
-          "text": "El sonido y la imagen se mantienen sincronizados. Los clips guardados después de una pantalla de carga, una pausa o un bloqueo prolongado conservan los tiempos correctos, y el búfer de repetición se reinicia solo cuando un juego cambia de resolución."
+          "text": "Ahora se detectan y se informan los problemas de grabación de audio. Si no se puede grabar la fuente de audio seleccionada, el búfer de repetición se detiene y te indica el motivo y qué fuente elegir en su lugar, en vez de guardar sin avisar clips sin sonido. GameHQ nunca cambia la fuente de audio por su cuenta."
         },
         {
           "id": "highlights-04",
-          "text": "Las capturas de pantalla HDR ya no se quedan trabadas. Una captura de pantalla de un juego en pausa o de un menú estático en HDR se guarda al instante. Si no llega ningún fotograma, el intento falla limpiamente después de unos segundos y la siguiente vez que presionas el botón funciona."
+          "text": "El sonido y la imagen se mantienen sincronizados. Los clips guardados después de una pantalla de carga, una pausa o un bloqueo prolongado conservan los tiempos correctos, y el búfer de repetición se reinicia solo cuando un juego cambia de resolución."
         },
         {
           "id": "highlights-05",
-          "text": "Eliminación más segura con el control. En una confirmación de eliminación, Cruz ahora presiona el botón resaltado y Círculo cancela. Antes, Cruz podía eliminar el archivo incluso con Cancelar resaltado."
+          "text": "Las capturas de pantalla HDR ya no se quedan trabadas. Una captura de pantalla de un juego en pausa o de un menú estático en HDR se guarda al instante. Si no llega ningún fotograma, el intento falla limpiamente después de unos segundos y la siguiente vez que presionas el botón funciona."
         },
         {
           "id": "highlights-06",
+          "text": "Eliminación más segura con el control. En una confirmación de eliminación, Cruz ahora presiona el botón resaltado y Círculo cancela. Antes, Cruz podía eliminar el archivo incluso con Cancelar resaltado."
+        },
+        {
+          "id": "highlights-07",
           "text": "Eliminar protege tus originales. Al eliminar una captura creada por GameHQ, ahora se mueve a la Papelera de reciclaje, así que puedes restaurarla. Los archivos de las carpetas supervisadas nunca se eliminan."
         }
       ]

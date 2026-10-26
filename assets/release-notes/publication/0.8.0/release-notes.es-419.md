@@ -6,6 +6,7 @@
 
 ## Lo más destacado
 
+- Detección automática de actualizaciones mejorada. GameHQ ahora busca nuevas versiones poco después de cada inicio y cada hora mientras se ejecuta, para que descubras las actualizaciones mucho antes.
 - Los clips pueden grabar el sonido propio del juego. Con la nueva fuente Audio del juego, GameHQ graba el juego en el dispositivo por el que se reproduzca (audífonos, Bluetooth, HDMI o altavoces) y deja fuera otras aplicaciones como Discord o Spotify.
 - Ahora se detectan y se informan los problemas de grabación de audio. Si no se puede grabar la fuente de audio seleccionada, el búfer de repetición se detiene y te indica el motivo y qué fuente elegir en su lugar, en vez de guardar sin avisar clips sin sonido. GameHQ nunca cambia la fuente de audio por su cuenta.
 - El sonido y la imagen se mantienen sincronizados. Los clips guardados después de una pantalla de carga, una pausa o un bloqueo prolongado conservan los tiempos correctos, y el búfer de repetición se reinicia solo cuando un juego cambia de resolución.

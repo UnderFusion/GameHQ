@@ -6,6 +6,7 @@
 
 ## Points forts
 
+- Détection automatique des mises à jour améliorée. GameHQ recherche désormais les nouvelles versions peu après chaque démarrage, puis toutes les heures pendant son exécution, pour que vous découvriez les mises à jour bien plus tôt.
 - Les clips peuvent enregistrer le son de votre jeu lui-même. Avec la nouvelle source Son du jeu, GameHQ enregistre le jeu sur l’appareil par lequel il est diffusé, quel qu’il soit (casque, Bluetooth, HDMI ou haut-parleurs), et laisse de côté les autres applications comme Discord ou Spotify.
 - Les problèmes d’enregistrement audio sont désormais détectés et signalés. Si la source audio sélectionnée ne peut pas être enregistrée, le tampon de replay s’arrête et vous indique pourquoi et quelle source choisir à la place, au lieu d’enregistrer discrètement des clips sans son. GameHQ ne change jamais la source audio de lui-même.
 - Le son et l’image restent synchronisés. Les clips enregistrés après un écran de chargement, une pause ou un long blocage conservent un minutage correct, et le tampon de replay redémarre de lui-même lorsqu’un jeu change de résolution.
