@@ -98,6 +98,11 @@ identical after any update, successful or rolled back.
    The compact About card shows Skip version only while the update service is
    in `UpdateAvailable`; progress and failure states keep that action hidden.
    The banner keeps only concise progress, cancel, install and dismissal controls.
+   Its Install and restart action calls `downloadAndInstall()`: one click
+   downloads, verifies and then starts the normal install handshake. The same
+   one-click action drives the dialog's update card, while the compact About card
+   keeps a download-only button. Banner and dialog share `UpdateProgressBar` so a
+   download started in either place shows its progress in both.
    Discovery only locates candidate URLs; it never establishes trust. A release
    that does not publish both `gamehq-release.json` and `gamehq-release.sig`
    is skipped, because nothing could authorise it.
@@ -193,8 +198,10 @@ identical after any update, successful or rolled back.
 6. **Health check** — the new process must reach a running, initialized state
    within a bounded window and write a success token; otherwise the helper
    restores the backup and restarts the previous version.
-7. **Post-update greeting** — when the desktop window next becomes active, the
-   user sees the About / What's New modal once. Current-version notes come from
+7. **Post-update greeting** — once the desktop window is visible, a short
+   success toast confirms the new version; the About / What's New modal is
+   never opened on its own, and the sidebar About row keeps its unread dot until
+   the user opens it. Current-version notes come from
    the integrity-checked locale bundle indexed under
    `assets/release-notes/generated/`, work offline, and are marked read through
    `internal.ui.whats_new_seen_version` when the modal closes. The modal is never

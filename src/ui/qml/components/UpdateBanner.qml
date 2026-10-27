@@ -150,6 +150,10 @@ Rectangle {
                 font.pixelSize: Theme.fontCaption
                 elide: Text.ElideRight
             }
+            UpdateProgressBar {
+                Layout.fillWidth: true
+                Layout.topMargin: Theme.s4
+            }
         }
 
         AccentButton {
@@ -163,11 +167,13 @@ Rectangle {
                 //% "View update"
                 return qsTrId("gamehq.update.view_update")
             }
-            primary: updates.stateName === "UpdateAvailable"
             onClicked: root.detailsRequested()
         }
+        // One click from the banner: download, verify, then install and
+        // restart, without opening the release notes first.
         AccentButton {
-            visible: updates.stateName === "Downloading" || updates.stateName === "ReadyToInstall"
+            visible: ["UpdateAvailable", "Downloading", "ReadyToInstall"]
+                     .includes(updates.stateName)
             label: {
                 if (updates.stateName === "Downloading") {
                     //% "Cancel"
@@ -176,9 +182,9 @@ Rectangle {
                 //% "Install and restart"
                 return qsTrId("gamehq.update.install_and_restart")
             }
-            primary: updates.stateName === "ReadyToInstall"
+            primary: updates.stateName !== "Downloading"
             onClicked: updates.stateName === "Downloading"
-                       ? updates.cancelDownload() : updates.installAndRestart()
+                       ? updates.cancelDownload() : updates.downloadAndInstall()
         }
         AccentButton {
             visible: updates.stateName === "UpdateAvailable" || updates.stateName === "Failed"

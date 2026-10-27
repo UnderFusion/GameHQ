@@ -81,17 +81,22 @@ ApplicationWindow {
     property string whatsNewSeenVersion: app
         ? app.config("internal.ui.whats_new_seen_version", "") : ""
 
+    // After an update restart GameHQ comes back where the user left it: a
+    // short toast confirms the new version, and the About row keeps its
+    // unread dot until the release notes are actually opened. The About
+    // dialog is never opened on its own.
     function maybeShowPostUpdateGreeting() {
-        if (!window.visible || !window.active || lightbox.visible
-                || aboutDialog.visible || helpDialog.visible
-                || pendingPostUpdateVersion === "")
+        if (!window.visible || pendingPostUpdateVersion === "")
             return
-        if (app.config("internal.ui.whats_new_seen_version", "") === pendingPostUpdateVersion) {
-            app.setConfig("internal.updates.pending_post_update_version", "")
-            pendingPostUpdateVersion = ""
+        const version = pendingPostUpdateVersion
+        app.setConfig("internal.updates.pending_post_update_version", "")
+        pendingPostUpdateVersion = ""
+        if (app.config("internal.ui.whats_new_seen_version", "") === version)
             return
-        }
-        window.openAbout(true)
+        //% "%1 updated"
+        notifications.post(qsTrId("gamehq.about.product_updated").arg(Brand.name),
+                           //% "Version %1"
+                           qsTrId("gamehq.about.version").arg(version), "", "success")
     }
 
     function acknowledgePostUpdateGreeting() {

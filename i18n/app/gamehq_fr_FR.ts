@@ -4,90 +4,92 @@
   <context>
     <name>GameHQ</name>
     <message id="gamehq.about.enjoying_gamehq">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="827"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="878"></location>
       <source>Enjoying GameHQ?</source>
       <translation>Vous aimez GameHQ ?</translation>
     </message>
     <message id="gamehq.about.github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="786"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1124"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="837"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1189"></location>
       <source>GitHub</source>
       <translation>GitHub</translation>
     </message>
     <message id="gamehq.about.license">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="798"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="849"></location>
       <source>License</source>
       <translation>Licence</translation>
     </message>
     <message id="gamehq.about.mode.installed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="531"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="567"></location>
       <source>Installed</source>
       <translation>Version installée</translation>
     </message>
     <message id="gamehq.about.mode.portable">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="528"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="564"></location>
       <source>Portable</source>
       <translation>Version portable</translation>
     </message>
     <message id="gamehq.about.more_improvements">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="720"></location>
       <source>Plus more improvements and fixes.</source>
       <translation>Et de nombreuses autres améliorations et corrections.</translation>
     </message>
     <message id="gamehq.about.product_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="639"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="675"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
       <translation>Une galerie multimédia de captures d’écran et de replays pour jeux PC, conçue pour la manette.</translation>
     </message>
     <message id="gamehq.about.product_updated">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="494"></location>
+      <location filename="src/ui/qml/Main.qml" line="97"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="530"></location>
       <source>%1 updated</source>
       <translation>%1 mis à jour</translation>
     </message>
     <message id="gamehq.about.project_links">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="770"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="821"></location>
       <source>PROJECT LINKS</source>
       <translation>LIENS DU PROJET</translation>
     </message>
     <message id="gamehq.about.quick_actions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="715"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="751"></location>
       <source>QUICK ACTIONS</source>
       <translation>ACTIONS RAPIDES</translation>
     </message>
     <message id="gamehq.about.report_issue">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="792"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="843"></location>
       <source>Report issue</source>
       <translation>Signaler un problème</translation>
     </message>
     <message id="gamehq.about.star_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="836"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="887"></location>
       <source>A GitHub star helps more players discover the project.</source>
       <translation>Une étoile sur GitHub aide davantage de joueurs à découvrir le projet.</translation>
     </message>
     <message id="gamehq.about.star_on_github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="847"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="898"></location>
       <source>Star on GitHub</source>
       <translation>Ajouter une étoile sur GitHub</translation>
     </message>
     <message id="gamehq.about.version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="509"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="876"></location>
+      <location filename="src/ui/qml/Main.qml" line="99"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="545"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="927"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="18"></location>
       <source>Version %1</source>
       <translation>Version %1</translation>
     </message>
     <message id="gamehq.about.whats_new_in">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="649"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="685"></location>
       <source>WHAT'S NEW IN %1</source>
       <translation>NOUVEAUTÉS DE %1</translation>
     </message>
     <message id="gamehq.action.back">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="585"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="621"></location>
       <source>Back</source>
       <translation>Retour</translation>
     </message>
     <message id="gamehq.action.back_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="582"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="618"></location>
       <source>%1  Back</source>
       <translation>%1  Retour</translation>
     </message>
@@ -101,7 +103,7 @@
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="23"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="174"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="180"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
@@ -109,9 +111,9 @@
       <translation>Annuler</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1290"></location>
-      <location filename="src/ui/qml/Main.qml" line="1309"></location>
-      <location filename="src/ui/qml/Main.qml" line="1348"></location>
+      <location filename="src/ui/qml/Main.qml" line="1295"></location>
+      <location filename="src/ui/qml/Main.qml" line="1314"></location>
+      <location filename="src/ui/qml/Main.qml" line="1353"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1067"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="17"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -338,7 +340,7 @@
     </message>
     <message id="gamehq.action.not_now">
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="108"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="187"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="193"></location>
       <source>Not now</source>
       <translation>Plus tard</translation>
     </message>
@@ -559,7 +561,7 @@
     </message>
     <message id="gamehq.common.action.close">
       <location filename="src/ui/qml/components/DialogCloseButton.qml" line="9"></location>
-      <location filename="src/ui/qml/components/HelpDialog.qml" line="118"></location>
+      <location filename="src/ui/qml/components/HelpDialog.qml" line="119"></location>
       <source>Close</source>
       <translation>Fermer</translation>
     </message>
@@ -975,17 +977,17 @@
       <translation>La mise à jour a été annulée car les opérations de capture ne se sont pas terminées à temps en toute sécurité.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="420"></location>
+      <location filename="src/updates/UpdateService.cpp" line="454"></location>
       <source>Update check failed: %1</source>
       <translation>La recherche de mises à jour a échoué : %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="182"></location>
+      <location filename="src/updates/UpdateService.cpp" line="191"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub a temporairement limité les recherches de mises à jour. GameHQ réessaiera plus tard.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="176"></location>
+      <location filename="src/updates/UpdateService.cpp" line="185"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub a temporairement limité les recherches de mises à jour. GameHQ réessaiera après %1.</translation>
     </message>
@@ -1271,27 +1273,27 @@
       <translation>GameHQ ne peut pas écrire les fichiers de mise à jour en toute sécurité dans cette installation.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="308"></location>
+      <location filename="src/updates/UpdateService.cpp" line="340"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>La version a changé après son téléchargement. Recherchez à nouveau les mises à jour avant de l’installer.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="368"></location>
+      <location filename="src/updates/UpdateService.cpp" line="402"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>La version téléchargée a été retirée avant l’installation.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="412"></location>
+      <location filename="src/updates/UpdateService.cpp" line="446"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>La version n’a pas pu être revalidée : %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="337"></location>
+      <location filename="src/updates/UpdateService.cpp" line="369"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>La version n’a pas pu faire l’objet d’une nouvelle validation avant l’installation.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="390"></location>
+      <location filename="src/updates/UpdateService.cpp" line="424"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub n’a pas pu revalider cette version avant l’installation. Réessayez plus tard.</translation>
     </message>
@@ -1342,19 +1344,19 @@
       <translation>Ajouter un dossier…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1350"></location>
+      <location filename="src/ui/qml/Main.qml" line="1355"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Sélection multiple</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1344"></location>
+      <location filename="src/ui/qml/Main.qml" line="1349"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Partager</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1346"></location>
+      <location filename="src/ui/qml/Main.qml" line="1351"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Afficher dans le dossier</translation>
@@ -1367,7 +1369,7 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1278"></location>
+      <location filename="src/ui/qml/Main.qml" line="1283"></location>
       <source>%1 · %2
 The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
       <oldsource>%1 · %2
@@ -1376,13 +1378,13 @@ The file will be moved to the Recycle Bin. Files in imported folders are left un
 Le fichier sera déplacé dans la Corbeille. Les fichiers des dossiers surveillés ne sont pas modifiés.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1288"></location>
+      <location filename="src/ui/qml/Main.qml" line="1293"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1065"></location>
       <source>Delete capture?</source>
       <translation>Supprimer la capture ?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="536"></location>
+      <location filename="src/ui/qml/Main.qml" line="541"></location>
       <source>%n capture will be moved to the Recycle Bin.
 Files in watched folders are left untouched.</source>
       <oldsource>%n capture will be moved to the Recycle Bin.
@@ -1395,7 +1397,7 @@ Les fichiers des dossiers surveillés ne sont pas modifiés.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1307"></location>
+      <location filename="src/ui/qml/Main.qml" line="1312"></location>
       <source>Delete selected captures?</source>
       <translation>Supprimer les captures sélectionnées ?</translation>
     </message>
@@ -1473,226 +1475,226 @@ Les fichiers des dossiers surveillés ne sont pas modifiés.</numerusform>
       <translation>Pas encore vérifié</translation>
     </message>
     <message id="gamehq.help.binding.select_mode">
-      <location filename="src/ui/qml/HelpView.qml" line="86"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="232"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="89"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="235"></location>
       <source>Select mode</source>
       <translation>Mode de sélection</translation>
     </message>
     <message id="gamehq.help.feature.gallery.description">
-      <location filename="src/ui/qml/HelpView.qml" line="318"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="321"></location>
       <source>All captures in one grid — filter by category or game. Grid navigation works with keyboard, mouse, and controller.</source>
       <translation>Toutes les captures dans une seule grille, avec filtrage par catégorie ou par jeu. La grille se parcourt au clavier, à la souris ou à la manette.</translation>
     </message>
     <message id="gamehq.help.feature.gallery.title">
-      <location filename="src/ui/qml/HelpView.qml" line="316"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="319"></location>
       <source>Gallery</source>
       <translation>Galerie</translation>
     </message>
     <message id="gamehq.help.feature.lightbox.description">
-      <location filename="src/ui/qml/HelpView.qml" line="330"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="333"></location>
       <source>Full-screen viewer for screenshots and videos. Opens from both the main window and the overlay.</source>
       <translation>Visionneuse plein écran pour les captures d’écran et les vidéos. Elle s’ouvre depuis la fenêtre principale comme depuis la surcouche.</translation>
     </message>
     <message id="gamehq.help.feature.lightbox.title">
-      <location filename="src/ui/qml/HelpView.qml" line="328"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="331"></location>
       <source>Lightbox</source>
       <translation>Visionneuse</translation>
     </message>
     <message id="gamehq.help.feature.overlay.description">
-      <location filename="src/ui/qml/HelpView.qml" line="324"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="327"></location>
       <source>Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications.</source>
       <translation>Affichage tête haute transparent en plein écran. Consultez et gérez les captures dans le jeu sans utiliser Alt+Tab. Il comprend sa propre grille, une visionneuse et des notifications.</translation>
     </message>
     <message id="gamehq.help.feature.overlay.title">
-      <location filename="src/ui/qml/HelpView.qml" line="322"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="325"></location>
       <source>Overlay</source>
       <translation>Surcouche</translation>
     </message>
     <message id="gamehq.help.feature.replay.description">
-      <location filename="src/ui/qml/HelpView.qml" line="306"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="309"></location>
       <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
       <translation>Lorsque cette fonction est activée, le tampon de replay démarre automatiquement et enregistre en arrière-plan tant qu’un jeu a le focus. Maintenez Share (ou Ctrl+Shift+E) pour enregistrer les dernières secondes sous forme de clip. Activez ou désactivez l’enregistrement permanent dans Paramètres → Replay.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
-      <location filename="src/ui/qml/HelpView.qml" line="304"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="307"></location>
       <source>Replay buffer</source>
       <translation>Tampon de replay</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.description">
-      <location filename="src/ui/qml/HelpView.qml" line="312"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="315"></location>
       <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
       <translation>Capture la fenêtre du jeu actif via GDI, enregistre un fichier PNG dans le dossier des captures et fournit immédiatement un retour sonore.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
-      <location filename="src/ui/qml/HelpView.qml" line="310"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="313"></location>
       <source>Screenshots</source>
       <translation>Captures d’écran</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.description">
-      <location filename="src/ui/qml/HelpView.qml" line="336"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="339"></location>
       <source>Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 scans it for new captures automatically.</source>
       <translation>Ajoutez n’importe quel dossier (Game Bar, Steam, NVIDIA ShadowPlay) : %1 y recherchera automatiquement les nouvelles captures.</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.title">
-      <location filename="src/ui/qml/HelpView.qml" line="334"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="337"></location>
       <source>Watched folders</source>
       <translation>Dossiers surveillés</translation>
     </message>
     <message id="gamehq.help.features">
-      <location filename="src/ui/qml/HelpView.qml" line="280"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="283"></location>
       <source>Features</source>
       <translation>Fonctionnalités</translation>
     </message>
     <message id="gamehq.help.gamepad.button_combination">
-      <location filename="src/ui/qml/HelpView.qml" line="185"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="188"></location>
       <source>Button combination</source>
       <translation>Combinaison de boutons</translation>
     </message>
     <message id="gamehq.help.gamepad.button_combination_action">
-      <location filename="src/ui/qml/HelpView.qml" line="187"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="190"></location>
       <source>Press the ordered pair within the configured combination window</source>
       <translation>Appuyer sur les deux boutons dans l’ordre pendant le délai de combinaison configuré</translation>
     </message>
     <message id="gamehq.help.gamepad.circle">
-      <location filename="src/ui/qml/HelpView.qml" line="214"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="217"></location>
       <source>Circle</source>
       <translation>Cercle</translation>
     </message>
     <message id="gamehq.help.gamepad.circle_action">
-      <location filename="src/ui/qml/HelpView.qml" line="216"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="219"></location>
       <source>Back / close overlay</source>
       <translation>Retour / fermer la surcouche</translation>
     </message>
     <message id="gamehq.help.gamepad.cross">
-      <location filename="src/ui/qml/HelpView.qml" line="208"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="211"></location>
       <source>Cross</source>
       <translation>Croix</translation>
     </message>
     <message id="gamehq.help.gamepad.cross_action">
-      <location filename="src/ui/qml/HelpView.qml" line="210"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="213"></location>
       <source>Open selected capture / confirm</source>
       <translation>Ouvrir la capture sélectionnée / confirmer</translation>
     </message>
     <message id="gamehq.help.gamepad.navigation_controls">
-      <location filename="src/ui/qml/HelpView.qml" line="202"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="205"></location>
       <source>D-pad / Left Stick</source>
       <translation>Croix directionnelle / stick gauche</translation>
     </message>
     <message id="gamehq.help.gamepad.ps_button">
-      <location filename="src/ui/qml/HelpView.qml" line="191"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="194"></location>
       <source>PS button</source>
       <translation>Bouton PS</translation>
     </message>
     <message id="gamehq.help.gamepad.select_mode">
-      <location filename="src/ui/qml/HelpView.qml" line="234"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="237"></location>
       <source>Cross toggles, Triangle selects all, Square deletes, Circle exits</source>
       <translation>Croix bascule la sélection, Triangle sélectionne tout, Carré supprime et Cercle quitte</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold">
-      <location filename="src/ui/qml/HelpView.qml" line="173"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="176"></location>
       <source>Share (hold)</source>
       <translation>Share (appui long)</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold_action">
-      <location filename="src/ui/qml/HelpView.qml" line="175"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="178"></location>
       <source>Save replay clip; hold consumes the tap</source>
       <translation>Enregistrer un clip de replay ; un appui long validé empêche l’appui bref</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap">
-      <location filename="src/ui/qml/HelpView.qml" line="179"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="182"></location>
       <source>Share (2× / 3×)</source>
       <translation>Share (double / triple appui)</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap_action">
-      <location filename="src/ui/qml/HelpView.qml" line="181"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="184"></location>
       <source>Exact double/triple tap; lower counts wait only for the configured interval</source>
       <translation>Double ou triple appui exact ; les séquences comportant moins d’appuis n’attendent que l’intervalle configuré</translation>
     </message>
     <message id="gamehq.help.gamepad.square">
-      <location filename="src/ui/qml/HelpView.qml" line="220"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="223"></location>
       <source>Square</source>
       <translation>Carré</translation>
     </message>
     <message id="gamehq.help.gamepad.square_action">
-      <location filename="src/ui/qml/HelpView.qml" line="222"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="225"></location>
       <source>Action menu (Share / Show in folder / Delete)</source>
       <translation>Menu d’actions (Partager / Afficher dans le dossier / Supprimer)</translation>
     </message>
     <message id="gamehq.help.gamepad.switch_panel">
-      <location filename="src/ui/qml/HelpView.qml" line="198"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="201"></location>
       <source>Switch panel: sidebar ↔ grid (app) / flip captures (overlay)</source>
       <translation>Changer de panneau : barre latérale ↔ grille (application) / parcourir les captures (surcouche)</translation>
     </message>
     <message id="gamehq.help.gamepad.system_share_action">
-      <location filename="src/ui/qml/HelpView.qml" line="169"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="172"></location>
       <source>Take screenshot; distinct from Xbox View / Back</source>
       <translation>Prendre une capture d’écran ; distinct de Xbox View / Back</translation>
     </message>
     <message id="gamehq.help.gamepad.system_share_tap">
-      <location filename="src/ui/qml/HelpView.qml" line="167"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="170"></location>
       <source>System Share (tap)</source>
       <translation>Share système (appui bref)</translation>
     </message>
     <message id="gamehq.help.gamepad.triangle">
-      <location filename="src/ui/qml/HelpView.qml" line="226"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="229"></location>
       <source>Triangle</source>
       <translation>Triangle</translation>
     </message>
     <message id="gamehq.help.gamepad_shortcuts">
-      <location filename="src/ui/qml/HelpView.qml" line="143"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="146"></location>
       <source>DualSense / gamepad</source>
       <translation>DualSense / manette</translation>
     </message>
     <message id="gamehq.help.keyboard.open_capture">
-      <location filename="src/ui/qml/HelpView.qml" line="82"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="85"></location>
       <source>Open selected capture</source>
       <translation>Ouvrir la capture sélectionnée</translation>
     </message>
     <message id="gamehq.help.keyboard.open_overlay">
-      <location filename="src/ui/qml/HelpView.qml" line="67"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="193"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="70"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="196"></location>
       <source>Open / close overlay</source>
       <translation>Ouvrir / fermer la surcouche</translation>
     </message>
     <message id="gamehq.help.keyboard.save_replay">
-      <location filename="src/ui/qml/HelpView.qml" line="77"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="80"></location>
       <source>Save last N seconds as clip</source>
       <translation>Enregistrer les N dernières secondes sous forme de clip</translation>
     </message>
     <message id="gamehq.help.keyboard.select_mode">
-      <location filename="src/ui/qml/HelpView.qml" line="88"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="91"></location>
       <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
       <translation>Enter / Space bascule la sélection, Ctrl+A sélectionne tout et Delete retire les éléments sélectionnés</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
-      <location filename="src/ui/qml/HelpView.qml" line="98"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="101"></location>
       <source>Show selected in Explorer</source>
       <translation>Afficher la sélection dans l’Explorateur</translation>
     </message>
     <message id="gamehq.help.keyboard.take_screenshot">
-      <location filename="src/ui/qml/HelpView.qml" line="72"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="75"></location>
       <source>Take screenshot</source>
       <translation>Prendre une capture d’écran</translation>
     </message>
     <message id="gamehq.help.keyboard.toggle_favorite">
-      <location filename="src/ui/qml/HelpView.qml" line="93"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="228"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="96"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="231"></location>
       <source>Favorite / unfavorite selected</source>
       <translation>Ajouter / retirer la sélection des favoris</translation>
     </message>
     <message id="gamehq.help.keyboard_shortcuts">
-      <location filename="src/ui/qml/HelpView.qml" line="42"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="45"></location>
       <source>Keyboard shortcuts</source>
       <translation>Raccourcis clavier</translation>
     </message>
     <message id="gamehq.help.navigate_gallery">
-      <location filename="src/ui/qml/HelpView.qml" line="103"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="204"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="106"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="207"></location>
       <source>Navigate gallery grid</source>
       <translation>Parcourir la grille de la galerie</translation>
     </message>
     <message id="gamehq.help.open_controller_guide">
-      <location filename="src/ui/qml/HelpView.qml" line="266"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="269"></location>
       <source>Open the controller compatibility guide</source>
       <translation>Ouvrir le guide de compatibilité des manettes</translation>
     </message>
@@ -2089,7 +2091,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>%1 est partagé : %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1258"></location>
+      <location filename="src/ui/qml/Main.qml" line="1263"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Choisir un dossier à surveiller</translation>
@@ -2103,44 +2105,44 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>À propos</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="206"></location>
+      <location filename="src/ui/qml/Main.qml" line="211"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="160"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>Tout</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="214"></location>
+      <location filename="src/ui/qml/Main.qml" line="219"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="39"></location>
       <source>Clips</source>
       <translation>Clips</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="210"></location>
+      <location filename="src/ui/qml/Main.qml" line="215"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Favorites</source>
       <translation>Favoris</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="216"></location>
+      <location filename="src/ui/qml/Main.qml" line="221"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="41"></location>
       <source>Game</source>
       <translation>Jeu</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="218"></location>
+      <location filename="src/ui/qml/Main.qml" line="223"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="43"></location>
       <source>Game favorites</source>
       <translation>Favoris du jeu</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="208"></location>
+      <location filename="src/ui/qml/Main.qml" line="213"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Recent</source>
       <translation>Récentes</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="212"></location>
+      <location filename="src/ui/qml/Main.qml" line="217"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="37"></location>
       <source>Screenshots</source>
       <translation>Captures d’écran</translation>
@@ -2163,7 +2165,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     </message>
     <message id="gamehq.navigation.help">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="478"></location>
-      <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
+      <location filename="src/ui/qml/components/HelpDialog.qml" line="97"></location>
       <source>Help</source>
       <translation>Aide</translation>
     </message>
@@ -2555,7 +2557,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Signaler un problème</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="804"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="855"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
       <source>Security &amp; privacy</source>
       <translation>Sécurité et confidentialité</translation>
@@ -3550,7 +3552,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Corriger automatiquement</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/Main.qml" line="172"></location>
+      <location filename="src/ui/qml/Main.qml" line="177"></location>
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="69"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
@@ -5345,6 +5347,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Prendre une capture d’écran</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="289"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ applique la mise à jour et va redémarrer.</translation>
@@ -5415,19 +5418,19 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Fourni avec GameHQ %1</translation>
     </message>
     <message id="gamehq.update.cancel_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="223"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="230"></location>
       <source>Cancel download</source>
       <translation>Annuler le téléchargement</translation>
     </message>
     <message id="gamehq.update.check.label">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="243"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="250"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="124"></location>
       <source>Check for updates</source>
       <translation>Rechercher des mises à jour</translation>
     </message>
     <message id="gamehq.update.check_again">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="237"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1073"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="244"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1138"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
       <source>Check again</source>
       <translation>Rechercher à nouveau</translation>
@@ -5455,7 +5458,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Rechercher maintenant</translation>
     </message>
     <message id="gamehq.update.checking">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="217"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="138"></location>
       <source>Checking...</source>
       <translation>Vérification…</translation>
@@ -5471,7 +5474,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Recherche de mises à jour</translation>
     </message>
     <message id="gamehq.update.choose_install_time">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="918"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="292"></location>
       <source>Choose when to install %1 %2.</source>
       <translation>Choisissez quand installer %1 %2.</translation>
     </message>
@@ -5486,12 +5489,13 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>GameHQ %1 a été téléchargé et vérifié par SHA-256.</translation>
     </message>
     <message id="gamehq.update.download_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="224"></location>
       <source>Download update %1</source>
       <translation>Télécharger la mise à jour %1</translation>
     </message>
     <message id="gamehq.update.downloading_percent">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="165"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="278"></location>
       <source>Downloading %1%</source>
       <translation>Téléchargement : %1 %</translation>
     </message>
@@ -5516,8 +5520,9 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Inclure les versions bêta</translation>
     </message>
     <message id="gamehq.update.install_and_restart">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="226"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="177"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="227"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="233"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="183"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
       <source>Install and restart</source>
       <translation>Installer et redémarrer</translation>
@@ -5534,7 +5539,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Installation</translation>
     </message>
     <message id="gamehq.update.installing_progress">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="233"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="240"></location>
       <source>Installing...</source>
       <translation>Installation…</translation>
     </message>
@@ -5549,12 +5554,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Dernière vérification %1</translation>
     </message>
     <message id="gamehq.update.last_checked_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="564"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="600"></location>
       <source>%1  %2</source>
       <translation>%1  %2</translation>
     </message>
     <message id="gamehq.update.new_version_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="593"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
       <source>New version available</source>
       <translation>Nouvelle version disponible</translation>
     </message>
@@ -5569,7 +5574,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Pas encore vérifié</translation>
     </message>
     <message id="gamehq.update.preparing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="230"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="237"></location>
       <source>Preparing...</source>
       <translation>Préparation…</translation>
     </message>
@@ -5611,28 +5616,29 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Sortie le %1</translation>
     </message>
     <message id="gamehq.update.remind_later">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="943"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1008"></location>
       <source>Remind me later</source>
       <translation>Me le rappeler plus tard</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="282"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>GameHQ redémarrera pour appliquer la mise à jour.</translation>
     </message>
     <message id="gamehq.update.retry_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="240"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="247"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
       <source>Retry download</source>
       <translation>Réessayer le téléchargement</translation>
     </message>
     <message id="gamehq.update.see_whats_new">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="161"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="165"></location>
       <source>See what's new</source>
       <translation>Voir les nouveautés</translation>
     </message>
     <message id="gamehq.update.settings">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="738"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="789"></location>
       <source>Update settings</source>
       <translation>Paramètres des mises à jour</translation>
     </message>
@@ -5642,12 +5648,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>SHA-256 détecte les données corrompues, mais pas un compte GitHub compromis.</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="957"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1022"></location>
       <source>Skip this version</source>
       <translation>Ignorer cette version</translation>
     </message>
     <message id="gamehq.update.skip_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="748"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="799"></location>
       <source>Skip version %1</source>
       <translation>Ignorer la version %1</translation>
     </message>
@@ -5706,7 +5712,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>GameHQ %1 est disponible.</translation>
     </message>
     <message id="gamehq.update.versions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="974"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1039"></location>
       <source>VERSIONS</source>
       <translation>VERSIONS</translation>
     </message>
@@ -5716,11 +5722,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Afficher les notes de version</translation>
     </message>
     <message id="gamehq.update.view_update">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="164"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="168"></location>
       <source>View update</source>
       <translation>Afficher la mise à jour</translation>
     </message>
     <message id="gamehq.update.waiting_for_capture">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="286"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>En attente de la fin sécurisée des opérations de capture…</translation>
@@ -5729,7 +5736,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
   <context>
     <name>GameHQLiveRetranslation</name>
     <message id="gamehq.about.full_release_notes">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="694"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="730"></location>
       <source>View full release notes</source>
       <translation>Afficher toutes les notes de version</translation>
     </message>

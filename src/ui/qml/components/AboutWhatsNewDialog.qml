@@ -210,14 +210,21 @@ FocusScope {
                 .arg(languageManager.formatDateTime(updates.lastChecked))
     }
 
-    function primaryLabel() {
+    // downloadOnly: the compact About card downloads and leaves the install
+    // to the user; the update card and the banner download and install in
+    // one click.
+    function primaryLabel(downloadOnly) {
         switch (updates.stateName) {
         case "Checking":
             //% "Checking..."
             return qsTrId("gamehq.update.checking")
         case "UpdateAvailable":
-            //% "Download update %1"
-            return qsTrId("gamehq.update.download_version").arg(updates.latestVersion)
+            if (downloadOnly) {
+                //% "Download update %1"
+                return qsTrId("gamehq.update.download_version").arg(updates.latestVersion)
+            }
+            //% "Install and restart"
+            return qsTrId("gamehq.update.install_and_restart")
         case "Downloading":
             //% "Cancel download"
             return qsTrId("gamehq.update.cancel_download")
@@ -248,17 +255,42 @@ FocusScope {
         return updates.stateName !== "Checking" && !UpdateUi.installing(updates.stateName)
     }
 
-    function runPrimaryAction() {
+    function runPrimaryAction(downloadOnly) {
         switch (updates.stateName) {
-        case "UpdateAvailable": updates.downloadUpdate(); break
+        case "UpdateAvailable": downloadOnly ? updates.downloadUpdate() : updates.downloadAndInstall(); break
         case "Downloading": updates.cancelDownload(); break
         case "ReadyToInstall": updates.installAndRestart(); break
-        case "Failed": updates.failedDuringCheck ? updates.checkNow() : updates.downloadUpdate(); break
+        case "Failed": updates.failedDuringCheck ? updates.checkNow() : updates.downloadAndInstall(); break
         case "Checking":
         case "PreparingForUpdate":
         case "Quiescent":
         case "Installing": break
         default: updates.checkNow()
+        }
+    }
+
+    // The line above the update buttons: what the updater is doing right now,
+    // so a download started here is visible here, not only in the banner.
+    function updateProgressText() {
+        switch (updates.stateName) {
+        case "Downloading":
+            //% "Downloading %1%"
+            return qsTrId("gamehq.update.downloading_percent")
+                    .arg(languageManager.formatInteger(updates.progress))
+        case "ReadyToInstall":
+            //% "GameHQ will restart to apply the update."
+            return qsTrId("gamehq.update.restart_to_apply")
+        case "PreparingForUpdate":
+        case "Quiescent":
+            //% "Waiting for capture work to finish safely..."
+            return qsTrId("gamehq.update.waiting_for_capture")
+        case "Installing":
+            //% "GameHQ is applying the update and will restart."
+            return qsTrId("gamehq.update.applying_and_restarting")
+        default:
+            //% "Choose when to install %1 %2."
+            return qsTrId("gamehq.update.choose_install_time")
+                    .arg(Brand.name).arg(root.updateVersion())
         }
     }
 
@@ -349,9 +381,13 @@ FocusScope {
             return
         }
         const maximum = Math.max(0, fullNotesFlick.contentHeight - fullNotesFlick.height)
+        const before = fullNotesFlick.contentY
         fullNotesFlick.contentY = Math.max(0, Math.min(maximum,
             fullNotesFlick.contentY + direction * Math.max(80, fullNotesFlick.height * 0.28)))
-        sounds.play("nav_tick")
+        // Held sticks repeat this every ~70 ms; ticking at the top or bottom
+        // edge made an endless click while nothing on screen moved.
+        if (fullNotesFlick.contentY !== before)
+            sounds.play("nav_tick")
     }
 
     function padConfirm() {
@@ -719,6 +755,21 @@ FocusScope {
                                     font.letterSpacing: Theme.letterSpacingWide
                                 }
 
+                                Text {
+                                    visible: UpdateUi.inProgress(updates.stateName)
+                                             && updates.stateName !== "UpdateAvailable"
+                                    Layout.fillWidth: true
+                                    text: root.updateProgressText()
+                                    color: Theme.textMuted
+                                    font.family: Theme.fontFamily
+                                    font.pixelSize: Theme.fontCaption
+                                    wrapMode: Text.WordWrap
+                                }
+
+                                UpdateProgressBar {
+                                    Layout.fillWidth: true
+                                }
+
                                 RowLayout {
                                     Layout.fillWidth: true
                                     spacing: Theme.s8
@@ -726,10 +777,10 @@ FocusScope {
                                     AccentButton {
                                         id: primaryAction
                                         Layout.fillWidth: true
-                                        label: root.primaryLabel()
+                                        label: root.primaryLabel(true)
                                         primary: true
                                         enabled: root.primaryEnabled()
-                                        onClicked: root.runPrimaryAction()
+                                        onClicked: root.runPrimaryAction(true)
                                     }
                                     AccentButton {
                                         id: settingsButton
@@ -914,10 +965,24 @@ FocusScope {
 
                                 Text {
                                     Layout.fillWidth: true
-                                    //% "Choose when to install %1 %2."
-                                    text: qsTrId("gamehq.update.choose_install_time")
-                                            .arg(Brand.name).arg(root.updateVersion())
-                                    color: Theme.textMuted
+                                    text: root.updateProgressText()
+                                    color: updates.stateName === "Failed" ? Theme.danger
+                                                                          : Theme.textMuted
+                                    font.family: Theme.fontFamily
+                                    font.pixelSize: Theme.fontCaption
+                                    wrapMode: Text.WordWrap
+                                }
+
+                                UpdateProgressBar {
+                                    Layout.fillWidth: true
+                                }
+
+                                Text {
+                                    visible: updates.stateName === "Failed" && updates.errorText !== ""
+                                    Layout.fillWidth: true
+                                    text: updates.errorText
+                                    textFormat: Text.PlainText
+                                    color: Theme.danger
                                     font.family: Theme.fontFamily
                                     font.pixelSize: Theme.fontCaption
                                     wrapMode: Text.WordWrap
@@ -930,10 +995,10 @@ FocusScope {
                                     AccentButton {
                                         id: updateNowAction
                                         Layout.fillWidth: true
-                                        label: root.primaryLabel()
+                                        label: root.primaryLabel(false)
                                         primary: true
                                         enabled: root.primaryEnabled()
-                                        onClicked: root.runPrimaryAction()
+                                        onClicked: root.runPrimaryAction(false)
                                     }
 
                                     AccentButton {

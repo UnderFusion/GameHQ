@@ -62,13 +62,22 @@ UpdateService::UpdateService(QString owner, QString repo, QString installedVersi
             [this](const VerifiedUpdate &verified) {
         m_verified = verified;
         setState(State::ReadyToInstall);
+        if (m_installWhenReady) {
+            m_installWhenReady = false;
+            // Queued so the downloader finishes its own ready handling first;
+            // installAndRestart() re-checks the state and ignores a stale call.
+            QMetaObject::invokeMethod(this, &UpdateService::installAndRestart,
+                                      Qt::QueuedConnection);
+        }
     });
     connect(m_downloader, &UpdateDownloader::cancelled, this, [this] {
+        m_installWhenReady = false;
         m_progress = 0;
         Q_EMIT progressChanged();
         setState(State::UpdateAvailable);
     });
     connect(m_downloader, &UpdateDownloader::failed, this, [this](const QString &reason) {
+        m_installWhenReady = false;
         m_errorText = reason;
         Q_EMIT errorChanged();
         m_progress = 0;
@@ -473,6 +482,20 @@ void UpdateService::downloadUpdate()
     Q_EMIT progressChanged();
     setState(State::Downloading);
     m_downloader->start(*m_release);
+}
+
+void UpdateService::downloadAndInstall()
+{
+    if (m_state == State::ReadyToInstall) {
+        installAndRestart();
+        return;
+    }
+    // Set before starting: a verified package already staged can report
+    // ready synchronously from inside downloadUpdate().
+    m_installWhenReady = true;
+    downloadUpdate();
+    if (m_state != State::Downloading)
+        m_installWhenReady = false;
 }
 
 void UpdateService::cancelDownload()

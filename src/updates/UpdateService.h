@@ -113,6 +113,9 @@ public:
     // Test hook: send release discovery to a local fixture instead of GitHub.
     void setReleaseApiBase(const QString &base);
     Q_INVOKABLE void downloadUpdate();
+    // One-click update: downloads (if needed), then starts installAndRestart()
+    // as soon as the package is verified. Cancel or failure drops the request.
+    Q_INVOKABLE void downloadAndInstall();
     Q_INVOKABLE void cancelDownload();
     Q_INVOKABLE void installAndRestart();
     Q_INVOKABLE void skipVersion();
@@ -172,6 +175,7 @@ private:
     QElapsedTimer m_lastCheckRequest;
     bool m_revalidatingInstall = false;
     bool m_failedDuringCheck = false;
+    bool m_installWhenReady = false;
     // Guards the one unconditional re-request after a 304 arrived with no
     // cached release, so a server that keeps answering 304 cannot loop.
     bool m_retriedWithoutCache = false;

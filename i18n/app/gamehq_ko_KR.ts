@@ -4,95 +4,97 @@
   <context>
     <name>GameHQ</name>
     <message id="gamehq.about.enjoying_gamehq">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="827"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="878"></location>
       <source>Enjoying GameHQ?</source>
       <translation>GameHQ가 마음에 드시나요?</translation>
     </message>
     <message id="gamehq.about.full_release_notes">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="694"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="730"></location>
       <source>View full release notes</source>
       <translation>전체 릴리스 정보 보기</translation>
     </message>
     <message id="gamehq.about.github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="786"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1124"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="837"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1189"></location>
       <source>GitHub</source>
       <translation>GitHub</translation>
     </message>
     <message id="gamehq.about.license">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="798"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="849"></location>
       <source>License</source>
       <translation>라이선스</translation>
     </message>
     <message id="gamehq.about.mode.installed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="531"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="567"></location>
       <source>Installed</source>
       <translation>설치됨</translation>
     </message>
     <message id="gamehq.about.mode.portable">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="528"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="564"></location>
       <source>Portable</source>
       <translation>포터블</translation>
     </message>
     <message id="gamehq.about.more_improvements">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="720"></location>
       <source>Plus more improvements and fixes.</source>
       <translation>그 밖에도 다양한 개선 사항과 수정 사항이 있습니다.</translation>
     </message>
     <message id="gamehq.about.product_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="639"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="675"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
       <translation>PC 게임을 위한 컨트롤러 친화적인 스크린샷, 리플레이 및 미디어 갤러리입니다.</translation>
     </message>
     <message id="gamehq.about.product_updated">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="494"></location>
+      <location filename="src/ui/qml/Main.qml" line="97"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="530"></location>
       <source>%1 updated</source>
       <translation>%1 업데이트됨</translation>
     </message>
     <message id="gamehq.about.project_links">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="770"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="821"></location>
       <source>PROJECT LINKS</source>
       <translation>프로젝트 링크</translation>
     </message>
     <message id="gamehq.about.quick_actions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="715"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="751"></location>
       <source>QUICK ACTIONS</source>
       <translation>빠른 작업</translation>
     </message>
     <message id="gamehq.about.report_issue">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="792"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="843"></location>
       <source>Report issue</source>
       <translation>문제 신고</translation>
     </message>
     <message id="gamehq.about.star_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="836"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="887"></location>
       <source>A GitHub star helps more players discover the project.</source>
       <translation>GitHub 별표는 더 많은 플레이어가 프로젝트를 발견하는 데 도움이 됩니다.</translation>
     </message>
     <message id="gamehq.about.star_on_github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="847"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="898"></location>
       <source>Star on GitHub</source>
       <translation>GitHub에서 별표 주기</translation>
     </message>
     <message id="gamehq.about.version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="509"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="876"></location>
+      <location filename="src/ui/qml/Main.qml" line="99"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="545"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="927"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="18"></location>
       <source>Version %1</source>
       <translation>버전 %1</translation>
     </message>
     <message id="gamehq.about.whats_new_in">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="649"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="685"></location>
       <source>WHAT'S NEW IN %1</source>
       <translation>%1의 새로운 기능</translation>
     </message>
     <message id="gamehq.action.back">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="585"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="621"></location>
       <source>Back</source>
       <translation>뒤로</translation>
     </message>
     <message id="gamehq.action.back_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="582"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="618"></location>
       <source>%1  Back</source>
       <translation>%1  뒤로</translation>
     </message>
@@ -106,7 +108,7 @@
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="23"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="174"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="180"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
@@ -114,9 +116,9 @@
       <translation>취소</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1290"></location>
-      <location filename="src/ui/qml/Main.qml" line="1309"></location>
-      <location filename="src/ui/qml/Main.qml" line="1348"></location>
+      <location filename="src/ui/qml/Main.qml" line="1295"></location>
+      <location filename="src/ui/qml/Main.qml" line="1314"></location>
+      <location filename="src/ui/qml/Main.qml" line="1353"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1067"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="17"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -343,7 +345,7 @@
     </message>
     <message id="gamehq.action.not_now">
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="108"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="187"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="193"></location>
       <source>Not now</source>
       <translation>나중에</translation>
     </message>
@@ -569,7 +571,7 @@
     </message>
     <message id="gamehq.common.action.close">
       <location filename="src/ui/qml/components/DialogCloseButton.qml" line="9"></location>
-      <location filename="src/ui/qml/components/HelpDialog.qml" line="118"></location>
+      <location filename="src/ui/qml/components/HelpDialog.qml" line="119"></location>
       <source>Close</source>
       <translation>닫기</translation>
     </message>
@@ -983,17 +985,17 @@
       <translation>캡처 작업이 제한 시간 내에 안전하게 완료되지 않아 업데이트가 취소되었습니다.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="420"></location>
+      <location filename="src/updates/UpdateService.cpp" line="454"></location>
       <source>Update check failed: %1</source>
       <translation>업데이트 확인 실패: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="182"></location>
+      <location filename="src/updates/UpdateService.cpp" line="191"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub에서 업데이트 확인을 일시적으로 제한했습니다. GameHQ가 나중에 다시 시도합니다.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="176"></location>
+      <location filename="src/updates/UpdateService.cpp" line="185"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub에서 업데이트 확인을 일시적으로 제한했습니다. GameHQ가 %1 이후에 다시 시도합니다.</translation>
     </message>
@@ -1279,27 +1281,27 @@
       <translation>GameHQ에서 이 설치 위치에 업데이트 파일을 안전하게 쓸 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="308"></location>
+      <location filename="src/updates/UpdateService.cpp" line="340"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>다운로드 후 릴리스가 변경되었습니다. 설치 전에 다시 확인하세요.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="368"></location>
+      <location filename="src/updates/UpdateService.cpp" line="402"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>다운로드한 릴리스가 설치 전에 철회되었습니다.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="412"></location>
+      <location filename="src/updates/UpdateService.cpp" line="446"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>릴리스를 다시 검증할 수 없습니다: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="337"></location>
+      <location filename="src/updates/UpdateService.cpp" line="369"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>설치 전에 릴리스를 새로 검증할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="390"></location>
+      <location filename="src/updates/UpdateService.cpp" line="424"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>설치 전에 GitHub에서 이 릴리스를 다시 검증할 수 없습니다. 나중에 다시 시도하세요.</translation>
     </message>
@@ -1350,19 +1352,19 @@
       <translation>폴더 추가…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1350"></location>
+      <location filename="src/ui/qml/Main.qml" line="1355"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>일괄 선택</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1344"></location>
+      <location filename="src/ui/qml/Main.qml" line="1349"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>공유</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1346"></location>
+      <location filename="src/ui/qml/Main.qml" line="1351"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>폴더에서 보기</translation>
@@ -1375,7 +1377,7 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1278"></location>
+      <location filename="src/ui/qml/Main.qml" line="1283"></location>
       <source>%1 · %2
 The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
       <oldsource>%1 · %2
@@ -1384,13 +1386,13 @@ The file will be moved to the Recycle Bin. Files in imported folders are left un
 파일이 휴지통으로 이동됩니다. 감시 폴더의 파일은 변경되지 않습니다.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1288"></location>
+      <location filename="src/ui/qml/Main.qml" line="1293"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1065"></location>
       <source>Delete capture?</source>
       <translation>캡처를 삭제할까요?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="536"></location>
+      <location filename="src/ui/qml/Main.qml" line="541"></location>
       <source>%n capture will be moved to the Recycle Bin.
 Files in watched folders are left untouched.</source>
       <oldsource>%n capture will be moved to the Recycle Bin.
@@ -1401,7 +1403,7 @@ Files in imported folders are left untouched.</oldsource>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1307"></location>
+      <location filename="src/ui/qml/Main.qml" line="1312"></location>
       <source>Delete selected captures?</source>
       <translation>선택한 캡처를 삭제할까요?</translation>
     </message>
@@ -1478,226 +1480,226 @@ Files in imported folders are left untouched.</oldsource>
       <translation>아직 확인하지 않음</translation>
     </message>
     <message id="gamehq.help.binding.select_mode">
-      <location filename="src/ui/qml/HelpView.qml" line="86"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="232"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="89"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="235"></location>
       <source>Select mode</source>
       <translation>선택 모드</translation>
     </message>
     <message id="gamehq.help.feature.gallery.description">
-      <location filename="src/ui/qml/HelpView.qml" line="318"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="321"></location>
       <source>All captures in one grid — filter by category or game. Grid navigation works with keyboard, mouse, and controller.</source>
       <translation>모든 캡처를 하나의 그리드에서 보고 범주나 게임별로 필터링합니다. 키보드, 마우스, 컨트롤러로 그리드를 탐색할 수 있습니다.</translation>
     </message>
     <message id="gamehq.help.feature.gallery.title">
-      <location filename="src/ui/qml/HelpView.qml" line="316"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="319"></location>
       <source>Gallery</source>
       <translation>갤러리</translation>
     </message>
     <message id="gamehq.help.feature.lightbox.description">
-      <location filename="src/ui/qml/HelpView.qml" line="330"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="333"></location>
       <source>Full-screen viewer for screenshots and videos. Opens from both the main window and the overlay.</source>
       <translation>스크린샷과 동영상을 위한 전체 화면 뷰어입니다. 기본 창과 오버레이에서 모두 열 수 있습니다.</translation>
     </message>
     <message id="gamehq.help.feature.lightbox.title">
-      <location filename="src/ui/qml/HelpView.qml" line="328"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="331"></location>
       <source>Lightbox</source>
       <translation>라이트박스</translation>
     </message>
     <message id="gamehq.help.feature.overlay.description">
-      <location filename="src/ui/qml/HelpView.qml" line="324"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="327"></location>
       <source>Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications.</source>
       <translation>투명한 전체 화면 HUD입니다. Alt+Tab으로 전환하지 않고 게임 안에서 캡처를 보고 관리할 수 있습니다. 자체 갤러리 그리드, 라이트박스, 토스트 알림을 포함합니다.</translation>
     </message>
     <message id="gamehq.help.feature.overlay.title">
-      <location filename="src/ui/qml/HelpView.qml" line="322"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="325"></location>
       <source>Overlay</source>
       <translation>오버레이</translation>
     </message>
     <message id="gamehq.help.feature.replay.description">
-      <location filename="src/ui/qml/HelpView.qml" line="306"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="309"></location>
       <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
       <translation>활성화하면 게임에 포커스가 있는 동안 리플레이 버퍼가 자동으로 준비되어 백그라운드에서 녹화합니다. Share를 길게 누르거나 Ctrl+Shift+E를 눌러 최근 몇 초를 클립으로 저장하세요. 설정 → 리플레이에서 상시 녹화를 켜거나 끌 수 있습니다.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
-      <location filename="src/ui/qml/HelpView.qml" line="304"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="307"></location>
       <source>Replay buffer</source>
       <translation>리플레이 버퍼</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.description">
-      <location filename="src/ui/qml/HelpView.qml" line="312"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="315"></location>
       <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
       <translation>GDI를 통해 활성 게임 창을 캡처하고 PNG 파일을 캡처 폴더에 저장한 뒤 즉시 셔터 피드백을 제공합니다.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
-      <location filename="src/ui/qml/HelpView.qml" line="310"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="313"></location>
       <source>Screenshots</source>
       <translation>스크린샷</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.description">
-      <location filename="src/ui/qml/HelpView.qml" line="336"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="339"></location>
       <source>Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 scans it for new captures automatically.</source>
       <translation>원하는 폴더(Game Bar, Steam, NVIDIA ShadowPlay)를 추가하면 %1에서 새 캡처를 자동으로 검색합니다.</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.title">
-      <location filename="src/ui/qml/HelpView.qml" line="334"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="337"></location>
       <source>Watched folders</source>
       <translation>감시 폴더</translation>
     </message>
     <message id="gamehq.help.features">
-      <location filename="src/ui/qml/HelpView.qml" line="280"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="283"></location>
       <source>Features</source>
       <translation>기능</translation>
     </message>
     <message id="gamehq.help.gamepad.button_combination">
-      <location filename="src/ui/qml/HelpView.qml" line="185"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="188"></location>
       <source>Button combination</source>
       <translation>버튼 조합</translation>
     </message>
     <message id="gamehq.help.gamepad.button_combination_action">
-      <location filename="src/ui/qml/HelpView.qml" line="187"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="190"></location>
       <source>Press the ordered pair within the configured combination window</source>
       <translation>설정된 조합 입력 시간 안에 순서대로 두 버튼 누르기</translation>
     </message>
     <message id="gamehq.help.gamepad.circle">
-      <location filename="src/ui/qml/HelpView.qml" line="214"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="217"></location>
       <source>Circle</source>
       <translation>Circle</translation>
     </message>
     <message id="gamehq.help.gamepad.circle_action">
-      <location filename="src/ui/qml/HelpView.qml" line="216"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="219"></location>
       <source>Back / close overlay</source>
       <translation>뒤로/오버레이 닫기</translation>
     </message>
     <message id="gamehq.help.gamepad.cross">
-      <location filename="src/ui/qml/HelpView.qml" line="208"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="211"></location>
       <source>Cross</source>
       <translation>Cross</translation>
     </message>
     <message id="gamehq.help.gamepad.cross_action">
-      <location filename="src/ui/qml/HelpView.qml" line="210"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="213"></location>
       <source>Open selected capture / confirm</source>
       <translation>선택한 캡처 열기/확인</translation>
     </message>
     <message id="gamehq.help.gamepad.navigation_controls">
-      <location filename="src/ui/qml/HelpView.qml" line="202"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="205"></location>
       <source>D-pad / Left Stick</source>
       <translation>D-pad/왼쪽 스틱</translation>
     </message>
     <message id="gamehq.help.gamepad.ps_button">
-      <location filename="src/ui/qml/HelpView.qml" line="191"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="194"></location>
       <source>PS button</source>
       <translation>PS 버튼</translation>
     </message>
     <message id="gamehq.help.gamepad.select_mode">
-      <location filename="src/ui/qml/HelpView.qml" line="234"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="237"></location>
       <source>Cross toggles, Triangle selects all, Square deletes, Circle exits</source>
       <translation>Cross — 선택 전환 | Triangle — 모두 선택 | Square — 삭제 | Circle — 종료</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold">
-      <location filename="src/ui/qml/HelpView.qml" line="173"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="176"></location>
       <source>Share (hold)</source>
       <translation>Share(길게 누르기)</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold_action">
-      <location filename="src/ui/qml/HelpView.qml" line="175"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="178"></location>
       <source>Save replay clip; hold consumes the tap</source>
       <translation>리플레이 클립 저장. 길게 누르기가 완료되면 짧게 누르기 동작이 실행되지 않음</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap">
-      <location filename="src/ui/qml/HelpView.qml" line="179"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="182"></location>
       <source>Share (2× / 3×)</source>
       <translation>Share(두 번/세 번 누르기)</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap_action">
-      <location filename="src/ui/qml/HelpView.qml" line="181"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="184"></location>
       <source>Exact double/triple tap; lower counts wait only for the configured interval</source>
       <translation>정확히 두 번 또는 세 번 누르기. 더 적게 누른 동작은 설정된 입력 간격만큼만 대기</translation>
     </message>
     <message id="gamehq.help.gamepad.square">
-      <location filename="src/ui/qml/HelpView.qml" line="220"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="223"></location>
       <source>Square</source>
       <translation>Square</translation>
     </message>
     <message id="gamehq.help.gamepad.square_action">
-      <location filename="src/ui/qml/HelpView.qml" line="222"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="225"></location>
       <source>Action menu (Share / Show in folder / Delete)</source>
       <translation>작업 메뉴(공유/폴더에서 보기/삭제)</translation>
     </message>
     <message id="gamehq.help.gamepad.switch_panel">
-      <location filename="src/ui/qml/HelpView.qml" line="198"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="201"></location>
       <source>Switch panel: sidebar ↔ grid (app) / flip captures (overlay)</source>
       <translation>패널 전환: 사이드바 ↔ 그리드(앱)/캡처 전환(오버레이)</translation>
     </message>
     <message id="gamehq.help.gamepad.system_share_action">
-      <location filename="src/ui/qml/HelpView.qml" line="169"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="172"></location>
       <source>Take screenshot; distinct from Xbox View / Back</source>
       <translation>스크린샷 캡처. Xbox View/Back과 구분됨</translation>
     </message>
     <message id="gamehq.help.gamepad.system_share_tap">
-      <location filename="src/ui/qml/HelpView.qml" line="167"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="170"></location>
       <source>System Share (tap)</source>
       <translation>시스템 Share(짧게 누르기)</translation>
     </message>
     <message id="gamehq.help.gamepad.triangle">
-      <location filename="src/ui/qml/HelpView.qml" line="226"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="229"></location>
       <source>Triangle</source>
       <translation>Triangle</translation>
     </message>
     <message id="gamehq.help.gamepad_shortcuts">
-      <location filename="src/ui/qml/HelpView.qml" line="143"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="146"></location>
       <source>DualSense / gamepad</source>
       <translation>DualSense/게임패드</translation>
     </message>
     <message id="gamehq.help.keyboard.open_capture">
-      <location filename="src/ui/qml/HelpView.qml" line="82"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="85"></location>
       <source>Open selected capture</source>
       <translation>선택한 캡처 열기</translation>
     </message>
     <message id="gamehq.help.keyboard.open_overlay">
-      <location filename="src/ui/qml/HelpView.qml" line="67"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="193"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="70"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="196"></location>
       <source>Open / close overlay</source>
       <translation>오버레이 열기/닫기</translation>
     </message>
     <message id="gamehq.help.keyboard.save_replay">
-      <location filename="src/ui/qml/HelpView.qml" line="77"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="80"></location>
       <source>Save last N seconds as clip</source>
       <translation>최근 N초를 클립으로 저장</translation>
     </message>
     <message id="gamehq.help.keyboard.select_mode">
-      <location filename="src/ui/qml/HelpView.qml" line="88"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="91"></location>
       <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
       <translation>Enter/Space — 선택 전환 | Ctrl+A — 모두 선택 | Delete — 선택 항목 삭제</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
-      <location filename="src/ui/qml/HelpView.qml" line="98"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="101"></location>
       <source>Show selected in Explorer</source>
       <translation>선택 항목을 탐색기에서 보기</translation>
     </message>
     <message id="gamehq.help.keyboard.take_screenshot">
-      <location filename="src/ui/qml/HelpView.qml" line="72"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="75"></location>
       <source>Take screenshot</source>
       <translation>스크린샷 캡처</translation>
     </message>
     <message id="gamehq.help.keyboard.toggle_favorite">
-      <location filename="src/ui/qml/HelpView.qml" line="93"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="228"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="96"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="231"></location>
       <source>Favorite / unfavorite selected</source>
       <translation>선택 항목 즐겨찾기 추가/제거</translation>
     </message>
     <message id="gamehq.help.keyboard_shortcuts">
-      <location filename="src/ui/qml/HelpView.qml" line="42"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="45"></location>
       <source>Keyboard shortcuts</source>
       <translation>키보드 바로 가기</translation>
     </message>
     <message id="gamehq.help.navigate_gallery">
-      <location filename="src/ui/qml/HelpView.qml" line="103"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="204"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="106"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="207"></location>
       <source>Navigate gallery grid</source>
       <translation>갤러리 그리드 탐색</translation>
     </message>
     <message id="gamehq.help.open_controller_guide">
-      <location filename="src/ui/qml/HelpView.qml" line="266"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="269"></location>
       <source>Open the controller compatibility guide</source>
       <translation>컨트롤러 호환성 가이드 열기</translation>
     </message>
@@ -2094,7 +2096,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 공유: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1258"></location>
+      <location filename="src/ui/qml/Main.qml" line="1263"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>감시할 폴더 선택</translation>
@@ -2108,44 +2110,44 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>정보</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="206"></location>
+      <location filename="src/ui/qml/Main.qml" line="211"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="160"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>전체</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="214"></location>
+      <location filename="src/ui/qml/Main.qml" line="219"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="39"></location>
       <source>Clips</source>
       <translation>클립</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="210"></location>
+      <location filename="src/ui/qml/Main.qml" line="215"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Favorites</source>
       <translation>즐겨찾기</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="216"></location>
+      <location filename="src/ui/qml/Main.qml" line="221"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="41"></location>
       <source>Game</source>
       <translation>게임</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="218"></location>
+      <location filename="src/ui/qml/Main.qml" line="223"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="43"></location>
       <source>Game favorites</source>
       <translation>게임 즐겨찾기</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="208"></location>
+      <location filename="src/ui/qml/Main.qml" line="213"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Recent</source>
       <translation>최근 항목</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="212"></location>
+      <location filename="src/ui/qml/Main.qml" line="217"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="37"></location>
       <source>Screenshots</source>
       <translation>스크린샷</translation>
@@ -2168,7 +2170,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.navigation.help">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="478"></location>
-      <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
+      <location filename="src/ui/qml/components/HelpDialog.qml" line="97"></location>
       <source>Help</source>
       <translation>도움말</translation>
     </message>
@@ -2565,7 +2567,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>문제 신고</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="804"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="855"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
       <source>Security &amp; privacy</source>
       <translation>보안 및 개인정보 보호</translation>
@@ -3560,7 +3562,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>자동으로 수정</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/Main.qml" line="172"></location>
+      <location filename="src/ui/qml/Main.qml" line="177"></location>
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="69"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
@@ -5358,6 +5360,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>스크린샷 촬영</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="289"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ가 업데이트를 적용한 뒤 다시 시작합니다.</translation>
@@ -5428,19 +5431,19 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ %1에 포함됨</translation>
     </message>
     <message id="gamehq.update.cancel_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="223"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="230"></location>
       <source>Cancel download</source>
       <translation>다운로드 취소</translation>
     </message>
     <message id="gamehq.update.check.label">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="243"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="250"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="124"></location>
       <source>Check for updates</source>
       <translation>업데이트 확인</translation>
     </message>
     <message id="gamehq.update.check_again">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="237"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1073"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="244"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1138"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
       <source>Check again</source>
       <translation>다시 확인</translation>
@@ -5468,7 +5471,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>지금 확인</translation>
     </message>
     <message id="gamehq.update.checking">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="217"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="138"></location>
       <source>Checking...</source>
       <translation>확인 중…</translation>
@@ -5484,7 +5487,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>업데이트 확인 중</translation>
     </message>
     <message id="gamehq.update.choose_install_time">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="918"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="292"></location>
       <source>Choose when to install %1 %2.</source>
       <translation>%1 %2을(를) 설치할 시점을 선택하세요.</translation>
     </message>
@@ -5499,12 +5502,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ %1을(를) 다운로드하고 SHA-256으로 검증했습니다.</translation>
     </message>
     <message id="gamehq.update.download_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="224"></location>
       <source>Download update %1</source>
       <translation>업데이트 %1 다운로드</translation>
     </message>
     <message id="gamehq.update.downloading_percent">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="165"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="278"></location>
       <source>Downloading %1%</source>
       <translation>다운로드 중: %1%</translation>
     </message>
@@ -5529,8 +5533,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>베타 버전 포함</translation>
     </message>
     <message id="gamehq.update.install_and_restart">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="226"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="177"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="227"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="233"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="183"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
       <source>Install and restart</source>
       <translation>설치 후 다시 시작</translation>
@@ -5547,7 +5552,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>설치 중</translation>
     </message>
     <message id="gamehq.update.installing_progress">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="233"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="240"></location>
       <source>Installing...</source>
       <translation>설치 중…</translation>
     </message>
@@ -5562,12 +5567,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>마지막 확인: %1</translation>
     </message>
     <message id="gamehq.update.last_checked_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="564"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="600"></location>
       <source>%1  %2</source>
       <translation>%1  %2</translation>
     </message>
     <message id="gamehq.update.new_version_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="593"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
       <source>New version available</source>
       <translation>새 버전 사용 가능</translation>
     </message>
@@ -5582,7 +5587,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>아직 확인하지 않음</translation>
     </message>
     <message id="gamehq.update.preparing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="230"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="237"></location>
       <source>Preparing...</source>
       <translation>준비 중…</translation>
     </message>
@@ -5624,28 +5629,29 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>출시일: %1</translation>
     </message>
     <message id="gamehq.update.remind_later">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="943"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1008"></location>
       <source>Remind me later</source>
       <translation>나중에 알림</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="282"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>업데이트를 적용하기 위해 GameHQ가 다시 시작됩니다.</translation>
     </message>
     <message id="gamehq.update.retry_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="240"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="247"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
       <source>Retry download</source>
       <translation>다운로드 다시 시도</translation>
     </message>
     <message id="gamehq.update.see_whats_new">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="161"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="165"></location>
       <source>See what's new</source>
       <translation>새로운 기능 보기</translation>
     </message>
     <message id="gamehq.update.settings">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="738"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="789"></location>
       <source>Update settings</source>
       <translation>업데이트 설정</translation>
     </message>
@@ -5655,12 +5661,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>SHA-256은 데이터 손상을 감지하지만 GitHub 계정 침해는 감지하지 못합니다.</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="957"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1022"></location>
       <source>Skip this version</source>
       <translation>이 버전 건너뛰기</translation>
     </message>
     <message id="gamehq.update.skip_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="748"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="799"></location>
       <source>Skip version %1</source>
       <translation>버전 %1 건너뛰기</translation>
     </message>
@@ -5719,7 +5725,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ %1을(를) 사용할 수 있습니다.</translation>
     </message>
     <message id="gamehq.update.versions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="974"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1039"></location>
       <source>VERSIONS</source>
       <translation>버전</translation>
     </message>
@@ -5729,11 +5735,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>릴리스 정보 보기</translation>
     </message>
     <message id="gamehq.update.view_update">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="164"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="168"></location>
       <source>View update</source>
       <translation>업데이트 보기</translation>
     </message>
     <message id="gamehq.update.waiting_for_capture">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="286"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>캡처 작업이 안전하게 완료되기를 기다리는 중…</translation>

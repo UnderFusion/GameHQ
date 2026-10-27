@@ -4,6 +4,17 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
+### Changed
+
+- **Install updates straight from the banner.** The update banner now has an Install and restart button that downloads, verifies and installs the new version in one click, without opening the release notes first.
+- **Download progress is shown where you started it.** The update banner and the About dialog both show a progress bar and status while an update downloads, prepares and installs.
+- **No About dialog after an update.** After an update restarts GameHQ, a short notification confirms the new version instead of the About dialog opening on its own; the About row keeps its dot until you read the notes.
+
+### Fixed
+
+- Holding a controller stick in the About or Help dialog no longer plays a repeating click once the text has reached the top or bottom.
+- Release notes bundled with GameHQ no longer show raw link markup such as `[@name](https://...)`.
+
 ## [0.8.0] - 2026-10-26
 
 GameHQ 0.8.0 records your game's own sound, reports audio recording problems instead of saving silent clips, keeps sound and picture in sync, and makes HDR screenshots, deleting and controller shortcuts more dependable. It collects every change since stable 0.7.9, including the 0.7.10 and 0.8.0 betas.

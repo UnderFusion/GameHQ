@@ -26,8 +26,9 @@ FocusScope {
     }
 
     function padScroll(direction) {
-        helpView.scrollBy(direction)
-        sounds.play("nav_tick")
+        // A held stick repeats this; stay quiet once the edge is reached.
+        if (helpView.scrollBy(direction))
+            sounds.play("nav_tick")
     }
 
     function padConfirm() {

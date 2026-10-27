@@ -280,6 +280,7 @@ QtObject {
     // Update banner app badge: the tinted tile and the logo inside it.
     readonly property int updateBannerBadge: 40
     readonly property int updateBannerLogo: 26
+    readonly property int updateProgressHeight: 6
 
     // Video player controls
     readonly property int playerButtonSize: 44
