@@ -139,9 +139,8 @@ void InputEngine::replayPendingPress(const PendingPress& press)
             && !routeLegacySystemEdge(press.source, press.fingerprint,
                                       press.controlId, false))
             return;
-        m_runtime->release(QStringLiteral("controller"),
-                           canonicalProfile(press.source, press.fingerprint),
-                           press.controlId);
+        releaseControllerControl(canonicalProfile(press.source, press.fingerprint),
+                                 press.controlId);
         stopNavRepeatOnRelease(press.controlId);
     }
 }

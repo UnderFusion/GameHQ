@@ -131,9 +131,9 @@ CapabilityRouteResult ProviderIntegration::routeLegacySystemEdge(
 
 bool ProviderIntegration::allowsLegacyViewFallback(
     ControllerProvider provider, const QString& providerDeviceId,
-    bool hasExplicitViewBinding) const
+    bool hasExplicitViewBinding, bool fallbackEnabled) const
 {
-    if (provider != ControllerProvider::XInput || hasExplicitViewBinding
+    if (!fallbackEnabled || provider != ControllerProvider::XInput || hasExplicitViewBinding
         || !providerDeviceId.startsWith(QLatin1String("xinput.slot")))
         return false;
     const QString logicalId = m_registry.logicalIdFor(provider, providerDeviceId);

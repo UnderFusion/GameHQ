@@ -417,6 +417,32 @@ in [release-manifest-security-review.md](release-manifest-security-review.md)):
   [Download Verification](download-verification.md) states the current
   signing status.
 
+## Completed-update startup and recovery
+
+Starting with 0.8.1, terminal `healthy` and `rolled_back` phases take precedence
+over a retained `swap.manifest`. The application starts normally, still checks
+active maintenance, and retains rollback material until a subsequent successful
+start has run for seven seconds. Cleanup stops at the first failure and removes
+`transaction.phase` last. A locked file therefore leaves a completed state that
+can start again and retry cleanup; `updater.log` remains for diagnostics.
+Incomplete or unknown phases, and a journal without a terminal phase, continue
+through recovery.
+
+For an affected 0.8.0 installation that cannot open, use the fixed installer
+over the existing installation once the hotfix is published. Do not uninstall
+or remove the profile, library database, favorites or captures. The narrowly
+guarded `packaging/repair-completed-update.ps1` is an alternative local recovery:
+it requires `healthy`, idle processes/mutexes and program hashes matching the
+retained completed 0.8.0 package. It copies diagnostic evidence and renames only
+the stale journal, keeping the change reversible. It refuses incomplete updates.
+
+`packaging/test-update-lifecycle.py` exercises the actual signed full-payload
+transaction using the test-trust helper twin, real application post-update
+initialization, orderly shutdown and two ordinary launches. Its disposable
+profile includes settings, a library game, a favorite capture and capture bytes;
+all are compared after the update and each restart. Test trust is not release
+signing or publication approval.
+
 ## Unsupported locations
 
 Self-update is only offered when the package root is locally writable and

@@ -15,6 +15,15 @@ Public release history and the current local release candidate.
 - Holding a controller stick in the About or Help dialog no longer plays a repeating click once the text has reached the top or bottom.
 - Release notes bundled with GameHQ no longer show raw link markup such as `[@name](https://...)`.
 
+
+## [0.8.1] - 2026-10-29
+
+### Fixed
+
+- GameHQ starts normally after a completed automatic update, even while its recovery journal is retained.
+- Partial cleanup failures keep the completed update state so a later restart can retry without entering recovery.
+- Back/View capture fallback can be switched off for the selected controller source without disabling native Share or other controllers.
+
 ## [0.8.0] - 2026-10-26
 
 GameHQ 0.8.0 records your game's own sound, reports audio recording problems instead of saving silent clips, keeps sound and picture in sync, and makes HDR screenshots, deleting and controller shortcuts more dependable. It collects every change since stable 0.7.9, including the 0.7.10 and 0.8.0 betas.

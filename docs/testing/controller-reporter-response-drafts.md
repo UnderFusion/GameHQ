@@ -1,5 +1,21 @@
 # Controller reporter response drafts
 
+## Issue #32 — DS4Windows (send after 0.8.1 is published)
+
+Thanks for the detailed report. GameHQ 0.8.1 adds a separate **Use Back/View as
+Share** switch in Settings > Input for the selected eligible controller source.
+Please select the virtual Xbox source and turn that switch off, then check that
+touchpad/Back still works in the game without taking screenshots. Please also
+check that the native Sony Share button still takes screenshots and saves replay
+clips, including tap, hold and reconnecting the controller.
+
+We tested the routes in automated regression tests, but real DS4Windows hardware
+confirmation is still pending. Please tell us your DS4Windows version, output
+controller mode, which source you selected, and whether those checks work. If
+changing a binding affects both sources, please include their selected preset
+names or a binding export so we can check shared assignments. There is no need
+to change HidHide or disable XInput for this fix.
+
 ## GameSir G7 Pro
 
 Thanks for reporting the dedicated Capture-button issue. I have an instrumented

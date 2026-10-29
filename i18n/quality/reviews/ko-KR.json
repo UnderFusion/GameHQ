@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_ko_KR.ts",
-    "sha256": "cd42fe8b615785f8bd173c90fa6dfd4a0874281b54fd090c5cfa75d65773f828",
-    "message_count": 1103
+    "sha256": "bfd4f4a4a4f9177eee20d17aa37d2dd71fa8d4f41144d7132149d666952a2ad3",
+    "message_count": 1106
   },
   "coverage": [
     {
@@ -6866,6 +6866,33 @@
       "translation_hash": "87e4778871ea3680b749b720755a148e978a60c2f2a08de176bb1ebf4488a6a9",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:191"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.view_fallback.description",
+      "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+      "translation_hash": "40fe03e38c176a64216250e3b142bf032a8f64fc9ec5c1f945f738ae5575d63c",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:102"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.view_fallback.label",
+      "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+      "translation_hash": "38eea1ea07daa7935e07d4351f14641d53eef596dc8374c0fd4d01a04a6f464d",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:100"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.view_fallback.title",
+      "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+      "translation_hash": "1df173789122cbe21f95e999a77ba856b8a1c38de77a965ea9ac749021273873",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:97"
       ],
       "decision": "accepted"
     },
@@ -16151,8 +16178,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_ko_KR.ts",
-      "sha256": "cd42fe8b615785f8bd173c90fa6dfd4a0874281b54fd090c5cfa75d65773f828",
-      "reviewed_units": 1103
+      "sha256": "bfd4f4a4a4f9177eee20d17aa37d2dd71fa8d4f41144d7132149d666952a2ad3",
+      "reviewed_units": 1106
     },
     {
       "surface": "installer",

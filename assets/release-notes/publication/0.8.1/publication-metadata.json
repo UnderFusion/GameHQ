@@ -1,0 +1,630 @@
+{
+  "schema_version": 1,
+  "kind": "release-publication",
+  "version": "0.8.1",
+  "date": "2026-10-29",
+  "source_locale": "en-US",
+  "default_locale": "en-US",
+  "localization_policy": "fallback-allowed",
+  "release_source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+  "release_body": {
+    "filename": "RELEASE_BODY.md",
+    "size": 2530,
+    "sha256": "3313a197434bb84746b0074af1780f5f8d374f12bcb5e51daf96ef1183522688"
+  },
+  "distribution": {
+    "localized_documents": "repository",
+    "github_release_assets": false,
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.8.1/assets/release-notes/publication/0.8.1"
+  },
+  "localized_documents": [
+    {
+      "canonical_locale": "en-US",
+      "requested_locale": "en-US",
+      "effective_locale": "en-US",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "English (United States)",
+      "language_native_name": "English",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.en-US.md",
+      "size": 1022,
+      "sha256": "3f619a9af4ce25e86c79054522d3309e68d9fd2f7e8398bfa4d47862f6580a74",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hans",
+      "requested_locale": "zh-Hans",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Simplified)",
+      "language_native_name": "简体中文",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.zh-Hans.md",
+      "size": 1212,
+      "sha256": "688fe3b78fe89f3a49ad83a70cf5f766ca5f64ea222d5eaffea232a299b1b708",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ru-RU",
+      "requested_locale": "ru-RU",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Russian",
+      "language_native_name": "Русский",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.ru-RU.md",
+      "size": 1199,
+      "sha256": "1b3b453412cfcd77be955ad19493d07c1919faa2a2a92544887394214bceb4fc",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-ES",
+      "requested_locale": "es-ES",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish",
+      "language_native_name": "Español",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.es-ES.md",
+      "size": 1199,
+      "sha256": "8f7767ecc7dc83c8a58e935cfb67a05da4078c155257741b901454bc6d7632fd",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pt-BR",
+      "requested_locale": "pt-BR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Portuguese (Brazil)",
+      "language_native_name": "Português (Brasil)",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.pt-BR.md",
+      "size": 1211,
+      "sha256": "45d90bed04f41ca954f1e00d430e76d05f20ad898c44ba880fae248e039cfba5",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "de-DE",
+      "requested_locale": "de-DE",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "German",
+      "language_native_name": "Deutsch",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.de-DE.md",
+      "size": 1198,
+      "sha256": "ab2cd1f642906b50a18f1dc39e2416c53acedf65a94415e9de6ca94f7c1eec21",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ja-JP",
+      "requested_locale": "ja-JP",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Japanese",
+      "language_native_name": "日本語",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.ja-JP.md",
+      "size": 1200,
+      "sha256": "46b8678284530e18d14616594da71727ea0ecb89b905c3081075e06902109665",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "fr-FR",
+      "requested_locale": "fr-FR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "French",
+      "language_native_name": "Français",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.fr-FR.md",
+      "size": 1198,
+      "sha256": "8336c85f7564a24eee36894a4172aa688a8fcfd9d528382f30b74c8b6552dcd4",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pl-PL",
+      "requested_locale": "pl-PL",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Polish",
+      "language_native_name": "Polski",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.pl-PL.md",
+      "size": 1198,
+      "sha256": "30ae30f5b9d837b350d32b62705d725a52ec0f4fc2c1ae82bfa3bb3dd0a83195",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ko-KR",
+      "requested_locale": "ko-KR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Korean",
+      "language_native_name": "한국어",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.ko-KR.md",
+      "size": 1198,
+      "sha256": "6c9f3ad764bee8dd9871bc010b4a9ca101b454a94a52ae6d25fe498d8f9facf4",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hant",
+      "requested_locale": "zh-Hant",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Traditional)",
+      "language_native_name": "繁體中文",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.zh-Hant.md",
+      "size": 1213,
+      "sha256": "9062ce2acd94ca68d48a013e722a07290e0663debc4415405c009b8e227a2d20",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "tr-TR",
+      "requested_locale": "tr-TR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Turkish",
+      "language_native_name": "Türkçe",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.tr-TR.md",
+      "size": 1199,
+      "sha256": "40cb3f34dbe9852d090acc8da95c0ad549d7450a4b17f76a73709f24eb2bda7d",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "th-TH",
+      "requested_locale": "th-TH",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Thai",
+      "language_native_name": "ไทย",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.th-TH.md",
+      "size": 1196,
+      "sha256": "32d429650c6996138b0c2b1495ad3748a446599063001cf2a5c06ad46141a648",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-419",
+      "requested_locale": "es-419",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish (Latin America)",
+      "language_native_name": "Español (Latinoamérica)",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.es-419.md",
+      "size": 1215,
+      "sha256": "0d204dc46452a9b6a754dccd5bb7f2f6ed788cdaa1cf688e82ef9424475686bc",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "uk-UA",
+      "requested_locale": "uk-UA",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Ukrainian",
+      "language_native_name": "Українська",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.uk-UA.md",
+      "size": 1201,
+      "sha256": "5ca60d5e7782e9b30d68d30750738884b69acd48927bdbe75e410f68101bbb01",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "it-IT",
+      "requested_locale": "it-IT",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Italian",
+      "language_native_name": "Italiano",
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "filename": "release-notes.it-IT.md",
+      "size": 1199,
+      "sha256": "83e4f5339b1e1b9e181abf2e1118dddcf8b412315cf53f328e63261382434cb4",
+      "source_integrity": "sha256:0db9152c1794c4e8dc5c403d4259017c2afe156a89bae58b618a0f68c213349d",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "startup",
+            "cleanup",
+            "back-view"
+          ]
+        },
+        {
+          "section_id": "recovery",
+          "item_ids": [
+            "manual-installer"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "ds4windows"
+          ]
+        }
+      ]
+    }
+  ]
+}

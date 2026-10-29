@@ -43,6 +43,8 @@ inline constexpr QLatin1StringView InputDefaultHoldMs{ "input.default_hold_ms" }
 inline constexpr QLatin1StringView InputMultiTapIntervalMs{ "input.multi_tap_interval_ms" };
 inline constexpr QLatin1StringView InputChordWindowMs{ "input.chord_window_ms" };
 inline constexpr QLatin1StringView InputModernControllerSupport{ "input.modern_controller_support" }; // auto | off
+// Per durable controller or explicit XInput source; absent entries keep legacy behavior.
+inline constexpr QLatin1StringView InputViewBackCaptureFallback{ "input.view_back_capture_fallback" };
 // Steam Input conflict help: guidance only, never touches Steam. The per-game
 // acknowledgement lives under the prefix + Steam AppID: the reviewed controls
 // ("gamepad.capture,gamepad.guide") or "*" when hidden for that game.

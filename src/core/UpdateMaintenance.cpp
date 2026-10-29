@@ -2,7 +2,6 @@
 #include "core/DurableFile.h"
 
 #include <fstream>
-#include <set>
 #include <windows.h>
 
 namespace
@@ -29,6 +28,11 @@ bool updaterHelperActive()
         return false;
     CloseHandle(mutex);
     return true;
+}
+
+bool completedPhase(const std::string &phase)
+{
+    return phase == "healthy" || phase == "rolled_back";
 }
 }
 
@@ -62,6 +66,50 @@ void finish(const std::filesystem::path &packageRoot)
     std::filesystem::remove(markerPath(packageRoot), ec);
 }
 
+bool recoveryRequired(const std::filesystem::path &packageRoot)
+{
+    const std::string phase = readPhase(packageRoot);
+    if (completedPhase(phase))
+        return false;
+    std::error_code ec;
+    return !phase.empty()
+        || std::filesystem::exists(packageRoot / L".update" / L"swap.manifest", ec);
+}
+
+bool cleanupCompleted(const std::filesystem::path &packageRoot, std::string &error)
+{
+    error.clear();
+    if (!completedPhase(readPhase(packageRoot))) {
+        error = "update cleanup requires a completed transaction";
+        return false;
+    }
+    const auto update = packageRoot / L".update";
+    // Stop on the first failure. In particular, never erase the terminal phase
+    // while a journal still exists: that would turn a cleanup failure into a
+    // spurious interrupted update on the next launch.
+    for (const wchar_t *name : {L"backup", L"data-snapshot", L"staging",
+                                 L"failed-new", L"downloads"}) {
+        std::error_code ec;
+        std::filesystem::remove_all(update / name, ec);
+        if (ec) {
+            error = "could not clean completed update directory: "
+                + std::filesystem::path(name).string() + " (" + ec.message() + ")";
+            return false;
+        }
+    }
+    for (const wchar_t *name : {L"swap.manifest", L"healthy.token",
+                                 L"transaction.json", L"transaction.phase"}) {
+        std::error_code ec;
+        std::filesystem::remove(update / name, ec);
+        if (ec) {
+            error = "could not clean completed update marker: "
+                + std::filesystem::path(name).string() + " (" + ec.message() + ")";
+            return false;
+        }
+    }
+    return true;
+}
+
 Info inspect(const std::filesystem::path &packageRoot, bool helperActive,
              std::filesystem::file_time_type now, std::chrono::seconds staleAfter)
 {
@@ -71,11 +119,10 @@ Info inspect(const std::filesystem::path &packageRoot, bool helperActive,
         return {};
 
     const std::string phase = readPhase(packageRoot);
-    static const std::set<std::string> terminal = { "healthy", "rolled_back" };
-    if (terminal.contains(phase))
-        return { State::Inactive, phase };
     if (helperActive)
         return { State::Active, phase };
+    if (completedPhase(phase))
+        return { State::Inactive, phase };
 
     const auto modified = std::filesystem::last_write_time(marker, ec);
     if (ec)

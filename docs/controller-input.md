@@ -8,6 +8,24 @@ Raw Input / HID for Sony pads (vendor 0x054C): DualSense `0x0CE6`, DualSense Edg
 
 **HidHide caveat:** DSX installs HidHide to hide the physical pad from other apps. If HidHide is set to hide devices and GameHQ.exe is not on its application whitelist, Raw Input sees nothing even though the pad works in games — add GameHQ.exe in *HidHide Configuration Client → Applications* for native DualSense handling. The WinMM fallback usually still works meanwhile.
 
+### Back/View capture fallback
+
+Eligible XInput sources without a dedicated Share button retain the existing
+Back/View-to-Capture fallback by default. In Settings > Input, **Use Back/View as
+Share** can disable just that conversion for the selected controller source.
+Native Sony Share, explicit View/Back bindings and other source choices remain
+independent. Changes cancel any in-progress gesture from that source and require
+release before a new press, preventing a delayed capture after toggling.
+
+`input.view_back_capture_fallback` stores choices by a proven durable controller
+identity when available. Unidentifiable XInput devices use an explicitly labelled
+slot source; another pad later occupying that slot inherits that source choice.
+No relationship to a native Sony endpoint is inferred from VID/PID or connection
+order. Named mapping presets can be shared by several assignments, so editing a
+shared preset changes all its users; this independent switch avoids changing
+their capture bindings merely to disable the XInput fallback. The reporter's
+exact shared-preset assignments still require real-device confirmation.
+
 ### Direct Sony HID reader (`SonyHidReader`)
 
 A focus-independent, **read-only** reader for one Sony/DS4 gamepad HID collection, owned per tracked endpoint by `DualSenseDevice`. It was added because Raw Input stopped delivering a Bluetooth DualSense while a particular game was foreground, and WinMM did not re-enumerate the pad after a USB → Bluetooth switch. It opens the collection with `GENERIC_READ` and shared read/write access and runs overlapped `ReadFile` on its own worker thread; it never sends output or feature reports, so it cannot switch a Bluetooth pad between simple and full report mode. It forwards only state reports whose control signature changed, plus a heartbeat at least every 100 ms while the pad streams; reports are queued to the GUI thread and decoded by the same `DualSenseDevice::parseReport` as Raw Input.

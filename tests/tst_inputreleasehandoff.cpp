@@ -15,7 +15,10 @@
 // What this does NOT claim: anything about a real game's reception. That is the
 // physical acceptance work; here the engine's half of the contract is fixed.
 #include "config/ConfigManager.h"
+#include "config/ConfigKeys.h"
+#include "input/BindingEditorModel.h"
 #include "input/BindingRuntime.h"
+#include "input/DualSenseDevice.h"
 #include "input/InputEngine.h"
 #include "input/XInputDevice.h"
 #include "input/WinMMDevice.h"
@@ -42,8 +45,23 @@ class SyntheticXInput final : public XInputDevice
 public:
     using XInputDevice::XInputDevice;
     void buttons(quint32 mask) { setSlotState(0, mask, true); }
+    void buttonsForSlot(int slot, quint32 mask) { setSlotState(slot, mask, true); }
     void press(const QString& controlId) { publishControlPressed(controlId, profile()); }
     void release(const QString& controlId) { publishControlReleased(controlId, profile()); }
+};
+
+class SyntheticSony final : public DualSenseDevice
+{
+public:
+    void arrive() { emit connected(true); }
+    ControlId::DeviceProfile profile() const override
+    {
+        return {QStringLiteral("Sony Raw Input"), QStringLiteral("sony.native-share"),
+                ControlId::ControllerFamily::PlayStation, QStringLiteral("Native DualSense"),
+                QStringLiteral("054c:0ce6"), QStringLiteral("sony-native-endpoint")};
+    }
+    void press(const QString& control) { publishControlPressed(control, profile()); }
+    void release(const QString& control) { publishControlReleased(control, profile()); }
 };
 
 class SyntheticWinMM final : public WinMMDevice
@@ -78,9 +96,14 @@ private slots:
     void inactiveProviderReleaseClosesItsSystemCycle();
     void delayedMirrorAfterReleaseDoesNotToggleAgain();
     void activeReleaseCancelsBufferedMirror();
+    void viewFallbackCanBeDisabledWithoutChangingNativeShareOrAnotherXbox();
+    void viewFallbackPolicyCancelsInFlightGestures();
+    void viewFallbackPersistsAcrossReconnect();
+    void bufferedViewTapReleasesItsCaptureAlias();
 
 private:
     BindingRuntime& rt() { return *engine->m_runtime; }
+    void pinXInputProfile();
 
     std::unique_ptr<QTemporaryDir> dir;
     std::unique_ptr<ConfigManager> config;
@@ -313,6 +336,134 @@ void InputReleaseHandoffTest::activeReleaseCancelsBufferedMirror()
     pad->press(ControlId::Guide);
     pad->release(ControlId::Guide);
     QCOMPARE(toggles.count(), 2);
+}
+
+void InputReleaseHandoffTest::pinXInputProfile()
+{
+    engine->m_bindingEditor->setControllerSpecific(false);
+    auto selected = pad->profile();
+    selected.fingerprint = profile;
+    engine->m_bindingEditor->setControllerProfile(selected);
+    engine->m_bindingEditor->setControllerSpecific(true);
+    QVERIFY(engine->viewBackFallbackAvailable());
+}
+
+void InputReleaseHandoffTest::viewFallbackCanBeDisabledWithoutChangingNativeShareOrAnotherXbox()
+{
+    QSignalSpy shots(engine.get(), &InputEngine::screenshotRequested);
+    pinXInputProfile();
+    QVERIFY(engine->viewBackFallbackEnabled());
+    pad->press(ControlId::ViewBack);
+    pad->release(ControlId::ViewBack);
+    QTRY_COMPARE_WITH_TIMEOUT(shots.count(), 1, 1000);
+
+    engine->setViewBackFallbackEnabled(false);
+    pad->press(ControlId::ViewBack);
+    pad->release(ControlId::ViewBack);
+    QTest::qWait(350);
+    QCOMPARE(shots.count(), 1);
+
+    auto syntheticSony = std::make_unique<SyntheticSony>();
+    auto* sony = syntheticSony.get();
+    engine->m_sonyPad = sony;
+    engine->attachGamepad(std::move(syntheticSony), QStringLiteral("Native Sony"));
+    sony->arrive();
+    engine->activateBackend(sony, QStringLiteral("native Share test"));
+    sony->press(ControlId::Capture);
+    sony->release(ControlId::Capture);
+    QTRY_COMPARE_WITH_TIMEOUT(shots.count(), 2, 1000);
+
+    // Another actual XInput source, without any shared physical identity.
+    pad->buttonsForSlot(1, 0);
+    pad->setKnownDeviceIdentity(1, QStringLiteral("endpoint-unrelated"), QStringLiteral("045e:028e"));
+    engine->observeLegacyBackend(pad, pad->profileForSlot(1));
+    engine->activateBackend(pad, QStringLiteral("other Xbox test"));
+    pad->buttonsForSlot(1, buttonBit(Gamepad::Share));
+    pad->buttonsForSlot(1, 0);
+    QTRY_COMPARE_WITH_TIMEOUT(shots.count(), 3, 1000);
+
+    // An explicit View binding remains effective even with fallback off.
+    QVERIFY(db->upsertBindingOverride({QStringLiteral("controller"), profile,
+        QStringLiteral("global.save_replay"), 1, ControlId::ViewBack,
+        QStringLiteral("press"), 0, false, 1}));
+    rt().reload();
+    engine->m_mappingChains.clear();
+    QSignalSpy replays(engine.get(), &InputEngine::replayRequested);
+    pad->press(ControlId::ViewBack);
+    pad->release(ControlId::ViewBack);
+    QCOMPARE(replays.count(), 1);
+    QCOMPARE(shots.count(), 3);
+}
+
+void InputReleaseHandoffTest::viewFallbackPolicyCancelsInFlightGestures()
+{
+    pinXInputProfile();
+    rt().setDefaultHoldMs(250);
+    QSignalSpy shots(engine.get(), &InputEngine::screenshotRequested);
+    QSignalSpy replays(engine.get(), &InputEngine::replayRequested);
+    pad->press(ControlId::ViewBack);
+    QVERIFY(engine->m_legacyViewFallbackHeld.contains(profile));
+    engine->setViewBackFallbackEnabled(false);
+    QTest::qWait(320);
+    pad->release(ControlId::ViewBack);
+    QCOMPARE(shots.count(), 0);
+    QCOMPARE(replays.count(), 0);
+    QVERIFY(!rt().releaseGateArmed(QStringLiteral("controller"), profile, ControlId::Capture));
+
+    // Enabling while Back is down cannot turn its release into a screenshot.
+    pad->press(ControlId::ViewBack);
+    engine->setViewBackFallbackEnabled(true);
+    pad->release(ControlId::ViewBack);
+    QCOMPARE(shots.count(), 0);
+    pad->press(ControlId::ViewBack);
+    QTRY_COMPARE_WITH_TIMEOUT(replays.count(), 1, 1000);
+    pad->release(ControlId::ViewBack);
+    QCOMPARE(shots.count(), 0);
+    pad->press(ControlId::ViewBack);
+    pad->release(ControlId::ViewBack);
+    QTRY_COMPARE_WITH_TIMEOUT(shots.count(), 1, 1000);
+}
+
+void InputReleaseHandoffTest::viewFallbackPersistsAcrossReconnect()
+{
+    pinXInputProfile();
+    engine->setViewBackFallbackEnabled(false);
+    const QString policyKey = engine->viewBackFallbackKey(profile);
+    ConfigManager reloaded(dir->filePath("config.json"));
+    QVERIFY(reloaded.load());
+    QCOMPARE(reloaded.value(ConfigKeys::InputViewBackCaptureFallback).toMap().value(policyKey).toBool(), false);
+
+    engine->removeLegacyBackend(pad, QStringLiteral("xinput.slot0"));
+    engine->observeLegacyBackend(pad, pad->profile());
+    QCOMPARE(engine->canonicalProfile(pad, QStringLiteral("xinput.slot0")), profile);
+    QVERIFY(!engine->viewBackFallbackEnabled());
+    QSignalSpy shots(engine.get(), &InputEngine::screenshotRequested);
+    pad->press(ControlId::ViewBack);
+    pad->release(ControlId::ViewBack);
+    QTest::qWait(350);
+    QCOMPARE(shots.count(), 0);
+    engine->setViewBackFallbackEnabled(true);
+    pad->press(ControlId::ViewBack);
+    pad->release(ControlId::ViewBack);
+    QTRY_COMPARE_WITH_TIMEOUT(shots.count(), 1, 1000);
+}
+
+void InputReleaseHandoffTest::bufferedViewTapReleasesItsCaptureAlias()
+{
+    pinXInputProfile();
+    QSignalSpy shots(engine.get(), &InputEngine::screenshotRequested);
+    InputEngine::PendingPress pending;
+    pending.source = pad;
+    pending.controlId = ControlId::ViewBack;
+    pending.fingerprint = pad->profile().fingerprint;
+    pending.family = int(pad->profile().family);
+    pending.released = true;
+    engine->replayPendingPress(pending);
+    QTRY_COMPARE_WITH_TIMEOUT(shots.count(), 1, 1000);
+    QVERIFY(!engine->m_legacyViewFallbackHeld.contains(profile));
+    pad->press(ControlId::ViewBack);
+    pad->release(ControlId::ViewBack);
+    QTRY_COMPARE_WITH_TIMEOUT(shots.count(), 2, 1000);
 }
 
 QTEST_MAIN(InputReleaseHandoffTest)

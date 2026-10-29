@@ -62,6 +62,9 @@ class InputEngine : public QObject, public ModernInput::NeutralHandoffSource
     // rename, delete/reassign, follow-fallback vs Built-in defaults, and the
     // explicit "duplicate for this controller" copy-on-write path.
     Q_PROPERTY(QObject* mappingPresets READ mappingPresets CONSTANT)
+    Q_PROPERTY(bool viewBackFallbackAvailable READ viewBackFallbackAvailable NOTIFY viewBackFallbackChanged)
+    Q_PROPERTY(bool viewBackFallbackEnabled READ viewBackFallbackEnabled WRITE setViewBackFallbackEnabled NOTIFY viewBackFallbackChanged)
+    Q_PROPERTY(QString viewBackFallbackScope READ viewBackFallbackScope NOTIFY viewBackFallbackChanged)
     // Diagnostics button probe (Settings → Input): startButtonProbe() opens a
     // 3 s window in which raw button changes — including ones GameHQ normally
     // ignores — are summarized into probeStatus and the diagnostics export.
@@ -84,6 +87,10 @@ public:
     bool controllerFixAvailable() const { return m_controllerFixAvailable; }
     QObject* bindingEditor() const;
     QObject* mappingPresets() const;
+    bool viewBackFallbackAvailable() const;
+    bool viewBackFallbackEnabled() const;
+    QString viewBackFallbackScope() const;
+    void setViewBackFallbackEnabled(bool enabled);
     // C++ face of the same object, so the app can hand the preset model the
     // session game (cpo-p07) without going through QML.
     MappingPresetModel* mappingPresetsModel() const;
@@ -221,6 +228,7 @@ signals:
     void lastInputChanged();
     void controllerStatusChanged();
     void controllerWarningChanged();
+    void viewBackFallbackChanged();
     void probeStatusChanged();
     void modernControllerChanged();
     // The effective controller table may now bind different buttons: bindings
@@ -273,6 +281,10 @@ private:
     bool routeLegacySystemEdge(Gamepad* source, const QString& providerDeviceId,
                                const QString& controlId, bool pressed);
     bool hasExplicitViewBinding(const QString& logicalProfile) const;
+    QString viewBackFallbackKey(const QString& logicalProfile) const;
+    bool viewBackFallbackEnabledFor(const QString& logicalProfile) const;
+    void applyViewBackFallbackPolicies();
+    void releaseControllerControl(const QString& logicalProfile, const QString& controlId);
     void updateActiveBackend();
     void activateBackend(Gamepad* pad, const QString& reason);
     // Pending-candidate confirmation: true once `source` has carried input on
@@ -404,6 +416,7 @@ private:
     QHash<Gamepad*, QSet<QString>> m_legacyObservedIds;
     QHash<QString, QStringList> m_profileMigrationAliases;
     QSet<QString> m_legacyViewFallbackHeld;
+    QVariantMap m_viewBackFallbackPolicies;
     // cpo-o06e: which controls are held right now, fed from the raw edges before
     // any routing; the release handoff's whole evidence base.
     HeldControlTracker m_held;

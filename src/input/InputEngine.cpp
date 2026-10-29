@@ -181,10 +181,19 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
         });
 
     m_controllerClock.start();
+    m_viewBackFallbackPolicies = m_config->value(ConfigKeys::InputViewBackCaptureFallback).toMap();
+    connect(m_bindingEditor.get(), &BindingEditorModel::controllerProfileChanged,
+            this, &InputEngine::viewBackFallbackChanged);
+    connect(m_bindingEditor.get(), &BindingEditorModel::controllerSpecificChanged,
+            this, &InputEngine::viewBackFallbackChanged);
     migrateLegacyHoldSetting();
     applyGestureTiming();
     connect(m_config, &ConfigManager::valueChanged, this,
             [this](const QString& key, const QVariant&) {
+                if (key == ConfigKeys::InputViewBackCaptureFallback) {
+                    applyViewBackFallbackPolicies();
+                    return;
+                }
                 if (key == ConfigKeys::InputModernControllerSupport) {
                     const bool off = m_config->value(key).toString() == QLatin1String("off");
                     m_gameInput->setMode(off
@@ -204,6 +213,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
         if (!prefix.isEmpty() && !QLatin1String("input.").startsWith(prefix)
             && !prefix.startsWith(QLatin1String("input")))
             return;
+        applyViewBackFallbackPolicies();
         applyGestureTiming();
         reloadBindings();
     });
@@ -883,6 +893,103 @@ bool InputEngine::hasExplicitViewBinding(const QString& logicalProfile) const
     return false;
 }
 
+QString InputEngine::viewBackFallbackKey(const QString& logicalProfile) const
+{
+    const auto* logical = m_providers.registry().controller(logicalProfile);
+    if (!logical)
+        return {};
+    for (const auto& attachment : logical->providers) {
+        if (attachment.provider != ModernInput::ControllerProvider::XInput
+            || !m_providers.allowsLegacyViewFallback(attachment.provider,
+                                                     attachment.providerDeviceId, false))
+            continue;
+        // Strong identity is earned by endpoint/container evidence, never VID/PID.
+        // Otherwise this is explicitly a source setting, not a physical-pad claim.
+        return logical->confidence == ModernInput::IdentityConfidence::Strong
+            ? QStringLiteral("controller:") + logicalProfile
+            : QStringLiteral("source:") + attachment.providerDeviceId;
+    }
+    return {};
+}
+
+bool InputEngine::viewBackFallbackAvailable() const
+{
+    return !viewBackFallbackKey(m_bindingEditor->pinnedProfile()).isEmpty();
+}
+
+bool InputEngine::viewBackFallbackEnabledFor(const QString& logicalProfile) const
+{
+    const QString key = viewBackFallbackKey(logicalProfile);
+    return !key.isEmpty() && m_viewBackFallbackPolicies.value(key, true).toBool();
+}
+
+bool InputEngine::viewBackFallbackEnabled() const
+{
+    return viewBackFallbackEnabledFor(m_bindingEditor->pinnedProfile());
+}
+
+QString InputEngine::viewBackFallbackScope() const
+{
+    const QString key = viewBackFallbackKey(m_bindingEditor->pinnedProfile());
+    return key.startsWith(QLatin1String("source:")) ? key.mid(7) : m_bindingEditor->controllerName();
+}
+
+void InputEngine::setViewBackFallbackEnabled(bool enabled)
+{
+    const QString key = viewBackFallbackKey(m_bindingEditor->pinnedProfile());
+    if (key.isEmpty() || viewBackFallbackEnabled() == enabled)
+        return;
+    QVariantMap policies = m_viewBackFallbackPolicies;
+    if (enabled)
+        policies.remove(key);
+    else
+        policies.insert(key, false);
+    m_config->setValue(ConfigKeys::InputViewBackCaptureFallback, policies);
+    m_config->save();
+}
+
+void InputEngine::applyViewBackFallbackPolicies()
+{
+    const QVariantMap next = m_config->value(ConfigKeys::InputViewBackCaptureFallback).toMap();
+    for (const auto& logical : m_providers.registry().controllers()) {
+        const QString key = viewBackFallbackKey(logical.logicalId);
+        if (key.isEmpty()
+            || m_viewBackFallbackPolicies.value(key, true).toBool() == next.value(key, true).toBool())
+            continue;
+        const QString group = QStringLiteral("controller");
+        const QStringList down = m_runtime->downControls(group, logical.logicalId);
+        // A policy change is a route boundary: an old tap/hold must never finish
+        // after the setting changes. Other controllers and native Share routes survive.
+        m_runtime->invalidateGestureStateFor(group, logical.logicalId);
+        for (const QString& control : down)
+            m_runtime->armReleaseGate(group, logical.logicalId, control);
+        m_legacyViewFallbackHeld.remove(logical.logicalId);
+        if (m_pending.source
+            && canonicalProfile(m_pending.source, m_pending.fingerprint) == logical.logicalId) {
+            if (!m_pending.released)
+                m_runtime->armReleaseGate(group, logical.logicalId, m_pending.controlId);
+            clearPendingCandidate();
+        }
+        if (m_repeatRouteProfile == logical.logicalId)
+            stopNavRepeat();
+    }
+    m_viewBackFallbackPolicies = next;
+    emit viewBackFallbackChanged();
+}
+
+void InputEngine::releaseControllerControl(const QString& logicalProfile, const QString& controlId)
+{
+    const QString group = QStringLiteral("controller");
+    m_runtime->release(group, logicalProfile, controlId);
+    if (controlId == ControlId::ViewBack) {
+        // Clear the synthetic release gate too after a policy/mapping boundary,
+        // even when its held marker was cancelled by that boundary.
+        if (m_legacyViewFallbackHeld.remove(logicalProfile)
+            || m_runtime->releaseGateArmed(group, logicalProfile, ControlId::Capture))
+            m_runtime->release(group, logicalProfile, ControlId::Capture);
+    }
+}
+
 namespace {
 // Throttle for routing snapshots pushed from the press path: a mirrored
 // remapper can deliver duplicate events at device rate, and the export needs
@@ -1245,7 +1352,8 @@ void InputEngine::deliverPress(Gamepad* source, const QString& controlId, int fa
     // View/Back itself, that stable meaning wins and the alias is not entered.
     if (!handled && controlId == ControlId::ViewBack
         && m_providers.allowsLegacyViewFallback(
-            providerFor(source), fingerprint, hasExplicitViewBinding(logicalProfile))) {
+            providerFor(source), fingerprint, hasExplicitViewBinding(logicalProfile),
+            viewBackFallbackEnabledFor(logicalProfile))) {
         if (m_runtime->press(QStringLiteral("controller"), logicalProfile,
                              ControlId::Capture, primaryScope(), fallbackScope()))
             m_legacyViewFallbackHeld.insert(logicalProfile);
@@ -1287,6 +1395,11 @@ void InputEngine::onControlReleased(const QString& controlId, int, const QString
         const QString profile = canonicalProfile(source, fingerprint);
         if (m_runtime->clearReleaseGate(QStringLiteral("controller"), profile, controlId)) {
             m_runtime->notePhysicalRelease(QStringLiteral("controller"), profile, controlId);
+            if (controlId == ControlId::ViewBack
+                && m_runtime->clearReleaseGate(QStringLiteral("controller"), profile,
+                                                ControlId::Capture))
+                m_runtime->notePhysicalRelease(QStringLiteral("controller"), profile,
+                                               ControlId::Capture);
             return;
         }
         return;
@@ -1295,10 +1408,7 @@ void InputEngine::onControlReleased(const QString& controlId, int, const QString
         && !routeLegacySystemEdge(source, fingerprint, controlId, false))
         return;
     const QString logicalProfile = canonicalProfile(source, fingerprint);
-    m_runtime->release(QStringLiteral("controller"), logicalProfile, controlId);
-    if (controlId == ControlId::ViewBack
-        && m_legacyViewFallbackHeld.remove(logicalProfile))
-        m_runtime->release(QStringLiteral("controller"), logicalProfile, ControlId::Capture);
+    releaseControllerControl(logicalProfile, controlId);
     stopNavRepeatOnRelease(controlId);
 }
 

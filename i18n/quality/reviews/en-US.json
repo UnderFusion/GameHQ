@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_en_US.ts",
-    "sha256": "a051c950e199454c290c2cda3619484027df58b36d492895582cf5fc4cf1ff5d",
-    "message_count": 1103
+    "sha256": "d8591a5042591c15dbf64ae6bba46196499ad2c009a491e39af2ec3ebd49f24f",
+    "message_count": 1106
   },
   "coverage": [
     {
@@ -6870,6 +6870,33 @@
       "decision": "accepted"
     },
     {
+      "id": "gamehq.settings.input.view_fallback.description",
+      "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+      "translation_hash": "b0057a0f9ed6b0195633c6b2c9501a5c347dd813f6e9f86bc3e6fdb41e2510c4",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:102"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.view_fallback.label",
+      "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+      "translation_hash": "32d027afea5123139804116445090ce890b26c9e7974f0a88da58ffa14de05f2",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:100"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.view_fallback.title",
+      "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+      "translation_hash": "5230c27232994ce857d9bc74e32a4f319f889ed2474aff9f5031aa52dfab960e",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:97"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.settings.language.description",
       "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
       "translation_hash": "5eedbd6a012b19e8b9400ea0d80dce93df5179f26aef1e56b1a603185baa4aa3",
@@ -10355,8 +10382,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_en_US.ts",
-      "sha256": "a051c950e199454c290c2cda3619484027df58b36d492895582cf5fc4cf1ff5d",
-      "reviewed_units": 1103
+      "sha256": "d8591a5042591c15dbf64ae6bba46196499ad2c009a491e39af2ec3ebd49f24f",
+      "reviewed_units": 1106
     },
     {
       "surface": "installer",

@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_pt_BR.ts",
-    "sha256": "282c91ed491d23836595e422cff8c9d2b6e41196a578cd6bdf20742bec861b6b",
-    "message_count": 1103
+    "sha256": "9a853528edb3edaa8041dd8a68a322db4943c150393fcb9d9a6fe3e5dcc53609",
+    "message_count": 1106
   },
   "coverage": [
     {
@@ -6868,6 +6868,33 @@
         "src/ui/qml/settings/InputSettingsPage.qml:191"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.settings.input.view_fallback.description",
+      "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+      "translation_hash": "0825aa8f0412bd08a393466da0e42ac0a212087466f1864457eb1b65a073a04e",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:102"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.view_fallback.label",
+      "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+      "translation_hash": "68f8065d68af40470b7fd59a67ea460c2517d6047fe04349d4b7f63760df0f7f",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:100"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.view_fallback.title",
+      "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+      "translation_hash": "e04c109b14a127ac36c6b17d9a99912b03f369a21fee50015394afa8dc7acd74",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:97"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.settings.language.description",
@@ -16547,8 +16574,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_pt_BR.ts",
-      "sha256": "282c91ed491d23836595e422cff8c9d2b6e41196a578cd6bdf20742bec861b6b",
-      "reviewed_units": 1103
+      "sha256": "9a853528edb3edaa8041dd8a68a322db4943c150393fcb9d9a6fe3e5dcc53609",
+      "reviewed_units": 1106
     },
     {
       "surface": "installer",
