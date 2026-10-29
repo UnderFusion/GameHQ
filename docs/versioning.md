@@ -1,6 +1,6 @@
 # Versioning & Documentation Rules
 
-> **Owner policy (2026-10-29):** Prepare stable hotfix **0.8.1** for the completed-update startup loop and the focused Back/View fallback fix. Reserve release sequence **38**. Keep the published 0.8.0 tag, assets and release history unchanged; local preparation does not authorize publication.
+> **Owner policy (2026-10-29, Beta 1):** Publish **GameHQ 0.8.1 Beta 1** with both validated hotfixes before stable. Keep `VERSION=0.8.1`, compile with `GAMEHQ_PRERELEASE=beta1`, use tag `v0.8.1-beta1`, production Ed25519 signing and release sequence **38**, and mark the release as a pre-release with `Latest=false`. Rebuild genuine beta packages. Keep **0.8.0 as Latest Stable** and preserve its tag, assets and release history. Real DualSense + DS4Windows + HidHide confirmation remains pending. Later betas and stable each require a fresh sequence; stable publication is not authorized.
 
 > **Owner policy (2026-10-26, update-detection rebuild):** The first stable 0.8.0 publication (sequence 36, commit 456f2d5) was withdrawn because 0.7.9-style 24-hour gating hid it from running installs. 0.8.0 is republished from the fixed commit with release sequence 37 and the `v0.8.0` tag moved to that commit by the owner; the version stays 0.8.0 by owner decision.
 >

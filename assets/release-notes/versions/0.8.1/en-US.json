@@ -6,6 +6,16 @@
   "date": "2026-10-29",
   "sections": [
     {
+      "id": "beta",
+      "title": "Beta 1",
+      "items": [
+        {
+          "id": "prerelease",
+          "text": "This is GameHQ 0.8.1 Beta 1, a pre-release for testing the startup and controller fixes. GameHQ 0.8.0 remains the latest stable release."
+        }
+      ]
+    },
+    {
       "id": "fixes",
       "title": "Fixes",
       "items": [
@@ -29,7 +39,7 @@
       "items": [
         {
           "id": "manual-installer",
-          "text": "If an earlier automatic update left GameHQ unable to start, install this version manually over the existing installation. Keep your settings, library and captures; do not uninstall or delete the GameHQ data folder."
+          "text": "If an automatic update left GameHQ 0.8.0 unable to start, manually run the Beta 1 installer over your existing installation. Keep your settings, library and captures; do not uninstall or delete the GameHQ data folder."
         }
       ]
     },
@@ -39,7 +49,7 @@
       "items": [
         {
           "id": "ds4windows",
-          "text": "Real-device confirmation of the DS4Windows controller fix is still pending. If you use DS4Windows, please test the Back/View setting and native Share separately and report your results in issue #32."
+          "text": "The DualSense + DS4Windows + HidHide scenario still needs real-device confirmation. Please test the Back/View setting and native Share separately and report your results in issue #32."
         }
       ]
     }

@@ -1,16 +1,17 @@
 # Controller reporter response drafts
 
-## Issue #32 — DS4Windows (send after 0.8.1 is published)
+## Issue #32 — DS4Windows (send after Beta 1 publication is verified)
 
-Thanks for the detailed report. GameHQ 0.8.1 adds a separate **Use Back/View as
+Thanks for the detailed report! [GameHQ 0.8.1 Beta 1](https://github.com/UnderFusion/GameHQ/releases/tag/v0.8.1-beta1) adds a separate **Use Back/View as
 Share** switch in Settings > Input for the selected eligible controller source.
 Please select the virtual Xbox source and turn that switch off, then check that
 touchpad/Back still works in the game without taking screenshots. Please also
 check that the native Sony Share button still takes screenshots and saves replay
 clips, including tap, hold and reconnecting the controller.
 
-We tested the routes in automated regression tests, but real DS4Windows hardware
-confirmation is still pending. Please tell us your DS4Windows version, output
+Could you try it with DualSense + DS4Windows + HidHide? We tested the routes in
+automated regression tests, but real hardware confirmation is still pending.
+Your feedback would help us verify the fix before the stable release. Please tell us your DS4Windows version, output
 controller mode, which source you selected, and whether those checks work. If
 changing a binding affects both sources, please include their selected preset
 names or a binding export so we can check shared assignments. There is no need

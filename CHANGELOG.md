@@ -18,6 +18,8 @@ Public release history and the current local release candidate.
 
 ## [0.8.1] - 2026-10-29
 
+Beta 1 (`v0.8.1-beta1`) is a pre-release; 0.8.0 remains Latest Stable. Real DualSense + DS4Windows + HidHide confirmation is pending. If 0.8.0 will not start, manually install the beta over the existing installation without uninstalling or deleting user data.
+
 ### Fixed
 
 - GameHQ starts normally after a completed automatic update, even while its recovery journal is retained.
