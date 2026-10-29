@@ -1,9 +1,5 @@
 # GameHQ 0.8.1 (2026-10-29)
 
-## Beta 1
-
-- This is GameHQ 0.8.1 Beta 1, a pre-release for testing the startup and controller fixes. GameHQ 0.8.0 remains the latest stable release.
-
 ## Fixes
 
 - GameHQ opens normally after an automatic update, including later restarts. Completed update records no longer send startup into an unnecessary recovery loop.
@@ -12,7 +8,7 @@
 
 ## If GameHQ will not open
 
-- If an automatic update left GameHQ 0.8.0 unable to start, manually run the Beta 1 installer over your existing installation. Keep your settings, library and captures; do not uninstall or delete the GameHQ data folder.
+- If an automatic update left GameHQ 0.8.0 unable to start, manually run the GameHQ 0.8.1 installer over your existing installation. Keep your settings, library and captures; do not uninstall GameHQ or delete its data folder.
 
 ## Controller compatibility
 

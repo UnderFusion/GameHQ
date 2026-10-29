@@ -1,6 +1,6 @@
 """Windows-only full-application updater lifecycle acceptance, in a disposable repo folder.
 
-Uses the test-trust updater twin with a signed full candidate payload; never
+Uses the selected updater helper with a signed full candidate payload; never
 substitutes a health-token fixture or manually replaces the live application.
 psutil is used only to identify and wait for the exact disposable executable.
 """
@@ -320,7 +320,8 @@ def main() -> None:
         assert {key: registry_values(key) for key in production_keys} == production_before, \
             "Installer acceptance modified a production registration"
     write_json(work / "result.json", {"passed": True, "version": args.version,
-        "trust": "test-only helper with signed full application payload",
+        "trust": f"signed full application payload; manifest keyId={manifest['keyId']}",
+        "helper_sha256": digest(scoped(args.test_helper)),
         "checks": checks,
         "before": before, "after": preserved(root)})
 

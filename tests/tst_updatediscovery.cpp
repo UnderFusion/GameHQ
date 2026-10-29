@@ -1,6 +1,7 @@
 #include "updates/UpdateService.h"
 
 #include <QDateTime>
+#include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -258,6 +259,34 @@ private slots:
         QTest::qWait(200);
         QCOMPARE(m_server->requests.size(), 1);
         QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
+    }
+
+    void publishedStableFeedOffersTheHotfix()
+    {
+        // Release acceptance replays the actual downloaded GitHub response
+        // through UpdateService without contacting GitHub from a native test.
+        const QString path = qEnvironmentVariable("GAMEHQ_PUBLIC_RELEASES_FIXTURE");
+        if (path.isEmpty())
+            QSKIP("Set GAMEHQ_PUBLIC_RELEASES_FIXTURE for public release acceptance");
+        const QString expected = qEnvironmentVariable("GAMEHQ_EXPECTED_STABLE_VERSION");
+        QVERIFY(!expected.isEmpty());
+        QFile file(path);
+        QVERIFY(file.open(QIODevice::ReadOnly));
+        const QByteArray body = file.readAll();
+        QVERIFY(QJsonDocument::fromJson(body).isArray());
+        for (const QString &installed : {QStringLiteral("0.8.0"),
+                                         QStringLiteral("0.8.1-beta1"), expected}) {
+            m_server->queue.append({200, "OK", {{"Content-Type", "application/json"}}, body});
+            auto s = service(installed);
+            s->checkNow();
+            QVERIFY(settle(*s));
+            if (installed == expected) {
+                QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
+            } else {
+                QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
+                QCOMPARE(s->latestVersion(), expected);
+            }
+        }
     }
 };
 
