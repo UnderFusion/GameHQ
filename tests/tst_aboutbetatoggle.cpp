@@ -146,7 +146,11 @@ private slots:
     void init() {
         QFile::remove(m_dir.filePath(QStringLiteral("config.json")));
         QVERIFY(loadWindow());
+        QVERIFY(QTest::qWaitForWindowExposed(m_window.get()));
         QTRY_VERIFY(popupToggle());
+        // Mouse input must wait for the popup's opening transition, even when
+        // screenshot capture (which used to supply an incidental wait) is off.
+        QTRY_COMPARE(m_dialog->property("opacity").toReal(), 1.0);
     }
     void cleanup() {
         m_window.reset(); m_engine.reset(); m_updates.reset(); m_app.reset();
