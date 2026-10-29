@@ -4,92 +4,92 @@
   <context>
     <name>GameHQ</name>
     <message id="gamehq.about.enjoying_gamehq">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="878"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="944"></location>
       <source>Enjoying GameHQ?</source>
       <translation>Vous aimez GameHQ ?</translation>
     </message>
     <message id="gamehq.about.github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="837"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1189"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="903"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1257"></location>
       <source>GitHub</source>
       <translation>GitHub</translation>
     </message>
     <message id="gamehq.about.license">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="849"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="915"></location>
       <source>License</source>
       <translation>Licence</translation>
     </message>
     <message id="gamehq.about.mode.installed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="567"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="715"></location>
       <source>Installed</source>
       <translation>Version installée</translation>
     </message>
     <message id="gamehq.about.mode.portable">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="564"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="712"></location>
       <source>Portable</source>
       <translation>Version portable</translation>
     </message>
     <message id="gamehq.about.more_improvements">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="720"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="868"></location>
       <source>Plus more improvements and fixes.</source>
       <translation>Et de nombreuses autres améliorations et corrections.</translation>
     </message>
     <message id="gamehq.about.product_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="675"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="823"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
       <translation>Une galerie multimédia de captures d’écran et de replays pour jeux PC, conçue pour la manette.</translation>
     </message>
     <message id="gamehq.about.product_updated">
       <location filename="src/ui/qml/Main.qml" line="97"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="530"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="678"></location>
       <source>%1 updated</source>
       <translation>%1 mis à jour</translation>
     </message>
     <message id="gamehq.about.project_links">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="821"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="887"></location>
       <source>PROJECT LINKS</source>
       <translation>LIENS DU PROJET</translation>
     </message>
     <message id="gamehq.about.quick_actions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="751"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="44"></location>
       <source>QUICK ACTIONS</source>
       <translation>ACTIONS RAPIDES</translation>
     </message>
     <message id="gamehq.about.report_issue">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="843"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="909"></location>
       <source>Report issue</source>
       <translation>Signaler un problème</translation>
     </message>
     <message id="gamehq.about.star_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="887"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="953"></location>
       <source>A GitHub star helps more players discover the project.</source>
       <translation>Une étoile sur GitHub aide davantage de joueurs à découvrir le projet.</translation>
     </message>
     <message id="gamehq.about.star_on_github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="898"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="964"></location>
       <source>Star on GitHub</source>
       <translation>Ajouter une étoile sur GitHub</translation>
     </message>
     <message id="gamehq.about.version">
       <location filename="src/ui/qml/Main.qml" line="99"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="545"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="927"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="693"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="993"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="18"></location>
       <source>Version %1</source>
       <translation>Version %1</translation>
     </message>
     <message id="gamehq.about.whats_new_in">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="685"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="833"></location>
       <source>WHAT'S NEW IN %1</source>
       <translation>NOUVEAUTÉS DE %1</translation>
     </message>
     <message id="gamehq.action.back">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="621"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="769"></location>
       <source>Back</source>
       <translation>Retour</translation>
     </message>
     <message id="gamehq.action.back_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="618"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="766"></location>
       <source>%1  Back</source>
       <translation>%1  Retour</translation>
     </message>
@@ -104,7 +104,7 @@
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="180"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="200"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="638"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
@@ -299,7 +299,7 @@
       <translation>Terminer</translation>
     </message>
     <message id="gamehq.action.download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="213"></location>
       <source>Download</source>
       <translation>Télécharger</translation>
     </message>
@@ -972,22 +972,22 @@
       <translation>Une autre importation de profil portable est déjà en cours.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App_UpdateWiring.cpp" line="156"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="150"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>La mise à jour a été annulée car les opérations de capture ne se sont pas terminées à temps en toute sécurité.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="454"></location>
+      <location filename="src/updates/UpdateService.cpp" line="516"></location>
       <source>Update check failed: %1</source>
       <translation>La recherche de mises à jour a échoué : %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="191"></location>
+      <location filename="src/updates/UpdateService.cpp" line="243"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub a temporairement limité les recherches de mises à jour. GameHQ réessaiera plus tard.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="185"></location>
+      <location filename="src/updates/UpdateService.cpp" line="237"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub a temporairement limité les recherches de mises à jour. GameHQ réessaiera après %1.</translation>
     </message>
@@ -1223,7 +1223,7 @@
       <translation>GameHQ n’a pas pu publier la transaction de mise à jour.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App_UpdateWiring.cpp" line="131"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="125"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ n’a pas pu démarrer la maintenance de mise à jour : %1</translation>
     </message>
@@ -1273,27 +1273,27 @@
       <translation>GameHQ ne peut pas écrire les fichiers de mise à jour en toute sécurité dans cette installation.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="340"></location>
+      <location filename="src/updates/UpdateService.cpp" line="396"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>La version a changé après son téléchargement. Recherchez à nouveau les mises à jour avant de l’installer.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="402"></location>
+      <location filename="src/updates/UpdateService.cpp" line="462"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>La version téléchargée a été retirée avant l’installation.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="446"></location>
+      <location filename="src/updates/UpdateService.cpp" line="508"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>La version n’a pas pu être revalidée : %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="369"></location>
+      <location filename="src/updates/UpdateService.cpp" line="427"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>La version n’a pas pu faire l’objet d’une nouvelle validation avant l’installation.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="424"></location>
+      <location filename="src/updates/UpdateService.cpp" line="484"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub n’a pas pu revalider cette version avant l’installation. Réessayez plus tard.</translation>
     </message>
@@ -2487,7 +2487,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Application</translation>
     </message>
     <message id="gamehq.settings.about.community.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="290"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="294"></location>
       <source>Community</source>
       <translation>Communauté</translation>
     </message>
@@ -2497,12 +2497,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Version, état des mises à jour, ressources du projet et moyens de contribuer.</translation>
     </message>
     <message id="gamehq.settings.about.github_source">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="252"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="256"></location>
       <source>Source on GitHub</source>
       <translation>Code source sur GitHub</translation>
     </message>
     <message id="gamehq.settings.about.license">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="285"></location>
       <source>GNU GPL v3 License</source>
       <translation>Licence GNU GPL v3</translation>
     </message>
@@ -2517,7 +2517,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Maintenance</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="237"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
       <source>Open source</source>
       <translation>Open source</translation>
     </message>
@@ -2532,12 +2532,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Profil portable</translation>
     </message>
     <message id="gamehq.settings.about.project.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
       <source>Open official GameHQ resources in your default browser.</source>
       <translation>Ouvrir les ressources officielles de GameHQ dans votre navigateur par défaut.</translation>
     </message>
     <message id="gamehq.settings.about.project.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="239"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="243"></location>
       <source>Project</source>
       <translation>Projet</translation>
     </message>
@@ -2547,38 +2547,38 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>GameHQ est prêt</translation>
     </message>
     <message id="gamehq.settings.about.releases">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="259"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="263"></location>
       <source>Releases</source>
       <translation>Versions</translation>
     </message>
     <message id="gamehq.settings.about.report_issue">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="266"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="270"></location>
       <source>Report an issue</source>
       <translation>Signaler un problème</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="855"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="921"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="277"></location>
       <source>Security &amp; privacy</source>
       <translation>Sécurité et confidentialité</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="275"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="279"></location>
       <source>Verification, local data, network use, and private reporting</source>
       <translation>Vérification, données locales, utilisation du réseau et signalement privé</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="295"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="299"></location>
       <source>Enjoying %1? A GitHub star helps more players discover the project.</source>
       <translation>Vous aimez %1 ? Une étoile sur GitHub aide davantage de joueurs à découvrir le projet.</translation>
     </message>
     <message id="gamehq.settings.about.support.star_on_github">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="302"></location>
       <source>Star %1 on GitHub</source>
       <translation>Ajouter une étoile à %1 sur GitHub</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="292"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
       <source>Support the project</source>
       <translation>Soutenir le projet</translation>
     </message>
@@ -2594,7 +2594,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Mises à jour</translation>
     </message>
     <message id="gamehq.settings.about.website">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="249"></location>
       <source>Website</source>
       <translation>Site web</translation>
     </message>
@@ -5362,13 +5362,13 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Prendre une capture d’écran</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="289"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="423"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="188"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ applique la mise à jour et va redémarrer.</translation>
     </message>
     <message id="gamehq.update.available_version_short">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="128"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="132"></location>
       <source>%1 available</source>
       <translation>%1 disponible</translation>
     </message>
@@ -5423,58 +5423,60 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>En attente de la fin sécurisée des opérations de capture.</translation>
     </message>
     <message id="gamehq.update.beta_download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="166"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="170"></location>
       <source>Beta update download</source>
       <translation>Téléchargement de la mise à jour bêta</translation>
     </message>
     <message id="gamehq.update.bundled_with_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="152"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="282"></location>
       <source>Bundled with GameHQ %1</source>
       <translation>Fourni avec GameHQ %1</translation>
     </message>
     <message id="gamehq.update.cancel_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="230"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="364"></location>
       <source>Cancel download</source>
       <translation>Annuler le téléchargement</translation>
     </message>
     <message id="gamehq.update.check.label">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="250"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="124"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="76"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="384"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="128"></location>
       <source>Check for updates</source>
       <translation>Rechercher des mises à jour</translation>
     </message>
     <message id="gamehq.update.check_again">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="244"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1138"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="378"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1206"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="207"></location>
       <source>Check again</source>
       <translation>Rechercher à nouveau</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
-      <source>At most once every 24 hours, in the background.</source>
-      <translation>Au maximum une fois toutes les 24 heures, en arrière-plan.</translation>
+      <source>Checks shortly after startup and every hour in the background.</source>
+      <oldsource>At most once every 24 hours, in the background.</oldsource>
+      <translation>Recherche des mises à jour en arrière-plan peu après le démarrage, puis toutes les heures.</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="116"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="120"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
       <source>Check automatically</source>
       <translation>Rechercher automatiquement</translation>
     </message>
     <message id="gamehq.update.check_failed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="179"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="313"></location>
       <source>Update check failed</source>
       <translation>Échec de la recherche de mises à jour</translation>
     </message>
     <message id="gamehq.update.check_now">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="141"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="145"></location>
       <source>Check now</source>
       <translation>Rechercher maintenant</translation>
     </message>
     <message id="gamehq.update.checking">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="354"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="142"></location>
       <source>Checking...</source>
       <translation>Vérification…</translation>
     </message>
@@ -5484,17 +5486,17 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Recherche de mises à jour…</translation>
     </message>
     <message id="gamehq.update.checking_for_updates_short">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="159"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="293"></location>
       <source>Checking for updates</source>
       <translation>Recherche de mises à jour</translation>
     </message>
     <message id="gamehq.update.choose_install_time">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="292"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="426"></location>
       <source>Choose when to install %1 %2.</source>
       <translation>Choisissez quand installer %1 %2.</translation>
     </message>
     <message id="gamehq.update.download_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="155"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="159"></location>
       <source>Download progress</source>
       <translation>Progression du téléchargement</translation>
     </message>
@@ -5504,13 +5506,13 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>GameHQ %1 a été téléchargé et vérifié par SHA-256.</translation>
     </message>
     <message id="gamehq.update.download_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="224"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="358"></location>
       <source>Download update %1</source>
       <translation>Télécharger la mise à jour %1</translation>
     </message>
     <message id="gamehq.update.downloading_percent">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="165"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="278"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="299"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="412"></location>
       <source>Downloading %1%</source>
       <translation>Téléchargement : %1 %</translation>
     </message>
@@ -5520,7 +5522,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Téléchargement de GameHQ %1… %2 %</translation>
     </message>
     <message id="gamehq.update.github_check_description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="112"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="116"></location>
       <source>GameHQ can check GitHub for newer stable releases.</source>
       <translation>GameHQ peut rechercher sur GitHub de nouvelles versions stables.</translation>
     </message>
@@ -5530,31 +5532,32 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Proposer aussi les préversions de test. Elles reçoivent les correctifs plus tôt, mais peuvent être moins stables.</translation>
     </message>
     <message id="gamehq.update.include_betas.label">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="102"></location>
       <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="8"></location>
       <source>Include beta versions</source>
       <translation>Inclure les versions bêta</translation>
     </message>
     <message id="gamehq.update.install_and_restart">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="227"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="233"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="361"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="367"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="183"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
       <source>Install and restart</source>
       <translation>Installer et redémarrer</translation>
     </message>
     <message id="gamehq.update.installed_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="131"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="135"></location>
       <source>Installed: %1</source>
       <translation>Installée : %1</translation>
     </message>
     <message id="gamehq.update.installing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="176"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="310"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="167"></location>
       <source>Installing</source>
       <translation>Installation</translation>
     </message>
     <message id="gamehq.update.installing_progress">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="240"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="374"></location>
       <source>Installing...</source>
       <translation>Installation…</translation>
     </message>
@@ -5564,37 +5567,37 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Installation de GameHQ %1…</translation>
     </message>
     <message id="gamehq.update.last_checked">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="209"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="343"></location>
       <source>Last checked %1</source>
       <translation>Dernière vérification %1</translation>
     </message>
     <message id="gamehq.update.last_checked_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="600"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="748"></location>
       <source>%1  %2</source>
       <translation>%1  %2</translation>
     </message>
     <message id="gamehq.update.new_version_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="777"></location>
       <source>New version available</source>
       <translation>Nouvelle version disponible</translation>
     </message>
     <message id="gamehq.update.not_checked_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="206"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="340"></location>
       <source>Updates have not been checked yet</source>
       <translation>Les mises à jour n’ont pas encore été recherchées</translation>
     </message>
     <message id="gamehq.update.not_checked_yet">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="189"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="323"></location>
       <source>Not checked yet</source>
       <translation>Pas encore vérifié</translation>
     </message>
     <message id="gamehq.update.preparing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="237"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="371"></location>
       <source>Preparing...</source>
       <translation>Préparation…</translation>
     </message>
     <message id="gamehq.update.preparing_to_install">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="173"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="307"></location>
       <source>Preparing to install</source>
       <translation>Préparation de l’installation</translation>
     </message>
@@ -5605,18 +5608,18 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     </message>
     <message id="gamehq.update.progress_percent">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="80"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="173"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
       <source>%1% complete</source>
       <translation>%1 % terminé</translation>
     </message>
     <message id="gamehq.update.published_on">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="143"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="273"></location>
       <source>Published %1</source>
       <translation>Publiée le %1</translation>
     </message>
     <message id="gamehq.update.ready_to_install">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="169"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="303"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="162"></location>
       <source>Ready to install</source>
       <translation>Prêt à installer</translation>
     </message>
@@ -5626,24 +5629,24 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.update.released_on">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="149"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="279"></location>
       <source>Released %1</source>
       <translation>Sortie le %1</translation>
     </message>
     <message id="gamehq.update.remind_later">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1008"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1074"></location>
       <source>Remind me later</source>
       <translation>Me le rappeler plus tard</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="282"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="416"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>GameHQ redémarrera pour appliquer la mise à jour.</translation>
     </message>
     <message id="gamehq.update.retry_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="247"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="381"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="210"></location>
       <source>Retry download</source>
       <translation>Réessayer le téléchargement</translation>
     </message>
@@ -5653,66 +5656,66 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Voir les nouveautés</translation>
     </message>
     <message id="gamehq.update.settings">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="789"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="90"></location>
       <source>Update settings</source>
       <translation>Paramètres des mises à jour</translation>
     </message>
     <message id="gamehq.update.sha256_limit_warning">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="191"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
       <translation>SHA-256 détecte les données corrompues, mais pas un compte GitHub compromis.</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1022"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1088"></location>
       <source>Skip this version</source>
       <translation>Ignorer cette version</translation>
     </message>
     <message id="gamehq.update.skip_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="799"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="133"></location>
       <source>Skip version %1</source>
       <translation>Ignorer la version %1</translation>
     </message>
     <message id="gamehq.update.status.available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="123"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="253"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="73"></location>
       <source>Available</source>
       <translation>Disponible</translation>
     </message>
     <message id="gamehq.update.status.current">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="127"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="257"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="76"></location>
       <source>Current</source>
       <translation>Actuelle</translation>
     </message>
     <message id="gamehq.update.status.previous">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="130"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="260"></location>
       <source>Previous</source>
       <translation>Précédente</translation>
     </message>
     <message id="gamehq.update.status.update_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="162"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="296"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="211"></location>
       <source>Update available</source>
       <translation>Mise à jour disponible</translation>
     </message>
     <message id="gamehq.update.suffix.available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="47"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="177"></location>
       <source>(Available)</source>
       <translation>(Disponible)</translation>
     </message>
     <message id="gamehq.update.suffix.current">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="52"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="182"></location>
       <source>(Current)</source>
       <translation>(Actuelle)</translation>
     </message>
     <message id="gamehq.update.up_to_date">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="182"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="186"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="316"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="320"></location>
       <source>Up to date</source>
       <translation>À jour</translation>
     </message>
     <message id="gamehq.update.up_to_date_last_checked">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="108"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="112"></location>
       <source>Up to date, last checked %1</source>
       <translation>À jour, dernière vérification %1</translation>
     </message>
@@ -5727,12 +5730,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>GameHQ %1 est disponible.</translation>
     </message>
     <message id="gamehq.update.versions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1039"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1107"></location>
       <source>VERSIONS</source>
       <translation>VERSIONS</translation>
     </message>
     <message id="gamehq.update.view_release_notes">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="228"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="232"></location>
       <source>View release notes</source>
       <translation>Afficher les notes de version</translation>
     </message>
@@ -5742,16 +5745,22 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Afficher la mise à jour</translation>
     </message>
     <message id="gamehq.update.waiting_for_capture">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="286"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="420"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="185"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>En attente de la fin sécurisée des opérations de capture…</translation>
+    </message>
+    <message id="gamehq.update.waiting_for_stable">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="288"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="108"></location>
+      <source>Waiting for a newer stable release</source>
+      <translation>En attente d’une version stable plus récente</translation>
     </message>
   </context>
   <context>
     <name>GameHQLiveRetranslation</name>
     <message id="gamehq.about.full_release_notes">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="730"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="878"></location>
       <source>View full release notes</source>
       <translation>Afficher toutes les notes de version</translation>
     </message>

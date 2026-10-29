@@ -103,6 +103,10 @@ SettingsPage {
                 return qsTrId("gamehq.update.installing_version").arg(updates.latestVersion)
             }
             if (updates.stateName === "Failed" && updates.errorText !== "") return updates.errorText
+            if (updates.waitingForStable) {
+                //% "Waiting for a newer stable release"
+                return qsTrId("gamehq.update.waiting_for_stable")
+            }
             if (updates.lastChecked.getTime() > 0) {
                 //% "Up to date, last checked %1"
                 return qsTrId("gamehq.update.up_to_date_last_checked")
@@ -114,7 +118,7 @@ SettingsPage {
         SettingsRow {
             //% "Check automatically"
             label: qsTrId("gamehq.update.check_automatically.label")
-            //% "At most once every 24 hours, in the background."
+                //% "Checks shortly after startup and every hour in the background."
             description: qsTrId("gamehq.update.check_automatically.description")
             SettingsToggle { configKey: "updates.check_automatically"; defaultValue: true }
         }

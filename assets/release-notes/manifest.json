@@ -34,10 +34,10 @@
       "date": "2026-10-29",
       "status": "released",
       "localization_policy": "fallback-allowed",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "original_source_integrity": "sha256:a0f94c235d7c74a03f795ef14a4323152ba33fe4bd01705de9b4bdd4cef8a83b",
       "correction": {
-        "reason": "Stable 0.8.1 replaces the Beta 1 notice and directs affected 0.8.0 users to the stable installer; the published Beta 1 tag and release remain unchanged.",
+        "reason": "Stable 0.8.1 includes the accepted About beta toggle and corrected check description, replaces the Beta 1 notice, and directs affected 0.8.0 users to the stable installer. Published Beta 1 remains unchanged.",
         "approved_by": "owner",
         "corrected_at": "2026-10-29"
       }

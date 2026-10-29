@@ -6,11 +6,11 @@
   "source_locale": "en-US",
   "default_locale": "en-US",
   "localization_policy": "fallback-allowed",
-  "release_source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+  "release_source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 2524,
-    "sha256": "91ba8e07ef8beea6564465fb7fb2146f596bc9e1fcfbcc339e0d10fedc4567e8"
+    "size": 2947,
+    "sha256": "a6af482dae1781b41c603ba2123813bf06c152a8cf51487d909b2261ecabbf8c"
   },
   "distribution": {
     "localized_documents": "repository",
@@ -30,9 +30,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.en-US.md",
-      "size": 1016,
-      "sha256": "5c08adcb8d10dfbb547093aaac119f4cd389c1ee2539e4e595f385ec3840efae",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1439,
+      "sha256": "7969f9a5002b0767085f000afab4f18ef7eec8c21aa6a037c73b4cbb8410894a",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -40,6 +40,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -68,9 +75,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.zh-Hans.md",
-      "size": 1206,
-      "sha256": "b11f7109df3a440f7aabe841bf731db3ecab50633af002a4d726e689ef8207f7",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1629,
+      "sha256": "080195bce9e565ab84e6e7738a39114a08ada4a95b2dfec25856e5107e5c1835",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -78,6 +85,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -106,9 +120,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.ru-RU.md",
-      "size": 1193,
-      "sha256": "349d8fbcd7ae3bd4fd4d54047bac2496350e16653eba8255caa5f74503f40de4",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1616,
+      "sha256": "eaf086d3b05ed1b884b62a098f4aabc6cb913f873fefdbe9f19b1c31284e4f45",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -116,6 +130,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -144,9 +165,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.es-ES.md",
-      "size": 1193,
-      "sha256": "3df2acfdb9213b7e93056a0079909111020b299f95d02100c61ca34aac006bd7",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1616,
+      "sha256": "ea45d327ed41bac0de040e2fb6c8d16d69073c31ecfaa2f0753b0b9298dcd356",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -154,6 +175,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -182,9 +210,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.pt-BR.md",
-      "size": 1205,
-      "sha256": "d141884e238608f369ba8a81c7b2eb38af56d91bd89a42e9624800614d2b37e9",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1628,
+      "sha256": "7fc6e208d4b8c63f7c0a53dca1eea38386c77d0cdae100392afd11085d9e8f0f",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -192,6 +220,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -220,9 +255,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.de-DE.md",
-      "size": 1192,
-      "sha256": "e179e3d91e380be942b9fe89bc5d2f288b180dfd31c56616ba052d9de110bd77",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1615,
+      "sha256": "489ccb733f85c840c66b5e7772fef9ffc57b19f82ba3238a27c75c87ec4f27da",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -230,6 +265,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -258,9 +300,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.ja-JP.md",
-      "size": 1194,
-      "sha256": "dcdb3c42b69a5230c6d7bfb7a3d5f9325e41c6e5364fa9b556632e1716100513",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1617,
+      "sha256": "b2e5e9a0360201bf8f7c3b5a275750095fea32c60a310d028e2bbe4a865a5081",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -268,6 +310,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -296,9 +345,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.fr-FR.md",
-      "size": 1192,
-      "sha256": "3b20c42bddc645af1f5c9c19efb292fbccd01bb0130769dde27dc47d6744b163",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1615,
+      "sha256": "c25dc346a8d7a1b7c6f240763d1218ac5c91cc77309b7d590e9579e7e04b4c97",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -306,6 +355,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -334,9 +390,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.pl-PL.md",
-      "size": 1192,
-      "sha256": "82c0c33863285793fc487b7ddedb57f0f6f48e2c85a486ee0d89818df7c1c66e",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1615,
+      "sha256": "259f4adbb25810d50fdc8d621ba05f3d13691773bfac425c449554a4310d4737",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -344,6 +400,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -372,9 +435,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.ko-KR.md",
-      "size": 1192,
-      "sha256": "7eb37f83934b6c89603c9360268b2e376d3e0e36c99d13e11f39c5f81f1f75f4",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1615,
+      "sha256": "6e4be04abfc7b98641f208f6d67d7f02a76235ea9374e35d263ebcef77090dff",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -382,6 +445,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -410,9 +480,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.zh-Hant.md",
-      "size": 1207,
-      "sha256": "af222fccbf5816509c806cb7d689e7d872cf414700a986ddffd741e75315bb40",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1630,
+      "sha256": "4190d0ab177004639da0846c02e478783f6811da0482bcd4495424c40cf4a591",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -420,6 +490,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -448,9 +525,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.tr-TR.md",
-      "size": 1193,
-      "sha256": "0a996d114e03dc5b53f7bede8c8b9763b44eb6c4667757a2a0b7eff43c5ef9c3",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1616,
+      "sha256": "f5c5ad97abec18cdd0998e1a82bdef92aa6368542cdcf97f4677beecbf6945a7",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -458,6 +535,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -486,9 +570,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.th-TH.md",
-      "size": 1190,
-      "sha256": "ea0ec750fb93b0658b9442abcb1f4660769b3001aee15c557a4b1cc91edb4e25",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1613,
+      "sha256": "1f63a72ab81338d7f1f5f4d0e8dfbbe8faab9f55f3fa2298e7d977b91750d1a8",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -496,6 +580,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -524,9 +615,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.es-419.md",
-      "size": 1209,
-      "sha256": "3cd2317e88d7b0162967fdf3d5338f1f3ca6ed01c8912337dcc02cd283db8155",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1632,
+      "sha256": "503c2e0589c6aa059e1418f480fc30d7a2f4a583aa1e2175bbb00e9e96b2b172",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -534,6 +625,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -562,9 +660,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.uk-UA.md",
-      "size": 1195,
-      "sha256": "7e355f9dc3bdc76f6748e3b0d8a3f4171f606fa4bfc8cef22ca3d14b96d031f9",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1618,
+      "sha256": "b340627d98ae0409114651050e846f64adacd9fd3cb11311c2e4a8570cd1a0a8",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -572,6 +670,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {
@@ -600,9 +705,9 @@
       "version": "0.8.1",
       "date": "2026-10-29",
       "filename": "release-notes.it-IT.md",
-      "size": 1193,
-      "sha256": "498c356c587ed8f9eed49a5c822c7f20358cbc432a1c4badfb3fde50cff42955",
-      "source_integrity": "sha256:426c32d49704f8d9ee796967e6706329b7ca92ff961c156a8fd9c310d45dd42e",
+      "size": 1616,
+      "sha256": "d03bd693709865697270006fe20762450c039d89be1e87739c33c52dcc6de6d3",
+      "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
       "structure": [
         {
           "section_id": "fixes",
@@ -610,6 +715,13 @@
             "startup",
             "cleanup",
             "back-view"
+          ]
+        },
+        {
+          "section_id": "updates",
+          "item_ids": [
+            "beta-toggle",
+            "check-description"
           ]
         },
         {

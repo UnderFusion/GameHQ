@@ -20,6 +20,136 @@ FocusScope {
     opacity: 0
     focus: visible
 
+    component QuickActions: Rectangle {
+        property alias primaryControl: primaryAction
+        property alias settingsControl: settingsButton
+        property alias betaControl: betaToggle
+        property alias skipControl: skipVersionLink
+
+        Layout.fillWidth: true
+        implicitHeight: quickColumn.implicitHeight + Theme.s16 * 2
+        radius: Theme.radiusM
+        color: Theme.surfaceAlt
+        border.width: Theme.borderWidth
+        border.color: Theme.stroke
+
+        ColumnLayout {
+            id: quickColumn
+            anchors.fill: parent
+            anchors.margins: Theme.s16
+            spacing: Theme.s8
+
+            Text {
+                //% "QUICK ACTIONS"
+                text: qsTrId("gamehq.about.quick_actions")
+                color: Theme.textFaint
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontCaption
+                font.letterSpacing: Theme.letterSpacingWide
+            }
+
+            Text {
+                visible: UpdateUi.inProgress(updates.stateName)
+                         && updates.stateName !== "UpdateAvailable"
+                Layout.fillWidth: true
+                text: root.updateProgressText()
+                color: Theme.textMuted
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontCaption
+                wrapMode: Text.WordWrap
+            }
+
+            UpdateProgressBar {
+                Layout.fillWidth: true
+            }
+
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: Theme.s8
+
+                AccentButton {
+                    id: primaryAction
+                    Layout.fillWidth: true
+                    label: {
+                        if (root.showFullNotes && updates.stateName !== "Checking") {
+                            //% "Check for updates"
+                            return qsTrId("gamehq.update.check.label")
+                        }
+                        return root.primaryLabel(true)
+                    }
+                    primary: true
+                    enabled: root.showFullNotes
+                           ? ["Idle", "UpToDate", "UpdateAvailable", "Failed"].includes(updates.stateName)
+                           : root.primaryEnabled()
+                    onClicked: root.showFullNotes ? updates.checkNow() : root.runPrimaryAction(true)
+                }
+                AccentButton {
+                    id: settingsButton
+                    Layout.fillWidth: true
+                    //% "Update settings"
+                    label: qsTrId("gamehq.update.settings")
+                    onClicked: root.updateSettingsRequested()
+                }
+            }
+
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: Theme.s12
+                Text {
+                    id: betaLabel
+                    Layout.fillWidth: true
+                    //% "Include beta versions"
+                    text: qsTrId("gamehq.update.include_betas.label")
+                    color: Theme.text
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontBody
+                    wrapMode: Text.WordWrap
+                }
+                SettingsToggle {
+                    id: betaToggle
+                    objectName: "popupBetaToggle"
+                    configKey: "updates.include_betas"
+                    defaultValue: false
+                    Accessible.name: betaLabel.text
+                }
+            }
+
+            Text {
+                objectName: "waitingStableStatus"
+                Layout.fillWidth: true
+                visible: updates.waitingForStable
+                text: root.statusText()
+                color: Theme.textMuted
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontCaption
+                wrapMode: Text.WordWrap
+            }
+
+            TextLink {
+                id: skipVersionLink
+                visible: !root.showFullNotes && root.hasUpdateRelease()
+                         && updates.stateName === "UpdateAvailable"
+                //% "Skip version %1"
+                label: qsTrId("gamehq.update.skip_version").arg(root.updateVersion())
+                onClicked: {
+                    updates.skipVersion()
+                    root.close()
+                }
+            }
+
+            Text {
+                visible: updates.stateName === "Failed" && updates.errorText !== ""
+                Layout.fillWidth: true
+                text: updates.errorText
+                textFormat: Text.PlainText
+                color: Theme.danger
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontCaption
+                wrapMode: Text.WordWrap
+            }
+        }
+    }
+
     function hasUpdateRelease() {
         return UpdateUi.releaseVisible(updates)
     }
@@ -153,6 +283,10 @@ FocusScope {
     }
 
     function statusText() {
+        if (updates.waitingForStable) {
+            //% "Waiting for a newer stable release"
+            return qsTrId("gamehq.update.waiting_for_stable")
+        }
         switch (updates.stateName) {
         case "Checking":
             //% "Checking for updates"
@@ -346,11 +480,14 @@ FocusScope {
                 controls.push(updateNowAction, remindLaterAction, skipUpdateAction)
             if (releaseEntries().length > 1)
                 controls.push(...releaseVersionControls())
+            controls.push(notesQuickActions.primaryControl, notesQuickActions.settingsControl,
+                          notesQuickActions.betaControl, notesQuickActions.skipControl)
             controls.push(retryReleaseNotesLink)
             controls.push(updateReleaseGithubLink)
             return controls.filter(control => control.visible && control.enabled)
         }
-        return [releaseNotesLink, primaryAction, settingsButton, skipVersionLink, githubLink,
+        return [releaseNotesLink, aboutQuickActions.primaryControl, aboutQuickActions.settingsControl,
+                aboutQuickActions.betaControl, aboutQuickActions.skipControl, githubLink,
                 issueLink, licenseLink, securityLink, starButton]
             .filter(control => control.visible && control.enabled)
     }
@@ -360,7 +497,15 @@ FocusScope {
         if (controls.length === 0)
             return
         padIndex = Math.max(0, Math.min(controls.length - 1, padIndex))
-        controls[padIndex].forceActiveFocus()
+        const control = controls[padIndex]
+        control.forceActiveFocus()
+        const flick = showFullNotes ? fullNotesFlick : aboutFlick
+        const position = control.mapToItem(flick.contentItem, 0, 0)
+        const maximum = Math.max(0, flick.contentHeight - flick.height)
+        if (position.y < flick.contentY)
+            flick.contentY = Math.max(0, position.y)
+        else if (position.y + control.height > flick.contentY + flick.height)
+            flick.contentY = Math.min(maximum, position.y + control.height - flick.height)
     }
 
     function padStep(direction) {
@@ -392,8 +537,11 @@ FocusScope {
 
     function padConfirm() {
         const current = focusableControls().find(control => control.activeFocus)
-        if (current)
+        if (current) {
+            if (current.checkable === true)
+                current.toggle()
             current.clicked()
+        }
     }
 
     function openReleaseNotes() {
@@ -732,89 +880,7 @@ FocusScope {
                             onClicked: root.openReleaseNotes()
                         }
 
-                        Rectangle {
-                            Layout.fillWidth: true
-                            implicitHeight: quickColumn.implicitHeight + Theme.s16 * 2
-                            radius: Theme.radiusM
-                            color: Theme.surfaceAlt
-                            border.width: Theme.borderWidth
-                            border.color: Theme.stroke
-
-                            ColumnLayout {
-                                id: quickColumn
-                                anchors.fill: parent
-                                anchors.margins: Theme.s16
-                                spacing: Theme.s8
-
-                                Text {
-                                    //% "QUICK ACTIONS"
-                                    text: qsTrId("gamehq.about.quick_actions")
-                                    color: Theme.textFaint
-                                    font.family: Theme.fontFamily
-                                    font.pixelSize: Theme.fontCaption
-                                    font.letterSpacing: Theme.letterSpacingWide
-                                }
-
-                                Text {
-                                    visible: UpdateUi.inProgress(updates.stateName)
-                                             && updates.stateName !== "UpdateAvailable"
-                                    Layout.fillWidth: true
-                                    text: root.updateProgressText()
-                                    color: Theme.textMuted
-                                    font.family: Theme.fontFamily
-                                    font.pixelSize: Theme.fontCaption
-                                    wrapMode: Text.WordWrap
-                                }
-
-                                UpdateProgressBar {
-                                    Layout.fillWidth: true
-                                }
-
-                                RowLayout {
-                                    Layout.fillWidth: true
-                                    spacing: Theme.s8
-
-                                    AccentButton {
-                                        id: primaryAction
-                                        Layout.fillWidth: true
-                                        label: root.primaryLabel(true)
-                                        primary: true
-                                        enabled: root.primaryEnabled()
-                                        onClicked: root.runPrimaryAction(true)
-                                    }
-                                    AccentButton {
-                                        id: settingsButton
-                                        Layout.fillWidth: true
-                                        //% "Update settings"
-                                        label: qsTrId("gamehq.update.settings")
-                                        onClicked: root.updateSettingsRequested()
-                                    }
-                                }
-
-                                TextLink {
-                                    id: skipVersionLink
-                                    visible: root.hasUpdateRelease()
-                                             && updates.stateName === "UpdateAvailable"
-                                    //% "Skip version %1"
-                                    label: qsTrId("gamehq.update.skip_version").arg(root.updateVersion())
-                                    onClicked: {
-                                        updates.skipVersion()
-                                        root.close()
-                                    }
-                                }
-
-                                Text {
-                                    visible: updates.stateName === "Failed" && updates.errorText !== ""
-                                    Layout.fillWidth: true
-                                    text: updates.errorText
-                                    textFormat: Text.PlainText
-                                    color: Theme.danger
-                                    font.family: Theme.fontFamily
-                                    font.pixelSize: Theme.fontCaption
-                                    wrapMode: Text.WordWrap
-                                }
-                            }
-                        }
+                        QuickActions { id: aboutQuickActions }
 
                         Text {
                             //% "PROJECT LINKS"
@@ -1028,6 +1094,8 @@ FocusScope {
                                 }
                             }
                         }
+
+                        QuickActions { id: notesQuickActions }
 
                         ColumnLayout {
                             visible: root.releaseEntries().length > 1

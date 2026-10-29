@@ -17,6 +17,8 @@
 #include <QTimeZone>
 #include <QUrl>
 #include <QtLogging>
+#include <QTimer>
+#include <limits>
 
 QVariantList UpdateService::noteBlocks() const
 {
@@ -46,6 +48,18 @@ UpdateService::UpdateService(QString owner, QString repo, QString installedVersi
     , m_packageRoot(QDir(stagingRoot).absoluteFilePath(QStringLiteral("../..")))
     , m_releaseCachePath(QFileInfo(trustStatePath).absolutePath() + QStringLiteral("/release-notes-cache/discovery.json"))
 {
+    m_channelCheckTimer = new QTimer(this);
+    m_channelCheckTimer->setSingleShot(true);
+    connect(m_channelCheckTimer, &QTimer::timeout, this, [this] {
+        if (!m_channelCheckPending)
+            return;
+        if (busy() || UpdateSchedule::inCooldown(m_nextAllowedCheck, QDateTime::currentDateTimeUtc())
+            || (m_lastCheckRequest.isValid() && m_lastCheckRequest.elapsed() < 5000)) {
+            scheduleChannelCheck();
+            return;
+        }
+        checkNow();
+    });
     connect(m_notes, &RemoteReleaseNotes::changed, this, &UpdateService::notesChanged);
     connect(m_source, &GitHubReleaseSource::succeeded, this, &UpdateService::onSucceeded);
     connect(m_source, &GitHubReleaseSource::unchanged, this, &UpdateService::onUnchanged);
@@ -110,6 +124,7 @@ void UpdateService::setState(State state)
         return;
     m_state = state;
     Q_EMIT stateChanged();
+    scheduleChannelCheck();
 }
 
 bool UpdateService::releaseIsNewerThanInstalled(const ReleaseInfo &release) const
@@ -132,7 +147,14 @@ QString UpdateService::identityOf(const ReleaseInfo &release)
     return release.identity.isEmpty() ? release.version : release.identity;
 }
 
-void UpdateService::setIncludeBetas(bool include)
+bool UpdateService::waitingForStable() const
+{
+    const auto installed = ReleaseIdentity::parse(m_installedVersion);
+    return !m_includeBetas && installed.has_value() && installed->isBeta()
+        && (m_state == State::Idle || m_state == State::UpToDate);
+}
+
+void UpdateService::setIncludeBetas(bool include, bool recheck)
 {
     if (m_includeBetas == include)
         return;
@@ -146,15 +168,45 @@ void UpdateService::setIncludeBetas(bool include)
     }
     // A download or install in flight finishes as chosen; only a beta that is
     // merely being offered disappears when the channel closes.
-    if (include || !m_release.has_value() || !m_release->prerelease)
+    if (!include && m_release.has_value() && m_release->prerelease
+        && (m_state == State::UpdateAvailable || m_state == State::UpToDate
+            || m_state == State::Failed || m_state == State::Idle || m_state == State::Checking)) {
+        QFile::remove(m_releaseCachePath);
+        m_release.reset();
+        Q_EMIT releaseChanged();
+        if (m_state != State::Checking)
+            setState(State::UpToDate);
+    }
+    // Also refresh waitingForStable when changing channel without a state transition.
+    Q_EMIT stateChanged();
+    if (recheck) {
+        m_channelCheckPending = true;
+        scheduleChannelCheck();
+    }
+}
+
+void UpdateService::scheduleChannelCheck()
+{
+    if (!m_channelCheckPending)
         return;
-    if (m_state != State::UpdateAvailable && m_state != State::UpToDate
-        && m_state != State::Failed && m_state != State::Idle)
+    m_channelCheckTimer->stop();
+    if (busy())
         return;
-    QFile::remove(m_releaseCachePath);
-    m_release.reset();
-    Q_EMIT releaseChanged();
-    setState(State::UpToDate);
+    qint64 delay = m_lastCheckRequest.isValid()
+        ? qMax<qint64>(0, 5001 - m_lastCheckRequest.elapsed()) : 0;
+    if (UpdateSchedule::inCooldown(m_nextAllowedCheck, QDateTime::currentDateTimeUtc()))
+        delay = qMax(delay, QDateTime::currentDateTimeUtc().msecsTo(m_nextAllowedCheck) + 1);
+    m_channelCheckTimer->start(static_cast<int>(qMin<qint64>(delay, std::numeric_limits<int>::max())));
+}
+
+bool UpdateService::finishObsoleteChannelCheck()
+{
+    if (!m_channelCheckPending || m_revalidatingInstall || m_state != State::Checking)
+        return false;
+    // Let the old request finish before issuing one unconditional request for
+    // the final selected channel. Never apply its ETag or stale release offer.
+    setState(fallbackAfterCheck());
+    return true;
 }
 
 // A check that produced nothing usable never disturbs the last known-good
@@ -232,6 +284,8 @@ void UpdateService::checkNow()
     // against GitHub's anonymous rate limit.
     if (m_lastCheckRequest.isValid() && m_lastCheckRequest.elapsed() < 5000)
         return;
+    m_channelCheckPending = false;
+    m_channelCheckTimer->stop();
     m_lastCheckRequest.start();
     m_errorText.clear();
     Q_EMIT errorChanged();
@@ -306,6 +360,8 @@ void UpdateService::applyRelease(const ReleaseInfo &release)
 
 void UpdateService::onSucceeded(const ReleaseInfo &release, const QString &etag)
 {
+    if (finishObsoleteChannelCheck())
+        return;
     // A newer release that is still uploading its assets is not a completed
     // check: skip the ETag (a cached one would answer 304 forever and hide the
     // finished assets) and leave lastChecked stale so the hourly automatic
@@ -361,6 +417,8 @@ void UpdateService::onSucceeded(const ReleaseInfo &release, const QString &etag)
 
 void UpdateService::onUnchanged(const QString & /*etag*/)
 {
+    if (finishObsoleteChannelCheck())
+        return;
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
         cancelPreparation(NativeText::get(
@@ -393,6 +451,8 @@ void UpdateService::onUnchanged(const QString & /*etag*/)
 
 void UpdateService::onNotFound()
 {
+    if (finishObsoleteChannelCheck())
+        return;
     QFile::remove(m_releaseCachePath);
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
@@ -438,6 +498,8 @@ void UpdateService::onRateLimited(qint64 resetEpochSeconds)
 
 void UpdateService::onFailed(const QString &errorText)
 {
+    if (finishObsoleteChannelCheck())
+        return;
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
         cancelPreparation(NativeText::get(

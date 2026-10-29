@@ -49,15 +49,9 @@ void App::wireUpdates()
             [this](const QString& key, const QVariant& value) {
         if (key != ConfigKeys::UpdatesIncludeBetas)
             return;
-        m_updates->setIncludeBetas(value.toBool());
-        // Opting in is a request to see betas now, not after the daily gate -
-        // unless an update is already downloading or installing.
-        const UpdateService::State state = m_updates->state();
-        if (value.toBool()
-            && (state == UpdateService::State::Idle || state == UpdateService::State::UpToDate
-                || state == UpdateService::State::UpdateAvailable
-                || state == UpdateService::State::Failed))
-            m_updates->checkNow();
+        // Both channel changes request fresh discovery. The service coalesces
+        // them and preserves the request guard, cooldown and active operation.
+        m_updates->setIncludeBetas(value.toBool(), true);
     });
     connect(m_updates.get(), &UpdateService::nextAllowedCheckChanged, this,
             [this](const QDateTime& when) {

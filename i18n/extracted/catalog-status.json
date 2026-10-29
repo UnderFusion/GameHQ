@@ -1120,7 +1120,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "en-US": {
@@ -2240,7 +2241,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "es-419": {
@@ -3360,7 +3362,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "es-ES": {
@@ -4480,7 +4483,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "fr-FR": {
@@ -5600,7 +5604,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "it-IT": {
@@ -6720,7 +6725,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "ja-JP": {
@@ -7840,7 +7846,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "ko-KR": {
@@ -8960,7 +8967,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "pl-PL": {
@@ -10080,7 +10088,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "pt-BR": {
@@ -11200,7 +11209,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "ru-RU": {
@@ -12320,7 +12330,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "th-TH": {
@@ -13440,7 +13451,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "tr-TR": {
@@ -14560,7 +14572,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "uk-UA": {
@@ -15680,7 +15693,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "zh-Hans": {
@@ -16800,7 +16814,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "zh-Hant": {
@@ -17920,7 +17935,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     }
   }

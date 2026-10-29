@@ -11,7 +11,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 878
+          "line": 944
         }
       ],
       "plural": false,
@@ -30,7 +30,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 730
+          "line": 878
         }
       ],
       "plural": false,
@@ -47,11 +47,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 837
+          "line": 903
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 1189
+          "line": 1257
         }
       ],
       "plural": false,
@@ -68,7 +68,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 849
+          "line": 915
         }
       ],
       "plural": false,
@@ -85,7 +85,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 567
+          "line": 715
         }
       ],
       "plural": false,
@@ -102,7 +102,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 564
+          "line": 712
         }
       ],
       "plural": false,
@@ -119,7 +119,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 720
+          "line": 868
         }
       ],
       "plural": false,
@@ -136,7 +136,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 675
+          "line": 823
         }
       ],
       "plural": false,
@@ -157,7 +157,7 @@
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 530
+          "line": 678
         }
       ],
       "plural": false,
@@ -176,7 +176,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 821
+          "line": 887
         }
       ],
       "plural": false,
@@ -193,7 +193,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 751
+          "line": 44
         }
       ],
       "plural": false,
@@ -210,7 +210,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 843
+          "line": 909
         }
       ],
       "plural": false,
@@ -227,7 +227,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 887
+          "line": 953
         }
       ],
       "plural": false,
@@ -244,7 +244,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 898
+          "line": 964
         }
       ],
       "plural": false,
@@ -265,11 +265,11 @@
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 545
+          "line": 693
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 927
+          "line": 993
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
@@ -292,7 +292,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 685
+          "line": 833
         }
       ],
       "plural": false,
@@ -311,7 +311,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 621
+          "line": 769
         }
       ],
       "plural": false,
@@ -328,7 +328,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 618
+          "line": 766
         }
       ],
       "plural": false,
@@ -387,7 +387,7 @@
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 196
+          "line": 200
         },
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
@@ -1056,7 +1056,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 209
+          "line": 213
         }
       ],
       "plural": false,
@@ -3429,7 +3429,7 @@
       "locations": [
         {
           "file": "src/app/App_UpdateWiring.cpp",
-          "line": 156
+          "line": 150
         }
       ],
       "plural": false,
@@ -3446,7 +3446,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 454
+          "line": 516
         }
       ],
       "plural": false,
@@ -3465,7 +3465,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 191
+          "line": 243
         }
       ],
       "plural": false,
@@ -3484,7 +3484,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 185
+          "line": 237
         }
       ],
       "plural": false,
@@ -4339,7 +4339,7 @@
       "locations": [
         {
           "file": "src/app/App_UpdateWiring.cpp",
-          "line": 131
+          "line": 125
         }
       ],
       "plural": false,
@@ -4521,7 +4521,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 340
+          "line": 396
         }
       ],
       "plural": false,
@@ -4538,7 +4538,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 402
+          "line": 462
         }
       ],
       "plural": false,
@@ -4555,7 +4555,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 446
+          "line": 508
         }
       ],
       "plural": false,
@@ -4574,7 +4574,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 369
+          "line": 427
         }
       ],
       "plural": false,
@@ -4591,7 +4591,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 424
+          "line": 484
         }
       ],
       "plural": false,
@@ -8706,7 +8706,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 290
+          "line": 294
         }
       ],
       "plural": false,
@@ -8740,7 +8740,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 252
+          "line": 256
         }
       ],
       "plural": false,
@@ -8757,7 +8757,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 281
+          "line": 285
         }
       ],
       "plural": false,
@@ -8810,7 +8810,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 237
+          "line": 241
         }
       ],
       "plural": false,
@@ -8861,7 +8861,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 241
+          "line": 245
         }
       ],
       "plural": false,
@@ -8880,7 +8880,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 239
+          "line": 243
         }
       ],
       "plural": false,
@@ -8916,7 +8916,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 259
+          "line": 263
         }
       ],
       "plural": false,
@@ -8933,7 +8933,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 266
+          "line": 270
         }
       ],
       "plural": false,
@@ -8950,11 +8950,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 855
+          "line": 921
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 273
+          "line": 277
         }
       ],
       "plural": false,
@@ -8971,7 +8971,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 275
+          "line": 279
         }
       ],
       "plural": false,
@@ -8988,7 +8988,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 295
+          "line": 299
         }
       ],
       "plural": false,
@@ -9007,7 +9007,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 298
+          "line": 302
         }
       ],
       "plural": false,
@@ -9026,7 +9026,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 292
+          "line": 296
         }
       ],
       "plural": false,
@@ -9081,7 +9081,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 245
+          "line": 249
         }
       ],
       "plural": false,
@@ -18594,11 +18594,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 289
+          "line": 423
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 184
+          "line": 188
         }
       ],
       "plural": false,
@@ -18617,7 +18617,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 128
+          "line": 132
         }
       ],
       "plural": false,
@@ -18823,7 +18823,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 166
+          "line": 170
         }
       ],
       "plural": false,
@@ -18840,7 +18840,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 152
+          "line": 282
         }
       ],
       "plural": false,
@@ -18861,7 +18861,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 230
+          "line": 364
         }
       ],
       "plural": false,
@@ -18878,11 +18878,15 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 250
+          "line": 76
+        },
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 384
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 124
+          "line": 128
         }
       ],
       "plural": false,
@@ -18899,15 +18903,15 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 244
+          "line": 378
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 1138
+          "line": 1206
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 203
+          "line": 207
         }
       ],
       "plural": false,
@@ -18918,13 +18922,13 @@
     },
     {
       "id": "gamehq.update.check_automatically.description",
-      "source": "At most once every 24 hours, in the background.",
+      "source": "Checks shortly after startup and every hour in the background.",
       "context": "ID",
       "domain": "application",
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 118
+          "line": 122
         },
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
@@ -18935,7 +18939,7 @@
       "placeholders": [],
       "markup_signature": [],
       "protected_tokens": [],
-      "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d"
+      "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb"
     },
     {
       "id": "gamehq.update.check_automatically.label",
@@ -18945,7 +18949,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 116
+          "line": 120
         },
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
@@ -18966,7 +18970,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 179
+          "line": 313
         }
       ],
       "plural": false,
@@ -18983,7 +18987,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 141
+          "line": 145
         }
       ],
       "plural": false,
@@ -19000,11 +19004,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 220
+          "line": 354
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 138
+          "line": 142
         }
       ],
       "plural": false,
@@ -19038,7 +19042,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 159
+          "line": 293
         }
       ],
       "plural": false,
@@ -19055,7 +19059,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 292
+          "line": 426
         }
       ],
       "plural": false,
@@ -19075,7 +19079,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 155
+          "line": 159
         }
       ],
       "plural": false,
@@ -19113,7 +19117,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 224
+          "line": 358
         }
       ],
       "plural": false,
@@ -19132,11 +19136,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 165
+          "line": 299
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 278
+          "line": 412
         }
       ],
       "plural": false,
@@ -19177,7 +19181,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 112
+          "line": 116
         }
       ],
       "plural": false,
@@ -19212,6 +19216,10 @@
       "domain": "application",
       "locations": [
         {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 102
+        },
+        {
           "file": "src/ui/qml/components/BetaUpdatesRow.qml",
           "line": 8
         }
@@ -19230,11 +19238,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 227
+          "line": 361
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 233
+          "line": 367
         },
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
@@ -19242,7 +19250,7 @@
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 199
+          "line": 203
         }
       ],
       "plural": false,
@@ -19259,7 +19267,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 131
+          "line": 135
         }
       ],
       "plural": false,
@@ -19278,11 +19286,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 176
+          "line": 310
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 163
+          "line": 167
         }
       ],
       "plural": false,
@@ -19299,7 +19307,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 240
+          "line": 374
         }
       ],
       "plural": false,
@@ -19337,7 +19345,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 209
+          "line": 343
         }
       ],
       "plural": false,
@@ -19356,7 +19364,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 600
+          "line": 748
         }
       ],
       "plural": false,
@@ -19376,7 +19384,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 629
+          "line": 777
         }
       ],
       "plural": false,
@@ -19393,7 +19401,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 206
+          "line": 340
         }
       ],
       "plural": false,
@@ -19410,7 +19418,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 189
+          "line": 323
         }
       ],
       "plural": false,
@@ -19427,7 +19435,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 237
+          "line": 371
         }
       ],
       "plural": false,
@@ -19444,7 +19452,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 173
+          "line": 307
         }
       ],
       "plural": false,
@@ -19486,7 +19494,7 @@
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 173
+          "line": 177
         }
       ],
       "plural": false,
@@ -19505,7 +19513,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 143
+          "line": 273
         }
       ],
       "plural": false,
@@ -19524,11 +19532,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 169
+          "line": 303
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 158
+          "line": 162
         }
       ],
       "plural": false,
@@ -19565,7 +19573,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 149
+          "line": 279
         }
       ],
       "plural": false,
@@ -19584,7 +19592,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 1008
+          "line": 1074
         }
       ],
       "plural": false,
@@ -19601,11 +19609,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 282
+          "line": 416
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 177
+          "line": 181
         }
       ],
       "plural": false,
@@ -19624,11 +19632,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 247
+          "line": 381
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 206
+          "line": 210
         }
       ],
       "plural": false,
@@ -19662,7 +19670,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 789
+          "line": 90
         }
       ],
       "plural": false,
@@ -19679,7 +19687,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 187
+          "line": 191
         }
       ],
       "plural": false,
@@ -19696,7 +19704,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 1022
+          "line": 1088
         }
       ],
       "plural": false,
@@ -19713,7 +19721,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 799
+          "line": 133
         }
       ],
       "plural": false,
@@ -19732,7 +19740,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 123
+          "line": 253
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
@@ -19753,7 +19761,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 127
+          "line": 257
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
@@ -19774,7 +19782,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 130
+          "line": 260
         }
       ],
       "plural": false,
@@ -19791,7 +19799,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 162
+          "line": 296
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
@@ -19812,7 +19820,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 47
+          "line": 177
         }
       ],
       "plural": false,
@@ -19829,7 +19837,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 52
+          "line": 182
         }
       ],
       "plural": false,
@@ -19846,11 +19854,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 182
+          "line": 316
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 186
+          "line": 320
         }
       ],
       "plural": false,
@@ -19867,7 +19875,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 108
+          "line": 112
         }
       ],
       "plural": false,
@@ -19928,7 +19936,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 1039
+          "line": 1107
         }
       ],
       "plural": false,
@@ -19945,7 +19953,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 228
+          "line": 232
         }
       ],
       "plural": false,
@@ -19979,11 +19987,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 286
+          "line": 420
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 181
+          "line": 185
         }
       ],
       "plural": false,
@@ -19991,6 +19999,27 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "cad430a0d27fa6d56b1686cc483fde3fc27e68b7a4128f2b6e2cd2026e76e9ce"
+    },
+    {
+      "id": "gamehq.update.waiting_for_stable",
+      "source": "Waiting for a newer stable release",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 288
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 108
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e"
     }
   ]
 }

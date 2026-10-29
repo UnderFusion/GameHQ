@@ -20,6 +20,11 @@ Public release history and the current local release candidate.
 
 Stable 0.8.1 includes the startup and controller fixes previously published in Beta 1 (`v0.8.1-beta1`). Real DualSense + DS4Windows + HidHide confirmation remains pending. If 0.8.0 will not start, manually install 0.8.1 over the existing installation without uninstalling GameHQ or deleting user data.
 
+### Changed
+
+- The About/What's New popup includes the synchronized beta update toggle in Quick Actions. Switching either channel refreshes discovery safely, and installed betas wait for an eligible stable release without downgrading.
+- The automatic-check description now matches the existing startup and hourly checks.
+
 ### Fixed
 
 - GameHQ starts normally after a completed automatic update, even while its recovery journal is retained.

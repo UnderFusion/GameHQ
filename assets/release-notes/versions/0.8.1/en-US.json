@@ -24,6 +24,20 @@
       ]
     },
     {
+      "id": "updates",
+      "title": "Update settings",
+      "items": [
+        {
+          "id": "beta-toggle",
+          "text": "Include beta versions is now available directly in the About/What’s New popup, synchronized with Settings. Switching channels refreshes available updates; disabling betas keeps an installed beta until an eligible stable release is available, without downgrading."
+        },
+        {
+          "id": "check-description",
+          "text": "The automatic-check description now matches the existing behavior: GameHQ checks shortly after startup and hourly in the background."
+        }
+      ]
+    },
+    {
       "id": "recovery",
       "title": "If GameHQ will not open",
       "items": [

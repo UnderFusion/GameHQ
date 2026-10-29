@@ -12,6 +12,7 @@
 class RemoteReleaseNotes;
 class GitHubReleaseSource;
 class UpdateDownloader;
+class QTimer;
 
 // QML-facing update-check state machine. Owns a GitHubReleaseSource and
 // turns its raw results into a state a settings page can bind to directly.
@@ -42,6 +43,7 @@ class UpdateService : public QObject
     // (no download was attempted yet) rather than from a download or install
     // preflight failure — lets QML offer "Check again" vs "Retry download".
     Q_PROPERTY(bool failedDuringCheck READ failedDuringCheck NOTIFY stateChanged)
+    Q_PROPERTY(bool waitingForStable READ waitingForStable NOTIFY stateChanged)
 
 public:
     enum class State
@@ -90,8 +92,9 @@ public:
     void restoreCachedRelease();
     // Opt-in beta channel. Call before restoreCachedRelease(); a later change
     // drops a cached answer that belongs to the other channel.
-    void setIncludeBetas(bool include);
+    void setIncludeBetas(bool include, bool recheck = false);
     bool includeBetas() const { return m_includeBetas; }
+    bool waitingForStable() const;
     void primeCachedEtag(const QString &etag) { m_etag = etag; }
     void primeSkippedVersion(const QString &version) { m_skippedVersion = version; }
     // Without this the persisted timestamp was never read back, so the "at most
@@ -155,6 +158,8 @@ private:
     void onNotFound();
     void onRateLimited(qint64 resetEpochSeconds);
     void onFailed(const QString &errorText);
+    void scheduleChannelCheck();
+    bool finishObsoleteChannelCheck();
 
     RemoteReleaseNotes *m_notes;
     QString m_notesLocale = QStringLiteral("en-US");
@@ -163,6 +168,8 @@ private:
     QString m_installedVersion;
     QString m_skippedVersion;
     bool m_includeBetas = false;
+    QTimer *m_channelCheckTimer;
+    bool m_channelCheckPending = false;
     State m_state = State::Idle;
     std::optional<ReleaseInfo> m_release;
     int m_progress = 0;

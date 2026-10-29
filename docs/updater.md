@@ -113,8 +113,13 @@ identical after any update, successful or rolled back.
    are ranked by identity, not `VERSION` alone: `0.7.10-beta1 < 0.7.10-beta2 <
    0.7.10`. The installed identity is `VERSION` plus the build's
    `GAMEHQ_PRERELEASE` suffix, so a beta install sees the next beta and the
-   final stable release. Turning the channel on checks immediately; turning it
-   off withdraws an offered (not yet downloading) beta. Betas use the same
+     final stable release. The same preference is available in the About/What's
+     New popup's Quick Actions, General and About settings. Both channel changes
+     request fresh discovery, coalesced behind the five-second request guard,
+     any active check and GitHub cooldown. Turning the channel off withdraws an
+     offered (not yet downloading) beta. An installed beta never downgrades to an
+     older stable version: it waits for an eligible stable release and can upgrade
+     to stable of the same product version. Betas use the same
    production manifest key, so they install through the normal trust path.
 
    The page-reading half lives in `updates/ReleaseCatalog.{h,cpp}` so it can be

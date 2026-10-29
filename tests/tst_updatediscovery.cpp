@@ -10,6 +10,7 @@
 #include <QTcpSocket>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QTimer>
 
 // End to end from an HTTP answer to the state the update banner and About bind
 // to. 0.7.9 and 0.8.0 left an available update hidden for up to a day, and a
@@ -22,6 +23,7 @@ struct Response
     QByteArray reason = "OK";
     QList<QPair<QByteArray, QByteArray>> headers;
     QByteArray body;
+    int delayMs = 0;
 };
 
 // Serves queued responses in order and records each request's headers.
@@ -48,8 +50,10 @@ public:
                         out += h.first + ": " + h.second + "\r\n";
                     out += "Content-Length: " + QByteArray::number(r.body.size())
                         + "\r\nConnection: close\r\n\r\n" + r.body;
-                    socket->write(out);
-                    socket->disconnectFromHost();
+                    QTimer::singleShot(r.delayMs, socket, [socket, out] {
+                        socket->write(out);
+                        socket->disconnectFromHost();
+                    });
                 });
                 connect(socket, &QTcpSocket::disconnected, socket, [this, socket] {
                     m_buffers.remove(socket);
@@ -287,6 +291,97 @@ private slots:
                 QCOMPARE(s->latestVersion(), expected);
             }
         }
+    }
+
+    void optingInRefreshesAfterTheRequestGuard()
+    {
+        const QJsonArray page{release(QStringLiteral("v0.8.1-beta1"), true),
+                              release(QStringLiteral("v0.8.0"))};
+        m_server->queue.append(releases(page, "\"stable\""));
+        auto s = service(QStringLiteral("0.8.0"));
+        s->checkNow();
+        QVERIFY(settle(*s));
+        QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
+        m_server->queue.append(releases(page, "\"beta\""));
+        s->setIncludeBetas(true, true);
+        s->setIncludeBetas(true, true); // persisted notifications do not duplicate requests
+        QCOMPARE(m_server->requests.size(), 1);
+        QTRY_COMPARE_WITH_TIMEOUT(m_server->requests.size(), 2, 7000);
+        QTRY_COMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
+        QCOMPARE(s->latestVersion(), QStringLiteral("0.8.1-beta1"));
+        QVERIFY(!m_server->requests.last().contains("If-None-Match"));
+    }
+
+    void optingOutRechecksWithoutDowngrading_data()
+    {
+        QTest::addColumn<QString>("installed");
+        QTest::addColumn<QString>("stable");
+        QTest::addColumn<bool>("offered");
+        QTest::newRow("installed-beta-older-stable") << QStringLiteral("0.8.1-beta1")
+            << QStringLiteral("v0.8.0") << false;
+        QTest::newRow("installed-beta-matching-stable") << QStringLiteral("0.8.1-beta1")
+            << QStringLiteral("v0.8.1") << true;
+        QTest::newRow("installed-stable") << QStringLiteral("0.8.0")
+            << QStringLiteral("v0.8.1") << true;
+    }
+
+    void optingOutRechecksWithoutDowngrading()
+    {
+        QFETCH(QString, installed);
+        QFETCH(QString, stable);
+        QFETCH(bool, offered);
+        m_server->queue.append(releases({release(QStringLiteral("v0.8.2-beta1"), true),
+                                          release(stable)}, "\"beta\""));
+        auto s = service(installed);
+        s->setIncludeBetas(true);
+        s->checkNow();
+        QVERIFY(settle(*s));
+        QCOMPARE(s->latestVersion(), QStringLiteral("0.8.2-beta1"));
+        m_server->queue.append(releases({release(QStringLiteral("v0.8.2-beta1"), true),
+                                          release(stable)}, "\"stable\""));
+        s->setIncludeBetas(false, true);
+        QVERIFY(s->latestVersion().isEmpty()); // stale beta offer disappears immediately
+        QTRY_COMPARE_WITH_TIMEOUT(m_server->requests.size(), 2, 7000);
+        QTRY_VERIFY(s->state() != UpdateService::State::Checking);
+        QCOMPARE(s->stateName(), offered ? QStringLiteral("UpdateAvailable") : QStringLiteral("UpToDate"));
+        QCOMPARE(s->latestVersion(), offered ? stable.mid(1) : QString());
+        QCOMPARE(s->waitingForStable(), !offered);
+        QVERIFY(!m_server->requests.last().contains("If-None-Match"));
+    }
+
+    void switchingDuringDiscoveryCoalescesAndDiscardsTheOldAnswer()
+    {
+        Response old = releases({release(QStringLiteral("v0.8.2-beta1"), true)}, "\"old\"");
+        old.delayMs = 200;
+        m_server->queue.append(old);
+        auto s = service(QStringLiteral("0.8.0"));
+        s->setIncludeBetas(true);
+        s->checkNow();
+        QTRY_COMPARE(m_server->requests.size(), 1);
+        m_server->queue.append(releases({release(QStringLiteral("v0.8.1"))}, "\"final\""));
+        s->setIncludeBetas(false, true);
+        s->setIncludeBetas(true, true);
+        s->setIncludeBetas(false, true);
+        QTest::qWait(300);
+        QVERIFY(s->latestVersion().isEmpty());
+        QVERIFY(s->cachedEtag().isEmpty());
+        QCOMPARE(m_server->requests.size(), 1);
+        QTRY_COMPARE_WITH_TIMEOUT(m_server->requests.size(), 2, 7000);
+        QTRY_COMPARE(s->latestVersion(), QStringLiteral("0.8.1"));
+        QTest::qWait(100);
+        QCOMPARE(m_server->requests.size(), 2);
+    }
+
+    void channelChangeRespectsGitHubCooldown()
+    {
+        auto s = service(QStringLiteral("0.8.0"));
+        s->primeNextAllowedCheck(QDateTime::currentDateTimeUtc().addMSecs(1200));
+        m_server->queue.append(releases({release(QStringLiteral("v0.8.1-beta1"), true)}, "\"b\""));
+        s->setIncludeBetas(true, true);
+        QTest::qWait(150);
+        QCOMPARE(m_server->requests.size(), 0);
+        QTRY_COMPARE_WITH_TIMEOUT(m_server->requests.size(), 1, 3000);
+        QTRY_COMPARE(s->latestVersion(), QStringLiteral("0.8.1-beta1"));
     }
 };
 
