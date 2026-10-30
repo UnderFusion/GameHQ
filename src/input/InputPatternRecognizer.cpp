@@ -102,6 +102,22 @@ void InputPatternRecognizer::invalidate()
         reset(state);
 }
 
+void InputPatternRecognizer::invalidateExcept(
+    const std::function<bool(const Context&, const QString&)>& keep)
+{
+    // Keep the global generation for surviving timers, just as invalidateRoute
+    // does. Mark every cancelled state stale before resetting its timers.
+    for (ControlState* state : std::as_const(m_states)) {
+        if (keep(state->context, state->control)
+            && std::all_of(state->facts.chordPartners.cbegin(),
+                           state->facts.chordPartners.cend(),
+                           [&](const QString& partner) { return keep(state->context, partner); }))
+            continue;
+        state->generation = 0;
+        reset(state);
+    }
+}
+
 void InputPatternRecognizer::invalidateRoute(const QString& deviceGroup,
                                              const QString& deviceProfile)
 {

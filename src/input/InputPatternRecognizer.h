@@ -86,6 +86,10 @@ public:
     // firing an action into a world that has moved on.
     void invalidate();
 
+    // An ordinary backend promotion leaves independently routed controls live.
+    // Composite patterns involving any cancelled control still end here.
+    void invalidateExcept(const std::function<bool(const Context&, const QString&)>& keep);
+
     // The cpo-p05 mapping switch replaces the table of ONE route. Only the
     // states whose (deviceGroup, deviceProfile) matches that route are reset,
     // and only those are marked stale, so an unaffected route (another pad,

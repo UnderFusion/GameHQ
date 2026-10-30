@@ -138,6 +138,9 @@ public slots:
     // a game" rule the overlay already follows.
     void setDesktopFocused(bool focused);
     void setPlaybackActive(bool active);
+    // A desktop modal owns a fresh navigation context. A hold started behind
+    // it must not keep repeating into the dialog or back into the gallery.
+    void cancelNavigationRepeat();
     void reloadBindings();
     Q_INVOKABLE bool handleKeyPressed(int key, int modifiers, bool autoRepeat = false);
     Q_INVOKABLE bool handleKeyReleased(int key, int modifiers);
@@ -280,6 +283,8 @@ private:
     // Returns false when the edge is a cross-provider duplicate.
     bool routeLegacySystemEdge(Gamepad* source, const QString& providerDeviceId,
                                const QString& controlId, bool pressed);
+    void noteSystemControlReleased(const QString& logicalProfile, const QString& controlId,
+                                   ModernInput::ControllerProvider provider);
     bool hasExplicitViewBinding(const QString& logicalProfile) const;
     QString viewBackFallbackKey(const QString& logicalProfile) const;
     bool viewBackFallbackEnabledFor(const QString& logicalProfile) const;
@@ -307,6 +312,7 @@ private:
     // the slot number (see ControllerIdentity).
     void updateXInputIdentity();
     void setLastInput(const QString& text);
+    void beginInput(const QString& text);
     void setControllerStatus(const QString& text);
     bool desktopCanReceiveInput() const;
     bool anyBackendConnected() const;
@@ -413,6 +419,18 @@ private:
     // WinMM, selective Raw HID). Declared before m_gameInput, which holds a
     // pointer into it.
     ModernInput::ProviderIntegration m_providers;
+    // Trailing mirrors are suppressed only within an already proven logical
+    // identity, never across pads that merely look alike or arrive together.
+    struct SystemControlOrigin {
+        ModernInput::ControllerProvider provider;
+        QSet<ModernInput::ControllerProvider> participants;
+    };
+    QHash<QString, SystemControlOrigin> m_systemControlOrigins;
+    struct SystemControlRelease {
+        SystemControlOrigin origin;
+        qint64 timeMs;
+    };
+    QHash<QString, SystemControlRelease> m_systemControlReleases;
     QHash<Gamepad*, QSet<QString>> m_legacyObservedIds;
     QHash<QString, QStringList> m_profileMigrationAliases;
     QSet<QString> m_legacyViewFallbackHeld;

@@ -240,6 +240,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 if (code == MouseHookDevice::ButtonBack) label = QStringLiteral("Mouse Back");
                 else if (code == MouseHookDevice::ButtonForward) label = QStringLiteral("Mouse Forward");
                 else if (code == MouseHookDevice::ButtonMiddle) label = QStringLiteral("Middle Mouse");
+                beginInput(label);
                 if (m_bindingEditor->captureInput(QStringLiteral("mouse"), code, label))
                     return;
                 m_runtime->press(QStringLiteral("mouse"), {}, code,
@@ -308,6 +309,10 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 m_held.notePressed(gameInputDeviceKey(logicalId), control);
                 if (m_overlayReleaseActive)
                     return;   // a close is waiting for neutral: no actions fire
+                if (control == ControlId::Capture || control == ControlId::Guide)
+                    m_systemControlOrigins.insert(logicalId + QChar(0x1f) + control,
+                        {ModernInput::ControllerProvider::GameInput,
+                         {ModernInput::ControllerProvider::GameInput}});
                 InputDiagnostics::instance().noteControl(control, QStringLiteral("GameInput"));
                 m_bindingEditor->noteObservedControl(control);
                 const auto family = ControlId::ControllerFamily::Generic;
@@ -315,6 +320,8 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 m_bindingEditor->setControllerProfile({
                     QStringLiteral("GameInput"), logicalId, family,
                     displayName, logical ? logical->modelFingerprint : QString()});
+                beginInput((displayName.isEmpty() ? QStringLiteral("Controller") : displayName)
+                           + QStringLiteral(": ") + ControlId::label(control, family));
                 if (m_bindingEditor->captureInput(QStringLiteral("controller"), control,
                                                   ControlId::label(control, family)))
                     return;
@@ -324,9 +331,8 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 const QString logicalProfile = gameInputProfile(logicalId);
                 ensureMappingRoute(logicalProfile);
                 m_runtime->press(QStringLiteral("controller"), logicalProfile,
-                                 control, primaryScope(), fallbackScope());
-                setLastInput((displayName.isEmpty() ? QStringLiteral("Controller") : displayName)
-                             + QStringLiteral(": ") + ControlId::label(control, family));
+                                 control, primaryScope(), fallbackScope(),
+                                 control == ControlId::Capture || control == ControlId::Guide);
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::systemControlReleased,
             this, [this, gameInputProfile](const QString& control, const QString& logicalId,
@@ -335,6 +341,8 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 // the handoff can see the pad become neutral. Releases never fire
                 // actions that a suppression would have to swallow.
                 m_held.noteReleased(gameInputDeviceKey(logicalId), control);
+                noteSystemControlReleased(logicalId, control,
+                                          ModernInput::ControllerProvider::GameInput);
                 m_runtime->release(QStringLiteral("controller"), gameInputProfile(logicalId),
                                    control);
                 stopNavRepeatOnRelease(control);
@@ -353,6 +361,11 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 // with it — a handoff must not wait for a controller that cannot
                 // deliver the release.
                 m_held.noteDeviceGone(gameInputDeviceKey(logicalId));
+                for (const QString& control : {ControlId::Capture, ControlId::Guide}) {
+                    const QString key = logicalId + QChar(0x1f) + control;
+                    m_systemControlOrigins.remove(key);
+                    m_systemControlReleases.remove(key);
+                }
                 traceProviderLifecycle(QStringLiteral("reset-after: ") + reason);
                 stopNavRepeat();
                 m_runtime->cancelAll();
@@ -421,6 +434,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                     m_bindingEditor->setControllerProfile({
                         QStringLiteral("Raw HID"), logicalId, family,
                         QStringLiteral("Raw HID controller")});
+                    beginInput(ControlId::label(control, family));
                     if (m_bindingEditor->captureInput(QStringLiteral("controller"),
                                                       control,
                                                       ControlId::label(control, family)))
@@ -639,8 +653,10 @@ bool InputEngine::handleKeyPressed(int key, int modifiers, bool autoRepeat)
     const QString trigger = keyboardTrigger(key, modifiers);
     if (trigger.isEmpty())
         return false;
-    if (!autoRepeat)
+    if (!autoRepeat) {
+        beginInput(trigger);
         ModernInput::SelectiveRawHidFallback::instance().observeKeyboard(trigger);
+    }
     if (!autoRepeat && m_bindingEditor->captureInput(
             QStringLiteral("keyboard"), trigger, trigger))
         return true;
@@ -792,10 +808,24 @@ void InputEngine::removeLegacyBackend(Gamepad* pad, const QString& providerDevic
         observed.intersect(QSet<QString>{providerDeviceId});
     for (const QString& id : observed) {
         const QString logicalId = canonicalProfile(pad, id);
+        // A disconnect cancels, rather than completes, a native tap or hold.
+        // Its physical state is gone even when another backend remains active.
+        const QString group = QStringLiteral("controller");
+        const QStringList down = m_runtime->downControls(group, logicalId);
+        m_runtime->invalidateGestureStateFor(group, logicalId);
+        const QString prefix = logicalId + QChar(0x1f);
+        m_systemControlOrigins.remove(prefix + ControlId::Capture);
+        m_systemControlOrigins.remove(prefix + ControlId::Guide);
+        m_systemControlReleases.remove(prefix + ControlId::Capture);
+        m_systemControlReleases.remove(prefix + ControlId::Guide);
         const QStringList releases =
             m_providers.removeLegacy(providerFor(pad), id);
         for (const QString& control : releases)
-            m_runtime->release(QStringLiteral("controller"), logicalId, control);
+            m_runtime->release(group, logicalId, control);
+        for (const QString& control : down) {
+            m_runtime->clearReleaseGate(group, logicalId, control);
+            m_runtime->notePhysicalRelease(group, logicalId, control);
+        }
         m_legacyObservedIds[pad].remove(id);
     }
     if (m_legacyObservedIds.value(pad).isEmpty())
@@ -874,13 +904,52 @@ bool InputEngine::routeLegacySystemEdge(Gamepad* source,
                                         const QString& providerDeviceId,
                                         const QString& controlId, bool pressed)
 {
+    const QString logicalProfile = canonicalProfile(source, providerDeviceId);
+    const QString key = logicalProfile + QChar(0x1f) + controlId;
+    const auto provider = providerFor(source);
+    const auto* logical = m_providers.registry().controller(logicalProfile);
+    const auto recent = m_systemControlReleases.constFind(key);
+    if (pressed && !m_systemControlOrigins.contains(key) && logical
+        && logical->confidence == ModernInput::IdentityConfidence::Strong
+        && recent != m_systemControlReleases.cend()
+        && !recent->origin.participants.contains(provider)
+        && m_controllerClock.elapsed() - recent->timeMs
+               <= ControllerArbitration::BackendDuplicateWindowMs) {
+        ++m_mirrorWindowDrops;
+        return false;
+    }
     const auto result = m_providers.routeLegacySystemEdge(
-        providerFor(source), providerDeviceId, controlId, pressed,
+        provider, providerDeviceId, controlId, pressed,
         quint64(m_controllerClock.elapsed()));
     for (const QString& release : result.safeReleases)
         m_runtime->release(QStringLiteral("controller"),
-                           canonicalProfile(source, providerDeviceId), release);
+                            canonicalProfile(source, providerDeviceId), release);
+    if (result.accepted) {
+        if (pressed)
+            m_systemControlOrigins.insert(key, {provider, {provider}});
+        else
+            noteSystemControlReleased(logicalProfile, controlId, provider);
+    } else if (pressed && result.duplicate) {
+        const auto origin = m_systemControlOrigins.find(key);
+        if (origin != m_systemControlOrigins.end())
+            origin->participants.insert(provider);
+    }
     return result.accepted;
+}
+
+void InputEngine::noteSystemControlReleased(const QString& logicalProfile,
+                                            const QString& controlId,
+                                            ModernInput::ControllerProvider provider)
+{
+    if (controlId != ControlId::Capture && controlId != ControlId::Guide)
+        return;
+    const QString key = logicalProfile + QChar(0x1f) + controlId;
+    const auto origin = m_systemControlOrigins.find(key);
+    const SystemControlOrigin initiatingProvider = origin == m_systemControlOrigins.end()
+        ? SystemControlOrigin{provider, {provider}} : *origin;
+    if (origin != m_systemControlOrigins.end())
+        m_systemControlOrigins.erase(origin);
+    m_systemControlReleases.insert(key, {initiatingProvider, m_controllerClock.elapsed()});
 }
 
 bool InputEngine::hasExplicitViewBinding(const QString& logicalProfile) const
@@ -1208,6 +1277,11 @@ void InputEngine::setPlaybackActive(bool active)
     m_legacyViewFallbackHeld.clear();
 }
 
+void InputEngine::cancelNavigationRepeat()
+{
+    stopNavRepeat();
+}
+
 void InputEngine::onControlPressed(const QString& controlId, int family,
                                    const QString&, const QString& fingerprint,
                                    const QString&)
@@ -1223,6 +1297,15 @@ void InputEngine::onControlPressed(const QString& controlId, int family,
     const auto currentProfile = source->profile();
     if (currentProfile.fingerprint == fingerprint)
         observeLegacyBackend(source, currentProfile);
+
+    // Genuine system capabilities have their own identity and deduplication.
+    // A virtual Xbox navigation source cannot suppress a physical Share/Guide
+    // press or take ownership of its release. View/Back stays on the ordinary
+    // path, including its separately controlled compatibility alias.
+    if (controlId == ControlId::Capture || controlId == ControlId::Guide) {
+        deliverPress(source, controlId, family, fingerprint);
+        return;
+    }
 
     const qint64 now = m_controllerClock.elapsed();
     if (source != m_activeBackend) {
@@ -1335,8 +1418,8 @@ void InputEngine::deliverPress(Gamepad* source, const QString& controlId, int fa
     m_bindingEditor->setControllerProfile(editorProfile);
     if (controlId == ControlId::Guide)
         InputDiagnostics::instance().setGuideObserved(true);
-    setLastInput(ControlId::label(controlId, static_cast<ControlId::ControllerFamily>(family))
-                 + QStringLiteral(" pressed"));
+    beginInput(ControlId::label(controlId, static_cast<ControlId::ControllerFamily>(family))
+               + QStringLiteral(" pressed"));
     if (m_bindingEditor->captureInput(
             QStringLiteral("controller"), controlId,
             ControlId::label(controlId, static_cast<ControlId::ControllerFamily>(family))))
@@ -1345,7 +1428,8 @@ void InputEngine::deliverPress(Gamepad* source, const QString& controlId, int fa
     // the user's hands, not just the shared controller table.
     m_runtime->setActiveProfile(QStringLiteral("controller"), logicalProfile);
     const bool handled = m_runtime->press(QStringLiteral("controller"), logicalProfile, controlId,
-                                          primaryScope(), fallbackScope());
+                                          primaryScope(), fallbackScope(),
+                                          controlId == ControlId::Capture || controlId == ControlId::Guide);
     // XInput Back/View is now independently bindable. For profiles that have
     // no explicit View/Back pattern yet, preserve the historic built-in
     // Capture gestures as a capability fallback. As soon as the user binds
@@ -1370,6 +1454,14 @@ void InputEngine::onControlReleased(const QString& controlId, int, const QString
         m_held.noteReleased(legacyDeviceKey(source), controlId);
     if (source && backendConnected(source))
         m_backendLastReleaseMs[source].insert(controlId, m_controllerClock.elapsed());
+    if (source && (controlId == ControlId::Capture || controlId == ControlId::Guide)) {
+        if (backendConnected(source)
+            && routeLegacySystemEdge(source, fingerprint, controlId, false)) {
+            releaseControllerControl(canonicalProfile(source, fingerprint), controlId);
+            stopNavRepeatOnRelease(controlId);
+        }
+        return;
+    }
     // A release for a press still waiting on confirmation is remembered, not
     // forwarded: the press has not been delivered yet, so there is nothing to
     // release. Recording it is what keeps a tap a tap — on promotion the pair
@@ -1381,10 +1473,6 @@ void InputEngine::onControlReleased(const QString& controlId, int, const QString
         return;
     }
     if (source != m_activeBackend) {
-        // Backend promotion cancels gestures, but not the shared system-button
-        // cycle. Its original provider must still be allowed to close it.
-        if (source && (controlId == ControlId::Capture || controlId == ControlId::Guide))
-            routeLegacySystemEdge(source, fingerprint, controlId, false);
         // cpo-p05: a route that is no longer the active backend can still be
         // the one holding a switch gate - a provider failover mid-press must
         // not leave that gate armed forever. Its real release closes it, and
@@ -1404,9 +1492,6 @@ void InputEngine::onControlReleased(const QString& controlId, int, const QString
         }
         return;
     }
-    if ((controlId == ControlId::Capture || controlId == ControlId::Guide)
-        && !routeLegacySystemEdge(source, fingerprint, controlId, false))
-        return;
     const QString logicalProfile = canonicalProfile(source, fingerprint);
     releaseControllerControl(logicalProfile, controlId);
     stopNavRepeatOnRelease(controlId);
@@ -1558,6 +1643,14 @@ void InputEngine::setLastInput(const QString& text)
     m_lastInput = text;
     qInfo() << "Input:" << text;
     emit lastInputChanged();
+}
+
+void InputEngine::beginInput(const QString& text)
+{
+    // Detection and dispatch are separate events. The old action must not look
+    // like this press's result while a tap/hold is pending or unbound.
+    m_bindingEditor->setLastFiredAction({});
+    setLastInput(text);
 }
 
 void InputEngine::setControllerStatus(const QString& text)

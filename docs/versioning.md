@@ -1,5 +1,7 @@
 # Versioning & Documentation Rules
 
+> **Owner policy (2026-10-30, 0.8.2 Beta 1):** Preserve the accepted native Share/Guide and update-dialog changes, build and verify the full application, and publish **GameHQ 0.8.2 Beta 1** with production Ed25519 release sequence **40**. Set `VERSION=0.8.2`, compile `GAMEHQ_PRERELEASE=beta1`, use `v0.8.2-beta1`, and mark it as a pre-release with `Latest=false`. Keep **0.8.1 as Latest Stable** and preserve existing releases and tags. After verification, ask the issue #32 reporter to test native Share without the DS4Windows keyboard macro. Keep the issue open; 0.8.2 Stable requires hardware confirmation and a later owner publication decision.
+
 > **Owner policy (2026-10-29, Stable):** Urgently publish **GameHQ 0.8.1 Stable** as Latest with both validated Beta 1 fixes. Keep `VERSION=0.8.1`, clear `GAMEHQ_PRERELEASE`, use tag `v0.8.1`, production Ed25519 signing and release sequence **39**. Run focused regression and installation checks, including an actual 0.8.0 update, repeated ordinary starts and installer repair with user data preserved. Preserve the existing 0.8.0 and Beta 1 releases and tags. Real DS4Windows hardware confirmation remains pending; keep issue #32 open without delaying stable. Affected users must manually install 0.8.1 over the existing installation without uninstalling or deleting data. This supersedes the earlier prohibition on stable publication.
 
 > **Owner policy (2026-10-29, Beta 1):** Publish **GameHQ 0.8.1 Beta 1** with both validated hotfixes before stable. Keep `VERSION=0.8.1`, compile with `GAMEHQ_PRERELEASE=beta1`, use tag `v0.8.1-beta1`, production Ed25519 signing and release sequence **38**, and mark the release as a pre-release with `Latest=false`. Rebuild genuine beta packages. Keep **0.8.0 as Latest Stable** and preserve its tag, assets and release history. Real DualSense + DS4Windows + HidHide confirmation remains pending. Later betas and stable each require a fresh sequence; stable publication is not authorized.
@@ -49,7 +51,7 @@ local files does not publish or tag a release.
 
 ## Release Checklist
 
-1. Use the owner-designated release version in `VERSION` (currently 0.8.1); never add a `-betaN` suffix to it. A beta is packaged with `-GitTag v<VERSION>-betaN -TrustMode unsigned-beta`; the source offer and release validation accept that tag form only with beta trust.
+1. Use the owner-designated release version in `VERSION` (currently 0.8.2); never add a `-betaN` suffix to it. A beta is packaged with `-GitTag v<VERSION>-betaN -TrustMode unsigned-beta`; the source offer and release validation accept that tag form only with beta trust.
    The build must be configured with `-DGAMEHQ_PRERELEASE=betaN` (empty for a stable tag); `validate-release.ps1` refuses a mismatch, because the in-app beta channel ranks installs by that suffix.
    Every published build, beta or stable, needs a new `packaging/release-sequence.txt` value. Betas of one version used to share a sequence (Beta 1 and Beta 2 of 0.7.10 both used 34); the updater rejects a reused sequence with different manifest bytes, so in-app beta-to-beta updates require a fresh one.
 2. Add a `CHANGELOG.md` entry with Added/Changed/Fixed/Removed sections as needed.

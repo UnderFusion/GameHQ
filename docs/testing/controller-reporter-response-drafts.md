@@ -1,5 +1,14 @@
 # Controller reporter response drafts
 
+## Issue #32 — 0.8.2 Beta 1 native Share check (send after public verification)
+
+Thanks for testing 0.8.1 so thoroughly. [GameHQ 0.8.2 Beta 1](https://github.com/UnderFusion/GameHQ/releases/tag/v0.8.2-beta1) contains a focused native Share/Guide routing fix. Ordinary Sony/XInput source switches no longer cancel those gestures, and the Input page clears stale action feedback. Automated checks passed; your DS4Windows + HidHide setup still needs real hardware confirmation.
+
+Please disable the DS4Windows Share keyboard macro and keep **Use Back/View as Share OFF** for the virtual Xbox source. With your intended controller preset assigned, please check native Share tap (screenshot), hold for two seconds (replay) and double tap (overlay), including while using other controls and after reconnecting. Touchpad/Back should still work without screenshots, with no duplicate actions or stuck buttons.
+
+If anything fails, please include the surrounding input/provider diagnostics and the active controller/game preset details. Keep your macro workaround available if needed. We will keep this issue open pending your results.
+
+
 ## Issue #32 — DS4Windows (send after Beta 1 publication is verified)
 
 Thanks for the detailed report! [GameHQ 0.8.1 Beta 1](https://github.com/UnderFusion/GameHQ/releases/tag/v0.8.1-beta1) adds a separate **Use Back/View as

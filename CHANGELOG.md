@@ -4,15 +4,20 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
+## [0.8.2] - 2026-10-30
+
+Beta 1 (`v0.8.2-beta1`) tests native Share/Guide routing and update-dialog feedback. GameHQ 0.8.1 remains Latest Stable; real DualSense + DS4Windows + HidHide confirmation is required before 0.8.2 Stable.
+
 ### Changed
 
-- **Install updates straight from the banner.** The update banner now has an Install and restart button that downloads, verifies and installs the new version in one click, without opening the release notes first.
-- **Download progress is shown where you started it.** The update banner and the About dialog both show a progress bar and status while an update downloads, prepares and installs.
+- **Install updates straight from the banner.** Install and restart is the first, primary banner action; it downloads, verifies and installs the new version without opening release notes first.
+- **Download progress stays beside the update action.** The About dialog pins its update controls, status and progress above the scrolling notes; the banner mirrors the same download and installation state.
 - **No About dialog after an update.** After an update restarts GameHQ, a short notification confirms the new version instead of the About dialog opening on its own; the About row keeps its dot until you read the notes.
 
 ### Fixed
 
-- Holding a controller stick in the About or Help dialog no longer plays a repeating click once the text has reached the top or bottom.
+- Native Share and Guide gestures survive ordinary controller-source switches, and Input feedback clears the previous action when a new button is pressed.
+- Opening or closing About cancels navigation repeats from the previous view, and the gallery cannot select tiles or play navigation ticks behind a modal. About navigation stops silently at either end of its control list.
 - Release notes bundled with GameHQ no longer show raw link markup such as `[@name](https://...)`.
 
 

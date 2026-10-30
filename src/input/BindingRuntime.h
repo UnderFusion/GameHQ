@@ -64,11 +64,15 @@ public:
                                        const QString& deviceProfile = {}) const;
 
     bool press(const QString& deviceGroup, const QString& deviceProfile,
-               const QString& triggerCode, ActionCatalog::Scope primaryScope,
-               ActionCatalog::Scope fallbackScope = ActionCatalog::Scope::Global);
+                const QString& triggerCode, ActionCatalog::Scope primaryScope,
+                ActionCatalog::Scope fallbackScope = ActionCatalog::Scope::Global,
+                bool nativeSystemControl = false);
     bool release(const QString& deviceGroup, const QString& deviceProfile,
                  const QString& triggerCode);
     void cancelAll();
+    // Only ordinary backend promotion uses this narrower boundary. Focus,
+    // overlay, mapping and device-lifetime boundaries retain cancellation.
+    void cancelForBackendSwitch();
 
     // ---------------------------------------------------------------- cpo-p05
     // One mapping route (deviceGroup + canonical logical profile) can be
@@ -163,6 +167,7 @@ private:
     // The context a control was last pressed in, so release() can address the
     // same recognizer state without the caller having to repeat the scope.
     QHash<QString, InputPatternRecognizer::Context> m_pressContexts;
+    QSet<QString> m_nativeSystemControls;
     // Cleared by reload(); repopulated on first request per group/profile.
     mutable QHash<QString, QVector<Relation>> m_relations;
     // The device last seen pressing something, for diagnostics only.

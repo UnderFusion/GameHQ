@@ -123,6 +123,7 @@ ApplicationWindow {
         if (lightbox.visible || helpDialog.visible)
             return
         window.menuOpen = false
+        window.closeSidebarLanguageList()
         window.sidebarFocused = false
         aboutDialog.open(asPostUpdateGreeting)
         sounds.play("nav_tick")
@@ -1213,7 +1214,7 @@ ApplicationWindow {
                 onCaptureActivated: (index) => lightbox.openAt(index)
                 onDeleteRequested: (index, gameName, dateText) => window.askDelete(index, gameName, dateText)
                 onShareRequested: (index) => window.openShare(app.gallery.get(index))
-                inputBlocked: shareDialog.isOpen
+                inputBlocked: shareDialog.isOpen || window.activeModal() !== null
                 onAddFolderRequested: folderDialog.open()
                 onKeyboardActivity: window.usingGamepad = false
                 onBulkToggleRequested: (index, extendRange) => window.bulkToggle(index, extendRange)
@@ -1321,6 +1322,7 @@ ApplicationWindow {
         id: aboutDialog
         anchors.fill: parent
         z: 500
+        onVisibleChanged: input.cancelNavigationRepeat()
         onClosed: window.finishAbout()
         onUpdateSettingsRequested: window.openAboutSettings()
         onUpdateDeferred: updateBanner.dismiss()

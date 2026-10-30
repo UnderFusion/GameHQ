@@ -156,22 +156,10 @@ Rectangle {
             }
         }
 
-        AccentButton {
-            visible: ["UpdateAvailable", "Downloading", "ReadyToInstall", "Failed"]
-                     .includes(updates.stateName)
-            label: {
-                if (updates.stateName === "UpdateAvailable") {
-                    //% "See what's new"
-                    return qsTrId("gamehq.update.see_whats_new")
-                }
-                //% "View update"
-                return qsTrId("gamehq.update.view_update")
-            }
-            onClicked: root.detailsRequested()
-        }
         // One click from the banner: download, verify, then install and
         // restart, without opening the release notes first.
         AccentButton {
+            objectName: "bannerInstallAction"
             visible: ["UpdateAvailable", "Downloading", "ReadyToInstall"]
                      .includes(updates.stateName)
             label: {
@@ -185,6 +173,20 @@ Rectangle {
             primary: updates.stateName !== "Downloading"
             onClicked: updates.stateName === "Downloading"
                        ? updates.cancelDownload() : updates.downloadAndInstall()
+        }
+        AccentButton {
+            objectName: "bannerDetailsAction"
+            visible: ["UpdateAvailable", "Downloading", "ReadyToInstall", "Failed"]
+                     .includes(updates.stateName)
+            label: {
+                if (updates.stateName === "UpdateAvailable") {
+                    //% "See what's new"
+                    return qsTrId("gamehq.update.see_whats_new")
+                }
+                //% "View update"
+                return qsTrId("gamehq.update.view_update")
+            }
+            onClicked: root.detailsRequested()
         }
         AccentButton {
             visible: updates.stateName === "UpdateAvailable" || updates.stateName === "Failed"

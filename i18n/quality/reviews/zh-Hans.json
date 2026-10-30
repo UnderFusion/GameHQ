@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_zh_Hans.ts",
-    "sha256": "bec9a7347218b08c0c8f5a76169bef12ee13b0ff980f70dfa2f60d840915a644",
+    "sha256": "0388204b8edd338b5abc2108dce2228d99d0d85b0451f4dda05c578edc87b9bf",
     "message_count": 1107
   },
   "coverage": [
@@ -29,7 +29,7 @@
       "source_hash": "26949d3d5a563ac300b2683d3d3fdbc2a35b59e0a087dbca07e72762dc2df4ea",
       "translation_hash": "04ab8fbb318f1c0a1ac9ff63932c3375a4bba449d414f03958ab455c2e1a06f9",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:944"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:959"
       ],
       "decision": "accepted"
     },
@@ -38,7 +38,7 @@
       "source_hash": "5374e300140d9f0a406fd8b070663c161b3c348ac0443b25a9fd8a1df76b78a4",
       "translation_hash": "20489216dd52d6f78209578ccf6efe5688cbf83559fc49e305882105cc40324a",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:878"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:893"
       ],
       "decision": "accepted"
     },
@@ -47,8 +47,8 @@
       "source_hash": "952e887b30a3894e1a2dfb7115a99880be5cac1f5eb514154976c2615a78862f",
       "translation_hash": "eb803295797e8c1f8028c907ec41be206d8e723d833bf95093c266dea4cc7917",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:903",
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:1257"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:918",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:1282"
       ],
       "decision": "accepted"
     },
@@ -57,7 +57,7 @@
       "source_hash": "6181b58e38716a215fc2d772c6ef9dd8e0fdff8e453e5ed214c73cc45fc5fb81",
       "translation_hash": "46b6b00b930dd3290e6df12e75f0e8d998afe4241ade599dec437b82103eaa42",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:915"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:930"
       ],
       "decision": "accepted"
     },
@@ -66,7 +66,7 @@
       "source_hash": "4b367816ef33f5824d0c22f14a727c7df90d703c9564f5db84989e9a82d952ea",
       "translation_hash": "5f73a4e1e49472d67fac1c9a1a4f4244ce22ef3fe4ec0c5ed193fc62e78c94e9",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:715"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:730"
       ],
       "decision": "accepted"
     },
@@ -75,7 +75,7 @@
       "source_hash": "0ff0fcc1e2da9b0bf8c893123edd5565e9f37791b6fbdbd439534bf5101bce06",
       "translation_hash": "49e9fbf5ac4ddd1742e5ddba3603f1e4a026eb130d7e896b2b5232e14518a207",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:712"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:727"
       ],
       "decision": "corrected"
     },
@@ -84,7 +84,7 @@
       "source_hash": "19c13543b6c598ae52ce6d787aa410502db74e38ce6683d280d36eb2e00e0baa",
       "translation_hash": "1454fa25193376a3587766513cfc713ba3eb4e58bcde7cd13b02792466452d63",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:868"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:883"
       ],
       "decision": "corrected"
     },
@@ -93,7 +93,7 @@
       "source_hash": "aa9b19cffaa783832dc62f3f8208d13e6e6855a46b0c86f957c32a85a274c37e",
       "translation_hash": "94a96da67367eb0ce11414a46d0fec75da18a80bb873d60a55e373c943e860e1",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:823"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:838"
       ],
       "decision": "corrected"
     },
@@ -103,7 +103,7 @@
       "translation_hash": "f3178af6ddb1d90958c236d09169955b06537455c536e3dd76aff2e0dfb206a9",
       "locations": [
         "src/ui/qml/Main.qml:97",
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:678"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:693"
       ],
       "decision": "corrected"
     },
@@ -112,7 +112,7 @@
       "source_hash": "0f29b5b2b3f763a6863be47b709eff065a08cf6aed659e1f0ef5f7c31f78a401",
       "translation_hash": "881a72184b2fcca422d3d7a23db03a97f85d8e0f3c7334cb72f44c3d3f6e3caf",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:887"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:902"
       ],
       "decision": "accepted"
     },
@@ -130,7 +130,7 @@
       "source_hash": "02654d60a4967ff1bdc47cd8530dfed9e5a4b31f086fe6e2b86ca568c0954fd0",
       "translation_hash": "19e32777e9d60e5151258a1dafec4aed18e999ae19736bbbd608acb7df878fa7",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:909"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:924"
       ],
       "decision": "corrected"
     },
@@ -139,7 +139,7 @@
       "source_hash": "3e0bba5637158a27fb8032103fe1abd7d3cd63dee4a56c20f7f8c7889e15186b",
       "translation_hash": "a2dc3804d167552b172abcabc7c6db1f1487b27d24083521d592cd954d70fe9e",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:953"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:968"
       ],
       "decision": "accepted"
     },
@@ -148,7 +148,7 @@
       "source_hash": "44c99df956a472847ce68635cfbec8bb0db87b49411e76ea3b01f823cc5158cf",
       "translation_hash": "781fdb237507f6039c9ff8b718225b03fda4d8c3273934890b0626b3e9347e76",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:964"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:979"
       ],
       "decision": "corrected"
     },
@@ -158,8 +158,8 @@
       "translation_hash": "c4cd36799ff5f866d1bf91414dd26d0e85b3bd26b49873807aff4f6fca60ca53",
       "locations": [
         "src/ui/qml/Main.qml:99",
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:693",
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:993",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:708",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:997",
         "src/ui/qml/settings/AboutSettingsPage.qml:18"
       ],
       "decision": "corrected"
@@ -169,7 +169,7 @@
       "source_hash": "34660157de7b0cf25dfcbc1fdff840f11ccaa81cfa838282af3c3d9b8a249ec6",
       "translation_hash": "ccb260f5945cef9bedbe76a31159e9171e2f47069448df4453e0eed075a9d31b",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:833"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:848"
       ],
       "decision": "corrected"
     },
@@ -178,7 +178,7 @@
       "source_hash": "6a57466137d7c992297dbdf7fb041ebc6ca6ea18ada04e6bcb7e8802ba42d47c",
       "translation_hash": "c5b81b02354f5d3be30209c5933017d6b5079981d541f61e783d21939e048da6",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:769"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:784"
       ],
       "decision": "corrected"
     },
@@ -187,7 +187,7 @@
       "source_hash": "86a949b914fd9909d961e8461b402b161909798eac6f9faa51560f8cffdebb28",
       "translation_hash": "aca31a8baa7198eb0d2ce5baa5e6903685866e6a11be9512de0ebd0da55542be",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:766"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:781"
       ],
       "decision": "accepted"
     },
@@ -205,7 +205,7 @@
         "src/ui/qml/components/MappingPresetNameDialog.qml:23",
         "src/ui/qml/components/ShareDialog.qml:152",
         "src/ui/qml/components/ShareDialog.qml:441",
-        "src/ui/qml/components/UpdateBanner.qml:180",
+        "src/ui/qml/components/UpdateBanner.qml:168",
         "src/ui/qml/settings/AboutSettingsPage.qml:200",
         "src/ui/qml/settings/InputSettingsPage.qml:638",
         "src/ui/qml/settings/TelegramAccountSection.qml:179"
@@ -217,9 +217,9 @@
       "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
       "translation_hash": "4f98310c5f54a7510cffe01de28019e2e6ccd0e5f3c572a0a8f8ef23f5859a66",
       "locations": [
-        "src/ui/qml/Main.qml:1295",
-        "src/ui/qml/Main.qml:1314",
-        "src/ui/qml/Main.qml:1353",
+        "src/ui/qml/Main.qml:1296",
+        "src/ui/qml/Main.qml:1315",
+        "src/ui/qml/Main.qml:1355",
         "src/ui/qml/OverlayWindow.qml:1067",
         "src/ui/qml/components/ConfirmDialog.qml:17",
         "src/ui/qml/components/DesktopGalleryHeader.qml:73",
@@ -622,7 +622,7 @@
       "translation_hash": "55f2e09d63f4deec4eaa0b363a719b1bb944e9a922e1e3ee36b0ddcda3450d92",
       "locations": [
         "src/ui/qml/components/ControllerWarningBanner.qml:108",
-        "src/ui/qml/components/UpdateBanner.qml:193"
+        "src/ui/qml/components/UpdateBanner.qml:195"
       ],
       "decision": "corrected"
     },
@@ -2389,7 +2389,7 @@
       "source_hash": "71e48f5d88c620a5129e51bad78fa7ea07224b5370e9efdf0dfe83b4ebaac8ba",
       "translation_hash": "3d05c03b891e969d1194a5ea313406e9402c7c6dd2ccd907e8df2201ba66a14b",
       "locations": [
-        "src/ui/qml/Main.qml:1355",
+        "src/ui/qml/Main.qml:1357",
         "src/ui/qml/components/DesktopGalleryHeader.qml:40"
       ],
       "decision": "accepted"
@@ -2399,7 +2399,7 @@
       "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
       "translation_hash": "5860f5db53edb3d726b3ab84f43aab2f904235d110ca0b0db3f6855a89c5bb32",
       "locations": [
-        "src/ui/qml/Main.qml:1349",
+        "src/ui/qml/Main.qml:1351",
         "src/ui/qml/components/OverlayActionMenu.qml:15"
       ],
       "decision": "accepted"
@@ -2409,7 +2409,7 @@
       "source_hash": "a5aba3b31aac37525488e0d1b3b9d34a18cf32b5b7531b3ae0f6acdfda4b1f65",
       "translation_hash": "e3ec40c7ad935bccb5b19882b06b2dd919b3821e9a406129cb4beeb4c42a4313",
       "locations": [
-        "src/ui/qml/Main.qml:1351",
+        "src/ui/qml/Main.qml:1353",
         "src/ui/qml/components/OverlayActionMenu.qml:17"
       ],
       "decision": "corrected"
@@ -2430,7 +2430,7 @@
       "source_hash": "78ec4fedffd6a94965727328871a1fb8a9b0a4ef0b8621024ada89cd87cb89a2",
       "translation_hash": "1cc2efacc2d3c7cd6f9f95382f6770c34220fbd84eb3ff16bfdef5cb7028a865",
       "locations": [
-        "src/ui/qml/Main.qml:1283"
+        "src/ui/qml/Main.qml:1284"
       ],
       "decision": "accepted"
     },
@@ -2439,7 +2439,7 @@
       "source_hash": "dc9d379e0965e3e2dde43ccdee2a9b0fd4028f5ede83e5f947221da301f2280e",
       "translation_hash": "053d334122c7e42c15c8cec59ff2e178d54b10b5cd5e64229c0e48c67da481bb",
       "locations": [
-        "src/ui/qml/Main.qml:1293",
+        "src/ui/qml/Main.qml:1294",
         "src/ui/qml/OverlayWindow.qml:1065"
       ],
       "decision": "corrected"
@@ -2449,7 +2449,7 @@
       "source_hash": "8d82e4e85db8ae65f31e33d5fd48188a644aeb2bd9684840f9c7ac4c124734de",
       "translation_hash": "1d4a32b5b70d61ea2a7d44c63d8df29731aab21ee993a646db202a2a01ff6756",
       "locations": [
-        "src/ui/qml/Main.qml:541"
+        "src/ui/qml/Main.qml:542"
       ],
       "decision": "accepted"
     },
@@ -2458,7 +2458,7 @@
       "source_hash": "4acca6ec2298ea62a7bd3accc3ba79d900afc0400e7deb982f420c11054e12e9",
       "translation_hash": "0dffc5eff46ba0b0f374a70a510ae86732ec8dcc846b62da0fa1dd6b7a9b5a00",
       "locations": [
-        "src/ui/qml/Main.qml:1312"
+        "src/ui/qml/Main.qml:1313"
       ],
       "decision": "corrected"
     },
@@ -3426,7 +3426,7 @@
       "source_hash": "6cc011948114213ff4d6a38a88d5dafa01d08d456af12c7eac5481ea1c585e74",
       "translation_hash": "d7daf5aa8f2972585f8e7061d41d50d0a6159c0b7c2dfeeb34a9f360089331de",
       "locations": [
-        "src/input/InputEngine.cpp:468"
+        "src/input/InputEngine.cpp:482"
       ],
       "decision": "accepted"
     },
@@ -3471,7 +3471,7 @@
       "source_hash": "fc71a02610567fe81ec3aea2e391c3f6aaae3d0598edeb698ae361ffa7799efc",
       "translation_hash": "e3a317b3ad5e1d6a6b897e64d3550677637dfa77d1a3a1d652d3f84382060215",
       "locations": [
-        "src/input/InputEngine.cpp:459"
+        "src/input/InputEngine.cpp:473"
       ],
       "decision": "accepted"
     },
@@ -3661,7 +3661,7 @@
       "source_hash": "2b75fa0e1934ad730f1f748b51ec5a495fd45d37f982204595d51432a6cb4978",
       "translation_hash": "7bcfafa7f70f1b7e2d6aade63054ece4fdf5c01ffb1972f224160b4b9583cc4c",
       "locations": [
-        "src/ui/qml/Main.qml:1263",
+        "src/ui/qml/Main.qml:1264",
         "src/ui/qml/settings/LibrarySettingsPage.qml:149"
       ],
       "decision": "corrected"
@@ -3683,7 +3683,7 @@
       "source_hash": "120d85ecb99d0cc14c50129ba8951d1a69332ea72c413641e44b8513d810c646",
       "translation_hash": "3e749c0d58e4461d4a1bde6127770f24b1b1d1d5bb5e026618a2ca760b054ea7",
       "locations": [
-        "src/ui/qml/Main.qml:211",
+        "src/ui/qml/Main.qml:212",
         "src/ui/qml/components/DesktopSidebar.qml:160",
         "src/ui/qml/components/OverlaySidebar.qml:31"
       ],
@@ -3694,7 +3694,7 @@
       "source_hash": "84d6bada5fc06694835824e285a5dcc1dac6d4954097fdda50c6fcd6603c5cb3",
       "translation_hash": "77e3a9012ca7f5684552688b9851c6abae6410ba3b8281bb92d1b91414c1c361",
       "locations": [
-        "src/ui/qml/Main.qml:219",
+        "src/ui/qml/Main.qml:220",
         "src/ui/qml/components/OverlaySidebar.qml:39"
       ],
       "decision": "corrected"
@@ -3704,7 +3704,7 @@
       "source_hash": "bb97c8a6aad3a02b0e8688633b6a4dfa2b93e1091eba76a76394d7c1eddefd8e",
       "translation_hash": "57d9424a93e4b68b55cb642f6b3553685d122592396dfc1a23ded82bf2cc0b7e",
       "locations": [
-        "src/ui/qml/Main.qml:215",
+        "src/ui/qml/Main.qml:216",
         "src/ui/qml/components/OverlaySidebar.qml:35"
       ],
       "decision": "corrected"
@@ -3714,7 +3714,7 @@
       "source_hash": "4f7089ab3e887256fb9e4df5f4a5befba8b08c0652ad8771bef1abb421844e23",
       "translation_hash": "f4db526aac60026a89c52fcadbe34a1df88142bd502bdaea046fdbb5ef4dbaf6",
       "locations": [
-        "src/ui/qml/Main.qml:221",
+        "src/ui/qml/Main.qml:222",
         "src/ui/qml/components/OverlaySidebar.qml:41"
       ],
       "decision": "accepted"
@@ -3724,7 +3724,7 @@
       "source_hash": "2a858b8a3742af57529cf867c8b1e40c632638e5dd6f6b65faff05223a234edc",
       "translation_hash": "f8041cc2c8259ef7ac072b0060915d57275847322692dfe60a99b5d52328838a",
       "locations": [
-        "src/ui/qml/Main.qml:223",
+        "src/ui/qml/Main.qml:224",
         "src/ui/qml/components/OverlaySidebar.qml:43"
       ],
       "decision": "corrected"
@@ -3734,7 +3734,7 @@
       "source_hash": "891dd17febe97fbe4dca469be030be1a32c4cb836c87b6c88331fd5d2a651860",
       "translation_hash": "b68f7499496fd627f24336ee818444a29b9d31451aaa9d5588284392468a9a23",
       "locations": [
-        "src/ui/qml/Main.qml:213",
+        "src/ui/qml/Main.qml:214",
         "src/ui/qml/components/OverlaySidebar.qml:33"
       ],
       "decision": "accepted"
@@ -3744,7 +3744,7 @@
       "source_hash": "113704fa1f2848c9a11659f5056c4a62d40ca521edb625276cb4280fb9d9702c",
       "translation_hash": "1a7d1275df69371605a0da7b9a0f5a24b604004c92bde39708ad5eaf8a9a5f85",
       "locations": [
-        "src/ui/qml/Main.qml:217",
+        "src/ui/qml/Main.qml:218",
         "src/ui/qml/components/OverlaySidebar.qml:37"
       ],
       "decision": "accepted"
@@ -4481,7 +4481,7 @@
       "source_hash": "18126ee492809fb7be731afab4094c7bf76b95bb05f7bb290a6e64b032f45933",
       "translation_hash": "49cd84dc50d2f859b93167923a7cfd62298b4459b9f0a4f929fe860b1c937619",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:921",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:936",
         "src/ui/qml/settings/AboutSettingsPage.qml:277"
       ],
       "decision": "corrected"
@@ -6260,7 +6260,7 @@
       "source_hash": "d4f723e72d138c06ee78c2ab0e67f07674d5e6aa4532b7a67ee3bf299801501e",
       "translation_hash": "930e41313cdec98087e3f3c4e77989d27078d3abf491ff64f8a246a95322806c",
       "locations": [
-        "src/ui/qml/Main.qml:177",
+        "src/ui/qml/Main.qml:178",
         "src/ui/qml/components/ControllerWarningBanner.qml:69",
         "src/ui/qml/settings/InputSettingsPage.qml:122"
       ],
@@ -9469,7 +9469,7 @@
       "source_hash": "dc32ba775800e036d414e1b1d2d323aa8b0c1354c67e89e8dbc32c08be7db83d",
       "translation_hash": "7337f9803342d29a27a19ffdeb1aa094da805467b151e1bf906b75c4df0d6ace",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:423",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:424",
         "src/ui/qml/settings/AboutSettingsPage.qml:188"
       ],
       "decision": "accepted"
@@ -9587,7 +9587,7 @@
       "source_hash": "9f3f9d76327b04f96e528c11dc860effb26137d528825edf02f1e2a9ab05e1c7",
       "translation_hash": "f43e9a566d6a2fae018644b61c58ce61362a60794f79b34dc97f280eb6a45851",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:282"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:283"
       ],
       "decision": "accepted"
     },
@@ -9596,7 +9596,7 @@
       "source_hash": "c422b61ebef656e5ed4d721d1c9bd0ba9b4650acf073a830237cfc4f7f53051a",
       "translation_hash": "778803f1c6bb17a5d3ae773176abc666aef43dd1b376d2eaee5c51c23bf822b0",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:364"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:365"
       ],
       "decision": "accepted"
     },
@@ -9605,8 +9605,8 @@
       "source_hash": "c70eb41d40e3e244cca7b90c09d09592318e64db60e65e1c1c9975e98dd16f49",
       "translation_hash": "c7ebcab87a09842a8a4d79e16ba3918ed9077ee28e0763cda2e18faf794b608d",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:76",
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:384",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:77",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:385",
         "src/ui/qml/settings/AboutSettingsPage.qml:128"
       ],
       "decision": "accepted"
@@ -9616,8 +9616,8 @@
       "source_hash": "7cec1f586201c89cd06e95c1cee08333d06ec42f528608deafd435ef2149d557",
       "translation_hash": "a1db958bb04dd4cc707cf7971cf1e3c1982a82cd34fdeabe8337523238df18e1",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:378",
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:1206",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:379",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:1231",
         "src/ui/qml/settings/AboutSettingsPage.qml:207"
       ],
       "decision": "corrected"
@@ -9647,7 +9647,7 @@
       "source_hash": "2198623c5a3a605590fdb7958e74434edd227f5e0d5880f5f6fb64c908466d08",
       "translation_hash": "739c550bdc99d3f1a986090ede8a0ddead4946c905eb226f6b518e95e6cefbf3",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:313"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:314"
       ],
       "decision": "accepted"
     },
@@ -9665,7 +9665,7 @@
       "source_hash": "8ef359ece1bfc2820712b681e37ad78b39ddebe590666bf573a6c512d466e6e5",
       "translation_hash": "cf73a2230cb3687c21378adeeb1a9428d98b17eda3680a417fbf866d60b55579",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:354",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:355",
         "src/ui/qml/settings/AboutSettingsPage.qml:142"
       ],
       "decision": "corrected"
@@ -9684,7 +9684,7 @@
       "source_hash": "a848f411d6736fa9e8a38640ff8fa715837b34acd37080e36611427db3188d0e",
       "translation_hash": "c7ebcab87a09842a8a4d79e16ba3918ed9077ee28e0763cda2e18faf794b608d",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:293"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:294"
       ],
       "decision": "accepted"
     },
@@ -9693,7 +9693,7 @@
       "source_hash": "58928f3c33d41c1127379faf666cc37bb3502209c812ea83e620c391910ff659",
       "translation_hash": "6f711790481c4490e675876dc58a1aafd46115d9b18bae809a24ecb6dbc0832e",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:426"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:427"
       ],
       "decision": "accepted"
     },
@@ -9720,7 +9720,7 @@
       "source_hash": "9c5a2eb827f123b5d887a172ef943ddba3e6315660baa9921eaef2fb69face90",
       "translation_hash": "fa3c4cfe02d8125d8b85b7a4a761e7ba993d8d1b9921533f0bcae387cb89b42f",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:358"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:359"
       ],
       "decision": "corrected"
     },
@@ -9729,8 +9729,8 @@
       "source_hash": "355465e8f4c785166f0375646d9c6ab63299e6013d6e14d66532211065927e51",
       "translation_hash": "6aa1bdb68d29b971ac0e8394156c3ec7f86b4d07fed528aa0bf4261b355740ca",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:299",
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:412"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:300",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:413"
       ],
       "decision": "corrected"
     },
@@ -9766,7 +9766,7 @@
       "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
       "translation_hash": "c49c1d62305b0ebc00452d5a236c2b25c011b0621431c35cc3385e14ec11f84a",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:102",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:103",
         "src/ui/qml/components/BetaUpdatesRow.qml:8"
       ],
       "decision": "accepted"
@@ -9776,9 +9776,9 @@
       "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
       "translation_hash": "96a147a3cda3a514058730bd71ea6833c8905a129fea2c4a80d5b41dee72ac8b",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:361",
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:367",
-        "src/ui/qml/components/UpdateBanner.qml:183",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:362",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:368",
+        "src/ui/qml/components/UpdateBanner.qml:171",
         "src/ui/qml/settings/AboutSettingsPage.qml:203"
       ],
       "decision": "corrected"
@@ -9797,7 +9797,7 @@
       "source_hash": "23ec2048844e3b929da3cb62bfab0760260e4546adf6f4f83312fe732389b27b",
       "translation_hash": "87d7e2a66dc35cbabd201941fb3428c3ba971676000ef5cd374410d9dc4a126e",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:310",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:311",
         "src/ui/qml/settings/AboutSettingsPage.qml:167"
       ],
       "decision": "corrected"
@@ -9807,7 +9807,7 @@
       "source_hash": "e2d6b15e943fafcc4ea27181a6d78e2349bf19e4b429c2a326e276f8d3ce0b2e",
       "translation_hash": "4cd6e09abbbea30fffa49986f2aaf825232b1760599f9ff9129edd08b605aac6",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:374"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:375"
       ],
       "decision": "corrected"
     },
@@ -9825,7 +9825,7 @@
       "source_hash": "1431c224978aa73dce4d1ab2a0ce26d5371d1d555556402eb24b7b153e5129a8",
       "translation_hash": "4cbbbbd24d59ca0782e2ca0c4d0b9ead2f901ac926216c73e0abc71e66ca7c27",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:343"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:344"
       ],
       "decision": "corrected"
     },
@@ -9834,7 +9834,7 @@
       "source_hash": "592b08b3449c6d0f920051d8fc50cddea9ce9aa1192b3d3b8ea82ba398f7dfcd",
       "translation_hash": "483c0036edf33d4067e5038510503a7aee8173d99c0be75828f9d3e3ae7c513d",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:748"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:763"
       ],
       "decision": "accepted"
     },
@@ -9843,7 +9843,7 @@
       "source_hash": "3241c9ddea153f4df11bc7bf783d48fbc1b5ab537f352455d975f6c5cc3ba852",
       "translation_hash": "15e508fc5e33d0b5bd5c86a5ff75d85da48e0102380ccd862155bc9afb78d554",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:777"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:792"
       ],
       "decision": "accepted"
     },
@@ -9852,7 +9852,7 @@
       "source_hash": "87e9a424f3b899f78ec22fe2fac137501bda155c2d1274c73221d1f9bf154e40",
       "translation_hash": "ff69226f739af9bfc1a439f4a096ddd36393d6330140fb8523a9ad795de34243",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:340"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:341"
       ],
       "decision": "corrected"
     },
@@ -9861,7 +9861,7 @@
       "source_hash": "258a6c0a46bd1976bd924c53fa570dfabd748ee7652304c47084cefe6cae904a",
       "translation_hash": "596f96b1332172ab6c58c652705a7cce06f92d517c998380ec74bf402465496b",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:323"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:324"
       ],
       "decision": "corrected"
     },
@@ -9870,7 +9870,7 @@
       "source_hash": "2ef88a2d2fa5ceb217b32a1ec0df55212dd31b6f3bb010dc3477e5f3de6dab2e",
       "translation_hash": "ead4c18f5eec4f2eab46efb1f537cdd8f4905efe433e3d6c72e5bda666d6ae2c",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:371"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:372"
       ],
       "decision": "corrected"
     },
@@ -9879,7 +9879,7 @@
       "source_hash": "9ef3d8409ffae229957d35437c34f5723d9961b04777da19c8ece509a6a094cb",
       "translation_hash": "d94a1e7f38efe2f4b3616cc4d96c56e596f47df12965f29d9dcbcb54310fe07b",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:307"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:308"
       ],
       "decision": "corrected"
     },
@@ -9907,7 +9907,7 @@
       "source_hash": "8bb5c8ce949bc0cb9d4f8f7f02dc61f0a806ef6cb6881e9906983a8514b95677",
       "translation_hash": "91dc907bcb1fa835cbc7f3d4242795d6587344c6d49382e9252c1c27e5fe2f1c",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:273"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:274"
       ],
       "decision": "accepted"
     },
@@ -9916,7 +9916,7 @@
       "source_hash": "662cfdc05ac4ad0d6867d8a6a71a7310b979c28181d4a9c4e4b6129628afb9e1",
       "translation_hash": "9e873318e6cb855ff2d28bdd30ca2dce9e8c1e8a295588dd3f1036d3c0e6de93",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:303",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:304",
         "src/ui/qml/settings/AboutSettingsPage.qml:162"
       ],
       "decision": "corrected"
@@ -9935,7 +9935,7 @@
       "source_hash": "ecb13b1d85c23bdea89cf943152c76adcd2098737cbd213c086879b39c2bc481",
       "translation_hash": "91dc907bcb1fa835cbc7f3d4242795d6587344c6d49382e9252c1c27e5fe2f1c",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:279"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:280"
       ],
       "decision": "accepted"
     },
@@ -9944,7 +9944,7 @@
       "source_hash": "20ac30255dde4ea258d7c3f00c7d78af60a936bfdb1c238c314f98f3babf883c",
       "translation_hash": "25fc89ba1f2a2d3180803423551e75d0b41787e09ab41a62e359389a9b8954c4",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:1074"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:1082"
       ],
       "decision": "corrected"
     },
@@ -9953,7 +9953,7 @@
       "source_hash": "ab0fcd3d9d7633f02378ab7c6e982a8da29e7e361f027b3895f2864a38dc8022",
       "translation_hash": "a1cef0753d6e73c5cfc2013fb3acb216f7afaf8f7cc5144bc109059276160c2f",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:416",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:417",
         "src/ui/qml/settings/AboutSettingsPage.qml:181"
       ],
       "decision": "accepted"
@@ -9963,7 +9963,7 @@
       "source_hash": "58ecc648a987876e184743665c468b57ec6809b5b0d678f6a18c8391ea55c76c",
       "translation_hash": "0278348d597197eb78c49c952972e80699d467d1b0eec8ec45a9bf94326f303d",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:381",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:382",
         "src/ui/qml/settings/AboutSettingsPage.qml:210"
       ],
       "decision": "corrected"
@@ -9973,7 +9973,7 @@
       "source_hash": "99956114baeae401ef1088b036dc86afaa428cb0397d24df26e07e9d86bc7bd0",
       "translation_hash": "7707b1b318ee89abc21ed6d7deec43a119aa204e5dedadf32a9374fb6f5ea904",
       "locations": [
-        "src/ui/qml/components/UpdateBanner.qml:165"
+        "src/ui/qml/components/UpdateBanner.qml:184"
       ],
       "decision": "corrected"
     },
@@ -9982,7 +9982,7 @@
       "source_hash": "e456131565b4696343168e24479029ac59f65bd774d35ef30b8628a883314db7",
       "translation_hash": "682300c2bf6a08f668d95abddc330c995f7a8a632a085e15bcc87f199931ea9a",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:90"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:91"
       ],
       "decision": "accepted"
     },
@@ -10000,7 +10000,7 @@
       "source_hash": "cdd76863c30bb78c6aadf50193cd5d1ffc291a34a69dc427881423e63ce92d0a",
       "translation_hash": "df14accfdd31877300d21fb118add902e355714e018dd88633fb75e6537948a1",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:1088"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:1096"
       ],
       "decision": "corrected"
     },
@@ -10009,7 +10009,7 @@
       "source_hash": "7f19a7feebf64362934bf0bb85abe1c436db3acd2d1cbe14f8f454d5ede316db",
       "translation_hash": "3edb0cee24857d8425eb29bc4007866fdc67ffa6e0f02e3fcf0ba6fdec7d8303",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:133"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:134"
       ],
       "decision": "corrected"
     },
@@ -10018,7 +10018,7 @@
       "source_hash": "cd7d3b881ec64303dc56871a13d50a29ff58b2ab82c97d8bde3c6c44cf5a7870",
       "translation_hash": "253bec70f27d772b22d41890464458e7357ae0868b5335eb27ea7cae881bce71",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:253",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:254",
         "src/ui/qml/settings/AboutSettingsPage.qml:73"
       ],
       "decision": "accepted"
@@ -10028,7 +10028,7 @@
       "source_hash": "a2587f01fe4e650d2068c5a328dab63bc3edfab063b075446750c80d00fc23f1",
       "translation_hash": "2f365295a3332e3d28c3d4ead53e9384ddb70df16d329163c77c668841c507ac",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:257",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:258",
         "src/ui/qml/settings/AboutSettingsPage.qml:76"
       ],
       "decision": "corrected"
@@ -10038,7 +10038,7 @@
       "source_hash": "31ec66fa1276c67ab9b36ba0292094a20dd260b57b30ff4854d687115866b2dc",
       "translation_hash": "593f4ed8e950778641cc64aa516dcabcbfd89f663cbd955957c20c406ee52626",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:260"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:261"
       ],
       "decision": "accepted"
     },
@@ -10047,7 +10047,7 @@
       "source_hash": "1da8c8bc8b419e8fd502ede1a6ce0a57a67304fd2da6ecaf1060cf5e826d99e1",
       "translation_hash": "7fb8e0893ebc9766292378c96f03a7f59ad456a880af6f1ea3117d24bafac6a0",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:296",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:297",
         "src/ui/qml/components/DesktopSidebar.qml:211"
       ],
       "decision": "corrected"
@@ -10057,7 +10057,7 @@
       "source_hash": "cd3c301317ca2e90f999f8acbe39dddd4ec0757ab48b73323f45696431ea62ad",
       "translation_hash": "6b060d7c831bf89343f9b6400ba4615618700e4acfefcf9c32986ec1e886e141",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:177"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:178"
       ],
       "decision": "corrected"
     },
@@ -10066,7 +10066,7 @@
       "source_hash": "bc3193f2aca226f84c23e1f6cd089c840b812a8557af240bc9455cb626a9a6f1",
       "translation_hash": "56c5ad869fc823c62336d30878a4e33df536bcc7fc72ced1ff3bcab994e5df78",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:182"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:183"
       ],
       "decision": "corrected"
     },
@@ -10075,8 +10075,8 @@
       "source_hash": "5db108406f7295b7c2e8183341f28fb82e6ff23683d0f2cbdc75c3daebbd6275",
       "translation_hash": "ae4d5bd38491b60845c007ca56b006b9f706029739b9f562dd031f59d1fc3855",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:316",
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:320"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:317",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:321"
       ],
       "decision": "corrected"
     },
@@ -10112,7 +10112,7 @@
       "source_hash": "3fe11c38051834421ff64e486a8dc894d9352d0dd149896c58579f8d84da0e0e",
       "translation_hash": "2e7729561bb1e93ec70f38431bfc9b0b86b27e1a5d8be2aeaa34bcf8ac4cc515",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:1107"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:1132"
       ],
       "decision": "accepted"
     },
@@ -10130,7 +10130,7 @@
       "source_hash": "103cf246f18e7bef742c3c44acf61b24d2eded0025be11939308187c8ce7ce7e",
       "translation_hash": "047741c23bf81d9d39f81d1548bc12ad6f231878c33014a201758d1266ea8cdf",
       "locations": [
-        "src/ui/qml/components/UpdateBanner.qml:168"
+        "src/ui/qml/components/UpdateBanner.qml:187"
       ],
       "decision": "accepted"
     },
@@ -10139,7 +10139,7 @@
       "source_hash": "cad430a0d27fa6d56b1686cc483fde3fc27e68b7a4128f2b6e2cd2026e76e9ce",
       "translation_hash": "5a10a3aa4f890a6fe5cc38bd7c9f16ece77bb516c409d0e34542fdf4181e526e",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:420",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:421",
         "src/ui/qml/settings/AboutSettingsPage.qml:185"
       ],
       "decision": "corrected"
@@ -10149,7 +10149,7 @@
       "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
       "translation_hash": "1673bd1f90ee9868e76a2009824a7cd874b30c7990cf76bfd0b56c25009826ae",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:288",
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:289",
         "src/ui/qml/settings/AboutSettingsPage.qml:108"
       ],
       "decision": "accepted"
@@ -18039,7 +18039,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_zh_Hans.ts",
-      "sha256": "bec9a7347218b08c0c8f5a76169bef12ee13b0ff980f70dfa2f60d840915a644",
+      "sha256": "0388204b8edd338b5abc2108dce2228d99d0d85b0451f4dda05c578edc87b9bf",
       "reviewed_units": 1107
     },
     {

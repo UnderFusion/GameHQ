@@ -49,7 +49,7 @@ FocusScope {
             }
 
             Text {
-                visible: UpdateUi.inProgress(updates.stateName)
+                visible: !root.showFullNotes && UpdateUi.inProgress(updates.stateName)
                          && updates.stateName !== "UpdateAvailable"
                 Layout.fillWidth: true
                 text: root.updateProgressText()
@@ -61,6 +61,7 @@ FocusScope {
 
             UpdateProgressBar {
                 Layout.fillWidth: true
+                visible: !root.showFullNotes && (downloading || installing)
             }
 
             RowLayout {
@@ -500,6 +501,17 @@ FocusScope {
         const control = controls[padIndex]
         control.forceActiveFocus()
         const flick = showFullNotes ? fullNotesFlick : aboutFlick
+        // The update actions are pinned above the notes. Only controls inside
+        // the scroller should change its position when controller focus moves.
+        let insideNotes = false
+        for (let item = control; item; item = item.parent) {
+            if (item === flick.contentItem) {
+                insideNotes = true
+                break
+            }
+        }
+        if (!insideNotes)
+            return
         const position = control.mapToItem(flick.contentItem, 0, 0)
         const maximum = Math.max(0, flick.contentHeight - flick.height)
         if (position.y < flick.contentY)
@@ -515,7 +527,10 @@ FocusScope {
         let current = controls.findIndex(control => control.activeFocus)
         if (current < 0)
             current = padIndex
-        padIndex = (current + direction + controls.length) % controls.length
+        const next = Math.max(0, Math.min(controls.length - 1, current + direction))
+        if (next === current)
+            return
+        padIndex = next
         focusPadIndex()
         sounds.play("nav_tick")
     }
@@ -969,212 +984,234 @@ FocusScope {
                     }
                 }
 
-                Flickable {
-                    id: fullNotesFlick
+                ColumnLayout {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    contentWidth: width
-                    contentHeight: fullNotesColumn.implicitHeight + Theme.s8
-                    clip: true
-                    boundsBehavior: Flickable.StopAtBounds
-                    flickableDirection: Flickable.VerticalFlick
-                    QC.ScrollBar.vertical: AppScrollBar {}
+                    spacing: Theme.s12
 
-                    ColumnLayout {
-                        id: fullNotesColumn
-                        width: Math.max(0, fullNotesFlick.width - Theme.s16)
-                        spacing: Theme.s16
-
-                        RowLayout {
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Text {
                             Layout.fillWidth: true
-                            Text {
-                                Layout.fillWidth: true
-                                //% "Version %1"
-                                text: qsTrId("gamehq.about.version").arg(root.displayedVersion())
-                                color: Theme.text
-                                font.family: Theme.fontFamily
-                                font.pixelSize: Theme.fontTitle
-                                font.weight: Font.DemiBold
-                            }
-                            Rectangle {
-                                implicitWidth: latestText.implicitWidth + Theme.s16
-                                implicitHeight: 24
-                                radius: Theme.radiusPill
-                                color: Theme.hoverTint
-                                border.width: 1
-                                border.color: root.releaseBadgeColor()
-                                Text {
-                                    id: latestText
-                                    anchors.centerIn: parent
-                                    text: root.releaseBadgeText()
-                                    color: root.releaseBadgeColor()
-                                    font.family: Theme.fontFamily
-                                    font.pixelSize: Theme.fontCaption
-                                }
-                            }
+                            //% "Version %1"
+                            text: qsTrId("gamehq.about.version").arg(root.displayedVersion())
+                            color: Theme.text
+                            font.family: Theme.fontFamily
+                            font.pixelSize: Theme.fontTitle
+                            font.weight: Font.DemiBold
                         }
-
                         Rectangle {
-                            visible: root.hasUpdateRelease()
-                            Layout.fillWidth: true
-                            implicitHeight: updateActionColumn.implicitHeight + Theme.s16 * 2
-                            radius: Theme.radiusM
-                            color: Theme.surfaceAlt
-                            border.width: Theme.borderWidth
-                            border.color: Theme.stroke
-
-                            ColumnLayout {
-                                id: updateActionColumn
-                                anchors.fill: parent
-                                anchors.margins: Theme.s16
-                                spacing: Theme.s8
-
-                                Text {
-                                    Layout.fillWidth: true
-                                    text: root.updateProgressText()
-                                    color: updates.stateName === "Failed" ? Theme.danger
-                                                                          : Theme.textMuted
-                                    font.family: Theme.fontFamily
-                                    font.pixelSize: Theme.fontCaption
-                                    wrapMode: Text.WordWrap
-                                }
-
-                                UpdateProgressBar {
-                                    Layout.fillWidth: true
-                                }
-
-                                Text {
-                                    visible: updates.stateName === "Failed" && updates.errorText !== ""
-                                    Layout.fillWidth: true
-                                    text: updates.errorText
-                                    textFormat: Text.PlainText
-                                    color: Theme.danger
-                                    font.family: Theme.fontFamily
-                                    font.pixelSize: Theme.fontCaption
-                                    wrapMode: Text.WordWrap
-                                }
-
-                                RowLayout {
-                                    Layout.fillWidth: true
-                                    spacing: Theme.s8
-
-                                    AccentButton {
-                                        id: updateNowAction
-                                        Layout.fillWidth: true
-                                        label: root.primaryLabel(false)
-                                        primary: true
-                                        enabled: root.primaryEnabled()
-                                        onClicked: root.runPrimaryAction(false)
-                                    }
-
-                                    AccentButton {
-                                        id: remindLaterAction
-                                        Layout.fillWidth: true
-                                        //% "Remind me later"
-                                        label: qsTrId("gamehq.update.remind_later")
-                                        visible: updates.stateName === "UpdateAvailable"
-                                                 || updates.stateName === "Failed"
-                                        onClicked: {
-                                            root.updateDeferred()
-                                            root.close()
-                                        }
-                                    }
-
-                                    AccentButton {
-                                        id: skipUpdateAction
-                                        Layout.fillWidth: true
-                                        visible: updates.stateName === "UpdateAvailable"
-                                        //% "Skip this version"
-                                        label: qsTrId("gamehq.update.skip_this_version")
-                                        onClicked: {
-                                            updates.skipVersion()
-                                            root.close()
-                                        }
-                                    }
-                                }
+                            implicitWidth: latestText.implicitWidth + Theme.s16
+                            implicitHeight: 24
+                            radius: Theme.radiusPill
+                            color: Theme.hoverTint
+                            border.width: 1
+                            border.color: root.releaseBadgeColor()
+                            Text {
+                                id: latestText
+                                anchors.centerIn: parent
+                                text: root.releaseBadgeText()
+                                color: root.releaseBadgeColor()
+                                font.family: Theme.fontFamily
+                                font.pixelSize: Theme.fontCaption
                             }
                         }
+                    }
 
-                        QuickActions { id: notesQuickActions }
+                    Rectangle {
+                        objectName: "updateActionCard"
+                        visible: root.hasUpdateRelease()
+                        Layout.fillWidth: true
+                        implicitHeight: updateActionColumn.implicitHeight + Theme.s16 * 2
+                        radius: Theme.radiusM
+                        color: Theme.surfaceAlt
+                        border.width: Theme.borderWidth
+                        border.color: Theme.stroke
 
                         ColumnLayout {
-                            visible: root.releaseEntries().length > 1
-                            Layout.fillWidth: true
+                            id: updateActionColumn
+                            anchors.fill: parent
+                            anchors.margins: Theme.s16
                             spacing: Theme.s8
 
                             Text {
-                                //% "VERSIONS"
-                                text: qsTrId("gamehq.update.versions")
-                                color: Theme.textFaint
+                                Layout.fillWidth: true
+                                objectName: "dialogUpdateStatus"
+                                text: root.updateProgressText()
+                                color: updates.stateName === "Failed" ? Theme.danger
+                                                                      : Theme.textMuted
                                 font.family: Theme.fontFamily
                                 font.pixelSize: Theme.fontCaption
-                                font.letterSpacing: Theme.letterSpacingWide
+                                wrapMode: Text.WordWrap
                             }
 
-                            Flow {
-                                id: releaseVersionLinks
+                            UpdateProgressBar {
+                                objectName: "dialogUpdateProgress"
                                 Layout.fillWidth: true
-                                Layout.preferredHeight: childrenRect.height
-                                spacing: Theme.s16
+                            }
 
-                                Repeater {
-                                    model: root.releaseEntries()
-                                    delegate: TextLink {
-                                        required property int index
-                                        required property var modelData
-                                        property bool releaseVersionControl: true
-                                        label: modelData.version
-                                        selected: modelData.isUpdate
-                                                  ? root.updateReleaseSelected
-                                                  : !root.updateReleaseSelected
-                                                    && modelData.bundledIndex === root.bundledReleaseIndex
-                                        suffix: modelData.suffix
-                                        suffixColor: modelData.isUpdate
-                                                     ? Theme.success : Theme.textFaint
-                                        suffixFontSize: Theme.fontCaption
-                                        onClicked: root.selectReleaseEntry(modelData)
+                            Text {
+                                visible: updates.stateName === "Failed" && updates.errorText !== ""
+                                Layout.fillWidth: true
+                                text: updates.errorText
+                                textFormat: Text.PlainText
+                                color: Theme.danger
+                                font.family: Theme.fontFamily
+                                font.pixelSize: Theme.fontCaption
+                                wrapMode: Text.WordWrap
+                            }
+
+                            RowLayout {
+                                Layout.fillWidth: true
+                                spacing: Theme.s8
+
+                                AccentButton {
+                                    id: updateNowAction
+                                    objectName: "dialogInstallAction"
+                                    Layout.fillWidth: true
+                                    label: root.primaryLabel(false)
+                                    primary: true
+                                    enabled: root.primaryEnabled()
+                                    onClicked: root.runPrimaryAction(false)
+                                }
+
+                                AccentButton {
+                                    id: remindLaterAction
+                                    Layout.fillWidth: true
+                                    //% "Remind me later"
+                                    label: qsTrId("gamehq.update.remind_later")
+                                    visible: updates.stateName === "UpdateAvailable"
+                                             || updates.stateName === "Failed"
+                                    onClicked: {
+                                        root.updateDeferred()
+                                        root.close()
+                                    }
+                                }
+
+                                AccentButton {
+                                    id: skipUpdateAction
+                                    Layout.fillWidth: true
+                                    visible: updates.stateName === "UpdateAvailable"
+                                    //% "Skip this version"
+                                    label: qsTrId("gamehq.update.skip_this_version")
+                                    onClicked: {
+                                        updates.skipVersion()
+                                        root.close()
                                     }
                                 }
                             }
                         }
+                    }
 
-                        QC.BusyIndicator {
-                            visible: root.selectedUsesRemoteNotes() && updates.notesLoading
-                            running: visible
-                            Layout.alignment: Qt.AlignHCenter
-                        }
+                    Flickable {
+                        id: fullNotesFlick
+                        objectName: "releaseNotesFlick"
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        contentWidth: width
+                        contentHeight: fullNotesColumn.implicitHeight + Theme.s8
+                        clip: true
+                        boundsBehavior: Flickable.StopAtBounds
+                        flickableDirection: Flickable.VerticalFlick
+                        QC.ScrollBar.vertical: AppScrollBar {}
 
-                        Repeater {
-                            model: root.selectedUsesRemoteNotes() ? updates.noteBlocks : []
-                            delegate: ColumnLayout {
-                                required property var modelData
+                        ColumnLayout {
+                            id: fullNotesColumn
+                            width: Math.max(0, fullNotesFlick.width - Theme.s16)
+                            spacing: Theme.s16
+
+                            QuickActions { id: notesQuickActions }
+
+                            ColumnLayout {
+                                visible: root.releaseEntries().length > 1
                                 Layout.fillWidth: true
-                                spacing: 0
+                                spacing: Theme.s8
 
                                 Text {
-                                    visible: modelData.kind === "heading"
-                                    Layout.fillWidth: true
-                                    text: modelData.text.toUpperCase()
-                                    textFormat: Text.PlainText
+                                    //% "VERSIONS"
+                                    text: qsTrId("gamehq.update.versions")
                                     color: Theme.textFaint
                                     font.family: Theme.fontFamily
                                     font.pixelSize: Theme.fontCaption
                                     font.letterSpacing: Theme.letterSpacingWide
                                 }
 
-                                RowLayout {
-                                    visible: modelData.kind === "bullet"
+                                Flow {
+                                    id: releaseVersionLinks
                                     Layout.fillWidth: true
-                                    spacing: Theme.s8
+                                    Layout.preferredHeight: childrenRect.height
+                                    spacing: Theme.s16
+
+                                    Repeater {
+                                        model: root.releaseEntries()
+                                        delegate: TextLink {
+                                            required property int index
+                                            required property var modelData
+                                            property bool releaseVersionControl: true
+                                            label: modelData.version
+                                            selected: modelData.isUpdate
+                                                      ? root.updateReleaseSelected
+                                                      : !root.updateReleaseSelected
+                                                        && modelData.bundledIndex === root.bundledReleaseIndex
+                                            suffix: modelData.suffix
+                                            suffixColor: modelData.isUpdate
+                                                         ? Theme.success : Theme.textFaint
+                                            suffixFontSize: Theme.fontCaption
+                                            onClicked: root.selectReleaseEntry(modelData)
+                                        }
+                                    }
+                                }
+                            }
+
+                            QC.BusyIndicator {
+                                visible: root.selectedUsesRemoteNotes() && updates.notesLoading
+                                running: visible
+                                Layout.alignment: Qt.AlignHCenter
+                            }
+
+                            Repeater {
+                                model: root.selectedUsesRemoteNotes() ? updates.noteBlocks : []
+                                delegate: ColumnLayout {
+                                    required property var modelData
+                                    Layout.fillWidth: true
+                                    spacing: 0
 
                                     Text {
-                                        Layout.alignment: Qt.AlignTop
-                                        text: "\u2022"
-                                        color: Theme.accent
+                                        visible: modelData.kind === "heading"
+                                        Layout.fillWidth: true
+                                        text: modelData.text.toUpperCase()
+                                        textFormat: Text.PlainText
+                                        color: Theme.textFaint
                                         font.family: Theme.fontFamily
-                                        font.pixelSize: Theme.fontBody
+                                        font.pixelSize: Theme.fontCaption
+                                        font.letterSpacing: Theme.letterSpacingWide
                                     }
+
+                                    RowLayout {
+                                        visible: modelData.kind === "bullet"
+                                        Layout.fillWidth: true
+                                        spacing: Theme.s8
+
+                                        Text {
+                                            Layout.alignment: Qt.AlignTop
+                                            text: "\u2022"
+                                            color: Theme.accent
+                                            font.family: Theme.fontFamily
+                                            font.pixelSize: Theme.fontBody
+                                        }
+                                        Text {
+                                            Layout.fillWidth: true
+                                            text: root.releaseBlockText(modelData)
+                                            textFormat: Text.StyledText
+                                            color: Theme.textMuted
+                                            font.family: Theme.fontFamily
+                                            font.pixelSize: Theme.fontBody
+                                            wrapMode: Text.WordWrap
+                                        }
+                                    }
+
                                     Text {
+                                        visible: modelData.kind === "paragraph"
                                         Layout.fillWidth: true
                                         text: root.releaseBlockText(modelData)
                                         textFormat: Text.StyledText
@@ -1184,93 +1221,82 @@ FocusScope {
                                         wrapMode: Text.WordWrap
                                     }
                                 }
-
-                                Text {
-                                    visible: modelData.kind === "paragraph"
-                                    Layout.fillWidth: true
-                                    text: root.releaseBlockText(modelData)
-                                    textFormat: Text.StyledText
-                                    color: Theme.textMuted
-                                    font.family: Theme.fontFamily
-                                    font.pixelSize: Theme.fontBody
-                                    wrapMode: Text.WordWrap
-                                }
                             }
-                        }
 
-                        TextLink {
-                            id: retryReleaseNotesLink
-                            visible: root.selectedUsesRemoteNotes()
-                                     && !updates.notesLoading && updates.noteBlocks.length === 0
-                            //% "Check again"
-                            label: qsTrId("gamehq.update.check_again")
-                            onClicked: updates.retryNotes()
-                        }
+                            TextLink {
+                                id: retryReleaseNotesLink
+                                visible: root.selectedUsesRemoteNotes()
+                                         && !updates.notesLoading && updates.noteBlocks.length === 0
+                                //% "Check again"
+                                label: qsTrId("gamehq.update.check_again")
+                                onClicked: updates.retryNotes()
+                            }
 
-                        Repeater {
-                            model: root.selectedUsesRemoteNotes() ? []
-                                                                  : root.selectedStructuredSections()
-                            delegate: ColumnLayout {
-                                required property var modelData
-                                Layout.fillWidth: true
-                                spacing: Theme.s8
+                            Repeater {
+                                model: root.selectedUsesRemoteNotes() ? []
+                                                                      : root.selectedStructuredSections()
+                                delegate: ColumnLayout {
+                                    required property var modelData
+                                    Layout.fillWidth: true
+                                    spacing: Theme.s8
 
-                                Text {
-                                    text: modelData.title.toUpperCase()
-                                    color: Theme.textFaint
-                                    font.family: Theme.fontFamily
-                                    font.pixelSize: Theme.fontCaption
-                                    font.letterSpacing: Theme.letterSpacingWide
-                                }
+                                    Text {
+                                        text: modelData.title.toUpperCase()
+                                        color: Theme.textFaint
+                                        font.family: Theme.fontFamily
+                                        font.pixelSize: Theme.fontCaption
+                                        font.letterSpacing: Theme.letterSpacingWide
+                                    }
 
-                                Repeater {
-                                    model: modelData.items
-                                    delegate: RowLayout {
-                                        required property string modelData
-                                        Layout.fillWidth: true
-                                        spacing: Theme.s8
-                                        Text {
-                                            text: "•"
-                                            color: Theme.accent
-                                            font.family: Theme.fontFamily
-                                            font.pixelSize: Theme.fontBody
-                                        }
-                                        Text {
+                                    Repeater {
+                                        model: modelData.items
+                                        delegate: RowLayout {
+                                            required property string modelData
                                             Layout.fillWidth: true
-                                            text: modelData
-                                            textFormat: Text.PlainText
-                                            color: Theme.textMuted
-                                            font.family: Theme.fontFamily
-                                            font.pixelSize: Theme.fontBody
-                                            wrapMode: Text.WordWrap
+                                            spacing: Theme.s8
+                                            Text {
+                                                text: "•"
+                                                color: Theme.accent
+                                                font.family: Theme.fontFamily
+                                                font.pixelSize: Theme.fontBody
+                                            }
+                                            Text {
+                                                Layout.fillWidth: true
+                                                text: modelData
+                                                textFormat: Text.PlainText
+                                                color: Theme.textMuted
+                                                font.family: Theme.fontFamily
+                                                font.pixelSize: Theme.fontBody
+                                                wrapMode: Text.WordWrap
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
 
-                        TextLink {
-                            id: updateReleaseGithubLink
-                            visible: root.updateReleaseSelected && root.hasUpdateRelease()
-                                     && updates.releaseUrl !== ""
-                            //% "GitHub"
-                            label: qsTrId("gamehq.about.github")
-                            suffix: root.updateVersion()
-                            onClicked: updates.openReleasePage()
-                        }
+                            TextLink {
+                                id: updateReleaseGithubLink
+                                visible: root.updateReleaseSelected && root.hasUpdateRelease()
+                                         && updates.releaseUrl !== ""
+                                //% "GitHub"
+                                label: qsTrId("gamehq.about.github")
+                                suffix: root.updateVersion()
+                                onClicked: updates.openReleasePage()
+                            }
 
-                        Rectangle {
-                            Layout.fillWidth: true
-                            Layout.preferredHeight: 1
-                            color: Theme.stroke
-                        }
+                            Rectangle {
+                                Layout.fillWidth: true
+                                Layout.preferredHeight: 1
+                                color: Theme.stroke
+                            }
 
-                        Text {
-                            Layout.fillWidth: true
-                            text: root.selectedReleaseFooter()
-                            color: Theme.textFaint
-                            font.family: Theme.fontFamily
-                            font.pixelSize: Theme.fontCaption
+                            Text {
+                                Layout.fillWidth: true
+                                text: root.selectedReleaseFooter()
+                                color: Theme.textFaint
+                                font.family: Theme.fontFamily
+                                font.pixelSize: Theme.fontCaption
+                            }
                         }
                     }
                 }

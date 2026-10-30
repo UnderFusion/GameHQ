@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.8.2",
+  "locale": "en-US",
+  "date": "2026-10-30",
+  "sections": [
+    {
+      "id": "beta",
+      "title": "Beta 1",
+      "items": [
+        {
+          "id": "purpose",
+          "text": "GameHQ 0.8.2 Beta 1 is a pre-release for testing native controller shortcuts and clearer update feedback. GameHQ 0.8.1 remains Latest Stable."
+        }
+      ]
+    },
+    {
+      "id": "controllers",
+      "title": "Controller fixes",
+      "items": [
+        {
+          "id": "native-share",
+          "text": "Native Share and Guide tap, hold and double-tap gestures continue when ordinary controller input switches between Sony Raw Input and XInput. Releases still reach the controller that started the gesture."
+        },
+        {
+          "id": "safety",
+          "text": "Duplicate-input protection, controller and game presets, the Back/View capture fallback setting, and cancellation when focus, mappings or device connections change remain in place."
+        },
+        {
+          "id": "feedback",
+          "text": "The Input page clears the previous action when a new button is pressed, so an earlier Screenshot result cannot look like confirmation of a new Share press."
+        }
+      ]
+    },
+    {
+      "id": "updates",
+      "title": "Update feedback",
+      "items": [
+        {
+          "id": "install",
+          "text": "Install and restart is the first action on the update banner. It uses the existing download, verification, installation and restart flow."
+        },
+        {
+          "id": "progress",
+          "text": "The About popup keeps update controls, download percentage and progress above the scrolling release notes, visible beside the action that started the download."
+        },
+        {
+          "id": "navigation",
+          "text": "Opening or closing About ends navigation repeats from the previous view. Gallery hover selection and navigation sounds stop behind a modal, and About navigation stops silently at either end."
+        },
+        {
+          "id": "notes",
+          "text": "Bundled release notes display formatted links instead of raw Markdown. After an update, a short notification confirms the installed version without opening About automatically."
+        }
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "Hardware verification needed",
+      "items": [
+        {
+          "id": "ds4windows",
+          "text": "Automated checks cover simulated input and actual action dispatch. DualSense Bluetooth with DS4Windows and HidHide still needs a real-device test without the Share keyboard macro; issue #32 remains open."
+        },
+        {
+          "id": "test",
+          "text": "Keep Use Back/View as Share off for the virtual Xbox source. Check native Share tap for a screenshot, a two-second hold for replay, double tap for overlay, and both Share and touchpad/Back after reconnecting."
+        }
+      ]
+    }
+  ]
+}
