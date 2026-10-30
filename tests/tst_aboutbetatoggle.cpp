@@ -272,6 +272,10 @@ private slots:
         auto *install = m_window->findChild<QQuickItem *>(QStringLiteral("bannerInstallAction"));
         auto *details = m_window->findChild<QQuickItem *>(QStringLiteral("bannerDetailsAction"));
         QTRY_VERIFY(install && install->isVisible() && install->width() > 0);
+        auto *banner = m_window->findChild<QQuickItem *>(QStringLiteral("banner"));
+        QVERIFY(banner);
+        // The height animation clips button hit targets until the banner has expanded.
+        QTRY_COMPARE(banner->height(), banner->implicitHeight());
         QVERIFY(!m_window->grabWindow().isNull()); // finish the changed banner layout before clicking
         QVERIFY(install->property("primary").toBool());
         QVERIFY(install->x() < details->x());
