@@ -1,5 +1,7 @@
 #include "core/WindowPlacement.h"
 
+#include <QtGlobal>
+
 namespace {
 
 // A stored size of 0 (or a negative one from a hand-edited config) means "no
@@ -49,4 +51,24 @@ QRect WindowPlacement::restore(const Saved& saved, const QList<QRect>& screens,
     const int x = fallbackScreen.x() + (fallbackScreen.width() - recovered.width()) / 2;
     const int y = fallbackScreen.y() + (fallbackScreen.height() - recovered.height()) / 2;
     return QRect(QPoint(x, y), recovered);
+}
+
+QRect WindowPlacement::repair(const QRect& current, const QList<QRect>& screens,
+                              const QRect& currentScreen, const QSize& minimumSize)
+{
+    const bool tooSmall = current.width() < minimumSize.width()
+        || current.height() < minimumSize.height();
+    if (!tooSmall && isReachable(current, screens))
+        return current;
+    if (!currentScreen.isValid())
+        return QRect(current.topLeft(), current.size().expandedTo(minimumSize));
+
+    const QSize size = current.size().expandedTo(minimumSize).boundedTo(currentScreen.size());
+    // Keep the user's corner where possible; only slide back far enough that the
+    // grown window fits on the screen it is on.
+    const int x = qBound(currentScreen.left(), current.x(),
+                         currentScreen.x() + currentScreen.width() - size.width());
+    const int y = qBound(currentScreen.top(), current.y(),
+                         currentScreen.y() + currentScreen.height() - size.height());
+    return QRect(QPoint(x, y), size);
 }

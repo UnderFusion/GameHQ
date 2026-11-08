@@ -60,4 +60,13 @@ QRect restore(const Saved& saved,
               const QSize& defaultSize = QSize(kDefaultWidth, kDefaultHeight),
               const QSize& minimumSize = QSize(kMinimumWidth, kMinimumHeight));
 
+// Runtime repair for a window Windows squeezed below its minimum (a monitor
+// sleeping, a DPI or topology change). Returns `current` unchanged when it is
+// already at least `minimumSize` and reachable; otherwise grows it back to the
+// minimum (never beyond `currentScreen`) and pulls it inside that screen.
+QRect repair(const QRect& current,
+             const QList<QRect>& screens,
+             const QRect& currentScreen,
+             const QSize& minimumSize = QSize(kMinimumWidth, kMinimumHeight));
+
 }  // namespace WindowPlacement

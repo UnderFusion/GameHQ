@@ -365,9 +365,28 @@ ApplicationWindow {
         app.setConfig("ui.zoom_level", window.zoomLevel)
     }
 
+    // Windows can squeeze the window below its minimum when a monitor sleeps or
+    // the DPI/topology changes, which shrinks the whole scaled interface. Snap it
+    // back whenever the window is focused or moves to another screen.
+    function repairShrunkGeometry() {
+        if (window.visibility !== Window.Windowed)
+            return
+        const repaired = app.repairedWindowGeometry(Qt.rect(window.x, window.y,
+                                                            window.width, window.height))
+        if (repaired.x === window.x && repaired.y === window.y
+                && repaired.width === window.width && repaired.height === window.height)
+            return
+        window.x = repaired.x
+        window.y = repaired.y
+        window.width = repaired.width
+        window.height = repaired.height
+    }
+    onScreenChanged: Qt.callLater(window.repairShrunkGeometry)
+
     onActiveChanged: {
         input.setDesktopFocused(window.active || lightbox.active)
         if (window.active) {
+            Qt.callLater(window.repairShrunkGeometry)
             Qt.callLater(window.finishControllerFocusRestore)
             Qt.callLater(window.maybeShowPostUpdateGreeting)
         }
