@@ -6,8 +6,8 @@
 //   tools/Qt/Tools/mingw1310_64/bin/g++.exe assets/icons/icongen.cpp \
 //     -I$QT/include -I$QT/include/QtCore -I$QT/include/QtGui -I$QT/include/QtSvg \
 //     -L$QT/lib -lQt6Svg -lQt6Gui -lQt6Core -o build/app/icongen_tmp.exe
-//   (cd build/app && ./icongen_tmp.exe I:/PROJECTS/Apps/GameHQ/assets/icons/gamehq.svg \
-//     I:/PROJECTS/Apps/GameHQ/out/tmp/icon-png)
+//   (cd build/app && ./icongen_tmp.exe ../../assets/icons/gamehq.svg \
+//     ../../out/tmp/icon-png)
 //   python assets/icons/generate_icon.py out/tmp/icon-png assets/icons/gamehq.ico
 //   rm build/app/icongen_tmp.exe
 #include <QGuiApplication>
