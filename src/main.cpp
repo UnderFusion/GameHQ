@@ -55,25 +55,17 @@ QString updatePhase()
 
 bool interruptedUpdateExists()
 {
-    const QString phase = updatePhase();
-    return (!phase.isEmpty() && phase != QStringLiteral("healthy")
-            && phase != QStringLiteral("rolled_back"))
-        || QFileInfo::exists(Paths::packageRoot() + QStringLiteral("/.update/swap.manifest"));
+    return maintenance::recoveryRequired(Paths::packageRoot().toStdWString());
 }
 
 void cleanCompletedUpdateArtifacts()
 {
-    const QString update = Paths::packageRoot() + QStringLiteral("/.update");
-    for (const QString &name : { QStringLiteral("backup"), QStringLiteral("data-snapshot"),
-                                 QStringLiteral("staging"), QStringLiteral("failed-new"),
-                                 QStringLiteral("downloads") })
-        QDir(update + QLatin1Char('/') + name).removeRecursively();
-    // updater.log is deliberately retained for diagnostics.
-    for (const QString &name : { QStringLiteral("swap.manifest"),
-                                 QStringLiteral("healthy.token"),
-                                 QStringLiteral("transaction.phase"),
-                                 QStringLiteral("transaction.json") })
-        QFile::remove(update + QLatin1Char('/') + name);
+    std::string error;
+    if (maintenance::cleanupCompleted(Paths::packageRoot().toStdWString(), error))
+        qInfo() << "Previous update recovery artifacts cleaned after a second healthy start";
+    else
+        qWarning().noquote() << "Completed update cleanup will be retried on the next start:"
+                             << QString::fromStdString(error);
 }
 
 // A start that cannot continue used to exit with no word at all. Record why,
@@ -427,7 +419,6 @@ int main(int argc, char* argv[])
                 // subsequent start that also survives seven seconds may discard it.
                 QTimer::singleShot(7000, &app, [] {
                     cleanCompletedUpdateArtifacts();
-                    qInfo() << "Previous update recovery artifacts cleaned after a second healthy start";
                 });
             }
 

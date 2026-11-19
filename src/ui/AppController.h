@@ -125,6 +125,9 @@ public:
     // that are actually connected (see core/WindowPlacement.h). QML asks once
     // while the window is being created and never does screen maths itself.
     Q_INVOKABLE QRect restoredWindowGeometry() const;
+    // The rectangle a running window should snap back to when Windows shrank it
+    // below its minimum; returns `current` when nothing needs repairing.
+    Q_INVOKABLE QRect repairedWindowGeometry(const QRectF& current) const;
     Q_INVOKABLE void setPage(const QString& page);
     Q_INVOKABLE QString settingsCategory() const;
     Q_INVOKABLE void setSettingsCategory(const QString& category);

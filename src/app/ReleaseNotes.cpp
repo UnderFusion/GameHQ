@@ -252,6 +252,8 @@ bool validateBundleMetadata(const QJsonObject &root, const QString &locale,
     return true;
 }
 
+QString plainInlineMarkdown(QString text);
+
 bool parseSections(const QJsonValue& sectionsValue, QVariantList* parsedSections,
                    QString* error)
 {
@@ -295,7 +297,9 @@ bool parseSections(const QJsonValue& sectionsValue, QVariantList* parsedSections
                 setError(error, QStringLiteral("A release-note item has an invalid length."));
                 return false;
             }
-            parsedItems.append(item);
+            // Items are shown as plain text, so link and emphasis markup
+            // ("[@name](https://...)") must not reach the screen verbatim.
+            parsedItems.append(plainInlineMarkdown(item));
         }
 
         result.append(QVariantMap{

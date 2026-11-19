@@ -15,6 +15,28 @@ class InputEngineShutdownTest : public QObject
 {
     Q_OBJECT
 private slots:
+    void modalBoundaryCancelsOnlyNavigationRepeat()
+    {
+        QTemporaryDir dir;
+        QVERIFY(dir.isValid());
+        ConfigManager config(dir.filePath("config.json"));
+        config.setValue(ConfigKeys::InputModernControllerSupport, "off");
+        CaptureDatabase db(dir.filePath("test.db"));
+        QVERIFY(db.open());
+        auto engine = std::make_unique<InputEngine>(&config, &db, nullptr);
+        int repeats = 0;
+        engine->startNavRepeat("DpadDown", 1, [&](int) { ++repeats; });
+        QCOMPARE(repeats, 1);
+        QVERIFY(QMetaObject::invokeMethod(engine.get(), "cancelNavigationRepeat"));
+        QVERIFY(!engine->m_repeatTick->isActive());
+        QTest::qWait(260);
+        QCOMPARE(repeats, 1);
+        // A fresh navigation press still works after the modal boundary.
+        engine->startNavRepeat("DpadDown", 1, [&](int) { ++repeats; });
+        QTRY_VERIFY(repeats > 2);
+        engine->cancelNavigationRepeat();
+    }
+
     void destroyOwner_data()
     {
         QTest::addColumn<QString>("button");

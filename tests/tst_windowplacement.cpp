@@ -136,6 +136,34 @@ private slots:
 
     // No screens at all (a headless session): produce a sane rectangle instead
     // of an invalid one.
+    // Runtime repair: a window Windows squeezed below the minimum grows back in
+    // place, and one already big enough is left exactly where the user put it.
+    void repairLeavesHealthyWindowAlone()
+    {
+        const QRect rect(-1700, 120, 1280, 760);
+        QCOMPARE(WindowPlacement::repair(rect, desktop(), leftScreen()), rect);
+    }
+
+    void repairGrowsShrunkWindowInPlace()
+    {
+        const QRect rect = WindowPlacement::repair(QRect(100, 100, 460, 230), desktop(), primary());
+        QCOMPARE(rect, QRect(100, 100, 1024, 640));
+    }
+
+    void repairPullsGrownWindowBackOnScreen()
+    {
+        // Growing at the bottom-right corner would push it off the edge.
+        const QRect rect = WindowPlacement::repair(QRect(1700, 900, 400, 200), desktop(), primary());
+        QCOMPARE(rect, QRect(1920 - 1024, 1040 - 640, 1024, 640));
+    }
+
+    void repairCapsToSmallScreen()
+    {
+        const QRect small(0, 0, 800, 600);
+        QCOMPARE(WindowPlacement::repair(QRect(10, 10, 300, 200), { small }, small),
+                 QRect(0, 0, 800, 600));
+    }
+
     void survivesWithoutScreens()
     {
         const QRect rect = WindowPlacement::restore(saved(200, 100), {}, QRect());

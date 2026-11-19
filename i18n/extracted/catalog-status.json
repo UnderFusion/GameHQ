@@ -764,6 +764,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -1117,7 +1120,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "en-US": {
@@ -1881,6 +1885,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -2234,7 +2241,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "es-419": {
@@ -2998,6 +3006,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -3351,7 +3362,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "es-ES": {
@@ -4115,6 +4127,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -4468,7 +4483,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "fr-FR": {
@@ -5232,6 +5248,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -5585,7 +5604,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "it-IT": {
@@ -6349,6 +6369,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -6702,7 +6725,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "ja-JP": {
@@ -7466,6 +7490,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -7819,7 +7846,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "ko-KR": {
@@ -8583,6 +8611,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -8936,7 +8967,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "pl-PL": {
@@ -9700,6 +9732,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -10053,7 +10088,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "pt-BR": {
@@ -10817,6 +10853,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -11170,7 +11209,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "ru-RU": {
@@ -11934,6 +11974,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -12287,7 +12330,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "th-TH": {
@@ -13051,6 +13095,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -13404,7 +13451,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "tr-TR": {
@@ -14168,6 +14216,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -14521,7 +14572,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "uk-UA": {
@@ -15285,6 +15337,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -15638,7 +15693,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "zh-Hans": {
@@ -16402,6 +16458,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -16755,7 +16814,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     },
     "zh-Hant": {
@@ -17519,6 +17579,9 @@
         "gamehq.settings.input.test.restore_specific_description",
         "gamehq.settings.input.test.start_probe",
         "gamehq.settings.input.test.title",
+        "gamehq.settings.input.view_fallback.description",
+        "gamehq.settings.input.view_fallback.label",
+        "gamehq.settings.input.view_fallback.title",
         "gamehq.settings.language.description",
         "gamehq.settings.language.eyebrow",
         "gamehq.settings.language.label",
@@ -17872,7 +17935,8 @@
         "gamehq.update.versions",
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
-        "gamehq.update.waiting_for_capture"
+        "gamehq.update.waiting_for_capture",
+        "gamehq.update.waiting_for_stable"
       ]
     }
   }

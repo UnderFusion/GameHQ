@@ -4,95 +4,97 @@
   <context>
     <name>GameHQ</name>
     <message id="gamehq.about.enjoying_gamehq">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="827"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="959"></location>
       <source>Enjoying GameHQ?</source>
       <translation>喜欢 GameHQ 吗？</translation>
     </message>
     <message id="gamehq.about.full_release_notes">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="694"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="893"></location>
       <source>View full release notes</source>
       <translation>查看完整的发布说明</translation>
     </message>
     <message id="gamehq.about.github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="786"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1124"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="918"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1282"></location>
       <source>GitHub</source>
       <translation>GitHub</translation>
     </message>
     <message id="gamehq.about.license">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="798"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="930"></location>
       <source>License</source>
       <translation>许可证</translation>
     </message>
     <message id="gamehq.about.mode.installed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="531"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="730"></location>
       <source>Installed</source>
       <translation>已安装</translation>
     </message>
     <message id="gamehq.about.mode.portable">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="528"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="727"></location>
       <source>Portable</source>
       <translation>便携版</translation>
     </message>
     <message id="gamehq.about.more_improvements">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="883"></location>
       <source>Plus more improvements and fixes.</source>
       <translation>此外还有更多改进和修复。</translation>
     </message>
     <message id="gamehq.about.product_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="639"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="838"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
       <translation>面向 PC 游戏、支持手柄操作的截图、回放和媒体图库。</translation>
     </message>
     <message id="gamehq.about.product_updated">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="494"></location>
+      <location filename="src/ui/qml/Main.qml" line="97"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="693"></location>
       <source>%1 updated</source>
       <translation>%1 已更新</translation>
     </message>
     <message id="gamehq.about.project_links">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="770"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="902"></location>
       <source>PROJECT LINKS</source>
       <translation>项目链接</translation>
     </message>
     <message id="gamehq.about.quick_actions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="715"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="44"></location>
       <source>QUICK ACTIONS</source>
       <translation>快速操作</translation>
     </message>
     <message id="gamehq.about.report_issue">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="792"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="924"></location>
       <source>Report issue</source>
       <translation>报告问题</translation>
     </message>
     <message id="gamehq.about.star_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="836"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="968"></location>
       <source>A GitHub star helps more players discover the project.</source>
       <translation>在 GitHub 上点星可以帮助更多玩家发现这个项目。</translation>
     </message>
     <message id="gamehq.about.star_on_github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="847"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="979"></location>
       <source>Star on GitHub</source>
       <translation>在 GitHub 上点星</translation>
     </message>
     <message id="gamehq.about.version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="509"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="876"></location>
+      <location filename="src/ui/qml/Main.qml" line="99"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="708"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="997"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="18"></location>
       <source>Version %1</source>
       <translation>版本 %1</translation>
     </message>
     <message id="gamehq.about.whats_new_in">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="649"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="848"></location>
       <source>WHAT'S NEW IN %1</source>
       <translation>%1 的新增内容</translation>
     </message>
     <message id="gamehq.action.back">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="585"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="784"></location>
       <source>Back</source>
       <translation>返回</translation>
     </message>
     <message id="gamehq.action.back_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="582"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="781"></location>
       <source>%1  Back</source>
       <translation>%1  返回</translation>
     </message>
@@ -106,17 +108,17 @@
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="23"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="174"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="168"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="200"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="638"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
       <translation>取消</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1290"></location>
-      <location filename="src/ui/qml/Main.qml" line="1309"></location>
-      <location filename="src/ui/qml/Main.qml" line="1348"></location>
+      <location filename="src/ui/qml/Main.qml" line="1296"></location>
+      <location filename="src/ui/qml/Main.qml" line="1315"></location>
+      <location filename="src/ui/qml/Main.qml" line="1355"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1067"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="17"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -291,7 +293,7 @@
       <translation>缩小</translation>
     </message>
     <message id="gamehq.action.dismiss">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="187"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="210"></location>
       <source>Dismiss</source>
       <translation>忽略</translation>
     </message>
@@ -302,7 +304,7 @@
       <translation>完成</translation>
     </message>
     <message id="gamehq.action.download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="213"></location>
       <source>Download</source>
       <translation>下载</translation>
     </message>
@@ -343,7 +345,7 @@
     </message>
     <message id="gamehq.action.not_now">
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="108"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="187"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="195"></location>
       <source>Not now</source>
       <translation>以后再说</translation>
     </message>
@@ -525,9 +527,9 @@
       <location filename="src/ui/qml/SettingsView.qml" line="508"></location>
       <location filename="src/ui/qml/SettingsView.qml" line="525"></location>
       <location filename="src/ui/qml/SettingsView.qml" line="539"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="857"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="247"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="498"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="880"></location>
       <source>Restore defaults</source>
       <translation>恢复默认设置</translation>
     </message>
@@ -569,7 +571,7 @@
     </message>
     <message id="gamehq.common.action.close">
       <location filename="src/ui/qml/components/DialogCloseButton.qml" line="9"></location>
-      <location filename="src/ui/qml/components/HelpDialog.qml" line="118"></location>
+      <location filename="src/ui/qml/components/HelpDialog.qml" line="119"></location>
       <source>Close</source>
       <translation>关闭</translation>
     </message>
@@ -590,30 +592,30 @@
       <translation>确定要继续吗？</translation>
     </message>
     <message id="gamehq.duration.decimal_seconds">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="275"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="277"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="279"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="281"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="300"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="302"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="304"></location>
       <source>%1 seconds</source>
       <translation>%1 秒</translation>
     </message>
     <message id="gamehq.duration.milliseconds">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="296"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="298"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="315"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="317"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="319"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="321"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="338"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="340"></location>
       <source>%1 ms</source>
       <translation>%1 毫秒</translation>
     </message>
     <message id="gamehq.duration.milliseconds.fast">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="294"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="313"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="317"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="336"></location>
       <source>%1 ms (fast)</source>
       <translation>%1 毫秒（快速）</translation>
     </message>
     <message id="gamehq.duration.milliseconds.relaxed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="300"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="319"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="323"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="342"></location>
       <source>%1 ms (relaxed)</source>
       <translation>%1 毫秒（宽松）</translation>
     </message>
@@ -978,22 +980,22 @@
       <translation>已有另一个便携配置文件导入正在运行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App_UpdateWiring.cpp" line="156"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="150"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由于捕获任务未能及时安全完成，更新已取消。</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="420"></location>
+      <location filename="src/updates/UpdateService.cpp" line="516"></location>
       <source>Update check failed: %1</source>
       <translation>更新检查失败：%1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="182"></location>
+      <location filename="src/updates/UpdateService.cpp" line="243"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub 暂时限制了更新检查。GameHQ 将稍后重试。</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="176"></location>
+      <location filename="src/updates/UpdateService.cpp" line="237"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub 暂时限制了更新检查。GameHQ 将在 %1 后重试。</translation>
     </message>
@@ -1229,7 +1231,7 @@
       <translation>GameHQ 无法发布更新事务。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App_UpdateWiring.cpp" line="131"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="125"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 无法开始更新维护：%1</translation>
     </message>
@@ -1279,27 +1281,27 @@
       <translation>GameHQ 无法在此安装中安全地写入更新文件。</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="308"></location>
+      <location filename="src/updates/UpdateService.cpp" line="396"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>下载后该发布已发生变化。请在安装前重新检查。</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="368"></location>
+      <location filename="src/updates/UpdateService.cpp" line="462"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>已下载的发布在安装前被撤回。</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="412"></location>
+      <location filename="src/updates/UpdateService.cpp" line="508"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>无法重新验证该发布：%1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="337"></location>
+      <location filename="src/updates/UpdateService.cpp" line="427"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>无法在安装前对该发布完成最新的重新验证。</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="390"></location>
+      <location filename="src/updates/UpdateService.cpp" line="484"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub 无法在安装前重新验证此发布。请稍后重试。</translation>
     </message>
@@ -1350,19 +1352,19 @@
       <translation>添加文件夹…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1350"></location>
+      <location filename="src/ui/qml/Main.qml" line="1357"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>批量选择</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1344"></location>
+      <location filename="src/ui/qml/Main.qml" line="1351"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>分享</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1346"></location>
+      <location filename="src/ui/qml/Main.qml" line="1353"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>在文件夹中显示</translation>
@@ -1375,7 +1377,7 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1278"></location>
+      <location filename="src/ui/qml/Main.qml" line="1284"></location>
       <source>%1 · %2
 The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
       <oldsource>%1 · %2
@@ -1384,13 +1386,13 @@ The file will be moved to the Recycle Bin. Files in imported folders are left un
 该文件将被移到回收站。监视文件夹中的文件不会被改动。</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1288"></location>
+      <location filename="src/ui/qml/Main.qml" line="1294"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1065"></location>
       <source>Delete capture?</source>
       <translation>删除该捕获内容？</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="536"></location>
+      <location filename="src/ui/qml/Main.qml" line="542"></location>
       <source>%n capture will be moved to the Recycle Bin.
 Files in watched folders are left untouched.</source>
       <oldsource>%n capture will be moved to the Recycle Bin.
@@ -1401,7 +1403,7 @@ Files in imported folders are left untouched.</oldsource>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1307"></location>
+      <location filename="src/ui/qml/Main.qml" line="1313"></location>
       <source>Delete selected captures?</source>
       <translation>删除选中的捕获内容？</translation>
     </message>
@@ -1478,226 +1480,226 @@ Files in imported folders are left untouched.</oldsource>
       <translation>尚未检查</translation>
     </message>
     <message id="gamehq.help.binding.select_mode">
-      <location filename="src/ui/qml/HelpView.qml" line="86"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="232"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="89"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="235"></location>
       <source>Select mode</source>
       <translation>选择模式</translation>
     </message>
     <message id="gamehq.help.feature.gallery.description">
-      <location filename="src/ui/qml/HelpView.qml" line="318"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="321"></location>
       <source>All captures in one grid — filter by category or game. Grid navigation works with keyboard, mouse, and controller.</source>
       <translation>所有捕获内容集中在一个网格中 — 可按类别或游戏筛选。网格导航支持键盘、鼠标和手柄。</translation>
     </message>
     <message id="gamehq.help.feature.gallery.title">
-      <location filename="src/ui/qml/HelpView.qml" line="316"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="319"></location>
       <source>Gallery</source>
       <translation>图库</translation>
     </message>
     <message id="gamehq.help.feature.lightbox.description">
-      <location filename="src/ui/qml/HelpView.qml" line="330"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="333"></location>
       <source>Full-screen viewer for screenshots and videos. Opens from both the main window and the overlay.</source>
       <translation>用于查看截图和视频的全屏查看器。可从主窗口和叠加层中打开。</translation>
     </message>
     <message id="gamehq.help.feature.lightbox.title">
-      <location filename="src/ui/qml/HelpView.qml" line="328"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="331"></location>
       <source>Lightbox</source>
       <translation>灯箱</translation>
     </message>
     <message id="gamehq.help.feature.overlay.description">
-      <location filename="src/ui/qml/HelpView.qml" line="324"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="327"></location>
       <source>Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications.</source>
       <translation>透明的全屏 HUD。无需切出游戏即可在游戏内查看和管理捕获内容。内置自己的图库网格、灯箱和消息提示。</translation>
     </message>
     <message id="gamehq.help.feature.overlay.title">
-      <location filename="src/ui/qml/HelpView.qml" line="322"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="325"></location>
       <source>Overlay</source>
       <translation>叠加层</translation>
     </message>
     <message id="gamehq.help.feature.replay.description">
-      <location filename="src/ui/qml/HelpView.qml" line="306"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="309"></location>
       <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
       <translation>启用后，回放缓冲区会自动待命，并在游戏处于焦点时于后台录制。长按 Share（或 Ctrl+Shift+E）可将最近几秒保存为片段。可在“设置 → 回放”中开启或关闭常驻录制。</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
-      <location filename="src/ui/qml/HelpView.qml" line="304"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="307"></location>
       <source>Replay buffer</source>
       <translation>回放缓冲区</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.description">
-      <location filename="src/ui/qml/HelpView.qml" line="312"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="315"></location>
       <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
       <translation>通过 GDI 捕获活动的游戏窗口，将 PNG 保存到你的捕获文件夹，并立即给出快门反馈。</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
-      <location filename="src/ui/qml/HelpView.qml" line="310"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="313"></location>
       <source>Screenshots</source>
       <translation>屏幕截图</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.description">
-      <location filename="src/ui/qml/HelpView.qml" line="336"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="339"></location>
       <source>Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 scans it for new captures automatically.</source>
       <translation>添加任何文件夹（Game Bar、Steam、NVIDIA ShadowPlay）— %1 会自动扫描其中的新捕获内容。</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.title">
-      <location filename="src/ui/qml/HelpView.qml" line="334"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="337"></location>
       <source>Watched folders</source>
       <translation>监视文件夹</translation>
     </message>
     <message id="gamehq.help.features">
-      <location filename="src/ui/qml/HelpView.qml" line="280"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="283"></location>
       <source>Features</source>
       <translation>功能</translation>
     </message>
     <message id="gamehq.help.gamepad.button_combination">
-      <location filename="src/ui/qml/HelpView.qml" line="185"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="188"></location>
       <source>Button combination</source>
       <translation>按键组合</translation>
     </message>
     <message id="gamehq.help.gamepad.button_combination_action">
-      <location filename="src/ui/qml/HelpView.qml" line="187"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="190"></location>
       <source>Press the ordered pair within the configured combination window</source>
       <translation>在配置的组合时间窗口内按顺序按下这两个按键</translation>
     </message>
     <message id="gamehq.help.gamepad.circle">
-      <location filename="src/ui/qml/HelpView.qml" line="214"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="217"></location>
       <source>Circle</source>
       <translation>圆圈键</translation>
     </message>
     <message id="gamehq.help.gamepad.circle_action">
-      <location filename="src/ui/qml/HelpView.qml" line="216"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="219"></location>
       <source>Back / close overlay</source>
       <translation>返回 / 关闭叠加层</translation>
     </message>
     <message id="gamehq.help.gamepad.cross">
-      <location filename="src/ui/qml/HelpView.qml" line="208"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="211"></location>
       <source>Cross</source>
       <translation>叉键</translation>
     </message>
     <message id="gamehq.help.gamepad.cross_action">
-      <location filename="src/ui/qml/HelpView.qml" line="210"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="213"></location>
       <source>Open selected capture / confirm</source>
       <translation>打开选中的捕获内容 / 确认</translation>
     </message>
     <message id="gamehq.help.gamepad.navigation_controls">
-      <location filename="src/ui/qml/HelpView.qml" line="202"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="205"></location>
       <source>D-pad / Left Stick</source>
       <translation>方向键 / 左摇杆</translation>
     </message>
     <message id="gamehq.help.gamepad.ps_button">
-      <location filename="src/ui/qml/HelpView.qml" line="191"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="194"></location>
       <source>PS button</source>
       <translation>PS 键</translation>
     </message>
     <message id="gamehq.help.gamepad.select_mode">
-      <location filename="src/ui/qml/HelpView.qml" line="234"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="237"></location>
       <source>Cross toggles, Triangle selects all, Square deletes, Circle exits</source>
       <translation>叉键切换选择，三角键全选，方块键删除，圆圈键退出</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold">
-      <location filename="src/ui/qml/HelpView.qml" line="173"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="176"></location>
       <source>Share (hold)</source>
       <translation>Share（长按）</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold_action">
-      <location filename="src/ui/qml/HelpView.qml" line="175"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="178"></location>
       <source>Save replay clip; hold consumes the tap</source>
       <translation>保存回放片段；长按会占用该次单击</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap">
-      <location filename="src/ui/qml/HelpView.qml" line="179"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="182"></location>
       <source>Share (2× / 3×)</source>
       <translation>Share（2× / 3×）</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap_action">
-      <location filename="src/ui/qml/HelpView.qml" line="181"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="184"></location>
       <source>Exact double/triple tap; lower counts wait only for the configured interval</source>
       <translation>精确的双击/三击；较少的次数只会等待所配置的间隔</translation>
     </message>
     <message id="gamehq.help.gamepad.square">
-      <location filename="src/ui/qml/HelpView.qml" line="220"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="223"></location>
       <source>Square</source>
       <translation>方块键</translation>
     </message>
     <message id="gamehq.help.gamepad.square_action">
-      <location filename="src/ui/qml/HelpView.qml" line="222"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="225"></location>
       <source>Action menu (Share / Show in folder / Delete)</source>
       <translation>操作菜单（分享 / 在文件夹中显示 / 删除）</translation>
     </message>
     <message id="gamehq.help.gamepad.switch_panel">
-      <location filename="src/ui/qml/HelpView.qml" line="198"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="201"></location>
       <source>Switch panel: sidebar ↔ grid (app) / flip captures (overlay)</source>
       <translation>切换面板：侧边栏 ↔ 网格（应用）/ 翻看捕获内容（叠加层）</translation>
     </message>
     <message id="gamehq.help.gamepad.system_share_action">
-      <location filename="src/ui/qml/HelpView.qml" line="169"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="172"></location>
       <source>Take screenshot; distinct from Xbox View / Back</source>
       <translation>截取屏幕截图；与 Xbox 的 View / Back 键不同</translation>
     </message>
     <message id="gamehq.help.gamepad.system_share_tap">
-      <location filename="src/ui/qml/HelpView.qml" line="167"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="170"></location>
       <source>System Share (tap)</source>
       <translation>系统 Share 键（单击）</translation>
     </message>
     <message id="gamehq.help.gamepad.triangle">
-      <location filename="src/ui/qml/HelpView.qml" line="226"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="229"></location>
       <source>Triangle</source>
       <translation>三角键</translation>
     </message>
     <message id="gamehq.help.gamepad_shortcuts">
-      <location filename="src/ui/qml/HelpView.qml" line="143"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="146"></location>
       <source>DualSense / gamepad</source>
       <translation>DualSense / 手柄</translation>
     </message>
     <message id="gamehq.help.keyboard.open_capture">
-      <location filename="src/ui/qml/HelpView.qml" line="82"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="85"></location>
       <source>Open selected capture</source>
       <translation>打开选中的捕获内容</translation>
     </message>
     <message id="gamehq.help.keyboard.open_overlay">
-      <location filename="src/ui/qml/HelpView.qml" line="67"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="193"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="70"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="196"></location>
       <source>Open / close overlay</source>
       <translation>打开 / 关闭叠加层</translation>
     </message>
     <message id="gamehq.help.keyboard.save_replay">
-      <location filename="src/ui/qml/HelpView.qml" line="77"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="80"></location>
       <source>Save last N seconds as clip</source>
       <translation>将最近 N 秒保存为片段</translation>
     </message>
     <message id="gamehq.help.keyboard.select_mode">
-      <location filename="src/ui/qml/HelpView.qml" line="88"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="91"></location>
       <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
       <translation>Enter / 空格切换选择，Ctrl+A 全选，Delete 删除选中的项目</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
-      <location filename="src/ui/qml/HelpView.qml" line="98"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="101"></location>
       <source>Show selected in Explorer</source>
       <translation>在文件资源管理器中显示选中项</translation>
     </message>
     <message id="gamehq.help.keyboard.take_screenshot">
-      <location filename="src/ui/qml/HelpView.qml" line="72"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="75"></location>
       <source>Take screenshot</source>
       <translation>截取屏幕截图</translation>
     </message>
     <message id="gamehq.help.keyboard.toggle_favorite">
-      <location filename="src/ui/qml/HelpView.qml" line="93"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="228"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="96"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="231"></location>
       <source>Favorite / unfavorite selected</source>
       <translation>收藏 / 取消收藏选中项</translation>
     </message>
     <message id="gamehq.help.keyboard_shortcuts">
-      <location filename="src/ui/qml/HelpView.qml" line="42"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="45"></location>
       <source>Keyboard shortcuts</source>
       <translation>键盘快捷键</translation>
     </message>
     <message id="gamehq.help.navigate_gallery">
-      <location filename="src/ui/qml/HelpView.qml" line="103"></location>
-      <location filename="src/ui/qml/HelpView.qml" line="204"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="106"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="207"></location>
       <source>Navigate gallery grid</source>
       <translation>导航图库网格</translation>
     </message>
     <message id="gamehq.help.open_controller_guide">
-      <location filename="src/ui/qml/HelpView.qml" line="266"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="269"></location>
       <source>Open the controller compatibility guide</source>
       <translation>打开手柄兼容性指南</translation>
     </message>
@@ -1963,7 +1965,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>三击</translation>
     </message>
     <message id="gamehq.input.hidden.filter">
-      <location filename="src/input/InputEngine.cpp" line="458"></location>
+      <location filename="src/input/InputEngine.cpp" line="482"></location>
       <source>%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it.</source>
       <translation>%1 已连接到 Windows，但被 HID 筛选驱动程序隐藏，应用无法看到它。</translation>
     </message>
@@ -1988,7 +1990,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>自动允许失败（代码 %1）。请改为在 HidHide Configuration Client 的“Applications”选项卡中添加 GameHQ.exe。</translation>
     </message>
     <message id="gamehq.input.hidden.hidhide">
-      <location filename="src/input/InputEngine.cpp" line="449"></location>
+      <location filename="src/input/InputEngine.cpp" line="473"></location>
       <source>%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD).</source>
       <translation>%1 已连接，但被 HidHide 驱动程序（随 DSX、DS4Windows 或 reWASD 安装）对应用隐藏。</translation>
     </message>
@@ -2094,7 +2096,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 已共享：%2 = %3，%4 = %5。</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1258"></location>
+      <location filename="src/ui/qml/Main.qml" line="1264"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>选择要监视的文件夹</translation>
@@ -2108,44 +2110,44 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>关于</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="206"></location>
+      <location filename="src/ui/qml/Main.qml" line="212"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="160"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>全部</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="214"></location>
+      <location filename="src/ui/qml/Main.qml" line="220"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="39"></location>
       <source>Clips</source>
       <translation>片段</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="210"></location>
+      <location filename="src/ui/qml/Main.qml" line="216"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Favorites</source>
       <translation>收藏</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="216"></location>
+      <location filename="src/ui/qml/Main.qml" line="222"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="41"></location>
       <source>Game</source>
       <translation>游戏</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="218"></location>
+      <location filename="src/ui/qml/Main.qml" line="224"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="43"></location>
       <source>Game favorites</source>
       <translation>游戏收藏</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="208"></location>
+      <location filename="src/ui/qml/Main.qml" line="214"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Recent</source>
       <translation>最近</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="212"></location>
+      <location filename="src/ui/qml/Main.qml" line="218"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="37"></location>
       <source>Screenshots</source>
       <translation>截图</translation>
@@ -2168,7 +2170,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.navigation.help">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="478"></location>
-      <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
+      <location filename="src/ui/qml/components/HelpDialog.qml" line="97"></location>
       <source>Help</source>
       <translation>帮助</translation>
     </message>
@@ -2495,7 +2497,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>应用程序</translation>
     </message>
     <message id="gamehq.settings.about.community.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="290"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="294"></location>
       <source>Community</source>
       <translation>社区</translation>
     </message>
@@ -2505,12 +2507,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>版本、更新状态、项目资源以及提供帮助的方式。</translation>
     </message>
     <message id="gamehq.settings.about.github_source">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="252"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="256"></location>
       <source>Source on GitHub</source>
       <translation>在 GitHub 上查看源代码</translation>
     </message>
     <message id="gamehq.settings.about.license">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="285"></location>
       <source>GNU GPL v3 License</source>
       <translation>GNU GPL v3 许可证</translation>
     </message>
@@ -2525,7 +2527,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>维护</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="237"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
       <source>Open source</source>
       <translation>开源</translation>
     </message>
@@ -2540,12 +2542,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>便携配置文件</translation>
     </message>
     <message id="gamehq.settings.about.project.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
       <source>Open official GameHQ resources in your default browser.</source>
       <translation>在默认浏览器中打开 GameHQ 官方资源。</translation>
     </message>
     <message id="gamehq.settings.about.project.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="239"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="243"></location>
       <source>Project</source>
       <translation>项目</translation>
     </message>
@@ -2555,38 +2557,38 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ 已准备就绪</translation>
     </message>
     <message id="gamehq.settings.about.releases">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="259"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="263"></location>
       <source>Releases</source>
       <translation>发布版本</translation>
     </message>
     <message id="gamehq.settings.about.report_issue">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="266"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="270"></location>
       <source>Report an issue</source>
       <translation>报告问题</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="804"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="936"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="277"></location>
       <source>Security &amp; privacy</source>
       <translation>安全与隐私</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="275"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="279"></location>
       <source>Verification, local data, network use, and private reporting</source>
       <translation>验证、本地数据、网络使用与私密报告</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="295"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="299"></location>
       <source>Enjoying %1? A GitHub star helps more players discover the project.</source>
       <translation>喜欢 %1 吗？在 GitHub 上点星可以帮助更多玩家发现这个项目。</translation>
     </message>
     <message id="gamehq.settings.about.support.star_on_github">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="302"></location>
       <source>Star %1 on GitHub</source>
       <translation>在 GitHub 上为 %1 点星</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="292"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
       <source>Support the project</source>
       <translation>支持该项目</translation>
     </message>
@@ -2602,7 +2604,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>更新</translation>
     </message>
     <message id="gamehq.settings.about.website">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="249"></location>
       <source>Website</source>
       <translation>网站</translation>
     </message>
@@ -2829,7 +2831,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="799"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="822"></location>
       <source>Ready</source>
       <translation>就绪</translation>
     </message>
@@ -3402,54 +3404,54 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>常规</translation>
     </message>
     <message id="gamehq.settings.input.bindings.action_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="463"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="486"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_heading">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="504"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="527"></location>
       <source>Input assignments</source>
       <translation>输入分配</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_hint">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="513"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="536"></location>
       <source>Both slots can be active. Select one to edit.</source>
       <translation>两个槽位可以同时生效。选择其中一个进行编辑。</translation>
     </message>
     <message id="gamehq.settings.input.bindings.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="408"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="431"></location>
       <source>Primary and secondary slots are independent. Contexts can reuse the same input safely.</source>
       <translation>主槽位和副槽位相互独立。不同上下文可以安全地复用同一输入。</translation>
     </message>
     <message id="gamehq.settings.input.bindings.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="404"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="427"></location>
       <source>Bindings</source>
       <translation>绑定</translation>
     </message>
     <message id="gamehq.settings.input.bindings.fixed">
       <location filename="src/ui/qml/components/BindingCard.qml" line="250"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="538"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="555"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="561"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="578"></location>
       <source>Fixed</source>
       <translation>固定</translation>
     </message>
     <message id="gamehq.settings.input.bindings.primary">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="532"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="555"></location>
       <source>Primary</source>
       <translation>主</translation>
     </message>
     <message id="gamehq.settings.input.bindings.secondary">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="549"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="572"></location>
       <source>Secondary</source>
       <translation>副</translation>
     </message>
     <message id="gamehq.settings.input.bindings.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="406"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="429"></location>
       <source>Assignments</source>
       <translation>分配</translation>
     </message>
     <message id="gamehq.settings.input.capture.waiting">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="600"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="623"></location>
       <source>Waiting for input</source>
       <translation>等待输入</translation>
     </message>
@@ -3504,150 +3506,150 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>设备类型</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="306"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="329"></location>
       <source>Combination window</source>
       <translation>组合时间窗口</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="308"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="331"></location>
       <source>How long the first button of a combination waits for the second one.</source>
       <translation>组合中第一个按键等待第二个按键的时长。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="265"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="288"></location>
       <source>How long GameHQ waits before it decides what a button press meant.</source>
       <translation>GameHQ 在判定按钮按下操作的含义前要等待多久。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="261"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="284"></location>
       <source>Gestures</source>
       <translation>手势</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="268"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="291"></location>
       <source>Hold time</source>
       <translation>长按时长</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="270"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="293"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
       <translation>触发长按操作需要按住按键多长时间。完成的长按会占用该次单击。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="287"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="310"></location>
       <source>Multi-tap interval</source>
       <translation>连击间隔</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="289"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="312"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
       <translation>当同一按键还设置了双击或三击时，单击需要等待多长时间。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="286"></location>
       <source>Gesture timing</source>
       <translation>手势时间</translation>
     </message>
     <message id="gamehq.settings.input.hidden.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="97"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="120"></location>
       <source>Attention</source>
       <translation>注意</translation>
     </message>
     <message id="gamehq.settings.input.hidden.fix">
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="94"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="106"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="129"></location>
       <source>Fix automatically</source>
       <translation>自动修复</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/Main.qml" line="172"></location>
+      <location filename="src/ui/qml/Main.qml" line="178"></location>
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="69"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="122"></location>
       <source>Controller hidden</source>
       <translation>手柄被隐藏</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="785"></location>
       <source>Auto</source>
       <translation>自动</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="773"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="796"></location>
       <source>%1 button layout changed</source>
       <translation>%1 按钮布局已更改</translation>
     </message>
     <message id="gamehq.settings.input.modern.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="745"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="768"></location>
       <source>Modern controllers</source>
       <translation>现代手柄</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="823"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="846"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <translation>了解 View 键与真正的 Share 键、探测结果、重新连接、手势和组合键。</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="821"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="844"></location>
       <source>Controller compatibility guide</source>
       <translation>手柄兼容性指南</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="750"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="773"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
       <translation>某个手柄的按键布局已更改。使用前请检查其额外按键的分配。</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="796"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="819"></location>
       <source>Legacy fallback</source>
       <translation>旧版回退</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="787"></location>
       <source>Off</source>
       <translation>关闭</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.copy">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="813"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="836"></location>
       <source>Copy report</source>
       <translation>复制报告</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="810"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="833"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
       <translation>复制匿名标识、提供程序、Share/Guide 键可用性、额外按键和布局状态 — 绝不包含序列号或完整设备路径。</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="808"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="831"></location>
       <source>Compatibility report</source>
       <translation>兼容性报告</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="777"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="800"></location>
       <source>Review buttons</source>
       <translation>检查按键</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="790"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="813"></location>
       <source>GameInput runtime</source>
       <translation>GameInput 运行时</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="757"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="780"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <translation>“自动”使用捆绑的 GameInput 运行时，并提供安全的旧版回退；“关闭”会禁用 GameInput。</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="755"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="778"></location>
       <source>Modern controller support</source>
       <translation>现代手柄支持</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="747"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="770"></location>
       <source>GameInput support</source>
       <translation>GameInput 支持</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="783"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="806"></location>
       <source>Use current layout</source>
       <translation>使用当前布局</translation>
     </message>
@@ -3678,72 +3680,72 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>此手柄</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="132"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="155"></location>
       <source>Compatibility</source>
       <translation>兼容性</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="157"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="180"></location>
       <source>Assignment conversion required</source>
       <translation>需要转换分配</translation>
     </message>
     <message id="gamehq.settings.input.relation.context">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="152"></location>
       <source>Context</source>
       <translation>上下文</translation>
     </message>
     <message id="gamehq.settings.input.relation.context_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="154"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="177"></location>
       <source>This button changes meaning</source>
       <translation>此按键的含义会发生变化</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="144"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="167"></location>
       <source>Duplicate</source>
       <translation>重复</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="169"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="192"></location>
       <source>Already assigned</source>
       <translation>已分配</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="161"></location>
       <source>In use</source>
       <translation>在使用中</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="186"></location>
       <source>Shortcut already taken</source>
       <translation>该快捷键已被占用</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_available">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="135"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="158"></location>
       <source>Not available</source>
       <translation>不可用</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_reported_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="160"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="183"></location>
       <source>Button not reported</source>
       <translation>未报告该按键</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="141"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="164"></location>
       <source>Not saved</source>
       <translation>未保存</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="166"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="189"></location>
       <source>Could not save this binding</source>
       <translation>无法保存此绑定</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="147"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="170"></location>
       <source>Shared button</source>
       <translation>共用按键</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="172"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="195"></location>
       <source>One button, several gestures</source>
       <translation>一个按键，多种手势</translation>
     </message>
@@ -3758,164 +3760,179 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>要恢复所有输入绑定吗？</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="855"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="878"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
       <translation>仅会删除当前显示的设备/配置的自定义设置。</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="853"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="876"></location>
       <source>Restore displayed bindings?</source>
       <translation>要恢复当前显示的绑定吗？</translation>
     </message>
     <message id="gamehq.settings.input.steam.capture.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="698"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="721"></location>
       <source>If Steam Input is on for this game, remove the Steam binding on this button in the game's controller layout.</source>
       <translation>如果此游戏开启了 Steam Input，请在游戏的手柄布局中移除此按钮的 Steam 绑定。</translation>
     </message>
     <message id="gamehq.settings.input.steam.capture.open">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="701"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="724"></location>
       <source>Open Steam controller layout</source>
       <translation>打开 Steam 手柄布局</translation>
     </message>
     <message id="gamehq.settings.input.steam.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="685"></location>
       <source>Steam Input may also send a GameHQ controller shortcut to a Steam game, so one press can trigger both. GameHQ never changes Steam settings.</source>
       <translation>Steam Input 也可能把 GameHQ 的手柄快捷键发送给 Steam 游戏，因此按一次可能会同时触发两者。GameHQ 从不更改 Steam 设置。</translation>
     </message>
     <message id="gamehq.settings.input.steam.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="658"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="681"></location>
       <source>Steam</source>
       <translation>Steam</translation>
     </message>
     <message id="gamehq.settings.input.steam.game.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="675"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="698"></location>
       <source>Current game</source>
       <translation>当前游戏</translation>
     </message>
     <message id="gamehq.settings.input.steam.game.none">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="703"></location>
       <source>No Steam game is in session.</source>
       <translation>没有正在运行的 Steam 游戏。</translation>
     </message>
     <message id="gamehq.settings.input.steam.game.pending">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="688"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="711"></location>
       <source>%1: Steam Input may also send this GameHQ shortcut to the game.</source>
       <translation>%1：Steam Input 也可能把此 GameHQ 快捷键发送到游戏。</translation>
     </message>
     <message id="gamehq.settings.input.steam.game.reviewed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="691"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="714"></location>
       <source>%1: reviewed. This help returns if these shortcuts change.</source>
       <translation>%1：已检查。如果这些快捷键发生变化，此帮助会再次出现。</translation>
     </message>
     <message id="gamehq.settings.input.steam.game.unbound">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="707"></location>
       <source>%1: no GameHQ shortcut uses Create / Share or PS.</source>
       <translation>%1：没有 GameHQ 快捷键使用 Create / Share 或 PS。</translation>
     </message>
     <message id="gamehq.settings.input.steam.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="710"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="733"></location>
       <source>Steam sets this button for all games. In Steam's controller settings, review the Guide Button Chord Layout.</source>
       <translation>Steam 会为所有游戏设置此按钮。请在 Steam 的控制器设置中检查“Guide Button Chord Layout”。</translation>
     </message>
     <message id="gamehq.settings.input.steam.guide.open">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="713"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="736"></location>
       <source>Open Steam controller settings</source>
       <translation>打开 Steam 控制器设置</translation>
     </message>
     <message id="gamehq.settings.input.steam.help.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="692"></location>
       <source>Explain when a Create / Share or PS shortcut may also reach the game through Steam Input.</source>
       <translation>说明 Create / Share 或 PS 上的快捷键何时可能也会通过 Steam Input 发送到游戏。</translation>
     </message>
     <message id="gamehq.settings.input.steam.help.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="667"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="690"></location>
       <source>Steam Input conflict help</source>
       <translation>Steam Input 冲突帮助</translation>
     </message>
     <message id="gamehq.settings.input.steam.review.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="724"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="747"></location>
       <source>Mark this game as reviewed, or hide this help for it.</source>
       <translation>请将此游戏标记为已检查，或为此游戏隐藏此帮助。</translation>
     </message>
     <message id="gamehq.settings.input.steam.review.done">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="729"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="752"></location>
       <source>I've reviewed it</source>
       <translation>我已检查</translation>
     </message>
     <message id="gamehq.settings.input.steam.review.hide">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="735"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="758"></location>
       <source>Don't show for this game</source>
       <translation>此游戏不再显示</translation>
     </message>
     <message id="gamehq.settings.input.steam.review.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="722"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="745"></location>
       <source>Reviewed in Steam?</source>
       <translation>已在 Steam 中检查？</translation>
     </message>
     <message id="gamehq.settings.input.steam.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="660"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="683"></location>
       <source>Steam Input</source>
       <translation>Steam Input</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="255"></location>
       <source>Adopt per-slot bindings</source>
       <translation>采用按槽位的绑定</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="234"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="257"></location>
       <source>Copy bindings saved for any controller in this slot to this specific controller. The originals are kept.</source>
       <translation>将该槽位中为所有手柄保存的绑定复制到此特定手柄。原有绑定会保留。</translation>
     </message>
     <message id="gamehq.settings.input.test.copy_to_controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="237"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="260"></location>
       <source>Copy to this controller</source>
       <translation>复制到此手柄</translation>
     </message>
     <message id="gamehq.settings.input.test.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="196"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="219"></location>
       <source>Profile</source>
       <translation>配置</translation>
     </message>
     <message id="gamehq.settings.input.test.identify_button">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="244"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="267"></location>
       <source>Identify a controller button</source>
       <translation>识别手柄按键</translation>
     </message>
     <message id="gamehq.settings.input.test.last_input">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="202"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="225"></location>
       <source>Last input</source>
       <translation>上次输入</translation>
     </message>
     <message id="gamehq.settings.input.test.probe_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="248"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="271"></location>
       <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
       <translation>记录接下来 3 秒内的原始按键变化 — 包括 GameHQ 无法识别的按键 — 并写入可在“高级”中复制的诊断信息。</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_displayed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="213"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="236"></location>
       <source>Restore displayed bindings</source>
       <translation>恢复当前显示的绑定</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_shared_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="220"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="243"></location>
       <source>Remove overrides for the selected device type and shared profile.</source>
       <translation>删除所选设备类型和共享配置的自定义设置。</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_specific_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="217"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="240"></location>
       <source>Remove overrides for this controller only.</source>
       <translation>仅删除此手柄的自定义设置。</translation>
     </message>
     <message id="gamehq.settings.input.test.start_probe">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="251"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="274"></location>
       <source>Start 3-second probe</source>
       <translation>开始 3 秒探测</translation>
     </message>
     <message id="gamehq.settings.input.test.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="198"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="221"></location>
       <source>Test and restore</source>
       <translation>测试和恢复</translation>
+    </message>
+    <message id="gamehq.settings.input.view_fallback.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="102"></location>
+      <source>Applies only to %1. Turn off to keep Back/View for the game; dedicated Share buttons are unchanged.</source>
+      <translation>仅适用于 %1。关闭后，Back/View 将保留供游戏使用；专用 Share 按钮不受影响。</translation>
+    </message>
+    <message id="gamehq.settings.input.view_fallback.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="100"></location>
+      <source>Use Back/View as Share</source>
+      <translation>将 Back/View 用作 Share</translation>
+    </message>
+    <message id="gamehq.settings.input.view_fallback.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="97"></location>
+      <source>Back/View capture fallback</source>
+      <translation>使用 Back/View 作为备用捕获键</translation>
     </message>
     <message id="gamehq.settings.language.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="26"></location>
@@ -4184,12 +4201,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>内置默认设置</translation>
     </message>
     <message id="gamehq.settings.presets.delete.confirm">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="395"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="418"></location>
       <source>"%1" will be deleted. This cannot be undone.</source>
       <translation>预设“%1”将被删除。此操作无法撤销。</translation>
     </message>
     <message id="gamehq.settings.presets.delete.in_use">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="392"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="415"></location>
       <source>"%1" is used elsewhere. Pick the preset that takes over its users.</source>
       <translation>预设“%1”仍被其他地方使用。请选择要接手其映射的预设。</translation>
     </message>
@@ -4209,7 +4226,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>此组中没有其他预设可接手其映射。请先创建一个预设。</translation>
     </message>
     <message id="gamehq.settings.presets.delete.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="389"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="412"></location>
       <source>Delete preset</source>
       <translation>删除预设</translation>
     </message>
@@ -4219,22 +4236,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>预设是可重复使用的映射配置。可以为设备或游戏分配一个预设。</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="361"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="384"></location>
       <source>Name the copy.</source>
       <translation>为副本命名。</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="359"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="382"></location>
       <source>Duplicate preset</source>
       <translation>复制预设</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate_target.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="371"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="394"></location>
       <source>Name the copy that this controller will use.</source>
       <translation>为此手柄要使用的副本命名。</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate_target.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="369"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="392"></location>
       <source>Duplicate for this controller</source>
       <translation>为此手柄复制</translation>
     </message>
@@ -4315,12 +4332,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>切换预设前，请完成或取消当前编辑。</translation>
     </message>
     <message id="gamehq.settings.presets.more.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="331"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="354"></location>
       <source>Choose what to do with "%1".</source>
       <translation>选择要对预设“%1”执行的操作。</translation>
     </message>
     <message id="gamehq.settings.presets.more.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="329"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="352"></location>
       <source>Preset actions</source>
       <translation>预设操作</translation>
     </message>
@@ -4331,17 +4348,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>名称</translation>
     </message>
     <message id="gamehq.settings.presets.new.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="341"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="364"></location>
       <source>Name the new preset. You can rename it later.</source>
       <translation>为新预设命名。之后可以重命名。</translation>
     </message>
     <message id="gamehq.settings.presets.new.suggested">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="344"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="367"></location>
       <source>My mappings</source>
       <translation>我的映射</translation>
     </message>
     <message id="gamehq.settings.presets.new.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="339"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="362"></location>
       <source>New preset</source>
       <translation>新建预设</translation>
     </message>
@@ -4416,12 +4433,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>无法保存该更改。未做任何修改。</translation>
     </message>
     <message id="gamehq.settings.presets.rename.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="352"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="375"></location>
       <source>Enter the new name for this preset.</source>
       <translation>请输入此预设的新名称。</translation>
     </message>
     <message id="gamehq.settings.presets.rename.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="350"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="373"></location>
       <source>Rename preset</source>
       <translation>重命名预设</translation>
     </message>
@@ -5247,68 +5264,68 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>分享</translation>
     </message>
     <message id="gamehq.startup.fatal.another_copy_running">
-      <location filename="src/main.cpp" line="381"></location>
+      <location filename="src/main.cpp" line="373"></location>
       <source>GameHQ cannot start while another copy of GameHQ or its installer is running.</source>
       <translation>另一个 GameHQ 副本或其安装程序正在运行，GameHQ 无法启动。</translation>
     </message>
     <message id="gamehq.startup.fatal.details_hint">
-      <location filename="src/main.cpp" line="98"></location>
+      <location filename="src/main.cpp" line="90"></location>
       <source>For details, see:</source>
       <translation>详细信息请参阅：</translation>
     </message>
     <message id="gamehq.startup.fatal.init_failed">
-      <location filename="src/main.cpp" line="444"></location>
+      <location filename="src/main.cpp" line="435"></location>
       <source>GameHQ could not start.</source>
       <translation>GameHQ 无法启动。</translation>
     </message>
     <message id="gamehq.startup.fatal.update_in_progress">
-      <location filename="src/main.cpp" line="345"></location>
+      <location filename="src/main.cpp" line="337"></location>
       <source>A GameHQ update is being installed. Start GameHQ again when it has finished.</source>
       <translation>正在安装 GameHQ 更新。请在安装完成后重新启动 GameHQ。</translation>
     </message>
     <message id="gamehq.startup.fatal.update_recovery_failed">
-      <location filename="src/main.cpp" line="313"></location>
+      <location filename="src/main.cpp" line="305"></location>
       <source>GameHQ could not finish recovering from an interrupted update, so it cannot start.</source>
       <translation>GameHQ 无法完成从中断的更新中恢复，因此无法启动。</translation>
     </message>
     <message id="gamehq.startup.portable_import.failed_title">
-      <location filename="src/main.cpp" line="280"></location>
+      <location filename="src/main.cpp" line="272"></location>
       <source>Portable import failed</source>
       <translation>便携版配置导入失败</translation>
     </message>
     <message id="gamehq.startup.portable_import.installed_copy_required">
-      <location filename="src/main.cpp" line="247"></location>
+      <location filename="src/main.cpp" line="239"></location>
       <source>Run portable import from an installed copy of GameHQ.</source>
       <translation>请从已安装的 GameHQ 副本运行便携导入。</translation>
     </message>
     <message id="gamehq.startup.portable_import.instance_running">
-      <location filename="src/main.cpp" line="259"></location>
+      <location filename="src/main.cpp" line="251"></location>
       <source>Another GameHQ instance is running, so the portable import cannot start.</source>
       <translation>另一个 GameHQ 实例正在运行，因此无法启动便携导入。</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_argument_incomplete">
-      <location filename="src/main.cpp" line="119"></location>
+      <location filename="src/main.cpp" line="111"></location>
       <source>The portable import parent-process argument is incomplete.</source>
       <translation>便携导入的父进程参数不完整。</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_identifier_invalid">
-      <location filename="src/main.cpp" line="147"></location>
-      <location filename="src/main.cpp" line="153"></location>
+      <location filename="src/main.cpp" line="139"></location>
+      <location filename="src/main.cpp" line="145"></location>
       <source>The portable import parent-process identifier is invalid.</source>
       <translation>便携导入的父进程标识符无效。</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_still_running">
-      <location filename="src/main.cpp" line="133"></location>
+      <location filename="src/main.cpp" line="125"></location>
       <source>The running GameHQ instance did not close in time.</source>
       <translation>正在运行的 GameHQ 实例未能及时关闭。</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_unverifiable">
-      <location filename="src/main.cpp" line="140"></location>
+      <location filename="src/main.cpp" line="132"></location>
       <source>GameHQ could not confirm that the previous instance has closed.</source>
       <translation>GameHQ 无法确认上一个实例已经关闭。</translation>
     </message>
     <message id="gamehq.startup.portable_import.source_missing">
-      <location filename="src/main.cpp" line="241"></location>
+      <location filename="src/main.cpp" line="233"></location>
       <source>The portable import source folder is missing.</source>
       <translation>便携导入的源文件夹不存在。</translation>
     </message>
@@ -5358,12 +5375,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>截取屏幕截图</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="424"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="188"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ 正在应用更新，随后将重启。</translation>
     </message>
     <message id="gamehq.update.available_version_short">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="128"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="132"></location>
       <source>%1 available</source>
       <translation>%1 可用</translation>
     </message>
@@ -5418,58 +5436,60 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>正在等待捕获任务安全完成。</translation>
     </message>
     <message id="gamehq.update.beta_download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="166"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="170"></location>
       <source>Beta update download</source>
       <translation>测试版更新下载</translation>
     </message>
     <message id="gamehq.update.bundled_with_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="152"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="283"></location>
       <source>Bundled with GameHQ %1</source>
       <translation>随 GameHQ %1 提供</translation>
     </message>
     <message id="gamehq.update.cancel_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="223"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="365"></location>
       <source>Cancel download</source>
       <translation>取消下载</translation>
     </message>
     <message id="gamehq.update.check.label">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="243"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="124"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="77"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="385"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="128"></location>
       <source>Check for updates</source>
       <translation>检查更新</translation>
     </message>
     <message id="gamehq.update.check_again">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="237"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1073"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="379"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1231"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="207"></location>
       <source>Check again</source>
       <translation>重新检查</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
-      <source>At most once every 24 hours, in the background.</source>
-      <translation>在后台进行，最多每 24 小时一次。</translation>
+      <source>Checks shortly after startup and every hour in the background.</source>
+      <oldsource>At most once every 24 hours, in the background.</oldsource>
+      <translation>启动后不久检查更新，之后每小时在后台检查一次。</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="116"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="120"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
       <source>Check automatically</source>
       <translation>自动检查</translation>
     </message>
     <message id="gamehq.update.check_failed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="179"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="314"></location>
       <source>Update check failed</source>
       <translation>更新检查失败</translation>
     </message>
     <message id="gamehq.update.check_now">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="141"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="145"></location>
       <source>Check now</source>
       <translation>立即检查</translation>
     </message>
     <message id="gamehq.update.checking">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="217"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="355"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="142"></location>
       <source>Checking...</source>
       <translation>正在检查...</translation>
     </message>
@@ -5479,17 +5499,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>正在检查更新...</translation>
     </message>
     <message id="gamehq.update.checking_for_updates_short">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="159"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="294"></location>
       <source>Checking for updates</source>
       <translation>检查更新</translation>
     </message>
     <message id="gamehq.update.choose_install_time">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="918"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="427"></location>
       <source>Choose when to install %1 %2.</source>
       <translation>选择何时安装 %1 %2。</translation>
     </message>
     <message id="gamehq.update.download_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="155"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="159"></location>
       <source>Download progress</source>
       <translation>下载进度</translation>
     </message>
@@ -5499,12 +5519,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ %1 已下载并通过 SHA-256 验证。</translation>
     </message>
     <message id="gamehq.update.download_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="359"></location>
       <source>Download update %1</source>
       <translation>下载更新 %1</translation>
     </message>
     <message id="gamehq.update.downloading_percent">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="165"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="300"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="413"></location>
       <source>Downloading %1%</source>
       <translation>正在下载 %1%</translation>
     </message>
@@ -5514,7 +5535,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>正在下载 GameHQ %1... %2%</translation>
     </message>
     <message id="gamehq.update.github_check_description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="112"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="116"></location>
       <source>GameHQ can check GitHub for newer stable releases.</source>
       <translation>GameHQ 可在 GitHub 上检查较新的稳定版本。</translation>
     </message>
@@ -5524,30 +5545,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>同时提供测试预发布版本。它们会更早获得修复，但可能不够稳定。</translation>
     </message>
     <message id="gamehq.update.include_betas.label">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="103"></location>
       <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="8"></location>
       <source>Include beta versions</source>
       <translation>包含测试版</translation>
     </message>
     <message id="gamehq.update.install_and_restart">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="226"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="177"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="362"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="368"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="171"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
       <source>Install and restart</source>
       <translation>安装并重启</translation>
     </message>
     <message id="gamehq.update.installed_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="131"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="135"></location>
       <source>Installed: %1</source>
       <translation>已安装：%1</translation>
     </message>
     <message id="gamehq.update.installing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="176"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="311"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="167"></location>
       <source>Installing</source>
       <translation>正在安装</translation>
     </message>
     <message id="gamehq.update.installing_progress">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="233"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="375"></location>
       <source>Installing...</source>
       <translation>正在安装...</translation>
     </message>
@@ -5557,37 +5580,37 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>正在安装 GameHQ %1...</translation>
     </message>
     <message id="gamehq.update.last_checked">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="209"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="344"></location>
       <source>Last checked %1</source>
       <translation>上次检查 %1</translation>
     </message>
     <message id="gamehq.update.last_checked_with_marker">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="564"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="763"></location>
       <source>%1  %2</source>
       <translation>%1  %2</translation>
     </message>
     <message id="gamehq.update.new_version_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="593"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="792"></location>
       <source>New version available</source>
       <translation>新版本可用</translation>
     </message>
     <message id="gamehq.update.not_checked_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="206"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="341"></location>
       <source>Updates have not been checked yet</source>
       <translation>尚未检查更新</translation>
     </message>
     <message id="gamehq.update.not_checked_yet">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="189"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="324"></location>
       <source>Not checked yet</source>
       <translation>尚未检查</translation>
     </message>
     <message id="gamehq.update.preparing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="230"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="372"></location>
       <source>Preparing...</source>
       <translation>正在准备...</translation>
     </message>
     <message id="gamehq.update.preparing_to_install">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="173"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="308"></location>
       <source>Preparing to install</source>
       <translation>正在准备安装</translation>
     </message>
@@ -5598,18 +5621,18 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.progress_percent">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="80"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="173"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
       <source>%1% complete</source>
       <translation>%1% 完成</translation>
     </message>
     <message id="gamehq.update.published_on">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="143"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="274"></location>
       <source>Published %1</source>
       <translation>已发布 %1</translation>
     </message>
     <message id="gamehq.update.ready_to_install">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="169"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="304"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="162"></location>
       <source>Ready to install</source>
       <translation>可以安装</translation>
     </message>
@@ -5619,92 +5642,93 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.update.released_on">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="149"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="280"></location>
       <source>Released %1</source>
       <translation>已发布 %1</translation>
     </message>
     <message id="gamehq.update.remind_later">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="943"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1082"></location>
       <source>Remind me later</source>
       <translation>稍后提醒我</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="417"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>GameHQ 将重启以应用更新。</translation>
     </message>
     <message id="gamehq.update.retry_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="240"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="382"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="210"></location>
       <source>Retry download</source>
       <translation>重试下载</translation>
     </message>
     <message id="gamehq.update.see_whats_new">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="161"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="184"></location>
       <source>See what's new</source>
       <translation>查看新增内容</translation>
     </message>
     <message id="gamehq.update.settings">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="738"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="91"></location>
       <source>Update settings</source>
       <translation>更新设置</translation>
     </message>
     <message id="gamehq.update.sha256_limit_warning">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="191"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
       <translation>SHA-256 可以检测文件损坏，但无法检测 GitHub 账户是否遭到入侵。</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="957"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1096"></location>
       <source>Skip this version</source>
       <translation>跳过此版本</translation>
     </message>
     <message id="gamehq.update.skip_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="748"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="134"></location>
       <source>Skip version %1</source>
       <translation>跳过版本 %1</translation>
     </message>
     <message id="gamehq.update.status.available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="123"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="254"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="73"></location>
       <source>Available</source>
       <translation>可用</translation>
     </message>
     <message id="gamehq.update.status.current">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="127"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="258"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="76"></location>
       <source>Current</source>
       <translation>当前</translation>
     </message>
     <message id="gamehq.update.status.previous">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="130"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="261"></location>
       <source>Previous</source>
       <translation>上一个</translation>
     </message>
     <message id="gamehq.update.status.update_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="162"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="297"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="211"></location>
       <source>Update available</source>
       <translation>有可用更新</translation>
     </message>
     <message id="gamehq.update.suffix.available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="47"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="178"></location>
       <source>(Available)</source>
       <translation>（可用）</translation>
     </message>
     <message id="gamehq.update.suffix.current">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="52"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="183"></location>
       <source>(Current)</source>
       <translation>（当前）</translation>
     </message>
     <message id="gamehq.update.up_to_date">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="182"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="186"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="317"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="321"></location>
       <source>Up to date</source>
       <translation>已是最新</translation>
     </message>
     <message id="gamehq.update.up_to_date_last_checked">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="108"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="112"></location>
       <source>Up to date, last checked %1</source>
       <translation>已是最新，上次检查 %1</translation>
     </message>
@@ -5719,24 +5743,31 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ %1 现已可用。</translation>
     </message>
     <message id="gamehq.update.versions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="974"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1132"></location>
       <source>VERSIONS</source>
       <translation>版本</translation>
     </message>
     <message id="gamehq.update.view_release_notes">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="228"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="232"></location>
       <source>View release notes</source>
       <translation>查看发布说明</translation>
     </message>
     <message id="gamehq.update.view_update">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="164"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="187"></location>
       <source>View update</source>
       <translation>查看更新</translation>
     </message>
     <message id="gamehq.update.waiting_for_capture">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="421"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="185"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>正在等待捕获任务安全完成...</translation>
+    </message>
+    <message id="gamehq.update.waiting_for_stable">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="289"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="108"></location>
+      <source>Waiting for a newer stable release</source>
+      <translation>正在等待更新的稳定版</translation>
     </message>
   </context>
 </TS>

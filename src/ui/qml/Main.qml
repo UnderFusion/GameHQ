@@ -81,17 +81,22 @@ ApplicationWindow {
     property string whatsNewSeenVersion: app
         ? app.config("internal.ui.whats_new_seen_version", "") : ""
 
+    // After an update restart GameHQ comes back where the user left it: a
+    // short toast confirms the new version, and the About row keeps its
+    // unread dot until the release notes are actually opened. The About
+    // dialog is never opened on its own.
     function maybeShowPostUpdateGreeting() {
-        if (!window.visible || !window.active || lightbox.visible
-                || aboutDialog.visible || helpDialog.visible
-                || pendingPostUpdateVersion === "")
+        if (!window.visible || pendingPostUpdateVersion === "")
             return
-        if (app.config("internal.ui.whats_new_seen_version", "") === pendingPostUpdateVersion) {
-            app.setConfig("internal.updates.pending_post_update_version", "")
-            pendingPostUpdateVersion = ""
+        const version = pendingPostUpdateVersion
+        app.setConfig("internal.updates.pending_post_update_version", "")
+        pendingPostUpdateVersion = ""
+        if (app.config("internal.ui.whats_new_seen_version", "") === version)
             return
-        }
-        window.openAbout(true)
+        //% "%1 updated"
+        notifications.post(qsTrId("gamehq.about.product_updated").arg(Brand.name),
+                           //% "Version %1"
+                           qsTrId("gamehq.about.version").arg(version), "", "success")
     }
 
     function acknowledgePostUpdateGreeting() {
@@ -118,6 +123,7 @@ ApplicationWindow {
         if (lightbox.visible || helpDialog.visible)
             return
         window.menuOpen = false
+        window.closeSidebarLanguageList()
         window.sidebarFocused = false
         aboutDialog.open(asPostUpdateGreeting)
         sounds.play("nav_tick")
@@ -359,9 +365,28 @@ ApplicationWindow {
         app.setConfig("ui.zoom_level", window.zoomLevel)
     }
 
+    // Windows can squeeze the window below its minimum when a monitor sleeps or
+    // the DPI/topology changes, which shrinks the whole scaled interface. Snap it
+    // back whenever the window is focused or moves to another screen.
+    function repairShrunkGeometry() {
+        if (window.visibility !== Window.Windowed)
+            return
+        const repaired = app.repairedWindowGeometry(Qt.rect(window.x, window.y,
+                                                            window.width, window.height))
+        if (repaired.x === window.x && repaired.y === window.y
+                && repaired.width === window.width && repaired.height === window.height)
+            return
+        window.x = repaired.x
+        window.y = repaired.y
+        window.width = repaired.width
+        window.height = repaired.height
+    }
+    onScreenChanged: Qt.callLater(window.repairShrunkGeometry)
+
     onActiveChanged: {
         input.setDesktopFocused(window.active || lightbox.active)
         if (window.active) {
+            Qt.callLater(window.repairShrunkGeometry)
             Qt.callLater(window.finishControllerFocusRestore)
             Qt.callLater(window.maybeShowPostUpdateGreeting)
         }
@@ -1208,7 +1233,7 @@ ApplicationWindow {
                 onCaptureActivated: (index) => lightbox.openAt(index)
                 onDeleteRequested: (index, gameName, dateText) => window.askDelete(index, gameName, dateText)
                 onShareRequested: (index) => window.openShare(app.gallery.get(index))
-                inputBlocked: shareDialog.isOpen
+                inputBlocked: shareDialog.isOpen || window.activeModal() !== null
                 onAddFolderRequested: folderDialog.open()
                 onKeyboardActivity: window.usingGamepad = false
                 onBulkToggleRequested: (index, extendRange) => window.bulkToggle(index, extendRange)
@@ -1316,6 +1341,7 @@ ApplicationWindow {
         id: aboutDialog
         anchors.fill: parent
         z: 500
+        onVisibleChanged: input.cancelNavigationRepeat()
         onClosed: window.finishAbout()
         onUpdateSettingsRequested: window.openAboutSettings()
         onUpdateDeferred: updateBanner.dismiss()

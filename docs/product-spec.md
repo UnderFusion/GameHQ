@@ -135,7 +135,7 @@ GameHQ reopens where the user left it. `NavigationState` (`src/ui/NavigationStat
 | R6 | Settings category | Stored as a stable key in `ui.settings_category` (`general`, `capture`, `replay`, `input`, `library`, `notifications_sound`, `advanced`, `about`). A pre-0.7.11 numeric value is migrated once at startup; an unknown key opens General. |
 | R7 | Gallery filter | Stored as `ui.gallery_filter_category` + `ui.gallery_filter_game` (`-1` = every game). Applied after the first scan so the game id can be validated; a game that no longer exists takes the filter back to the whole library. |
 | R8 | Overlay filter | The game binding always follows the foreground game and is never restored. Only the category is remembered, per game, in `ui.overlay_filter.<gameId>`; an absent or unknown entry means `all`. |
-| R9 | Precedence | Explicit navigation intent (R5, R4) > restored state > defaults. The post-update greeting still opens over whatever was restored. |
+| R9 | Precedence | Explicit navigation intent (R5, R4) > restored state > defaults. After an update the restored state is kept; only a toast confirms the new version. |
 | R10 | Write timing | Persisted as the user navigates (batched by half a second) plus an idempotent flush on hide and on quit. "Restore all defaults" clears `ui.*`, so the next open starts on the defaults again; a single page's "Restore defaults" never touches the remembered view. |
 
 ### Window placement (restore rules)

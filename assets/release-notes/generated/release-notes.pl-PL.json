@@ -1,97 +1,166 @@
 {
-  "version": "0.8.0",
-  "date": "2026-10-26",
+  "version": "0.8.2",
+  "date": "2026-10-30",
   "sections": [
     {
-      "title": "Specjalne podziękowania",
+      "title": "Beta 1",
       "items": [
-        "Wielkie podziękowania dla [@galcn10](https://github.com/galcn10), twórcy [Console Overlay for Playnite](https://github.com/galcn10/ConsoleOverlay), za testowanie GameHQ, cenne uwagi i stworzenie świetnej integracji z Playnite. Twoje wsparcie pomogło ulepszyć GameHQ 0.8.0!"
+        "GameHQ 0.8.2 Beta 1 is a pre-release for testing native controller shortcuts and clearer update feedback. GameHQ 0.8.1 remains Latest Stable."
       ]
     },
     {
-      "title": "Najważniejsze zmiany",
+      "title": "Controller fixes",
       "items": [
-        "Lepsze automatyczne wykrywanie aktualizacji. GameHQ sprawdza teraz dostępność nowych wersji tuż po każdym uruchomieniu i co godzinę podczas działania, dzięki czemu dowiesz się o aktualizacjach znacznie szybciej.",
-        "Klipy mogą nagrywać dźwięk samej gry. Dzięki nowemu źródłu Dźwięk gry GameHQ nagrywa grę niezależnie od urządzenia, na którym gra odtwarza dźwięk (słuchawki, Bluetooth, HDMI lub głośniki), i pomija inne aplikacje, takie jak Discord czy Spotify.",
-        "Problemy z nagrywaniem dźwięku są teraz wykrywane i zgłaszane. Jeśli wybranego źródła dźwięku nie da się nagrać, bufor powtórek zatrzymuje się i informuje o przyczynie oraz o tym, które źródło wybrać zamiast niego, zamiast po cichu zapisywać klipy bez dźwięku. GameHQ nigdy samodzielnie nie zmienia źródła dźwięku.",
-        "Dźwięk i obraz pozostają zsynchronizowane. Klipy zapisane po ekranie ładowania, pauzie lub długim przestoju zachowują prawidłową synchronizację czasową, a bufor powtórek sam uruchamia się ponownie, gdy gra zmienia rozdzielczość.",
-        "Zrzuty ekranu HDR już się nie zawieszają. Zrzut ekranu wstrzymanej gry lub statycznego menu w HDR jest zapisywany od razu. Jeśli nie nadejdzie żadna klatka, próba po kilku sekundach bezpiecznie kończy się niepowodzeniem, a kolejne naciśnięcie działa.",
-        "Bezpieczniejsze usuwanie kontrolerem. Krzyżyk w potwierdzeniu usunięcia naciska teraz podświetlony przycisk, a Kółko anuluje. Wcześniej Krzyżyk mógł usunąć plik nawet wtedy, gdy podświetlony był przycisk Anuluj.",
-        "Usuwanie chroni Twoje oryginały. Usunięty materiał utworzony przez GameHQ trafia teraz do Kosza, więc możesz go przywrócić. Pliki w obserwowanych folderach nigdy nie są usuwane."
+        "Native Share and Guide tap, hold and double-tap gestures continue when ordinary controller input switches between Sony Raw Input and XInput. Releases still reach the controller that started the gesture.",
+        "Duplicate-input protection, controller and game presets, the Back/View capture fallback setting, and cancellation when focus, mappings or device connections change remain in place.",
+        "The Input page clears the previous action when a new button is pressed, so an earlier Screenshot result cannot look like confirmation of a new Share press."
       ]
     },
     {
-      "title": "Nowości",
+      "title": "Update feedback",
       "items": [
-        "W sekcji Ustawienia › Powtórki › Źródło dźwięku dostępne są opcje Dźwięk gry, Dźwięk pulpitu i Wyłączone. Dźwięk gry jest domyślny w Windows 11. Dźwięk pulpitu nagrywa wszystko, co trafia na domyślne wyjście Windows, w tym dźwięk innych aplikacji, i jest domyślny w starszych wersjach Windows.",
-        "Dźwięk gry korzysta z wbudowanego w Windows przechwytywania dźwięku poszczególnych aplikacji i nigdy nie ingeruje w proces gry. Jeśli we wcześniejszej wersji dźwięk systemowy został celowo wyłączony, pozostanie wyłączony.",
-        "Opcjonalne aktualizacje beta: nowy przełącznik Uwzględniaj wersje beta w sekcji Ustawienia › Ogólne oraz w sekcji Info pozwala aktualizatorowi proponować wersje beta. Jest domyślnie wyłączony, więc stabilne instalacje otrzymują tylko stabilne aktualizacje.",
-        "Gdy GameHQ ulegnie awarii, próbuje zapisać niewielki zrzut awaryjny w swoim folderze dzienników, aby pomóc zdiagnozować problem. Nic nie jest wysyłane. Niektóre awarie, na przykład takie, w których Windows natychmiast kończy program, nadal mogą zamknąć GameHQ bez zapisania zrzutu.",
-        "Dziennik zawiera więcej szczegółów o zapisanych zrzutach ekranu i błędach uruchamiania, dzięki czemu pojedynczy plik dziennika częściej wystarcza do zrozumienia zgłoszonego problemu."
+        "Install and restart is the first action on the update banner. It uses the existing download, verification, installation and restart flow.",
+        "The About popup keeps update controls, download percentage and progress above the scrolling release notes, visible beside the action that started the download.",
+        "Opening or closing About ends navigation repeats from the previous view. Gallery hover selection and navigation sounds stop behind a modal, and About navigation stops silently at either end.",
+        "Bundled release notes display formatted links instead of raw Markdown. After an update, a short notification confirms the installed version without opening About automatically."
       ]
     },
     {
-      "title": "Poprawki i ulepszenia",
+      "title": "Hardware verification needed",
       "items": [
-        "Klipy nie są już nagrywane bez dźwięku z powodu starego wewnętrznego ustawienia, które domyślnie wyłączało dźwięk pulpitu.",
-        "Dźwięk w dowolnym formacie odtwarzania Windows jest poprawnie konwertowany, a ścieżka dźwiękowa nie ginie.",
-        "Ciche fragmenty są nagrywane jako cisza, więc dźwięk po dłuższej ciszy pozostaje zsynchronizowany z obrazem.",
-        "Nagrywanie dźwięku gry niezawodniej wznawia się po ponownym uruchomieniu gry lub przełączeniu na inną grę.",
-        "Fragmenty bufora powtórek, których nie udało się zapisać lub nie da się ponownie odczytać, są pomijane, więc nie mogą uszkodzić zapisanego klipu.",
-        "Własne powiadomienia GameHQ, takie jak informacja o zapisaniu zrzutu ekranu, nie pojawiają się już na zrzutach ekranu ani w nagraniach i transmisjach całego ekranu.",
-        "Zrzut ekranu zastąpiony innym obrazem o tej samej nazwie pliku otrzymuje nową miniaturę przy następnym skanowaniu biblioteki.",
-        "Foldery z materiałami są skanowane w tle, więc GameHQ reaguje płynnie nawet przy dużych kolekcjach.",
-        "Przeglądarki, edytory i inne okna, które nie są grami, nie pojawiają się już jako gry w bibliotece.",
-        "Podczas usuwania wielu plików zaznaczenie pozostaje niezmienione, dopóki potwierdzenie jest otwarte, więc działania kontrolera w tle nie mogą zmienić tego, które pliki zostaną usunięte.",
-        "Okno usuwania w nakładce przejmuje sygnały kontrolera, dopóki jest otwarte, i zamyka się, gdy nakładka zostanie ukryta.",
-        "Nakładka pomija okna, które przestały odpowiadać, zamiast na nie czekać.",
-        "Ustawienia nie przeskakują już na górę, gdy przewijasz je myszą po powrocie do GameHQ.",
-        "Wybranie opcji Wbudowane ustawienia domyślne lub usunięcie presetu w edytorze mapowań kontrolera nie blokuje już wyboru presetu."
-      ]
-    },
-    {
-      "title": "Kontrolery i Playnite",
-      "items": [
-        "Skróty kontrolera nadal działają w grach uruchamianych poza Steam, takich jak lokalna gra uruchomiona z Playnite. Jeśli Windows przestaje przekazywać do GameHQ podłączony DualSense, gdy gra jest na pierwszym planie, GameHQ odczytuje kontroler bezpośrednio, w trybie tylko do odczytu, i wraca do zwykłej obsługi sygnałów, gdy Windows znów zacznie go przekazywać.",
-        "Skróty i powtórzenia przytrzymanego przycisku zawsze kończą się po zwolnieniu tego samego naciśnięcia, także gdy zwolnienie zgłasza GameInput lub gdy kontroler zostanie odłączony w trakcie przytrzymywania przycisku.",
-        "Dane kontrolerów odłączonych na stałe są czyszczone, sprawdzanie HidHide nie spowalnia już interfejsu, a urządzenia GameInput są sprawdzane ponownie tylko wtedy, gdy coś się zmieni.",
-        "Gry z Playnite pozostają rozpoznawane, nawet gdy Playnite nie potrafi zidentyfikować procesu gry.",
-        "Pełnoekranowe środowisko Xbox w Windows: gdy powłoka Xbox jest na pierwszym planie, GameHQ używa gry uruchomionej z Playnite do zrzutów ekranu i klipów. GameHQ Playnite Integration 0.4.13, dostępna osobno jako wersja przedpremierowa, uruchamia też GameHQ, gdy tryb Xbox opóźnia jego start po zalogowaniu."
-      ]
-    },
-    {
-      "title": "Stabilność i niezawodność",
-      "items": [
-        "Czyszczenie niedokończonych nagrań usuwa tylko pliki tymczasowe utworzone przez sam GameHQ.",
-        "Foldery materiałów poszczególnych gier zawsze pozostają wewnątrz twojego folderu materiałów.",
-        "Uruchamianie nie kończy się już błędem, gdy biblioteka zawiera zduplikowane ścieżki folderów; zamiast tego wpisy są scalane.",
-        "Jeśli GameHQ nie może się uruchomić, wyjaśnia przyczynę w twoim języku i zapisuje ją w dzienniku.",
-        "Import profilu przenośnego do zainstalowanego GameHQ działa teraz także wtedy, gdy zainstalowana kopia była już uruchamiana.",
-        "Wzmocnione zabezpieczenia: bezpieczniejsze ładowanie bibliotek DLL, ostrzejsze sprawdzanie lokalnych połączeń integracji i bezpieczniejsza obsługa plików aktualizacji.",
-        "Aktualizator lepiej radzi sobie z powolnym pierwszym uruchomieniem i zachowuje swoje zapisy w nienaruszonym stanie, jeśli zostanie przerwany.",
-        "Udostępnianie przez Telegram jest bezpieczniej zamykane."
-      ]
-    },
-    {
-      "title": "Instalacja i aktualizacja",
-      "items": [
-        "Aktualizacja z wersji 0.7.9: uruchom instalator wersji 0.8.0 na obecnej instalacji.",
-        "Instalator: instaluje program dla bieżącego użytkownika i zastępuje zainstalowaną wersję 0.7.9 lub wcześniejszą betę.",
-        "Wersja przenośna: rozpakuj archiwum ZIP do nowego folderu i uruchom GameHQ.exe.",
-        "Po testach wersji 0.8.0 Beta 2, 3 lub 4 zainstaluj 0.8.0 za pomocą instalatora lub nowego archiwum ZIP wersji przenośnej, ponieważ te bety nie były oferowane przez aktualizator."
-      ]
-    },
-    {
-      "title": "Znane ograniczenia",
-      "items": [
-        "Dźwięk gry wymaga systemu Windows 11. W starszych wersjach Windows GameHQ używa źródła Dźwięk pulpitu, które nagrywa też inne aplikacje odtwarzające dźwięk na domyślnym wyjściu.",
-        "Gra, która przejmuje wyłączną kontrolę nad kontrolerem, nadal może blokować skróty działające w tle.",
-        "Obsługa pełnoekranowego środowiska Xbox w Windows nie została jeszcze potwierdzona przez testerów na komputerze, na którym jest ono używane.",
-        "Pliki binarne dla Windows nie są podpisane Authenticode; Windows SmartScreen może wyświetlić ostrzeżenie Nieznany wydawca."
+        "Automated checks cover simulated input and actual action dispatch. DualSense Bluetooth with DS4Windows and HidHide still needs a real-device test without the Share keyboard macro; issue #32 remains open.",
+        "Keep Use Back/View as Share off for the virtual Xbox source. Check native Share tap for a screenshot, a two-second hold for replay, double tap for overlay, and both Share and touchpad/Back after reconnecting."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.8.1",
+      "date": "2026-10-29",
+      "sections": [
+        {
+          "title": "Fixes",
+          "items": [
+            "GameHQ opens normally after an automatic update, including later restarts. Completed update records no longer send startup into an unnecessary recovery loop.",
+            "If Windows temporarily prevents old update files from being cleaned up, GameHQ keeps the completion record and retries after a later successful start.",
+            "A separate controller setting lets you turn off Back/View acting as a capture button for the selected controller source, while keeping native Share shortcuts and other controllers unchanged."
+          ]
+        },
+        {
+          "title": "Update settings",
+          "items": [
+            "Include beta versions is now available directly in the About/What’s New popup, synchronized with Settings. Switching channels refreshes available updates; disabling betas keeps an installed beta until an eligible stable release is available, without downgrading.",
+            "The automatic-check description now matches the existing behavior: GameHQ checks shortly after startup and hourly in the background."
+          ]
+        },
+        {
+          "title": "If GameHQ will not open",
+          "items": [
+            "If an automatic update left GameHQ 0.8.0 unable to start, manually run the GameHQ 0.8.1 installer over your existing installation. Keep your settings, library and captures; do not uninstall GameHQ or delete its data folder."
+          ]
+        },
+        {
+          "title": "Controller compatibility",
+          "items": [
+            "The DualSense + DS4Windows + HidHide scenario still needs real-device confirmation. Please test the Back/View setting and native Share separately and report your results in issue #32."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.8.0",
+      "date": "2026-10-26",
+      "sections": [
+        {
+          "title": "Specjalne podziękowania",
+          "items": [
+            "Wielkie podziękowania dla [@galcn10](https://github.com/galcn10), twórcy [Console Overlay for Playnite](https://github.com/galcn10/ConsoleOverlay), za testowanie GameHQ, cenne uwagi i stworzenie świetnej integracji z Playnite. Twoje wsparcie pomogło ulepszyć GameHQ 0.8.0!"
+          ]
+        },
+        {
+          "title": "Najważniejsze zmiany",
+          "items": [
+            "Lepsze automatyczne wykrywanie aktualizacji. GameHQ sprawdza teraz dostępność nowych wersji tuż po każdym uruchomieniu i co godzinę podczas działania, dzięki czemu dowiesz się o aktualizacjach znacznie szybciej.",
+            "Klipy mogą nagrywać dźwięk samej gry. Dzięki nowemu źródłu Dźwięk gry GameHQ nagrywa grę niezależnie od urządzenia, na którym gra odtwarza dźwięk (słuchawki, Bluetooth, HDMI lub głośniki), i pomija inne aplikacje, takie jak Discord czy Spotify.",
+            "Problemy z nagrywaniem dźwięku są teraz wykrywane i zgłaszane. Jeśli wybranego źródła dźwięku nie da się nagrać, bufor powtórek zatrzymuje się i informuje o przyczynie oraz o tym, które źródło wybrać zamiast niego, zamiast po cichu zapisywać klipy bez dźwięku. GameHQ nigdy samodzielnie nie zmienia źródła dźwięku.",
+            "Dźwięk i obraz pozostają zsynchronizowane. Klipy zapisane po ekranie ładowania, pauzie lub długim przestoju zachowują prawidłową synchronizację czasową, a bufor powtórek sam uruchamia się ponownie, gdy gra zmienia rozdzielczość.",
+            "Zrzuty ekranu HDR już się nie zawieszają. Zrzut ekranu wstrzymanej gry lub statycznego menu w HDR jest zapisywany od razu. Jeśli nie nadejdzie żadna klatka, próba po kilku sekundach bezpiecznie kończy się niepowodzeniem, a kolejne naciśnięcie działa.",
+            "Bezpieczniejsze usuwanie kontrolerem. Krzyżyk w potwierdzeniu usunięcia naciska teraz podświetlony przycisk, a Kółko anuluje. Wcześniej Krzyżyk mógł usunąć plik nawet wtedy, gdy podświetlony był przycisk Anuluj.",
+            "Usuwanie chroni Twoje oryginały. Usunięty materiał utworzony przez GameHQ trafia teraz do Kosza, więc możesz go przywrócić. Pliki w obserwowanych folderach nigdy nie są usuwane."
+          ]
+        },
+        {
+          "title": "Nowości",
+          "items": [
+            "W sekcji Ustawienia › Powtórki › Źródło dźwięku dostępne są opcje Dźwięk gry, Dźwięk pulpitu i Wyłączone. Dźwięk gry jest domyślny w Windows 11. Dźwięk pulpitu nagrywa wszystko, co trafia na domyślne wyjście Windows, w tym dźwięk innych aplikacji, i jest domyślny w starszych wersjach Windows.",
+            "Dźwięk gry korzysta z wbudowanego w Windows przechwytywania dźwięku poszczególnych aplikacji i nigdy nie ingeruje w proces gry. Jeśli we wcześniejszej wersji dźwięk systemowy został celowo wyłączony, pozostanie wyłączony.",
+            "Opcjonalne aktualizacje beta: nowy przełącznik Uwzględniaj wersje beta w sekcji Ustawienia › Ogólne oraz w sekcji Info pozwala aktualizatorowi proponować wersje beta. Jest domyślnie wyłączony, więc stabilne instalacje otrzymują tylko stabilne aktualizacje.",
+            "Gdy GameHQ ulegnie awarii, próbuje zapisać niewielki zrzut awaryjny w swoim folderze dzienników, aby pomóc zdiagnozować problem. Nic nie jest wysyłane. Niektóre awarie, na przykład takie, w których Windows natychmiast kończy program, nadal mogą zamknąć GameHQ bez zapisania zrzutu.",
+            "Dziennik zawiera więcej szczegółów o zapisanych zrzutach ekranu i błędach uruchamiania, dzięki czemu pojedynczy plik dziennika częściej wystarcza do zrozumienia zgłoszonego problemu."
+          ]
+        },
+        {
+          "title": "Poprawki i ulepszenia",
+          "items": [
+            "Klipy nie są już nagrywane bez dźwięku z powodu starego wewnętrznego ustawienia, które domyślnie wyłączało dźwięk pulpitu.",
+            "Dźwięk w dowolnym formacie odtwarzania Windows jest poprawnie konwertowany, a ścieżka dźwiękowa nie ginie.",
+            "Ciche fragmenty są nagrywane jako cisza, więc dźwięk po dłuższej ciszy pozostaje zsynchronizowany z obrazem.",
+            "Nagrywanie dźwięku gry niezawodniej wznawia się po ponownym uruchomieniu gry lub przełączeniu na inną grę.",
+            "Fragmenty bufora powtórek, których nie udało się zapisać lub nie da się ponownie odczytać, są pomijane, więc nie mogą uszkodzić zapisanego klipu.",
+            "Własne powiadomienia GameHQ, takie jak informacja o zapisaniu zrzutu ekranu, nie pojawiają się już na zrzutach ekranu ani w nagraniach i transmisjach całego ekranu.",
+            "Zrzut ekranu zastąpiony innym obrazem o tej samej nazwie pliku otrzymuje nową miniaturę przy następnym skanowaniu biblioteki.",
+            "Foldery z materiałami są skanowane w tle, więc GameHQ reaguje płynnie nawet przy dużych kolekcjach.",
+            "Przeglądarki, edytory i inne okna, które nie są grami, nie pojawiają się już jako gry w bibliotece.",
+            "Podczas usuwania wielu plików zaznaczenie pozostaje niezmienione, dopóki potwierdzenie jest otwarte, więc działania kontrolera w tle nie mogą zmienić tego, które pliki zostaną usunięte.",
+            "Okno usuwania w nakładce przejmuje sygnały kontrolera, dopóki jest otwarte, i zamyka się, gdy nakładka zostanie ukryta.",
+            "Nakładka pomija okna, które przestały odpowiadać, zamiast na nie czekać.",
+            "Ustawienia nie przeskakują już na górę, gdy przewijasz je myszą po powrocie do GameHQ.",
+            "Wybranie opcji Wbudowane ustawienia domyślne lub usunięcie presetu w edytorze mapowań kontrolera nie blokuje już wyboru presetu."
+          ]
+        },
+        {
+          "title": "Kontrolery i Playnite",
+          "items": [
+            "Skróty kontrolera nadal działają w grach uruchamianych poza Steam, takich jak lokalna gra uruchomiona z Playnite. Jeśli Windows przestaje przekazywać do GameHQ podłączony DualSense, gdy gra jest na pierwszym planie, GameHQ odczytuje kontroler bezpośrednio, w trybie tylko do odczytu, i wraca do zwykłej obsługi sygnałów, gdy Windows znów zacznie go przekazywać.",
+            "Skróty i powtórzenia przytrzymanego przycisku zawsze kończą się po zwolnieniu tego samego naciśnięcia, także gdy zwolnienie zgłasza GameInput lub gdy kontroler zostanie odłączony w trakcie przytrzymywania przycisku.",
+            "Dane kontrolerów odłączonych na stałe są czyszczone, sprawdzanie HidHide nie spowalnia już interfejsu, a urządzenia GameInput są sprawdzane ponownie tylko wtedy, gdy coś się zmieni.",
+            "Gry z Playnite pozostają rozpoznawane, nawet gdy Playnite nie potrafi zidentyfikować procesu gry.",
+            "Pełnoekranowe środowisko Xbox w Windows: gdy powłoka Xbox jest na pierwszym planie, GameHQ używa gry uruchomionej z Playnite do zrzutów ekranu i klipów. GameHQ Playnite Integration 0.4.13, dostępna osobno jako wersja przedpremierowa, uruchamia też GameHQ, gdy tryb Xbox opóźnia jego start po zalogowaniu."
+          ]
+        },
+        {
+          "title": "Stabilność i niezawodność",
+          "items": [
+            "Czyszczenie niedokończonych nagrań usuwa tylko pliki tymczasowe utworzone przez sam GameHQ.",
+            "Foldery materiałów poszczególnych gier zawsze pozostają wewnątrz twojego folderu materiałów.",
+            "Uruchamianie nie kończy się już błędem, gdy biblioteka zawiera zduplikowane ścieżki folderów; zamiast tego wpisy są scalane.",
+            "Jeśli GameHQ nie może się uruchomić, wyjaśnia przyczynę w twoim języku i zapisuje ją w dzienniku.",
+            "Import profilu przenośnego do zainstalowanego GameHQ działa teraz także wtedy, gdy zainstalowana kopia była już uruchamiana.",
+            "Wzmocnione zabezpieczenia: bezpieczniejsze ładowanie bibliotek DLL, ostrzejsze sprawdzanie lokalnych połączeń integracji i bezpieczniejsza obsługa plików aktualizacji.",
+            "Aktualizator lepiej radzi sobie z powolnym pierwszym uruchomieniem i zachowuje swoje zapisy w nienaruszonym stanie, jeśli zostanie przerwany.",
+            "Udostępnianie przez Telegram jest bezpieczniej zamykane."
+          ]
+        },
+        {
+          "title": "Instalacja i aktualizacja",
+          "items": [
+            "Aktualizacja z wersji 0.7.9: uruchom instalator wersji 0.8.0 na obecnej instalacji.",
+            "Instalator: instaluje program dla bieżącego użytkownika i zastępuje zainstalowaną wersję 0.7.9 lub wcześniejszą betę.",
+            "Wersja przenośna: rozpakuj archiwum ZIP do nowego folderu i uruchom GameHQ.exe.",
+            "Po testach wersji 0.8.0 Beta 2, 3 lub 4 zainstaluj 0.8.0 za pomocą instalatora lub nowego archiwum ZIP wersji przenośnej, ponieważ te bety nie były oferowane przez aktualizator."
+          ]
+        },
+        {
+          "title": "Znane ograniczenia",
+          "items": [
+            "Dźwięk gry wymaga systemu Windows 11. W starszych wersjach Windows GameHQ używa źródła Dźwięk pulpitu, które nagrywa też inne aplikacje odtwarzające dźwięk na domyślnym wyjściu.",
+            "Gra, która przejmuje wyłączną kontrolę nad kontrolerem, nadal może blokować skróty działające w tle.",
+            "Obsługa pełnoekranowego środowiska Xbox w Windows nie została jeszcze potwierdzona przez testerów na komputerze, na którym jest ono używane.",
+            "Pliki binarne dla Windows nie są podpisane Authenticode; Windows SmartScreen może wyświetlić ostrzeżenie Nieznany wydawca."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.10",
       "date": "2026-10-08",
@@ -493,6 +562,20 @@
     "requested_locale": "pl-PL",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.8.2",
+        "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
+      {
+        "version": "0.8.1",
+        "source_integrity": "sha256:97452a3540d0728b9bbbabaad25addcfea7f41008b335c6e245de98f43c11d12",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.8.0",
         "source_integrity": "sha256:7a3a4e7118803ae448f6f9737240a9a4ab0a637c14609d45fae77fffbd62f558",

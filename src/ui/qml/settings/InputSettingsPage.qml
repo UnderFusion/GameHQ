@@ -92,6 +92,29 @@ SettingsPage {
     }
 
     SettingsSection {
+        visible: editor.deviceGroup === "controller" && input.viewBackFallbackAvailable
+        //% "Back/View capture fallback"
+        title: qsTrId("gamehq.settings.input.view_fallback.title")
+        SettingsRow {
+            //% "Use Back/View as Share"
+            label: qsTrId("gamehq.settings.input.view_fallback.label")
+            //% "Applies only to %1. Turn off to keep Back/View for the game; dedicated Share buttons are unchanged."
+            description: qsTrId("gamehq.settings.input.view_fallback.description").arg(input.viewBackFallbackScope)
+            SettingsToggle {
+                id: viewFallbackToggle
+                defaultValue: input.viewBackFallbackEnabled
+                onClicked: input.viewBackFallbackEnabled = checked
+                Connections {
+                    target: input
+                    function onViewBackFallbackChanged() {
+                        viewFallbackToggle.checked = input.viewBackFallbackEnabled
+                    }
+                }
+            }
+        }
+    }
+
+    SettingsSection {
         visible: input.controllerWarning.length > 0
         //% "Attention"
         eyebrow: qsTrId("gamehq.settings.input.hidden.eyebrow")

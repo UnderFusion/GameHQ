@@ -98,6 +98,11 @@ identical after any update, successful or rolled back.
    The compact About card shows Skip version only while the update service is
    in `UpdateAvailable`; progress and failure states keep that action hidden.
    The banner keeps only concise progress, cancel, install and dismissal controls.
+   Its Install and restart action calls `downloadAndInstall()`: one click
+   downloads, verifies and then starts the normal install handshake. The same
+   one-click action drives the dialog's update card, while the compact About card
+   keeps a download-only button. Banner and dialog share `UpdateProgressBar` so a
+   download started in either place shows its progress in both.
    Discovery only locates candidate URLs; it never establishes trust. A release
    that does not publish both `gamehq-release.json` and `gamehq-release.sig`
    is skipped, because nothing could authorise it.
@@ -108,8 +113,13 @@ identical after any update, successful or rolled back.
    are ranked by identity, not `VERSION` alone: `0.7.10-beta1 < 0.7.10-beta2 <
    0.7.10`. The installed identity is `VERSION` plus the build's
    `GAMEHQ_PRERELEASE` suffix, so a beta install sees the next beta and the
-   final stable release. Turning the channel on checks immediately; turning it
-   off withdraws an offered (not yet downloading) beta. Betas use the same
+     final stable release. The same preference is available in the About/What's
+     New popup's Quick Actions, General and About settings. Both channel changes
+     request fresh discovery, coalesced behind the five-second request guard,
+     any active check and GitHub cooldown. Turning the channel off withdraws an
+     offered (not yet downloading) beta. An installed beta never downgrades to an
+     older stable version: it waits for an eligible stable release and can upgrade
+     to stable of the same product version. Betas use the same
    production manifest key, so they install through the normal trust path.
 
    The page-reading half lives in `updates/ReleaseCatalog.{h,cpp}` so it can be
@@ -193,8 +203,10 @@ identical after any update, successful or rolled back.
 6. **Health check** — the new process must reach a running, initialized state
    within a bounded window and write a success token; otherwise the helper
    restores the backup and restarts the previous version.
-7. **Post-update greeting** — when the desktop window next becomes active, the
-   user sees the About / What's New modal once. Current-version notes come from
+7. **Post-update greeting** — once the desktop window is visible, a short
+   success toast confirms the new version; the About / What's New modal is
+   never opened on its own, and the sidebar About row keeps its unread dot until
+   the user opens it. Current-version notes come from
    the integrity-checked locale bundle indexed under
    `assets/release-notes/generated/`, work offline, and are marked read through
    `internal.ui.whats_new_seen_version` when the modal closes. The modal is never
@@ -409,6 +421,32 @@ in [release-manifest-security-review.md](release-manifest-security-review.md)):
   production Ed25519 manifest, and a `-betaN` tag requires `unsigned-beta`.
   [Download Verification](download-verification.md) states the current
   signing status.
+
+## Completed-update startup and recovery
+
+Starting with 0.8.1, terminal `healthy` and `rolled_back` phases take precedence
+over a retained `swap.manifest`. The application starts normally, still checks
+active maintenance, and retains rollback material until a subsequent successful
+start has run for seven seconds. Cleanup stops at the first failure and removes
+`transaction.phase` last. A locked file therefore leaves a completed state that
+can start again and retry cleanup; `updater.log` remains for diagnostics.
+Incomplete or unknown phases, and a journal without a terminal phase, continue
+through recovery.
+
+For an affected 0.8.0 installation that cannot open, use the fixed installer
+over the existing installation once the hotfix is published. Do not uninstall
+or remove the profile, library database, favorites or captures. The narrowly
+guarded `packaging/repair-completed-update.ps1` is an alternative local recovery:
+it requires `healthy`, idle processes/mutexes and program hashes matching the
+retained completed 0.8.0 package. It copies diagnostic evidence and renames only
+the stale journal, keeping the change reversible. It refuses incomplete updates.
+
+`packaging/test-update-lifecycle.py` exercises the actual signed full-payload
+transaction using the test-trust helper twin, real application post-update
+initialization, orderly shutdown and two ordinary launches. Its disposable
+profile includes settings, a library game, a favorite capture and capture bytes;
+all are compared after the update and each restart. Test trust is not release
+signing or publication approval.
 
 ## Unsupported locations
 

@@ -1,4 +1,5 @@
 #include "input/BindingRuntime.h"
+#include "input/ControlId.h"
 
 #include "input/InputDiagnostics.h"
 
@@ -114,8 +115,7 @@ void BindingRuntime::setProfileAlias(const QString& profile, const QString& lega
     // real press just armed (0.7.4 "Share/PS/Cross do nothing" regression).
     if (!m_resolver.setProfileAlias(profile, legacyProfile))
         return;
-    m_relations.clear();
-    m_recognizer.invalidate();
+    invalidateGestureStateFor(QStringLiteral("controller"), profile);
 }
 
 void BindingRuntime::setProfileAliases(const QString& profile,
@@ -123,8 +123,7 @@ void BindingRuntime::setProfileAliases(const QString& profile,
 {
     if (!m_resolver.setProfileAliases(profile, legacyProfiles))
         return;
-    m_relations.clear();
-    m_recognizer.invalidate();
+    invalidateGestureStateFor(QStringLiteral("controller"), profile);
 }
 
 // A Hold binding that stores 0 means "however long the user configured".
@@ -277,7 +276,7 @@ void BindingRuntime::dispatch(const InputPatternRecognizer::Context& context,
 
 bool BindingRuntime::press(const QString& group, const QString& profile,
                            const QString& trigger, ActionCatalog::Scope primary,
-                           ActionCatalog::Scope fallback)
+                           ActionCatalog::Scope fallback, bool nativeSystemControl)
 {
     // cpo-p05: this control was physically down when the mapping for its route
     // was switched. The press it belongs to ended with the old table; a real
@@ -286,7 +285,13 @@ bool BindingRuntime::press(const QString& group, const QString& profile,
         return true;
     if (group == QLatin1String("controller")) setActiveProfile(group, profile);
     const InputPatternRecognizer::Context context{group, profile, primary, fallback};
-    m_pressContexts.insert(group + QChar(0x1f) + profile + QChar(0x1f) + trigger, context);
+    const QString key = group + QChar(0x1f) + profile + QChar(0x1f) + trigger;
+    if (nativeSystemControl && group == QLatin1String("controller")
+        && (trigger == ControlId::Capture || trigger == ControlId::Guide))
+        m_nativeSystemControls.insert(key);
+    else
+        m_nativeSystemControls.remove(key); // Includes the synthetic View/Back alias.
+    m_pressContexts.insert(key, context);
     return m_recognizer.press(context, trigger);
 }
 
@@ -316,6 +321,16 @@ bool BindingRuntime::release(const QString& group, const QString& profile,
 void BindingRuntime::cancelAll()
 {
     m_recognizer.invalidate();
+    m_nativeSystemControls.clear();
+}
+
+void BindingRuntime::cancelForBackendSwitch()
+{
+    m_recognizer.invalidateExcept(
+        [this](const InputPatternRecognizer::Context& context, const QString& control) {
+            return m_nativeSystemControls.contains(context.deviceGroup + QChar(0x1f)
+                + context.deviceProfile + QChar(0x1f) + control);
+        });
 }
 
 // ---------------------------------------------------------------------- cpo-p05
@@ -385,6 +400,12 @@ void BindingRuntime::invalidateGestureStateFor(const QString& deviceGroup,
     // only this route's relation cache is stale.
     m_recognizer.invalidateRoute(deviceGroup, deviceProfile);
     const QString prefix = deviceGroup + QChar(0x1f) + deviceProfile + QChar(0x1f);
+    for (auto it = m_nativeSystemControls.begin(); it != m_nativeSystemControls.end();) {
+        if (it->startsWith(prefix))
+            it = m_nativeSystemControls.erase(it);
+        else
+            ++it;
+    }
     for (auto it = m_pressContexts.begin(); it != m_pressContexts.end();) {
         if (it.key().startsWith(prefix))
             it = m_pressContexts.erase(it);

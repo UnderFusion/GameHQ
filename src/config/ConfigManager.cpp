@@ -51,6 +51,7 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::InputMultiTapIntervalMs, 300 },    // 120-800
         { ConfigKeys::InputChordWindowMs,      300 },    // 120-1000
         { ConfigKeys::InputModernControllerSupport, "auto" },
+        { ConfigKeys::InputViewBackCaptureFallback, QJsonObject{} },
         { ConfigKeys::InputSteamConflictHelp,  true },
         { ConfigKeys::AudioEnabled,            true },
         { ConfigKeys::AudioSource,             "auto" },

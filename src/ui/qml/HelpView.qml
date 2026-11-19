@@ -12,10 +12,13 @@ Item {
         flick.contentY = 0
     }
 
+    // Returns whether the view moved, so callers only tick when it did.
     function scrollBy(direction) {
+        const before = flick.contentY
         const maximum = Math.max(0, flick.contentHeight - flick.height)
         flick.contentY = Math.max(0, Math.min(maximum,
             flick.contentY + direction * Math.max(80, flick.height * 0.28)))
+        return flick.contentY !== before
     }
 
     Flickable {

@@ -8247,6 +8247,39 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -11527,7 +11560,7 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -12140,11 +12173,22 @@
             "actor": null
           },
           "updated_at": null
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
+          "total": 1107,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -12896,6 +12940,9 @@
             "gamehq.settings.input.test.restore_specific_description",
             "gamehq.settings.input.test.start_probe",
             "gamehq.settings.input.test.title",
+            "gamehq.settings.input.view_fallback.description",
+            "gamehq.settings.input.view_fallback.label",
+            "gamehq.settings.input.view_fallback.title",
             "gamehq.settings.language.description",
             "gamehq.settings.language.eyebrow",
             "gamehq.settings.language.label",
@@ -13249,7 +13296,8 @@
             "gamehq.update.versions",
             "gamehq.update.view_release_notes",
             "gamehq.update.view_update",
-            "gamehq.update.waiting_for_capture"
+            "gamehq.update.waiting_for_capture",
+            "gamehq.update.waiting_for_stable"
           ],
           "stale": []
         },
@@ -21511,6 +21559,39 @@
           },
           "updated_at": "2026-09-04T12:00:00Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "7f1610bf8ea8f0a4672ae832e38b5c8b40d2a8ac78aff0c8af69d318d0cd0970",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "4083a06eacb08ed0b8af9d50da3c106e3472399762a7f2b54f5732f42a47f4a3",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "2d71e5f9caf90f0650530fbf721003cc4f5d7af850dfa882bd890521d59f0e87",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -24791,14 +24872,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "0514cbf3b08c1ed5b490cb5986d80b5884c3e862d6afbf733119eb6459dad59c",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "4b91ac36fedcddbc97bd5993f085850647c927e6212d73c9e52f444b08a054eb",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-de-de-review"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T12:00:00Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -25404,12 +25485,23 @@
             "actor": "codex-gpt-5-contextual-de-de-review"
           },
           "updated_at": "2026-09-04T12:00:00Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "932f7608b929edb270895e7ce7ffe15eb1123058c8750bc742c9f0fac02c5fac",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -33671,6 +33763,39 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "b0057a0f9ed6b0195633c6b2c9501a5c347dd813f6e9f86bc3e6fdb41e2510c4",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "32d027afea5123139804116445090ce890b26c9e7974f0a88da58ffa14de05f2",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "5230c27232994ce857d9bc74e32a4f319f889ed2474aff9f5031aa52dfab960e",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -36951,8 +37076,8 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "17be6471720e729931eca46760197106b00400bd7b0a3f41b437634df09cae2d",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "823953c0f8c693bda1a697b488b5039455e640d497ecbee5ef7285305d915d53",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -37564,12 +37689,23 @@
             "actor": "repository"
           },
           "updated_at": null
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "e70d6b1bdccd50c66e77a8e9fc14af64fe8cdf145c0102a88c3d99b1098478fa",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -45831,6 +45967,39 @@
           },
           "updated_at": "2026-09-04T20:00:00Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "d3f36ea62628cdd52a7fdb6e085f99db5400a2b98a9b881361344447ab39a84c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "68f8065d68af40470b7fd59a67ea460c2517d6047fe04349d4b7f63760df0f7f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "09970f3e5d7f62711a61ae9490712e6cc3dceb05b26317babab054ddb45f8d93",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -49111,14 +49280,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "5653766466e60799182069a5988cbd36dbfebdb6b97e702e133ace6d66afbdcc",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "9871e734ca436d5b944a0c2ac9d208900fc56ea464997b421d2602e8b92e3cb3",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-es-419"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -49724,12 +49893,23 @@
             "actor": "codex-gpt-5-contextual-es-419"
           },
           "updated_at": "2026-09-04T20:00:00Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "e7d0f1d62fe591bc261bc0468076019d2f8542e7c9dfe26b613ed55b6657b121",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -57991,6 +58171,39 @@
           },
           "updated_at": "2026-09-04T02:45:50Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "d3f36ea62628cdd52a7fdb6e085f99db5400a2b98a9b881361344447ab39a84c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "68f8065d68af40470b7fd59a67ea460c2517d6047fe04349d4b7f63760df0f7f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "09970f3e5d7f62711a61ae9490712e6cc3dceb05b26317babab054ddb45f8d93",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -61271,14 +61484,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "5653766466e60799182069a5988cbd36dbfebdb6b97e702e133ace6d66afbdcc",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "9871e734ca436d5b944a0c2ac9d208900fc56ea464997b421d2602e8b92e3cb3",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-es-es-review"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T02:45:50Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -61884,12 +62097,23 @@
             "actor": "codex-gpt-5-contextual-es-es-review"
           },
           "updated_at": "2026-09-04T02:45:50Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "e7d0f1d62fe591bc261bc0468076019d2f8542e7c9dfe26b613ed55b6657b121",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -70151,6 +70375,39 @@
           },
           "updated_at": "2026-09-04T16:30:00Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "84034be39ae0016fd0d35a577a524b15f4f913a91891fa85b1797bfff61e166a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "c3051a18f22ed14f4cf553387d4779c14db21527eea27c002c5a77ab077b5887",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "c4134affc9224d47170cc6bb27fcea2cd7f1c1a25135a7a59079e16061dc69a7",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -73431,14 +73688,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "d260f2ae81550d4cb571f9cd12384679a1079379b29df302198ddae201a78283",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "05f0aee2c4b9cd67fc68f51b75b126ef540397f733d7372fb628001f88ec7605",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-fr-fr"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T16:30:00Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -74044,12 +74301,23 @@
             "actor": "codex-gpt-5-contextual-fr-fr"
           },
           "updated_at": "2026-09-04T16:30:00Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "b3232f6299d55d94a358be94c881a722a18414b0603bfce070bbcd536739286a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -82311,6 +82579,39 @@
           },
           "updated_at": "2026-09-04T13:20:00Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "b6ca52c236a4b8a245b6a9f05b668a823e829012206ab57eb3b3a18462278697",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "c6ec9d64482527b7bee2fb36f898e99af3eea6451e93d35a8a764f756f733360",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "84226d03f0effbaccd797c3fbdfa4fb554d88ceaf74b200e84d51a08722ac1f3",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -85591,14 +85892,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "69279cb055b196308dba0b95fb565fd910ab8d4310edbad94212914d8f0cf81c",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "90bfbb24da8546b985ea528e48b429e05b4db8efc82fa08a13f052e274a34aea",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "claude-opus-5-contextual-it-it-review"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T13:20:00Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -86204,12 +86505,23 @@
             "actor": "claude-opus-5-contextual-it-it-review"
           },
           "updated_at": "2026-09-04T13:20:00Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "448785f310736a56ec444998e1d0618c35954927e44d0c758f814ef7bd85a70a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -94471,6 +94783,39 @@
           },
           "updated_at": "2026-09-04T14:30:00Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "8cb53507e59e7e25a028e05fcd2815e669f6135f13b9e6392417a1f70cb73e31",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "dc951eafc0f9109cb37ed95371321795c40eb0024bbb0106d4436ef8bb28e922",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "894d6a2eee850159c847c10a7cae5ca5da2b5c1104999afc913f796341f27ed9",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -97751,14 +98096,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "870bfbf99646f44c0f9811c29bc1143a0dba7a4fe52e9b531be02c7f195c76ea",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "848a7ec775e6ad8fcbe6b3771e7c9a56ddb97e3d6603dd4ee77bceeee716d59d",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-ja-jp"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T14:30:00Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -98364,12 +98709,23 @@
             "actor": "codex-gpt-5-contextual-ja-jp"
           },
           "updated_at": "2026-09-04T14:30:00Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "c9278a321fcb2fcca051934c55606d3b30d0c0a0b5d2ce7d644c0ca736874655",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -106631,6 +106987,39 @@
           },
           "updated_at": "2026-09-04T20:00:00Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "40fe03e38c176a64216250e3b142bf032a8f64fc9ec5c1f945f738ae5575d63c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "38eea1ea07daa7935e07d4351f14641d53eef596dc8374c0fd4d01a04a6f464d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "1df173789122cbe21f95e999a77ba856b8a1c38de77a965ea9ac749021273873",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -109911,14 +110300,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "2b49ce22cef60eab176b36ee1586c4998f2460730f1dd3b342c3032bf18e0ecf",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "aa5a9a853c34666bcf6e8afbfd6d7544b6889589706f6b6b64bc8c19470eed16",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-ko-kr-recovery"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T21:00:00Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -110524,12 +110913,23 @@
             "actor": "codex-gpt-5-contextual-ko-kr"
           },
           "updated_at": "2026-09-04T20:00:00Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "979c08d384ee48cc417d4a71245a8c88892cf710eaeb033b770cd14941023129",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -118791,6 +119191,39 @@
           },
           "updated_at": "2026-09-03T22:45:00Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "5d43f3adb45360a50bfa8f0760daaf94c93378ab552c4d24d187e9f1c29b6ab4",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "59419edc6e896b577943c1126bcf36d19f02f907e6fddce502d270ebaeb5877a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "e8a34b03da7437dc9d0df4ce9b0ef9672cf4d182645439eeec8b1eec4af5dd91",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -122071,14 +122504,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "fbf4eb0f2e0dc9545f09689f0de025587cc4603340f828b2858aa2dc19de8cb9",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "731ade67151b0e1b7c3218922887c9916a61acfeca5b21505c077f62213cfc39",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -122684,12 +123117,23 @@
             "actor": "codex-gpt-5-contextual-pl-review"
           },
           "updated_at": "2026-09-03T22:45:00Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "0a8ced345a88dbf77aa69109547080a7abb3a71ed08898c99c5ba360dc1b3a5b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -130951,6 +131395,39 @@
           },
           "updated_at": "2026-09-04T03:19:03Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "0825aa8f0412bd08a393466da0e42ac0a212087466f1864457eb1b65a073a04e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "68f8065d68af40470b7fd59a67ea460c2517d6047fe04349d4b7f63760df0f7f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "e04c109b14a127ac36c6b17d9a99912b03f369a21fee50015394afa8dc7acd74",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -134231,14 +134708,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "b602488d1f867946cf11e0058ef3608d7908bf465bd2fb59688c5210f855a474",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "e74e9e9102cd1be153614328391e67971c015d23dcb5c8980f95b66440ac7a41",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pt-br-review"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T03:19:03Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -134844,12 +135321,23 @@
             "actor": "codex-gpt-5-contextual-pt-br-review"
           },
           "updated_at": "2026-09-04T03:19:03Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "fbff348100a6a80bae20198677172348aca8b6aa9016ed040c2fb7ce5f762a1c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -143111,6 +143599,39 @@
           },
           "updated_at": "2026-09-04T04:00:00Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "23ffeb77d66bd64d063e6c4f6966bd5c175a455788eef160484a7eb51bba45a6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "69500dc07f06eb91c494158d04e69b6052667d1d96c4acb1baf98c0dbdbebde6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "e82a14f7eb52de8fb15e13df42ec4ca24426cb342939c77f066b68b4c82c7928",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -146391,14 +146912,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "8876fa3f3dcb52a999e072b6ed90ac6bbd501c7b6eca1b036831cec54b576476",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "9b55adf257a2088577b543e26f88012874808937002f5ce0b13e53783924b3c8",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "claude-opus-5-contextual-ru-review"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T04:00:00Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -147004,12 +147525,23 @@
             "actor": "claude-opus-5-contextual-ru-review"
           },
           "updated_at": "2026-09-04T04:00:00Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "29983a3863fa743599e9d84884f302b837b86921b9285cc92ae4eb9c65394d2a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -155271,6 +155803,39 @@
           },
           "updated_at": "2026-09-04T17:00:00Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "9dc85cfb5baeb579d72133c98eec95c060284e42901da888489c6ac4525982a2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "e79143e25fc23e02b3cabe615073aa3746f43a12f9793b66ec2250071f9c1c65",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "5eb78fcee8da2874cbe4f8761fc3cc11d4dc00d00f2cbb398ce415b74190ad46",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -158551,14 +159116,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "9837a46f3fcef53b4f091062494270b0f34117f1bad78d97b7326bed1920d299",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "df73fff49538d8c4c779c6a8cf0b585f42af00feaba4e035617fe99e84630cd0",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-th-th"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T17:00:00Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -159164,12 +159729,23 @@
             "actor": "codex-gpt-5-contextual-th-th"
           },
           "updated_at": "2026-09-04T17:00:00Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "0cedee349ec86424ddbabb4aafdab5d928a44b47b781cc98bfb486c745c47659",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -167431,6 +168007,39 @@
           },
           "updated_at": "2026-09-04T08:11:57Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "d54107c619fbdca1e915a392f33e47967e9909a6292c0fce397ab37f7f2753c2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "15f3def1b5e99abbd05e38ad1189a7b895ae47bf5aef6d6028d071e7ce0a636e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "14716d5ccae26ea1f9fe3111989cdfd2e5b31585cdd7e1819fa06456f5d1bf4c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -170711,14 +171320,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "ec8e7449ea0ff1c6927558f9356d6cec0166a4b726538f86d57e31321e7fc43b",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "018322439951ee41351965b0c8b27a66555d1d5988af8db402a19ead8b6937b2",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-tr-tr"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T08:11:57Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -171324,12 +171933,23 @@
             "actor": "codex-gpt-5-contextual-tr-tr"
           },
           "updated_at": "2026-09-04T08:11:57Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "3729720e73512f9bb53bb9d8e03e9a25209dd24b6c449c3377d5294630dd14b7",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -179591,6 +180211,39 @@
           },
           "updated_at": "2026-09-04T11:59:30Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "c789f2db52a8fa537a718ae9045b709a195ef44ef415cfc5d3a04f5ca30e7cc9",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "9e516b3522483a348a14aeee7a6bd07b833e181b2a04057e6805ba0db47a3b69",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "9a591ac6c99c7ea7409a066a0122e666b69ce99d20913d6c90fbbe666aaae4a3",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -182871,14 +183524,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "95f98cdf4f230611cad3842676729d0af8eec29f12b1190eefce7b4e9fd44e8b",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "dee4357f8bdb6e89acca4f2341f9179e486b3c4a204cb8014d04625c075e5231",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-uk-UA"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T11:59:30Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -183484,12 +184137,23 @@
             "actor": "codex-gpt-5-contextual-uk-UA"
           },
           "updated_at": "2026-09-04T11:59:30Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "c7748e7c55fda9eeb812aa4d00c372290f9dc87d8a44f28ba3f973be49b75266",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -191751,6 +192415,39 @@
           },
           "updated_at": "2026-09-04T03:10:00Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "a1852648046c9af716fb5f33b97bbfdddbf8db3d0a2c9c2e6b74bef1abf29dac",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "3734d34a3bfb20f69166852b75fde0cb93feb7758d9e916c6dd220b5d4af91dc",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "a9411c55766fec419b1bd2b51369523af0da48dbbf95734ac0c7486cd66d8ad6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -195031,14 +195728,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "2f9fa17868bc7261d1f1ff7e6d4487a6d1b21c8d77608c2378129ab74951d4d7",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "afe199989c3bde02617a8ac3d3278ad847b1ff02fff6726ed18a7084096d66d4",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "claude-opus-5-contextual-zh-hans-review"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T03:10:00Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -195644,12 +196341,23 @@
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
           "updated_at": "2026-09-04T03:10:00Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "1673bd1f90ee9868e76a2009824a7cd874b30c7990cf76bfd0b56c25009826ae",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },
@@ -203911,6 +204619,39 @@
           },
           "updated_at": "2026-09-04T06:45:28Z"
         },
+        "gamehq.settings.input.view_fallback.description": {
+          "domain": "application",
+          "source_hash": "a036ac061a396376126336bce20cba49c42b17549beb144d1fadc7f8221345a3",
+          "translation_hash": "2520a5fb33fe66a5204f1ddecb6fdc8260c8a37a69348720fe5c7c98b00a4d09",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.label": {
+          "domain": "application",
+          "source_hash": "ec71263c0e82579fd0b13cccfb8f58ada203da03837f0a5e02b9d3766702a2e0",
+          "translation_hash": "b71bad0e744e7bded4a26c0d8ee9ea53edfbdc7207236004dce8de426c0e5803",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
+        "gamehq.settings.input.view_fallback.title": {
+          "domain": "application",
+          "source_hash": "a045d81982f8d39d92c53b25d76bbec14f144518e9f08672960ab0dad28e365c",
+          "translation_hash": "66528bf534961ed9cc0a0a3338c2c5b4b98da1350d8d71285ae7bb86e3942e9d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-hf-input-contextual-review"
+          },
+          "updated_at": "2026-10-29T21:00:00Z"
+        },
         "gamehq.settings.language.description": {
           "domain": "application",
           "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97",
@@ -207191,14 +207932,14 @@
         },
         "gamehq.update.check_automatically.description": {
           "domain": "application",
-          "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d",
-          "translation_hash": "c2fe1a85aab9e9ad5f06e9c51974866c0180355bfba24c181c4b8faed13c5bd7",
+          "source_hash": "f645ec1140cc8e4036a01244a46ccfb6e88abfd73c9856238efbfebc665799bb",
+          "translation_hash": "713e8ae9fa14bebabb693ab511b6ef87f2716778457f16b7ca207c2434756f75",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-zh-hant"
+            "actor": "codex-update-check-description-review"
           },
-          "updated_at": "2026-09-04T06:45:28Z"
+          "updated_at": "2026-10-29T20:00:00Z"
         },
         "gamehq.update.check_automatically.label": {
           "domain": "application",
@@ -207804,12 +208545,23 @@
             "actor": "codex-gpt-5-contextual-zh-hant"
           },
           "updated_at": "2026-09-04T06:45:28Z"
+        },
+        "gamehq.update.waiting_for_stable": {
+          "domain": "application",
+          "source_hash": "3e67abe020c4b14fd7bdfc07307a9769b29645978fb014b5224103ff66d2625e",
+          "translation_hash": "ae2b1f5836771d692b4e4c38ac4a7d2e1f8a4dc3128acdadfec666ef86b5ccb4",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "codex-beta-channel-popup-context-review"
+          },
+          "updated_at": "2026-10-29T20:00:00Z"
         }
       },
       "completeness": {
         "application": {
-          "total": 1103,
-          "current": 1103,
+          "total": 1107,
+          "current": 1107,
           "missing": [],
           "stale": []
         },

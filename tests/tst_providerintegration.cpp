@@ -305,6 +305,8 @@ private slots:
         QVERIFY(integration.allowsLegacyViewFallback(
             ControllerProvider::XInput, slot, false));
         QVERIFY(!integration.allowsLegacyViewFallback(
+            ControllerProvider::XInput, slot, false, false));
+        QVERIFY(!integration.allowsLegacyViewFallback(
             ControllerProvider::XInput, slot, true));
         QVERIFY(!integration.allowsLegacyViewFallback(
             ControllerProvider::SonyRaw, slot, false));

@@ -61,7 +61,8 @@ public:
                                                 quint64 timestamp);
     bool allowsLegacyViewFallback(ControllerProvider provider,
                                   const QString& providerDeviceId,
-                                  bool hasExplicitViewBinding) const;
+                                  bool hasExplicitViewBinding,
+                                  bool fallbackEnabled = true) const;
 
     // Route a selective-Raw-HID edge. The identity is a stable anonymized
     // endpoint, allowing strong correlation without exposing a device path.

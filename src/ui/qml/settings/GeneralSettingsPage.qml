@@ -174,7 +174,7 @@ SettingsPage {
         SettingsRow {
             //% "Check automatically"
             label: qsTrId("gamehq.update.check_automatically.label")
-            //% "At most once every 24 hours, in the background."
+                //% "Checks shortly after startup and every hour in the background."
             description: qsTrId("gamehq.update.check_automatically.description")
             SettingsToggle { configKey: "updates.check_automatically"; defaultValue: true }
         }

@@ -75,7 +75,7 @@ Item {
         property point _lastHoverPos: Qt.point(-9999, -9999)
         property real _navLockUntil: 0
 
-        HoverHandler { id: gridHover }
+        HoverHandler { id: gridHover; enabled: !root.inputBlocked }
 
         cellWidth: galleryGrid.width > 0
             ? galleryGrid.width / root.columns
@@ -83,13 +83,17 @@ Item {
         cellHeight: galleryGrid.cellWidth * 9 / 16 + Theme.s32
         focus: true
         keyNavigationEnabled: false
-        onCurrentIndexChanged: sounds.play("nav_tick")
+        onCurrentIndexChanged: {
+            if (root.visible && !root.inputBlocked)
+                sounds.play("nav_tick")
+        }
 
         delegate: Item {
             width: galleryGrid.cellWidth
             height: galleryGrid.cellHeight
 
             HoverHandler {
+                enabled: !root.inputBlocked
                 onHoveredChanged: {
                     if (!hovered) return
                     if (Date.now() < galleryGrid._navLockUntil) return

@@ -139,9 +139,8 @@ void InputEngine::replayPendingPress(const PendingPress& press)
             && !routeLegacySystemEdge(press.source, press.fingerprint,
                                       press.controlId, false))
             return;
-        m_runtime->release(QStringLiteral("controller"),
-                           canonicalProfile(press.source, press.fingerprint),
-                           press.controlId);
+        releaseControllerControl(canonicalProfile(press.source, press.fingerprint),
+                                 press.controlId);
         stopNavRepeatOnRelease(press.controlId);
     }
 }
@@ -151,7 +150,10 @@ void InputEngine::activateBackend(Gamepad* pick, const QString& reason)
     if (pick == m_activeBackend)
         return;
     stopNavRepeat();
-    m_runtime->cancelAll();
+    if (pick)
+        m_runtime->cancelForBackendSwitch();
+    else
+        m_runtime->cancelAll(); // No surviving controller source.
     m_legacyViewFallbackHeld.clear();
     m_activeBackend = pick;
     m_lastBackendSwitchReason = reason;

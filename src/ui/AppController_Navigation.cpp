@@ -97,6 +97,26 @@ QRect AppController::restoredWindowGeometry() const
     return restored;
 }
 
+QRect AppController::repairedWindowGeometry(const QRectF& current) const
+{
+    const QRect rect = current.toRect();
+    QList<QRect> screens;
+    const auto available = QGuiApplication::screens();
+    screens.reserve(available.size());
+    for (const QScreen* screen : available)
+        screens.append(screen->availableGeometry());
+    const QScreen* screen = QGuiApplication::screenAt(rect.center());
+    if (!screen)
+        screen = QGuiApplication::primaryScreen();
+    const QRect work = screen ? screen->availableGeometry() : QRect();
+
+    const QRect repaired = WindowPlacement::repair(rect, screens, work);
+    if (repaired != rect)
+        qInfo() << "Window: repaired shrunk geometry" << rect << "->" << repaired
+                << "on screen" << work;
+    return repaired;
+}
+
 void AppController::setPage(const QString& page)
 {
     m_navigation->setPage(page);

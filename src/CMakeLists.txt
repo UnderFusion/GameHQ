@@ -254,6 +254,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/MappingPresetActionsDialog.qml
         ui/qml/components/Toast.qml
         ui/qml/components/UpdateBanner.qml
+        ui/qml/components/UpdateProgressBar.qml
         ui/qml/components/ControllerWarningBanner.qml
         ui/qml/components/AboutWhatsNewDialog.qml
         ui/qml/components/HelpDialog.qml
