@@ -1,6 +1,7 @@
 #pragma once
 
 #include "capture/CaptureRequest.h"
+#include "games/GameDetector.h"
 #include <QObject>
 #include <QString>
 #include <QThreadPool>
@@ -48,7 +49,7 @@ signals:
     void grabbed();                        // pixels are in hand — play shutter NOW
     void captured(const QString& filePath, const QString& gameName,
                   const QString& executablePath, quint64 operationId = 0);
-    void hdrCaptureRequested(qulonglong hwnd, quint64 operationId);
+    void hdrCaptureRequested(const ForegroundGame& target, quint64 operationId);
     void skipped(const QString& reason, quint64 operationId = 0);   // gate said "not in a game"
     void failed(const QString& reason, quint64 operationId = 0);    // grab or save error
     void updateReady();

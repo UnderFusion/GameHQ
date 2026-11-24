@@ -451,7 +451,7 @@ bool BindingEditorModel::conversionCanApply(
     BindingResolver::Binding* converted) const
 {
     const GestureSpec targetGesture = target.gesture();
-    if (press.gesture().kind != GestureSpec::Kind::Press)
+    if (press.gesture().kind != GestureSpec::Kind::Press || isGlobalHotkey(press))
         return false;
     if (targetGesture.kind != GestureSpec::Kind::Hold
         && !(targetGesture.kind == GestureSpec::Kind::Tap && targetGesture.tapCount >= 2))

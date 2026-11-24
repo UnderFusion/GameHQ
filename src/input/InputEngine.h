@@ -65,6 +65,7 @@ class InputEngine : public QObject, public ModernInput::NeutralHandoffSource
     Q_PROPERTY(bool viewBackFallbackAvailable READ viewBackFallbackAvailable NOTIFY viewBackFallbackChanged)
     Q_PROPERTY(bool viewBackFallbackEnabled READ viewBackFallbackEnabled WRITE setViewBackFallbackEnabled NOTIFY viewBackFallbackChanged)
     Q_PROPERTY(QString viewBackFallbackScope READ viewBackFallbackScope NOTIFY viewBackFallbackChanged)
+    Q_PROPERTY(QString viewBackFallbackTarget READ viewBackFallbackTarget NOTIFY viewBackFallbackChanged)
     // Diagnostics button probe (Settings → Input): startButtonProbe() opens a
     // 3 s window in which raw button changes — including ones GameHQ normally
     // ignores — are summarized into probeStatus and the diagnostics export.
@@ -90,6 +91,7 @@ public:
     bool viewBackFallbackAvailable() const;
     bool viewBackFallbackEnabled() const;
     QString viewBackFallbackScope() const;
+    QString viewBackFallbackTarget() const;
     void setViewBackFallbackEnabled(bool enabled);
     // C++ face of the same object, so the app can hand the preset model the
     // session game (cpo-p07) without going through QML.
@@ -248,6 +250,7 @@ private:
     void shutdown();
     void migrateLegacyHoldSetting();
     void applyGestureTiming();
+    void syncKeyboardHotkeys();
     // Lazy mouse monitoring: the global WH_MOUSE_LL hook is installed only
     // while a mouse binding or an active mouse capture can consume it (see
     // MouseMonitorPolicy). Synced on start, on every binding reload and on

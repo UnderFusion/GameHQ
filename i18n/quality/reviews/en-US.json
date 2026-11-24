@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-en-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review; claude-opus-5-5-replay-audio-failure-contextual-review; claude-opus-5-5-game-audio-source-contextual-review; claude-aud-review-startup-dialogs; claude-opus-5-5-aud-c4-delete-policy-contextual-review",
+    "actor": "codex-gpt-5-contextual-en-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review; claude-opus-5-5-replay-audio-failure-contextual-review; claude-opus-5-5-game-audio-source-contextual-review; claude-aud-review-startup-dialogs; claude-opus-5-5-aud-c4-delete-policy-contextual-review; codex-gameplay-capture-contextual-review; codex-gamehq-shortcut-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "canonical repository English followed by complete contextual source review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T23:30:00Z"
+    "recorded_at": "2026-11-24T17:46:39Z"
   },
   "baseline": {
     "path": "git:7accd39fa37db9d9b729d42855a5d687b1735b98:i18n/app/gamehq_en_US.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_en_US.ts",
-    "sha256": "31ea18a3c8b4af537b7de75d329e7961f395d30f7f79d4b6f0874a44a62373a8",
-    "message_count": 1107
+    "sha256": "ffcab0b5162a88d8b404b3a97721ec1003e2f580cdf7346b7cbc18ea64667d4f",
+    "message_count": 1113
   },
   "coverage": [
     {
@@ -196,7 +196,7 @@
       "source_hash": "597d48c0a9ec64525a7008bb046eb5e5a97b6ac1a1dfb81d2c1fd164d0024839",
       "translation_hash": "31febb5d351ee93770cdaf2bfd2053e957af76a56b3ee6f2253f9cbebb7f3745",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:623",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:638",
         "src/ui/qml/components/BindingCompatibilityDialog.qml:21",
         "src/ui/qml/components/BindingConflictDialog.qml:28",
         "src/ui/qml/components/ConfirmDialog.qml:15",
@@ -207,7 +207,7 @@
         "src/ui/qml/components/ShareDialog.qml:441",
         "src/ui/qml/components/UpdateBanner.qml:168",
         "src/ui/qml/settings/AboutSettingsPage.qml:200",
-        "src/ui/qml/settings/InputSettingsPage.qml:638",
+        "src/ui/qml/settings/InputSettingsPage.qml:644",
         "src/ui/qml/settings/TelegramAccountSection.qml:179"
       ],
       "decision": "accepted"
@@ -901,9 +901,9 @@
       "source_hash": "e299ff55807d382edd3b85684cfe1c6808182e7cdcd9a7d7eccb8f9ab3d9175b",
       "translation_hash": "4e5e122b04c8d6531316791cf43dd16314603ed05e0e927787210d462562cdc1",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:295",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:371",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:435"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:299",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:375",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:439"
       ],
       "decision": "accepted"
     },
@@ -944,9 +944,9 @@
         "src/ui/qml/SettingsView.qml:508",
         "src/ui/qml/SettingsView.qml:525",
         "src/ui/qml/SettingsView.qml:539",
-        "src/ui/qml/settings/InputSettingsPage.qml:247",
-        "src/ui/qml/settings/InputSettingsPage.qml:498",
-        "src/ui/qml/settings/InputSettingsPage.qml:880"
+        "src/ui/qml/settings/InputSettingsPage.qml:253",
+        "src/ui/qml/settings/InputSettingsPage.qml:504",
+        "src/ui/qml/settings/InputSettingsPage.qml:888"
       ],
       "decision": "accepted"
     },
@@ -964,7 +964,7 @@
       "source_hash": "a5d3f6345ad8a730deaa3f8f3b8ef044954ef52103d21645cc67b4ec113f41c3",
       "translation_hash": "f0c97f3b8844e38441e17fa12b1c9bb74e6c8a43e9db2c9ad17d5e7974dc5fbf",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:629",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:644",
         "src/ui/qml/components/MappingPresetNameDialog.qml:25",
         "src/ui/qml/components/ShareDestinationsSection.qml:168",
         "src/ui/qml/settings/TelegramAccountSection.qml:101"
@@ -994,7 +994,7 @@
       "source_hash": "268276f6653e21c240390eb4d4a336935735ed0c555b5c67246de8267d95fa3b",
       "translation_hash": "1c4588bd3cf7c72ba66f2a15e5ca232bab85cb86b2c0fc3d93227fe47f9f2804",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:288"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:292"
       ],
       "decision": "accepted"
     },
@@ -1003,9 +1003,9 @@
       "source_hash": "4329cf43131ab1da0d33c7b09605fe2075281f55a1db38838a523b35cc19e202",
       "translation_hash": "40c83bba429df9152d8148d8ca49847eff84a1536aa8f47028222990b99dc97a",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:292",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:368",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:432",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:296",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:372",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:436",
         "src/ui/qml/components/SettingsPathRow.qml:27"
       ],
       "decision": "accepted"
@@ -1119,10 +1119,10 @@
       "source_hash": "9d51851bd3439d66dae01b8ec218159f1ae5df6b4782dde3c28c8de9aabf3f14",
       "translation_hash": "233f12ce61230a78e630cca1239529440906ec460ffd9c3fa73ed85fbd6242b3",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:534",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:536",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:538",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:540"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:549",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:551",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:553",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:555"
       ],
       "decision": "accepted"
     },
@@ -2993,7 +2993,7 @@
       "source_hash": "774f30e4dc0f8e7821fd47f3cdb7253121cc57ddaf20eb1945fea7738f92f40e",
       "translation_hash": "71a74e4fdb5b31faf59470bd51502a885b4281377d28049bd7477cade75bfa03",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:228"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:232"
       ],
       "decision": "accepted"
     },
@@ -3002,7 +3002,7 @@
       "source_hash": "ab8b252ac6daa0c5a4e9918ad5adfe1861a82e735cf44d015b8637427e08f041",
       "translation_hash": "edf4e1e83f14d86ee7928f6c9c1b78e0b93227b4d932b62d35b42d1f230fe285",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:506"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:519"
       ],
       "decision": "accepted"
     },
@@ -3011,7 +3011,7 @@
       "source_hash": "25eda89ef8a60a21afa27237b5b129f73e08bb48642903301bc93e65ba5c6bce",
       "translation_hash": "5752ed3b71f58d0ba9deea85c945949e2d41e0b0445c99b697b1ae5d1dfbadf0",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:532"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:547"
       ],
       "decision": "accepted"
     },
@@ -3020,7 +3020,7 @@
       "source_hash": "04c075dab5e0efbe38292ae9623bc4eff046bc3370e3e5b6eece8308841c7c27",
       "translation_hash": "638e2f3a2431bd0c4b5f9530f2bb6cc4a73d7cb3fdad1481170a9f5471d4c3c6",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:347"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:351"
       ],
       "decision": "accepted"
     },
@@ -3029,7 +3029,7 @@
       "source_hash": "82fe403ccffab8df1d88a35f7313177c2806bb9a2906c76da12bca70d597b362",
       "translation_hash": "7bc2a51bf70e517a59d0df24f7a30dfbb73770e3f6244348feac33eb7c4783f5",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:315"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:319"
       ],
       "decision": "accepted"
     },
@@ -3038,8 +3038,8 @@
       "source_hash": "2a6029306725f94254332456de683f8a8e64e17a94695414bbf2b16c41bcceeb",
       "translation_hash": "2ef8eda11a3fa02717561686348b29469a6ab13c22d2316fa2408bdac7370374",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:460",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:490"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:473",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:503"
       ],
       "decision": "accepted"
     },
@@ -3048,7 +3048,7 @@
       "source_hash": "fcdd6a27a0dd8e8c2863f610b2857c44b5cbae63db2410e01c79b53bc46ab216",
       "translation_hash": "2d86d1f0ce79b331bd99ef92305861efdaa6bf9573cadcc3934533989cc06920",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:522"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:537"
       ],
       "decision": "accepted"
     },
@@ -3057,7 +3057,7 @@
       "source_hash": "08e352c5237b76bcd9bfb7ab1fe8ed4fbf554813175bddf7d8e00aeb2ebc6dc3",
       "translation_hash": "58bfdd1f954c2f3c65e4e6facf9f8cf3034f8e0fb29a286cdcf12603aba77dde",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:270"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:274"
       ],
       "decision": "accepted"
     },
@@ -3066,7 +3066,7 @@
       "source_hash": "b60c625e32395876654603ee5d8ab9414320591f9d795929d537826a95a0e171",
       "translation_hash": "4bf14e18a7310cc7ddfb87bca002f4a27855f2c571255fa7e8d80007ed0f4587",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:342"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:346"
       ],
       "decision": "accepted"
     },
@@ -3075,7 +3075,7 @@
       "source_hash": "4875857e42430b2e30e6fc65b0ae3de9019d2abbbd71ea68b64ce2aeb3200fba",
       "translation_hash": "9060f4ae5574ab8c7b58dadc259ffc302e48c4da4a50673e8d692a1e36618bbe",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:407"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:411"
       ],
       "decision": "accepted"
     },
@@ -3084,9 +3084,9 @@
       "source_hash": "a017e87cf01db56545e83e4e77b4302e6e9f7d38ec1912665d086e4b807c9477",
       "translation_hash": "bf2657eeba9617bd8ab2f7c14b4806a65ca7c558ef9a81dce82bacd14788127d",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:275",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:353",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:416"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:279",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:357",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:420"
       ],
       "decision": "accepted"
     },
@@ -3095,7 +3095,7 @@
       "source_hash": "681d500fd9b7475f8c2db4fa56acc08825e41b8e51a801ed86e946a7eb3035da",
       "translation_hash": "a86fcb9ca802ff4c13958df42f9dbcc8aa34a4179784fe9c06e258d530759104",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:585"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:600"
       ],
       "decision": "accepted"
     },
@@ -3104,7 +3104,7 @@
       "source_hash": "1894e9c9e11d0776488c1ae954d77d86399cc88fa4026f01ed3d0a9a46d601e8",
       "translation_hash": "3e8930c3e20199f930475607e9a81cc6459cbcad7309492836b6b74082657076",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:593"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:608"
       ],
       "decision": "accepted"
     },
@@ -3113,7 +3113,7 @@
       "source_hash": "1cebbb90880ff2d81ba6aec088ba09fe9493948b24da16dacb600074b17aa395",
       "translation_hash": "0a943cb425446d4a2c6fa93aa2bbed3ef6bf85855a60fc25571978243d6e9cd0",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:596"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:611"
       ],
       "decision": "accepted"
     },
@@ -3122,7 +3122,7 @@
       "source_hash": "47e9c4a0e5c4dbdcdbba76d9566de06e35653815b4a4c006156df27c8c1ac6a6",
       "translation_hash": "9f9f1f130b53b0d8e8e2cca66359e31e8837a3213d6a27b0cd8905c458947bf0",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:589"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:604"
       ],
       "decision": "accepted"
     },
@@ -3131,7 +3131,7 @@
       "source_hash": "f1f049eaaaef76636bf921b0d4ee3abf0005c440d6199ad9b5a1b12cff76075e",
       "translation_hash": "0ef3d97416c57c9c96fb7999cd1c11df68fdb9756d891dae2f37048efdffd818",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:197"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:201"
       ],
       "decision": "corrected"
     },
@@ -3140,7 +3140,7 @@
       "source_hash": "fbf40ff97ccc1364147870fb4931268f4cf0a0dea212beda6807141b5ba769f7",
       "translation_hash": "c78d6675c445f242e1b8463b85d18196c07ab53662e6e6f1d3c4db1d07ec4677",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:209"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:213"
       ],
       "decision": "accepted"
     },
@@ -3149,7 +3149,7 @@
       "source_hash": "1b96e72e6623f1aea0c4c9124094be245eb592cad8a00a8dbde6f2838a5db32e",
       "translation_hash": "82e2176104355ca68e6077405185d689f322bb43be205f3caf2f764f3f13c321",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:207"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:211"
       ],
       "decision": "accepted"
     },
@@ -3167,7 +3167,7 @@
       "source_hash": "b0e83177c1e606498532ccc55a585cdec520fa4e0ccf7df416d71b00a7eb1435",
       "translation_hash": "4791239594967921208634169ed6c3a482739fe73b819662efb536600cce48dc",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:181"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:185"
       ],
       "decision": "accepted"
     },
@@ -3176,7 +3176,7 @@
       "source_hash": "f7f7d5fbc751f9ce50cac76a10ddba888312da5e7e017bfd2daae2931ba82a90",
       "translation_hash": "dfd833b5fb41c003c838ea7f7c1b58f9fdbed079e3033c4851668069b24ef393",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:380"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:384"
       ],
       "decision": "accepted"
     },
@@ -3185,7 +3185,7 @@
       "source_hash": "e30724f83df740224aaea39a039558f5169ebfeb07772c5740dc9284b6ea8abb",
       "translation_hash": "3979143ae795f1ced5dfccac4449c3259615bcb13272168b484f5e1d29cba9cb",
       "locations": [
-        "src/ui/qml/components/BindingAssignmentDialog.qml:413"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:417"
       ],
       "decision": "accepted"
     },
@@ -3376,7 +3376,7 @@
       "translation_hash": "58bfb61c45eecb170a1fbd7a333f02d43260587955dab56743c7b553c979c9c0",
       "locations": [
         "src/input/BindingPattern.cpp:106",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:474"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:487"
       ],
       "decision": "accepted"
     },
@@ -3386,7 +3386,7 @@
       "translation_hash": "6f90db9a729e43b86c96cf32ba27726f5315755d9c52a3735d5ec398a3ed1801",
       "locations": [
         "src/input/BindingPattern.cpp:121",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:478"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:491"
       ],
       "decision": "accepted"
     },
@@ -3397,7 +3397,8 @@
       "locations": [
         "src/input/BindingPattern.cpp:101",
         "src/input/BindingPattern.cpp:125",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:470"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:483",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:521"
       ],
       "decision": "accepted"
     },
@@ -3407,7 +3408,7 @@
       "translation_hash": "471674a28f5a3d547ae10229caa60d2619f77e80df5c66f7ed316f312d652795",
       "locations": [
         "src/input/BindingPattern.cpp:117",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:472"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:485"
       ],
       "decision": "accepted"
     },
@@ -3417,7 +3418,7 @@
       "translation_hash": "3392e255b90f527f56e31e2b7669cf3ab10ca2df53c44d44377adf60167dbcc0",
       "locations": [
         "src/input/BindingPattern.cpp:112",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:476"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:489"
       ],
       "decision": "accepted"
     },
@@ -3426,7 +3427,7 @@
       "source_hash": "6cc011948114213ff4d6a38a88d5dafa01d08d456af12c7eac5481ea1c585e74",
       "translation_hash": "aee6abd3eff27228d526489d77ab29b7486e814a27be3c29a6a12cf7a0944cbf",
       "locations": [
-        "src/input/InputEngine.cpp:482"
+        "src/input/InputEngine.cpp:504"
       ],
       "decision": "accepted"
     },
@@ -3471,7 +3472,7 @@
       "source_hash": "fc71a02610567fe81ec3aea2e391c3f6aaae3d0598edeb698ae361ffa7799efc",
       "translation_hash": "49163f858535f42a3b4c830b85c7eb06c461f0d82b68c3620cb810705a61596c",
       "locations": [
-        "src/input/InputEngine.cpp:473"
+        "src/input/InputEngine.cpp:495"
       ],
       "decision": "accepted"
     },
@@ -3653,6 +3654,33 @@
       "translation_hash": "dada835e7f6c72b1641ebc169b26f6147c262e43431e8a20bd0967b23105b1ba",
       "locations": [
         "src/input/BindingEditorModel.cpp:678"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.input.shortcut.choose_key",
+      "source_hash": "5eea1e97faf5197d51638b262d2be44553de408590025ab76d98dea6c3068329",
+      "translation_hash": "67680679e7d01739f399d845ee11f4f4a7588d0aecf3b259d0493bc22f625473",
+      "locations": [
+        "src/input/HotkeyManager.cpp:36"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.input.shortcut.modifier_required",
+      "source_hash": "5073248ba59ff7134f30d97ce19b0f8cc5ce08a56d91590620ba297003abf83a",
+      "translation_hash": "8e78790136af4c59c0df27db110b71a7ae28f901ea7e296b467ec3dbebead671",
+      "locations": [
+        "src/input/HotkeyManager.cpp:88"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.input.shortcut.reserved_f12",
+      "source_hash": "91510667f410f3e26635ca188bb508894f8c19e212174688c47d0def625c8e4d",
+      "translation_hash": "5b02d3c1fcb504a4569bfac46912a50ac3d7ff9a43152b1b3d14d7c0ea735d2b",
+      "locations": [
+        "src/input/HotkeyManager.cpp:81"
       ],
       "decision": "accepted"
     },
@@ -3900,6 +3928,15 @@
       "decision": "accepted"
     },
     {
+      "id": "gamehq.notification.capture_failed.resume_game",
+      "source_hash": "047f69e8e963545f67268f4fff7c6e4ba539b1fe5d3ea0911ea018aa537175a1",
+      "translation_hash": "a043b4143c0ebd280b01bf90ad6b32dd362a4a6cfa3c8404ba5fbf8dbdf3cddf",
+      "locations": [
+        "src/app/App_CaptureWiring.cpp:204"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.notification.capture_lost.body",
       "source_hash": "70f15a1f370f36b7ae94c36f7554d7f52a2851b84bd9ec34f651d0f0db3ba819",
       "translation_hash": "60b87a8f1cb63fc4c3d79e68e4b9f7ece05e843361bc51ccf7ead86c9f6eb18b",
@@ -4011,6 +4048,15 @@
       "id": "gamehq.notification.replay_failed.reason_starting",
       "source_hash": "31ad76835b430f39144432cd0679793eec93a84118095c13d3ea858874b0b9c6",
       "translation_hash": "b7ad33e8c3dc7ea430e06c5159920b582a723392a04a8a4b0c7e16a5a8c8fe47",
+      "locations": [
+        "src/app/App_CaptureWiring.cpp:25"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.resume_game",
+      "source_hash": "e5bc26cd00da68c0ba12489825c986ace8e9c7c2294fde045a6b9da7602ea47b",
+      "translation_hash": "4c360a7b8d38ca94adb2ed2c1fa421289441a4be0d664a9a46b276e9747937bb",
       "locations": [
         "src/app/App_CaptureWiring.cpp:25"
       ],
@@ -4953,7 +4999,7 @@
       "translation_hash": "cf84447db1791d6950b20ebbed8352d6a6664370d02628ba556b4279b1860831",
       "locations": [
         "src/ui/qml/settings/AdvancedSettingsPage.qml:44",
-        "src/ui/qml/settings/InputSettingsPage.qml:822"
+        "src/ui/qml/settings/InputSettingsPage.qml:830"
       ],
       "decision": "accepted"
     },
@@ -4972,6 +5018,16 @@
       "translation_hash": "d9dfaa26a9e1eda9d0bdb9943de9bd4221d564985663907d2a30202081196b4e",
       "locations": [
         "src/ui/qml/settings/AdvancedSettingsPage.qml:76"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.capture.allowlist.add",
+      "source_hash": "db813938f6111c93cb5e6c0ed48a6523256cb1ea3864e3f00264be0e5fe63ecf",
+      "translation_hash": "4ce603150e71a170f0cb747803482d988e9c433da526559de181e2f1f3cd6224",
+      "locations": [
+        "src/ui/qml/settings/CaptureSettingsPage.qml:92",
+        "src/ui/qml/settings/CaptureSettingsPage.qml:236"
       ],
       "decision": "accepted"
     },
@@ -5363,7 +5419,7 @@
       "translation_hash": "645e97b8c0762831b10e3129960ed0e4adac676fcb03d0ad54487d24fa8abecf",
       "locations": [
         "src/ui/qml/SettingsView.qml:19",
-        "src/ui/qml/components/BindingAssignmentDialog.qml:245",
+        "src/ui/qml/components/BindingAssignmentDialog.qml:249",
         "src/ui/qml/settings/InputSettingsPage.qml:9"
       ],
       "decision": "accepted"
@@ -6271,7 +6327,7 @@
       "source_hash": "7f34444494a5356fa2bca6b0fe3f1374d67a11dfcad60d36c6b16ba08dac16c8",
       "translation_hash": "5f86b93a6376030e7f1e9c496613484ccfbd1723230f42c0707ade63817c4c10",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:785"
+        "src/ui/qml/settings/InputSettingsPage.qml:793"
       ],
       "decision": "accepted"
     },
@@ -6280,7 +6336,7 @@
       "source_hash": "680cdbc266c847ab7441a89d7cad30a10bc66d72f77b4c3ee437592e970941d0",
       "translation_hash": "1dad0e94548425529714f9f5612a0120bf7dd6ea9ee13058ca9726044ba263ac",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:796"
+        "src/ui/qml/settings/InputSettingsPage.qml:804"
       ],
       "decision": "accepted"
     },
@@ -6289,7 +6345,7 @@
       "source_hash": "cc0072c635b626f836ab5796158ad02039c94a85e1fa64e1af0a151dbe1b4c27",
       "translation_hash": "982e148c2af557d25c4ecee8ec800f20a467a7fbfc0973b95874e09563d11010",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:768"
+        "src/ui/qml/settings/InputSettingsPage.qml:776"
       ],
       "decision": "accepted"
     },
@@ -6298,7 +6354,7 @@
       "source_hash": "cd55817fde3aac98596217abeca5cb738e32dfa703ae472b6f5238e7f77db421",
       "translation_hash": "f617f49016e6b59c273580d0268ff1b1282c8acc496af6596cb5192e5cc53257",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:846"
+        "src/ui/qml/settings/InputSettingsPage.qml:854"
       ],
       "decision": "corrected"
     },
@@ -6307,7 +6363,7 @@
       "source_hash": "2c207dc879b6b04db9d1dad1a375d4e09d212cbb73056aad092df1521b328fc8",
       "translation_hash": "5a734c3104b6fe8b209d0f5cbc19c4d63bcf20f1ce01ef40b83a4a193430a759",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:844"
+        "src/ui/qml/settings/InputSettingsPage.qml:852"
       ],
       "decision": "accepted"
     },
@@ -6316,7 +6372,7 @@
       "source_hash": "834203d1c74babea558e6ce992b6d40ad893903dab36b39af57c19c7d3dd1484",
       "translation_hash": "c65d6dc510e2ee788fa5c3342e158988b8d92b20329c0f29a7bb389c91c094aa",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:773"
+        "src/ui/qml/settings/InputSettingsPage.qml:781"
       ],
       "decision": "accepted"
     },
@@ -6325,7 +6381,7 @@
       "source_hash": "1a191a4675093d1376be17e4650a32df7dce5d61ff893d817ddb39061ee6e43d",
       "translation_hash": "e20dfe5dcc9762cd08e9cf7acba4b10d70af7836b57d093d31e8f3b940466acf",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:819"
+        "src/ui/qml/settings/InputSettingsPage.qml:827"
       ],
       "decision": "accepted"
     },
@@ -6334,7 +6390,7 @@
       "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
       "translation_hash": "f9091adccb4d6b5204783c411f91ead5413331a1da561f065613ff9ffd205054",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:787"
+        "src/ui/qml/settings/InputSettingsPage.qml:795"
       ],
       "decision": "accepted"
     },
@@ -6343,7 +6399,7 @@
       "source_hash": "34906ad8993200ab5f894f2b6f924a71b26f93b236b822b61c53e6b3784a1b63",
       "translation_hash": "1da33f60051a25ac943729b35e61976f4ff828a76e4da36daf1dc973a55ed847",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:836"
+        "src/ui/qml/settings/InputSettingsPage.qml:844"
       ],
       "decision": "accepted"
     },
@@ -6352,7 +6408,7 @@
       "source_hash": "1c42239e986ab45016bf2e1c32799d0d3e3a5d8deaa48d6d1a4623f360415177",
       "translation_hash": "17e0e481721cedf2bac0653426b3b668ed80b3dde5caa3517859d44eaf477392",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:833"
+        "src/ui/qml/settings/InputSettingsPage.qml:841"
       ],
       "decision": "accepted"
     },
@@ -6361,7 +6417,7 @@
       "source_hash": "63cb52ef62aaa5995d2396d9332d3fd1967256066565366478ccfdf5c91e0772",
       "translation_hash": "0b508ad710fab927d65f200dbd63cb3c47af48cd1af274d6049eb90e9c08b78e",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:831"
+        "src/ui/qml/settings/InputSettingsPage.qml:839"
       ],
       "decision": "accepted"
     },
@@ -6370,7 +6426,7 @@
       "source_hash": "f809b14319c54dc149a2e96b88f54bb706bdf5afe155e30674e1d48b1101dca9",
       "translation_hash": "16c7c535a48bd363a6beca3b1e07a0ee2071001886bc584e064e6dcac470c0c3",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:800"
+        "src/ui/qml/settings/InputSettingsPage.qml:808"
       ],
       "decision": "accepted"
     },
@@ -6379,7 +6435,7 @@
       "source_hash": "fe08b9b879e4369caa8d96f54faebf03c94201a80369d3b2e2ff25030aada8c7",
       "translation_hash": "a442ba6749a9a4c00284df6a79072e27b9a8c74ccf461b528987490cce3be416",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:813"
+        "src/ui/qml/settings/InputSettingsPage.qml:821"
       ],
       "decision": "accepted"
     },
@@ -6388,7 +6444,7 @@
       "source_hash": "15875e6a1d3400e930c324c83acb0cdacb3658f24f6690a031002d08f01a2fce",
       "translation_hash": "0deda3965cee0002a103bdb5bf1b87e37b499c43eaa709e000618a0f97fe3aba",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:780"
+        "src/ui/qml/settings/InputSettingsPage.qml:788"
       ],
       "decision": "corrected"
     },
@@ -6397,7 +6453,7 @@
       "source_hash": "3e346d5affc6c0d52041d9719ef9ab9ebaa027b3df8dc28848e3a6fe14aafdf8",
       "translation_hash": "e508f2dfa78cb584718b2b058298f2915180dfd8e73b10ad5f31beff415fe8e1",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:778"
+        "src/ui/qml/settings/InputSettingsPage.qml:786"
       ],
       "decision": "accepted"
     },
@@ -6406,7 +6462,7 @@
       "source_hash": "1c4379ae69261c8a34fe14838063bc6c731a9dfb7e37e1d85b1a20d79018e0b1",
       "translation_hash": "677d1c54a195f72419c850d4b392bae1a5bd346c14f5180738893622b1842858",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:770"
+        "src/ui/qml/settings/InputSettingsPage.qml:778"
       ],
       "decision": "accepted"
     },
@@ -6415,7 +6471,7 @@
       "source_hash": "d638fb396f751ea59e27784db492f1e4a3e1a3cef4d73c396000f6e406ba56e1",
       "translation_hash": "67702d28833bd4bf884133c74b13531faf8c360d6f86b63db64cf8003910ef4f",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:806"
+        "src/ui/qml/settings/InputSettingsPage.qml:814"
       ],
       "decision": "accepted"
     },
@@ -6614,7 +6670,7 @@
       "source_hash": "c7cf7e644055bd8ebf4dfc4a74a0f0b0cff6867076ec99b5b3278808f04b469b",
       "translation_hash": "78edb92863a907dd9326a0afde61df9ca54b3df4d77c30083df8d41630577991",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:878"
+        "src/ui/qml/settings/InputSettingsPage.qml:886"
       ],
       "decision": "accepted"
     },
@@ -6623,7 +6679,7 @@
       "source_hash": "28bd1052812489099b3b1331a4bac9903c100fecd5b71a07d85e05fd1af38475",
       "translation_hash": "8fbc9ff2a17682d0a42652e6b18fe6c68b4218a3d0bb825e9a8babad80932be3",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:876"
+        "src/ui/qml/settings/InputSettingsPage.qml:884"
       ],
       "decision": "accepted"
     },
@@ -6632,7 +6688,7 @@
       "source_hash": "7eeb735056ad0b8ae9bf8b183c127a22e21a9c783479ba5776989526320682fc",
       "translation_hash": "780d03b313dbb234412bc2106413e7248dac4d9a511f17c1272ddb3fabdc5e2b",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:721"
+        "src/ui/qml/settings/InputSettingsPage.qml:729"
       ],
       "decision": "accepted"
     },
@@ -6641,7 +6697,7 @@
       "source_hash": "2994e5948e542e2c580a7325426d18a677fdb00aacb5d7733c82822d7a1e6e69",
       "translation_hash": "45ad675b5694a1842550b6c5605cd10dabf9fdec4a175e4d4438e19ed662fc5d",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:724"
+        "src/ui/qml/settings/InputSettingsPage.qml:732"
       ],
       "decision": "accepted"
     },
@@ -6650,7 +6706,7 @@
       "source_hash": "0a06d3b26a9ba5cae9573af2d5c5f925bc25cce495b2a46c2ed258d3078bc13b",
       "translation_hash": "9410248a2986c36e837dd15c13e7f7dbd0968c78b4614df8d95383e5bcf19cf1",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:685"
+        "src/ui/qml/settings/InputSettingsPage.qml:693"
       ],
       "decision": "accepted"
     },
@@ -6659,7 +6715,7 @@
       "source_hash": "571f948833fbc74db5886c372e62e02c1e8337141d09949b3fcc363dcaba845c",
       "translation_hash": "e61ffa8d2a31906273d6969e76db686aecef9c0e6d6ddc4315c4eecfe6e9bb29",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:681"
+        "src/ui/qml/settings/InputSettingsPage.qml:689"
       ],
       "decision": "accepted"
     },
@@ -6668,7 +6724,7 @@
       "source_hash": "982755b5c6920c050f691914f97d42e9833a69e312c8523d0f6cc766d35a7fd4",
       "translation_hash": "1e18cb612df17a73ce89c19da64bbd2f565557a34f700c0f495cb5dbdb8d1e0c",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:698"
+        "src/ui/qml/settings/InputSettingsPage.qml:706"
       ],
       "decision": "accepted"
     },
@@ -6677,7 +6733,7 @@
       "source_hash": "3c4f549c013fe916f45f52c9b7f8006536b59b9289318cfbde1bf04f546ca870",
       "translation_hash": "88038e581b78b60f6dab663553c4c87757b80f032769b6508571b128a6678ae5",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:703"
+        "src/ui/qml/settings/InputSettingsPage.qml:711"
       ],
       "decision": "accepted"
     },
@@ -6686,7 +6742,7 @@
       "source_hash": "656bd30fb52a459a4de56a660487a64669337dd6622d611fdb1d38919a9bc796",
       "translation_hash": "f5c2dbe07d6940889d5b4ec4872a85d8e76f187fea8270da274e522e358e0fe6",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:711"
+        "src/ui/qml/settings/InputSettingsPage.qml:719"
       ],
       "decision": "accepted"
     },
@@ -6695,7 +6751,7 @@
       "source_hash": "8cd5c12348c32f07b1e11fe6dae7ad4c8c66234deb4a867f206baf1afebe4c9b",
       "translation_hash": "3bb7ca8a2e39c53b9f2f8bce42383643f71e6ef85ae7331d2ab47cb0f9980cea",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:714"
+        "src/ui/qml/settings/InputSettingsPage.qml:722"
       ],
       "decision": "accepted"
     },
@@ -6704,7 +6760,7 @@
       "source_hash": "125a0ff806d423b1c37056ac4c83000628943a2edaf1f2a8b5fe8aaf14add12b",
       "translation_hash": "fe29fbf44604f6a7e672077e9b40a13fe43146665808d41f17eb3ccedb2acff1",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:707"
+        "src/ui/qml/settings/InputSettingsPage.qml:715"
       ],
       "decision": "accepted"
     },
@@ -6713,7 +6769,7 @@
       "source_hash": "d1c0d841032f36c32e260e54bf437cf68dd25c15e953273f247d2045cd114de6",
       "translation_hash": "67287fbd8dd0242879c031b1a420b634ed4723eeb0283786075b5127ac882e13",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:733"
+        "src/ui/qml/settings/InputSettingsPage.qml:741"
       ],
       "decision": "accepted"
     },
@@ -6722,7 +6778,7 @@
       "source_hash": "5707f4019d5309c39a8ea2d841b95fd3731c77f2a3811acd721a0ae9b6497e45",
       "translation_hash": "5d9c4aa43645f4ee97d9ec05a6cdaab6acf1d6cdb3310a18df27feaa31be1d96",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:736"
+        "src/ui/qml/settings/InputSettingsPage.qml:744"
       ],
       "decision": "accepted"
     },
@@ -6731,7 +6787,7 @@
       "source_hash": "eec6e5d99f2431b359fbda37267b6c9c1d6fa2c751d1d5199208f6bf0abcde5a",
       "translation_hash": "cbc8cf9979733d895642a3b09f7a6c50e7266964465335233cc3d092d3371d5d",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:692"
+        "src/ui/qml/settings/InputSettingsPage.qml:700"
       ],
       "decision": "accepted"
     },
@@ -6740,7 +6796,7 @@
       "source_hash": "322c10daf57a5d4315539e31280ddbcb5518e3f0af919cff80776a8c7e21e92d",
       "translation_hash": "2ef57b41fe7c5c9b8da3441d243009835b59a8ac69d12f7641b4c242390729ae",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:690"
+        "src/ui/qml/settings/InputSettingsPage.qml:698"
       ],
       "decision": "accepted"
     },
@@ -6749,7 +6805,7 @@
       "source_hash": "90d017d0ad5e7fd09fe4363af2cc763222d4e17ad7f4761e898a991c8e3efb89",
       "translation_hash": "dfcdb573f2133abcbc7bce47913f6ad3753e07d463d02e9c0d87866272d9cbe5",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:747"
+        "src/ui/qml/settings/InputSettingsPage.qml:755"
       ],
       "decision": "accepted"
     },
@@ -6758,7 +6814,7 @@
       "source_hash": "1fe0e8da8598342751773bf29ab3245c7c7ae3471d5885b540f1307a18fccc2a",
       "translation_hash": "6b7d8b76e4d489f0813351c237ff3bb68b0e01c099d650cb051e5a3bd06d92f0",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:752"
+        "src/ui/qml/settings/InputSettingsPage.qml:760"
       ],
       "decision": "accepted"
     },
@@ -6767,7 +6823,7 @@
       "source_hash": "0b49ca90dcd9124fcb7590fc0bacf7ad3f352e1fb8ea119b89ec81141b174f2c",
       "translation_hash": "38ce9ccbcc0d836b85a3cc30a72214e3c2b1c664e6757122f4c550015e907b7d",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:758"
+        "src/ui/qml/settings/InputSettingsPage.qml:766"
       ],
       "decision": "accepted"
     },
@@ -6776,7 +6832,7 @@
       "source_hash": "0efa0c542a4cf2c3f7974f1bdc453771e752554715ab9c01d527ded1a829cd09",
       "translation_hash": "6abb34ad746895739141a52484ee627c0b02af703f479c43264abc99bba34f97",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:745"
+        "src/ui/qml/settings/InputSettingsPage.qml:753"
       ],
       "decision": "accepted"
     },
@@ -6785,7 +6841,7 @@
       "source_hash": "9515cd06e491287d92c6f0bda9b67252875b4f16d4a47bb2b8e15475dbf54ffd",
       "translation_hash": "7b8b07d0dc651c06ccc1ca314c9b635d2b0ce065771a83342653159a8efd391a",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:683"
+        "src/ui/qml/settings/InputSettingsPage.qml:691"
       ],
       "decision": "accepted"
     },
@@ -6884,7 +6940,8 @@
       "source_hash": "3a1c1c981ec3dc1e8ce697025488d0b8a6346b2c356e5fc66f297301592e1827",
       "translation_hash": "d6d3e4494859e072bbee0c921ba64a79fa821d8988cc4c834f6d1cd95bc4e26d",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:274"
+        "src/ui/qml/components/BindingAssignmentDialog.qml:462",
+        "src/ui/qml/settings/InputSettingsPage.qml:280"
       ],
       "decision": "accepted"
     },
@@ -10430,8 +10487,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_en_US.ts",
-      "sha256": "31ea18a3c8b4af537b7de75d329e7961f395d30f7f79d4b6f0874a44a62373a8",
-      "reviewed_units": 1107
+      "sha256": "ffcab0b5162a88d8b404b3a97721ec1003e2f580cdf7346b7cbc18ea64667d4f",
+      "reviewed_units": 1113
     },
     {
       "surface": "installer",

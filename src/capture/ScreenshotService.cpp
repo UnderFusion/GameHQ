@@ -74,9 +74,16 @@ void ScreenshotService::capture(const CaptureRequest& request)
         : QStringLiteral("only_in_games");
 
     const ForegroundGame g = GameDetector::current();
-    if (!GameDetector::shouldCapture(g, mode)) {
-        reject(QStringLiteral("foreground window is not a game (mode=%1, process=%2)")
-                   .arg(mode, g.processName.isEmpty() ? QStringLiteral("?") : g.processName));
+    if (g.isPlaynitePauseMenu) {
+        reject(QStringLiteral("No game frame available for screenshot"));
+        return;
+    }
+    if (!GameDetector::shouldCapture(g, m_config)) {
+        reject(QStringLiteral("%1 (mode=%2, process=%3)")
+                   .arg(mode == QStringLiteral("whitelist")
+                            ? QStringLiteral("foreground window is not an allowed game executable")
+                            : QStringLiteral("foreground window is not a game"),
+                        mode, g.processName.isEmpty() ? QStringLiteral("?") : g.processName));
         return;
     }
 
@@ -90,30 +97,38 @@ void ScreenshotService::capture(const CaptureRequest& request)
             qInfo().noquote() << QStringLiteral(
                 "Screenshot[%1]: HDR target detected (%2) - requesting tone-mapped WGC frame")
                                      .arg(chain, output.describe());
-            emit hdrCaptureRequested(
-                qulonglong(reinterpret_cast<quintptr>(g.hwnd)), request.id);
+            emit hdrCaptureRequested(g, request.id);
             return;
         }
     }
 
-    if (g.viaShellFallback) {
-        // The GDI grab copies the screen, so it is only the game when nothing
-        // (the Xbox shell, Game Bar) sits on top of it.
+    // SDR copies a screen rectangle. Discard the copy if the target moves,
+    // loses focus, or is replaced between the policy decision and the grab.
+    const auto stillVisible = [&g] {
+        const auto hwnd = static_cast<HWND>(g.hwnd);
+        RECT bounds{};
+        if (!GameDetector::windowBelongsToProcess(hwnd, g.pid) || !GetWindowRect(hwnd, &bounds)
+            || bounds.left != g.x || bounds.top != g.y || bounds.right != g.x + g.w
+            || bounds.bottom != g.y + g.h)
+            return false;
+        if (!g.viaShellFallback)
+            return GetForegroundWindow() == hwnd;
         const POINT center{g.x + g.w / 2, g.y + g.h / 2};
-        if (GetAncestor(WindowFromPoint(center), GA_ROOT) != static_cast<HWND>(g.hwnd)) {
-            reject(QStringLiteral("the Xbox shell is covering the game (process=%1)")
-                       .arg(g.processName));
-            return;
-        }
-        qInfo().noquote() << QStringLiteral("Screenshot[%1]: Xbox shell foreground - "
-                                            "capturing the verified Playnite game")
-                                 .arg(chain);
+        return GetAncestor(WindowFromPoint(center), GA_ROOT) == hwnd;
+    };
+    if (!stillVisible()) {
+        reject(QStringLiteral("screenshot target changed or is covered"));
+        return;
     }
 
     QElapsedTimer t;
     t.start();
     const QImage img = grabRect(g.hwnd, g.x, g.y, g.w, g.h);
     const qint64 grabMs = t.elapsed();
+    if (!stillVisible()) {
+        reject(QStringLiteral("screenshot target changed or is covered"));
+        return;
+    }
     if (img.isNull()) {
         const QString reason = QStringLiteral("GDI grab returned no pixels");
         qWarning().noquote() << QStringLiteral("Screenshot[%1]: failed - %2").arg(chain, reason);

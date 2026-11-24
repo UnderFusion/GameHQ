@@ -57,6 +57,16 @@ QString AppController::setCaptureRoot(const QString& kindValue, const QUrl& fold
     return {};
 }
 
+bool AppController::addCaptureExecutable(const QUrl& file)
+{
+    return file.isLocalFile() && m_config->setCaptureExecutableAllowed(file.toLocalFile(), true);
+}
+
+bool AppController::removeCaptureExecutable(const QString& path)
+{
+    return m_config->setCaptureExecutableAllowed(path, false);
+}
+
 QString AppController::resetCaptureRoot(const QString& kindValue)
 {
     CaptureLocations::Kind kind;

@@ -108,6 +108,10 @@ cannot always supply are optional and must be treated as such:
 - `name`, `sourceName`, `platformNames` — display metadata
 - `installDirectory`, `selectedRomFile` — used only for identity matching,
   never executed (see [architecture notes on `GameDetector`](architecture.md))
+- `launchExecutable` — optional absolute path from the selected Playnite file action.
+  When Playnite supplies no PID, a single started session may identify a
+  windowed game by an exact foreground executable match inside its installation
+  directory. A conflicting process or a second matching session disqualifies this match.
 - `startedProcessId` — the PID Playnite reports for the launched game, when
   available; not assumed valid for launchers or emulators that spawn a
   child process

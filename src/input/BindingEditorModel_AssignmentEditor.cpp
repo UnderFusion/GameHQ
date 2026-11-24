@@ -104,6 +104,14 @@ bool BindingEditorModel::editorCanSave() const
     return BindingPattern{editorTrigger(), m_editorGesture}.isValid(m_deviceGroup, &error);
 }
 
+bool BindingEditorModel::editorGestureLocked() const
+{
+    const auto* action = ActionCatalog::find(m_editorActionId);
+    return m_editorTriggerKind == QLatin1String("combination")
+        || (m_deviceGroup == QLatin1String("keyboard") && action
+            && action->scope == ActionCatalog::Scope::Global);
+}
+
 void BindingEditorModel::openAssignmentEditor(const QString& actionId, int slot)
 {
     const auto* action = ActionCatalog::find(actionId);
@@ -130,7 +138,9 @@ void BindingEditorModel::openAssignmentEditor(const QString& actionId, int slot)
         m_editorSecondControl = trigger.secondControl();
         m_editorTriggerKind = trigger.isChord() ? QStringLiteral("combination")
                                                 : QStringLiteral("single");
-        m_editorGesture = binding.gesture();
+        // Windows global hotkeys provide a press notification without a
+        // release edge. A legacy timed global can be repaired by saving it.
+        m_editorGesture = editorGestureLocked() ? GestureSpec::press() : binding.gesture();
         refreshEditorNotice();
         emit editorChanged();
         return;
@@ -371,7 +381,11 @@ void BindingEditorModel::saveAssignment()
         emit compatibilityChanged();
         return;
     }
-    if (!applyChange(change))
+    if (!applyChange(change)) {
+        m_editorNoticeKind = m_relationKind;
+        m_editorNotice = m_relationNotice;
+        emit editorChanged();
         return;
+    }
     closeAssignmentEditor();
 }

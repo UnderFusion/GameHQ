@@ -27,9 +27,8 @@ public:
         QString rejectionReason;
     };
 
-    // Parses strings like "Ctrl+Shift+G". Requires at least one modifier
-    // (rejects bare global keys) and rejects the Win modifier and the
-    // Alt+F4 system combo (reserved combinations).
+    // Letters and digits need a modifier. Function keys can stand alone.
+    // F12, Win combinations and Alt+F4 are reserved by Windows.
     static ParsedChord parseChord(const QString& text);
 
     // Registers a NEW chord for actionId before touching the old one: if
@@ -39,6 +38,12 @@ public:
     bool applyBinding(const QString& actionId, quint32 modifiers, quint32 vk);
     bool applyBindingSlot(const QString& actionId, int slot,
                           quint32 modifiers, quint32 vk);
+    struct Slot {
+        QString actionId;
+        int slot;
+        ParsedChord chord;
+    };
+    void synchronize(const QList<Slot>& slotsToInstall);
 
     // Releases actionId's global hotkey, if any. The action becomes
     // keyboard-unbound; other actions' registrations are untouched.
@@ -56,12 +61,13 @@ signals:
     // Generic counterpart to the four signals above, keyed by action id —
     // for binding-runtime callers that don't need a dedicated
     // signal per action.
-    void hotkeyTriggered(const QString& actionId);
+    void hotkeyTriggered(const QString& actionId, int slot, quint32 vk, quint32 modifiers);
 
 private:
     struct Binding
     {
         QString actionId;
+        int slot = 1;
         quint32 modifiers = 0;
         quint32 vk = 0;
         int hotkeyId = 0;   // currently-registered Win32 id; 0 = unregistered

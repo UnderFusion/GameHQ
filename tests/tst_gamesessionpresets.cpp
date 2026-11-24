@@ -30,11 +30,14 @@
 #include "input/MappingAssignmentResolver.h"
 #include "input/MappingPresetModel.h"
 #include "config/ConfigManager.h"
+#include "config/ConfigKeys.h"
+#include "games/GameDetector.h"
 #include "core/GameIdentity.h"
 #include "storage/CaptureDatabase.h"
 #include "ui/CurrentGameService.h"
 
 #include <QCoreApplication>
+#include <QDir>
 #include <QFile>
 #include <QFileInfo>
 #include <QSqlDatabase>
@@ -203,6 +206,7 @@ private:
     std::unique_ptr<QTemporaryDir> dir;
 
 private slots:
+    void captureAllowlistSurvivesRestartAndUsesFullPath();
     void initTestCase();
     void init();
     void cleanup();
@@ -279,6 +283,55 @@ void GameSessionPresetTest::cleanup()
 
 // The session key is the canonical key of whatever game the session holds - the
 // same normalization the assignment rows are written with.
+void GameSessionPresetTest::captureAllowlistSurvivesRestartAndUsesFullPath()
+{
+    QTemporaryDir dir;
+    QVERIFY(dir.isValid());
+    const QString path = dir.filePath(QStringLiteral("Example.exe"));
+    QFile exe(path);
+    QVERIFY(exe.open(QIODevice::WriteOnly));
+    exe.close();
+    const QString configPath = dir.filePath(QStringLiteral("config.json"));
+    ConfigManager config(configPath);
+    config.setValue(ConfigKeys::CaptureMode, QStringLiteral("whitelist"));
+    ForegroundGame target;
+    target.valid = true;
+    target.w = 1280;
+    target.h = 720;
+    target.isGame = true;
+    target.executablePath = QDir::toNativeSeparators(path);
+    QVERIFY(!GameDetector::shouldCapture(target, &config));
+    QVERIFY(config.setCaptureExecutableAllowed(path, true));
+    ConfigManager reopened(configPath);
+    QVERIFY(reopened.load());
+    target.isGame = false;
+    QVERIFY(GameDetector::shouldCapture(target, &reopened));
+    target.executablePath = dir.filePath(QStringLiteral("Other/Example.exe"));
+    QVERIFY(!GameDetector::shouldCapture(target, &reopened));
+    target.executablePath = path;
+    target.isExcludedProcess = true;
+    QVERIFY(!GameDetector::shouldCapture(target, &reopened));
+    target.isExcludedProcess = false;
+    target.isOverlaySurface = true;
+    QVERIFY(!GameDetector::shouldCapture(target, &reopened));
+    target.isOverlaySurface = false;
+    const QString savedPath = reopened.value(ConfigKeys::CaptureAllowedExecutables).toStringList().constFirst();
+    QVERIFY(exe.remove());
+    QVERIFY(reopened.setCaptureExecutableAllowed(savedPath, false));
+    ConfigManager removed(configPath);
+    QVERIFY(removed.load());
+    QVERIFY(!GameDetector::shouldCapture(target, &removed));
+    removed.setValue(ConfigKeys::CaptureMode, QStringLiteral("only_in_games"));
+    QVERIFY(!GameDetector::shouldCapture(target, &removed));
+    target.isGame = true;
+    QVERIFY(GameDetector::shouldCapture(target, &removed));
+    target.isGame = false;
+    removed.setValue(ConfigKeys::CaptureMode, QStringLiteral("always"));
+    QVERIFY(GameDetector::shouldCapture(target, &removed));
+    target.valid = false;
+    QVERIFY(!GameDetector::shouldCapture(target, &removed));
+}
+
 void GameSessionPresetTest::sessionKeyFollowsTheRunningGame()
 {
     const QString alpha = offlineGameExecutable(QStringLiteral("Alpha"));

@@ -99,7 +99,7 @@
       <translation>%1  返回</translation>
     </message>
     <message id="gamehq.action.cancel">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="623"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="638"></location>
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="21"></location>
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="28"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="15"></location>
@@ -110,15 +110,15 @@
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="168"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="200"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="638"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="644"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
       <translation>取消</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1296"></location>
       <location filename="src/ui/qml/Main.qml" line="1315"></location>
-      <location filename="src/ui/qml/Main.qml" line="1355"></location>
+      <location filename="src/ui/qml/Main.qml" line="1334"></location>
+      <location filename="src/ui/qml/Main.qml" line="1374"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1067"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="17"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -293,7 +293,7 @@
       <translation>缩小</translation>
     </message>
     <message id="gamehq.action.dismiss">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="210"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="216"></location>
       <source>Dismiss</source>
       <translation>忽略</translation>
     </message>
@@ -500,15 +500,16 @@
       <translation>向前跳转</translation>
     </message>
     <message id="gamehq.action.record">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="295"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="371"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="435"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="299"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="375"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="439"></location>
       <source>Record</source>
       <translation>录制</translation>
     </message>
     <message id="gamehq.action.remove">
       <location filename="src/ui/qml/components/BindingCard.qml" line="151"></location>
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="104"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="108"></location>
       <source>Remove</source>
       <translation>移除</translation>
@@ -527,9 +528,9 @@
       <location filename="src/ui/qml/SettingsView.qml" line="508"></location>
       <location filename="src/ui/qml/SettingsView.qml" line="525"></location>
       <location filename="src/ui/qml/SettingsView.qml" line="539"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="247"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="498"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="880"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="253"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="504"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="888"></location>
       <source>Restore defaults</source>
       <translation>恢复默认设置</translation>
     </message>
@@ -539,7 +540,7 @@
       <translation>还原</translation>
     </message>
     <message id="gamehq.action.save">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="644"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="25"></location>
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="168"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="101"></location>
@@ -557,14 +558,14 @@
       <translation>全选</translation>
     </message>
     <message id="gamehq.action.stop">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="288"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="292"></location>
       <source>Stop</source>
       <translation>停止</translation>
     </message>
     <message id="gamehq.common.action.change">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="292"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="368"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="432"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="296"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="372"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="436"></location>
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="27"></location>
       <source>Change</source>
       <translation>更改</translation>
@@ -592,30 +593,30 @@
       <translation>确定要继续吗？</translation>
     </message>
     <message id="gamehq.duration.decimal_seconds">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="298"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="300"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="302"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="304"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="306"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="308"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="310"></location>
       <source>%1 seconds</source>
       <translation>%1 秒</translation>
     </message>
     <message id="gamehq.duration.milliseconds">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="319"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="321"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="338"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="340"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="325"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="327"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="344"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="346"></location>
       <source>%1 ms</source>
       <translation>%1 毫秒</translation>
     </message>
     <message id="gamehq.duration.milliseconds.fast">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="317"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="336"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="323"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="342"></location>
       <source>%1 ms (fast)</source>
       <translation>%1 毫秒（快速）</translation>
     </message>
     <message id="gamehq.duration.milliseconds.relaxed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="323"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="342"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="329"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="348"></location>
       <source>%1 ms (relaxed)</source>
       <translation>%1 毫秒（宽松）</translation>
     </message>
@@ -638,10 +639,10 @@
       </translation>
     </message>
     <message id="gamehq.duration.seconds_short">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="534"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="536"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="538"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="540"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="549"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="551"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="553"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="555"></location>
       <source>%1 s</source>
       <translation>%1 秒</translation>
     </message>
@@ -678,7 +679,7 @@
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
       <location filename="src/ui/AppController_Settings.cpp" line="44"></location>
-      <location filename="src/ui/AppController_Settings.cpp" line="66"></location>
+      <location filename="src/ui/AppController_Settings.cpp" line="76"></location>
       <source>The capture type is invalid.</source>
       <translation>捕获类型无效。</translation>
     </message>
@@ -1352,19 +1353,19 @@
       <translation>添加文件夹…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1357"></location>
+      <location filename="src/ui/qml/Main.qml" line="1376"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>批量选择</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1351"></location>
+      <location filename="src/ui/qml/Main.qml" line="1370"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>分享</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1353"></location>
+      <location filename="src/ui/qml/Main.qml" line="1372"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>在文件夹中显示</translation>
@@ -1377,7 +1378,7 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1284"></location>
+      <location filename="src/ui/qml/Main.qml" line="1303"></location>
       <source>%1 · %2
 The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
       <oldsource>%1 · %2
@@ -1386,13 +1387,13 @@ The file will be moved to the Recycle Bin. Files in imported folders are left un
 该文件将被移到回收站。监视文件夹中的文件不会被改动。</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1294"></location>
+      <location filename="src/ui/qml/Main.qml" line="1313"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1065"></location>
       <source>Delete capture?</source>
       <translation>删除该捕获内容？</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="542"></location>
+      <location filename="src/ui/qml/Main.qml" line="561"></location>
       <source>%n capture will be moved to the Recycle Bin.
 Files in watched folders are left untouched.</source>
       <oldsource>%n capture will be moved to the Recycle Bin.
@@ -1403,7 +1404,7 @@ Files in imported folders are left untouched.</oldsource>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1313"></location>
+      <location filename="src/ui/qml/Main.qml" line="1332"></location>
       <source>Delete selected captures?</source>
       <translation>删除选中的捕获内容？</translation>
     </message>
@@ -1704,95 +1705,95 @@ Files in imported folders are left untouched.</oldsource>
       <translation>打开手柄兼容性指南</translation>
     </message>
     <message id="gamehq.input.assignment.capture_active">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="228"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="232"></location>
       <source>Controller capture active · Dialog navigation is paused</source>
       <translation>正在捕获手柄输入 · 对话框导航已暂停</translation>
     </message>
     <message id="gamehq.input.assignment.combination_gesture">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="506"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="519"></location>
       <source>Press · fixed for combinations</source>
       <translation>按下 · 组合固定为此手势</translation>
     </message>
     <message id="gamehq.input.assignment.default_duration">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="532"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="547"></location>
       <source>Default</source>
       <translation>默认</translation>
     </message>
     <message id="gamehq.input.assignment.detected">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="347"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="351"></location>
       <source>%1 detected</source>
       <translation>检测到 %1</translation>
     </message>
     <message id="gamehq.input.assignment.first_button">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="315"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="319"></location>
       <source>First button</source>
       <translation>第一个按键</translation>
     </message>
     <message id="gamehq.input.assignment.gesture">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="460"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="490"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="473"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="503"></location>
       <source>Gesture</source>
       <translation>手势</translation>
     </message>
     <message id="gamehq.input.assignment.hold_duration">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="522"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="537"></location>
       <source>Hold duration</source>
       <translation>长按时长</translation>
     </message>
     <message id="gamehq.input.assignment.listening_button">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="270"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="274"></location>
       <source>Listening… Press a controller button</source>
       <translation>正在监听… 请按下手柄按键</translation>
     </message>
     <message id="gamehq.input.assignment.listening_first">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="342"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="346"></location>
       <source>Listening… Hold the first button</source>
       <translation>正在监听… 请长按第一个按键</translation>
     </message>
     <message id="gamehq.input.assignment.listening_second">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="407"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="411"></location>
       <source>Listening… Press the second button</source>
       <translation>正在监听… 请按下第二个按键</translation>
     </message>
     <message id="gamehq.input.assignment.not_set">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="275"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="353"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="416"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="279"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="357"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="420"></location>
       <source>Not set</source>
       <translation>未设置</translation>
     </message>
     <message id="gamehq.input.assignment.notice.attention">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="585"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="600"></location>
       <source>Assignment needs attention</source>
       <translation>此分配需要注意</translation>
     </message>
     <message id="gamehq.input.assignment.notice.compatibility">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="593"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="608"></location>
       <source>Compatibility change required</source>
       <translation>需要进行兼容性更改</translation>
     </message>
     <message id="gamehq.input.assignment.notice.default">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="596"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="611"></location>
       <source>Assignment note</source>
       <translation>分配说明</translation>
     </message>
     <message id="gamehq.input.assignment.notice.not_verified">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="589"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="604"></location>
       <source>Button not verified this session</source>
       <translation>本次会话尚未验证该按键</translation>
     </message>
     <message id="gamehq.input.assignment.pattern">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="201"></location>
       <source>Type</source>
       <translation>类型</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="209"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="213"></location>
       <source>Combination</source>
       <translation>组合</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.single">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="207"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="211"></location>
       <source>Single button</source>
       <translation>单个按键</translation>
     </message>
@@ -1802,17 +1803,17 @@ Files in imported folders are left untouched.</oldsource>
       <translation>请按住 %1 至少 %2 毫秒以保存回放。</translation>
     </message>
     <message id="gamehq.input.assignment.scope_slot">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="181"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="185"></location>
       <source>%1 · Slot %2</source>
       <translation>%1 · 槽位 %2</translation>
     </message>
     <message id="gamehq.input.assignment.second_button">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="380"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="384"></location>
       <source>Second button</source>
       <translation>第二个按键</translation>
     </message>
     <message id="gamehq.input.assignment.waiting_first">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="413"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="417"></location>
       <source>Waiting for first button</source>
       <translation>等待第一个按键</translation>
     </message>
@@ -1935,37 +1936,38 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.input.gesture.double_tap">
       <location filename="src/input/BindingPattern.cpp" line="106"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="474"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="487"></location>
       <source>Double tap</source>
       <translation>双击</translation>
     </message>
     <message id="gamehq.input.gesture.hold">
       <location filename="src/input/BindingPattern.cpp" line="121"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="478"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="491"></location>
       <source>Hold</source>
       <translation>长按</translation>
     </message>
     <message id="gamehq.input.gesture.press">
       <location filename="src/input/BindingPattern.cpp" line="101"></location>
       <location filename="src/input/BindingPattern.cpp" line="125"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="470"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="483"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="521"></location>
       <source>Press</source>
       <translation>按下</translation>
     </message>
     <message id="gamehq.input.gesture.tap">
       <location filename="src/input/BindingPattern.cpp" line="117"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="472"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="485"></location>
       <source>Tap</source>
       <translation>单击</translation>
     </message>
     <message id="gamehq.input.gesture.triple_tap">
       <location filename="src/input/BindingPattern.cpp" line="112"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="476"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="489"></location>
       <source>Triple tap</source>
       <translation>三击</translation>
     </message>
     <message id="gamehq.input.hidden.filter">
-      <location filename="src/input/InputEngine.cpp" line="482"></location>
+      <location filename="src/input/InputEngine.cpp" line="504"></location>
       <source>%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it.</source>
       <translation>%1 已连接到 Windows，但被 HID 筛选驱动程序隐藏，应用无法看到它。</translation>
     </message>
@@ -1990,7 +1992,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>自动允许失败（代码 %1）。请改为在 HidHide Configuration Client 的“Applications”选项卡中添加 GameHQ.exe。</translation>
     </message>
     <message id="gamehq.input.hidden.hidhide">
-      <location filename="src/input/InputEngine.cpp" line="473"></location>
+      <location filename="src/input/InputEngine.cpp" line="495"></location>
       <source>%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD).</source>
       <translation>%1 已连接，但被 HidHide 驱动程序（随 DSX、DS4Windows 或 reWASD 安装）对应用隐藏。</translation>
     </message>
@@ -2095,8 +2097,23 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>%1 is shared: %2 = %3, %4 = %5.</source>
       <translation>%1 已共享：%2 = %3，%4 = %5。</translation>
     </message>
+    <message id="gamehq.input.shortcut.choose_key">
+      <location filename="src/input/HotkeyManager.cpp" line="36"></location>
+      <source>Choose a shortcut key.</source>
+      <translation>请选择一个快捷键。</translation>
+    </message>
+    <message id="gamehq.input.shortcut.modifier_required">
+      <location filename="src/input/HotkeyManager.cpp" line="88"></location>
+      <source>Use Ctrl, Shift or Alt with a letter or digit, or choose a function key.</source>
+      <translation>请将 Ctrl、Shift 或 Alt 与字母键或数字键组合使用，或选择一个功能键。</translation>
+    </message>
+    <message id="gamehq.input.shortcut.reserved_f12">
+      <location filename="src/input/HotkeyManager.cpp" line="81"></location>
+      <source>Windows reserves F12 for debugging. Try F10 or Ctrl+Shift+F10.</source>
+      <translation>Windows 将 F12 保留用于调试。请尝试 F10 或 Ctrl+Shift+F10。</translation>
+    </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1264"></location>
+      <location filename="src/ui/qml/Main.qml" line="1283"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>选择要监视的文件夹</translation>
@@ -2213,55 +2230,60 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>显示工具</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="321"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>部分文件无法删除。它们可能正被其他程序使用。请关闭正在使用这些文件的程序后重试。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="328"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="341"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>无法删除该文件。它可能正被其他程序使用。请关闭正在使用该文件的程序后重试。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
-      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="347"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="378"></location>
       <source>Couldn't delete</source>
       <translation>无法删除</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="352"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
       <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
       <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
       <translation>部分文件位于监视文件夹中。GameHQ 不会删除这些文件夹中的原始文件，因此未对其做任何改动。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="359"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="372"></location>
       <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
       <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
       <translation>此文件位于监视文件夹中。GameHQ 不会删除这些文件夹中的原始文件，因此未对其做任何改动。</translation>
     </message>
+    <message id="gamehq.notification.capture_failed.resume_game">
+      <location filename="src/app/App_CaptureWiring.cpp" line="204"></location>
+      <source>Resume the game and try again. No game frame is available for this screenshot.</source>
+      <translation>请继续游戏并重试。目前没有可用于截图的游戏画面。</translation>
+    </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="132"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>未添加到媒体库，磁盘上也没有该文件。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App_CaptureWiring.cpp" line="120"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>文件位于你的捕获文件夹中，但无法添加到媒体库。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="110"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="116"></location>
       <source>Saved to disk, not in library</source>
       <translation>已保存到磁盘，未加入媒体库</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="233"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="246"></location>
       <source>Capture request received</source>
       <translation>已收到捕获请求</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App_CaptureWiring.cpp" line="296"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="309"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
     </message>
@@ -2271,82 +2293,87 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation type="vanished">无法录制系统音频，因此未保存片段。请检查 Windows 声音输出设备，或在回放设置中关闭系统音频</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App_CaptureWiring.cpp" line="37"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="43"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>回放缓冲区出错，未保存任何片段</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App_CaptureWiring.cpp" line="31"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="37"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>回放缓冲区正在收集画面，请几秒后再尝试保存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_desktop_audio">
-      <location filename="src/app/App_CaptureWiring.cpp" line="43"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="49"></location>
       <source>Desktop audio could not be recorded, so no clip was saved. Check the Windows sound output or change the audio source in Replay settings</source>
       <translation>无法录制桌面音频，因此未保存片段。请检查 Windows 声音输出设备，或在回放设置中更改音频来源</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App_CaptureWiring.cpp" line="67"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="73"></location>
       <source>Replay buffer is empty</source>
       <translation>回放缓冲区为空</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_game_audio">
-      <location filename="src/app/App_CaptureWiring.cpp" line="49"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="55"></location>
       <source>Game audio could not be recorded, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings</source>
       <translation>无法录制游戏音频，因此未保存片段。请在回放设置中将音频来源设为桌面音频或关闭</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_game_audio_unsupported">
-      <location filename="src/app/App_CaptureWiring.cpp" line="55"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="61"></location>
       <source>Game audio needs Windows 11, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings</source>
       <translation>游戏音频需要 Windows 11，因此未保存片段。请在回放设置中将音频来源设为桌面音频或关闭</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App_CaptureWiring.cpp" line="61"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="67"></location>
       <source>Replay buffer is not running</source>
       <translation>回放缓冲区未运行</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App_CaptureWiring.cpp" line="25"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="31"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>回放缓冲区正在启动，请几秒后再尝试保存</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.resume_game">
+      <location filename="src/app/App_CaptureWiring.cpp" line="25"></location>
+      <source>There is no replay ready to save. Resume the game to collect footage.</source>
+      <translation>目前没有可保存的回放。请继续游戏以录制画面。</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="142"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="148"></location>
       <source>Replay failed</source>
       <translation>回放失败</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="228"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="241"></location>
       <source>Replay save requested</source>
       <translation>已请求保存回放</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="277"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="290"></location>
       <source>Replay saved</source>
       <translation>回放已保存</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="135"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="141"></location>
       <source>Screenshot failed</source>
       <translation>屏幕截图失败</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="177"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="183"></location>
       <source>Screenshot saved</source>
       <translation>屏幕截图已保存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="248"></location>
+      <location filename="src/app/App.cpp" line="252"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用默认设置启动。系统保留了之前的设置文件，因此没有丢失任何内容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="243"></location>
+      <location filename="src/app/App.cpp" line="247"></location>
       <source>Settings could not be read</source>
       <translation>无法读取设置</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="275"></location>
+      <location filename="src/app/App.cpp" line="279"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分界面声音不可用</translation>
     </message>
@@ -2831,7 +2858,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="822"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="830"></location>
       <source>Ready</source>
       <translation>就绪</translation>
     </message>
@@ -2845,48 +2872,54 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Current installation</source>
       <translation>当前安装</translation>
     </message>
+    <message id="gamehq.settings.capture.allowlist.add">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="92"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="236"></location>
+      <source>Add game executable…</source>
+      <translation>添加游戏可执行文件…</translation>
+    </message>
     <message id="gamehq.settings.capture.border.denied">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="35"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="49"></location>
       <source>Windows did not allow border suppression for this session.</source>
       <translation>Windows 未允许在本次会话中隐藏边框。</translation>
     </message>
     <message id="gamehq.settings.capture.border.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="76"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="115"></location>
       <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
       <translation>在 Windows 支持时请求隐藏边框。Windows 10 不支持此功能。</translation>
     </message>
     <message id="gamehq.settings.capture.border.hidden">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="29"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="43"></location>
       <source>Windows reports border suppression active. A visible border may still remain.</source>
       <translation>Windows 报告边框隐藏已生效。可见的边框仍可能存在。</translation>
     </message>
     <message id="gamehq.settings.capture.border.next_session">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="81"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
       <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
       <translation>在下次捕获会话中生效。更改此项不会中断当前会话和回放缓冲区。</translation>
     </message>
     <message id="gamehq.settings.capture.border.not_requested">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="38"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="52"></location>
       <source>Border suppression was not requested for this session.</source>
       <translation>本次会话未请求隐藏边框。</translation>
     </message>
     <message id="gamehq.settings.capture.border.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="74"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
       <source>Windows capture border</source>
       <translation>Windows 捕获边框</translation>
     </message>
     <message id="gamehq.settings.capture.border.toggle">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="79"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
       <source>Request border suppression</source>
       <translation>请求隐藏边框</translation>
     </message>
     <message id="gamehq.settings.capture.border.unknown">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="41"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="55"></location>
       <source>Border suppression is unconfirmed, or no capture session is active.</source>
       <translation>边框隐藏尚未确认，或没有正在进行的捕获会话。</translation>
     </message>
     <message id="gamehq.settings.capture.border.unsupported">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="32"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="46"></location>
       <source>This Windows version or capture session does not support border suppression.</source>
       <translation>此 Windows 版本或捕获会话不支持隐藏边框。</translation>
     </message>
@@ -2896,137 +2929,138 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>选择 GameHQ 保存屏幕截图的时机、方式和位置。</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="178"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
       <translation>与“通知与声音”页面上的主开关配合使用。</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="135"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="174"></location>
       <source>Feedback</source>
       <translation>反馈</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="147"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="186"></location>
       <source>Screenshot notification</source>
       <translation>屏幕截图通知</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="142"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
       <source>Screenshot sound</source>
       <translation>屏幕截图声音</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="137"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="176"></location>
       <source>After a screenshot</source>
       <translation>截图之后</translation>
     </message>
     <message id="gamehq.settings.capture.image.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="101"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="140"></location>
       <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
       <translation>PNG 为无损格式；JPEG 以少量画质换取更小的文件。</translation>
     </message>
     <message id="gamehq.settings.capture.image.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="97"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="136"></location>
       <source>Image</source>
       <translation>图片</translation>
     </message>
     <message id="gamehq.settings.capture.image.format">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="104"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
       <source>Format</source>
       <translation>格式</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="152"></location>
       <source>JPEG (smaller files)</source>
       <translation>JPEG（文件更小）</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="119"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="158"></location>
       <source>JPEG quality</source>
       <translation>JPEG 质量</translation>
     </message>
     <message id="gamehq.settings.capture.image.png">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="111"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
       <source>PNG (lossless)</source>
       <translation>PNG（无损）</translation>
     </message>
     <message id="gamehq.settings.capture.image.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="99"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="138"></location>
       <source>Format and quality</source>
       <translation>格式和质量</translation>
     </message>
     <message id="gamehq.settings.capture.mode.always">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="66"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="82"></location>
       <source>Always</source>
       <translation>始终</translation>
     </message>
     <message id="gamehq.settings.capture.mode.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="51"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="65"></location>
       <source>Control when screenshots and replay recording are allowed.</source>
       <translation>控制何时允许截图和回放录制。</translation>
     </message>
     <message id="gamehq.settings.capture.mode.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="47"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="61"></location>
       <source>Capture mode</source>
       <translation>捕获模式</translation>
     </message>
     <message id="gamehq.settings.capture.mode.label">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="54"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="68"></location>
       <source>Capture mode</source>
       <translation>捕获模式</translation>
     </message>
     <message id="gamehq.settings.capture.mode.only_in_games">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="62"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="78"></location>
       <source>Only in games</source>
       <translation>仅在游戏中</translation>
     </message>
     <message id="gamehq.settings.capture.mode.row_description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="56"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="70"></location>
       <source>Only in games is the safest default for global shortcuts.</source>
       <translation>对于全局快捷键，“仅在游戏中”是最安全的默认设置。</translation>
     </message>
     <message id="gamehq.settings.capture.mode.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="49"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="63"></location>
       <source>When to capture</source>
       <translation>何时捕获</translation>
     </message>
     <message id="gamehq.settings.capture.mode.whitelist">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="64"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="80"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="89"></location>
       <source>Whitelisted games</source>
       <translation>白名单游戏</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
       <source>Choose the clips folder</source>
       <translation>选择片段文件夹</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="244"></location>
       <source>Choose the screenshots folder</source>
       <translation>选择截图文件夹</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
       <source>Changing a location never moves or deletes existing media.</source>
       <translation>更改位置绝不会移动或删除已有的媒体文件。</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="154"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
       <source>Storage</source>
       <translation>存储</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="173"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="212"></location>
       <source>Replay clips</source>
       <translation>回放片段</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="162"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
       <source>Screenshots</source>
       <translation>屏幕截图</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="156"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="195"></location>
       <source>Where captures are saved</source>
       <translation>捕获内容的保存位置</translation>
     </message>
@@ -3061,7 +3095,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.category.input">
       <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="245"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="249"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="9"></location>
       <source>Input</source>
       <translation>输入</translation>
@@ -3404,54 +3438,54 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>常规</translation>
     </message>
     <message id="gamehq.settings.input.bindings.action_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="486"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="492"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_heading">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="527"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="533"></location>
       <source>Input assignments</source>
       <translation>输入分配</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_hint">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="536"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="542"></location>
       <source>Both slots can be active. Select one to edit.</source>
       <translation>两个槽位可以同时生效。选择其中一个进行编辑。</translation>
     </message>
     <message id="gamehq.settings.input.bindings.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="431"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="437"></location>
       <source>Primary and secondary slots are independent. Contexts can reuse the same input safely.</source>
       <translation>主槽位和副槽位相互独立。不同上下文可以安全地复用同一输入。</translation>
     </message>
     <message id="gamehq.settings.input.bindings.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="427"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="433"></location>
       <source>Bindings</source>
       <translation>绑定</translation>
     </message>
     <message id="gamehq.settings.input.bindings.fixed">
       <location filename="src/ui/qml/components/BindingCard.qml" line="250"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="561"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="578"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="567"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="584"></location>
       <source>Fixed</source>
       <translation>固定</translation>
     </message>
     <message id="gamehq.settings.input.bindings.primary">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="555"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="561"></location>
       <source>Primary</source>
       <translation>主</translation>
     </message>
     <message id="gamehq.settings.input.bindings.secondary">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="572"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="578"></location>
       <source>Secondary</source>
       <translation>副</translation>
     </message>
     <message id="gamehq.settings.input.bindings.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="429"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="435"></location>
       <source>Assignments</source>
       <translation>分配</translation>
     </message>
     <message id="gamehq.settings.input.capture.waiting">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="623"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="629"></location>
       <source>Waiting for input</source>
       <translation>等待输入</translation>
     </message>
@@ -3506,150 +3540,150 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>设备类型</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="329"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="335"></location>
       <source>Combination window</source>
       <translation>组合时间窗口</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="331"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="337"></location>
       <source>How long the first button of a combination waits for the second one.</source>
       <translation>组合中第一个按键等待第二个按键的时长。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="288"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="294"></location>
       <source>How long GameHQ waits before it decides what a button press meant.</source>
       <translation>GameHQ 在判定按钮按下操作的含义前要等待多久。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="284"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="290"></location>
       <source>Gestures</source>
       <translation>手势</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="291"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="297"></location>
       <source>Hold time</source>
       <translation>长按时长</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="293"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="299"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
       <translation>触发长按操作需要按住按键多长时间。完成的长按会占用该次单击。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="310"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="316"></location>
       <source>Multi-tap interval</source>
       <translation>连击间隔</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="312"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="318"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
       <translation>当同一按键还设置了双击或三击时，单击需要等待多长时间。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="286"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="292"></location>
       <source>Gesture timing</source>
       <translation>手势时间</translation>
     </message>
     <message id="gamehq.settings.input.hidden.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="126"></location>
       <source>Attention</source>
       <translation>注意</translation>
     </message>
     <message id="gamehq.settings.input.hidden.fix">
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="94"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="135"></location>
       <source>Fix automatically</source>
       <translation>自动修复</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
       <location filename="src/ui/qml/Main.qml" line="178"></location>
       <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="69"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="128"></location>
       <source>Controller hidden</source>
       <translation>手柄被隐藏</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="785"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="793"></location>
       <source>Auto</source>
       <translation>自动</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="796"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="804"></location>
       <source>%1 button layout changed</source>
       <translation>%1 按钮布局已更改</translation>
     </message>
     <message id="gamehq.settings.input.modern.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="768"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="776"></location>
       <source>Modern controllers</source>
       <translation>现代手柄</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="846"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="854"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <translation>了解 View 键与真正的 Share 键、探测结果、重新连接、手势和组合键。</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="844"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="852"></location>
       <source>Controller compatibility guide</source>
       <translation>手柄兼容性指南</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="773"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="781"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
       <translation>某个手柄的按键布局已更改。使用前请检查其额外按键的分配。</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="819"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="827"></location>
       <source>Legacy fallback</source>
       <translation>旧版回退</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="787"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="795"></location>
       <source>Off</source>
       <translation>关闭</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.copy">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="836"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="844"></location>
       <source>Copy report</source>
       <translation>复制报告</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="833"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="841"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
       <translation>复制匿名标识、提供程序、Share/Guide 键可用性、额外按键和布局状态 — 绝不包含序列号或完整设备路径。</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="831"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="839"></location>
       <source>Compatibility report</source>
       <translation>兼容性报告</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="800"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="808"></location>
       <source>Review buttons</source>
       <translation>检查按键</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="813"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="821"></location>
       <source>GameInput runtime</source>
       <translation>GameInput 运行时</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="780"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="788"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <translation>“自动”使用捆绑的 GameInput 运行时，并提供安全的旧版回退；“关闭”会禁用 GameInput。</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="778"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="786"></location>
       <source>Modern controller support</source>
       <translation>现代手柄支持</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="770"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="778"></location>
       <source>GameInput support</source>
       <translation>GameInput 支持</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="806"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="814"></location>
       <source>Use current layout</source>
       <translation>使用当前布局</translation>
     </message>
@@ -3680,72 +3714,72 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>此手柄</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="155"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="161"></location>
       <source>Compatibility</source>
       <translation>兼容性</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="180"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="186"></location>
       <source>Assignment conversion required</source>
       <translation>需要转换分配</translation>
     </message>
     <message id="gamehq.settings.input.relation.context">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="152"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="158"></location>
       <source>Context</source>
       <translation>上下文</translation>
     </message>
     <message id="gamehq.settings.input.relation.context_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="177"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="183"></location>
       <source>This button changes meaning</source>
       <translation>此按键的含义会发生变化</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="167"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="173"></location>
       <source>Duplicate</source>
       <translation>重复</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="192"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="198"></location>
       <source>Already assigned</source>
       <translation>已分配</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="161"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="167"></location>
       <source>In use</source>
       <translation>在使用中</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="186"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="192"></location>
       <source>Shortcut already taken</source>
       <translation>该快捷键已被占用</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_available">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="164"></location>
       <source>Not available</source>
       <translation>不可用</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_reported_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="183"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="189"></location>
       <source>Button not reported</source>
       <translation>未报告该按键</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="164"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="170"></location>
       <source>Not saved</source>
       <translation>未保存</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="189"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="195"></location>
       <source>Could not save this binding</source>
       <translation>无法保存此绑定</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="170"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="176"></location>
       <source>Shared button</source>
       <translation>共用按键</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="201"></location>
       <source>One button, several gestures</source>
       <translation>一个按键，多种手势</translation>
     </message>
@@ -3760,162 +3794,163 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>要恢复所有输入绑定吗？</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="878"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="886"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
       <translation>仅会删除当前显示的设备/配置的自定义设置。</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="876"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="884"></location>
       <source>Restore displayed bindings?</source>
       <translation>要恢复当前显示的绑定吗？</translation>
     </message>
     <message id="gamehq.settings.input.steam.capture.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="721"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="729"></location>
       <source>If Steam Input is on for this game, remove the Steam binding on this button in the game's controller layout.</source>
       <translation>如果此游戏开启了 Steam Input，请在游戏的手柄布局中移除此按钮的 Steam 绑定。</translation>
     </message>
     <message id="gamehq.settings.input.steam.capture.open">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="724"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="732"></location>
       <source>Open Steam controller layout</source>
       <translation>打开 Steam 手柄布局</translation>
     </message>
     <message id="gamehq.settings.input.steam.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="685"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="693"></location>
       <source>Steam Input may also send a GameHQ controller shortcut to a Steam game, so one press can trigger both. GameHQ never changes Steam settings.</source>
       <translation>Steam Input 也可能把 GameHQ 的手柄快捷键发送给 Steam 游戏，因此按一次可能会同时触发两者。GameHQ 从不更改 Steam 设置。</translation>
     </message>
     <message id="gamehq.settings.input.steam.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="681"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="689"></location>
       <source>Steam</source>
       <translation>Steam</translation>
     </message>
     <message id="gamehq.settings.input.steam.game.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="698"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="706"></location>
       <source>Current game</source>
       <translation>当前游戏</translation>
     </message>
     <message id="gamehq.settings.input.steam.game.none">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="703"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="711"></location>
       <source>No Steam game is in session.</source>
       <translation>没有正在运行的 Steam 游戏。</translation>
     </message>
     <message id="gamehq.settings.input.steam.game.pending">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="711"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="719"></location>
       <source>%1: Steam Input may also send this GameHQ shortcut to the game.</source>
       <translation>%1：Steam Input 也可能把此 GameHQ 快捷键发送到游戏。</translation>
     </message>
     <message id="gamehq.settings.input.steam.game.reviewed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="714"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="722"></location>
       <source>%1: reviewed. This help returns if these shortcuts change.</source>
       <translation>%1：已检查。如果这些快捷键发生变化，此帮助会再次出现。</translation>
     </message>
     <message id="gamehq.settings.input.steam.game.unbound">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="707"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="715"></location>
       <source>%1: no GameHQ shortcut uses Create / Share or PS.</source>
       <translation>%1：没有 GameHQ 快捷键使用 Create / Share 或 PS。</translation>
     </message>
     <message id="gamehq.settings.input.steam.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="733"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="741"></location>
       <source>Steam sets this button for all games. In Steam's controller settings, review the Guide Button Chord Layout.</source>
       <translation>Steam 会为所有游戏设置此按钮。请在 Steam 的控制器设置中检查“Guide Button Chord Layout”。</translation>
     </message>
     <message id="gamehq.settings.input.steam.guide.open">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="736"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="744"></location>
       <source>Open Steam controller settings</source>
       <translation>打开 Steam 控制器设置</translation>
     </message>
     <message id="gamehq.settings.input.steam.help.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="692"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="700"></location>
       <source>Explain when a Create / Share or PS shortcut may also reach the game through Steam Input.</source>
       <translation>说明 Create / Share 或 PS 上的快捷键何时可能也会通过 Steam Input 发送到游戏。</translation>
     </message>
     <message id="gamehq.settings.input.steam.help.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="690"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="698"></location>
       <source>Steam Input conflict help</source>
       <translation>Steam Input 冲突帮助</translation>
     </message>
     <message id="gamehq.settings.input.steam.review.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="747"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="755"></location>
       <source>Mark this game as reviewed, or hide this help for it.</source>
       <translation>请将此游戏标记为已检查，或为此游戏隐藏此帮助。</translation>
     </message>
     <message id="gamehq.settings.input.steam.review.done">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="752"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="760"></location>
       <source>I've reviewed it</source>
       <translation>我已检查</translation>
     </message>
     <message id="gamehq.settings.input.steam.review.hide">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="758"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="766"></location>
       <source>Don't show for this game</source>
       <translation>此游戏不再显示</translation>
     </message>
     <message id="gamehq.settings.input.steam.review.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="745"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="753"></location>
       <source>Reviewed in Steam?</source>
       <translation>已在 Steam 中检查？</translation>
     </message>
     <message id="gamehq.settings.input.steam.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="683"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="691"></location>
       <source>Steam Input</source>
       <translation>Steam Input</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="255"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="261"></location>
       <source>Adopt per-slot bindings</source>
       <translation>采用按槽位的绑定</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="257"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
       <source>Copy bindings saved for any controller in this slot to this specific controller. The originals are kept.</source>
       <translation>将该槽位中为所有手柄保存的绑定复制到此特定手柄。原有绑定会保留。</translation>
     </message>
     <message id="gamehq.settings.input.test.copy_to_controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="260"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="266"></location>
       <source>Copy to this controller</source>
       <translation>复制到此手柄</translation>
     </message>
     <message id="gamehq.settings.input.test.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="219"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="225"></location>
       <source>Profile</source>
       <translation>配置</translation>
     </message>
     <message id="gamehq.settings.input.test.identify_button">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="267"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="273"></location>
       <source>Identify a controller button</source>
       <translation>识别手柄按键</translation>
     </message>
     <message id="gamehq.settings.input.test.last_input">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="225"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="231"></location>
       <source>Last input</source>
       <translation>上次输入</translation>
     </message>
     <message id="gamehq.settings.input.test.probe_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="271"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="277"></location>
       <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
       <translation>记录接下来 3 秒内的原始按键变化 — 包括 GameHQ 无法识别的按键 — 并写入可在“高级”中复制的诊断信息。</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_displayed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="236"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="242"></location>
       <source>Restore displayed bindings</source>
       <translation>恢复当前显示的绑定</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_shared_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="243"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="249"></location>
       <source>Remove overrides for the selected device type and shared profile.</source>
       <translation>删除所选设备类型和共享配置的自定义设置。</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_specific_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="240"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="246"></location>
       <source>Remove overrides for this controller only.</source>
       <translation>仅删除此手柄的自定义设置。</translation>
     </message>
     <message id="gamehq.settings.input.test.start_probe">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="274"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="462"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="280"></location>
       <source>Start 3-second probe</source>
       <translation>开始 3 秒探测</translation>
     </message>
     <message id="gamehq.settings.input.test.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="221"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="227"></location>
       <source>Test and restore</source>
       <translation>测试和恢复</translation>
     </message>
@@ -4201,12 +4236,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>内置默认设置</translation>
     </message>
     <message id="gamehq.settings.presets.delete.confirm">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="418"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="424"></location>
       <source>"%1" will be deleted. This cannot be undone.</source>
       <translation>预设“%1”将被删除。此操作无法撤销。</translation>
     </message>
     <message id="gamehq.settings.presets.delete.in_use">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="415"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="421"></location>
       <source>"%1" is used elsewhere. Pick the preset that takes over its users.</source>
       <translation>预设“%1”仍被其他地方使用。请选择要接手其映射的预设。</translation>
     </message>
@@ -4226,7 +4261,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>此组中没有其他预设可接手其映射。请先创建一个预设。</translation>
     </message>
     <message id="gamehq.settings.presets.delete.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="412"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="418"></location>
       <source>Delete preset</source>
       <translation>删除预设</translation>
     </message>
@@ -4236,22 +4271,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>预设是可重复使用的映射配置。可以为设备或游戏分配一个预设。</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="384"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="390"></location>
       <source>Name the copy.</source>
       <translation>为副本命名。</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="382"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="388"></location>
       <source>Duplicate preset</source>
       <translation>复制预设</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate_target.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="394"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="400"></location>
       <source>Name the copy that this controller will use.</source>
       <translation>为此手柄要使用的副本命名。</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate_target.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="392"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="398"></location>
       <source>Duplicate for this controller</source>
       <translation>为此手柄复制</translation>
     </message>
@@ -4332,12 +4367,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>切换预设前，请完成或取消当前编辑。</translation>
     </message>
     <message id="gamehq.settings.presets.more.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="354"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="360"></location>
       <source>Choose what to do with "%1".</source>
       <translation>选择要对预设“%1”执行的操作。</translation>
     </message>
     <message id="gamehq.settings.presets.more.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="352"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="358"></location>
       <source>Preset actions</source>
       <translation>预设操作</translation>
     </message>
@@ -4348,17 +4383,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>名称</translation>
     </message>
     <message id="gamehq.settings.presets.new.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="364"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="370"></location>
       <source>Name the new preset. You can rename it later.</source>
       <translation>为新预设命名。之后可以重命名。</translation>
     </message>
     <message id="gamehq.settings.presets.new.suggested">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="367"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="373"></location>
       <source>My mappings</source>
       <translation>我的映射</translation>
     </message>
     <message id="gamehq.settings.presets.new.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="362"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="368"></location>
       <source>New preset</source>
       <translation>新建预设</translation>
     </message>
@@ -4433,12 +4468,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>无法保存该更改。未做任何修改。</translation>
     </message>
     <message id="gamehq.settings.presets.rename.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="375"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="381"></location>
       <source>Enter the new name for this preset.</source>
       <translation>请输入此预设的新名称。</translation>
     </message>
     <message id="gamehq.settings.presets.rename.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="373"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="379"></location>
       <source>Rename preset</source>
       <translation>重命名预设</translation>
     </message>

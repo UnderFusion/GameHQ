@@ -2,6 +2,7 @@
 #include <QString>
 
 namespace integration { class ExternalGameContext; }
+class ConfigManager;
 
 // Identifies the current foreground window and decides whether it is a
 // capturable "game" under the active capture.mode (docs/capture-engine.md).
@@ -14,10 +15,13 @@ struct ForegroundGame
     bool isGame = false;         // passes the "in a game" heuristic
     bool isFullscreen = false;   // window rect == monitor rect
     bool isExcludedProcess = false; // shell/system/GameHQ surfaces are never games
+    bool isOverlaySurface = false;
+    bool isPlaynitePauseMenu = false;
     bool hasExternalIdentity = false;
     bool viaShellFallback = false; // Xbox shell in front; target is the verified Playnite game
     QString externalSource;
     QString externalId;
+    QString externalSessionId;
     QString processName;         // e.g. "Cyberpunk2077.exe"
     QString executablePath;      // full foreground executable path, when Windows exposes it
     QString gameName;            // resolved display title (best of the sources below)
@@ -32,6 +36,9 @@ namespace GameDetector
     ForegroundGame current();
     void setExternalContext(const integration::ExternalGameContext *context);
 
-    // captureMode: only_in_games | whitelist | always (see ConfigManager).
-    bool shouldCapture(const ForegroundGame& g, const QString& captureMode);
+    bool shouldCapture(const ForegroundGame& g, const ConfigManager* config);
+    bool sameCaptureTarget(const ForegroundGame& first, const ForegroundGame& second);
+    bool windowBelongsToProcess(void* hwnd, unsigned long pid);
+    bool canRetainBehindPauseMenu(const ForegroundGame& menu, const ForegroundGame& target,
+                                  const ConfigManager* config);
 }

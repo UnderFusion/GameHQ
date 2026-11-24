@@ -14,6 +14,8 @@
 
 Triggers: DualSense Share **tap**, **Ctrl+Shift+S**, tray **Take Screenshot**. Gate: `capture.mode` (`only_in_games` default | `whitelist` | `always`). After a successful screenshot or replay save, the current-game UI state is refreshed from that committed game so a known captured title appears in the desktop and overlay `Game` section immediately. If the foreground check later lands on GameHQ, the overlay, or a mismatched game title, `CurrentGameService` can fall back to captured games whose stored executable path is still running.
 
+In Settings → Capture, select **Whitelisted games** and add the executable that owns the game window. GameHQ remembers its full path, so two programs with the same filename can be allowed separately. Remove the entry and select the new executable if a game moves. In **Only in games** mode, Playnite can also identify a windowed game by its launched process, a child process, or the selected file action inside the game's installation directory.
+
 **Known limitation**: native HDR JPEG XR output and its SDR companion pair remain separate work. The current HDR screenshot is an SDR PNG/JPEG produced through the same tone mapper as replay.
 
 ## Screenshots — HDR WGC readback

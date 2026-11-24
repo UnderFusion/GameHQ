@@ -113,7 +113,7 @@ namespace GameHQ.Playnite
 
         public override void OnGameStarted(OnGameStartedEventArgs args)
         {
-            _lifecycle.GameStarted(args.Game, args.StartedProcessId);
+            _lifecycle.GameStarted(args.Game, args.StartedProcessId, args.SourceAction);
         }
 
         public override void OnGameStopped(OnGameStoppedEventArgs args)

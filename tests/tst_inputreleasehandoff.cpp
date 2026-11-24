@@ -378,6 +378,11 @@ void InputReleaseHandoffTest::viewFallbackCanBeDisabledWithoutChangingNativeShar
 {
     QSignalSpy shots(engine.get(), &InputEngine::screenshotRequested);
     pinXInputProfile();
+    const QString displayedTarget = engine->viewBackFallbackTarget();
+    engine->m_bindingEditor->setControllerSpecific(false);
+    QVERIFY(engine->m_bindingEditor->pinnedProfile().isEmpty());
+    QVERIFY(engine->viewBackFallbackAvailable());
+    QCOMPARE(engine->viewBackFallbackTarget(), displayedTarget);
     QVERIFY(engine->viewBackFallbackEnabled());
     pad->press(ControlId::ViewBack);
     pad->release(ControlId::ViewBack);

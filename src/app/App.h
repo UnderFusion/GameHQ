@@ -44,6 +44,7 @@ public:
 
     // Returns false on fatal init failure (already logged).
     bool init();
+    void requestExit();
     void setPostUpdateValidation(bool enabled);
     void recordPostUpdateSuccess(const QString& version);
     void completePostUpdateValidation();

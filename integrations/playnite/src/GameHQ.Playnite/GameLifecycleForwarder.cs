@@ -41,10 +41,19 @@ namespace GameHQ.Playnite
             _client.Send(BuildGameMessage("playnite.game.starting", session));
         }
 
-        public void GameStarted(Game game, int? startedProcessId)
+        public void GameStarted(Game game, int? startedProcessId, GameAction sourceAction)
         {
             var session = _sessions.GetOrAdd(game.Id, _ => new Session(Guid.NewGuid(), game, _api));
-            session.StartedProcessId = startedProcessId;
+            // Folder tracking can report no PID. Send only the selected file
+            // action. GameHQ verifies its absolute path and installation root.
+            var executable = sourceAction?.Type == GameActionType.File
+                ? ExpandOptionalPath(_api, game, sourceAction.Path) : null;
+            lock (session)
+            {
+                session.StartedProcessId = startedProcessId > 0 ? startedProcessId : null;
+                session.LaunchExecutable = executable?.EndsWith(".exe", StringComparison.OrdinalIgnoreCase) == true
+                    ? executable : null;
+            }
             _client.Send(BuildGameMessage("playnite.game.started", session));
         }
 
@@ -92,6 +101,21 @@ namespace GameHQ.Playnite
             return DateTime.UtcNow.ToString("o");
         }
 
+        private static string ExpandOptionalPath(IPlayniteAPI api, Game game, string path)
+        {
+            if (string.IsNullOrWhiteSpace(path)) return null;
+            try
+            {
+                var expanded = api.ExpandGameVariables(game, path);
+                return expanded != null && expanded.Length <= 4096 ? expanded : null;
+            }
+            catch (Exception)
+            {
+                // Optional library metadata must never drop a lifecycle event.
+                return null;
+            }
+        }
+
         private static Dictionary<string, object> BuildGameFields(Session session)
         {
             var fields = new Dictionary<string, object>
@@ -105,7 +129,12 @@ namespace GameHQ.Playnite
             if (session.PlatformNames.Count > 0) fields["platformNames"] = session.PlatformNames;
             if (!string.IsNullOrEmpty(session.InstallDirectory)) fields["installDirectory"] = session.InstallDirectory;
             if (!string.IsNullOrEmpty(session.SelectedRomFile)) fields["selectedRomFile"] = session.SelectedRomFile;
-            if (session.StartedProcessId.HasValue) fields["startedProcessId"] = session.StartedProcessId.Value;
+            // A reconnect snapshot can run concurrently with GameStarted.
+            lock (session)
+            {
+                if (!string.IsNullOrEmpty(session.LaunchExecutable)) fields["launchExecutable"] = session.LaunchExecutable;
+                if (session.StartedProcessId.HasValue) fields["startedProcessId"] = session.StartedProcessId.Value;
+            }
 
             return fields;
         }
@@ -118,6 +147,7 @@ namespace GameHQ.Playnite
             public string SourceName { get; private set; }
             public List<string> PlatformNames { get; private set; }
             public string InstallDirectory { get; private set; }
+            public string LaunchExecutable { get; set; }
             public string SelectedRomFile { get; private set; }
             public int? StartedProcessId { get; set; }
 
@@ -126,7 +156,7 @@ namespace GameHQ.Playnite
                 SessionId = sessionId;
                 PlayniteGameId = game.Id;
                 Name = game.Name;
-                InstallDirectory = game.InstallDirectory;
+                InstallDirectory = ExpandOptionalPath(api, game, game.InstallDirectory);
                 SourceName = ResolveSourceName(game, api);
                 PlatformNames = ResolvePlatformNames(game, api);
                 SelectedRomFile = ResolveSelectedRomFile(game);

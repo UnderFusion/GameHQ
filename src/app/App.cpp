@@ -223,7 +223,11 @@ bool App::init()
     connect(m_tray.get(), &TrayIcon::screenshotRequested, m_screenshots.get(), [this] {
         m_screenshots->capture(CaptureRequest::create(CaptureRequest::Source::Tray));
     });
+    // Keep the Windows GUI dispatcher available to capture and encoder
+    // teardown until the worker has released its apartment.
     connect(m_tray.get(), &TrayIcon::quitRequested,
+            this, &App::requestExit, Qt::QueuedConnection);
+    connect(m_framePump.get(), &FramePumpService::shutdownFinished,
             qApp, &QCoreApplication::quit, Qt::QueuedConnection);
 
     // cpo-o06c: one owner of the process-wide GameInput focus policy, created
@@ -334,6 +338,12 @@ bool App::init()
     connect(qApp, &QGuiApplication::screenRemoved, m_controller.get(), &AppController::refreshHdrStatus);
     connect(qApp, &QGuiApplication::primaryScreenChanged, m_controller.get(), &AppController::refreshHdrStatus);
     return true;
+}
+
+void App::requestExit()
+{
+    qInfo() << "App: Exit requested for PID" << QCoreApplication::applicationPid();
+    m_framePump->shutdownForExit();
 }
 
 void App::completePostUpdateValidation()

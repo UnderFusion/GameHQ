@@ -88,6 +88,9 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
     // never resolves a winner itself, and library-only operations (create,
     // rename, an unused duplicate) never touch the runtime.
     m_mappingPresets = std::make_unique<MappingPresetModel>(db);
+    connect(m_bindingEditor.get(), &BindingEditorModel::deviceGroupChanged, this, [this] {
+        m_mappingPresets->setDeviceGroup(m_bindingEditor->deviceGroup());
+    });
     m_mappingPresets->setRuntimeRefresh([this] { refreshResolvedPreset(); });
     m_mappingPresets->setEffectiveTableProvider(
         [this](const QString& group, const QString& profile) {
@@ -157,8 +160,13 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
     // OS half of the binding transaction. The editor calls this *before* it
     // writes anything, so a chord Windows refuses can never be persisted and
     // shown as a working shortcut.
+    m_bindingEditor->setGlobalChordValidator([](const QString& chord) {
+        return HotkeyManager::parseChord(chord).rejectionReason;
+    });
     m_bindingEditor->setHotkeyApply(
         [this](const QString& actionId, int slot, const QString& chord, QString* reason) {
+            if (!m_hotkeys)
+                return true;
             if (chord.isEmpty()) {
                 // Empty chord means "release the slot" — used by the rollback
                 // path when the action had no previous keyboard binding.
@@ -222,7 +230,21 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
             this, &InputEngine::dispatchAction);
     if (m_hotkeys) {
         connect(m_hotkeys, &HotkeyManager::hotkeyTriggered, this,
-                [this](const QString& actionId) {
+                [this](const QString& actionId, int, quint32 vk, quint32 modifiers) {
+                    if (m_bindingEditor->captureActive()
+                        && m_bindingEditor->deviceGroup() == QLatin1String("keyboard")) {
+                        // The live Windows registration may be the retained
+                        // shortcut when the selected preset's chord was busy.
+                        Qt::KeyboardModifiers keys;
+                        if (modifiers & MOD_CONTROL) keys |= Qt::ControlModifier;
+                        if (modifiers & MOD_ALT) keys |= Qt::AltModifier;
+                        if (modifiers & MOD_SHIFT) keys |= Qt::ShiftModifier;
+                        const int key = vk >= VK_F1 && vk <= VK_F24
+                            ? int(Qt::Key_F1) + int(vk - VK_F1) : int(vk);
+                        const auto chord = keyboardTrigger(key, keys.toInt());
+                        m_bindingEditor->captureInput(QStringLiteral("keyboard"), chord, chord);
+                        return;
+                    }
                     dispatchAction(actionId, {}, QStringLiteral("keyboard"), {});
                 });
     }
@@ -596,37 +618,29 @@ void InputEngine::reloadBindings()
     syncMouseMonitoring();
     ModernInput::SelectiveRawHidFallback::instance().setBoundControls(
         ModernInput::persistedRawHidControls(*m_runtime, m_db));
+    syncKeyboardHotkeys();
+}
+
+void InputEngine::syncKeyboardHotkeys()
+{
     if (!m_hotkeys)
         return;
 
-    // Apply replacements before clearing removed actions, preserving the live
-    // shortcut if Windows rejects a newly requested chord.
-    QSet<QString> desiredBindings;
+    QList<HotkeyManager::Slot> desiredBindings;
     for (const auto& binding : m_runtime->effectiveBindings(QStringLiteral("keyboard"))) {
         const auto* action = ActionCatalog::find(binding.actionId);
         if (!action || action->scope != ActionCatalog::Scope::Global
             || binding.activation != QLatin1String("press"))
             continue;
-        desiredBindings.insert(binding.actionId + QLatin1Char('#')
-                               + QString::number(binding.slot));
         const auto chord = HotkeyManager::parseChord(binding.triggerCode);
         if (!chord.valid) {
             qWarning().noquote() << QStringLiteral("Hotkey: ignored invalid saved binding %1: %2")
                                       .arg(binding.triggerCode, chord.rejectionReason);
             continue;
         }
-        m_hotkeys->applyBindingSlot(binding.actionId, binding.slot,
-                                    chord.modifiers, chord.vk);
+        desiredBindings.append({binding.actionId, binding.slot, chord});
     }
-    for (const auto& action : ActionCatalog::all()) {
-        if (action.scope != ActionCatalog::Scope::Global)
-            continue;
-        for (int slot = 1; slot <= 2; ++slot) {
-            const QString key = action.id + QLatin1Char('#') + QString::number(slot);
-            if (!desiredBindings.contains(key))
-                m_hotkeys->clearBindingSlot(action.id, slot);
-        }
-    }
+    m_hotkeys->synchronize(desiredBindings);
 }
 
 bool InputEngine::needsMouseMonitoring() const
@@ -650,6 +664,13 @@ void InputEngine::syncMouseMonitoring()
 
 bool InputEngine::handleKeyPressed(int key, int modifiers, bool autoRepeat)
 {
+    // Qt reports a modifier's own key-down before the chord's main key.
+    // Keep listening so Ctrl then S produces the same draft as holding Ctrl
+    // before pressing Record.
+    if (m_bindingEditor->captureActive() && m_bindingEditor->deviceGroup() == QLatin1String("keyboard")
+        && (key == Qt::Key_Control || key == Qt::Key_Shift || key == Qt::Key_Alt
+            || key == Qt::Key_Meta || key == Qt::Key_AltGr || autoRepeat))
+        return true;
     const QString trigger = keyboardTrigger(key, modifiers);
     if (trigger.isEmpty())
         return false;
@@ -983,7 +1004,14 @@ QString InputEngine::viewBackFallbackKey(const QString& logicalProfile) const
 
 bool InputEngine::viewBackFallbackAvailable() const
 {
-    return !viewBackFallbackKey(m_bindingEditor->pinnedProfile()).isEmpty();
+    return !viewBackFallbackTarget().isEmpty();
+}
+
+QString InputEngine::viewBackFallbackTarget() const
+{
+    // Shared binding edits still show a specific controller in the selector.
+    // The fallback belongs to that controller or slot, never the shared preset.
+    return viewBackFallbackKey(m_bindingEditor->displayedControllerProfile());
 }
 
 bool InputEngine::viewBackFallbackEnabledFor(const QString& logicalProfile) const
@@ -994,18 +1022,17 @@ bool InputEngine::viewBackFallbackEnabledFor(const QString& logicalProfile) cons
 
 bool InputEngine::viewBackFallbackEnabled() const
 {
-    return viewBackFallbackEnabledFor(m_bindingEditor->pinnedProfile());
+    return viewBackFallbackEnabledFor(m_bindingEditor->displayedControllerProfile());
 }
 
 QString InputEngine::viewBackFallbackScope() const
 {
-    const QString key = viewBackFallbackKey(m_bindingEditor->pinnedProfile());
-    return key.startsWith(QLatin1String("source:")) ? key.mid(7) : m_bindingEditor->controllerName();
+    return m_bindingEditor->controllerName();
 }
 
 void InputEngine::setViewBackFallbackEnabled(bool enabled)
 {
-    const QString key = viewBackFallbackKey(m_bindingEditor->pinnedProfile());
+    const QString key = viewBackFallbackTarget();
     if (key.isEmpty() || viewBackFallbackEnabled() == enabled)
         return;
     QVariantMap policies = m_viewBackFallbackPolicies;
@@ -1013,8 +1040,10 @@ void InputEngine::setViewBackFallbackEnabled(bool enabled)
         policies.remove(key);
     else
         policies.insert(key, false);
+    const QVariantMap previous = m_viewBackFallbackPolicies;
     m_config->setValue(ConfigKeys::InputViewBackCaptureFallback, policies);
-    m_config->save();
+    if (!m_config->save())
+        m_config->setValue(ConfigKeys::InputViewBackCaptureFallback, previous);
 }
 
 void InputEngine::applyViewBackFallbackPolicies()
@@ -1672,6 +1701,8 @@ void InputEngine::setControllerWarning(const QString& text, bool fixAvailable)
 
 void InputEngine::startButtonProbe()
 {
+    if (m_probeRunning)
+        return;
     InputDiagnostics::instance().startProbe();
     ModernInput::SelectiveRawHidFallback::instance().beginProbe();
     if (m_sonyPad)

@@ -10,6 +10,8 @@ FocusScope {
     id: root
 
     property var model: null   // BindingEditorModel
+    property bool probeRunning: false
+    signal probeRequested()
 
     visible: model && model.editorOpen
     opacity: visible ? 1 : 0
@@ -20,6 +22,8 @@ FocusScope {
     readonly property string noticeKind: model ? model.editorNoticeKind : "none"
     readonly property bool noticeDanger: noticeKind === "hard_conflict"
                                           || noticeKind === "invalid_pattern"
+                                          || noticeKind === "hotkey_unavailable"
+                                          || noticeKind === "persistence_error"
     readonly property bool noticeWarning: noticeKind === "unsupported_input"
                                            || noticeKind === "conversion_required"
 
@@ -450,6 +454,15 @@ FocusScope {
                     }
                 }
 
+                AccentButton {
+                    visible: root.capturing && root.model.deviceGroup === "controller"
+                    enabled: !root.probeRunning
+                    quiet: true
+                    //% "Start 3-second probe"
+                    label: qsTrId("gamehq.settings.input.test.start_probe")
+                    onClicked: root.probeRequested()
+                }
+
                 ColumnLayout {
                     Layout.fillWidth: true
                     spacing: Theme.s8
@@ -503,7 +516,9 @@ FocusScope {
                             id: lockedGestureText
                             anchors.centerIn: parent
                             //% "Press · fixed for combinations"
-                            text: qsTrId("gamehq.input.assignment.combination_gesture")
+                            text: root.combination ? qsTrId("gamehq.input.assignment.combination_gesture")
+                                                   //% "Press"
+                                                   : qsTrId("gamehq.input.gesture.press")
                             color: Theme.textMuted
                             font.family: Theme.fontFamily
                             font.pixelSize: Theme.fontCaption

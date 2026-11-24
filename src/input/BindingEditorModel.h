@@ -81,6 +81,7 @@ public:
                        std::function<void()> reloadRuntime, QObject* parent = nullptr);
 
     void setHotkeyApply(HotkeyApply apply);
+    void setGlobalChordValidator(std::function<QString(const QString&)> validator);
     void setPersistRow(PersistRow persist);
 
     // ---------------------------------------------------------------- cpo-p06
@@ -139,6 +140,7 @@ public:
     void setControllerSpecific(bool specific);
     bool controllerSpecificAvailable() const { return !m_controllerFingerprint.isEmpty(); }
     QString controllerName() const { return m_controllerName; }
+    QString displayedControllerProfile() const { return m_controllerFingerprint; }
     bool captureActive() const { return m_captureActive; }
     QString capturePrompt() const { return m_capturePrompt; }
     bool conflictPending() const { return m_conflictPending; }
@@ -182,8 +184,7 @@ public:
     QString editorGestureKind() const { return m_editorGesture.activationCode(); }
     int editorTapCount() const { return m_editorGesture.tapCount; }
     int editorHoldMs() const { return m_editorGesture.holdMs; }
-    // Combinations are press-only in v1, so the gesture picker is fixed there.
-    bool editorGestureLocked() const { return m_editorTriggerKind == QLatin1String("combination"); }
+    bool editorGestureLocked() const;
     bool editorCombinationAvailable() const { return m_deviceGroup == QLatin1String("controller"); }
     bool editorCanSave() const;
     QString editorNotice() const { return m_editorNotice; }
@@ -303,6 +304,7 @@ private:
     BindingRuntime* m_runtime = nullptr;
     std::function<void()> m_reloadRuntime;
     HotkeyApply m_hotkeyApply;
+    std::function<QString(const QString&)> m_validateGlobalChord;
     PersistRow m_persistRow;
     PresetSink m_presetSink;
     EditSourceProvider m_editSourceProvider;

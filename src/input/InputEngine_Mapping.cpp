@@ -380,6 +380,8 @@ void InputEngine::refreshResolvedPreset()
         m_mappingChains.insert(mappingChainKey(plan.group, plan.profile), state);
     }
     m_runtime->refreshPatternDiagnostics();
+    if (routeChanged(QStringLiteral("keyboard"), QString()))
+        syncKeyboardHotkeys();
     publishMappingDiagnostics();
     m_mappingSwitchRunning = false;
     emit mappingTablesChanged();

@@ -11,6 +11,7 @@
 #include <QSignalSpy>
 #include <QTemporaryDir>
 #include <QtTest>
+#include <algorithm>
 
 using namespace ModernInput;
 
@@ -227,6 +228,50 @@ private slots:
         QTest::qWait(350);
         QCOMPARE(replay.count(), 1);
         QCOMPARE(screenshots.count(), 1);
+    }
+
+    void sharedDoubleViewOnAnonymousXboxDoesNotDispatchShareDefaults()
+    {
+        const QString action = QStringLiteral("global.save_replay");
+        auto* editor = engine->m_bindingEditor.get();
+        editor->setDeviceGroup(QStringLiteral("controller"));
+        editor->setControllerSpecific(false);
+        pad->reconnect(1);
+        editor->openAssignmentEditor(action, 1);
+        editor->beginTriggerCapture(1);
+        pad->secondEdge(true);
+        pad->secondEdge(false);
+        editor->setEditorGesture(QStringLiteral("tap"), 2, 0);
+        editor->saveAssignment();
+        QVERIFY2(!editor->editorOpen(), qPrintable(editor->editorNotice()));
+        const auto preset = db->mappingAssignment("controller", "group_default", {}).presetId;
+        QVERIFY(!preset.isEmpty());
+        const auto rows = db->mappingPresetRows(preset);
+        QVERIFY(std::any_of(rows.cbegin(), rows.cend(), [&](const auto& row) {
+            return row.actionId == action && row.slot == 1 && row.triggerCode == ControlId::ViewBack
+                && row.activation == QStringLiteral("tap") && row.tapCount == 2;
+        }));
+        QSignalSpy replays(engine.get(), &InputEngine::replayRequested);
+        QSignalSpy screenshots(engine.get(), &InputEngine::screenshotRequested);
+        QSignalSpy overlays(engine.get(), &InputEngine::overlayToggleRequested);
+        // Slot 1 has no hardware identity. Drive the same XInput publisher
+        // as an anonymous controller in the shared settings view.
+        for (int round = 1; round <= 2; ++round) {
+            pad->reconnect(1);
+            pad->secondEdge(true);
+            pad->secondEdge(false);
+            QTest::qWait(350);
+            QCOMPARE(replays.count(), round - 1);
+            for (int tap = 0; tap < 2; ++tap) {
+                pad->secondEdge(true);
+                pad->secondEdge(false);
+            }
+            QTRY_COMPARE_WITH_TIMEOUT(replays.count(), round, 700);
+            QTest::qWait(350);
+            QCOMPARE(screenshots.count(), 0);
+            QCOMPARE(overlays.count(), 0);
+            pad->lateRelease(1);
+        }
     }
 
     // cpo-c04: route and gesture lifetimes across a provider that disappears

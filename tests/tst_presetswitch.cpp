@@ -4,6 +4,8 @@
 #include "input/WinMMDevice.h"
 #include "input/DualSenseDevice.h"
 #include "input/BindingEditorModel.h"
+#include "input/HotkeyManager.h"
+#include "input/MappingPresetModel.h"
 #include "gameinput/GameInputRouter.h"
 #include "input/BindingRuntime.h"
 #include "input/BindingResolver.h"
@@ -16,6 +18,9 @@
 #include <QSignalSpy>
 #include <QTemporaryDir>
 #include <QtTest>
+#include <algorithm>
+#include <thread>
+#include <windows.h>
 
 using namespace ModernInput;
 
@@ -129,6 +134,7 @@ private slots:
     void firstRawHidPressSeesItsAssignedPreset();
     void knownRoutePressDoesNotRePlan();
     void editorEditAdoptsTheEffectiveTableIntoAPreset();
+    void keyboardEditorPersistsRebindAndRemovalAcrossRestart();
 
 private:
     BindingRuntime& rt() { return *engine->m_runtime; }
@@ -237,6 +243,83 @@ void PresetSwitchTest::cleanup()
     db.reset();
     config.reset();
     dir.reset();
+}
+
+void PresetSwitchTest::keyboardEditorPersistsRebindAndRemovalAcrossRestart()
+{
+    const QString action = QStringLiteral("global.screenshot");
+    const QString text = QStringLiteral("Ctrl+Shift+F23");
+    const auto chord = HotkeyManager::parseChord(text);
+    const auto available = [&] {
+        bool free = false;
+        std::thread peer([&] {
+            free = RegisterHotKey(nullptr, 1, chord.modifiers, chord.vk);
+            if (free)
+                UnregisterHotKey(nullptr, 1);
+        });
+        peer.join();
+        return free;
+    };
+    if (!available())
+        QSKIP("Test chord already in use");
+    engine.reset();
+    const auto previousController = db->mappingAssignment(kController, "group_default", {}).presetId;
+    {
+        HotkeyManager manager;
+        InputEngine first(config.get(), db.get(), &manager);
+        first.reloadBindings();
+        auto* editor = first.m_bindingEditor.get();
+        editor->setDeviceGroup(kKeyboard);
+        QCOMPARE(first.mappingPresetsModel()->deviceGroup(), kKeyboard);
+        editor->openAssignmentEditor(action, 1);
+        QVERIFY(editor->editorGestureLocked());
+        editor->beginTriggerCapture(1);
+        QVERIFY(first.handleKeyPressed(Qt::Key_Control, Qt::ControlModifier, false));
+        QVERIFY(first.handleKeyPressed(Qt::Key_Shift, Qt::ControlModifier | Qt::ShiftModifier, false));
+        QVERIFY(editor->captureActive());
+        QVERIFY(first.handleKeyPressed(Qt::Key_F23, Qt::ControlModifier | Qt::ShiftModifier, false));
+        QCOMPARE(editor->editorFirstControlLabel(), text);
+        editor->saveAssignment();
+        QVERIFY2(!editor->editorOpen(), qPrintable(editor->editorNotice()));
+        QVERIFY(!available());
+        QCOMPARE(db->mappingAssignment(kController, "group_default", {}).presetId, previousController);
+        QVERIFY(!db->mappingAssignment(kKeyboard, "group_default", {}).presetId.isEmpty());
+    }
+    QVERIFY(available());
+    {
+        HotkeyManager manager;
+        InputEngine restarted(config.get(), db.get(), &manager);
+        restarted.reloadBindings();
+        QVERIFY(!available());
+        auto* editor = restarted.m_bindingEditor.get();
+        editor->setDeviceGroup(kKeyboard);
+        editor->openAssignmentEditor(action, 1);
+        QCOMPARE(editor->editorFirstControlLabel(), text);
+        // If the OS retained an earlier registration after a collision, learn
+        // the delivered chord, even though the selected preset describes F23.
+        editor->beginTriggerCapture(1);
+        manager.hotkeyTriggered(action, 1, VK_F9, MOD_CONTROL | MOD_NOREPEAT);
+        QCOMPARE(editor->editorFirstControlLabel(), QStringLiteral("Ctrl+F9"));
+        editor->beginTriggerCapture(1);
+        QVERIFY(restarted.handleKeyPressed(Qt::Key_F12, {}, false));
+        editor->saveAssignment();
+        QVERIFY(editor->editorOpen());
+        QVERIFY(editor->editorNotice().contains("F12"));
+        QVERIFY(!available()); // rejected draft leaves the previous registration live
+        editor->closeAssignmentEditor();
+        editor->clearBinding(action, 1);
+        QVERIFY(available());
+    }
+    {
+        HotkeyManager manager;
+        InputEngine restarted(config.get(), db.get(), &manager);
+        restarted.reloadBindings();
+        QVERIFY(available());
+        const auto rows = restarted.m_runtime->effectiveBindings(kKeyboard);
+        QVERIFY(std::none_of(rows.cbegin(), rows.cend(), [&](const auto& row) {
+            return row.actionId == action && row.slot == 1;
+        }));
+    }
 }
 
 // A hold that began under table A never fires once B is selected, and the

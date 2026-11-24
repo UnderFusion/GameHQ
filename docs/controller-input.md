@@ -13,9 +13,20 @@ Raw Input / HID for Sony pads (vendor 0x054C): DualSense `0x0CE6`, DualSense Edg
 Eligible XInput sources without a dedicated Share button retain the existing
 Back/View-to-Capture fallback by default. In Settings > Input, **Use Back/View as
 Share** can disable just that conversion for the selected controller source.
+The switch is also available under **All controllers**. Its description names
+the controller it affects. If double-tapping View opens the overlay, check this
+switch and the double-tap assignment under Share.
 Native Sony Share, explicit View/Back bindings and other source choices remain
 independent. Changes cancel any in-progress gesture from that source and require
 release before a new press, preventing a delayed capture after toggling.
+
+For an extra controller button, open its assignment, select **Record** or
+**Change**, then **Start 3-second probe** and press the button. A distinct gamepad
+input can be assigned directly. A button that sends the same input as another
+button will trigger the same assignment. The Ultimate 2 Wireless manual labels
+the three central controls Square, Star and Profile and describes onboard
+functions for them. A separate Windows input for each depends on the device
+mode and firmware. [8BitDo controller manual](https://manual.8bitdo.com/Manuals/ultimate-2-wireless-controller/file/Ultimate-2-Wireless-Controller-EN.pdf)
 
 `input.view_back_capture_fallback` stores choices by a proven durable controller
 identity when available. Unidentifiable XInput devices use an explicitly labelled

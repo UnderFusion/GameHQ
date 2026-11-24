@@ -102,8 +102,14 @@ SettingsPage {
             description: qsTrId("gamehq.settings.input.view_fallback.description").arg(input.viewBackFallbackScope)
             SettingsToggle {
                 id: viewFallbackToggle
+                property string pressedTarget: ""
                 defaultValue: input.viewBackFallbackEnabled
-                onClicked: input.viewBackFallbackEnabled = checked
+                onPressed: pressedTarget = input.viewBackFallbackTarget
+                onClicked: {
+                    if (pressedTarget.length > 0 && pressedTarget === input.viewBackFallbackTarget)
+                        input.viewBackFallbackEnabled = checked
+                    checked = input.viewBackFallbackEnabled
+                }
                 Connections {
                     target: input
                     function onViewBackFallbackChanged() {
@@ -648,6 +654,8 @@ SettingsPage {
         anchors.fill: parent
         z: 205
         model: editor
+        probeRunning: input.probeRunning
+        onProbeRequested: input.startButtonProbe()
     }
 
     BindingConflictDialog {

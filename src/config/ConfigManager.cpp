@@ -6,6 +6,7 @@
 
 #include <QDateTime>
 #include <QFile>
+#include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonValue>
@@ -22,6 +23,7 @@ QJsonObject ConfigManager::defaults()
 {
     return {
         { ConfigKeys::CaptureMode,             "only_in_games" }, // only_in_games | whitelist | always
+        { ConfigKeys::CaptureAllowedExecutables, QJsonArray{} },
         { ConfigKeys::CaptureHideBorder,       true },           // next WGC session only
         { ConfigKeys::CaptureScreenshotFormat, "jpg" },           // jpg | png
         { ConfigKeys::CaptureJpegQuality,      90 },              // 1-100, only used when format=jpg
@@ -200,6 +202,31 @@ bool ConfigManager::hasExplicitValue(const QString& key) const
 bool ConfigManager::preservesExplicitDefault(const QString& key)
 {
     return key == ConfigKeys::UiLanguage;
+}
+
+bool ConfigManager::setCaptureExecutableAllowed(const QString& path, bool allowed)
+{
+    const QStringList before = value(ConfigKeys::CaptureAllowedExecutables).toStringList();
+    QStringList after = before;
+    if (allowed) {
+        const QFileInfo file(path);
+        const QString canonical = file.canonicalFilePath();
+        if (!file.isAbsolute() || !file.isFile() || canonical.isEmpty()
+            || !canonical.endsWith(QStringLiteral(".exe"), Qt::CaseInsensitive))
+            return false;
+        if (!after.contains(canonical, Qt::CaseInsensitive))
+            after.append(canonical);
+    } else {
+        // A removed or uninstalled executable must still be removable from the list.
+        after.removeAll(path);
+    }
+    if (after == before)
+        return true;
+    setValue(ConfigKeys::CaptureAllowedExecutables, after);
+    if (save())
+        return true;
+    setValue(ConfigKeys::CaptureAllowedExecutables, before);
+    return false;
 }
 
 void ConfigManager::setValue(const QString& key, const QVariant& value)

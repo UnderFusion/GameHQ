@@ -11,6 +11,20 @@ SettingsPage {
     //% "Choose when, how, and where GameHQ saves screenshots."
     pageDescription: qsTrId("gamehq.settings.capture.description")
     property string locationError: ""
+    property var allowedExecutables: []
+    function refreshAllowedExecutables() {
+        allowedExecutables = app.config("capture.allowed_executables", [])
+    }
+    Component.onCompleted: refreshAllowedExecutables()
+    Connections {
+        target: app
+        function onConfigChanged(key, value) {
+            if (key === "capture.allowed_executables") root.refreshAllowedExecutables()
+        }
+        function onConfigGroupReset(prefix) {
+            if (prefix.length === 0 || prefix === "capture") root.refreshAllowedExecutables()
+        }
+    }
 
     function finishLocationChange(error) {
         locationError = error
@@ -55,6 +69,8 @@ SettingsPage {
             //% "Only in games is the safest default for global shortcuts."
             description: qsTrId("gamehq.settings.capture.mode.row_description")
             SettingsCombo {
+                id: captureMode
+                valueRole: "value"
                 configKey: "capture.mode"
                 defaultValue: "only_in_games"
                 options: [
@@ -65,6 +81,29 @@ SettingsPage {
                     //% "Always"
                     { label: qsTrId("gamehq.settings.capture.mode.always"), value: "always" }
                 ]
+            }
+        }
+        SettingsRow {
+            visible: captureMode.currentValue === "whitelist"
+            //% "Whitelisted games"
+            label: qsTrId("gamehq.settings.capture.mode.whitelist")
+            AccentButton {
+                //% "Add game executable…"
+                label: qsTrId("gamehq.settings.capture.allowlist.add")
+                onClicked: gameExecutableDialog.open()
+            }
+        }
+        Repeater {
+            model: captureMode.currentValue === "whitelist" ? root.allowedExecutables : []
+            delegate: SettingsRow {
+                required property string modelData
+                label: modelData.split("/").pop()
+                description: modelData
+                AccentButton {
+                    //% "Remove"
+                    label: qsTrId("gamehq.action.remove")
+                    onClicked: sounds.play(app.removeCaptureExecutable(modelData) ? "confirm" : "error")
+                }
             }
         }
     }
@@ -189,6 +228,14 @@ SettingsPage {
             wrapMode: Text.WordWrap
             Layout.fillWidth: true
         }
+    }
+
+    FileDialog {
+        id: gameExecutableDialog
+        //% "Add game executable…"
+        title: qsTrId("gamehq.settings.capture.allowlist.add")
+        nameFilters: ["*.exe"]
+        onAccepted: sounds.play(app.addCaptureExecutable(selectedFile) ? "confirm" : "error")
     }
 
     FolderDialog {

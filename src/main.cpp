@@ -396,7 +396,7 @@ int main(int argc, char* argv[])
             // enter the Qt event loop, then take the same orderly teardown path as the
             // tray Exit action. The session marker and log prove destruction ran.
             if (smokeTest)
-                QTimer::singleShot(2000, &qtApp, &QCoreApplication::quit);
+                QTimer::singleShot(2000, &app, &App::requestExit);
 
             if (postUpdateValidation) {
                 QTimer::singleShot(7000, &app, [&app, postUpdateVersion, postUpdateToken] {

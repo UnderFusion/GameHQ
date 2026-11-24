@@ -991,9 +991,11 @@ bool SegmentRecorder::hasClosedMedia() const
 
 void SegmentRecorder::end()
 {
-    discardPrep();
+    // A hardware encoder may have only one available session. Release the
+    // active slot before joining the thread preparing its replacement.
     if (m_active || m_writer)
         closeSegment();
+    discardPrep();
     if (m_staging) { m_staging->Release(); m_staging = nullptr; m_stgW = m_stgH = 0; }
     releaseGpuScaler();
     m_ctx = nullptr;

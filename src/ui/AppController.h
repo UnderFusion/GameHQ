@@ -163,6 +163,8 @@ public:
     Q_INVOKABLE void addWatchedFolder(const QUrl& folderUrl);
     Q_INVOKABLE void removeWatchedFolder(const QString& path);
     Q_INVOKABLE QString setCaptureRoot(const QString& kind, const QUrl& folderUrl);
+    Q_INVOKABLE bool addCaptureExecutable(const QUrl& file);
+    Q_INVOKABLE bool removeCaptureExecutable(const QString& path);
     Q_INVOKABLE QString resetCaptureRoot(const QString& kind);
     Q_INVOKABLE void openDataFolder();
     Q_INVOKABLE void openLogsFolder();

@@ -89,6 +89,8 @@ bool ExternalGameContext::parseSession(const QString &sourceId, const QJsonObjec
                           session.sourceName, error)
         || !boundedString(object, QStringLiteral("installDirectory"), 4096,
                           session.installDirectory, error)
+        || !boundedString(object, QStringLiteral("launchExecutable"), 4096,
+                          session.launchExecutable, error)
         || !boundedString(object, QStringLiteral("selectedRomFile"), 4096,
                           session.selectedRomFile, error)) {
         return false;
@@ -302,6 +304,24 @@ ExternalGameMatch ExternalGameContext::matchForeground(
                 return { MatchConfidence::DescendantProcess, session };
             }
         }
+    }
+    if (foregroundPid && executablePath.endsWith(QStringLiteral(".exe"), Qt::CaseInsensitive)) {
+        const QString path = QDir::cleanPath(QDir::fromNativeSeparators(executablePath));
+        const ExternalGameSession* candidate = nullptr;
+        for (const ExternalGameSession &session : snapshot) {
+            if (session.phase == QStringLiteral("started") && !session.launchExecutable.isEmpty()
+                && path.compare(QDir::cleanPath(QDir::fromNativeSeparators(session.launchExecutable)),
+                                Qt::CaseInsensitive) == 0
+                && pathInside(path, session.installDirectory)) {
+                // An executable can have multiple running instances. A known
+                // conflicting PID or a second session makes the path ambiguous.
+                if (session.startedProcessId || candidate)
+                    return {};
+                candidate = &session;
+            }
+        }
+        if (candidate)
+            return { MatchConfidence::LaunchExecutable, *candidate };
     }
     if (alreadyGame) {
         for (const ExternalGameSession &session : snapshot) {

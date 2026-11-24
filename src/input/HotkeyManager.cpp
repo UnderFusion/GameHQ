@@ -1,8 +1,12 @@
 #include "input/HotkeyManager.h"
+#include "localization/NativeText.h"
 
 #include <QCoreApplication>
 #include <QDebug>
 #include <QStringList>
+#include <QSet>
+#include <algorithm>
+#include <utility>
 
 #include <windows.h>
 
@@ -26,8 +30,10 @@ HotkeyManager::ParsedChord HotkeyManager::parseChord(const QString& text)
 {
     ParsedChord result;
     const QStringList parts = text.split(QLatin1Char('+'), Qt::SkipEmptyParts);
-    if (parts.size() < 2) {
-        result.rejectionReason = QStringLiteral("A global shortcut needs at least one modifier plus a key.");
+    if (parts.isEmpty()) {
+        result.rejectionReason = NativeText::get(
+            //% "Choose a shortcut key."
+            QT_TRID_NOOP("gamehq.input.shortcut.choose_key"), "Choose a shortcut key.");
         return result;
     }
 
@@ -52,16 +58,12 @@ HotkeyManager::ParsedChord HotkeyManager::parseChord(const QString& text)
         result.rejectionReason = QStringLiteral("The Windows key is reserved for OS shortcuts.");
         return result;
     }
-    if ((modifiers & ~static_cast<quint32>(MOD_NOREPEAT)) == 0) {
-        result.rejectionReason = QStringLiteral("A global shortcut needs at least one modifier plus a key.");
-        return result;
-    }
-
     const QString keyPart = parts.last().trimmed().toUpper();
     quint32 vk = 0;
     if (keyPart.size() == 1) {
         const QChar c = keyPart.at(0);
-        if (c.isLetterOrNumber())
+        if ((c >= QLatin1Char('A') && c <= QLatin1Char('Z'))
+            || (c >= QLatin1Char('0') && c <= QLatin1Char('9')))
             vk = c.toLatin1();
     } else if (keyPart.size() >= 2 && keyPart.size() <= 3 && keyPart.at(0) == QLatin1Char('F')) {
         bool ok = false;
@@ -71,6 +73,20 @@ HotkeyManager::ParsedChord HotkeyManager::parseChord(const QString& text)
     }
     if (vk == 0) {
         result.rejectionReason = QStringLiteral("Unsupported key \"%1\".").arg(parts.last());
+        return result;
+    }
+    if (vk == VK_F12) {
+        result.rejectionReason = NativeText::get(
+            //% "Windows reserves F12 for debugging. Try F10 or Ctrl+Shift+F10."
+            QT_TRID_NOOP("gamehq.input.shortcut.reserved_f12"),
+            "Windows reserves F12 for debugging. Try F10 or Ctrl+Shift+F10.");
+        return result;
+    }
+    if (modifiers == MOD_NOREPEAT && (vk < VK_F1 || vk > VK_F24)) {
+        result.rejectionReason = NativeText::get(
+            //% "Use Ctrl, Shift or Alt with a letter or digit, or choose a function key."
+            QT_TRID_NOOP("gamehq.input.shortcut.modifier_required"),
+            "Use Ctrl, Shift or Alt with a letter or digit, or choose a function key.");
         return result;
     }
 
@@ -117,6 +133,7 @@ bool HotkeyManager::applyBindingSlot(const QString& actionId, int slot,
 
     Binding& b = m_bindings[bindingKey];
     b.actionId = actionId;
+    b.slot = slot;
     b.modifiers = modifiers;
     b.vk = vk;
     b.hotkeyId = newId;
@@ -124,6 +141,45 @@ bool HotkeyManager::applyBindingSlot(const QString& actionId, int slot,
     m_idToAction[newId] = bindingKey;
     qInfo().noquote() << QStringLiteral("Hotkey: rebound action \"%1\"").arg(actionId);
     return true;
+}
+
+void HotkeyManager::synchronize(const QList<Slot>& slotsToInstall)
+{
+    // A chord can move between slots or actions on a preset switch. Transfer
+    // its registered id so Windows never needs to grant the same chord twice.
+    auto previous = std::move(m_bindings);
+    m_bindings.clear();
+    m_idToAction.clear();
+    QSet<QString> failedSlots;
+    for (const Slot& desired : slotsToInstall) {
+        const auto& chord = desired.chord;
+        const QString key = desired.actionId + QLatin1Char('#') + QString::number(desired.slot);
+        auto it = std::find_if(previous.begin(), previous.end(), [&](const Binding& b) {
+            return b.modifiers == chord.modifiers && b.vk == chord.vk;
+        });
+        if (it == previous.end()) {
+            if (!applyBindingSlot(desired.actionId, desired.slot, chord.modifiers, chord.vk))
+                failedSlots.insert(key);
+            continue;
+        }
+        Binding binding = it.value();
+        previous.erase(it);
+        binding.actionId = desired.actionId;
+        binding.slot = desired.slot;
+        m_bindings.insert(key, binding);
+        m_idToAction.insert(binding.hotkeyId, key);
+    }
+    // Resolve transfers before retaining a fallback: another slot in the
+    // selected preset may have explicitly requested this registration.
+    for (auto it = previous.cbegin(); it != previous.cend(); ++it) {
+        if (!failedSlots.contains(it.key())) {
+            UnregisterHotKey(nullptr, it->hotkeyId);
+            continue;
+        }
+        m_bindings.insert(it.key(), it.value());
+        m_idToAction.insert(it->hotkeyId, it.key());
+        qWarning().noquote() << "Hotkey: keeping the previous shortcut for" << it.key();
+    }
 }
 
 bool HotkeyManager::clearBinding(const QString& actionId)
@@ -158,7 +214,7 @@ bool HotkeyManager::nativeEventFilter(const QByteArray& eventType, void* message
                                       qintptr* result)
 {
     Q_UNUSED(result);
-    if (eventType != "windows_generic_MSG")
+    if (eventType != "windows_generic_MSG" && eventType != "windows_dispatcher_MSG")
         return false;
     const MSG* msg = static_cast<MSG*>(message);
     if (msg->message != WM_HOTKEY)
@@ -184,11 +240,14 @@ void HotkeyManager::dispatch(const QString& bindingKey)
     // Copy, not reference: a synchronous slot on the signals below may rebind
     // or clear this very binding, invalidating `it` and anything it points at.
     const QString actionId = it->actionId;
+    const int slot = it->slot;
+    const quint32 vk = it->vk;
+    const quint32 modifiers = it->modifiers;
     if (actionId == QLatin1String("global.toggle_overlay"))
         emit overlayTogglePressed();
     else if (actionId == QLatin1String("global.screenshot"))
         emit screenshotPressed();
     else if (actionId == QLatin1String("global.save_replay"))
         emit saveReplayPressed();
-    emit hotkeyTriggered(actionId);
+    emit hotkeyTriggered(actionId, slot, vk, modifiers);
 }

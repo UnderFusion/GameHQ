@@ -146,6 +146,19 @@ void FramePumpWorker::onThreadFinished()
         RoUninitialize();
         m_apartmentReady = false;
     }
+    qInfo() << "FramePump: worker shutdown complete";
+}
+
+void FramePumpWorker::shutdownForExit()
+{
+    stopPump();
+    if (!m_exportBusy) {
+        thread()->quit();
+        return;
+    }
+    // The exporter owns its snapshot independently. Keep its completion
+    // callback alive to publish the result before retiring the thread.
+    connect(this, &FramePumpWorker::saveRequestFinished, this, [this] { thread()->quit(); });
 }
 
 void FramePumpWorker::finishExport()
@@ -321,7 +334,7 @@ bool FramePumpWorker::createDevices(Pipeline* pipe)
 }
 
 // 3. HWND → GraphicsCaptureItem via the interop activation factory.
-bool FramePumpWorker::createCaptureItem(Pipeline* pipe, void* hwndPtr, int* outW, int* outH)
+bool FramePumpWorker::createCaptureItem(Pipeline* pipe, void* hwndPtr, unsigned long pid, int* outW, int* outH)
 {
     IGraphicsCaptureItemInterop* interop = nullptr;
     HSTRING itemClass = nullptr;
@@ -332,10 +345,17 @@ bool FramePumpWorker::createCaptureItem(Pipeline* pipe, void* hwndPtr, int* outW
     if (FAILED(hr) || !interop)
         return failStep("RoGetActivationFactory(interop)", hr);
 
-    hr = interop->CreateForWindow(static_cast<HWND>(hwndPtr), IID_IGraphicsCaptureItem,
-                                  reinterpret_cast<void**>(&pipe->item));
+    // Device initialization and WinRT activation can outlive the original HWND.
+    // Check on both sides of item creation, before any capture session starts.
+    if (GameDetector::windowBelongsToProcess(hwndPtr, pid))
+        hr = interop->CreateForWindow(static_cast<HWND>(hwndPtr), IID_IGraphicsCaptureItem,
+                                      reinterpret_cast<void**>(&pipe->item));
+    else
+        hr = E_HANDLE;
     interop->Release();
     if (FAILED(hr) || !pipe->item) return failStep("CreateForWindow", hr);
+    if (!GameDetector::windowBelongsToProcess(hwndPtr, pid))
+        return failStep("capture window owner changed", E_HANDLE);
 
     WgcSizeInt32 size{ 0, 0 };
     hr = pipe->item->get_Size(&size);
@@ -587,8 +607,8 @@ void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned
                                 const QString& executablePath, int audioSource,
                                 bool hdrExperimentalEnabled, CaptureBorder::SessionPolicy borderPolicy)
 {
-    if (generation <= m_pumpGeneration)
-        return; // obsolete or duplicate command
+    if (generation <= m_pumpGeneration || thread()->isInterruptionRequested())
+        return;
     stopPump();
     m_pumpGeneration = generation;
     m_bufferState = ReplayBufferState::Starting;
@@ -605,7 +625,7 @@ void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned
     }
 
     HWND hwnd = reinterpret_cast<HWND>(static_cast<quintptr>(hwndVal));
-    if (!hwnd || !IsWindow(hwnd)) {
+    if (!GameDetector::windowBelongsToProcess(hwnd, pid)) {
         failStep("capture window", E_HANDLE);
         return;
     }
@@ -617,7 +637,7 @@ void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned
     pipe->executablePath = executablePath;
 
     int srcW = 0, srcH = 0;
-    if (!createDevices(pipe) || !createCaptureItem(pipe, hwnd, &srcW, &srcH))
+    if (!createDevices(pipe) || !createCaptureItem(pipe, hwnd, pid, &srcW, &srcH))
         return;
     if (srcW < 2 || srcH < 2) {
         failStep("capture size", E_INVALIDARG);
@@ -715,11 +735,13 @@ void FramePumpWorker::stopPump()
 
 void FramePumpWorker::poll()
 {
-    if (!m_pipe || !m_pipe->framePool)
+    if (!m_pipe || !m_pipe->framePool || thread()->isInterruptionRequested())
         return;
 
     if (m_pipe->audio && m_pipe->recorder && m_pipe->recorder->hasAudio()) {
-        for (;;) {
+        constexpr int kMaxAudioPacketsPerTick = 32;
+        int packets = 0;
+        for (; packets < kMaxAudioPacketsPerTick && !thread()->isInterruptionRequested(); ++packets) {
             long long t100 = 0;
             const unsigned ch = m_pipe->audio->channels();
             const unsigned maxFrames = ch ? unsigned(m_pipe->audioBuf.size()) / ch : 0;
@@ -763,8 +785,9 @@ void FramePumpWorker::poll()
         // digital silence, leaving packet latency headroom so late real
         // packets are not overtaken.
         constexpr qint64 kAudioLatencyHeadroom100ns = 2000000;   // 200 ms
-        m_pipe->recorder->padAudioSilence(qpcNow100ns() - m_pipe->encStartQpc100ns
-                                          - kAudioLatencyHeadroom100ns);
+        if (packets < kMaxAudioPacketsPerTick && !thread()->isInterruptionRequested())
+            m_pipe->recorder->padAudioSilence(qpcNow100ns() - m_pipe->encStartQpc100ns
+                                              - kAudioLatencyHeadroom100ns);
     } else if (m_pipe->audio && m_pipe->recorder && m_pipe->recorder->audioLost()) {
         // The encoder dropped the audio track mid-session; never keep recording
         // video-only segments while system audio is enabled.
@@ -783,12 +806,10 @@ void FramePumpWorker::poll()
         return;
     }
 
-    // Drain EVERY frame buffered since the last tick, not just one. With one
-    // frame per tick, any tick that arrives late (or a poll cycle spent in a
-    // segment roll) leaves frames queued until the pool overflows and WGC
-    // starts dropping — erratic gaps in the recording. The fps throttle in
-    // writeFrame keeps the encode cost bounded regardless of drain rate.
-    for (;;) {
+    // Two full four-frame pools let capture catch up after a late tick.
+    // A continuously refilled pool must still yield to queued control calls.
+    constexpr int kMaxFramesPerTick = 8;
+    for (int index = 0; index < kMaxFramesPerTick && !thread()->isInterruptionRequested(); ++index) {
         IDirect3D11CaptureFrame* frame = nullptr;
         const HRESULT hr = m_pipe->framePool->TryGetNextFrame(&frame);
         if (FAILED(hr)) {

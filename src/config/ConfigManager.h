@@ -23,6 +23,7 @@ public:
     LoadResult loadOrQuarantine();
     bool load();   // missing file is fine → defaults
     bool save() const;
+    bool setCaptureExecutableAllowed(const QString& path, bool allowed);
 
     // Path the last quarantine wrote, for the one-time user-facing warning.
     QString quarantinedPath() const { return m_quarantinedPath; }

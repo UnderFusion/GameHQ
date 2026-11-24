@@ -1,4 +1,7 @@
 #include "games/GameDetector.h"
+#include "config/ConfigKeys.h"
+#include "config/ConfigManager.h"
+#include "core/GameIdentity.h"
 #include "games/SteamAppLookup.h"
 #include "integration/ExternalGameContext.h"
 
@@ -66,6 +69,8 @@ bool isShellProcess(const QString& exeLower)
         // never the game (see integration::isXboxShellSurface).
         QStringLiteral("xboxpcapp.exe"),
         QStringLiteral("gamebar.exe"),
+        QStringLiteral("playnite.desktopapp.exe"),
+        QStringLiteral("playnite.fullscreenapp.exe"),
         QStringLiteral("gamehq.exe"),   // never screenshot ourselves / the overlay
         // The Snipping Tool's screen-clip layer covers the whole monitor, so the
         // fullscreen test below took it for a game and armed the replay buffer on
@@ -366,9 +371,18 @@ void describeWindow(HWND hwnd, ForegroundGame& g)
     }
 
     g.isExcludedProcess = isShellProcess(g.processName.toLower());
+    // Console Overlay is hosted by Playnite. Its menu is an untitled,
+    // full-monitor, topmost WPF window. An ordinary library window doesn't
+    // extend a background recording session.
+    const QString host = g.processName.toLower();
+    g.isPlaynitePauseMenu = (host == QStringLiteral("playnite.fullscreenapp.exe")
+                             || host == QStringLiteral("playnite.desktopapp.exe"))
+        && g.isFullscreen && g.windowTitle.isEmpty()
+        && (GetWindowLongPtrW(hwnd, GWL_EXSTYLE) & WS_EX_TOPMOST);
     // "Covers the monitor" alone is not a game: it also matches every overlay,
     // which is how the replay buffer ended up recording the desktop.
-    g.isGame = g.isFullscreen && !g.isExcludedProcess && !isOverlayWindow(hwnd);
+    g.isOverlaySurface = isOverlayWindow(hwnd);
+    g.isGame = g.isFullscreen && !g.isExcludedProcess && !g.isOverlaySurface;
 }
 
 // The launched process plus every descendant, from one process snapshot.
@@ -464,6 +478,7 @@ bool playniteGameBehindShell(const integration::ExternalGameContext& context,
         candidate.viaShellFallback = true;
         candidate.hasExternalIdentity = true;
         candidate.externalSource = session.sourceId;
+        candidate.externalSessionId = session.sessionId;
         candidate.externalId = session.playniteGameId;
         if (!session.name.isEmpty())
             candidate.gameName = session.name;
@@ -515,7 +530,7 @@ ForegroundGame GameDetector::current()
     } else if (context) {
         g_lastShellOutcome.store(0);
     }
-    if (context && !g.isExcludedProcess && !isOverlayWindow(hwnd)) {
+    if (context && !g.isExcludedProcess && !g.isOverlaySurface) {
         const integration::ExternalGameMatch match = context->matchForeground(
             static_cast<quint32>(g.pid), g.executablePath, g.isGame,
             [](quint32 child, quint32 ancestor) {
@@ -524,12 +539,12 @@ ForegroundGame GameDetector::current()
         if (match.confidence != integration::MatchConfidence::None) {
             g.hasExternalIdentity = true;
             g.externalSource = match.session.sourceId;
+            g.externalSessionId = match.session.sessionId;
             g.externalId = match.session.playniteGameId;
             if (!match.session.name.isEmpty())
                 g.gameName = match.session.name;
-            // Only an exact PID or a verified descendant permits a windowed
-            // game. Directory hints may rename an already-safe fullscreen game
-            // but can never turn an arbitrary foreground window into a game.
+            // An exact process, its descendant or the selected play action's
+            // executable identifies a windowed game. A directory hint alone cannot.
             if (match.authorizesWindowedCapture())
                 g.isGame = true;
         }
@@ -542,13 +557,63 @@ void GameDetector::setExternalContext(const integration::ExternalGameContext *co
     g_externalContext.store(context);
 }
 
-bool GameDetector::shouldCapture(const ForegroundGame& g, const QString& captureMode)
+bool GameDetector::sameCaptureTarget(const ForegroundGame& first, const ForegroundGame& second)
+{
+    return first.valid && second.valid && first.hwnd && first.hwnd == second.hwnd
+        && first.pid && first.pid == second.pid
+        && first.hasExternalIdentity == second.hasExternalIdentity
+        && first.externalSource == second.externalSource
+        && first.externalSessionId == second.externalSessionId
+        && first.externalId == second.externalId;
+}
+
+bool GameDetector::windowBelongsToProcess(void* hwnd, unsigned long pid)
+{
+    DWORD ownerPid = 0;
+    return hwnd && pid && GetWindowThreadProcessId(static_cast<HWND>(hwnd), &ownerPid)
+        && ownerPid == pid;
+}
+
+bool GameDetector::canRetainBehindPauseMenu(const ForegroundGame& menu,
+                                           const ForegroundGame& target,
+                                           const ConfigManager* config)
+{
+    if (!menu.isPlaynitePauseMenu || !target.hwnd || !target.pid
+        || target.isExcludedProcess || target.isOverlaySurface
+        || !shouldCapture(target, config))
+        return false;
+    if (!windowBelongsToProcess(target.hwnd, target.pid))
+        return false;
+    // The captured HWND remains bound to the original WGC item. A Playnite
+    // stop/relaunch invalidates that association, even for the same game.
+    if (target.hasExternalIdentity) {
+        const auto* context = g_externalContext.load();
+        if (!context) return false;
+        const auto match = context->matchForeground(target.pid, target.executablePath,
+                                                    target.isGame, isDescendantProcess);
+        return match.confidence != integration::MatchConfidence::None
+            && match.session.sourceId == target.externalSource
+            && match.session.sessionId == target.externalSessionId;
+    }
+    return target.isGame || (config && config->value(ConfigKeys::CaptureMode).toString()
+                                         == QStringLiteral("whitelist"));
+}
+
+bool GameDetector::shouldCapture(const ForegroundGame& g, const ConfigManager* config)
 {
     if (!g.valid || g.w <= 0 || g.h <= 0)
         return false;
+    const QString captureMode = config ? config->value(ConfigKeys::CaptureMode).toString()
+                                       : QStringLiteral("only_in_games");
     if (captureMode == QStringLiteral("always"))
         return true;
-    // only_in_games and (until a whitelist UI exists in 1.0) whitelist both
-    // gate on the fullscreen-game heuristic.
+    if (g.isExcludedProcess || g.isOverlaySurface)
+        return false;
+    if (captureMode == QStringLiteral("whitelist")) {
+        const QStringList paths = config->value(ConfigKeys::CaptureAllowedExecutables).toStringList();
+        if (paths.isEmpty() || !QDir::isAbsolutePath(g.executablePath))
+            return false;
+        return paths.contains(GameIdentity::executableKey(g.executablePath), Qt::CaseInsensitive);
+    }
     return g.isGame;
 }

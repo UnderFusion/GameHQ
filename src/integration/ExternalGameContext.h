@@ -23,6 +23,7 @@ struct ExternalGameSession
     QString sourceName;
     QStringList platformNames;
     QString installDirectory;
+    QString launchExecutable;
     QString selectedRomFile;
     quint32 startedProcessId = 0;
     QDateTime occurredAtUtc;
@@ -30,7 +31,7 @@ struct ExternalGameSession
     quint64 sequence = 0;   // insertion/update order, for evicting the oldest
 };
 
-enum class MatchConfidence { None, InstallDirectory, DescendantProcess, ExactProcess };
+enum class MatchConfidence { None, InstallDirectory, LaunchExecutable, DescendantProcess, ExactProcess };
 
 struct ExternalGameMatch
 {
@@ -39,7 +40,8 @@ struct ExternalGameMatch
     bool authorizesWindowedCapture() const
     {
         return confidence == MatchConfidence::ExactProcess
-            || confidence == MatchConfidence::DescendantProcess;
+            || confidence == MatchConfidence::DescendantProcess
+            || confidence == MatchConfidence::LaunchExecutable;
     }
 };
 

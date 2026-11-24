@@ -18,6 +18,12 @@ namespace {
 // logs and diagnostics keep one grammar; other technical reasons pass through.
 QString localizedReplayReason(const QString& reason)
 {
+    if (reason == QStringLiteral("No replay ready during game pause"))
+        return NativeText::get(
+            //: The Playnite pause menu is open and there is no completed replay footage.
+            //% "There is no replay ready to save. Resume the game to collect footage."
+            QT_TRID_NOOP("gamehq.notification.replay_failed.resume_game"),
+            "There is no replay ready to save. Resume the game to collect footage.");
     if (reason == ReplayBufferState::saveRejection(ReplayBufferState::Starting))
         return NativeText::get(
             //: Replay failure reason: the replay buffer has just been started.
@@ -191,7 +197,14 @@ void App::wireCaptureFeedback()
         m_sounds->play(QStringLiteral("error"));
         if (!m_config->value(ConfigKeys::NotificationsEnabled, true).toBool())
             return;
-        postCaptureOutcome(operationId, screenshotFailedTitle(), why, QString(),
+        const QString detail = why == QStringLiteral("No game frame available for screenshot")
+            ? NativeText::get(
+                //: No game frame was available during the screenshot request.
+                //% "Resume the game and try again. No game frame is available for this screenshot."
+                QT_TRID_NOOP("gamehq.notification.capture_failed.resume_game"),
+                "Resume the game and try again. No game frame is available for this screenshot.")
+            : why;
+        postCaptureOutcome(operationId, screenshotFailedTitle(), detail, QString(),
                            QStringLiteral("error"), QDateTime::currentDateTime(), false);
     };
     connect(m_screenshots.get(), &ScreenshotService::skipped, this,

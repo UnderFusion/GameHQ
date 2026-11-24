@@ -21,6 +21,11 @@ void BindingEditorModel::setHotkeyApply(HotkeyApply apply)
     m_hotkeyApply = std::move(apply);
 }
 
+void BindingEditorModel::setGlobalChordValidator(std::function<QString(const QString&)> validator)
+{
+    m_validateGlobalChord = std::move(validator);
+}
+
 void BindingEditorModel::setPersistRow(PersistRow persist)
 {
     m_persistRow = std::move(persist);
@@ -138,6 +143,14 @@ bool BindingEditorModel::applyChange(const PendingChange& change)
     const auto& target = change.target;
     const QString profile = selectedProfile();
 
+    if (isGlobalHotkey(target) && m_validateGlobalChord) {
+        const QString error = m_validateGlobalChord(target.triggerCode);
+        if (!error.isEmpty()) {
+            setRelationNotice(QStringLiteral("hotkey_unavailable"), error);
+            return false;
+        }
+    }
+
     if (change.hasConversion) {
         const BindingOverrideRow converted{
             change.conversionTarget.deviceGroup, profile,
@@ -176,9 +189,20 @@ bool BindingEditorModel::applyChange(const PendingChange& change)
 
     // 2) Claim the chord from Windows before anything is persisted. On refusal
     //    the previous registration stays live and nothing is written.
+    const auto setDisplacedHotkeys = [&](bool restore) {
+        QString reason;
+        for (const auto& displaced : change.conflicts) {
+            if (isGlobalHotkey(displaced))
+                m_hotkeyApply(displaced.actionId, displaced.slot, restore ? displaced.triggerCode : QString(), &reason);
+        }
+    };
     if (ownsHotkey) {
+        // A confirmed replacement can take a chord from another global
+        // slot. Free that registration before requesting the same chord.
+        setDisplacedHotkeys(false);
         QString reason;
         if (!m_hotkeyApply(target.actionId, target.slot, target.triggerCode, &reason)) {
+            setDisplacedHotkeys(true);
             setRelationNotice(
                 QStringLiteral("hotkey_unavailable"),
                 reason.isEmpty()
@@ -215,6 +239,7 @@ bool BindingEditorModel::applyChange(const PendingChange& change)
         if (ownsHotkey) {
             QString reason;
             m_hotkeyApply(target.actionId, target.slot, previousChord, &reason);
+            setDisplacedHotkeys(true);
         }
         setRelationNotice(QStringLiteral("persistence_error"),
                           QStringLiteral("This shortcut could not be saved. The previous "
@@ -227,14 +252,8 @@ bool BindingEditorModel::applyChange(const PendingChange& change)
     // path gets that from reloadBindings()' sweep; a preset-sink batch never
     // runs that sweep, so release those slots here (an empty chord means
     // "release the slot" — the same contract the rollback path uses).
-    if (liveEdit && m_presetSink && m_hotkeyApply) {
-        for (const auto& conflict : change.conflicts) {
-            if (!isGlobalHotkey(conflict))
-                continue;
-            QString reason;
-            m_hotkeyApply(conflict.actionId, conflict.slot, QString(), &reason);
-        }
-    }
+    if (!ownsHotkey && liveEdit && m_presetSink && m_hotkeyApply)
+        setDisplacedHotkeys(false);
 
     // 5) Only a fully committed change refreshes the editor.
     refreshAfterWrite();
@@ -254,7 +273,9 @@ void BindingEditorModel::clearBinding(const QString& actionId, int slot)
         editedGesture(m_deviceGroup, selectedProfile(), actionId, slot);
     BindingOverrideRow row{m_deviceGroup, selectedProfile(), actionId, slot, {},
                            gesture.activation, gesture.holdMs, true, gesture.tapCount};
-    persist(row);
+    if (!persist(row))
+        setRelationNotice(QStringLiteral("persistence_error"),
+                          QStringLiteral("This assignment could not be removed."));
     refreshAfterWrite();
 }
 
@@ -263,7 +284,9 @@ void BindingEditorModel::resetBinding(const QString& actionId, int slot)
     const auto* action = ActionCatalog::find(actionId);
     if (!action || !action->bindable || slot < 1 || slot > 2)
         return;
-    clearRow(m_deviceGroup, selectedProfile(), actionId, slot);
+    if (!clearRow(m_deviceGroup, selectedProfile(), actionId, slot))
+        setRelationNotice(QStringLiteral("persistence_error"),
+                          QStringLiteral("This assignment could not be restored."));
     refreshAfterWrite();
 }
 
@@ -295,7 +318,14 @@ void BindingEditorModel::confirmConflict()
         return;
     const PendingChange change = m_pending;
     dismissConflict();
-    applyChange(change);
+    if (applyChange(change)) {
+        if (m_editorOpen)
+            closeAssignmentEditor();
+    } else if (m_editorOpen) {
+        m_editorNoticeKind = m_relationKind;
+        m_editorNotice = m_relationNotice;
+        emit editorChanged();
+    }
 }
 
 void BindingEditorModel::dismissConflict()

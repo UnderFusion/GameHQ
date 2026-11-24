@@ -41,6 +41,7 @@ public:
 public slots:
     void onThreadStarted();          // RoInitialize(MTA) on this worker thread
     void onThreadFinished();         // ensure stopped + RoUninitialize
+    void shutdownForExit();
     void startPump(quint64 generation, qulonglong hwnd, unsigned long pid, int encodeWidth, int encodeHeight,
                    int fps, int bitrateMbps, int segmentSeconds, int lengthSeconds,
                    const QString& gameName, const QString& executablePath,
@@ -84,6 +85,7 @@ signals:
 
 private:
     friend class TestReplayThumbnail;
+    friend class CaptureAcknowledgementTest;
     struct Pipeline;                 // all WGC/D3D pointers + timer + fps state (FramePumpPipeline.h)
     void teardown();                 // delete m_pipe (releases everything, reverse order)
     void finishExport();             // join before worker/apartment shutdown
@@ -96,7 +98,7 @@ private:
     // failure via failStep() and returns false; startPump owns the single
     // cleanup of the half-built pipe, so no phase frees anything it did not create.
     bool createDevices(Pipeline* pipe);                        // D3D11 + WinRT bridge
-    bool createCaptureItem(Pipeline* pipe, void* hwnd, int* outW, int* outH);
+    bool createCaptureItem(Pipeline* pipe, void* hwnd, unsigned long pid, int* outW, int* outH);
     void attachRecorder(Pipeline* pipe, unsigned long pid, int srcW, int srcH,
                         int encodeWidth, int encodeHeight, int fps, int bitrateMbps,
                         int segmentSeconds, int lengthSeconds, int audioSource);
@@ -161,9 +163,10 @@ public slots:
     void saveReplay(const CaptureRequest& request);
     // For callers with no press behind them (QML, internal retries).
     void saveReplay() { saveReplay(CaptureRequest::create(CaptureRequest::Source::Ui)); }
-    void captureHdrScreenshot(qulonglong hwnd, quint64 operationId = 0);
+    void captureHdrScreenshot(const ForegroundGame& target, quint64 operationId = 0);
     // Replace the pipeline with new settings while preserving session owners.
     void restartBuffer();
+    void shutdownForExit();
     void prepareForUpdate();
     void cancelUpdatePreparation();
 
@@ -193,14 +196,18 @@ signals:
     void preparingForUpdateChanged(bool preparing);
     void updateWaitingForExport();
     void updateReady();
+    void shutdownFinished();
 
 private slots:
     void autoTick();                 // poll the foreground game → arm/disarm the buffer
 
 private:
-    void startBuffer(bool rearm = false); // re-arm retains the owned target
+    void startBuffer(const ForegroundGame& target);
     friend class ControllerClipE2ETest;
-    void stopBuffer();               // disarm only when no owner needs the session
+    friend class CaptureAcknowledgementTest;
+    void updateAutoTarget(const ForegroundGame& current, bool restartRequested = false);
+    void enforceTargetPolicy();
+    void stopBuffer();
     void ownersChanged(const char* reason, quint64 requestId = 0);
 
     quint64 m_activeReplayOperation = 0;
@@ -215,6 +222,7 @@ private:
     ForegroundGame m_targetGame;
     bool m_exportBusy = false;
     bool m_preparingForUpdate = false;
+    bool m_exitRequested = false;
     CaptureBorder::State m_borderState = CaptureBorder::Unknown;
     QString m_borderDetail;
 
@@ -222,6 +230,6 @@ private:
     // game is foreground (per capture.mode) — no manual arming needed.
     QTimer* m_autoTimer = nullptr;
     bool m_autoEnabled = true;
+    bool m_restartPending = false;
     int m_noGameTicks = 0;                 // grace period before auto-disarm
-    qulonglong m_targetHwnd = 0;
 };

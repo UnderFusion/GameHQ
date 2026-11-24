@@ -21,6 +21,7 @@ private slots:
     void lifecycleSyncAndDisconnectExpiry();
     void externalIdentityRequiresProcessOrSafeGamePath();
     void unknownStartedProcessIdKeepsTheSession();
+    void startedFileActionIdentifiesOnlyItsOwnWindow();
     void xboxShellFallbackStaysNarrow();
     void overlappingPlayniteReconnectKeepsLiveState();
     void handlerDisconnectDuringBufferedFramesIsSafe();
@@ -218,6 +219,49 @@ void IntegrationServiceTest::unknownStartedProcessIdKeepsTheSession()
     QVERIFY(!context.upsert(QStringLiteral("GameHQ.Playnite"), {
         { QStringLiteral("sessionId"), QStringLiteral("bad") },
         { QStringLiteral("startedProcessId"), -1 } }, QStringLiteral("started"), error));
+}
+
+void IntegrationServiceTest::startedFileActionIdentifiesOnlyItsOwnWindow()
+{
+    integration::ExternalGameContext context;
+    const QString source = QStringLiteral("GameHQ.Playnite");
+    const QString game = QStringLiteral("C:/Games/Example/Bin/Game.exe");
+    QJsonObject session{
+        { QStringLiteral("sessionId"), QStringLiteral("file-action") },
+        { QStringLiteral("installDirectory"), QStringLiteral("C:/Games/Example") },
+        { QStringLiteral("launchExecutable"), game },
+        { QStringLiteral("startedProcessId"), 0 }
+    };
+    const auto match = [&](quint32 pid, const QString& path) {
+        return context.matchForeground(pid, path, false, {});
+    };
+    QString error;
+    QVERIFY(context.upsert(source, session, QStringLiteral("starting"), error));
+    QVERIFY(!match(99, game).authorizesWindowedCapture());
+    QVERIFY(context.upsert(source, session, QStringLiteral("started"), error));
+    QCOMPARE(match(99, game.toLower()).confidence, integration::MatchConfidence::LaunchExecutable);
+    QVERIFY(match(99, game).authorizesWindowedCapture());
+    QVERIFY(!match(0, game).authorizesWindowedCapture());
+    QVERIFY(!match(99, QStringLiteral("C:/Games/Other/Bin/Game.exe")).authorizesWindowedCapture());
+    QVERIFY(!match(99, QStringLiteral("C:/Games/Example/Bin/Helper.exe")).authorizesWindowedCapture());
+    auto other = session;
+    other[QStringLiteral("sessionId")] = QStringLiteral("other-launch");
+    QVERIFY(context.upsert(source, other, QStringLiteral("started"), error));
+    QVERIFY(!match(99, game).authorizesWindowedCapture());
+    QVERIFY(context.remove(source, QStringLiteral("other-launch")));
+    session[QStringLiteral("startedProcessId")] = 123;
+    QVERIFY(context.upsert(source, session, QStringLiteral("started"), error));
+    QVERIFY(!match(99, game).authorizesWindowedCapture());
+    QCOMPARE(match(123, game).confidence, integration::MatchConfidence::ExactProcess);
+    session[QStringLiteral("startedProcessId")] = 0;
+    session[QStringLiteral("installDirectory")] = QStringLiteral("C:/");
+    QVERIFY(context.replaceSource(source, QJsonArray{session}, error));
+    QVERIFY(!match(99, game).authorizesWindowedCapture());
+    session[QStringLiteral("installDirectory")] = QStringLiteral("C:/Games/Other");
+    QVERIFY(context.replaceSource(source, QJsonArray{session}, error));
+    QVERIFY(!match(99, game).authorizesWindowedCapture());
+    context.clearSource(source);
+    QVERIFY(!match(99, game).authorizesWindowedCapture());
 }
 
 void IntegrationServiceTest::externalIdentityRequiresProcessOrSafeGamePath()

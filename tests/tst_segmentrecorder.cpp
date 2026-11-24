@@ -170,6 +170,38 @@ class TestSegmentRecorder : public QObject
     }
 
 private slots:
+    void shutdownReleasesEncoderBeforeJoiningPreparation()
+    {
+        struct ActiveWriter final : IMFSinkWriter {
+            QSemaphore slotReleased;
+            bool finalized = false;
+            HRESULT STDMETHODCALLTYPE QueryInterface(REFIID, void**) override { return E_NOINTERFACE; }
+            ULONG STDMETHODCALLTYPE AddRef() override { return 1; }
+            ULONG STDMETHODCALLTYPE Release() override { slotReleased.release(); return 0; }
+            HRESULT STDMETHODCALLTYPE Finalize() override { finalized = true; return S_OK; }
+            HRESULT STDMETHODCALLTYPE AddStream(IMFMediaType*, DWORD*) override { return E_NOTIMPL; }
+            HRESULT STDMETHODCALLTYPE SetInputMediaType(DWORD, IMFMediaType*, IMFAttributes*) override { return E_NOTIMPL; }
+            HRESULT STDMETHODCALLTYPE BeginWriting() override { return E_NOTIMPL; }
+            HRESULT STDMETHODCALLTYPE WriteSample(DWORD, IMFSample*) override { return E_NOTIMPL; }
+            HRESULT STDMETHODCALLTYPE SendStreamTick(DWORD, LONGLONG) override { return E_NOTIMPL; }
+            HRESULT STDMETHODCALLTYPE PlaceMarker(DWORD, void*) override { return E_NOTIMPL; }
+            HRESULT STDMETHODCALLTYPE NotifyEndOfSegment(DWORD) override { return E_NOTIMPL; }
+            HRESULT STDMETHODCALLTYPE Flush(DWORD) override { return E_NOTIMPL; }
+            HRESULT STDMETHODCALLTYPE GetServiceForStream(DWORD, REFGUID, REFIID, void**) override { return E_NOTIMPL; }
+            HRESULT STDMETHODCALLTYPE GetStatistics(DWORD, MF_SINK_WRITER_STATISTICS*) override { return E_NOTIMPL; }
+        } writer;
+        SegmentRecorder recorder;
+        recorder.m_writer = &writer;
+        bool acquired = false;
+        recorder.m_prepThread = std::thread([&] {
+            acquired = writer.slotReleased.tryAcquire(1, 2000);
+        });
+        recorder.end();
+        QVERIFY(writer.finalized);
+        QVERIFY2(acquired, "The active encoder held its only slot through the preparation join");
+        QVERIFY(!recorder.m_prepThread.joinable());
+    }
+
     void desktopAudioUsesEncodableFormat()
     {
         using Microsoft::WRL::ComPtr;
@@ -693,7 +725,10 @@ private slots:
         constexpr float amplitude = 0.00316f;   // -50 dBFS
         const auto launch = [](QProcess& process, double hz, const char* endpoint) {
             process.setProgram(QStringLiteral(AUDIO_TONE_FIXTURE));
-            process.setArguments({ QString::number(hz), QStringLiteral("8000"),
+            // Setup, GPU initialization and encoding can outlast the measured
+            // three-second clip. The scope guard owns the renderers' lifetimes.
+            // A longer watchdog only limits orphan playback if the test crashes.
+            process.setArguments({ QString::number(hz), QStringLiteral("60000"),
                                    QString::fromLatin1(endpoint),
                                    QString::number(double(amplitude)) });
             process.start();
@@ -765,6 +800,12 @@ private slots:
             QTest::qSleep(16);
         }
         QVERIFY(frame > 60);
+        QVERIFY2(game.state() == QProcess::Running && !game.waitForFinished(0),
+                 "The game tone stopped before the recording ended");
+        QVERIFY2(other.state() == QProcess::Running && !other.waitForFinished(0),
+                 "The unrelated tone stopped before the recording ended");
+        // No more PCM is consumed from this instance during snapshot or decode.
+        audio.stop();
         const SegmentLease saved = recorder.snapshotForSave();
         QVERIFY(!saved.paths().isEmpty());
         const QString clip = dir.path() + "/gameaudio.mp4";
