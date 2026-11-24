@@ -29,6 +29,8 @@ if exist "out\CMakeCache.txt" (
 
 if "%NEED_CONFIG%"=="1" (
     echo [GameHQ] Configuring the developer build tree in out\...
+    rem --fresh keeps FetchContent sub-builds, which break when the tree moves to another drive or path.
+    if exist "out\_deps" for /d %%D in ("out\_deps\*-subbuild") do rmdir /s /q "%%D"
     "%CMAKE%" -S . -B out --fresh -G Ninja -DCMAKE_BUILD_TYPE=Debug ^
       -DGAMEHQ_ENABLE_PSEUDO_LOCALES=ON ^
       "-DCMAKE_PREFIX_PATH=%QT%" ^
