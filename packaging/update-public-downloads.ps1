@@ -31,10 +31,18 @@ foreach ($candidate in @($appVersion, $pluginVersion)) {
     }
 }
 
-$packageMatch = [regex]::Match(
-    $installerManifest,
-    "(?ms)^\s*-\s+Version:\s*$([regex]::Escape($pluginVersion))\s*$.*?^\s+PackageUrl:\s*[""']?(?<url>https://\S+?)[""']?\s*$"
-)
+$packagePattern = "(?ms)^\s*-\s+Version:\s*{0}\s*$.*?^\s+PackageUrl:\s*[""']?(?<url>https://\S+?)[""']?\s*$"
+$packageMatch = [regex]::Match($installerManifest, ($packagePattern -f [regex]::Escape($pluginVersion)))
+if (-not $packageMatch.Success) {
+    # A plugin pre-release is deliberately absent from InstallerManifest.yaml
+    # (packaging/prepare-release.ps1 -Prerelease); public links keep pointing
+    # at the newest published package until it is promoted.
+    $newestListed = [regex]::Match($installerManifest, '(?m)^\s*-\s+Version:\s*(?<version>\d+\.\d+\.\d+)\s*$')
+    if ($newestListed.Success -and [version]$pluginVersion -gt [version]$newestListed.Groups["version"].Value) {
+        $packageMatch = [regex]::Match($installerManifest,
+            ($packagePattern -f [regex]::Escape($newestListed.Groups["version"].Value)))
+    }
+}
 if (-not $packageMatch.Success) {
     throw "InstallerManifest.yaml has no package URL for Playnite $pluginVersion"
 }
