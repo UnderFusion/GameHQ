@@ -1,5 +1,6 @@
 using System;
-using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
 using System.IO.Pipes;
 using System.Security.Principal;
 using System.Threading;
@@ -13,16 +14,10 @@ namespace GameHQ.Playnite.Protocol
         Disconnected,
         Connecting,
         Connected,
-        // A maintenance window is active (app.maintenance) — the client
-        // deliberately stops connecting and launching until it clears.
         Suspended
     }
 
-    // Long-lived client for the GameHQ.Local.v1 named pipe. Owns a background
-    // connect/reconnect loop so callers (Playnite event handlers) never block
-    // waiting on GameHQ. See docs/integration-protocol.md for the wire spec
-    // this implements, and plan item p5-2 for the locator/launcher it pairs
-    // with.
+    // Long-lived background client for the GameHQ.Local.v1 named pipe.
     internal sealed class IntegrationClient : IDisposable
     {
         public const string PipeName = "GameHQ.Local.v1";
@@ -34,177 +29,202 @@ namespace GameHQ.Playnite.Protocol
         private const int MinBackoffMs = 500;
         private const int MaxBackoffMs = 30000;
         private const int OutgoingQueueCapacity = 64;
-
         private static readonly ILogger Logger = LogManager.GetLogger(nameof(IntegrationClient));
 
+        private sealed class Worker : IDisposable
+        {
+            public readonly CancellationTokenSource Stop = new CancellationTokenSource();
+            public readonly SemaphoreSlim Reconnect = new SemaphoreSlim(0, 1);
+            public readonly Queue<IntegrationMessage> Outgoing = new Queue<IntegrationMessage>();
+            public readonly SemaphoreSlim Messages = new SemaphoreSlim(0, OutgoingQueueCapacity);
+            public CancellationTokenSource Attempt;
+            public bool Stopping;
+
+            public void Dispose()
+            {
+                Stop.Dispose();
+                Reconnect.Dispose();
+                Messages.Dispose();
+            }
+        }
+
+        private readonly object _gate = new object();
         private readonly string _clientVersion;
-        private readonly BlockingCollection<IntegrationMessage> _outgoing =
-            new BlockingCollection<IntegrationMessage>(new ConcurrentQueue<IntegrationMessage>(), OutgoingQueueCapacity);
-
-        private readonly AutoResetEvent _wake = new AutoResetEvent(false);
-
-        private CancellationTokenSource _cts;
-        private Thread _worker;
-        private volatile NamedPipeClientStream _activePipe;
-        private volatile IntegrationConnectionState _state = IntegrationConnectionState.Disconnected;
+        private readonly string _pipeName;
+        private Worker _worker;
+        private Task _completion = Task.CompletedTask;
+        private bool _startRequested;
+        private bool _disposed;
+        private volatile IntegrationConnectionState _state;
         private DateTime _suspendedUntilUtc;
         private volatile string _remoteAppVersion;
-        private int? _protocolSelected; // read/written from one worker thread at a time; UI reads are advisory
+        private int? _protocolSelected;
         private volatile string _lastError;
 
         public event Action<IntegrationConnectionState> StateChanged;
         public event Action<IntegrationMessage> MessageReceived;
 
-        public IntegrationClient(string clientVersion)
+        public IntegrationClient(string clientVersion, string pipeName = PipeName)
         {
             _clientVersion = clientVersion;
+            _pipeName = pipeName;
         }
 
-        public IntegrationConnectionState State
-        {
-            get { return _state; }
-        }
+        public IntegrationConnectionState State => _state;
+        public string RemoteAppVersion => _remoteAppVersion;
+        public string LastError => _lastError;
+        public int? ProtocolSelected { get { lock (_gate) return _protocolSelected; } }
 
-        // Diagnostics for the settings page (p5-4) — the GameHQ version and
-        // protocol reported by the last successful handshake, and the last
-        // connection/handshake failure reason (cleared on success).
-        public string RemoteAppVersion
-        {
-            get { return _remoteAppVersion; }
-        }
-
-        public int? ProtocolSelected
-        {
-            get { return _protocolSelected; }
-        }
-
-        public string LastError
-        {
-            get { return _lastError; }
-        }
-
-        // Forces an immediate fresh handshake: wakes the background loop out
-        // of its backoff wait, and if already connected, drops the active
-        // pipe so the loop reconnects right away instead of staying idle in
-        // its read pump. Used by the settings page's "Test connection"
-        // action; safe to call at any time.
-        public void TriggerReconnect()
-        {
-            _wake.Set();
-
-            var pipe = _activePipe;
-            if (pipe != null)
-            {
-                try { pipe.Dispose(); }
-                catch (Exception ex) { Logger.Warn("GameHQ integration forced-reconnect dispose failed: " + ex.Message); }
-            }
-        }
+        // A caller can observe retirement without blocking the Playnite UI.
+        internal Task Completion { get { lock (_gate) return _completion; } }
 
         public void Start()
         {
-            if (_worker != null) return;
+            lock (_gate)
+            {
+                if (_disposed) return;
+                _startRequested = true;
+                if (_worker == null) StartWorker();
+            }
+        }
 
-            _cts = new CancellationTokenSource();
-            var token = _cts.Token;
-            _worker = new Thread(() => RunLoop(token)) { IsBackground = true, Name = "GameHQ.Integration" };
-            _worker.Start();
+        // Called under _gate. Only the completion of the old worker can admit a
+        // pending restart, including when Stop was called from a client callback.
+        private void StartWorker()
+        {
+            var worker = new Worker();
+            _worker = worker;
+            var run = Task.Run(() => RunLoop(worker));
+            _completion = run.ContinueWith(completed =>
+            {
+                if (completed.IsFaulted)
+                {
+                    _lastError = completed.Exception.GetBaseException().Message;
+                    Logger.Warn("GameHQ integration worker failed: " + _lastError);
+                }
+                lock (_gate)
+                {
+                    worker.Dispose();
+                    _worker = null;
+                    if (worker.Stopping && _startRequested) StartWorker();
+                }
+            }, CancellationToken.None, TaskContinuationOptions.None, TaskScheduler.Default);
         }
 
         public void Stop()
         {
-            var cts = _cts;
-            _cts = null;
-            _worker = null;
-            if (cts != null) cts.Cancel();
-            _wake.Set();
+            lock (_gate) RequestStop();
         }
 
-        // Never blocks the caller. Drops the message and logs if GameHQ is
-        // unreachable or the outgoing queue is saturated, rather than
-        // stalling Playnite's UI or a game launch.
-        public void Send(IntegrationMessage message)
+        private void RequestStop()
         {
-            if (_state != IntegrationConnectionState.Connected) return;
-            if (!_outgoing.TryAdd(message))
-                Logger.Warn("GameHQ integration outgoing queue full, dropping " + message.Type);
+            _startRequested = false;
+            if (_worker == null || _worker.Stopping) return;
+            _worker.Stopping = true;
+            // Closing pending I/O runs off the caller's thread.
+            _worker.Stop.CancelAfter(0);
         }
 
-        // Called when an app.maintenance broadcast is observed; suppresses
-        // reconnect/launch attempts until the marker clears or the bounded
-        // window passes. An update-related disconnect is expected, not a
-        // crash to relaunch from.
-        public void EnterMaintenance(int retryAfterSeconds)
+        public void Dispose()
         {
-            _suspendedUntilUtc = DateTime.UtcNow.AddSeconds(Math.Max(1, retryAfterSeconds));
-            SetState(IntegrationConnectionState.Suspended);
-        }
-
-        private void RunLoop(CancellationToken token)
-        {
-            int backoffMs = MinBackoffMs;
-
-            while (!token.IsCancellationRequested)
+            lock (_gate)
             {
-                if (_state == IntegrationConnectionState.Suspended)
-                {
-                    if (DateTime.UtcNow < _suspendedUntilUtc)
-                    {
-                        Thread.Sleep(500);
-                        continue;
-                    }
-                    SetState(IntegrationConnectionState.Disconnected);
-                }
-
-                bool handshakeOk = false;
-                using (var pipe = new NamedPipeClientStream(".", PipeName, PipeDirection.InOut, PipeOptions.None, TokenImpersonationLevel.None))
-                {
-                    try
-                    {
-                        SetState(IntegrationConnectionState.Connecting);
-                        pipe.Connect(ConnectTimeoutMs);
-
-                        handshakeOk = Handshake(pipe);
-                        if (handshakeOk)
-                        {
-                            backoffMs = MinBackoffMs;
-                            SetState(IntegrationConnectionState.Connected);
-                            _activePipe = pipe;
-                            try
-                            {
-                                PumpUntilDisconnected(pipe, token);
-                            }
-                            finally
-                            {
-                                _activePipe = null;
-                            }
-                        }
-                    }
-                    catch (TimeoutException)
-                    {
-                        // GameHQ not listening yet; back off and retry.
-                        _lastError = "GameHQ is not running or not reachable";
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Warn("GameHQ integration connection error: " + ex.Message);
-                        _lastError = ex.Message;
-                    }
-                }
-
-                if (_state != IntegrationConnectionState.Suspended)
-                    SetState(IntegrationConnectionState.Disconnected);
-
-                if (token.IsCancellationRequested) break;
-
-                backoffMs = handshakeOk ? MinBackoffMs : NextBackoff(backoffMs);
-                _wake.WaitOne(backoffMs);
+                _disposed = true;
+                RequestStop();
             }
         }
 
-        private bool Handshake(NamedPipeClientStream pipe)
+        public void TriggerReconnect()
+        {
+            lock (_gate)
+            {
+                if (_worker == null || _worker.Stopping) return;
+                _worker.Attempt?.CancelAfter(0);
+                if (_worker.Reconnect.CurrentCount == 0) _worker.Reconnect.Release();
+            }
+        }
+
+        public void Send(IntegrationMessage message)
+        {
+            lock (_gate)
+            {
+                if (_worker == null || _worker.Stopping || _state != IntegrationConnectionState.Connected) return;
+                if (_worker.Outgoing.Count < OutgoingQueueCapacity)
+                {
+                    _worker.Outgoing.Enqueue(message);
+                    _worker.Messages.Release();
+                    return;
+                }
+            }
+            Logger.Warn("GameHQ integration outgoing queue full, dropping " + message.Type);
+        }
+
+        private async Task RunLoop(Worker worker)
+        {
+            var stop = worker.Stop.Token;
+            int backoffMs = MinBackoffMs;
+            try
+            {
+                while (!stop.IsCancellationRequested)
+                {
+                    // A restart or a settings-page reconnect must respect the
+                    // maintenance deadline announced by the previous connection.
+                    var remaining = _suspendedUntilUtc - DateTime.UtcNow;
+                    if (remaining > TimeSpan.Zero)
+                    {
+                        SetState(IntegrationConnectionState.Suspended);
+                        await Task.Delay((int)Math.Min(int.MaxValue, Math.Ceiling(remaining.TotalMilliseconds)), stop);
+                        continue;
+                    }
+
+                    if (_state == IntegrationConnectionState.Suspended)
+                        SetState(IntegrationConnectionState.Disconnected);
+
+                    bool connected = false;
+                    using (var attempt = CancellationTokenSource.CreateLinkedTokenSource(stop))
+                    {
+                        lock (_gate) worker.Attempt = attempt;
+                        try
+                        {
+                            using (var pipe = new NamedPipeClientStream(".", _pipeName, PipeDirection.InOut,
+                                PipeOptions.Asynchronous, TokenImpersonationLevel.None))
+                            {
+                                var connect = pipe.ConnectAsync(ConnectTimeoutMs, attempt.Token);
+                                // A state handler can request shutdown or throw. Always observe the pending connect.
+                                try { SetState(IntegrationConnectionState.Connecting); }
+                                finally { await connect; }
+                                connected = await Handshake(pipe, attempt.Token);
+                                if (connected)
+                                {
+                                    attempt.Token.ThrowIfCancellationRequested();
+                                    SetState(IntegrationConnectionState.Connected);
+                                    await Pump(worker, pipe, attempt.Token);
+                                }
+                            }
+                        }
+                        catch (Exception ex) when (attempt.IsCancellationRequested && IsPipeInterruption(ex)) { }
+                        catch (TimeoutException) { _lastError = "GameHQ is not running or not reachable"; }
+                        catch (Exception ex)
+                        {
+                            _lastError = ex.Message;
+                            Logger.Warn("GameHQ integration connection error: " + ex.Message);
+                        }
+                        finally { lock (_gate) worker.Attempt = null; }
+                    }
+
+                    if (_state != IntegrationConnectionState.Suspended)
+                        SetState(IntegrationConnectionState.Disconnected);
+                    backoffMs = connected ? MinBackoffMs : Math.Min(MaxBackoffMs, backoffMs * 2);
+                    await worker.Reconnect.WaitAsync(backoffMs, stop);
+                }
+            }
+            catch (OperationCanceledException) when (stop.IsCancellationRequested) { }
+            finally { SetState(IntegrationConnectionState.Disconnected); }
+        }
+
+        private async Task<bool> Handshake(NamedPipeClientStream pipe, CancellationToken token)
         {
             pipe.ReadMode = PipeTransmissionMode.Byte;
-
             var hello = new IntegrationMessage("hello")
                 .Set("client", ClientName)
                 .Set("clientVersion", _clientVersion)
@@ -212,123 +232,100 @@ namespace GameHQ.Playnite.Protocol
                 .Set("protocolMax", ProtocolMax)
                 .Set("requestId", Guid.NewGuid().ToString("N"));
 
-            PipeFraming.WriteFrame(pipe, hello.ToUtf8Json());
-
-            // PipeStream never supports the synchronous ReadTimeout/WriteTimeout
-            // properties (they throw InvalidOperationException regardless of
-            // PipeOptions), so the handshake deadline is enforced by racing the
-            // blocking read against a timer instead.
-            var readTask = Task.Run(() => PipeFraming.ReadFrame(pipe));
-            if (!readTask.Wait(HandshakeTimeoutMs))
+            byte[] payload;
+            using (var deadline = CancellationTokenSource.CreateLinkedTokenSource(token))
+            using (deadline.Token.Register(pipe.Dispose))
             {
-                _lastError = "GameHQ handshake timed out";
-                readTask.ContinueWith(t => { var _ = t.Exception; }, TaskContinuationOptions.OnlyOnFaulted);
-                return false;
+                deadline.CancelAfter(HandshakeTimeoutMs);
+                try
+                {
+                    await PipeFraming.WriteFrameAsync(pipe, hello.ToUtf8Json(), deadline.Token);
+                    payload = await PipeFraming.ReadFrameAsync(pipe, deadline.Token);
+                    deadline.Token.ThrowIfCancellationRequested();
+                }
+                catch (Exception ex) when (deadline.IsCancellationRequested && !token.IsCancellationRequested && IsPipeInterruption(ex))
+                {
+                    _lastError = "GameHQ handshake timed out";
+                    return false;
+                }
             }
 
-            var payload = readTask.Result;
             if (payload == null) return false;
-
             var reply = IntegrationMessage.FromUtf8Json(payload);
             if (reply.Type == "hello.ack")
             {
                 _remoteAppVersion = reply.GetString("appVersion");
-                _protocolSelected = reply.GetInt("protocolSelected");
+                lock (_gate) _protocolSelected = reply.GetInt("protocolSelected");
                 _lastError = null;
                 return true;
             }
 
             if (reply.Type == "error")
             {
-                var message = reply.GetString("code") + ": " + reply.GetString("message");
-                Logger.Warn("GameHQ integration handshake rejected: " + message);
-                _lastError = message;
+                _lastError = reply.GetString("code") + ": " + reply.GetString("message");
+                Logger.Warn("GameHQ integration handshake rejected: " + _lastError);
             }
-
             return false;
         }
 
-        private void PumpUntilDisconnected(NamedPipeClientStream pipe, CancellationToken token)
+        private async Task Pump(Worker worker, NamedPipeClientStream pipe, CancellationToken token)
         {
-            using (var stopped = new ManualResetEventSlim(false))
+            using (var session = CancellationTokenSource.CreateLinkedTokenSource(token))
+            // On .NET Framework, closing the overlapped handle also interrupts
+            // reads and writes already in flight when cancellation is requested.
+            using (session.Token.Register(pipe.Dispose))
             {
-                Exception readerError = null;
-                var reader = new Thread(() =>
+                var writer = WriteOutgoing(worker, pipe, session.Token);
+                var reader = ReadIncoming(pipe, session.Token);
+                var first = await Task.WhenAny(reader, writer);
+                try { await first; }
+                finally
                 {
-                    try
-                    {
-                        while (!token.IsCancellationRequested)
-                        {
-                            var payload = PipeFraming.ReadFrame(pipe);
-                            if (payload == null) break; // graceful disconnect
-                            HandleIncoming(IntegrationMessage.FromUtf8Json(payload));
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        readerError = ex;
-                    }
-                    finally
-                    {
-                        stopped.Set();
-                    }
-                }) { IsBackground = true, Name = "GameHQ.Integration.Reader" };
-                reader.Start();
-
-                while (!stopped.IsSet && !token.IsCancellationRequested)
-                {
-                    IntegrationMessage outgoing;
-                    if (_outgoing.TryTake(out outgoing, 250))
-                    {
-                        try
-                        {
-                            PipeFraming.WriteFrame(pipe, outgoing.ToUtf8Json());
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Warn("GameHQ integration send failed: " + ex.Message);
-                            break;
-                        }
-                    }
+                    session.Cancel();
+                    var other = first == reader ? writer : reader;
+                    try { await other; }
+                    catch (Exception ex) when (IsPipeInterruption(ex)) { }
                 }
-
-                if (readerError != null)
-                    Logger.Warn("GameHQ integration read failed: " + readerError.Message);
-
-                stopped.Wait(TimeSpan.FromSeconds(2));
             }
         }
 
-        private void HandleIncoming(IntegrationMessage message)
-        {
-            if (message.Type == "app.maintenance")
-            {
-                EnterMaintenance(message.GetInt("retryAfterSeconds") ?? 30);
-            }
+        private static bool IsPipeInterruption(Exception ex) =>
+            ex is OperationCanceledException || ex is ObjectDisposedException || ex is IOException;
 
-            var handler = MessageReceived;
-            if (handler != null) handler(message);
+        private async Task WriteOutgoing(Worker worker, NamedPipeClientStream pipe, CancellationToken token)
+        {
+            while (true)
+            {
+                await worker.Messages.WaitAsync(token);
+                IntegrationMessage message;
+                lock (_gate) message = worker.Outgoing.Dequeue();
+                await PipeFraming.WriteFrameAsync(pipe, message.ToUtf8Json(), token);
+            }
+        }
+
+        private async Task ReadIncoming(NamedPipeClientStream pipe, CancellationToken token)
+        {
+            while (!token.IsCancellationRequested)
+            {
+                var payload = await PipeFraming.ReadFrameAsync(pipe, token);
+                if (payload == null) break;
+                token.ThrowIfCancellationRequested();
+                var message = IntegrationMessage.FromUtf8Json(payload);
+                if (message.Type == "app.maintenance")
+                {
+                    int seconds = Math.Max(1, message.GetInt("retryAfterSeconds") ?? 30);
+                    _suspendedUntilUtc = DateTime.UtcNow.AddSeconds(seconds);
+                    SetState(IntegrationConnectionState.Suspended);
+                }
+                MessageReceived?.Invoke(message);
+            }
         }
 
         private void SetState(IntegrationConnectionState state)
         {
             if (_state == state) return;
             _state = state;
-            var handler = StateChanged;
-            if (handler != null) handler(state);
-        }
-
-        private static int NextBackoff(int currentMs)
-        {
-            var next = currentMs * 2;
-            return next > MaxBackoffMs ? MaxBackoffMs : next;
-        }
-
-        public void Dispose()
-        {
-            Stop();
-            _outgoing.Dispose();
-            _wake.Dispose();
+            StateChanged?.Invoke(state);
         }
     }
 }

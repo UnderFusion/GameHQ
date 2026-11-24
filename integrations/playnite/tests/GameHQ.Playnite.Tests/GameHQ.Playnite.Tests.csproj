@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net462</TargetFrameworks>
     <RootNamespace>GameHQ.Playnite.Tests</RootNamespace>
     <IsPackable>false</IsPackable>
     <Nullable>disable</Nullable>
@@ -11,21 +11,41 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
+  <!-- Run the pipe lifecycle tests on Playnite's framework and Windows pipe
+       implementation as well as in the portable net8 suite. -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net462'">
+    <LangVersion>latest</LangVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <IsTestProject Condition="'$(OS)' != 'Windows_NT'">false</IsTestProject>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
     <!-- Only needed to compile GameHQLocator.cs here; the plugin itself
          needs no NuGet reference for it (built into .NET Framework). -->
-    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
-    <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.2" />
+    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" Condition="'$(TargetFramework)' == 'net8.0'" />
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.2" Condition="'$(TargetFramework)' == 'net8.0'" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="System.Web.Extensions" />
+    <Compile Include="..\..\src\GameHQ.Playnite\Protocol\IntegrationMessage.cs" Link="Sources\IntegrationMessage.cs" />
+    <Compile Include="IntegrationClientLifecycleTests.cs" />
+    <Compile Include="Support\FrameworkTestTimeout.cs" />
+    <Compile Include="Support\PlayniteTestLog.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Test the real protocol/locator source directly rather than a copy,
-         so these tests fail the moment the shared logic regresses. Neither
-         file depends on Playnite.SDK or System.Web.Extensions. -->
+    <!-- Link the production client and framing. The net8 harness supplies the
+         Playnite logger and the message serializer used by its private pipe peer. -->
+    <Compile Include="..\..\src\GameHQ.Playnite\Protocol\IntegrationClient.cs" Link="Sources\IntegrationClient.cs" />
     <Compile Include="..\..\src\GameHQ.Playnite\Protocol\PipeFraming.cs" Link="Sources\PipeFraming.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <Compile Include="..\..\src\GameHQ.Playnite\GameHQLocator.cs" Link="Sources\GameHQLocator.cs" />
     <Compile Include="..\..\src\GameHQ.Playnite\GameHQStartupSupervisor.cs" Link="Sources\GameHQStartupSupervisor.cs" />
     <Compile Include="..\..\src\GameHQ.Playnite\Security\ReleaseTrust.cs" Link="Sources\ReleaseTrust.cs" />
