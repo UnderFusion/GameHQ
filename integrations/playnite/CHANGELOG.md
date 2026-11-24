@@ -7,6 +7,19 @@ is versioned and released independently of the main GameHQ application (see
 `../../VERSION` for that) — releases are tagged `playnite-vX.Y.Z` in this
 same repository.
 
+## [0.4.14] - 2026-11-24
+
+Published as a GitHub pre-release for testing together with GameHQ 0.8.2
+Beta 2. Playnite does not offer it as an add-on update until it is confirmed.
+
+### Fixed
+
+- Games that Playnite tracks by folder, without reporting a process ID, now
+  tell GameHQ which executable was started, so GameHQ can recognize them
+  (issue #37).
+- The connection to GameHQ finishes its background work before it restarts or
+  shuts down, so reconnecting and closing Playnite no longer race each other.
+
 ## [0.4.13] - 2026-10-08
 
 Published first as a GitHub pre-release for Windows Xbox mode testing on

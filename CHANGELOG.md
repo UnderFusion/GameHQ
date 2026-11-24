@@ -4,9 +4,9 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
-## [0.8.2] - 2026-10-30
+## [0.8.2] - 2026-11-24
 
-Beta 1 (`v0.8.2-beta1`) tests native Share/Guide routing and update-dialog feedback. GameHQ 0.8.1 remains Latest Stable; real DualSense + DS4Windows + HidHide confirmation is required before 0.8.2 Stable.
+Beta 2 (`v0.8.2-beta2`) adds fixes for community reports #33, #34, #36 and #37 and a Discord report about games paused by Playnite Console Overlay. Use it with GameHQ Integration 0.4.14 for Playnite, published as the `playnite-v0.4.14` pre-release. Beta 1 (`v0.8.2-beta1`) tested native Share/Guide routing and update-dialog feedback. GameHQ 0.8.1 remains Latest Stable; real-device confirmation is required before 0.8.2 Stable.
 
 ### Changed
 
@@ -19,6 +19,12 @@ Beta 1 (`v0.8.2-beta1`) tests native Share/Guide routing and update-dialog feedb
 - Native Share and Guide gestures survive ordinary controller-source switches, and Input feedback clears the previous action when a new button is pressed.
 - Opening or closing About cancels navigation repeats from the previous view, and the gallery cannot select tiles or play navigation ticks behind a modal. About navigation stops silently at either end of its control list.
 - Release notes bundled with GameHQ no longer show raw link markup such as `[@name](https://...)`.
+- Tray Exit no longer hangs while a frame or recording is still being prepared; shutdown releases the encoder before waiting for capture work (#34).
+- Keyboard shortcuts can be changed, removed and saved again. A replacement key that another app already owns keeps the previous working shortcut (#36).
+- Games launched from Playnite are detected even when Playnite reports no process ID, using the verified executable sent by GameHQ Integration 0.4.14; the allowed-games list controls capture and removing a game stops it immediately (#37).
+- A double press of View/Back runs only its assigned action, and extra controller buttons that Windows reports separately can be assigned (#33).
+- Capture survives a game being paused by an overlay such as Playnite Console Overlay, so screenshots and replays work again after it resumes.
+- A window that Windows shrank below its minimum after a monitor sleep or display change returns to its normal size.
 
 
 ## [0.8.1] - 2026-10-29

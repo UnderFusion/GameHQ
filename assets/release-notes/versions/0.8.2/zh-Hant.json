@@ -3,8 +3,8 @@
   "schema_version": 2,
   "version": "0.8.2",
   "locale": "zh-Hant",
-  "date": "2026-10-30",
+  "date": "2026-11-24",
   "mode": "fallback",
-  "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+  "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
   "fallback_locale": "en-US"
 }

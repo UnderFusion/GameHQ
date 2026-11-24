@@ -3,15 +3,53 @@
   "schema_version": 2,
   "version": "0.8.2",
   "locale": "en-US",
-  "date": "2026-10-30",
+  "date": "2026-11-24",
   "sections": [
     {
       "id": "beta",
-      "title": "Beta 1",
+      "title": "Beta 2",
       "items": [
         {
           "id": "purpose",
-          "text": "GameHQ 0.8.2 Beta 1 is a pre-release for testing native controller shortcuts and clearer update feedback. GameHQ 0.8.1 remains Latest Stable."
+          "text": "GameHQ 0.8.2 Beta 2 is a pre-release for testing fixes reported by the community. It also includes everything from Beta 1. GameHQ 0.8.1 remains Latest Stable."
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "title": "Community report fixes",
+      "items": [
+        {
+          "id": "tray-exit",
+          "text": "Exit from the tray menu closes GameHQ completely, even while a recording is being prepared or a frame is still being processed (#34)."
+        },
+        {
+          "id": "shortcuts",
+          "text": "Keyboard shortcuts can be changed, removed and saved again, and they survive a restart. If another app already uses the new key, your previous shortcut keeps working (#36)."
+        },
+        {
+          "id": "playnite",
+          "text": "Games launched from Playnite are recognized even when Playnite reports no process ID. This needs GameHQ Integration 0.4.14 for Playnite (#37)."
+        },
+        {
+          "id": "allowlist",
+          "text": "The list of allowed games decides which games can be captured, and removing a game stops its capture immediately (#37)."
+        },
+        {
+          "id": "view-gestures",
+          "text": "A double press of View/Back runs only the action assigned to it, so it no longer also triggers the single-press action (#33)."
+        },
+        {
+          "id": "extra-buttons",
+          "text": "Extra controller buttons that Windows reports separately can be assigned in the Input editor (#33)."
+        },
+        {
+          "id": "pause-overlay",
+          "text": "Recording continues while a game is paused by an overlay such as Playnite Console Overlay. Screenshots and replays work again after the game resumes."
+        },
+        {
+          "id": "window-size",
+          "text": "If Windows shrinks the GameHQ window after a monitor sleeps or the display layout changes, GameHQ restores its normal size."
         }
       ]
     },
@@ -61,11 +99,11 @@
       "items": [
         {
           "id": "ds4windows",
-          "text": "Automated checks cover simulated input and actual action dispatch. DualSense Bluetooth with DS4Windows and HidHide still needs a real-device test without the Share keyboard macro; issue #32 remains open."
+          "text": "DualSense Bluetooth with DS4Windows and HidHide still needs a real-device test without the Share keyboard macro."
         },
         {
           "id": "test",
-          "text": "Keep Use Back/View as Share off for the virtual Xbox source. Check native Share tap for a screenshot, a two-second hold for replay, double tap for overlay, and both Share and touchpad/Back after reconnecting."
+          "text": "Please test the fix for your report and tell us in its GitHub issue whether it works. 8BitDo extra buttons and Playnite Console Overlay have only been tested with simulated input so far."
         }
       ]
     }

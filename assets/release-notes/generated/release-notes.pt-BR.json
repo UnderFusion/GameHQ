@@ -1,11 +1,24 @@
 {
   "version": "0.8.2",
-  "date": "2026-10-30",
+  "date": "2026-11-24",
   "sections": [
     {
-      "title": "Beta 1",
+      "title": "Beta 2",
       "items": [
-        "GameHQ 0.8.2 Beta 1 is a pre-release for testing native controller shortcuts and clearer update feedback. GameHQ 0.8.1 remains Latest Stable."
+        "GameHQ 0.8.2 Beta 2 is a pre-release for testing fixes reported by the community. It also includes everything from Beta 1. GameHQ 0.8.1 remains Latest Stable."
+      ]
+    },
+    {
+      "title": "Community report fixes",
+      "items": [
+        "Exit from the tray menu closes GameHQ completely, even while a recording is being prepared or a frame is still being processed (#34).",
+        "Keyboard shortcuts can be changed, removed and saved again, and they survive a restart. If another app already uses the new key, your previous shortcut keeps working (#36).",
+        "Games launched from Playnite are recognized even when Playnite reports no process ID. This needs GameHQ Integration 0.4.14 for Playnite (#37).",
+        "The list of allowed games decides which games can be captured, and removing a game stops its capture immediately (#37).",
+        "A double press of View/Back runs only the action assigned to it, so it no longer also triggers the single-press action (#33).",
+        "Extra controller buttons that Windows reports separately can be assigned in the Input editor (#33).",
+        "Recording continues while a game is paused by an overlay such as Playnite Console Overlay. Screenshots and replays work again after the game resumes.",
+        "If Windows shrinks the GameHQ window after a monitor sleeps or the display layout changes, GameHQ restores its normal size."
       ]
     },
     {
@@ -28,8 +41,8 @@
     {
       "title": "Hardware verification needed",
       "items": [
-        "Automated checks cover simulated input and actual action dispatch. DualSense Bluetooth with DS4Windows and HidHide still needs a real-device test without the Share keyboard macro; issue #32 remains open.",
-        "Keep Use Back/View as Share off for the virtual Xbox source. Check native Share tap for a screenshot, a two-second hold for replay, double tap for overlay, and both Share and touchpad/Back after reconnecting."
+        "DualSense Bluetooth with DS4Windows and HidHide still needs a real-device test without the Share keyboard macro.",
+        "Please test the fix for your report and tell us in its GitHub issue whether it works. 8BitDo extra buttons and Playnite Console Overlay have only been tested with simulated input so far."
       ]
     }
   ],
@@ -564,7 +577,7 @@
     "documents": [
       {
         "version": "0.8.2",
-        "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+        "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

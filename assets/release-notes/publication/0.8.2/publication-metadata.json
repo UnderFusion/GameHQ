@@ -2,15 +2,15 @@
   "schema_version": 1,
   "kind": "release-publication",
   "version": "0.8.2",
-  "date": "2026-10-30",
+  "date": "2026-11-24",
   "source_locale": "en-US",
   "default_locale": "en-US",
   "localization_policy": "fallback-allowed",
-  "release_source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+  "release_source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 3406,
-    "sha256": "6bf3984059fc3ff3e42298a5a28dac2105ae419aa7858c668aedbe21fb1f87b1"
+    "size": 4424,
+    "sha256": "7cbe42a45ed920ccf214c539926c6efbeae6b9d4ca3e5f90cc67d6054007134f"
   },
   "distribution": {
     "localized_documents": "repository",
@@ -28,16 +28,29 @@
       "language_english_name": "English (United States)",
       "language_native_name": "English",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.en-US.md",
-      "size": 1898,
-      "sha256": "659302b1736cd9b8b5d6a13cfdb493a10df472beab7f5372828228df3e374bd3",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 2916,
+      "sha256": "79f0ca30dcf05bdd47ff59439d676588484d636180deb3ad2825c1e7a6b1f99b",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -76,16 +89,29 @@
       "language_english_name": "Chinese (Simplified)",
       "language_native_name": "简体中文",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.zh-Hans.md",
-      "size": 2088,
-      "sha256": "7da00b18fb11cf9adf50c6ecefbda63d4fd9aa7b4f265d12ba3ec1ee3ab12760",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3106,
+      "sha256": "3b1df1bc6979b6cd5c44876c66fd0fe429e136f2f1c294f14a53aa5ce4938137",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -124,16 +150,29 @@
       "language_english_name": "Russian",
       "language_native_name": "Русский",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.ru-RU.md",
-      "size": 2075,
-      "sha256": "e03708e88709a4b68445aa36a896037c4fe2c27615dd692e485d0d1f9c6abbcc",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3093,
+      "sha256": "082f3d70826df3bba4a475cb726b957a04759b9df2780eef920a69de888c54e6",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -172,16 +211,29 @@
       "language_english_name": "Spanish",
       "language_native_name": "Español",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.es-ES.md",
-      "size": 2075,
-      "sha256": "12913b3d2ab486da840465d73a48f98aa16bbbf521247d050f21b7a709970aa0",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3093,
+      "sha256": "31dd8974d0d7b3945c01b407f558cc4cedaa3a9dd1002fcc78d8282980e85362",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -220,16 +272,29 @@
       "language_english_name": "Portuguese (Brazil)",
       "language_native_name": "Português (Brasil)",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.pt-BR.md",
-      "size": 2087,
-      "sha256": "bc2b7c7c1ae7614fc497c624ebd67614d7e8ea7b7fb80de5b4a32ddcbb6684c5",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3105,
+      "sha256": "4451d85c4a422cd2a7e8d1b1da8349ed203b811d4e4606d4522ec59962fc7ee7",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -268,16 +333,29 @@
       "language_english_name": "German",
       "language_native_name": "Deutsch",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.de-DE.md",
-      "size": 2074,
-      "sha256": "b7c5f7d5905e29f6ccd696f98ce6af6a9da2fcf5c89105e86f7d4acc902eeee7",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3092,
+      "sha256": "3cee262a035cd1f823e05ca8fd5c757a541315c196f836fb25a2c4161f1938b1",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -316,16 +394,29 @@
       "language_english_name": "Japanese",
       "language_native_name": "日本語",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.ja-JP.md",
-      "size": 2076,
-      "sha256": "bd6e6fce22496528faaf86281ae9cf0b0cc5e412ad21fc1f87ce9619fec2df31",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3094,
+      "sha256": "8cc78ba6f222c97b68c0018cb396e523755952f96607c01184c702ed4f193b24",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -364,16 +455,29 @@
       "language_english_name": "French",
       "language_native_name": "Français",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.fr-FR.md",
-      "size": 2074,
-      "sha256": "a6750b4781f0df5c449877e5ef9ad3bd1f48bb3eedc5ed7f24dd56a26434a08b",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3092,
+      "sha256": "6de5f49826a6d5da7b650e4d0d6d2fb806ea6f21865bc279554a9ef6dd3884a3",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -412,16 +516,29 @@
       "language_english_name": "Polish",
       "language_native_name": "Polski",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.pl-PL.md",
-      "size": 2074,
-      "sha256": "f1f58eb83b217e3656fc46255d36b73fa320842be0c5cf49e10023c397dec3ca",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3092,
+      "sha256": "1cfda065ef5b39effea866b0b10343c704cd7616cdfb7a189de6e69db7ff373a",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -460,16 +577,29 @@
       "language_english_name": "Korean",
       "language_native_name": "한국어",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.ko-KR.md",
-      "size": 2074,
-      "sha256": "36ae84c742ef3274352a14867d6c043c65ece171ee2d7ce68545d6e11ed93255",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3092,
+      "sha256": "028d873355b3587934d66ede905b1b5837f8893a397fa828d9c31d3d3024a73d",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -508,16 +638,29 @@
       "language_english_name": "Chinese (Traditional)",
       "language_native_name": "繁體中文",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.zh-Hant.md",
-      "size": 2089,
-      "sha256": "ba6a35ec602cf9735d6b3d3599a9969032c3de6b0e0604aae0cb83731977794e",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3107,
+      "sha256": "57aafb6531a48405857318adbf0ca6d02f364bb4c87417b8e5880970b9a1da3a",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -556,16 +699,29 @@
       "language_english_name": "Turkish",
       "language_native_name": "Türkçe",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.tr-TR.md",
-      "size": 2075,
-      "sha256": "398b0c990bb41a5a39945f81f8e8dc4f15f2a6871535b6f2584d5378cceb45fd",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3093,
+      "sha256": "5c852cc05b9fefe3a8628ba7d5093572e50700416b45a045dcb2c73de46f15d3",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -604,16 +760,29 @@
       "language_english_name": "Thai",
       "language_native_name": "ไทย",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.th-TH.md",
-      "size": 2072,
-      "sha256": "0b7f9d70324a312c82ec18630feebb9f6de31c23f7ed51175e3d1fb6025c5825",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3090,
+      "sha256": "65994a9990c924696e602857b37e29967b0284e6fe283e87189ae9c8e39e3dde",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -652,16 +821,29 @@
       "language_english_name": "Spanish (Latin America)",
       "language_native_name": "Español (Latinoamérica)",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.es-419.md",
-      "size": 2091,
-      "sha256": "0b666e738040a0e6162652afa8433a6bbed448c16c49d138ef32ba6e77c569c9",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3109,
+      "sha256": "e9229ba406d38ed0c1234256c037a4d910e37a42744c780387bb1a97c1cc6ff3",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -700,16 +882,29 @@
       "language_english_name": "Ukrainian",
       "language_native_name": "Українська",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.uk-UA.md",
-      "size": 2077,
-      "sha256": "2cddd20729be28342e67ef7c4bb16476a64248e183b7b241cbf635a32891af9e",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3095,
+      "sha256": "1fda17a991aa506a491c92c3eb2651711d8ddde55e873c3349a1592a1e221959",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
@@ -748,16 +943,29 @@
       "language_english_name": "Italian",
       "language_native_name": "Italiano",
       "version": "0.8.2",
-      "date": "2026-10-30",
+      "date": "2026-11-24",
       "filename": "release-notes.it-IT.md",
-      "size": 2075,
-      "sha256": "2655174bf098fe996ebe197ced60c29c977a1680e3559cbb3734d34fe342def8",
-      "source_integrity": "sha256:ff216e048ecf512789a317feced3a0ad162f784057fca735efa7b5d8c8d01323",
+      "size": 3093,
+      "sha256": "71443e737358453a63bf40f7466abe671286d075d90b06aa62296ef395b2e9f8",
+      "source_integrity": "sha256:19bcf1c8552c69bd3b9647b0f89c7e2dc288e5211ef6fcdd08c74bdd95b181bd",
       "structure": [
         {
           "section_id": "beta",
           "item_ids": [
             "purpose"
+          ]
+        },
+        {
+          "section_id": "community",
+          "item_ids": [
+            "tray-exit",
+            "shortcuts",
+            "playnite",
+            "allowlist",
+            "view-gestures",
+            "extra-buttons",
+            "pause-overlay",
+            "window-size"
           ]
         },
         {
