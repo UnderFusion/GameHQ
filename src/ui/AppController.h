@@ -222,6 +222,8 @@ public:
     Q_INVOKABLE void previewCaptureSound();
 
 signals:
+    // Asks App to run the orderly capture shutdown before the event loop ends.
+    void exitRequested();
     void gamesChanged();
     void filterChanged();
     void currentGameChanged();

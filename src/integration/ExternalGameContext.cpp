@@ -308,19 +308,24 @@ ExternalGameMatch ExternalGameContext::matchForeground(
     if (foregroundPid && executablePath.endsWith(QStringLiteral(".exe"), Qt::CaseInsensitive)) {
         const QString path = QDir::cleanPath(QDir::fromNativeSeparators(executablePath));
         const ExternalGameSession* candidate = nullptr;
+        bool ambiguous = false;
         for (const ExternalGameSession &session : snapshot) {
             if (session.phase == QStringLiteral("started") && !session.launchExecutable.isEmpty()
                 && path.compare(QDir::cleanPath(QDir::fromNativeSeparators(session.launchExecutable)),
                                 Qt::CaseInsensitive) == 0
                 && pathInside(path, session.installDirectory)) {
                 // An executable can have multiple running instances. A known
-                // conflicting PID or a second session makes the path ambiguous.
-                if (session.startedProcessId || candidate)
-                    return {};
+                // conflicting PID or a second session makes the path ambiguous:
+                // it never authorizes capture, but the weaker install-directory
+                // identity below still applies to an already-detected game.
+                if (session.startedProcessId || candidate) {
+                    ambiguous = true;
+                    break;
+                }
                 candidate = &session;
             }
         }
-        if (candidate)
+        if (candidate && !ambiguous)
             return { MatchConfidence::LaunchExecutable, *candidate };
     }
     if (alreadyGame) {

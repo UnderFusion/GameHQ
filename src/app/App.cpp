@@ -227,6 +227,8 @@ bool App::init()
     // teardown until the worker has released its apartment.
     connect(m_tray.get(), &TrayIcon::quitRequested,
             this, &App::requestExit, Qt::QueuedConnection);
+    connect(m_controller.get(), &AppController::exitRequested,
+            this, &App::requestExit, Qt::QueuedConnection);
     connect(m_framePump.get(), &FramePumpService::shutdownFinished,
             qApp, &QCoreApplication::quit, Qt::QueuedConnection);
 

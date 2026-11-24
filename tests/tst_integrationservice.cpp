@@ -252,6 +252,9 @@ void IntegrationServiceTest::startedFileActionIdentifiesOnlyItsOwnWindow()
     session[QStringLiteral("startedProcessId")] = 123;
     QVERIFY(context.upsert(source, session, QStringLiteral("started"), error));
     QVERIFY(!match(99, game).authorizesWindowedCapture());
+    // A relaunched game keeps its weaker install-directory identity.
+    QCOMPARE(context.matchForeground(99, game, true, {}).confidence,
+             integration::MatchConfidence::InstallDirectory);
     QCOMPARE(match(123, game).confidence, integration::MatchConfidence::ExactProcess);
     session[QStringLiteral("startedProcessId")] = 0;
     session[QStringLiteral("installDirectory")] = QStringLiteral("C:/");

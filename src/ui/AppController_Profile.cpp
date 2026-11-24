@@ -15,6 +15,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QGuiApplication>
+#include <QMetaMethod>
 #include <QProcess>
 #include <QSysInfo>
 #include <QUrl>
@@ -89,13 +90,18 @@ QString AppController::beginPortableImport(const QUrl& folderUrl)
             //% "GameHQ could not start the portable import process."
             QT_TRID_NOOP("gamehq.error.portable_import.process_start_failed"),
             "GameHQ could not start the portable import process.");
-    QCoreApplication::quit();
+    quitApplication();
     return {};
 }
 
 void AppController::quitApplication()
 {
-    QCoreApplication::quit();
+    // Tray Exit and window close share one shutdown: capture and encoder
+    // teardown must finish while the GUI dispatcher is still running (#34).
+    if (isSignalConnected(QMetaMethod::fromSignal(&AppController::exitRequested)))
+        emit exitRequested();
+    else
+        QCoreApplication::quit();
 }
 
 void AppController::copyDiagnosticSummary() const
