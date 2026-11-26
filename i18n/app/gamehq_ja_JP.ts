@@ -2353,17 +2353,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>スクリーンショットを保存しました</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="288"></location>
+      <location filename="src/app/App.cpp" line="286"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ は既定の設定で起動しました。以前の設定ファイルは保持されているため、失われたものはありません。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="283"></location>
+      <location filename="src/app/App.cpp" line="281"></location>
       <source>Settings could not be read</source>
       <translation>設定を読み取れませんでした</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="315"></location>
+      <location filename="src/app/App.cpp" line="313"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>一部のインターフェース音を利用できません</translation>
     </message>
@@ -5420,62 +5420,67 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>リプレイを保存</translation>
     </message>
     <message id="gamehq.tray.status.capture.ready">
-      <location filename="src/tray/TrayStatus.cpp" line="170"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
       <source>Ready</source>
       <translation>準備完了</translation>
     </message>
+    <message id="gamehq.tray.status.capture.screenshots_only">
+      <location filename="src/tray/TrayStatus.cpp" line="189"></location>
+      <source>Screenshots only</source>
+      <translation>スクリーンショットのみ</translation>
+    </message>
     <message id="gamehq.tray.status.capture.starting">
-      <location filename="src/tray/TrayStatus.cpp" line="175"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="184"></location>
       <source>Starting</source>
       <translation>起動中</translation>
     </message>
     <message id="gamehq.tray.status.capture.waiting">
-      <location filename="src/tray/TrayStatus.cpp" line="182"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
       <source>Waiting for a supported game</source>
       <translation>対応ゲームを待機中</translation>
     </message>
     <message id="gamehq.tray.status.game.none">
-      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="210"></location>
       <source>None detected</source>
       <translation>検出なし</translation>
     </message>
     <message id="gamehq.tray.status.state.capture_problem">
-      <location filename="src/tray/TrayStatus.cpp" line="147"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
       <source>Capture problem</source>
       <translation>キャプチャの問題</translation>
     </message>
     <message id="gamehq.tray.status.state.clip_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="142"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="151"></location>
       <source>Clip saved</source>
       <translation>クリップを保存しました</translation>
     </message>
     <message id="gamehq.tray.status.state.game_detected">
-      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="165"></location>
       <source>Game detected</source>
       <translation>ゲームを検出</translation>
     </message>
     <message id="gamehq.tray.status.state.idle">
-      <location filename="src/tray/TrayStatus.cpp" line="160"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="169"></location>
       <source>Idle</source>
       <translation>待機中</translation>
     </message>
     <message id="gamehq.tray.status.state.screenshot_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="137"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="146"></location>
       <source>Screenshot saved</source>
       <translation>スクリーンショットを保存しました</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.capture">
-      <location filename="src/tray/TrayStatus.cpp" line="214"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="228"></location>
       <source>Capture: %1</source>
       <translation>キャプチャ: %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.game">
-      <location filename="src/tray/TrayStatus.cpp" line="204"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
       <source>Game: %1</source>
       <translation>ゲーム: %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.status">
-      <location filename="src/tray/TrayStatus.cpp" line="209"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="223"></location>
       <source>Status: %1</source>
       <translation>状態: %1</translation>
     </message>

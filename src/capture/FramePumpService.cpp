@@ -405,9 +405,11 @@ void FramePumpService::updateAutoTarget(const ForegroundGame& g, bool restartReq
         return;
     }
     const bool isGame = !g.isPlaynitePauseMenu && GameDetector::shouldCapture(g, m_config);
-    if (g.valid && !g.isExcludedProcess)
+    if (g.valid && !g.isExcludedProcess) {
         emit foregroundGameDetected(g.gameName, g.executablePath,
                                     g.isGame || g.hasExternalIdentity);
+        emit foregroundCaptureTarget(g.gameName, g.isGame || g.hasExternalIdentity, isGame);
+    }
     if (m_autoEnabled && isGame) {
         m_noGameTicks = 0;
         if (!m_owners.owns(ReplayBufferOwners::Auto)) {
@@ -415,8 +417,10 @@ void FramePumpService::updateAutoTarget(const ForegroundGame& g, bool restartReq
             ownersChanged("auto acquired");
         }
     } else {
-        if (!g.valid || g.isExcludedProcess)
+        if (!g.valid || g.isExcludedProcess) {
             emit foregroundGameDetected(QString(), QString(), false);
+            emit foregroundCaptureTarget(QString(), false, false);
+        }
         if (m_owners.owns(ReplayBufferOwners::Auto) && ++m_noGameTicks >= 2) {
             m_owners.setAuto(false);
             ownersChanged("auto released after foreground grace");

@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "offline machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-11-26T12:00:00Z"
+    "recorded_at": "2026-11-26T18:00:00Z"
   },
   "baseline": {
     "path": "git:0f1362ce8b13fb1594079b0a7896c554f3886aa4:i18n/app/gamehq_ko_KR.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_ko_KR.ts",
-    "sha256": "9a001616569ea8001cda7956501da0f1f59042ee48e625616030d6a2361c9f49",
-    "message_count": 1132
+    "sha256": "48b883e2581d5dd0de6f5f9a4b5dbc7368c18e6b22bbaac0aecfd62422133bf1",
+    "message_count": 1133
   },
   "coverage": [
     {
@@ -9585,6 +9585,15 @@
       "decision": "accepted"
     },
     {
+      "id": "gamehq.tray.status.capture.screenshots_only",
+      "source_hash": "e417793779664afc2df0f059d43971f457259091623369cff1449ff5962db118",
+      "translation_hash": "5247bfda0e58950680e7b16d7164c3074bc0ab8dfd045811fc1df6f08a82a36c",
+      "locations": [
+        "src/tray/TrayStatus.cpp:189"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.tray.status.capture.starting",
       "source_hash": "610cd250f5812fb70864b96013bc95d3a1953e2ba30e2dbabf2e90948edc7b5d",
       "translation_hash": "9ef1a2fe2379bc31dfe47b719117715d3e8f76b7cc93c7bfe98729fb872fbda7",
@@ -16456,8 +16465,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_ko_KR.ts",
-      "sha256": "9a001616569ea8001cda7956501da0f1f59042ee48e625616030d6a2361c9f49",
-      "reviewed_units": 1132
+      "sha256": "48b883e2581d5dd0de6f5f9a4b5dbc7368c18e6b22bbaac0aecfd62422133bf1",
+      "reviewed_units": 1133
     },
     {
       "surface": "installer",

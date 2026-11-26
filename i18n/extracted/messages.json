@@ -8240,7 +8240,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 288
+          "line": 286
         }
       ],
       "plural": false,
@@ -8259,7 +8259,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 283
+          "line": 281
         }
       ],
       "plural": false,
@@ -8276,7 +8276,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 315
+          "line": 313
         }
       ],
       "plural": false,
@@ -18822,7 +18822,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 170
+          "line": 179
         }
       ],
       "plural": false,
@@ -18832,6 +18832,23 @@
       "source_hash": "37ab13a58a5828d1a7ab6532f7bfcf71e30128c8172a03562433a6b53d4e40c8"
     },
     {
+      "id": "gamehq.tray.status.capture.screenshots_only",
+      "source": "Screenshots only",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 189
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "e417793779664afc2df0f059d43971f457259091623369cff1449ff5962db118"
+    },
+    {
       "id": "gamehq.tray.status.capture.starting",
       "source": "Starting",
       "context": "ID",
@@ -18839,7 +18856,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 175
+          "line": 184
         }
       ],
       "plural": false,
@@ -18856,7 +18873,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 182
+          "line": 196
         }
       ],
       "plural": false,
@@ -18873,7 +18890,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 196
+          "line": 210
         }
       ],
       "plural": false,
@@ -18890,7 +18907,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 147
+          "line": 156
         }
       ],
       "plural": false,
@@ -18907,7 +18924,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 142
+          "line": 151
         }
       ],
       "plural": false,
@@ -18924,7 +18941,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 156
+          "line": 165
         }
       ],
       "plural": false,
@@ -18941,7 +18958,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 160
+          "line": 169
         }
       ],
       "plural": false,
@@ -18958,7 +18975,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 137
+          "line": 146
         }
       ],
       "plural": false,
@@ -18975,7 +18992,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 214
+          "line": 228
         }
       ],
       "plural": false,
@@ -18994,7 +19011,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 204
+          "line": 218
         }
       ],
       "plural": false,
@@ -19013,7 +19030,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 209
+          "line": 223
         }
       ],
       "plural": false,

@@ -228,10 +228,8 @@ bool App::init()
     // success/failure signals of the two capture services. Nothing polls.
     m_tray->setConfigManager(m_config.get());
     TrayStatus* trayStatus = m_tray->status();
-    connect(m_framePump.get(), &FramePumpService::foregroundGameDetected, trayStatus,
-            [trayStatus](const QString& gameName, const QString&, bool recognizedGame) {
-                trayStatus->setForegroundGame(gameName, recognizedGame);
-            });
+    connect(m_framePump.get(), &FramePumpService::foregroundCaptureTarget, trayStatus,
+            &TrayStatus::setForegroundGame);
     connect(m_framePump.get(), &FramePumpService::bufferStateChanged, trayStatus,
             [trayStatus](ReplayBufferState::State state, const QString&) {
                 trayStatus->setReplayBufferState(static_cast<int>(state));

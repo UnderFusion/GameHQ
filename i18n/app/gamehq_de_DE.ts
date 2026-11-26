@@ -2368,17 +2368,17 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Screenshot gespeichert</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="288"></location>
+      <location filename="src/app/App.cpp" line="286"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ wurde mit den Standardeinstellungen gestartet. Ihre vorherige Einstellungsdatei wurde beibehalten, damit nichts verloren geht.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="283"></location>
+      <location filename="src/app/App.cpp" line="281"></location>
       <source>Settings could not be read</source>
       <translation>Einstellungen konnten nicht gelesen werden</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="315"></location>
+      <location filename="src/app/App.cpp" line="313"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Einige Oberflächentöne sind nicht verfügbar</translation>
     </message>
@@ -5447,62 +5447,67 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Replay speichern</translation>
     </message>
     <message id="gamehq.tray.status.capture.ready">
-      <location filename="src/tray/TrayStatus.cpp" line="170"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
       <source>Ready</source>
       <translation>Bereit</translation>
     </message>
+    <message id="gamehq.tray.status.capture.screenshots_only">
+      <location filename="src/tray/TrayStatus.cpp" line="189"></location>
+      <source>Screenshots only</source>
+      <translation>Nur Screenshots</translation>
+    </message>
     <message id="gamehq.tray.status.capture.starting">
-      <location filename="src/tray/TrayStatus.cpp" line="175"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="184"></location>
       <source>Starting</source>
       <translation>Startet</translation>
     </message>
     <message id="gamehq.tray.status.capture.waiting">
-      <location filename="src/tray/TrayStatus.cpp" line="182"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
       <source>Waiting for a supported game</source>
       <translation>Warten auf unterstütztes Spiel</translation>
     </message>
     <message id="gamehq.tray.status.game.none">
-      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="210"></location>
       <source>None detected</source>
       <translation>Keines erkannt</translation>
     </message>
     <message id="gamehq.tray.status.state.capture_problem">
-      <location filename="src/tray/TrayStatus.cpp" line="147"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
       <source>Capture problem</source>
       <translation>Aufnahmeproblem</translation>
     </message>
     <message id="gamehq.tray.status.state.clip_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="142"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="151"></location>
       <source>Clip saved</source>
       <translation>Clip gespeichert</translation>
     </message>
     <message id="gamehq.tray.status.state.game_detected">
-      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="165"></location>
       <source>Game detected</source>
       <translation>Spiel erkannt</translation>
     </message>
     <message id="gamehq.tray.status.state.idle">
-      <location filename="src/tray/TrayStatus.cpp" line="160"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="169"></location>
       <source>Idle</source>
       <translation>Inaktiv</translation>
     </message>
     <message id="gamehq.tray.status.state.screenshot_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="137"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="146"></location>
       <source>Screenshot saved</source>
       <translation>Screenshot gespeichert</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.capture">
-      <location filename="src/tray/TrayStatus.cpp" line="214"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="228"></location>
       <source>Capture: %1</source>
       <translation>Aufnahme: %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.game">
-      <location filename="src/tray/TrayStatus.cpp" line="204"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
       <source>Game: %1</source>
       <translation>Spiel: %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.status">
-      <location filename="src/tray/TrayStatus.cpp" line="209"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="223"></location>
       <source>Status: %1</source>
       <translation>Status: %1</translation>
     </message>

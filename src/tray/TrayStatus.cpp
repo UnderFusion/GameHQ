@@ -24,22 +24,25 @@ TrayStatus::TrayStatus(QObject* parent)
 
 TrayStatus::~TrayStatus() = default;
 
-void TrayStatus::setForegroundGame(const QString& name, bool recognizedGame)
+void TrayStatus::setForegroundGame(const QString& name, bool recognizedGame, bool captureEligible)
 {
     // Only a recognized game counts. FramePumpService reports every valid
     // foreground window, including ones the game heuristic rejects, and those
     // must not make the badge green.
     const QString trimmed = recognizedGame ? name.trimmed() : QString();
-    if (trimmed == m_gameName && recognizedGame == m_recognized)
+    const bool recognized = recognizedGame && !trimmed.isEmpty();
+    const bool eligible = recognized && captureEligible;
+    if (trimmed == m_gameName && recognized == m_recognized && eligible == m_eligible)
         return;
     m_gameName = trimmed;
-    m_recognized = recognizedGame && !trimmed.isEmpty();
+    m_recognized = recognized;
+    m_eligible = eligible;
     publish();
 }
 
 void TrayStatus::clearForegroundGame()
 {
-    setForegroundGame(QString(), false);
+    setForegroundGame(QString(), false, false);
 }
 
 void TrayStatus::setReplayBufferState(int state)
@@ -72,11 +75,17 @@ void TrayStatus::retranslate()
 
 TrayStatus::Visual TrayStatus::baseVisual() const
 {
-    return (m_recognized && capture() == Capture::Ready) ? Visual::Ready : Visual::Idle;
+    const Capture c = capture();
+    return (m_recognized && (c == Capture::Ready || c == Capture::ScreenshotsOnly))
+        ? Visual::Ready : Visual::Idle;
 }
 
 TrayStatus::Capture TrayStatus::capture() const
 {
+    // A buffer still armed for the previous window (foreground grace) must not
+    // vouch for a window GameHQ may not capture.
+    if (!m_eligible)
+        return Capture::Waiting;
     switch (m_bufferState) {
     case ReplayBufferState::Starting:
         return Capture::Starting;
@@ -86,7 +95,7 @@ TrayStatus::Capture TrayStatus::capture() const
     case ReplayBufferState::Stopped:
     case ReplayBufferState::Failed:
     default:
-        return Capture::Waiting;
+        return Capture::ScreenshotsOnly;
     }
 }
 
@@ -173,6 +182,11 @@ QString TrayStatus::captureText() const
             //: Tray tooltip capture line while the replay buffer is still coming up.
             //% "Starting"
             QT_TRID_NOOP("gamehq.tray.status.capture.starting"), "Starting");
+    case Capture::ScreenshotsOnly:
+        return NativeText::get(
+            //: Tray tooltip capture line when the foreground game can be captured but no replay buffer is running (replay off, stopped or failed).
+            //% "Screenshots only"
+            QT_TRID_NOOP("gamehq.tray.status.capture.screenshots_only"), "Screenshots only");
     case Capture::Waiting:
         break;
     }

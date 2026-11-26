@@ -34,7 +34,9 @@ public:
     // The "Capture:" tooltip line. Kept separate from Visual because a game can
     // be foreground while the buffer is still coming up ("Starting"), which is
     // neither Ready nor Idle.
-    enum class Capture { Waiting, Starting, Ready };
+    // ScreenshotsOnly: the foreground game may be captured, but no replay
+    // buffer is running (replay off, stopped or failed) - screenshots still work.
+    enum class Capture { Waiting, Starting, Ready, ScreenshotsOnly };
     Q_ENUM(Capture)
 
     // How long a transient badge stays up. One value for all of them so the
@@ -51,7 +53,9 @@ public:
     // Foreground game from FramePumpService::foregroundGameDetected.
     // `recognizedGame` is that signal's "this is a game we would capture"
     // verdict: a process that merely exists never turns the state Ready.
-    void setForegroundGame(const QString& name, bool recognizedGame);
+    // `captureEligible` is GameDetector::shouldCapture for that window: the
+    // same gate screenshots and the replay buffer use (whitelist, pause menu).
+    void setForegroundGame(const QString& name, bool recognizedGame, bool captureEligible);
     void clearForegroundGame();
 
     // ReplayBufferState::State as delivered by
@@ -98,6 +102,7 @@ private:
 
     QString m_gameName;
     bool m_recognized = false;
+    bool m_eligible = false;
     int m_bufferState = 0;               // ReplayBufferState::Stopped
 
     QString m_tooltip;                   // published tooltip, rebuilt by publish()

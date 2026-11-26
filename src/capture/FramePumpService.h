@@ -191,6 +191,11 @@ signals:
     // only such a window may become a new library game row.
     void foregroundGameDetected(const QString& gameName, const QString& executablePath,
                                 bool recognizedGame);
+    // Same foreground observation plus whether GameHQ may capture it now
+    // (GameDetector::shouldCapture, the rule screenshots and replay share).
+    // Drives the tray status (#38): eligible but unbuffered = screenshots only.
+    void foregroundCaptureTarget(const QString& gameName, bool recognizedGame,
+                                 bool captureEligible);
     // Rolling buffer armed/disarmed — drives the Settings "buffer state" row.
     void recordingStateChanged(bool active, const QString& gameName);
     void bufferStateChanged(ReplayBufferState::State state, const QString& gameName);

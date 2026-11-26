@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "reviewed Simplified Chinese source converted as a draft, followed by complete Traditional Chinese contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-11-26T12:00:00Z"
+    "recorded_at": "2026-11-26T18:00:00Z"
   },
   "baseline": {
     "path": "git:a40b69040da5398245bd7149a5354dd87df21e2d:i18n/app/gamehq_zh_Hant.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_zh_Hant.ts",
-    "sha256": "0297af6cbb58c1ebe4549ab7a6e57c54465ba38e4431ee88d7b77af237e98e81",
-    "message_count": 1132
+    "sha256": "b359e9e3649f79b8812f1848a897856f8541757aeea4e472336299e4b8086b8b",
+    "message_count": 1133
   },
   "coverage": [
     {
@@ -9585,6 +9585,15 @@
       "decision": "accepted"
     },
     {
+      "id": "gamehq.tray.status.capture.screenshots_only",
+      "source_hash": "e417793779664afc2df0f059d43971f457259091623369cff1449ff5962db118",
+      "translation_hash": "6bf87f0abcb62a3f4d3a1fa5fc7e0b8782f3a3aef38065cbef0c12ebc97504c5",
+      "locations": [
+        "src/tray/TrayStatus.cpp:189"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.tray.status.capture.starting",
       "source_hash": "610cd250f5812fb70864b96013bc95d3a1953e2ba30e2dbabf2e90948edc7b5d",
       "translation_hash": "ec7aee91584aa9e249b039c3ab188aeb2344c2573f8fcd0034f69087ec421923",
@@ -16894,8 +16903,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_zh_Hant.ts",
-      "sha256": "0297af6cbb58c1ebe4549ab7a6e57c54465ba38e4431ee88d7b77af237e98e81",
-      "reviewed_units": 1132
+      "sha256": "b359e9e3649f79b8812f1848a897856f8541757aeea4e472336299e4b8086b8b",
+      "reviewed_units": 1133
     },
     {
       "surface": "installer",
