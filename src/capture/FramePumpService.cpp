@@ -4,6 +4,7 @@
 #include "capture/AudioSourcePolicy.h"
 #include "capture/CaptureBorderState.h"
 #include "capture/CapturePublisher.h"
+#include "capture/SegmentRecorder.h"
 #include "config/ConfigKeys.h"
 #include "config/CaptureLocations.h"
 #include "config/ConfigManager.h"
@@ -474,6 +475,11 @@ void FramePumpService::startBuffer(const ForegroundGame& g)
         ? m_config->value(ConfigKeys::InternalCaptureExperimentalHdr,
                           ConfigKeys::InternalCaptureExperimentalHdrDefault).toBool()
         : ConfigKeys::InternalCaptureExperimentalHdrDefault;
+    // #39: read on the GUI thread, published before the worker builds the recorder.
+    SegmentRecorder::setEncoderReuseEnabled(m_config
+        ? m_config->value(ConfigKeys::InternalCaptureEncoderReuse,
+                          ConfigKeys::InternalCaptureEncoderReuseDefault).toBool()
+        : ConfigKeys::InternalCaptureEncoderReuseDefault);
     const QString executablePath = g.executablePath;
     // Copy at dispatch, never read mutable GUI-thread config on the worker.
     const CaptureBorder::SessionPolicy borderPolicy(m_config

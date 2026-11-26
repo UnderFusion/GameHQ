@@ -1,6 +1,7 @@
 #include "capture/SegmentRecorder.h"
 #include "capture/ReplayExporter.h"
 #include "capture/CaptureUtil.h"
+#include "capture/HwH264Encoder.h"
 
 #include <windows.h>
 #include <d3d11.h>
@@ -61,6 +62,18 @@ QString uniqueSegmentPath(const QString& cacheDir)
 
 } // namespace
 
+std::atomic<bool> SegmentRecorder::s_encoderReuse{true};
+
+void SegmentRecorder::setEncoderReuseEnabled(bool enabled)
+{
+    s_encoderReuse.store(enabled, std::memory_order_relaxed);
+}
+
+bool SegmentRecorder::encoderReuseEnabled()
+{
+    return s_encoderReuse.load(std::memory_order_relaxed);
+}
+
 SegmentRecorder::~SegmentRecorder()
 {
     end();
@@ -90,12 +103,35 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
     // D3D11 VideoProcessor is unavailable.
     m_scaleOnGpu = false;
     m_ctx = ctx;
-    if ((m_w != m_srcW || m_h != m_srcH) && dev && ctx)
-        m_scaleOnGpu = initGpuScaler(dev, ctx);
-    m_inW = m_scaleOnGpu ? m_w : m_srcW;
-    m_inH = m_scaleOnGpu ? m_h : m_srcH;
+    m_dev = dev;
     m_fps      = fps > 0 ? fps : 30;
     m_bitrate  = unsigned((bitrateMbps > 0 ? bitrateMbps : 12)) * 1000000u;
+
+    // MF first: encoder enumeration and restoreRing() both need it, and
+    // holding one ref across the whole sweep replaces a MFStartup/MFShutdown
+    // pair per probed segment (issue #39).
+    if (!mfAddRef())
+        return false;
+    m_mfOwned = true;
+
+    // Encoder reuse (#39) needs the GPU BGRA -> NV12 conversion and a
+    // hardware encoder; otherwise each segment builds its own encoder.
+    m_reuse = false;
+    if (s_encoderReuse.load(std::memory_order_relaxed)) {
+        QString why;
+        if (dev && ctx && startEncoderReuse(dev, ctx, &why)) {
+            m_reuse = true;
+        } else {
+            qWarning().noquote() << QStringLiteral(
+                "SegmentRecorder: hardware encoder reuse unavailable (%1) - "
+                "using a new encoder for every segment")
+                .arg(dev && ctx ? why : QStringLiteral("no D3D device"));
+        }
+    }
+    if (!m_reuse && (m_w != m_srcW || m_h != m_srcH) && dev && ctx)
+        m_scaleOnGpu = initGpuScaler(dev, ctx);
+    m_inW = (m_scaleOnGpu || m_reuse) ? m_w : m_srcW;
+    m_inH = (m_scaleOnGpu || m_reuse) ? m_h : m_srcH;
     const int segS = segmentSeconds > 0 ? segmentSeconds : 5;
     const int lenS = lengthSeconds  > 0 ? lengthSeconds  : 300;
     m_segTicks = segS * 10000000LL;
@@ -122,18 +158,10 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
 
     QDir().mkpath(m_cacheDir);
 
-    // MF first, restore second: restoreRing() vets the files it finds through
-    // Media Foundation, and holding one ref across the whole sweep replaces a
-    // MFStartup/MFShutdown pair per probed segment (issue #39).
-    if (!mfAddRef())
-        return false;
-    m_mfOwned = true;
-
     restoreRing();
 
     if (!openSegment()) {
-        mfRelease();
-        m_mfOwned = false;
+        end();   // closes the encoder, scaler and MF ref taken above
         return false;
     }
 
@@ -141,7 +169,8 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
     qInfo().noquote() << QStringLiteral(
         "SegmentRecorder: started %1x%2 -> %3x%4 (%5) @%6fps %7Mbps seg=%8s audio=%9Hz/%10ch -> %11")
         .arg(m_srcW).arg(m_srcH).arg(m_w).arg(m_h)
-        .arg(m_scaleOnGpu ? QStringLiteral("GPU scale")
+        .arg(m_reuse ? QStringLiteral("GPU NV12, reused encoder")
+             : m_scaleOnGpu ? QStringLiteral("GPU scale")
              : (m_w != m_srcW || m_h != m_srcH) ? QStringLiteral("CPU scale")
                                                 : QStringLiteral("no scale"))
         .arg(m_fps).arg(bitrateMbps)
@@ -221,7 +250,7 @@ void SegmentRecorder::restoreRing()
 
 // Build the D3D11 VideoProcessor that downscales source frames to the encode
 // size on the GPU. Any failure falls back to full-size CPU readback.
-bool SegmentRecorder::initGpuScaler(ID3D11Device* dev, ID3D11DeviceContext* ctx)
+bool SegmentRecorder::initGpuScaler(ID3D11Device* dev, ID3D11DeviceContext* ctx, bool nv12)
 {
     if (FAILED(dev->QueryInterface(__uuidof(ID3D11VideoDevice),
                                    reinterpret_cast<void**>(&m_vdev)))
@@ -245,13 +274,33 @@ bool SegmentRecorder::initGpuScaler(ID3D11Device* dev, ID3D11DeviceContext* ctx)
         releaseGpuScaler();
         return false;
     }
+    if (nv12) {
+        UINT support = 0;
+        if (FAILED(m_vpEnum->CheckVideoProcessorFormat(DXGI_FORMAT_NV12, &support))
+            || !(support & D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT_OUTPUT)) {
+            releaseGpuScaler();
+            return false;
+        }
+        // Match the Color Converter MFT the per-segment path uses. Measured on
+        // its output: limited 16-235 range from full-range RGB, BT.709 above
+        // 576 lines and BT.601 at or below (width does not matter). Driver
+        // "enhancements" stay off so the conversion stays faithful.
+        D3D11_VIDEO_PROCESSOR_COLOR_SPACE in{};
+        in.RGB_Range = 0;                  // 0-255
+        m_vctx->VideoProcessorSetStreamColorSpace(m_vp, 0, &in);
+        D3D11_VIDEO_PROCESSOR_COLOR_SPACE out{};
+        out.YCbCr_Matrix  = m_h > 576 ? 1 : 0;   // 1 = BT.709, 0 = BT.601
+        out.Nominal_Range = D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_16_235;
+        m_vctx->VideoProcessorSetOutputColorSpace(m_vp, &out);
+        m_vctx->VideoProcessorSetStreamAutoProcessingMode(m_vp, 0, FALSE);
+    }
 
     D3D11_TEXTURE2D_DESC td{};
     td.Width            = m_w;
     td.Height           = m_h;
     td.MipLevels        = 1;
     td.ArraySize        = 1;
-    td.Format           = DXGI_FORMAT_B8G8R8A8_UNORM;
+    td.Format           = nv12 ? DXGI_FORMAT_NV12 : DXGI_FORMAT_B8G8R8A8_UNORM;
     td.SampleDesc.Count = 1;
     td.Usage            = D3D11_USAGE_DEFAULT;
     td.BindFlags        = D3D11_BIND_RENDER_TARGET;
@@ -270,9 +319,68 @@ bool SegmentRecorder::initGpuScaler(ID3D11Device* dev, ID3D11DeviceContext* ctx)
     }
 
     qInfo().noquote() << QStringLiteral(
-        "SegmentRecorder: GPU downscale active %1x%2 -> %3x%4")
+        "SegmentRecorder: GPU %1 active %2x%3 -> %4x%5")
+        .arg(nv12 ? QStringLiteral("BGRA->NV12 conversion") : QStringLiteral("downscale"))
         .arg(m_srcW).arg(m_srcH).arg(m_w).arg(m_h);
     return true;
+}
+
+// Encoder reuse setup (#39): GPU NV12 converter + one hardware encoder, and an
+// immutable copy of its output type for the pass-through segment writers.
+bool SegmentRecorder::startEncoderReuse(ID3D11Device* dev, ID3D11DeviceContext* ctx, QString* why)
+{
+    if (!initGpuScaler(dev, ctx, true)) {
+        *why = QStringLiteral("GPU video processor cannot produce NV12");
+        return false;
+    }
+    auto encoder = std::make_unique<HwH264Encoder>();
+    HwH264Encoder::Settings settings;
+    settings.width = m_w;
+    settings.height = m_h;
+    settings.fps = unsigned(m_fps);
+    settings.bitrate = m_bitrate;
+    if (!encoder->open(settings, why)) {
+        releaseGpuScaler();
+        return false;
+    }
+    IMFMediaType* copy = nullptr;
+    if (FAILED(MFCreateMediaType(&copy)) || FAILED(encoder->outputType()->CopyAllItems(copy))) {
+        if (copy) copy->Release();
+        *why = QStringLiteral("could not copy the encoder output type");
+        releaseGpuScaler();
+        return false;
+    }
+    m_passthroughType = copy;
+    m_encoder = std::move(encoder);
+    m_forceKeyframe = true;
+    qInfo().noquote() << QStringLiteral(
+        "SegmentRecorder: reusing one hardware encoder (%1) for every segment")
+        .arg(m_encoder->encoderName());
+    return true;
+}
+
+// Leave the reuse path for the rest of this recording. The in-flight segment
+// is poisoned (its encoded frames are incomplete), so the next roll discards
+// it and opens a per-segment-encoder writer instead.
+void SegmentRecorder::stopEncoderReuse(const QString& why)
+{
+    if (!m_reuse)
+        return;
+    qWarning().noquote() << QStringLiteral(
+        "SegmentRecorder: hardware encoder reuse stopped (%1) - "
+        "falling back to a new encoder for every segment").arg(why);
+    m_reuse = false;
+    if (m_writer)
+        noteWriteFailure("video");
+    if (m_encoder) { m_encoder->close(); m_encoder.reset(); }
+    joinPrep();   // the prep thread may still read m_passthroughType
+    if (m_passthroughType) { m_passthroughType->Release(); m_passthroughType = nullptr; }
+    releaseGpuScaler();
+    if (m_staging) { m_staging->Release(); m_staging = nullptr; m_stgW = m_stgH = 0; }
+    if ((m_w != m_srcW || m_h != m_srcH) && m_dev && m_ctx)
+        m_scaleOnGpu = initGpuScaler(m_dev, m_ctx);
+    m_inW = m_scaleOnGpu ? m_w : m_srcW;
+    m_inH = m_scaleOnGpu ? m_h : m_srcH;
 }
 
 // One GPU blit: source texture -> m_scaled. The input view is per-texture
@@ -384,6 +492,18 @@ bool SegmentRecorder::addVideoStream(IMFSinkWriter* writer, unsigned long& video
     return true;
 }
 
+// Encoded H.264 in == out: the sink writer stores the reused encoder's
+// samples without any transform. The type carries the encoder's SPS/PPS.
+bool SegmentRecorder::addPassthroughVideoStream(IMFSinkWriter* writer, unsigned long& videoStream) const
+{
+    if (!m_passthroughType)
+        return false;
+    HRESULT hr = writer->AddStream(m_passthroughType, &videoStream);
+    if (!ok("AddStream(video passthrough)", hr)) return false;
+    hr = writer->SetInputMediaType(videoStream, m_passthroughType, nullptr);
+    return ok("SetInputMediaType(video passthrough)", hr);
+}
+
 // AAC output stream + PCM-16 input type — Step 7. Returns true only when the
 // audio stream is fully wired (AddStream AND SetInputMediaType accepted); any
 // rejection leaves audioStream == 0 and the caller rebuilds video-only.
@@ -438,7 +558,8 @@ bool SegmentRecorder::addAudioStream(IMFSinkWriter* writer, unsigned long& audio
 // (+ optional AAC), input types set, BeginWriting done. Runs on the worker
 // OR the prep thread, so it must not touch mutable recorder state; on AAC
 // input rejection it retries video-only and returns out.audioStream == 0.
-bool SegmentRecorder::buildWriter(const QString& path, PendingWriter& out, bool wantAudio) const
+bool SegmentRecorder::buildWriter(const QString& path, PendingWriter& out, bool wantAudio,
+                                  bool passthrough) const
 {
     IMFSinkWriter* writer = createSegmentSink(path.toStdWString());
     if (!writer)
@@ -446,8 +567,10 @@ bool SegmentRecorder::buildWriter(const QString& path, PendingWriter& out, bool 
 
     unsigned long videoStream = 0;
     unsigned long audioStream = 0;
-    if (!addVideoStream(writer, videoStream)) {
+    if (passthrough ? !addPassthroughVideoStream(writer, videoStream)
+                    : !addVideoStream(writer, videoStream)) {
         writer->Release();
+        QFile::remove(path);
         return false;
     }
 
@@ -461,7 +584,7 @@ bool SegmentRecorder::buildWriter(const QString& path, PendingWriter& out, bool 
         qWarning() << "SegmentRecorder: audio rejected — rebuilding segment video-only";
         writer->Release();
         QFile::remove(path);             // discard the empty/poisoned file
-        return buildWriter(path, out, false);
+        return buildWriter(path, out, false, passthrough);
     }
 
     const HRESULT hr = writer->BeginWriting();
@@ -471,6 +594,7 @@ bool SegmentRecorder::buildWriter(const QString& path, PendingWriter& out, bool 
     out.videoStream = videoStream;
     out.audioStream = audioStream;
     out.path        = path;
+    out.passthrough = passthrough;
     return true;
 }
 
@@ -481,14 +605,15 @@ void SegmentRecorder::startPrep()
 
     const QString path = uniqueSegmentPath(m_cacheDir);
     const bool wantAudio = (m_audioRate > 0 && m_audioChannels > 0);
+    const bool passthrough = m_reuse;
     releasePrep();
     m_prepState.store(1, std::memory_order_relaxed);
     // MF stays started for this recorder's whole lifetime (worker holds the
     // ref), so the prep thread only needs its own COM apartment.
-    m_prepThread = std::thread([this, path, wantAudio] {
+    m_prepThread = std::thread([this, path, wantAudio, passthrough] {
         const HRESULT hrCo = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
         PendingWriter pw;
-        const bool built = buildWriter(path, pw, wantAudio);
+        const bool built = buildWriter(path, pw, wantAudio, passthrough);
         m_prep = pw;
         m_prepState.store(built ? 2 : 3, std::memory_order_release);
         if (SUCCEEDED(hrCo))
@@ -534,7 +659,10 @@ bool SegmentRecorder::openSegment()
 
     if (m_prepState.load(std::memory_order_acquire) != 0) {
         joinPrep();                       // rarely blocks: 5 s window vs ~0.3 s build
-        if (m_prepState.load(std::memory_order_acquire) == 2 && m_prep.writer) {
+        // A writer prepared for the other encoder mode (reuse just stopped)
+        // cannot take this recorder's samples.
+        if (m_prepState.load(std::memory_order_acquire) == 2 && m_prep.writer
+            && m_prep.passthrough == m_reuse) {
             pw = m_prep;
             m_lastOpenUsedPrep = true;
             m_prep = PendingWriter();      // ownership moved into pw
@@ -548,7 +676,7 @@ bool SegmentRecorder::openSegment()
 
     if (!pw.writer) {
         const QString path = uniqueSegmentPath(m_cacheDir);
-        if (!buildWriter(path, pw, m_audioRate > 0 && m_audioChannels > 0))
+        if (!buildWriter(path, pw, m_audioRate > 0 && m_audioChannels > 0, m_reuse))
             return false;
     }
 
@@ -567,11 +695,14 @@ bool SegmentRecorder::openSegment()
     m_curPath     = pw.path;
     m_segVideoFrames  = 0;
     m_segAudioPackets = 0;
+    m_segDroppedFrames = 0;
+    m_forceKeyframe = true;   // reused encoder: the next frame is this segment's IDR
 
-    qInfo().noquote() << QStringLiteral("SegmentRecorder: opened %1%2%3")
+    qInfo().noquote() << QStringLiteral("SegmentRecorder: opened %1%2%3%4")
         .arg(QDir(m_cacheDir).relativeFilePath(m_curPath))
         .arg(m_audioStream > 0 ? QStringLiteral(" (+AAC audio)") : QString())
-        .arg(m_lastOpenUsedPrep ? QStringLiteral(" [pre-built]") : QString());
+        .arg(m_lastOpenUsedPrep ? QStringLiteral(" [pre-built]") : QString())
+        .arg(pw.passthrough ? QStringLiteral(" [reused encoder]") : QString());
 
     startPrep();
     return true;
@@ -581,6 +712,12 @@ void SegmentRecorder::closeSegment()
 {
     if (!m_writer)
         return;
+
+    // Reused encoder: everything still inside it belongs to this segment.
+    // Drain it now so no frame leaks into the next file; drop it if this
+    // segment is being discarded anyway.
+    if (m_reuse)
+        drainEncoderIntoSegment(!m_discardCurrentSegment && !m_segmentWriteFailed);
 
     const bool writeFailed = m_segmentWriteFailed;
     m_segmentWriteFailed = false;
@@ -634,11 +771,14 @@ void SegmentRecorder::closeSegment()
     // Per-segment stats: frames vs the ~expected count at the target fps make
     // capture starvation visible; lastSegPts is the segment's video span.
     qInfo().noquote() << QStringLiteral(
-        "SegmentRecorder: finalized %1 (ring=%2/%3, %4 frames / %5 audio pkts, span=%6ms)")
+        "SegmentRecorder: finalized %1 (ring=%2/%3, %4 frames / %5 audio pkts, span=%6ms%7)")
         .arg(QDir(m_cacheDir).relativeFilePath(m_curPath))
         .arg(m_segments.size()).arg(m_keepSegments)
         .arg(m_segVideoFrames).arg(m_segAudioPackets)
-        .arg(m_lastSegPts >= 0 ? m_lastSegPts / 10000 : 0);
+        .arg(m_lastSegPts >= 0 ? m_lastSegPts / 10000 : 0)
+        .arg(m_segDroppedFrames ? QStringLiteral(", %1 frames dropped waiting for the encoder")
+                                      .arg(m_segDroppedFrames)
+                                : QString());
     m_curPath.clear();
 }
 
@@ -759,6 +899,11 @@ void SegmentRecorder::writeFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
         m_rebaseOnNextFrame = false;
     }
 
+    if (m_reuse) {
+        writeEncodedFrame(tex, dev, ctx, gpts);
+        return;
+    }
+
     // --- GPU downscale (if active), then readback into a staging texture ------
     // The staging copy + row memcpy below run at ENCODE size when the GPU
     // scaler is on — that is the whole performance point: a 4K source encoded
@@ -839,6 +984,118 @@ void SegmentRecorder::writeFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
 
     if (buffer) buffer->Release();
     if (sample) sample->Release();
+}
+
+// Reused-encoder video path (#39): GPU BGRA -> NV12 at encode size, read
+// back 1.5 bytes/pixel instead of 4, hand the frame to the encoder and store
+// whatever encoded samples are ready. Never blocks on the encoder.
+void SegmentRecorder::writeEncodedFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
+                                        ID3D11DeviceContext* ctx, long long gpts)
+{
+    if (!scaleFrame(tex)) {
+        stopEncoderReuse(QStringLiteral("BGRA->NV12 conversion failed"));
+        return;
+    }
+    if (!ensureStaging(dev, m_w, m_h, int(DXGI_FORMAT_NV12))) {
+        stopEncoderReuse(QStringLiteral("NV12 staging texture unavailable"));
+        return;
+    }
+    ctx->CopyResource(m_staging, m_scaled);
+
+    D3D11_MAPPED_SUBRESOURCE mapped{};
+    if (!ok("Map(staging NV12)", ctx->Map(m_staging, 0, D3D11_MAP_READ, 0, &mapped)))
+        return;
+    const DWORD lumaBytes = m_w * m_h;
+    const DWORD bufLen = lumaBytes + lumaBytes / 2;
+    IMFSample* sample = nullptr;
+    IMFMediaBuffer* buffer = nullptr;
+    bool built = false;
+    if (ok("MFCreateSample", MFCreateSample(&sample))
+        && ok("MFCreateMemoryBuffer", MFCreateMemoryBuffer(bufLen, &buffer))) {
+        BYTE* dst = nullptr;
+        if (ok("buffer->Lock", buffer->Lock(&dst, nullptr, nullptr))) {
+            const BYTE* src = static_cast<const BYTE*>(mapped.pData);
+            // NV12 staging layout: Y rows, then the interleaved UV plane at
+            // RowPitch * Height; RowPitch may exceed the width.
+            for (UINT y = 0; y < m_h; ++y)
+                memcpy(dst + size_t(y) * m_w, src + size_t(y) * mapped.RowPitch, m_w);
+            const BYTE* uv = src + size_t(mapped.RowPitch) * m_h;
+            for (UINT y = 0; y < m_h / 2; ++y)
+                memcpy(dst + lumaBytes + size_t(y) * m_w, uv + size_t(y) * mapped.RowPitch, m_w);
+            buffer->Unlock();
+            buffer->SetCurrentLength(bufLen);
+            sample->AddBuffer(buffer);
+            built = true;
+        }
+    }
+    ctx->Unmap(m_staging, 0);
+    if (buffer) buffer->Release();
+    if (!built) {
+        if (sample) sample->Release();
+        return;
+    }
+
+    // The encoder sees the global timeline (monotonic across segments);
+    // writeEncoderOutput rebases each sample onto its segment.
+    sample->SetSampleTime(gpts);
+    sample->SetSampleDuration(m_frameInterval);
+    const unsigned droppedBefore = m_encoder->droppedFrames();
+    const bool key = m_forceKeyframe;
+    m_forceKeyframe = false;
+    const bool accepted = m_encoder->encode(sample, key);
+    sample->Release();
+    if (!accepted) {
+        stopEncoderReuse(m_encoder->failure());
+        return;
+    }
+    m_segDroppedFrames += m_encoder->droppedFrames() - droppedBefore;
+    m_lastSegPts = gpts - m_segStartPts;
+    m_nextDuePts += m_frameInterval;
+    if (m_nextDuePts <= gpts)
+        m_nextDuePts = gpts + m_frameInterval;
+
+    std::vector<IMFSample*> encoded;
+    m_encoder->takeOutput(encoded);
+    writeEncoderOutput(encoded);
+    if (m_encoder->failed())
+        stopEncoderReuse(m_encoder->failure());
+}
+
+void SegmentRecorder::writeEncoderOutput(std::vector<IMFSample*>& samples)
+{
+    for (IMFSample* s : samples) {
+        LONGLONG t = 0;
+        s->GetSampleTime(&t);
+        const long long segPts = t - m_segStartPts;
+        // Drained at every boundary, so nothing older than this segment
+        // should arrive; never write a sample before t=0 if one does.
+        if (segPts >= 0 && m_writer && !m_segmentWriteFailed) {
+            HwH264Encoder::shiftSampleTime(s, -m_segStartPts);
+            s->SetSampleDuration(m_frameInterval);
+            if (ok("WriteSample(video passthrough)", writeSample(DWORD(m_videoStream), s)))
+                ++m_segVideoFrames;
+            else
+                noteWriteFailure("video");
+        }
+        s->Release();
+    }
+    samples.clear();
+}
+
+void SegmentRecorder::drainEncoderIntoSegment(bool keep)
+{
+    if (!m_encoder)
+        return;
+    std::vector<IMFSample*> encoded;
+    const bool drained = m_encoder->drain(encoded, 1000);
+    if (keep) {
+        writeEncoderOutput(encoded);
+    } else {
+        for (IMFSample* s : encoded) s->Release();
+    }
+    if (!drained)
+        stopEncoderReuse(m_encoder->failure().isEmpty() ? QStringLiteral("drain failed")
+                                                        : m_encoder->failure());
 }
 
 void SegmentRecorder::writeAudio(const float* samples, unsigned numFrames, qint64 audioTime100ns)
@@ -1027,9 +1284,13 @@ void SegmentRecorder::end()
     if (m_active || m_writer)
         closeSegment();
     discardPrep();
+    if (m_encoder) { m_encoder->close(); m_encoder.reset(); }
+    m_reuse = false;
+    if (m_passthroughType) { m_passthroughType->Release(); m_passthroughType = nullptr; }
     if (m_staging) { m_staging->Release(); m_staging = nullptr; m_stgW = m_stgH = 0; }
     releaseGpuScaler();
     m_ctx = nullptr;
+    m_dev = nullptr;
     if (m_mfOwned) { mfRelease(); m_mfOwned = false; }
     m_active = false;
 }

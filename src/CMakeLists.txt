@@ -21,6 +21,7 @@ qt_add_executable(GameHQ
     capture/AudioCapture.cpp capture/AudioCapture.h capture/wasapi_shims.h
     capture/AudioSourcePolicy.cpp capture/AudioSourcePolicy.h
     capture/SegmentRecorder.cpp capture/SegmentRecorder.h
+    capture/HwH264Encoder.cpp capture/HwH264Encoder.h
     capture/SegmentLease.cpp capture/SegmentLease.h capture/ReplayExportTask.h
     capture/ReplayExporter.cpp capture/ReplayExporter.h
     config/Paths.cpp       config/Paths.h

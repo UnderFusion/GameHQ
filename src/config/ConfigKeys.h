@@ -181,6 +181,13 @@ inline constexpr QLatin1StringView InternalUiWhatsNewSeenVersion{ "internal.ui.w
 inline constexpr QLatin1StringView InternalCaptureExperimentalHdr{ "internal.capture.experimental_hdr" };
 inline constexpr bool InternalCaptureExperimentalHdrDefault{ true };
 
+// #39: keep one hardware H.264 encoder for the whole recording instead of a
+// new one per replay segment (that path leaks Windows handles). Hidden; set
+// false to force the per-segment encoder. Unsupported hardware falls back on
+// its own and logs why.
+inline constexpr QLatin1StringView InternalCaptureEncoderReuse{ "internal.capture.encoder_reuse" };
+inline constexpr bool InternalCaptureEncoderReuseDefault{ true };
+
 // Group prefixes used by resetGroup() and the settings reset taxonomy.
 namespace Group
 {

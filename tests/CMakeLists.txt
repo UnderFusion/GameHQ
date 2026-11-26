@@ -1032,6 +1032,7 @@ gamehq_add_test(tst_segmentrecorder
     "${CMAKE_SOURCE_DIR}/src/capture/AudioSourcePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentRecorder.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/HwH264Encoder.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentLease.cpp")
 target_link_libraries(tst_segmentrecorder PRIVATE
     Qt6::Gui d3d11 dxguid ole32 oleaut32 mfplat mfreadwrite mfuuid uuid ksuser mmdevapi)
@@ -1513,6 +1514,7 @@ gamehq_add_test(tst_captureacknowledgement
     "${CMAKE_SOURCE_DIR}/src/capture/AudioCapture.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/AudioSourcePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentRecorder.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/HwH264Encoder.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentLease.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"

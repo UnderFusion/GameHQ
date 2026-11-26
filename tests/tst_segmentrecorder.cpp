@@ -8,6 +8,7 @@
 #include <QDir>
 #include <QElapsedTimer>
 #include <QFile>
+#include <QFileInfo>
 #include <QProcess>
 #include <QScopeGuard>
 #include <QSemaphore>
@@ -17,6 +18,7 @@
 #include <atomic>
 #include <array>
 #include <cmath>
+#include <cstring>
 #include <stdexcept>
 #include <thread>
 #include <vector>
@@ -945,6 +947,347 @@ private slots:
                                  .arg(seconds, 0, 'f', 3);
         // Before the fix the 400 ms gap was counted twice: ~3.37 s.
         QVERIFY2(seconds > 2.9 && seconds < 3.1, "Saved video length does not match real time");
+    }
+
+private:
+    // --- #39 encoder reuse: hardware device, real encoder, no window ---------
+
+    struct HwVideo {
+        Microsoft::WRL::ComPtr<ID3D11Device> device;
+        Microsoft::WRL::ComPtr<ID3D11DeviceContext> context;
+        Microsoft::WRL::ComPtr<ID3D11Texture2D> texture;
+        unsigned width = 0, height = 0;
+        std::vector<unsigned char> pixels;
+    };
+
+    // Same device flags as FramePumpPipeline (default adapter, BGRA support).
+    static bool makeHwVideo(HwVideo& v, unsigned w, unsigned h)
+    {
+        if (FAILED(D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr,
+                D3D11_CREATE_DEVICE_BGRA_SUPPORT, nullptr, 0, D3D11_SDK_VERSION,
+                v.device.GetAddressOf(), nullptr, v.context.GetAddressOf())))
+            return false;
+        D3D11_TEXTURE2D_DESC desc{};
+        desc.Width = w;
+        desc.Height = h;
+        desc.MipLevels = desc.ArraySize = desc.SampleDesc.Count = 1;
+        desc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+        desc.Usage = D3D11_USAGE_DEFAULT;
+        // WGC frame-pool and tone-mapper textures are render targets too; the
+        // video processor input view needs that.
+        desc.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_RENDER_TARGET;
+        v.width = w;
+        v.height = h;
+        v.pixels.assign(size_t(w) * h * 4, 0);
+        return SUCCEEDED(v.device->CreateTexture2D(&desc, nullptr, v.texture.GetAddressOf()));
+    }
+
+    // Moving content so every frame encodes differently: a scrolling gradient
+    // with a bright bar whose x position encodes the frame number.
+    static void drawFrame(HwVideo& v, int frame)
+    {
+        for (unsigned y = 0; y < v.height; ++y) {
+            unsigned char* row = v.pixels.data() + size_t(y) * v.width * 4;
+            for (unsigned x = 0; x < v.width; ++x) {
+                const unsigned char g = (unsigned char)((x + y + unsigned(frame) * 5) & 0xff);
+                row[x * 4 + 0] = g;
+                row[x * 4 + 1] = (unsigned char)(255 - g);
+                row[x * 4 + 2] = (unsigned char)((x * 3) & 0xff);
+                row[x * 4 + 3] = 255;
+            }
+        }
+        const unsigned bar = (unsigned(frame) * 7) % (v.width - 16);
+        for (unsigned y = v.height / 4; y < v.height * 3 / 4; ++y)
+            for (unsigned x = bar; x < bar + 16; ++x)
+                std::fill_n(v.pixels.data() + (size_t(y) * v.width + x) * 4, 3, (unsigned char)250);
+        v.context->UpdateSubresource(v.texture.Get(), 0, nullptr, v.pixels.data(), v.width * 4, 0);
+    }
+
+    struct VideoTrack {
+        int frames = 0;
+        bool firstIsKey = false;
+        LONGLONG firstTime = -1;
+        bool monotonic = true;
+    };
+
+    // Reads the compressed video samples of one file: count, IDR at the start,
+    // start time and strictly increasing timestamps.
+    static bool readVideoTrack(const QString& file, VideoTrack& out)
+    {
+        using Microsoft::WRL::ComPtr;
+        ComPtr<IMFSourceReader> reader;
+        if (FAILED(MFCreateSourceReaderFromURL(reinterpret_cast<LPCWSTR>(file.utf16()),
+                                               nullptr, reader.GetAddressOf())))
+            return false;
+        reader->SetStreamSelection(MF_SOURCE_READER_ALL_STREAMS, FALSE);
+        if (FAILED(reader->SetStreamSelection(MF_SOURCE_READER_FIRST_VIDEO_STREAM, TRUE)))
+            return false;
+        LONGLONG last = -1;
+        for (int i = 0; i < 100000; ++i) {
+            ComPtr<IMFSample> sample;
+            DWORD flags = 0;
+            LONGLONG t = 0;
+            if (FAILED(reader->ReadSample(MF_SOURCE_READER_FIRST_VIDEO_STREAM, 0, nullptr,
+                                          &flags, &t, sample.GetAddressOf())))
+                return false;
+            if (sample) {
+                if (out.frames == 0) {
+                    out.firstTime = t;
+                    out.firstIsKey = MFGetAttributeUINT32(sample.Get(), MFSampleExtension_CleanPoint, 0) != 0;
+                }
+                if (t <= last) {
+                    if (out.monotonic)
+                        qWarning().noquote() << QStringLiteral("timestamp %1 after %2 at sample %3 in %4")
+                            .arg(t).arg(last).arg(out.frames).arg(QFileInfo(file).fileName());
+                    out.monotonic = false;
+                }
+                last = t;
+                ++out.frames;
+            }
+            if (flags & MF_SOURCE_READERF_ENDOFSTREAM)
+                return true;
+        }
+        return false;
+    }
+
+    // Decodes the first video frame of a file to NV12 (Y plane, then UV).
+    static bool decodeFirstFrameNv12(const QString& file, unsigned w, unsigned h,
+                                     std::vector<unsigned char>& nv12)
+    {
+        using Microsoft::WRL::ComPtr;
+        ComPtr<IMFAttributes> attrs;
+        MFCreateAttributes(attrs.GetAddressOf(), 1);
+        attrs->SetUINT32(MF_SOURCE_READER_ENABLE_VIDEO_PROCESSING, TRUE);
+        ComPtr<IMFSourceReader> reader;
+        if (FAILED(MFCreateSourceReaderFromURL(reinterpret_cast<LPCWSTR>(file.utf16()),
+                                               attrs.Get(), reader.GetAddressOf())))
+            return false;
+        ComPtr<IMFMediaType> type;
+        MFCreateMediaType(type.GetAddressOf());
+        type->SetGUID(MF_MT_MAJOR_TYPE, MFMediaType_Video);
+        type->SetGUID(MF_MT_SUBTYPE, MFVideoFormat_NV12);
+        if (FAILED(reader->SetCurrentMediaType(MF_SOURCE_READER_FIRST_VIDEO_STREAM, nullptr, type.Get())))
+            return false;
+        ComPtr<IMFMediaType> current;
+        reader->GetCurrentMediaType(MF_SOURCE_READER_FIRST_VIDEO_STREAM, current.GetAddressOf());
+        UINT32 stride = MFGetAttributeUINT32(current.Get(), MF_MT_DEFAULT_STRIDE, w);
+        UINT32 fw = 0, fh = 0;
+        MFGetAttributeSize(current.Get(), MF_MT_FRAME_SIZE, &fw, &fh);   // may be padded (e.g. 1088)
+        for (int i = 0; i < 64; ++i) {
+            ComPtr<IMFSample> sample;
+            DWORD flags = 0;
+            LONGLONG t = 0;
+            if (FAILED(reader->ReadSample(MF_SOURCE_READER_FIRST_VIDEO_STREAM, 0, nullptr,
+                                          &flags, &t, sample.GetAddressOf())))
+                return false;
+            if (sample) {
+                ComPtr<IMFMediaBuffer> buffer;
+                sample->ConvertToContiguousBuffer(buffer.GetAddressOf());
+                BYTE* p = nullptr;
+                DWORD len = 0;
+                buffer->Lock(&p, nullptr, &len);
+                nv12.assign(size_t(w) * h * 3 / 2, 0);
+                const UINT32 planeRows = fh ? fh : h;
+                for (unsigned y = 0; y < h; ++y)
+                    memcpy(nv12.data() + size_t(y) * w, p + size_t(y) * stride, w);
+                for (unsigned y = 0; y < h / 2; ++y)
+                    memcpy(nv12.data() + size_t(w) * h + size_t(y) * w,
+                           p + size_t(stride) * planeRows + size_t(y) * stride, w);
+                buffer->Unlock();
+                return true;
+            }
+            if (flags & MF_SOURCE_READERF_ENDOFSTREAM)
+                return false;
+        }
+        return false;
+    }
+
+private slots:
+    void reusedEncoderWritesIndependentSegments()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-reuse-XXXXXX");
+        QVERIFY(dir.isValid());
+        HwVideo video;
+        if (!makeHwVideo(video, 1280, 720))
+            QSKIP("No hardware D3D11 device");
+        SegmentRecorder::setEncoderReuseEnabled(true);
+        SegmentRecorder recorder;
+        // 1280x720 source encoded at 640x360: exercises the GPU scale + NV12 path.
+        QVERIFY(recorder.begin(1280, 720, 640, 360, 30, 4, 1, 10, dir.path(),
+                               video.device.Get(), video.context.Get(), 48000, 2));
+        const auto finish = qScopeGuard([&] {
+            recorder.discardCurrentSegment();
+            recorder.end();
+        });
+        if (!recorder.reusesEncoder())
+            QSKIP("No hardware encoder accepted NV12 here; the per-segment path is used");
+        QVERIFY(recorder.hasAudio());
+
+        constexpr unsigned audioFrames = 48000 / 30;
+        std::array<float, audioFrames * 2> audio{};
+        SegmentLease firstSave;
+        for (int frame = 0; frame < 225; ++frame) {   // 7.5 s
+            const qint64 t = 10000000LL + frame * 10000000LL / 30;
+            drawFrame(video, frame);
+            recorder.writeFrame(video.texture.Get(), video.device.Get(), video.context.Get(), t);
+            for (unsigned i = 0; i < audioFrames; ++i) {
+                const double s = (frame * audioFrames + i) / 48000.0;
+                audio[i * 2] = audio[i * 2 + 1] = float(0.3 * std::sin(6.283185307 * 440.0 * s));
+            }
+            recorder.writeAudio(audio.data(), audioFrames, t);
+            if (frame == 100)
+                firstSave = recorder.snapshotForSave();
+        }
+        QVERIFY(recorder.reusesEncoder());   // no fallback happened
+        QVERIFY(firstSave.paths().size() >= 3);
+        const SegmentLease saved = recorder.snapshotForSave();
+        QVERIFY(saved.paths().size() >= 6);
+
+        int total = 0;
+        for (const QString& path : saved.paths()) {
+            VideoTrack track;
+            QVERIFY2(readVideoTrack(path, track), qPrintable(path));
+            qInfo().noquote() << QStringLiteral("reuse segment %1: %2 frames, first t=%3, key=%4, %5 bytes")
+                .arg(QFileInfo(path).fileName()).arg(track.frames).arg(track.firstTime)
+                .arg(track.firstIsKey).arg(QFileInfo(path).size());
+            QVERIFY2(track.frames > 0, "segment without video");
+            QVERIFY2(track.firstIsKey, "segment does not start with an IDR frame");
+            QVERIFY2(track.firstTime >= 0 && track.firstTime < 333334, "segment does not start at t=0");
+            QVERIFY2(track.monotonic, "timestamps not strictly increasing");
+            QVERIFY2(track.frames <= 31, "segment holds frames of another segment");
+            total += track.frames;
+        }
+        // The 10 s ring still holds all 7.5 s: every frame, none lost or doubled
+        // across 1 s rolls and the two snapshots.
+        QCOMPARE(total, 225);
+
+        const QString clip = dir.path() + "/reuse.mp4";
+        QVERIFY(ReplayExporter::concat(saved.paths(), clip, QStringLiteral("reuse"),
+                                       ReplayExporter::Audio::Required));
+        VideoTrack exported;
+        QVERIFY(readVideoTrack(clip, exported));
+        QCOMPARE(exported.frames, total);
+        QVERIFY(exported.firstIsKey && exported.monotonic);
+    }
+
+    void reusedEncoderFailureFallsBackToPerSegmentEncoder()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-reuse-fail-XXXXXX");
+        QVERIFY(dir.isValid());
+        HwVideo video;
+        if (!makeHwVideo(video, 640, 360))
+            QSKIP("No hardware D3D11 device");
+        SegmentRecorder::setEncoderReuseEnabled(true);
+        SegmentRecorder recorder;
+        QVERIFY(recorder.begin(640, 360, 640, 360, 30, 4, 1, 10, dir.path(),
+                               video.device.Get(), video.context.Get()));
+        const auto finish = qScopeGuard([&] {
+            recorder.discardCurrentSegment();
+            recorder.end();
+        });
+        if (!recorder.reusesEncoder())
+            QSKIP("No hardware encoder accepted NV12 here");
+        int frame = 0;
+        const auto write = [&](int count) {
+            for (int i = 0; i < count; ++i, ++frame) {
+                drawFrame(video, frame);
+                recorder.writeFrame(video.texture.Get(), video.device.Get(), video.context.Get(),
+                                    frame * 10000000LL / 30);
+            }
+        };
+        write(45);                                  // segment 0 closed, segment 1 half full
+        QVERIFY(recorder.reusesEncoder() && recorder.m_encoder);
+        recorder.m_encoder->injectFailure();        // the encoder rejects the next frame
+        write(1);
+        QVERIFY(!recorder.reusesEncoder());
+        QVERIFY(recorder.isActive());
+        write(74);                                  // per-segment encoder from here on
+        QVERIFY(recorder.isActive());
+        const SegmentLease saved = recorder.snapshotForSave();
+        QVERIFY(saved.paths().size() >= 3);
+        for (const QString& path : saved.paths()) {
+            VideoTrack track;
+            QVERIFY2(readVideoTrack(path, track), qPrintable(path));
+            QVERIFY2(track.frames > 0 && track.firstIsKey && track.monotonic, qPrintable(path));
+        }
+        const QString clip = dir.path() + "/fallback.mp4";
+        QVERIFY(ReplayExporter::concat(saved.paths(), clip, QStringLiteral("fallback"),
+                                       ReplayExporter::Audio::Any));
+    }
+
+    // The GPU BGRA->NV12 conversion must give the same colours as the Color
+    // Converter MFT of the per-segment path (BT.709, limited range).
+    void reusedEncoderMatchesLegacyColours_data()
+    {
+        QTest::addColumn<unsigned>("w");
+        QTest::addColumn<unsigned>("h");
+        QTest::newRow("sd-bt601") << 640u << 360u;    // <= 576 lines
+        QTest::newRow("hd-bt709") << 1280u << 720u;
+    }
+
+    void reusedEncoderMatchesLegacyColours()
+    {
+        QFETCH(unsigned, w);
+        QFETCH(unsigned, h);
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        const auto restoreDefault = qScopeGuard([] { SegmentRecorder::setEncoderReuseEnabled(true); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_FULL)));
+        const auto mf = qScopeGuard([] { MFShutdown(); });
+        static const unsigned char bands[4][3] = { {200, 50, 50}, {40, 180, 60}, {30, 60, 200}, {128, 128, 128} };
+        std::array<std::vector<unsigned char>, 2> decoded;
+        for (int mode = 0; mode < 2; ++mode) {
+            QTemporaryDir dir(QDir::currentPath() + "/segment-colour-XXXXXX");
+            QVERIFY(dir.isValid());
+            HwVideo video;
+            if (!makeHwVideo(video, w, h))
+                QSKIP("No hardware D3D11 device");
+            for (unsigned y = 0; y < h; ++y)
+                for (unsigned x = 0; x < w; ++x) {
+                    const unsigned char* c = bands[x * 4 / w];
+                    unsigned char* px = video.pixels.data() + (size_t(y) * w + x) * 4;
+                    px[0] = c[2]; px[1] = c[1]; px[2] = c[0]; px[3] = 255;
+                }
+            video.context->UpdateSubresource(video.texture.Get(), 0, nullptr, video.pixels.data(), w * 4, 0);
+            SegmentRecorder::setEncoderReuseEnabled(mode == 1);
+            SegmentRecorder recorder;
+            QVERIFY(recorder.begin(int(w), int(h), int(w), int(h), 30, 8, 5, 10, dir.path(),
+                                   video.device.Get(), video.context.Get()));
+            if (mode == 1 && !recorder.reusesEncoder()) {
+                recorder.discardCurrentSegment();
+                recorder.end();
+                QSKIP("No hardware encoder accepted NV12 here");
+            }
+            QCOMPARE(recorder.reusesEncoder(), mode == 1);
+            for (int f = 0; f < 15; ++f)
+                recorder.writeFrame(video.texture.Get(), video.device.Get(), video.context.Get(),
+                                    f * 10000000LL / 30);
+            const SegmentLease saved = recorder.snapshotForSave();
+            recorder.discardCurrentSegment();
+            recorder.end();
+            QCOMPARE(saved.paths().size(), qsizetype(1));
+            QVERIFY(decodeFirstFrameNv12(saved.paths().first(), w, h, decoded[mode]));
+        }
+        for (int b = 0; b < 4; ++b) {
+            const unsigned x = unsigned(b) * (w / 4) + w / 8, y = h / 2;
+            const auto at = [&](const std::vector<unsigned char>& f, size_t i) { return int(f[i]); };
+            const size_t yi = size_t(y) * w + x;
+            const size_t ci = size_t(w) * h + size_t(y / 2) * w + (x & ~1u);
+            const int dy = std::abs(at(decoded[0], yi) - at(decoded[1], yi));
+            const int du = std::abs(at(decoded[0], ci) - at(decoded[1], ci));
+            const int dv = std::abs(at(decoded[0], ci + 1) - at(decoded[1], ci + 1));
+            qInfo().noquote() << QStringLiteral("colour band %1: legacy YUV %2/%3/%4, reuse %5/%6/%7")
+                .arg(b).arg(at(decoded[0], yi)).arg(at(decoded[0], ci)).arg(at(decoded[0], ci + 1))
+                .arg(at(decoded[1], yi)).arg(at(decoded[1], ci)).arg(at(decoded[1], ci + 1));
+            QVERIFY2(dy <= 3 && du <= 3 && dv <= 3, "reused-encoder colours differ from the per-segment path");
+        }
     }
 
     void earlySnapshot_data()

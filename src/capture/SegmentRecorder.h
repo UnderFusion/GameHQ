@@ -1,5 +1,6 @@
 #pragma once
 
+#include "capture/HwH264Encoder.h"
 #include "capture/SegmentLease.h"
 
 #include <QString>
@@ -7,8 +8,10 @@
 #include <QtGlobal>
 
 #include <atomic>
+#include <memory>
 #include <string>
 #include <thread>
+#include <vector>
 
 // Forward declarations (avoid pulling d3d11.h / mfreadwrite.h into the header).
 struct ID3D11Texture2D;
@@ -21,6 +24,7 @@ struct ID3D11VideoProcessorEnumerator;
 struct ID3D11VideoProcessorOutputView;
 struct IMFSinkWriter;
 struct IMFSample;
+struct IMFMediaType;
 
 // 0.5 Step 4/7 — rolling H.264+AAC / fragmented-MP4 replay segment writer.
 //
@@ -29,6 +33,14 @@ struct IMFSample;
 // Video: BGRA (DXGI_FORMAT_B8G8R8A8_UNORM) → RGB32 input → auto Color Converter
 // MFT → H.264 encoder. Audio: interleaved float32 PCM → auto AAC encoder.
 // Top-down orientation via positive MF_MT_DEFAULT_STRIDE.
+//
+// Encoder reuse (#39): when enabled and a hardware H.264 encoder accepts
+// NV12, ONE HwH264Encoder lives for the whole recording. The D3D11 video
+// processor converts BGRA -> NV12 (limited range, BT.709 above 576 lines,
+// like the Color Converter MFT) on the GPU, the encoder output is drained at every segment boundary,
+// and each segment's sink writer stores the H.264 samples unchanged. Any
+// failure discards the in-flight segment and falls back, logged, to the
+// per-segment sink-writer encoder above.
 //
 // Single-thread affinity: construct, feed, and end ALL on the MTA frame-pump
 // worker thread (the one that owns the D3D immediate context). MFStartup/MFShutdown
@@ -97,6 +109,12 @@ public:
     void discardCurrentSegment() { m_discardCurrentSegment = true; }
 
     bool isActive() const { return m_active; }
+    // Process-wide switch read by begin(); the capture service copies it from
+    // config before each recording. Default on.
+    static void setEncoderReuseEnabled(bool enabled);
+    static bool encoderReuseEnabled();
+    // True while this recorder feeds one reused hardware encoder.
+    bool reusesEncoder() const { return m_reuse; }
     // Restored files are not trusted as finalized media until this recording
     // has successfully closed a segment containing video samples.
     bool hasClosedMedia() const;
@@ -128,13 +146,16 @@ private:
         unsigned long  videoStream = 0;
         unsigned long  audioStream = 0;   // 0 = no audio stream
         QString        path;
+        bool           passthrough = false;   // video stream takes encoded H.264
     };
 
-    bool buildWriter(const QString& path, PendingWriter& out, bool wantAudio) const;
+    bool buildWriter(const QString& path, PendingWriter& out, bool wantAudio,
+                     bool passthrough) const;
     // buildWriter stages, in call order. All const — they run on the worker OR
     // the prep thread and must not touch mutable recorder state.
     IMFSinkWriter* createSegmentSink(const std::wstring& wpath) const;
     bool addVideoStream(IMFSinkWriter* writer, unsigned long& videoStream) const;
+    bool addPassthroughVideoStream(IMFSinkWriter* writer, unsigned long& videoStream) const;
     bool addAudioStream(IMFSinkWriter* writer, unsigned long& audioStream) const;
     void startPrep();                 // kick off building the NEXT segment's writer
     void joinPrep();                  // wait for the prep thread (if running)
@@ -145,7 +166,13 @@ private:
     bool openSegment();
     void closeSegment();
     bool ensureStaging(ID3D11Device* dev, unsigned w, unsigned h, int dxgiFmt);
-    bool initGpuScaler(ID3D11Device* dev, ID3D11DeviceContext* ctx);
+    bool initGpuScaler(ID3D11Device* dev, ID3D11DeviceContext* ctx, bool nv12 = false);
+    bool startEncoderReuse(ID3D11Device* dev, ID3D11DeviceContext* ctx, QString* why);
+    void stopEncoderReuse(const QString& why);
+    void writeEncodedFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
+                           ID3D11DeviceContext* ctx, long long gpts);
+    void writeEncoderOutput(std::vector<IMFSample*>& samples);
+    void drainEncoderIntoSegment(bool keep);
     bool scaleFrame(ID3D11Texture2D* tex);   // Blt source -> m_scaled (GPU)
     void releaseGpuScaler();
 
@@ -233,6 +260,15 @@ private:
     ID3D11Texture2D*                  m_scaled   = nullptr;   // encode-size BGRA RT
     ID3D11VideoProcessorOutputView*   m_vpOut    = nullptr;
     bool m_scaleFailLogged = false;
+
+    // encoder reuse (#39)
+    bool m_reuse = false;
+    bool m_forceKeyframe = false;            // next encoded frame starts a segment
+    std::unique_ptr<HwH264Encoder> m_encoder;
+    IMFMediaType* m_passthroughType = nullptr;   // immutable copy; read by the prep thread
+    ID3D11Device* m_dev = nullptr;           // borrowed (pipeline owns)
+    unsigned m_segDroppedFrames = 0;
+    static std::atomic<bool> s_encoderReuse;
 
     bool m_active = false;
     bool m_mfOwned = false;                  // this instance holds an MFStartup ref
