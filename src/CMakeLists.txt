@@ -159,6 +159,8 @@ qt_add_executable(GameHQ
     storage/GameRowRepair.cpp storage/GameRowRepair.h
     storage/ThumbnailService.cpp storage/ThumbnailService.h
     tray/TrayIcon.cpp      tray/TrayIcon.h
+    tray/TrayIconRenderer.cpp tray/TrayIconRenderer.h
+    tray/TrayStatus.cpp    tray/TrayStatus.h
     ui/AppController.cpp   ui/AppController.h
     ui/AppController_Hdr.cpp ui/AppController_Navigation.cpp
     ui/AppController_Profile.cpp ui/AppController_Settings.cpp

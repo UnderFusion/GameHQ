@@ -92,6 +92,9 @@ inline constexpr QLatin1StringView ShareProviderSuffix{ ".enabled" };
 // ui.* — application presentation preferences. The explicit value "system"
 // is retained so first-run bootstrap can distinguish it from an absent key.
 inline constexpr QLatin1StringView UiLanguage{ "ui.language" };
+// Tray icon presentation: badge | replace | static. Badge is the default —
+// the original GameHQ icon plus a small corner status badge.
+inline constexpr QLatin1StringView UiTrayStatusDisplay{ "ui.tray_status_display" };
 // Last-view memory (docs/product-spec.md "Navigation memory"). NavigationState
 // owns the spelling and the validation; a normal launch, tray open or window
 // summon restores these, Help is never restored and an explicit jump can skip

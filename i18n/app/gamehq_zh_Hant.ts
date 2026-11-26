@@ -838,7 +838,7 @@
       <translation>無法計算 %1 的雜湊值。</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController_Profile.cpp" line="54"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="55"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>可攜式設定檔只能由已安裝的 GameHQ 匯入。</translation>
     </message>
@@ -863,12 +863,12 @@
       <translation>無法刪除已復原的可攜式匯入記錄檔。</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController_Profile.cpp" line="60"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="61"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>請選擇包含可攜式版 GameHQ 的本機資料夾。</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController_Profile.cpp" line="69"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="70"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>所選資料夾不是 GameHQ 可攜式套件。</translation>
     </message>
@@ -898,12 +898,12 @@
       <translation>portable:/ 路徑超出了所選的套件根目錄。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController_Profile.cpp" line="80"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="81"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ 無法識別自身的匯入處理程序。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController_Profile.cpp" line="90"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="91"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ 無法啟動可攜式匯入處理程序。</translation>
     </message>
@@ -2363,17 +2363,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>螢幕截圖已儲存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="252"></location>
+      <location filename="src/app/App.cpp" line="288"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用預設設定啟動。系統保留了之前的設定檔案，因此沒有遺失任何內容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="247"></location>
+      <location filename="src/app/App.cpp" line="283"></location>
       <source>Settings could not be read</source>
       <translation>無法讀取設定</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="279"></location>
+      <location filename="src/app/App.cpp" line="315"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分介面音效無法使用</translation>
     </message>
@@ -2626,7 +2626,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.about.updates.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="69"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="173"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="218"></location>
       <source>Updates</source>
       <translation>更新</translation>
     </message>
@@ -3345,6 +3345,41 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="152"></location>
       <source>Window and tray behavior</source>
       <translation>視窗和通知區域的行為</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.badge.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="186"></location>
+      <source>Keeps the %1 icon and adds a small corner badge for the current state.</source>
+      <translation>保留 %1 圖示，並在角落加上表示目前狀態的小角標。</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.badge.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="193"></location>
+      <source>Badge</source>
+      <translation>角標</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="175"></location>
+      <source>Tray icon status</source>
+      <translation>系統匣圖示狀態</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.replace.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="179"></location>
+      <source>Swaps the whole icon for a status symbol while a game is detected.</source>
+      <translation>偵測到遊戲時，以狀態圖示取代整個圖示。</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.replace.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="195"></location>
+      <source>Replace icon</source>
+      <translation>取代圖示</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.static.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="183"></location>
+      <source>Always shows the plain %1 icon; only the tooltip reports status.</source>
+      <translation>一律顯示一般的 %1 圖示，僅在工具提示中顯示狀態。</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.static.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="197"></location>
+      <source>Static</source>
+      <translation>靜態</translation>
     </message>
     <message id="gamehq.settings.general.interface_scale.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="90"></location>
@@ -5385,27 +5420,87 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Steam Input 也可能使用此按鈕</translation>
     </message>
     <message id="gamehq.tray.exit">
-      <location filename="src/tray/TrayIcon.cpp" line="200"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="244"></location>
       <source>Exit</source>
       <translation>離開</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
-      <location filename="src/tray/TrayIcon.cpp" line="184"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="228"></location>
       <source>Open Gallery</source>
       <translation>開啟圖庫</translation>
     </message>
     <message id="gamehq.tray.rescan_captures">
-      <location filename="src/tray/TrayIcon.cpp" line="188"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="232"></location>
       <source>Rescan Captures</source>
       <translation>重新掃描擷取內容</translation>
     </message>
     <message id="gamehq.tray.save_replay">
-      <location filename="src/tray/TrayIcon.cpp" line="196"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="240"></location>
       <source>Save Replay</source>
       <translation>儲存重播</translation>
     </message>
+    <message id="gamehq.tray.status.capture.ready">
+      <location filename="src/tray/TrayStatus.cpp" line="170"></location>
+      <source>Ready</source>
+      <translation>就緒</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.starting">
+      <location filename="src/tray/TrayStatus.cpp" line="175"></location>
+      <source>Starting</source>
+      <translation>正在啟動</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.waiting">
+      <location filename="src/tray/TrayStatus.cpp" line="182"></location>
+      <source>Waiting for a supported game</source>
+      <translation>等待支援的遊戲</translation>
+    </message>
+    <message id="gamehq.tray.status.game.none">
+      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <source>None detected</source>
+      <translation>未偵測到</translation>
+    </message>
+    <message id="gamehq.tray.status.state.capture_problem">
+      <location filename="src/tray/TrayStatus.cpp" line="147"></location>
+      <source>Capture problem</source>
+      <translation>擷取問題</translation>
+    </message>
+    <message id="gamehq.tray.status.state.clip_saved">
+      <location filename="src/tray/TrayStatus.cpp" line="142"></location>
+      <source>Clip saved</source>
+      <translation>已儲存剪輯</translation>
+    </message>
+    <message id="gamehq.tray.status.state.game_detected">
+      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
+      <source>Game detected</source>
+      <translation>偵測到遊戲</translation>
+    </message>
+    <message id="gamehq.tray.status.state.idle">
+      <location filename="src/tray/TrayStatus.cpp" line="160"></location>
+      <source>Idle</source>
+      <translation>閒置</translation>
+    </message>
+    <message id="gamehq.tray.status.state.screenshot_saved">
+      <location filename="src/tray/TrayStatus.cpp" line="137"></location>
+      <source>Screenshot saved</source>
+      <translation>已儲存螢幕擷取畫面</translation>
+    </message>
+    <message id="gamehq.tray.status.tooltip.capture">
+      <location filename="src/tray/TrayStatus.cpp" line="214"></location>
+      <source>Capture: %1</source>
+      <translation>擷取：%1</translation>
+    </message>
+    <message id="gamehq.tray.status.tooltip.game">
+      <location filename="src/tray/TrayStatus.cpp" line="204"></location>
+      <source>Game: %1</source>
+      <translation>遊戲：%1</translation>
+    </message>
+    <message id="gamehq.tray.status.tooltip.status">
+      <location filename="src/tray/TrayStatus.cpp" line="209"></location>
+      <source>Status: %1</source>
+      <translation>狀態：%1</translation>
+    </message>
     <message id="gamehq.tray.take_screenshot">
-      <location filename="src/tray/TrayIcon.cpp" line="192"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="236"></location>
       <source>Take Screenshot</source>
       <translation>擷取螢幕截圖</translation>
     </message>
@@ -5501,14 +5596,14 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.check_automatically.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="223"></location>
       <source>Checks shortly after startup and every hour in the background.</source>
       <oldsource>At most once every 24 hours, in the background.</oldsource>
       <translation>啟動後不久檢查更新，之後每小時在背景檢查一次。</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="120"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="221"></location>
       <source>Check automatically</source>
       <translation>自動檢查</translation>
     </message>

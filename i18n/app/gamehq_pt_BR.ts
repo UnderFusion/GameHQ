@@ -840,7 +840,7 @@
       <translation>Não foi possível calcular o hash de %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController_Profile.cpp" line="54"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="55"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Perfis portáteis só podem ser importados por uma cópia instalada do GameHQ.</translation>
     </message>
@@ -865,12 +865,12 @@
       <translation>Não foi possível remover o registro recuperado da importação portátil.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController_Profile.cpp" line="60"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="61"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Selecione uma pasta local que contenha a versão portátil do GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController_Profile.cpp" line="69"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="70"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>A pasta selecionada não é um pacote portátil do GameHQ.</translation>
     </message>
@@ -900,12 +900,12 @@
       <translation>Um caminho portable:/ aponta para fora da raiz do pacote selecionado.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController_Profile.cpp" line="80"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="81"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>O GameHQ não conseguiu identificar o próprio processo para a importação.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController_Profile.cpp" line="90"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="91"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>O GameHQ não conseguiu iniciar o processo de importação portátil.</translation>
     </message>
@@ -2368,17 +2368,17 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <translation>Captura de tela salva</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="252"></location>
+      <location filename="src/app/App.cpp" line="288"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>O GameHQ iniciou com as configurações padrão. Seu arquivo de configurações anterior foi mantido para que nada fosse perdido.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="247"></location>
+      <location filename="src/app/App.cpp" line="283"></location>
       <source>Settings could not be read</source>
       <translation>Não foi possível ler as configurações</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="279"></location>
+      <location filename="src/app/App.cpp" line="315"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Alguns sons da interface estão indisponíveis</translation>
     </message>
@@ -2631,7 +2631,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     </message>
     <message id="gamehq.settings.about.updates.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="69"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="173"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="218"></location>
       <source>Updates</source>
       <translation>Atualizações</translation>
     </message>
@@ -3350,6 +3350,41 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="152"></location>
       <source>Window and tray behavior</source>
       <translation>Comportamento da janela e da bandeja</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.badge.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="186"></location>
+      <source>Keeps the %1 icon and adds a small corner badge for the current state.</source>
+      <translation>Mantém o ícone %1 e adiciona um pequeno selo no canto para o estado atual.</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.badge.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="193"></location>
+      <source>Badge</source>
+      <translation>Selo</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="175"></location>
+      <source>Tray icon status</source>
+      <translation>Status do ícone da bandeja</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.replace.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="179"></location>
+      <source>Swaps the whole icon for a status symbol while a game is detected.</source>
+      <translation>Substitui o ícone inteiro por um símbolo de status enquanto um jogo é detectado.</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.replace.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="195"></location>
+      <source>Replace icon</source>
+      <translation>Substituir ícone</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.static.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="183"></location>
+      <source>Always shows the plain %1 icon; only the tooltip reports status.</source>
+      <translation>Sempre mostra o ícone %1 simples; apenas a dica de ferramenta informa o status.</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.static.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="197"></location>
+      <source>Static</source>
+      <translation>Estático</translation>
     </message>
     <message id="gamehq.settings.general.interface_scale.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="90"></location>
@@ -5392,27 +5427,87 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <translation>O Steam Input também pode usar este botão</translation>
     </message>
     <message id="gamehq.tray.exit">
-      <location filename="src/tray/TrayIcon.cpp" line="200"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="244"></location>
       <source>Exit</source>
       <translation>Sair</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
-      <location filename="src/tray/TrayIcon.cpp" line="184"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="228"></location>
       <source>Open Gallery</source>
       <translation>Abrir galeria</translation>
     </message>
     <message id="gamehq.tray.rescan_captures">
-      <location filename="src/tray/TrayIcon.cpp" line="188"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="232"></location>
       <source>Rescan Captures</source>
       <translation>Verificar capturas novamente</translation>
     </message>
     <message id="gamehq.tray.save_replay">
-      <location filename="src/tray/TrayIcon.cpp" line="196"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="240"></location>
       <source>Save Replay</source>
       <translation>Salvar replay</translation>
     </message>
+    <message id="gamehq.tray.status.capture.ready">
+      <location filename="src/tray/TrayStatus.cpp" line="170"></location>
+      <source>Ready</source>
+      <translation>Pronto</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.starting">
+      <location filename="src/tray/TrayStatus.cpp" line="175"></location>
+      <source>Starting</source>
+      <translation>Iniciando</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.waiting">
+      <location filename="src/tray/TrayStatus.cpp" line="182"></location>
+      <source>Waiting for a supported game</source>
+      <translation>Aguardando um jogo compatível</translation>
+    </message>
+    <message id="gamehq.tray.status.game.none">
+      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <source>None detected</source>
+      <translation>Nenhum detectado</translation>
+    </message>
+    <message id="gamehq.tray.status.state.capture_problem">
+      <location filename="src/tray/TrayStatus.cpp" line="147"></location>
+      <source>Capture problem</source>
+      <translation>Problema na captura</translation>
+    </message>
+    <message id="gamehq.tray.status.state.clip_saved">
+      <location filename="src/tray/TrayStatus.cpp" line="142"></location>
+      <source>Clip saved</source>
+      <translation>Clipe salvo</translation>
+    </message>
+    <message id="gamehq.tray.status.state.game_detected">
+      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
+      <source>Game detected</source>
+      <translation>Jogo detectado</translation>
+    </message>
+    <message id="gamehq.tray.status.state.idle">
+      <location filename="src/tray/TrayStatus.cpp" line="160"></location>
+      <source>Idle</source>
+      <translation>Inativo</translation>
+    </message>
+    <message id="gamehq.tray.status.state.screenshot_saved">
+      <location filename="src/tray/TrayStatus.cpp" line="137"></location>
+      <source>Screenshot saved</source>
+      <translation>Captura de tela salva</translation>
+    </message>
+    <message id="gamehq.tray.status.tooltip.capture">
+      <location filename="src/tray/TrayStatus.cpp" line="214"></location>
+      <source>Capture: %1</source>
+      <translation>Captura: %1</translation>
+    </message>
+    <message id="gamehq.tray.status.tooltip.game">
+      <location filename="src/tray/TrayStatus.cpp" line="204"></location>
+      <source>Game: %1</source>
+      <translation>Jogo: %1</translation>
+    </message>
+    <message id="gamehq.tray.status.tooltip.status">
+      <location filename="src/tray/TrayStatus.cpp" line="209"></location>
+      <source>Status: %1</source>
+      <translation>Status: %1</translation>
+    </message>
     <message id="gamehq.tray.take_screenshot">
-      <location filename="src/tray/TrayIcon.cpp" line="192"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="236"></location>
       <source>Take Screenshot</source>
       <translation>Fazer captura de tela</translation>
     </message>
@@ -5508,14 +5603,14 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     </message>
     <message id="gamehq.update.check_automatically.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="223"></location>
       <source>Checks shortly after startup and every hour in the background.</source>
       <oldsource>At most once every 24 hours, in the background.</oldsource>
       <translation>Verifica atualizações em segundo plano logo após iniciar e a cada hora.</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="120"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="221"></location>
       <source>Check automatically</source>
       <translation>Verificar automaticamente</translation>
     </message>

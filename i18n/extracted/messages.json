@@ -2926,7 +2926,7 @@
       "locations": [
         {
           "file": "src/ui/AppController_Profile.cpp",
-          "line": 54
+          "line": 55
         }
       ],
       "plural": false,
@@ -3013,7 +3013,7 @@
       "locations": [
         {
           "file": "src/ui/AppController_Profile.cpp",
-          "line": 60
+          "line": 61
         }
       ],
       "plural": false,
@@ -3032,7 +3032,7 @@
       "locations": [
         {
           "file": "src/ui/AppController_Profile.cpp",
-          "line": 69
+          "line": 70
         }
       ],
       "plural": false,
@@ -3136,7 +3136,7 @@
       "locations": [
         {
           "file": "src/ui/AppController_Profile.cpp",
-          "line": 80
+          "line": 81
         }
       ],
       "plural": false,
@@ -3155,7 +3155,7 @@
       "locations": [
         {
           "file": "src/ui/AppController_Profile.cpp",
-          "line": 90
+          "line": 91
         }
       ],
       "plural": false,
@@ -8240,7 +8240,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 252
+          "line": 288
         }
       ],
       "plural": false,
@@ -8259,7 +8259,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 247
+          "line": 283
         }
       ],
       "plural": false,
@@ -8276,7 +8276,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 279
+          "line": 315
         }
       ],
       "plural": false,
@@ -9157,7 +9157,7 @@
         },
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 173
+          "line": 218
         }
       ],
       "plural": false,
@@ -11624,6 +11624,129 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "bb3f44f11a0571085861963c02d53cbe2bf6c8666924378de1438a9e966bbae5"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.tray_status.badge.description",
+      "source": "Keeps the %1 icon and adds a small corner badge for the current state.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 186
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7575080f7571b8a8a22147cd1ff742bd9c130ecebb44e390c41b646dc1a4b7eb"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.tray_status.badge.label",
+      "source": "Badge",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 193
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0942b503131a75ed02990aaef6c465aa3ce918a6c74c40c23767a991a275aa3c"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.tray_status.label",
+      "source": "Tray icon status",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 175
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4142b7e7d24be0f3e1ba4c4946802cf7f7e2a7e8298e1439adb833238f1878f2"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.tray_status.replace.description",
+      "source": "Swaps the whole icon for a status symbol while a game is detected.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 179
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "e370e97affdd0b64977138f4b4596096c968d41d7844d7f0455df883ccc18795"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.tray_status.replace.label",
+      "source": "Replace icon",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 195
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c0915329a18cea9f078e52a6fa26e22e96358e65ca70914125979e579b1ac807"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.tray_status.static.description",
+      "source": "Always shows the plain %1 icon; only the tooltip reports status.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 183
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "53295b78c2f374ceab34532d5d534d9ed413471793e6e55fddcac127bb5bba49"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.tray_status.static.label",
+      "source": "Static",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 197
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4503dc66288b2afbffd544152860ad00ede392d04210877e61ae9363faed3ef2"
     },
     {
       "id": "gamehq.settings.general.interface_scale.description",
@@ -18631,7 +18754,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 200
+          "line": 244
         }
       ],
       "plural": false,
@@ -18648,7 +18771,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 184
+          "line": 228
         }
       ],
       "plural": false,
@@ -18665,7 +18788,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 188
+          "line": 232
         }
       ],
       "plural": false,
@@ -18682,7 +18805,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 196
+          "line": 240
         }
       ],
       "plural": false,
@@ -18692,6 +18815,216 @@
       "source_hash": "6f33ed88c5e0d53c493a9d6f5f61da79157b680e32bb05742a94a18d4587ea86"
     },
     {
+      "id": "gamehq.tray.status.capture.ready",
+      "source": "Ready",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 170
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "37ab13a58a5828d1a7ab6532f7bfcf71e30128c8172a03562433a6b53d4e40c8"
+    },
+    {
+      "id": "gamehq.tray.status.capture.starting",
+      "source": "Starting",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 175
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "610cd250f5812fb70864b96013bc95d3a1953e2ba30e2dbabf2e90948edc7b5d"
+    },
+    {
+      "id": "gamehq.tray.status.capture.waiting",
+      "source": "Waiting for a supported game",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 182
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "10670b9bb81d5fbcecb36c8840e4c17709e36615d62ef6db14560d940181ba9e"
+    },
+    {
+      "id": "gamehq.tray.status.game.none",
+      "source": "None detected",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 196
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "96fedff499225cc8e7c91d614d8c461a4dcf8b4440867c0bb1ebcdbc0c042a42"
+    },
+    {
+      "id": "gamehq.tray.status.state.capture_problem",
+      "source": "Capture problem",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 147
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531"
+    },
+    {
+      "id": "gamehq.tray.status.state.clip_saved",
+      "source": "Clip saved",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 142
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4a5cf68849fce0164c53d67c805bb1aeab34c2092d9b77769bc296fdb35daca1"
+    },
+    {
+      "id": "gamehq.tray.status.state.game_detected",
+      "source": "Game detected",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 156
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "813ce566a846e3d98a75b580ef2762343f7116f806c021d68e2c7ef1e899a1f3"
+    },
+    {
+      "id": "gamehq.tray.status.state.idle",
+      "source": "Idle",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 160
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2a99ff7d2150f8069e6f1c5d3648d4c9e5e9825c9596e1ad8f518eda3b965b8a"
+    },
+    {
+      "id": "gamehq.tray.status.state.screenshot_saved",
+      "source": "Screenshot saved",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 137
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1af428084c0f9ec0675945efff01910d599ea64c5f35a42ba7e23cc5015ce702"
+    },
+    {
+      "id": "gamehq.tray.status.tooltip.capture",
+      "source": "Capture: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 214
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "adaba9df9ad6f945276f5ebeba743b41eac1746b88055f7c24187cc166d57a09"
+    },
+    {
+      "id": "gamehq.tray.status.tooltip.game",
+      "source": "Game: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 204
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8abd2b0f58c6585253024fb181f76659a027a1ac6c5f3c018834ce29b65de188"
+    },
+    {
+      "id": "gamehq.tray.status.tooltip.status",
+      "source": "Status: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 209
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ca050bc6036367f8a5d05038ea2dcd1a65c66afeb54c99297f1e85afe83ec296"
+    },
+    {
       "id": "gamehq.tray.take_screenshot",
       "source": "Take Screenshot",
       "context": "ID",
@@ -18699,7 +19032,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 192
+          "line": 236
         }
       ],
       "plural": false,
@@ -19054,7 +19387,7 @@
         },
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 178
+          "line": 223
         }
       ],
       "plural": false,
@@ -19075,7 +19408,7 @@
         },
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 176
+          "line": 221
         }
       ],
       "plural": false,

@@ -1884,3 +1884,14 @@ foreach(hid_default IN ITEMS 0 1)
         GAMEHQ_SONY_HID_READER_DEFAULT=${hid_default}
         GAMEHQ_EXPECTED_HID_DEFAULT=${hid_default})
 endforeach()
+
+# Issue #38: the tray status model and the badge/replace/static icon renderer.
+# Pure model plus QPainter only — no QSystemTrayIcon, no database, no game
+# process. Qt6::Gui is linked for QIcon/QPixmap; the test opens no window.
+gamehq_add_test(tst_traystatus
+    tst_traystatus.cpp
+    "${CMAKE_SOURCE_DIR}/src/tray/TrayStatus.cpp"
+    "${CMAKE_SOURCE_DIR}/src/tray/TrayIconRenderer.cpp")
+target_compile_definitions(tst_traystatus PRIVATE
+    GAMEHQ_VERSION="${GAMEHQ_VERSION_FULL}")
+target_link_libraries(tst_traystatus PRIVATE Qt6::Gui)

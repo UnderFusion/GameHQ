@@ -166,6 +166,51 @@ SettingsPage {
             description: qsTrId("gamehq.settings.general.desktop.close_to_tray.description").arg(Brand.name)
             SettingsToggle { configKey: "tray.close_to_tray"; defaultValue: true }
         }
+        SettingsRow {
+            id: trayStatusRow
+            // Mirrors ui.tray_status_display so the description explains the
+            // option that is actually selected.
+            property string trayStatusMode: "badge"
+            //% "Tray icon status"
+            label: qsTrId("gamehq.settings.general.desktop.tray_status.label")
+            description: {
+                if (trayStatusRow.trayStatusMode === "replace") {
+                    //% "Swaps the whole icon for a status symbol while a game is detected."
+                    return qsTrId("gamehq.settings.general.desktop.tray_status.replace.description")
+                }
+                if (trayStatusRow.trayStatusMode === "static") {
+                    //% "Always shows the plain %1 icon; only the tooltip reports status."
+                    return qsTrId("gamehq.settings.general.desktop.tray_status.static.description").arg(Brand.name)
+                }
+                //% "Keeps the %1 icon and adds a small corner badge for the current state."
+                return qsTrId("gamehq.settings.general.desktop.tray_status.badge.description").arg(Brand.name)
+            }
+            SettingsCombo {
+                configKey: "ui.tray_status_display"
+                defaultValue: "badge"
+                options: [
+                    //% "Badge"
+                    { label: qsTrId("gamehq.settings.general.desktop.tray_status.badge.label"), value: "badge" },
+                    //% "Replace icon"
+                    { label: qsTrId("gamehq.settings.general.desktop.tray_status.replace.label"), value: "replace" },
+                    //% "Static"
+                    { label: qsTrId("gamehq.settings.general.desktop.tray_status.static.label"), value: "static" }
+                ]
+                onValueCommitted: function(value) { trayStatusRow.trayStatusMode = value }
+            }
+            Component.onCompleted: trayStatusMode = app.config("ui.tray_status_display", "badge")
+            Connections {
+                target: app
+                function onConfigChanged(key, value) {
+                    if (key === "ui.tray_status_display")
+                        trayStatusRow.trayStatusMode = String(value)
+                }
+                function onConfigGroupReset(prefix) {
+                    if (prefix.length === 0 || prefix === "ui")
+                        trayStatusRow.trayStatusMode = app.config("ui.tray_status_display", "badge")
+                }
+            }
+        }
     }
 
     SettingsSection {

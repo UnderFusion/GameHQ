@@ -1,5 +1,6 @@
 #include "tray/TrayIcon.h"
-#include "Brand.h"
+#include "config/ConfigKeys.h"
+#include "config/ConfigManager.h"
 #include "localization/NativeText.h"
 
 #include <QAction>
@@ -105,6 +106,7 @@ TrayIcon::TrayIcon(QObject* parent, bool show)
     : QObject(parent)
     , m_tray(new QSystemTrayIcon(this))
     , m_menu(new QMenu)
+    , m_status(new TrayStatus(this))
 {
     // Glyph color comes from the menu's own palette, so the icons track the
     // Windows light/dark setting the same way the menu text does.
@@ -127,9 +129,10 @@ TrayIcon::TrayIcon(QObject* parent, bool show)
     m_quitAction = m_menu->addAction(makeGlyph(ink, drawExit), QString());
     connect(m_quitAction, &QAction::triggered, this, &TrayIcon::quitRequested);
 
-    m_tray->setIcon(QIcon(QStringLiteral(":/icons/gamehq.ico")));
-    m_tray->setToolTip(QString::fromLatin1(Brand::Name) + QLatin1Char(' ')
-                       + QStringLiteral(GAMEHQ_VERSION));
+    // Icon and tooltip are owned by the status model: every model change
+    // repaints, and nothing here polls for state.
+    connect(m_status, &TrayStatus::changed, this, &TrayIcon::refreshTray);
+    refreshTray();
     m_tray->setContextMenu(m_menu);
     connect(m_tray, &QSystemTrayIcon::activated, this,
             [this](QSystemTrayIcon::ActivationReason reason) {
@@ -173,6 +176,47 @@ int TrayIcon::menuActionCount() const
     return m_menu ? m_menu->actions().size() : 0;
 }
 
+void TrayIcon::setConfigManager(ConfigManager* config)
+{
+    if (!config) {
+        applyStatusMode(TrayIconRenderer::configValue(TrayIconRenderer::Mode::Badge));
+        return;
+    }
+    connect(config, &ConfigManager::valueChanged, this,
+            [this](const QString& key, const QVariant& value) {
+                if (key == ConfigKeys::UiTrayStatusDisplay)
+                    applyStatusMode(value.toString());
+            });
+    applyStatusMode(config->value(ConfigKeys::UiTrayStatusDisplay).toString());
+}
+
+void TrayIcon::applyStatusMode(const QString& value)
+{
+    // An empty or unknown value is not an error: modeFromConfig() falls back to
+    // the badge default, which is also what ui.tray_status_display ships as.
+    const TrayIconRenderer::Mode mode = TrayIconRenderer::modeFromConfig(value);
+    if (mode == m_mode)
+        return;
+    m_mode = mode;
+    refreshTray();
+}
+
+void TrayIcon::refreshTray()
+{
+    m_tray->setIcon(m_renderer.icon(m_status->visual(), m_mode));
+    m_tray->setToolTip(m_status->tooltip());
+}
+
+QString TrayIcon::tooltipText() const
+{
+    return m_tray->toolTip();
+}
+
+QIcon TrayIcon::trayIcon() const
+{
+    return m_tray->icon();
+}
+
 void TrayIcon::retranslate()
 {
     if (!m_openAction)
@@ -198,4 +242,8 @@ void TrayIcon::retranslate()
         //: Tray menu command that exits GameHQ.
         //% "Exit"
         QT_TRID_NOOP("gamehq.tray.exit"), "Exit"));
+
+    // The tooltip is localized text too: rebuild it and let the model decide
+    // whether anything actually changed.
+    m_status->retranslate();
 }

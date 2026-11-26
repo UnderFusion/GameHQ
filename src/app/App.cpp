@@ -223,6 +223,40 @@ bool App::init()
     connect(m_tray.get(), &TrayIcon::screenshotRequested, m_screenshots.get(), [this] {
         m_screenshots->capture(CaptureRequest::create(CaptureRequest::Source::Tray));
     });
+    // Tray status (issue #38) is fed by confirmed facts only: the foreground
+    // game verdict from the frame pump, the replay buffer state, and the
+    // success/failure signals of the two capture services. Nothing polls.
+    m_tray->setConfigManager(m_config.get());
+    TrayStatus* trayStatus = m_tray->status();
+    connect(m_framePump.get(), &FramePumpService::foregroundGameDetected, trayStatus,
+            [trayStatus](const QString& gameName, const QString&, bool recognizedGame) {
+                trayStatus->setForegroundGame(gameName, recognizedGame);
+            });
+    connect(m_framePump.get(), &FramePumpService::bufferStateChanged, trayStatus,
+            [trayStatus](ReplayBufferState::State state, const QString&) {
+                trayStatus->setReplayBufferState(static_cast<int>(state));
+            });
+    // Screenshot: only the confirmed save counts. `grabbed()` (pixels in hand)
+    // and `skipped()` deliberately do not light the badge.
+    connect(m_screenshots.get(), &ScreenshotService::captured, trayStatus,
+            [trayStatus](const QString&, const QString&, const QString&, quint64) {
+                trayStatus->reportScreenshotSaved();
+            });
+    connect(m_screenshots.get(), &ScreenshotService::failed, trayStatus,
+            [trayStatus](const QString&, quint64) {
+                trayStatus->reportCaptureProblem();
+            });
+    // Clip: clipSaved is the remux-finished signal. clipSaving fires ~1 s
+    // earlier, before the file exists, and is deliberately not used here.
+    connect(m_framePump.get(), &FramePumpService::clipSaved, trayStatus,
+            [trayStatus](const QString&, const QString&, const QString&,
+                         const QString&, quint64) {
+                trayStatus->reportClipSaved();
+            });
+    connect(m_framePump.get(), &FramePumpService::clipFailed, trayStatus,
+            [trayStatus](const QString&, const QString&, quint64) {
+                trayStatus->reportCaptureProblem();
+            });
     // Keep the Windows GUI dispatcher available to capture and encoder
     // teardown until the worker has released its apartment.
     connect(m_tray.get(), &TrayIcon::quitRequested,

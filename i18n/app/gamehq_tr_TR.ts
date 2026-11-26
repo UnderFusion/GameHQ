@@ -838,7 +838,7 @@
       <translation>Karma değeri hesaplanamıyor: %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController_Profile.cpp" line="54"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="55"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Taşınabilir profiller yalnızca kurulu GameHQ kopyasına aktarılabilir.</translation>
     </message>
@@ -863,12 +863,12 @@
       <translation>Kurtarılan taşınabilir içe aktarma günlüğü kaldırılamadı.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController_Profile.cpp" line="60"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="61"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Taşınabilir GameHQ kopyasını içeren yerel bir klasör seçin.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController_Profile.cpp" line="69"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="70"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>Seçilen klasör geçerli bir taşınabilir GameHQ paketi değil.</translation>
     </message>
@@ -898,12 +898,12 @@
       <translation>portable:/ yolu seçilen paket kökünün dışına çıkıyor.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController_Profile.cpp" line="80"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="81"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ, içe aktarma için kendi işlemini belirleyemedi.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController_Profile.cpp" line="90"></location>
+      <location filename="src/ui/AppController_Profile.cpp" line="91"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ taşınabilir içe aktarma işlemini başlatamadı.</translation>
     </message>
@@ -2363,17 +2363,17 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Ekran görüntüsü kaydedildi</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="252"></location>
+      <location filename="src/app/App.cpp" line="288"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ varsayılan ayarlarla başladı. Önceki ayarlar dosyanız saklandığından hiçbir şey kaybolmadı.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="247"></location>
+      <location filename="src/app/App.cpp" line="283"></location>
       <source>Settings could not be read</source>
       <translation>Ayarlar okunamadı</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="279"></location>
+      <location filename="src/app/App.cpp" line="315"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Bazı arayüz sesleri kullanılamıyor</translation>
     </message>
@@ -2626,7 +2626,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     </message>
     <message id="gamehq.settings.about.updates.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="69"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="173"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="218"></location>
       <source>Updates</source>
       <translation>Güncellemeler</translation>
     </message>
@@ -3345,6 +3345,41 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="152"></location>
       <source>Window and tray behavior</source>
       <translation>Pencere ve bildirim alanı davranışı</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.badge.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="186"></location>
+      <source>Keeps the %1 icon and adds a small corner badge for the current state.</source>
+      <translation>%1 simgesini korur ve geçerli durum için köşeye küçük bir rozet ekler.</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.badge.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="193"></location>
+      <source>Badge</source>
+      <translation>Rozet</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="175"></location>
+      <source>Tray icon status</source>
+      <translation>Sistem tepsisi simgesi durumu</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.replace.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="179"></location>
+      <source>Swaps the whole icon for a status symbol while a game is detected.</source>
+      <translation>Bir oyun algılandığında simgenin tamamını durum simgesiyle değiştirir.</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.replace.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="195"></location>
+      <source>Replace icon</source>
+      <translation>Simgeyi değiştir</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.static.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="183"></location>
+      <source>Always shows the plain %1 icon; only the tooltip reports status.</source>
+      <translation>%1 simgesini her zaman sade olarak gösterir; durumu yalnızca ipucu bildirir.</translation>
+    </message>
+    <message id="gamehq.settings.general.desktop.tray_status.static.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="197"></location>
+      <source>Static</source>
+      <translation>Sabit</translation>
     </message>
     <message id="gamehq.settings.general.interface_scale.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="90"></location>
@@ -5385,27 +5420,87 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Steam Input bu tuşu da kullanabilir</translation>
     </message>
     <message id="gamehq.tray.exit">
-      <location filename="src/tray/TrayIcon.cpp" line="200"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="244"></location>
       <source>Exit</source>
       <translation>Çıkış</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
-      <location filename="src/tray/TrayIcon.cpp" line="184"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="228"></location>
       <source>Open Gallery</source>
       <translation>Galeriyi aç</translation>
     </message>
     <message id="gamehq.tray.rescan_captures">
-      <location filename="src/tray/TrayIcon.cpp" line="188"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="232"></location>
       <source>Rescan Captures</source>
       <translation>Çekimleri yeniden tara</translation>
     </message>
     <message id="gamehq.tray.save_replay">
-      <location filename="src/tray/TrayIcon.cpp" line="196"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="240"></location>
       <source>Save Replay</source>
       <translation>Anında tekrarı kaydet</translation>
     </message>
+    <message id="gamehq.tray.status.capture.ready">
+      <location filename="src/tray/TrayStatus.cpp" line="170"></location>
+      <source>Ready</source>
+      <translation>Hazır</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.starting">
+      <location filename="src/tray/TrayStatus.cpp" line="175"></location>
+      <source>Starting</source>
+      <translation>Başlatılıyor</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.waiting">
+      <location filename="src/tray/TrayStatus.cpp" line="182"></location>
+      <source>Waiting for a supported game</source>
+      <translation>Desteklenen oyun bekleniyor</translation>
+    </message>
+    <message id="gamehq.tray.status.game.none">
+      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <source>None detected</source>
+      <translation>Algılanmadı</translation>
+    </message>
+    <message id="gamehq.tray.status.state.capture_problem">
+      <location filename="src/tray/TrayStatus.cpp" line="147"></location>
+      <source>Capture problem</source>
+      <translation>Yakalama sorunu</translation>
+    </message>
+    <message id="gamehq.tray.status.state.clip_saved">
+      <location filename="src/tray/TrayStatus.cpp" line="142"></location>
+      <source>Clip saved</source>
+      <translation>Klip kaydedildi</translation>
+    </message>
+    <message id="gamehq.tray.status.state.game_detected">
+      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
+      <source>Game detected</source>
+      <translation>Oyun algılandı</translation>
+    </message>
+    <message id="gamehq.tray.status.state.idle">
+      <location filename="src/tray/TrayStatus.cpp" line="160"></location>
+      <source>Idle</source>
+      <translation>Boşta</translation>
+    </message>
+    <message id="gamehq.tray.status.state.screenshot_saved">
+      <location filename="src/tray/TrayStatus.cpp" line="137"></location>
+      <source>Screenshot saved</source>
+      <translation>Ekran görüntüsü kaydedildi</translation>
+    </message>
+    <message id="gamehq.tray.status.tooltip.capture">
+      <location filename="src/tray/TrayStatus.cpp" line="214"></location>
+      <source>Capture: %1</source>
+      <translation>Yakalama: %1</translation>
+    </message>
+    <message id="gamehq.tray.status.tooltip.game">
+      <location filename="src/tray/TrayStatus.cpp" line="204"></location>
+      <source>Game: %1</source>
+      <translation>Oyun: %1</translation>
+    </message>
+    <message id="gamehq.tray.status.tooltip.status">
+      <location filename="src/tray/TrayStatus.cpp" line="209"></location>
+      <source>Status: %1</source>
+      <translation>Durum: %1</translation>
+    </message>
     <message id="gamehq.tray.take_screenshot">
-      <location filename="src/tray/TrayIcon.cpp" line="192"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="236"></location>
       <source>Take Screenshot</source>
       <translation>Ekran görüntüsü al</translation>
     </message>
@@ -5501,14 +5596,14 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     </message>
     <message id="gamehq.update.check_automatically.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="223"></location>
       <source>Checks shortly after startup and every hour in the background.</source>
       <oldsource>At most once every 24 hours, in the background.</oldsource>
       <translation>Başlatıldıktan kısa süre sonra ve her saat arka planda güncellemeleri denetler.</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="120"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="221"></location>
       <source>Check automatically</source>
       <translation>Otomatik olarak kontrol et</translation>
     </message>

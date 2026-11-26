@@ -73,6 +73,7 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::ShareExternalProviders,  false },
         { ConfigKeys::ShareEnabled,            true },
         { ConfigKeys::UiLanguage,              "system" },
+        { ConfigKeys::UiTrayStatusDisplay,     "badge" },
         // Last-view memory. Defaults are the state a first run opens on, so a
         // user who never navigates keeps these out of config.json entirely.
         { ConfigKeys::UiPage,                  "gallery" },
