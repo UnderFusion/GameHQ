@@ -76,8 +76,11 @@ struct FramePumpWorker::Pipeline
         // Also before d3dDevice/d3dCtx — GpuToneMapper's shaders/textures were
         // created from them.
         if (hdrToneMapper) { delete hdrToneMapper; hdrToneMapper = nullptr; }
-        if (session)     { session->Release();     session = nullptr; }
-        if (framePool)   { framePool->Release();    framePool = nullptr; }
+        // Close (WinRT dispose) the session first - that stops capture - then
+        // the pool, which frees its buffers and its hold on winrtDevice.
+        // Release() alone left every switched-away pool alive (#39).
+        if (session)   { IInspectable* s = session;   session = nullptr;   wgcCloseAndRelease(s); }
+        if (framePool) { IInspectable* p = framePool; framePool = nullptr; wgcCloseAndRelease(p); }
         if (item)        { item->Release();         item = nullptr; }
         if (winrtDevice) { winrtDevice->Release();  winrtDevice = nullptr; }
         if (d3dCtx)      { d3dCtx->Release();        d3dCtx = nullptr; }

@@ -324,8 +324,10 @@ bool FramePumpWorker::createDevices(Pipeline* pipe)
     IInspectable* inspDevice = nullptr;
     hr = pfnBridge(dxgiDevice, &inspDevice);
     dxgiDevice->Release();
-    if (FAILED(hr) || !inspDevice)
+    if (FAILED(hr) || !inspDevice) {
+        if (inspDevice) inspDevice->Release();
         return failStep("CreateDirect3D11DeviceFromDXGIDevice", hr);
+    }
 
     hr = inspDevice->QueryInterface(IID_IDirect3DDevice, reinterpret_cast<void**>(&pipe->winrtDevice));
     inspDevice->Release();
@@ -548,6 +550,12 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
                              << " — re-arming with BGRA8 SDR capture";
         delete pipe->hdrToneMapper;
         pipe->hdrToneMapper = nullptr;
+        // A failed call may still have written a pool; never overwrite it unreleased.
+        if (pipe->framePool) {
+            IInspectable* stale = pipe->framePool;
+            pipe->framePool = nullptr;
+            wgcCloseAndRelease(stale);
+        }
         poolFormat = DirectXPixelFormat_B8G8R8A8UIntNormalized;
         hr = poolStatics2->CreateFreeThreaded(pipe->winrtDevice, poolFormat,
                                               4 /*buffers*/, size, &pipe->framePool);

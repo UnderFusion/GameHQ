@@ -249,6 +249,16 @@ IAsyncInfoShim : public IInspectable {
     virtual HRESULT STDMETHODCALLTYPE Close() = 0;                            // slot 10
 };
 
+// Windows.Foundation.IClosable : IInspectable  {30D5A829-7FA4-4026-83BB-D75BAE4EA99E}
+// Close() is how WinRT disposes a capture session (stops capture) and a frame
+// pool (frees its buffers). A bare Release() leaves a started free-threaded
+// pool registered, pinning its D3D device and buffers after teardown.
+// Always obtain it by QueryInterface, never by extending another shim's vtable.
+struct __declspec(uuid("30D5A829-7FA4-4026-83BB-D75BAE4EA99E"))
+IClosableShim : public IInspectable {
+    virtual HRESULT STDMETHODCALLTYPE Close() = 0;                            // slot 6
+};
+
 // Windows.Foundation.AsyncStatus
 enum WgcAsyncStatus : INT32 {
     WgcAsyncStatus_Started   = 0,
@@ -288,6 +298,8 @@ static const GUID IID_IGraphicsCaptureSession3 =
     { 0xF2CDD966, 0x22AE, 0x5EA1, { 0x95, 0x96, 0x3A, 0x28, 0x93, 0x44, 0xC3, 0xBE } };
 static const GUID IID_IGraphicsCaptureAccessStatics =
     { 0x743ED370, 0x06EC, 0x5040, { 0xA5, 0x8A, 0x90, 0x1F, 0x0F, 0x75, 0x70, 0x95 } };
+static const GUID IID_IClosableShim =
+    { 0x30D5A829, 0x7FA4, 0x4026, { 0x83, 0xBB, 0xD7, 0x5B, 0xAE, 0x4E, 0xA9, 0x9E } };
 static const GUID IID_IAsyncInfoShim =
     { 0x00000036, 0x0000, 0x0000, { 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46 } };
 
@@ -306,3 +318,19 @@ static const wchar_t* const kWgcCaptureAccessClass =
 // ============================================================================
 typedef HRESULT (WINAPI *PFN_CreateDirect3D11DeviceFromDXGIDevice)(
     IDXGIDevice* dxgiDevice, IInspectable** graphicsDevice);
+
+// Dispose a WinRT object through IClosable (if it supports it), then drop our
+// reference. Safe on null; Close() failures are ignored because teardown must
+// always proceed.
+inline void wgcCloseAndRelease(IInspectable*& obj)
+{
+    if (!obj) return;
+    IClosableShim* closable = nullptr;
+    if (SUCCEEDED(obj->QueryInterface(IID_IClosableShim, reinterpret_cast<void**>(&closable)))
+        && closable) {
+        closable->Close();
+        closable->Release();
+    }
+    obj->Release();
+    obj = nullptr;
+}
