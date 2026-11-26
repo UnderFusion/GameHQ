@@ -139,6 +139,9 @@ private:
     void startPrep();                 // kick off building the NEXT segment's writer
     void joinPrep();                  // wait for the prep thread (if running)
     void discardPrep();               // join + release/delete an unused prepared writer
+    // Releases a prepared writer that never got a sample and removes its file,
+    // whatever m_prepState says. Every path that drops m_prep goes through it.
+    void releasePrep();
     bool openSegment();
     void closeSegment();
     bool ensureStaging(ID3D11Device* dev, unsigned w, unsigned h, int dxgiFmt);
@@ -167,7 +170,8 @@ private:
     QString     m_curPath;                   // current in-flight segment file
     int         m_keepSegments = 12;         // ceil(lengthSeconds / segmentSeconds)
     // Vets a segment found on disk before restoreRing() admits it; null means
-    // ReplayExporter::hasReadableVideo. Tests with placeholder files swap it.
+    // ReplayExporter::hasReadableVideoStarted (the recorder already holds the
+    // MF ref). Tests with placeholder files swap it.
     bool (*m_segmentProbe)(const QString&) = nullptr;
     bool        m_discardCurrentSegment = false;
     QString     m_lastClosedMediaPath;

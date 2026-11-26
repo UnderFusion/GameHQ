@@ -29,4 +29,10 @@ namespace ReplayExporter
     // sample. Used to vet segments left on disk before they rejoin the ring;
     // concat() itself stays strict and refuses any bad input.
     bool hasReadableVideo(const QString& file);
+    // Same check, but for a caller that ALREADY has COM (MTA) and Media
+    // Foundation started on this thread: no CoInitializeEx / MFStartup /
+    // MFShutdown around the probe. Only SegmentRecorder::restoreRing() uses
+    // this - it holds one MF ref across the whole restore sweep instead of
+    // starting and stopping MF once per probed segment.
+    bool hasReadableVideoStarted(const QString& file);
 }

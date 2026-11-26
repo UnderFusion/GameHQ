@@ -362,13 +362,13 @@ bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstrin
     return ok;
 }
 
-// Decode the first frame of an MP4 to RGB32 (== BGRA == QImage::Format_RGB32).
-bool hasReadableVideoImpl(const std::wstring& path)
+// Core probe: opens the segment through Media Foundation and looks for one
+// video sample. The CALLER must already have COM (MTA) and MF started on this
+// thread - a source reader cannot be created otherwise.
+bool probeReadableVideo(const std::wstring& path)
 {
     if (QFileInfo(fromWide(path)).size() <= 0)
         return false;   // the empty fMP4 a crash leaves behind
-    const HRESULT hrCo = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
-    const bool startedMf = SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE));
     bool readable = false;
     SegmentSource src;
     if (openSegment(path, 0, QStringLiteral("restore-check"), src)) {
@@ -389,6 +389,15 @@ bool hasReadableVideoImpl(const std::wstring& path)
         }
         src.release();
     }
+    return readable;
+}
+
+// Standalone probe: brings COM and MF up for the call and tears them down again.
+bool hasReadableVideoImpl(const std::wstring& path)
+{
+    const HRESULT hrCo = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+    const bool startedMf = SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE));
+    const bool readable = probeReadableVideo(path);
     if (startedMf)
         MFShutdown();
     if (SUCCEEDED(hrCo))
@@ -396,6 +405,7 @@ bool hasReadableVideoImpl(const std::wstring& path)
     return readable;
 }
 
+// Decode the first frame of an MP4 to RGB32 (== BGRA == QImage::Format_RGB32).
 bool grabThumbnailImpl(const std::wstring& file, QImage& out)
 {
     const bool startedMf = SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE));
@@ -542,6 +552,11 @@ bool grabThumbnail(const QString& file, QImage& out)
 bool hasReadableVideo(const QString& file)
 {
     return hasReadableVideoImpl(file.toStdWString());
+}
+
+bool hasReadableVideoStarted(const QString& file)
+{
+    return probeReadableVideo(file.toStdWString());
 }
 
 } // namespace ReplayExporter

@@ -28,6 +28,10 @@
 #include <audioclient.h>
 #include <wrl/client.h>
 
+// m_segmentProbe is a plain function pointer, so a file-scope counter is the
+// only way for the restore tests below to observe how often it was called.
+static int g_restoreProbes = 0;
+
 class TestSegmentRecorder : public QObject
 {
     Q_OBJECT
@@ -1092,6 +1096,66 @@ private slots:
             QVERIFY(restored.paths().contains(path));
         const QString out = dir.path() + "/restored-export.mp4";
         QVERIFY(ReplayExporter::concat(restored.paths(), out, QStringLiteral("restore-check")));
+    }
+
+    // A re-arm used to re-probe the whole cache, one MFStartup/MFShutdown per
+    // file. Only the newest files can survive trimRing(), so the rest must be
+    // pruned through the lease-aware delete without ever being opened.
+    void restoreRingProbesOnlyTheNewestWindow()
+    {
+        QTemporaryDir dir(QDir::currentPath() + "/segment-window-XXXXXX");
+        QVERIFY(dir.isValid());
+
+        QStringList all;
+        for (int i = 0; i < 10; ++i)
+            all << segment(dir.path(), i);
+
+        SegmentRecorder recorder;
+        recorder.m_cacheDir = dir.path();
+        recorder.m_keepSegments = 2;
+        g_restoreProbes = 0;
+        recorder.m_segmentProbe = [](const QString&) { ++g_restoreProbes; return true; };
+
+        recorder.restoreRing();
+
+        // keep + 2 candidates are vetted; the six older files never are.
+        QCOMPARE(g_restoreProbes, 4);
+        // ... and trimRing() then keeps only the configured window.
+        QCOMPARE(recorder.m_segments, all.mid(8));
+        for (int i = 0; i < 8; ++i)
+            QVERIFY2(!QFileInfo::exists(all.at(i)), qPrintable(all.at(i)));
+        for (int i = 8; i < 10; ++i)
+            QVERIFY2(QFileInfo::exists(all.at(i)), qPrintable(all.at(i)));
+    }
+
+    // The prune above must never delete a file an export still leases, even
+    // when it sits far outside the window a restore can keep.
+    void restoreRingNeverDeletesAnOlderLeasedSegment()
+    {
+        QTemporaryDir dir(QDir::currentPath() + "/segment-window-lease-XXXXXX");
+        QVERIFY(dir.isValid());
+
+        QStringList all;
+        for (int i = 0; i < 10; ++i)
+            all << segment(dir.path(), i);
+        const SegmentLease lease(QStringList() << all.first());
+
+        SegmentRecorder recorder;
+        recorder.m_cacheDir = dir.path();
+        recorder.m_keepSegments = 2;
+        g_restoreProbes = 0;
+        recorder.m_segmentProbe = [](const QString&) { ++g_restoreProbes; return true; };
+
+        recorder.restoreRing();
+
+        // The leased file keeps its ring place (an export snapshot still needs
+        // it, see replacementRecorderRetainsLeasedStalePaths); only the
+        // unleased files outside the window are dropped unprobed.
+        QCOMPARE(g_restoreProbes, 5);
+        QVERIFY2(QFileInfo::exists(all.first()), qPrintable(all.first()));
+        QCOMPARE(recorder.m_segments, (QStringList{all.at(0), all.at(8), all.at(9)}));
+        for (int i = 1; i < 6; ++i)
+            QVERIFY2(!QFileInfo::exists(all.at(i)), qPrintable(all.at(i)));
     }
 
     // A sample write that fails mid-recording used to be logged and ignored,

@@ -267,28 +267,52 @@ struct TitleSources
 };
 
 // Memoized so the 1.5 s autoTick does not re-read the disk on the GUI thread
-// every tick. Keyed by pid AND path: a recycled pid or a swapped executable
-// misses the cache and re-resolves rather than serving a stale title.
+// every tick. Keyed by the executable's full path: these sources describe the
+// file, so alternating focus between two apps (or a relaunch changing the pid)
+// must not trigger another Steam manifest scan. A small LRU keeps the last few
+// executables warm; anything older is simply re-read on demand.
+constexpr int kTitleSourceCacheSize = 4;
+
+struct TitleSourceEntry
+{
+    QString      key;                 // case-folded full path (bare exe if none)
+    TitleSources sources;
+    quint64      lastUsed = 0;        // LRU stamp
+};
+
 TitleSources titleSourcesFor(unsigned long pid, const QString& exe,
                              const QString& fullPath, const QString& winTitle)
 {
     static QMutex mutex;
-    static TitleSources cached;
-    static unsigned long cachedPid = 0;
-    static QString cachedPath;
-    static bool primed = false;
+    static TitleSourceEntry entries[kTitleSourceCacheSize];
+    static quint64 useCounter = 0;
+
+    const QString key = (fullPath.isEmpty() ? exe : fullPath).toCaseFolded();
 
     QMutexLocker lock(&mutex);
-    if (primed && pid == cachedPid && fullPath == cachedPath)
-        return cached;
+    const quint64 stamp = ++useCounter;
+    TitleSourceEntry* slot = nullptr;
+    TitleSourceEntry* oldest = &entries[0];
+    for (TitleSourceEntry& entry : entries) {
+        if (!entry.key.isEmpty() && entry.key == key) {
+            entry.lastUsed = stamp;
+            return entry.sources;        // hit: no disk I/O and no log line
+        }
+        if (!slot && entry.key.isEmpty())
+            slot = &entry;               // first free slot
+        if (entry.lastUsed < oldest->lastUsed)
+            oldest = &entry;
+    }
+    if (!slot)
+        slot = oldest;                   // full: evict the least recently used
 
+    TitleSources& cached = slot->sources;
     cached.fromExe     = prettifyGameName(exe, fullPath);
     cached.steamName   = steamTitleForPath(fullPath);
     cached.productName = readVersionString(fullPath, L"ProductName");
     cached.fileDesc    = readVersionString(fullPath, L"FileDescription");
-    cachedPid  = pid;
-    cachedPath = fullPath;
-    primed     = true;
+    slot->key      = key;
+    slot->lastUsed = stamp;
 
     qInfo().noquote() << "GameDetector title candidates for" << exe
                       << "| pid:" << pid

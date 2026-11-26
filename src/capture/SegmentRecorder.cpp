@@ -122,11 +122,14 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
 
     QDir().mkpath(m_cacheDir);
 
-    restoreRing();
-
+    // MF first, restore second: restoreRing() vets the files it finds through
+    // Media Foundation, and holding one ref across the whole sweep replaces a
+    // MFStartup/MFShutdown pair per probed segment (issue #39).
     if (!mfAddRef())
         return false;
     m_mfOwned = true;
+
+    restoreRing();
 
     if (!openSegment()) {
         mfRelease();
@@ -174,8 +177,19 @@ void SegmentRecorder::restoreRing()
         const qint64 nowSecs    = QDateTime::currentSecsSinceEpoch();
         const QStringList files = QDir(m_cacheDir).entryList(
             QStringList() << QStringLiteral("*_clip.mp4"), QDir::Files, QDir::Name);
-        for (const QString& f : files) {
-            const QString full = m_cacheDir + QLatin1Char('/') + f;
+        // Probing opens the file through Media Foundation, and it is the whole
+        // cost of a restore. Files older than the window we can actually keep
+        // (trimRing() drops everything past m_keepSegments) can never rejoin, so
+        // they are never probed - just dropped through the lease-aware delete.
+        // The margin absorbs segments the probe itself has to reject.
+        const qsizetype probeWindow = qsizetype(qMax(1, m_keepSegments)) + 2;
+        const qsizetype firstProbe  = qMax(qsizetype(0), files.size() - probeWindow);
+        for (qsizetype index = 0; index < files.size(); ++index) {
+            const QString full = m_cacheDir + QLatin1Char('/') + files.at(index);
+            // A segment an in-flight export still leases is never deleted and
+            // keeps its place in the ring like any restored segment.
+            if (index < firstProbe && SegmentLease::removeIfUnleased(full))
+                continue;
             const qint64 ageSecs = nowSecs - QFileInfo(full).lastModified().toSecsSinceEpoch();
             if (ageSecs > staleSecs && SegmentLease::removeIfUnleased(full))
                 continue;
@@ -183,7 +197,10 @@ void SegmentRecorder::restoreRing()
             // writer's file, a segment cut mid-write). The exporter refuses
             // any bad input, so admitting one would fail every save until the
             // ring rolled past it. Only segments with real video rejoin.
-            const auto probe = m_segmentProbe ? m_segmentProbe : &ReplayExporter::hasReadableVideo;
+            // begin() already holds this recorder's MF ref, so the probe must
+            // not start/stop MF or COM itself (issue #39).
+            const auto probe = m_segmentProbe ? m_segmentProbe
+                                              : &ReplayExporter::hasReadableVideoStarted;
             if (!probe(full)) {
                 qWarning().noquote() << QStringLiteral(
                     "SegmentRecorder: not restoring unreadable segment %1 (bytes=%2)")
@@ -464,7 +481,7 @@ void SegmentRecorder::startPrep()
 
     const QString path = uniqueSegmentPath(m_cacheDir);
     const bool wantAudio = (m_audioRate > 0 && m_audioChannels > 0);
-    m_prep = PendingWriter();
+    releasePrep();
     m_prepState.store(1, std::memory_order_relaxed);
     // MF stays started for this recorder's whole lifetime (worker holds the
     // ref), so the prep thread only needs its own COM apartment.
@@ -488,12 +505,22 @@ void SegmentRecorder::joinPrep()
 void SegmentRecorder::discardPrep()
 {
     joinPrep();
-    if (m_prepState.load(std::memory_order_acquire) == 2 && m_prep.writer) {
-        m_prep.writer->Release();        // never wrote a sample — just drop it
-        QFile::remove(m_prep.path);
+    releasePrep();
+    m_prepState.store(0, std::memory_order_relaxed);
+}
+
+// A prepared writer is never adopted past this point: release it and remove
+// the file it already created. Judged by the pointer, not by m_prepState: a
+// state left at 3 (build failed) or a writer stored before the state flipped
+// used to fall through here and keep the sink alive (issue #39).
+void SegmentRecorder::releasePrep()
+{
+    if (m_prep.writer) {
+        m_prep.writer->Release();        // never wrote a sample, just drop it
+        if (!m_prep.path.isEmpty())
+            QFile::remove(m_prep.path);
     }
     m_prep = PendingWriter();
-    m_prepState.store(0, std::memory_order_relaxed);
 }
 
 // Adopt the pre-built next-segment writer when ready (a segment roll then
@@ -510,8 +537,12 @@ bool SegmentRecorder::openSegment()
         if (m_prepState.load(std::memory_order_acquire) == 2 && m_prep.writer) {
             pw = m_prep;
             m_lastOpenUsedPrep = true;
+            m_prep = PendingWriter();      // ownership moved into pw
+        } else {
+            // Built but unusable (audio rejected, no writer) or failed: drop
+            // the sink and its file instead of losing the reference here.
+            releasePrep();
         }
-        m_prep = PendingWriter();
         m_prepState.store(0, std::memory_order_relaxed);
     }
 
