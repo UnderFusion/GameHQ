@@ -118,6 +118,10 @@ private:
 
     Pipeline* m_pipe = nullptr;
     bool m_apartmentReady = false;
+    // Media Foundation stays started for the worker's lifetime. Starting and
+    // shutting it down around every recorder left two idle thread pools behind
+    // per capture restart with hardware encoders (#39).
+    bool m_mfHeld = false;
     quint64 m_pumpGeneration = 0;
     ReplayBufferState::State m_bufferState = ReplayBufferState::Stopped;
     bool m_exportBusy = false;       // one async clip export at a time

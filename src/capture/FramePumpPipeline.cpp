@@ -36,6 +36,7 @@
 #include <cstring>
 #include <cwchar>
 
+#include <mfapi.h>
 #include <roapi.h>       // RoInitialize / RoUninitialize / RoGetActivationFactory
 #include <winstring.h>   // WindowsCreateString / WindowsDeleteString
 
@@ -133,6 +134,9 @@ void FramePumpWorker::onThreadStarted()
     else
         qInfo() << "FramePump: worker thread MTA ready";
 
+    // Recorder/exporter MFStartup/MFShutdown pairs then only move the refcount.
+    m_mfHeld = SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_FULL));
+
     // One-time cleanup of segments orphaned by a previous session (Step 9);
     // file IO stays off the GUI thread.
     sweepStaleReplayCache();
@@ -142,6 +146,10 @@ void FramePumpWorker::onThreadFinished()
 {
     finishExport();
     teardown();
+    if (m_mfHeld) {
+        MFShutdown();
+        m_mfHeld = false;
+    }
     if (m_apartmentReady) {
         RoUninitialize();
         m_apartmentReady = false;
