@@ -19,11 +19,16 @@
 #include <QTemporaryDir>
 #include <QScopeGuard>
 #include <windows.h>
+#ifndef PSAPI_VERSION
+#define PSAPI_VERSION 2
+#endif
+#include <psapi.h>
 #include <dwmapi.h>
 #include <mfapi.h>
 #include <mfidl.h>
 #include <mfreadwrite.h>
 #include <algorithm>
+#include <atomic>
 
 namespace {
 
@@ -35,9 +40,14 @@ bool isFixtureBlue(const QColor& c)
     return c.blue() > 150 && c.red() < 70 && c.green() < 130 && c.blue() > c.green() + 60;
 }
 
+bool isFixtureOrange(const QColor& c)
+{
+    return c.red() > 170 && c.blue() < 70 && c.green() > 70 && c.green() < 170;
+}
+
 // Samples the four corners and edge midpoints, one pixel inside the border.
 // The repaint patch in the top-right area is far from every sample.
-QString nonFixtureEdge(const QImage& image)
+QString nonFixtureEdge(const QImage& image, bool (*matches)(const QColor&) = isFixtureBlue)
 {
     const int w = image.width();
     const int h = image.height();
@@ -46,7 +56,7 @@ QString nonFixtureEdge(const QImage& image)
                               {w / 2, h / 2}};
     for (const QPoint& p : samples) {
         const QColor c = image.pixelColor(p);
-        if (!isFixtureBlue(c))
+        if (!matches(c))
             return QStringLiteral("(%1,%2)=%3").arg(p.x()).arg(p.y()).arg(c.name());
     }
     return {};
@@ -145,6 +155,27 @@ QList<QImage> decodeAllFrames(const QString& path, QString* error)
     }
     return frames;
 }
+
+// Counts recorder warnings that mean the reused hardware encoder (#39) was
+// abandoned. Messages arrive from the capture worker thread.
+std::atomic<int> g_reuseStops{0};
+QtMessageHandler g_previousHandler = nullptr;
+
+void countReuseStops(QtMsgType type, const QMessageLogContext& context, const QString& message)
+{
+    if (message.contains(QLatin1String("hardware encoder reuse stopped"))
+        || message.contains(QLatin1String("CreateVideoProcessorInputView failed")))
+        g_reuseStops.fetch_add(1);
+    if (g_previousHandler)
+        g_previousHandler(type, context, message);
+}
+
+struct ReuseStopCounter
+{
+    ReuseStopCounter() { g_reuseStops = 0; g_previousHandler = qInstallMessageHandler(countReuseStops); }
+    ~ReuseStopCounter() { qInstallMessageHandler(g_previousHandler); }
+    int count() const { return g_reuseStops.load(); }
+};
 
 } // namespace
 
@@ -619,6 +650,7 @@ private slots:
         target.h = client.bottom;
         target.executablePath = QCoreApplication::applicationFilePath();
         target.gameName = QStringLiteral("Moving fixture");
+        ReuseStopCounter reuseStops;
         FramePumpService pump(&config, &locations);
         pump.m_autoTimer->stop();
         QStringList restarts;
@@ -809,6 +841,294 @@ private slots:
         qInfo().noquote() << QStringLiteral("restarts=[%1] pauses=%2")
             .arg(restarts.join(u"; ")).arg(pauses.size());
         QVERIFY(pump.hasPinnedTarget());
+        QCOMPARE(reuseStops.count(), 0);
+    }
+
+    // A static scene makes WGC stop delivering frames. A replay spanning that
+    // gap must still export from the reused hardware encoder (#39).
+    void aStaticSceneGapStillExportsTheReplay()
+    {
+        if (!qEnvironmentVariableIsSet("GAMEHQ_TEST_WGC_NATIVE"))
+            QSKIP("Requires an interactive Windows desktop and a WGC-capable GPU");
+        QVERIFY(GameDetector::onInputDesktop());
+        const auto previousDpi = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+        QVERIFY(previousDpi);
+        const auto restoreDpi = qScopeGuard([&] { SetThreadDpiAwarenessContext(previousDpi); });
+        const HINSTANCE instance = GetModuleHandleW(nullptr);
+        const HBRUSH blue = CreateSolidBrush(RGB(0, 70, 220));
+        QVERIFY(blue);
+        const auto deleteBrush = qScopeGuard([&] { DeleteObject(blue); });
+        WNDCLASSW windowClass{};
+        windowClass.lpfnWndProc = DefWindowProcW;
+        windowClass.hInstance = instance;
+        windowClass.hbrBackground = blue;
+        windowClass.lpszClassName = L"GameHQStaticSceneFixture";
+        QVERIFY(RegisterClassW(&windowClass));
+        const auto unregister = qScopeGuard([&] { UnregisterClassW(windowClass.lpszClassName, instance); });
+        const HWND game = CreateWindowExW(WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW, windowClass.lpszClassName,
+            L"Static fixture", WS_OVERLAPPEDWINDOW, 200, 220, 380, 260, nullptr, nullptr, instance, nullptr);
+        QVERIFY(game);
+        const auto destroyGame = qScopeGuard([&] { DestroyWindow(game); });
+        const DWORD squareCorners = 1;
+        DwmSetWindowAttribute(game, 33, &squareCorners, sizeof(squareCorners));
+        QVERIFY(SetWindowPos(game, HWND_BOTTOM, 0, 0, 0, 0,
+                             SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_SHOWWINDOW));
+        UpdateWindow(game);
+        QVERIFY(SUCCEEDED(DwmFlush()));
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/wgc-static-XXXXXX");
+        QVERIFY(dir.isValid());
+        ConfigManager config(dir.filePath("config.json"));
+        config.setValue(ConfigKeys::CaptureMode, QStringLiteral("whitelist"));
+        QVERIFY(config.setCaptureExecutableAllowed(QCoreApplication::applicationFilePath(), true));
+        config.setValue(ConfigKeys::ReplayAuto, true);
+        config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, false);
+        config.setValue(ConfigKeys::AudioSource, QStringLiteral("off"));
+        CaptureLocations locations(&config);
+        QVERIFY(locations.setBaseRoot(CaptureLocations::Kind::Clips, dir.path()));
+        RECT client{};
+        QVERIFY(GetClientRect(game, &client));
+        ForegroundGame target;
+        target.valid = true;
+        target.hwnd = game;
+        target.pid = GetCurrentProcessId();
+        QVERIFY(ProcessIdentity::creationTimeOf(GetCurrentProcess(), target.processStarted));
+        target.w = client.right;
+        target.h = client.bottom;
+        target.executablePath = QCoreApplication::applicationFilePath();
+        target.gameName = QStringLiteral("Static fixture");
+        ReuseStopCounter reuseStops;
+        FramePumpService pump(&config, &locations);
+        pump.m_autoTimer->stop();
+        pump.pinTarget(target);
+        QTimer repaint;
+        bool alternate = false;
+        connect(&repaint, &QTimer::timeout, this, [&] {
+            const HDC dc = GetDC(game);
+            if (!dc)
+                return;
+            RECT patch{client.right - 24, 8, client.right - 8, 24};
+            FillRect(dc, &patch, alternate ? blue : GetSysColorBrush(COLOR_WINDOW));
+            ReleaseDC(game, dc);
+            alternate = !alternate;
+        });
+        repaint.setTimerType(Qt::PreciseTimer);
+        repaint.start(16);
+        pump.restartBuffer();
+        QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() == ReplayBufferState::Recording, 7000);
+        QTest::qWait(600);
+        repaint.stop();
+        QTest::qWait(700);      // static scene: no new WGC frames
+        repaint.start(16);
+        QTest::qWait(600);
+        QSignalSpy saved(&pump, &FramePumpService::clipSaved);
+        QSignalSpy clipFailed(&pump, &FramePumpService::clipFailed);
+        pump.saveReplay(CaptureRequest::create(CaptureRequest::Source::Ui));
+        QTRY_VERIFY_WITH_TIMEOUT(!saved.isEmpty() || !clipFailed.isEmpty(), 15000);
+        QVERIFY2(clipFailed.isEmpty(), qPrintable(clipFailed.isEmpty() ? QString()
+                                                                       : clipFailed.constFirst().at(1).toString()));
+        const QString clipPath = saved.constFirst().at(0).toString();
+        QVERIFY(ReplayExporter::hasReadableVideo(clipPath));
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
+        QString error;
+        const QList<QImage> frames = decodeAllFrames(clipPath, &error);
+        QVERIFY2(frames.size() >= 10, qPrintable(error));
+        for (const QImage& frame : frames)
+            QVERIFY2(nonFixtureEdge(frame).isEmpty(), qPrintable(nonFixtureEdge(frame)));
+        QCOMPARE(reuseStops.count(), 0);
+    }
+
+    // Issues #38 and #39: switching the pinned game repeatedly must keep one
+    // capture session, attribute every screenshot and replay frame to the
+    // pinned window, and return memory and handles to a flat level.
+    void pinSwitchesKeepAttributionAndFlatResources()
+    {
+        if (!qEnvironmentVariableIsSet("GAMEHQ_TEST_WGC_NATIVE"))
+            QSKIP("Requires an interactive Windows desktop and a WGC-capable GPU");
+        QVERIFY(GameDetector::onInputDesktop());
+        const auto previousDpi = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+        QVERIFY(previousDpi);
+        const auto restoreDpi = qScopeGuard([&] { SetThreadDpiAwarenessContext(previousDpi); });
+        const HINSTANCE instance = GetModuleHandleW(nullptr);
+        const HBRUSH blue = CreateSolidBrush(RGB(0, 70, 220));
+        const HBRUSH orange = CreateSolidBrush(RGB(230, 120, 0));
+        QVERIFY(blue && orange);
+        const auto deleteBrushes = qScopeGuard([&] { DeleteObject(blue); DeleteObject(orange); });
+        WNDCLASSW blueClass{};
+        blueClass.lpfnWndProc = DefWindowProcW;
+        blueClass.hInstance = instance;
+        blueClass.hbrBackground = blue;
+        blueClass.lpszClassName = L"GameHQPinSoakBlue";
+        WNDCLASSW orangeClass = blueClass;
+        orangeClass.hbrBackground = orange;
+        orangeClass.lpszClassName = L"GameHQPinSoakOrange";
+        QVERIFY(RegisterClassW(&blueClass));
+        QVERIFY(RegisterClassW(&orangeClass));
+        const auto unregister = qScopeGuard([&] {
+            UnregisterClassW(blueClass.lpszClassName, instance);
+            UnregisterClassW(orangeClass.lpszClassName, instance);
+        });
+        const DWORD squareCorners = 1;
+        auto makeWindow = [&](const wchar_t* cls, const wchar_t* title, int x) {
+            const HWND hwnd = CreateWindowExW(WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW, cls, title,
+                WS_OVERLAPPEDWINDOW, x, 200, 340, 240, nullptr, nullptr, instance, nullptr);
+            if (hwnd) {
+                DwmSetWindowAttribute(hwnd, 33, &squareCorners, sizeof(squareCorners));
+                SetWindowPos(hwnd, HWND_BOTTOM, 0, 0, 0, 0,
+                             SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+                UpdateWindow(hwnd);
+            }
+            return hwnd;
+        };
+        const HWND gameA = makeWindow(blueClass.lpszClassName, L"Soak A", 120);
+        const HWND gameB = makeWindow(orangeClass.lpszClassName, L"Soak B", 520);
+        QVERIFY(gameA && gameB);
+        const auto destroyWindows = qScopeGuard([&] { DestroyWindow(gameA); DestroyWindow(gameB); });
+        QVERIFY(SUCCEEDED(DwmFlush()));
+
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/wgc-soak-XXXXXX");
+        QVERIFY(dir.isValid());
+        ConfigManager config(dir.filePath("config.json"));
+        config.setValue(ConfigKeys::CaptureMode, QStringLiteral("whitelist"));
+        QVERIFY(config.setCaptureExecutableAllowed(QCoreApplication::applicationFilePath(), true));
+        config.setValue(ConfigKeys::ReplayAuto, true);
+        config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, false);
+        config.setValue(ConfigKeys::AudioSource, QStringLiteral("off"));
+        CaptureLocations locations(&config);
+        QVERIFY(locations.setBaseRoot(CaptureLocations::Kind::Clips, dir.path()));
+        auto targetFor = [&](HWND hwnd, const QString& name) {
+            RECT client{};
+            GetClientRect(hwnd, &client);
+            ForegroundGame target;
+            target.valid = true;
+            target.hwnd = hwnd;
+            target.pid = GetCurrentProcessId();
+            ProcessIdentity::creationTimeOf(GetCurrentProcess(), target.processStarted);
+            target.w = client.right;
+            target.h = client.bottom;
+            target.executablePath = QCoreApplication::applicationFilePath();
+            target.gameName = name;
+            return target;
+        };
+        const ForegroundGame targetA = targetFor(gameA, QStringLiteral("Soak A"));
+        const ForegroundGame targetB = targetFor(gameB, QStringLiteral("Soak B"));
+        ReuseStopCounter reuseStops;
+        FramePumpService pump(&config, &locations);
+        pump.m_autoTimer->stop();
+        QTimer repaint;
+        bool alternate = false;
+        connect(&repaint, &QTimer::timeout, this, [&] {
+            for (HWND hwnd : {gameA, gameB}) {
+                const HDC dc = GetDC(hwnd);
+                if (!dc)
+                    continue;
+                RECT patch{300, 8, 316, 24};
+                FillRect(dc, &patch, alternate ? GetSysColorBrush(COLOR_WINDOW)
+                                               : (hwnd == gameA ? blue : orange));
+                ReleaseDC(hwnd, dc);
+            }
+            alternate = !alternate;
+        });
+        repaint.setTimerType(Qt::PreciseTimer);
+        repaint.start(16);
+        QSignalSpy ready(&pump, &FramePumpService::windowScreenshotReady);
+        QSignalSpy failed(&pump, &FramePumpService::windowScreenshotFailed);
+        QSignalSpy saved(&pump, &FramePumpService::clipSaved);
+        QSignalSpy clipFailed(&pump, &FramePumpService::clipFailed);
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
+        auto sample = [](qint64* privateBytes, qint64* handles) {
+            PROCESS_MEMORY_COUNTERS_EX counters{};
+            counters.cb = sizeof(counters);
+            GetProcessMemoryInfo(GetCurrentProcess(), reinterpret_cast<PROCESS_MEMORY_COUNTERS*>(&counters),
+                                 sizeof(counters));
+            DWORD count = 0;
+            GetProcessHandleCount(GetCurrentProcess(), &count);
+            *privateBytes = qint64(counters.PrivateUsage);
+            *handles = qint64(count);
+        };
+
+        constexpr int kSwitches = 20;
+        qint64 warmPrivate = 0, warmHandles = 0, peakPrivate = 0, peakHandles = 0;
+        QStringList series;
+        quint64 shot = 1;
+        for (int i = 0; i < kSwitches; ++i) {
+            const bool a = i % 2 == 0;
+            const ForegroundGame& target = a ? targetA : targetB;
+            const auto matches = a ? isFixtureBlue : isFixtureOrange;
+            pump.pinTarget(target);
+            QVERIFY(pump.hasPinnedTarget());
+            if (i == 0)
+                pump.restartBuffer();
+            QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() == ReplayBufferState::Recording, 7000);
+            QTest::qWait(400);
+            const qsizetype before = ready.size() + failed.size();
+            pump.captureWindowScreenshot(shot++);
+            QTRY_VERIFY_WITH_TIMEOUT(ready.size() + failed.size() > before, 7000);
+            QVERIFY2(failed.size() == 0, qPrintable(failed.isEmpty() ? QString()
+                                                                       : failed.last().at(0).toString()));
+            const QImage image = qvariant_cast<QImage>(ready.last().at(0));
+            const QString bad = nonFixtureEdge(image, matches);
+            QVERIFY2(bad.isEmpty(), qPrintable(QStringLiteral("switch %1 (%2): %3")
+                                                   .arg(i).arg(target.gameName, bad)));
+            QCOMPARE(ready.last().at(1).toString(), target.gameName);
+            if (i % 5 == 4) {
+                QTest::qWait(500);
+                const qsizetype savedBefore = saved.size();
+                pump.saveReplay(CaptureRequest::create(CaptureRequest::Source::Ui));
+                QTRY_VERIFY_WITH_TIMEOUT(saved.size() > savedBefore || !clipFailed.isEmpty(), 15000);
+                QVERIFY2(clipFailed.isEmpty(), qPrintable(clipFailed.isEmpty() ? QString()
+                                                                       : clipFailed.constFirst().at(1).toString()));
+                QCOMPARE(saved.last().at(1).toString(), target.gameName);
+                QString error;
+                const QList<QImage> frames = decodeAllFrames(saved.last().at(0).toString(), &error);
+                QVERIFY2(frames.size() >= 5, qPrintable(error));
+                for (qsizetype f = 0; f < frames.size(); ++f) {
+                    const QString wrong = nonFixtureEdge(frames[f], matches);
+                    QVERIFY2(wrong.isEmpty(), qPrintable(QStringLiteral("switch %1 clip frame %2/%3: %4")
+                                                             .arg(i).arg(f).arg(frames.size()).arg(wrong)));
+                }
+                const QImage preview(saved.last().at(2).toString());
+                QVERIFY(!preview.isNull());
+                QVERIFY2(nonFixtureEdge(preview, matches).isEmpty(), "preview belongs to another game");
+            }
+            qint64 privateBytes = 0, handles = 0;
+            sample(&privateBytes, &handles);
+            series.append(QStringLiteral("%1:%2MB/%3h").arg(i).arg(privateBytes / (1024 * 1024)).arg(handles));
+            if (i == 3) {
+                warmPrivate = privateBytes;
+                warmHandles = handles;
+            }
+            if (i > 3) {
+                peakPrivate = std::max(peakPrivate, privateBytes);
+                peakHandles = std::max(peakHandles, handles);
+            }
+        }
+        qint64 endPrivate = 0, endHandles = 0;
+        sample(&endPrivate, &endHandles);
+        pump.useAutomaticCapture();
+        QVERIFY(!pump.hasPinnedTarget());
+        QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() != ReplayBufferState::Recording, 7000);
+        QTest::qWait(1500);
+        qint64 idlePrivate = 0, idleHandles = 0;
+        sample(&idlePrivate, &idleHandles);
+        qInfo().noquote() << QStringLiteral("soak warm=%1MB/%2h peak=%3MB/%4h end=%5MB/%6h idle=%7MB/%8h series %9")
+            .arg(warmPrivate >> 20).arg(warmHandles).arg(peakPrivate >> 20).arg(peakHandles)
+            .arg(endPrivate >> 20).arg(endHandles).arg(idlePrivate >> 20).arg(idleHandles)
+            .arg(series.join(u' '));
+        // 16 further switches after warm-up. Beta 2 grew by tens of MB and
+        // hundreds of handles per switch (#39). The 0.8.2 Beta 4 baseline on
+        // an RTX 5090 is about +4 handles per switch while capture runs, all
+        // released when capture stops; fail on anything near the old growth.
+        QVERIFY2(endHandles - warmHandles < (kSwitches - 4) * 10, qPrintable(series.join(u' ')));
+        QVERIFY2(endPrivate - warmPrivate < 48ll * 1024 * 1024, qPrintable(series.join(u' ')));
+        QVERIFY2(idleHandles < warmHandles + 30, qPrintable(series.join(u' ')));
+        QVERIFY2(idlePrivate < warmPrivate + 16ll * 1024 * 1024, qPrintable(series.join(u' ')));
+        QCOMPARE(reuseStops.count(), 0);
     }
 
     void removingAnAllowedGameStopsAutoAndColdManualCapture()
