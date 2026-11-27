@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_ja_JP.ts",
-    "sha256": "cf2d25c35cf75387a2aa0e6eb449187b5063ef91610a530cbe2ad4878e09d90b",
+    "sha256": "70e93b6dbabf1be280f1f4f30a721eb88e9786ccc58407b7a6dab68fce0ca509",
     "message_count": 1133
   },
   "coverage": [
@@ -206,7 +206,7 @@
         "src/ui/qml/components/ShareDialog.qml:152",
         "src/ui/qml/components/ShareDialog.qml:441",
         "src/ui/qml/components/UpdateBanner.qml:168",
-        "src/ui/qml/settings/AboutSettingsPage.qml:200",
+        "src/ui/qml/settings/AboutSettingsPage.qml:202",
         "src/ui/qml/settings/InputSettingsPage.qml:644",
         "src/ui/qml/settings/TelegramAccountSection.qml:179"
       ],
@@ -218,9 +218,9 @@
       "translation_hash": "4e772f32df8e6eb7b8eba7fc67826d54cf25df5d042d950b3898dcfecb9198d0",
       "locations": [
         "src/ui/qml/Main.qml:1296",
-        "src/ui/qml/Main.qml:1315",
+        "src/ui/qml/Main.qml:1324",
         "src/ui/qml/Main.qml:1355",
-        "src/ui/qml/OverlayWindow.qml:1067",
+        "src/ui/qml/OverlayWindow.qml:1134",
         "src/ui/qml/components/ConfirmDialog.qml:17",
         "src/ui/qml/components/DesktopGalleryHeader.qml:73",
         "src/ui/qml/components/MappingPresetDeleteDialog.qml:37",
@@ -549,7 +549,7 @@
       "source_hash": "cb3d736679797aa92af00b7e9a74cc2b017f6afbca3b50af0116a3708523c700",
       "translation_hash": "5d8ff7084a29ea3c713199ed1e8477fc1b7eebf1c8ac79162ecec20303b3f653",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:213"
+        "src/ui/qml/settings/AboutSettingsPage.qml:215"
       ],
       "decision": "accepted"
     },
@@ -1725,7 +1725,7 @@
       "source_hash": "2c86b23ae3ce4b9cb92e1f2f6679382b868c4aa8569efb1b849c0265c2ae5759",
       "translation_hash": "0abaa4144f5c3e5dacdec8a7a0dd960f431349869445a31ee5e39eb0dbef02b2",
       "locations": [
-        "src/app/App_UpdateWiring.cpp:150"
+        "src/app/App_UpdateWiring.cpp:159"
       ],
       "decision": "corrected"
     },
@@ -1734,7 +1734,7 @@
       "source_hash": "1f1d3614544718c8d437512426d50ee7cb8224148cdefe365451e59d75188e59",
       "translation_hash": "f9d8bad903af7a2d75eb55c39a4259f5cfcd54390463406a7a16d582bb2d0d0c",
       "locations": [
-        "src/updates/UpdateService.cpp:516"
+        "src/updates/UpdateService.cpp:589"
       ],
       "decision": "corrected"
     },
@@ -1743,7 +1743,7 @@
       "source_hash": "2f8663a046e15f7ac2c67b10252670acd58570796837e54f532274f4d8aaf434",
       "translation_hash": "af6550f768848c6d14a8dcd1b9510ffc4375175182a9cfdb738481fe82e0d7e3",
       "locations": [
-        "src/updates/UpdateService.cpp:243"
+        "src/updates/UpdateService.cpp:291"
       ],
       "decision": "corrected"
     },
@@ -1752,7 +1752,7 @@
       "source_hash": "b493f0ea572430a6c0709444796f9b535d6767ce764c5579aeaad30f5c534722",
       "translation_hash": "2995ca2ef578e67d01e3d93e4b6016d860871dd58ba37ca252533c9a940707c9",
       "locations": [
-        "src/updates/UpdateService.cpp:237"
+        "src/updates/UpdateService.cpp:285"
       ],
       "decision": "corrected"
     },
@@ -2176,7 +2176,7 @@
       "source_hash": "d13a77a909956618b777ac6e562156e518bbb69b6f5871e95d9ee9dca8f4737b",
       "translation_hash": "99f73d86507dd1857f6901dbaaee381e2a940b95cdf0bdf82b4e24202eb7d305",
       "locations": [
-        "src/app/App_UpdateWiring.cpp:125"
+        "src/app/App_UpdateWiring.cpp:134"
       ],
       "decision": "corrected"
     },
@@ -2266,7 +2266,7 @@
       "source_hash": "a8aee8ecc20060b3bf7c33846ce008daa511f96baea038f3988a6917ccd97ba5",
       "translation_hash": "927a5bb54ee641fb17958613354605a609e74528d4391708294ab7a99387bdfb",
       "locations": [
-        "src/updates/UpdateService.cpp:396"
+        "src/updates/UpdateService.cpp:453"
       ],
       "decision": "corrected"
     },
@@ -2275,7 +2275,7 @@
       "source_hash": "5cb774998107a699e3795f3b9723a4d0a415bf530bde3eebe24a104e20122de9",
       "translation_hash": "2bfeec2d9d72f274a4c95a5097c17ee0907ec8f574fc6e8f8087361fa55780cd",
       "locations": [
-        "src/updates/UpdateService.cpp:462"
+        "src/updates/UpdateService.cpp:525"
       ],
       "decision": "corrected"
     },
@@ -2284,7 +2284,7 @@
       "source_hash": "fe836b1e26daab41302e49072a29411438fb7157172b2b5af8b11ec012b6d2e0",
       "translation_hash": "418a8a7887beb5d58a43d0876cca3d2d97de19991beaed40b79be822cb197365",
       "locations": [
-        "src/updates/UpdateService.cpp:508"
+        "src/updates/UpdateService.cpp:581"
       ],
       "decision": "corrected"
     },
@@ -2293,7 +2293,7 @@
       "source_hash": "5cc46c75c05e5b74f698fecf30ce229194725c4bd872c031664df9967a93baa8",
       "translation_hash": "a40dc2653ee3fec473927117a390f1f8f37bd9285d6a96cea513f0f42de51088",
       "locations": [
-        "src/updates/UpdateService.cpp:427"
+        "src/updates/UpdateService.cpp:486"
       ],
       "decision": "corrected"
     },
@@ -2302,7 +2302,7 @@
       "source_hash": "b5127e242b03938846daa698fc1c48851bf57954c4082769f4760294a1490aba",
       "translation_hash": "0ccd9656815a38acba07a196041452186daea2bfaafc5f6268f9947240262562",
       "locations": [
-        "src/updates/UpdateService.cpp:484"
+        "src/updates/UpdateService.cpp:558"
       ],
       "decision": "corrected"
     },
@@ -2440,7 +2440,7 @@
       "translation_hash": "66a189d0d046c1c02560b05dc26c5cc479ff1cf4159a8409a35fe1db1efc55de",
       "locations": [
         "src/ui/qml/Main.qml:1294",
-        "src/ui/qml/OverlayWindow.qml:1065"
+        "src/ui/qml/OverlayWindow.qml:1132"
       ],
       "decision": "corrected"
     },
@@ -4166,7 +4166,7 @@
       "source_hash": "8060df3b20bf3abfe5beba283d8742a09c085c1c03f36c726558750d5facba5b",
       "translation_hash": "dbbab5a2f2b58bb0ee84c3689dc1a50abc75bdbb2568c4b8881bae110fc4fd23",
       "locations": [
-        "src/ui/qml/OverlayWindow.qml:297"
+        "src/ui/qml/OverlayWindow.qml:332"
       ],
       "decision": "corrected"
     },
@@ -4383,7 +4383,7 @@
       "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
       "translation_hash": "6aeb6c9749381db776eacadf15dd29e6796f5f8fd8251c721b1e9ee59e06756c",
       "locations": [
-        "src/ui/AppController.cpp:116"
+        "src/ui/AppController.cpp:127"
       ],
       "decision": "accepted"
     },
@@ -4401,7 +4401,7 @@
       "source_hash": "03c8306167609fd2cda55b6f77dc9aeb2c56052dcbd302c8d646ce3353d0943e",
       "translation_hash": "43ec29eb7fd4af12ca77cc187ab0399090a0cff02275f3c5865fbda53cf2e269",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:294"
+        "src/ui/qml/settings/AboutSettingsPage.qml:296"
       ],
       "decision": "corrected"
     },
@@ -4419,7 +4419,7 @@
       "source_hash": "9fe6f8db6b3917e39d0ef1598f4b158448a72464bedc4248fc13f3aa3e5f654f",
       "translation_hash": "a47a7a80ca9c22abcb40f61e97241464011a6feab7086ff08798087a680e11bd",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:256"
+        "src/ui/qml/settings/AboutSettingsPage.qml:258"
       ],
       "decision": "corrected"
     },
@@ -4428,7 +4428,7 @@
       "source_hash": "5f7f9e2ea548a64b85c0b694feac4a3485cac7adec32bc2b8b0fb0a173d840c9",
       "translation_hash": "1bcecc7cac6d26a0f8ba847bb67e80bb0281c39540beb4bfab3cd46a3c219a65",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:285"
+        "src/ui/qml/settings/AboutSettingsPage.qml:287"
       ],
       "decision": "accepted"
     },
@@ -4455,7 +4455,7 @@
       "source_hash": "b1848980341b3dcbbd967127d1ef6a967defcc9a2abc95ba4fb8ec23468ec912",
       "translation_hash": "2a4ee5b34d7229d1f4af08855c1e556c64c0283010d15cf338c5633e029fd156",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:241"
+        "src/ui/qml/settings/AboutSettingsPage.qml:243"
       ],
       "decision": "accepted"
     },
@@ -4482,7 +4482,7 @@
       "source_hash": "e94f1e97f70be24b64042c1284839084e6ab44fab37c8e3642e5d504554235d9",
       "translation_hash": "ff00e889a00729aaa8079f966db919c7ceda1ba8ef939f60a6dff59c060dd7d1",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:245"
+        "src/ui/qml/settings/AboutSettingsPage.qml:247"
       ],
       "decision": "corrected"
     },
@@ -4491,7 +4491,7 @@
       "source_hash": "48152247d0898f0daa835f2663f548a41dcd57072be24b3b5ebd65e9d8716e3c",
       "translation_hash": "449e460c76acd152d4086f6d1e2ed5c87033b4ea9847a4c89ab181cdaf3d7ee1",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:243"
+        "src/ui/qml/settings/AboutSettingsPage.qml:245"
       ],
       "decision": "accepted"
     },
@@ -4509,7 +4509,7 @@
       "source_hash": "2d3b5626852ade12708d6ac7a03a53fdae1d56663f2efc650c9d3f8e88917673",
       "translation_hash": "9c19d5326d3aa8a5b0562023b77eea940ef0561641235420aba6af34c2869851",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:263"
+        "src/ui/qml/settings/AboutSettingsPage.qml:265"
       ],
       "decision": "accepted"
     },
@@ -4518,7 +4518,7 @@
       "source_hash": "eedee1599beeaabc29a2963adcacd0f75736b3b2a7a92d1da03e965a2523464e",
       "translation_hash": "6cfb4982081571f82cb2484abb11fe87937b84a3107a55a73423afe62f360a3a",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:270"
+        "src/ui/qml/settings/AboutSettingsPage.qml:272"
       ],
       "decision": "corrected"
     },
@@ -4528,7 +4528,7 @@
       "translation_hash": "82b26fb86b28eba0b9aaab14b8328b775527d6e28c628c76d2336bd3009e39d1",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:936",
-        "src/ui/qml/settings/AboutSettingsPage.qml:277"
+        "src/ui/qml/settings/AboutSettingsPage.qml:279"
       ],
       "decision": "corrected"
     },
@@ -4537,7 +4537,7 @@
       "source_hash": "2c9efece673b42cbbfe976b65381886dd2b25ccac53474c68afeeb71480c6302",
       "translation_hash": "de468e126d30e23bdbd94cd592474055992c4a794c4a1fd438c5d51d4c3366d3",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:279"
+        "src/ui/qml/settings/AboutSettingsPage.qml:281"
       ],
       "decision": "corrected"
     },
@@ -4546,7 +4546,7 @@
       "source_hash": "409d150d1b5720a671a52939ca995844bf8278e8c1fd4a4fa280f91e23cd64a7",
       "translation_hash": "b491453bc5c779e517fdd97505ed3a8998421476fbfa4c652db57fd69e82a55f",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:299"
+        "src/ui/qml/settings/AboutSettingsPage.qml:301"
       ],
       "decision": "corrected"
     },
@@ -4555,7 +4555,7 @@
       "source_hash": "702eaa6b769672064f8adacc8fc0ff4587c40c6f26f39422f523aee49493a061",
       "translation_hash": "cf36cd05f997032971fd2a161d1f19de52904bc2ad396fedc3c03e50d2c58777",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:302"
+        "src/ui/qml/settings/AboutSettingsPage.qml:304"
       ],
       "decision": "corrected"
     },
@@ -4564,7 +4564,7 @@
       "source_hash": "5a8745d9fad134ea6a1536bc9d38441729e706ad6a25882bd45fe7ec3aeb1c17",
       "translation_hash": "6147c579761acfb64d6d470ebfdaef4938fac2fe197378b2c118ffce844e84bb",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:296"
+        "src/ui/qml/settings/AboutSettingsPage.qml:298"
       ],
       "decision": "corrected"
     },
@@ -4592,7 +4592,7 @@
       "source_hash": "0d46eb72a0b054f9d7cc19ce8499fa91c8f20ed7f23592d8cd43f93cf118a832",
       "translation_hash": "421d32f6d466d3bb7d4a0d82625b6cc1ec03876975f09c6a713545da93b86526",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:249"
+        "src/ui/qml/settings/AboutSettingsPage.qml:251"
       ],
       "decision": "corrected"
     },
@@ -9707,7 +9707,7 @@
       "translation_hash": "e2073e357200fe1bcb05c1e18284579034b77003129f40f9503c291b13d04492",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:424",
-        "src/ui/qml/settings/AboutSettingsPage.qml:188"
+        "src/ui/qml/settings/AboutSettingsPage.qml:190"
       ],
       "decision": "corrected"
     },
@@ -9815,7 +9815,7 @@
       "source_hash": "b75bee706bfaa7ad66750bde74b77314de96d44c758a3bc775fa7371bc295e8f",
       "translation_hash": "bfc976556ac6628814dd5f4d736e70d96f0761e98c17cb7925cdd8dbcd32cef1",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:170"
+        "src/ui/qml/settings/AboutSettingsPage.qml:172"
       ],
       "decision": "corrected"
     },
@@ -9855,7 +9855,7 @@
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:379",
         "src/ui/qml/components/AboutWhatsNewDialog.qml:1231",
-        "src/ui/qml/settings/AboutSettingsPage.qml:207"
+        "src/ui/qml/settings/AboutSettingsPage.qml:209"
       ],
       "decision": "corrected"
     },
@@ -9939,7 +9939,7 @@
       "source_hash": "2d9437a39ad19512ebb7bb7d0604623bf62f3e864e46406c2f3f279d24b18c80",
       "translation_hash": "54c696369ddf4876d58be2e1ea1594bda43715a11931ccad258cbf3eaf80e1df",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:159"
+        "src/ui/qml/settings/AboutSettingsPage.qml:161"
       ],
       "decision": "corrected"
     },
@@ -10016,7 +10016,7 @@
         "src/ui/qml/components/AboutWhatsNewDialog.qml:362",
         "src/ui/qml/components/AboutWhatsNewDialog.qml:368",
         "src/ui/qml/components/UpdateBanner.qml:171",
-        "src/ui/qml/settings/AboutSettingsPage.qml:203"
+        "src/ui/qml/settings/AboutSettingsPage.qml:205"
       ],
       "decision": "accepted"
     },
@@ -10035,7 +10035,7 @@
       "translation_hash": "9964a27fe9e3a612d7904b4d3e0e2654f1f2819cdb8b4ebbe08ff7eb7a06ddf5",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:311",
-        "src/ui/qml/settings/AboutSettingsPage.qml:167"
+        "src/ui/qml/settings/AboutSettingsPage.qml:169"
       ],
       "decision": "corrected"
     },
@@ -10135,7 +10135,7 @@
       "translation_hash": "28ab1a2fbdeeae7fc41f6b80c4c7387dc267e34c976ea06c5f66641637611c85",
       "locations": [
         "src/ui/qml/components/UpdateBanner.qml:80",
-        "src/ui/qml/settings/AboutSettingsPage.qml:177"
+        "src/ui/qml/settings/AboutSettingsPage.qml:179"
       ],
       "decision": "accepted"
     },
@@ -10154,7 +10154,7 @@
       "translation_hash": "1a50a8136742fbaffa368f6079a153c40d86f1c54d31703c54b9a3b6618782f5",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:304",
-        "src/ui/qml/settings/AboutSettingsPage.qml:162"
+        "src/ui/qml/settings/AboutSettingsPage.qml:164"
       ],
       "decision": "corrected"
     },
@@ -10191,7 +10191,7 @@
       "translation_hash": "9c6cf250f4db75ccb69f7ce556765673b68cc6a4df74fd05b69c8b99591ba36b",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:417",
-        "src/ui/qml/settings/AboutSettingsPage.qml:181"
+        "src/ui/qml/settings/AboutSettingsPage.qml:183"
       ],
       "decision": "corrected"
     },
@@ -10201,7 +10201,7 @@
       "translation_hash": "5e539d25ceeda3eec591edb21e5cceb5c07379eb9d8cb8cda3c530966171077d",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:382",
-        "src/ui/qml/settings/AboutSettingsPage.qml:210"
+        "src/ui/qml/settings/AboutSettingsPage.qml:212"
       ],
       "decision": "corrected"
     },
@@ -10228,7 +10228,7 @@
       "source_hash": "4edb33bfe4031b77c25b7414970a7ebcb0a79f46607108be23889851f33a49b9",
       "translation_hash": "c01cfebf7fb4e4dff41b0385bbc7d4cbff13be3692b0118fcade84216bb2a062",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:191"
+        "src/ui/qml/settings/AboutSettingsPage.qml:193"
       ],
       "decision": "corrected"
     },
@@ -10358,7 +10358,7 @@
       "source_hash": "8f45229f4047cee08381ab95ab6309013db7197cf130a1559ba87ff73aaa16b6",
       "translation_hash": "87146feb509d214827281860c320e7cc7ac8e00b84b323677d38945009d60cb1",
       "locations": [
-        "src/ui/qml/settings/AboutSettingsPage.qml:232"
+        "src/ui/qml/settings/AboutSettingsPage.qml:234"
       ],
       "decision": "corrected"
     },
@@ -10377,7 +10377,7 @@
       "translation_hash": "b0877d65f0ef98561accdecd937609ca47b803532fab64ece6af5eed24fbed85",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:421",
-        "src/ui/qml/settings/AboutSettingsPage.qml:185"
+        "src/ui/qml/settings/AboutSettingsPage.qml:187"
       ],
       "decision": "corrected"
     },
@@ -16808,7 +16808,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_ja_JP.ts",
-      "sha256": "cf2d25c35cf75387a2aa0e6eb449187b5063ef91610a530cbe2ad4878e09d90b",
+      "sha256": "70e93b6dbabf1be280f1f4f30a721eb88e9786ccc58407b7a6dab68fce0ca509",
       "reviewed_units": 1133
     },
     {
