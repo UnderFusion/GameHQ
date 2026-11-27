@@ -15,6 +15,9 @@ param(
 $ErrorActionPreference = 'Stop'
 
 $root = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
+. (Join-Path $PSScriptRoot 'resolve-qt.ps1')
+. (Join-Path $PSScriptRoot 'qt-notices.ps1')
+. (Join-Path $PSScriptRoot 'qt-runtime.ps1')
 
 function Get-ProjectPath([string]$Path) {
     if ([System.IO.Path]::IsPathRooted($Path)) {
@@ -62,7 +65,10 @@ if ($target -eq $payloadTarget -and $Mode -ne 'Neutral') {
     throw 'The program payload must be assembled with -Mode Neutral.'
 }
 
-$qtBin = Join-Path $root 'tools\Qt\6.8.3\mingw_64\bin'
+$qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $source
+$qtBin = $qt.Bin
+$qtSbom = @(Get-GameHQQtSbom -Qt $qt)
+$runtimeInputs = Get-GameHQQtRuntimeInputs -Qt $qt
 $realExe = Join-Path $source 'GameHQ.exe'
 $launcherExe = Join-Path $source 'GameHQLauncher.exe'
 $updaterExe = Join-Path $source 'GameHQUpdater.exe'
@@ -119,15 +125,27 @@ if (Test-Path -LiteralPath $tdRuntime -PathType Leaf) {
 } else {
     Write-Host '[package] optional TDLib runtime not built; Telegram Integrated will report it as not installed'
 }
-& $deployTool --verbose 0 --qmldir (Join-Path $root 'src\ui\qml') --compiler-runtime (Join-Path $app 'GameHQ.exe')
-if ($LASTEXITCODE -ne 0) {
-    throw "windeployqt failed ($LASTEXITCODE)"
-}
+$previousPath = $env:PATH
+try {
+    # Use the selected SDK for Qt tools and avoid Windows SDK DLL discovery.
+    $env:PATH = "$qtBin;$($qt.CompilerBin)"
+    & $deployTool --verbose 0 --qmldir (Join-Path $root 'src\ui\qml') `
+        --no-system-d3d-compiler --no-system-dxc-compiler --no-compiler-runtime --no-ffmpeg `
+        --skip-plugin-types sqldrivers (Join-Path $app 'GameHQ.exe')
+    if ($LASTEXITCODE -ne 0) { throw "windeployqt failed ($LASTEXITCODE)" }
+} finally { $env:PATH = $previousPath }
 
-# Qt Multimedia loads these FFmpeg libraries dynamically; windeployqt does not
-# currently include them in this MinGW deployment.
-Copy-Item (Join-Path $qtBin 'av*.dll') $app
-Copy-Item (Join-Path $qtBin 'sw*.dll') $app -ErrorAction SilentlyContinue
+# Older windeployqt versions may still copy SQL drivers. Preserve SQLite
+# explicitly and prevent drivers that need separate database client libraries.
+$sqlDir = Join-Path $app 'sqldrivers'
+New-Item -ItemType Directory -Path $sqlDir -Force | Out-Null
+Get-ChildItem -LiteralPath $sqlDir -Filter '*.dll' -File | Where-Object Name -ne 'qsqlite.dll' |
+    Remove-Item -Force
+foreach ($entry in $runtimeInputs.GetEnumerator()) {
+    Copy-Item -LiteralPath $entry.Value -Destination (Join-Path $app $entry.Key) -Force
+}
+$null = Get-GameHQQtRuntimeIdentity -Qt $qt -AppDirectory $app
+[IO.File]::WriteAllText((Join-Path $app 'qt.conf'), "[Paths]`nPrefix=.`nPlugins=.`nQmlImports=qml`n")
 
 $version = (Get-Content (Join-Path $root 'VERSION') -Raw).Trim()
 Copy-Item -LiteralPath $launcherExe -Destination (Join-Path $target 'GameHQ.exe')
@@ -135,7 +153,8 @@ Copy-Item -LiteralPath $updaterExe -Destination (Join-Path $target 'GameHQUpdate
 (Get-Content (Join-Path $PSScriptRoot 'README-dist.txt') -Raw).Replace('{VERSION}', $version) |
     Set-Content (Join-Path $target 'README.txt') -NoNewline
 Copy-Item -LiteralPath (Join-Path $root 'LICENSE') -Destination (Join-Path $target 'LICENSE.txt')
-Copy-Item -LiteralPath (Join-Path $root 'THIRD_PARTY_NOTICES.md') -Destination (Join-Path $target 'THIRD_PARTY_NOTICES.md')
+[IO.File]::WriteAllText((Join-Path $target 'THIRD_PARTY_NOTICES.md'),
+    (Get-GameHQPackageNotices -Root $root -Qt $qt), [Text.UTF8Encoding]::new($false))
 Copy-Item -LiteralPath (Join-Path $root 'licenses') -Destination (Join-Path $target 'licenses') -Recurse
 if ($target -eq $payloadTarget) {
     $sourceOffer = Join-Path $root 'dist\.source-offer\SOURCE_OFFER.txt'
@@ -145,18 +164,9 @@ if ($target -eq $payloadTarget) {
     Copy-Item -LiteralPath $sourceOffer -Destination (Join-Path $target 'licenses\SOURCE_OFFER.txt')
 }
 
-# Qt 6.8+ ships SPDX metadata for its runtime modules. Include the modules used
-# by GameHQ so recipients can inspect exact component and license attribution.
-$qtSbom = Join-Path $qtBin '..\sbom'
-if (Test-Path -LiteralPath $qtSbom -PathType Container) {
-    $sbomTarget = Join-Path $target 'licenses\qt-sbom'
-    New-Item -ItemType Directory -Path $sbomTarget -Force | Out-Null
-    foreach ($module in @('qtbase', 'qtdeclarative', 'qtmultimedia', 'qtsvg')) {
-        Get-ChildItem -LiteralPath $qtSbom -Filter ($module + '-*.spdx') -File |
-            Where-Object { $_.Name -notlike '*.source.spdx' } |
-            Copy-Item -Destination $sbomTarget
-    }
-}
+$sbomTarget = Join-Path $target 'licenses\qt-sbom'
+New-Item -ItemType Directory -Path $sbomTarget -Force | Out-Null
+Copy-Item -LiteralPath $qtSbom.FullName -Destination $sbomTarget
 if ($Mode -eq 'Portable') {
     New-Item -ItemType File -Path (Join-Path $target 'portable.flag') -Force | Out-Null
 }

@@ -2,11 +2,15 @@
 [CmdletBinding()]
 param(
     [string]$PayloadDirectory = 'dist\.program-payload',
+    [string]$BuildDirectory = 'out',
     [switch]$SkipPackage
 )
 
 $ErrorActionPreference = 'Stop'
 $root = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
+. (Join-Path $PSScriptRoot 'resolve-build-directory.ps1')
+. (Join-Path $PSScriptRoot 'resolve-qt.ps1')
+. (Join-Path $PSScriptRoot 'qt-notices.ps1')
 $failures = [Collections.Generic.List[string]]::new()
 
 function Require-File([string]$Path, [string]$Label) {
@@ -98,6 +102,8 @@ if ($foreignReleaseNotes.Count -gt 0) {
 }
 
 if (-not $SkipPackage) {
+    $build = Resolve-BuildDirectory -Root $root -BuildDirectory $BuildDirectory
+    $qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $build
     $payload = if ([IO.Path]::IsPathRooted($PayloadDirectory)) {
         [IO.Path]::GetFullPath($PayloadDirectory)
     } else { [IO.Path]::GetFullPath((Join-Path $root $PayloadDirectory)) }
@@ -109,12 +115,28 @@ if (-not $SkipPackage) {
             'licenses\SOURCE_OFFER.txt', 'licenses\MIT-legacy.txt',
             'licenses\LGPL-2.1.txt', 'licenses\LGPL-3.0.txt',
             'licenses\GCC-RUNTIME-EXCEPTION.txt', 'licenses\MINGW-W64-RUNTIME.txt',
-            'licenses\miniz.txt', 'licenses\monocypher.txt', 'licenses\Inno-Setup.txt',
-            'licenses\qt-sbom\qtbase-6.8.3.spdx',
-            'licenses\qt-sbom\qtdeclarative-6.8.3.spdx',
-            'licenses\qt-sbom\qtmultimedia-6.8.3.spdx',
-            'licenses\qt-sbom\qtsvg-6.8.3.spdx')) {
+            'licenses\miniz.txt', 'licenses\monocypher.txt', 'licenses\Inno-Setup.txt')) {
         Require-File (Join-Path $payload $relative) "package $relative"
+    }
+    $expectedSbom = @(Get-GameHQQtSbom -Qt $qt)
+    $sbomRoot = Join-Path $payload 'licenses\qt-sbom'
+    foreach ($document in $expectedSbom) {
+        $staged = Join-Path $sbomRoot $document.Name
+        Require-File $staged "package SPDX document $($document.Name)"
+        if ((Test-Path -LiteralPath $staged -PathType Leaf) -and
+            (Get-FileHash -LiteralPath $staged).Hash -ne (Get-FileHash -LiteralPath $document.FullName).Hash) {
+            $failures.Add("package SPDX document differs from the Qt kit: $($document.Name)")
+        }
+    }
+    foreach ($staged in Get-ChildItem -LiteralPath $sbomRoot -File -ErrorAction SilentlyContinue) {
+        if ($staged.Name -notin $expectedSbom.Name) {
+            $failures.Add("unexpected package SPDX document: $($staged.Name)")
+        }
+    }
+    $notices = Join-Path $payload 'THIRD_PARTY_NOTICES.md'
+    if ((Test-Path -LiteralPath $notices -PathType Leaf) -and
+        (Get-Content -LiteralPath $notices -Raw) -cne (Get-GameHQPackageNotices -Root $root -Qt $qt)) {
+        $failures.Add("package notices do not match Qt $($qt.Version)")
     }
     $packagedLicense = Join-Path $payload 'LICENSE.txt'
     if ((Test-Path -LiteralPath $packagedLicense -PathType Leaf) -and

@@ -3,12 +3,15 @@
 param(
     [string]$ReleaseDirectory = 'dist\releases',
     [string]$NinjaPath = '',
+    [string]$BuildDirectory = '',
     [switch]$SkipBuild
 )
 
 $ErrorActionPreference = 'Stop'
 $root = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 . (Join-Path $PSScriptRoot 'resolve-ninja.ps1')
+. (Join-Path $PSScriptRoot 'resolve-build-directory.ps1')
+. (Join-Path $PSScriptRoot 'resolve-qt.ps1')
 $releaseRoot = if ([System.IO.Path]::IsPathRooted($ReleaseDirectory)) {
     [System.IO.Path]::GetFullPath($ReleaseDirectory)
 } else { [System.IO.Path]::GetFullPath((Join-Path $root $ReleaseDirectory)) }
@@ -50,19 +53,25 @@ try {
             $cmake = (Get-Command cmake.exe -ErrorAction Stop).Source
         }
         $buildRoot = Join-Path $validationRoot 'out'
-        $qtPrefix = Join-Path $root 'tools\Qt\6.8.3\mingw_64'
-        $mingwBin = Join-Path $root 'tools\Qt\Tools\mingw1310_64\bin'
+        if ($BuildDirectory) {
+            $BuildDirectory = Resolve-BuildDirectory -Root $root -BuildDirectory $BuildDirectory
+        }
+        $qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $BuildDirectory
         $ninja = Resolve-GameHQNinja -NinjaPath $NinjaPath -RepositoryRoot $root
-        $cCompiler = Join-Path $mingwBin 'gcc.exe'
-        $cxxCompiler = Join-Path $mingwBin 'g++.exe'
-        $env:PATH = "$mingwBin;$qtPrefix\bin;$env:PATH"
-        & $cmake -S $sourceRoot -B $buildRoot -G Ninja `
-            "-DCMAKE_MAKE_PROGRAM=$ninja" "-DCMAKE_C_COMPILER=$cCompiler" `
-            "-DCMAKE_CXX_COMPILER=$cxxCompiler" "-DCMAKE_PREFIX_PATH=$qtPrefix" `
-            -DCMAKE_BUILD_TYPE=Release -DGAMEHQ_ENABLE_PSEUDO_LOCALES=OFF
-        if ($LASTEXITCODE -ne 0) { throw 'Source archive did not configure.' }
-        & $cmake --build $buildRoot --parallel 2
-        if ($LASTEXITCODE -ne 0) { throw 'Source archive did not build.' }
+        $cCompiler = Join-Path $qt.CompilerBin 'gcc.exe'
+        $cxxCompiler = Join-Path $qt.CompilerBin 'g++.exe'
+        $previousPath = $env:PATH
+        try {
+            $env:PATH = "$($qt.CompilerBin);$($qt.Bin);$previousPath"
+            & $cmake -S $sourceRoot -B $buildRoot -G Ninja `
+                "-DCMAKE_MAKE_PROGRAM=$ninja" "-DCMAKE_C_COMPILER=$cCompiler" `
+                "-DCMAKE_CXX_COMPILER=$cxxCompiler" "-DCMAKE_PREFIX_PATH=$($qt.Prefix)" `
+                "-DQt6_DIR=$($qt.Prefix)\lib\cmake\Qt6" `
+                -DCMAKE_BUILD_TYPE=Release -DGAMEHQ_ENABLE_PSEUDO_LOCALES=OFF
+            if ($LASTEXITCODE -ne 0) { throw 'Source archive did not configure.' }
+            & $cmake --build $buildRoot --parallel 2
+            if ($LASTEXITCODE -ne 0) { throw 'Source archive did not build.' }
+        } finally { $env:PATH = $previousPath }
     }
 } finally {
     $resolved = if (Test-Path -LiteralPath $validationRoot) {

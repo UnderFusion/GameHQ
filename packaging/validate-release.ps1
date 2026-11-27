@@ -18,13 +18,17 @@ if ($TrustMode -eq 'unsigned-stable' -and $ManifestMode -ne 'production') {
 }
 $root = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 . (Join-Path $PSScriptRoot 'resolve-build-directory.ps1')
+. (Join-Path $PSScriptRoot 'resolve-qt.ps1')
+. (Join-Path $PSScriptRoot 'qt-runtime.ps1')
 # Resolved before any other work and regardless of -SkipTests: an unusable build
 # selection is a release-evidence defect, not something tests may mask.
 $buildRoot = Resolve-BuildDirectory -Root $root -BuildDirectory $BuildDirectory
 $buildLabel = Get-BuildDirectoryLabel -Root $root -BuildDirectory $buildRoot
+$requireReleaseQt = $GitTag -or $ManifestMode -eq 'production' -or $TrustMode -eq 'signed'
+$qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $buildRoot -RequireReleaseVersion:$requireReleaseQt
 $sourceCommit = Get-SourceCommit -Root $root
 & (Join-Path $PSScriptRoot 'assert-privacy.ps1') -ReleaseDirectory $ReleaseDirectory
-& (Join-Path $PSScriptRoot 'assert-license-compliance.ps1')
+& (Join-Path $PSScriptRoot 'assert-license-compliance.ps1') -BuildDirectory $buildRoot
 & (Join-Path $PSScriptRoot 'test-release-note-assets.ps1')
 $releaseRoot = if ([System.IO.Path]::IsPathRooted($ReleaseDirectory)) {
     [System.IO.Path]::GetFullPath($ReleaseDirectory)
@@ -212,7 +216,7 @@ if ($sourceChecksumText -notmatch $expectedSourceChecksum) {
 }
 $actualSourceHash = (Get-FileHash -LiteralPath $sourceZip -Algorithm SHA256).Hash.ToLowerInvariant()
 if ($actualSourceHash -ne $Matches[1]) { throw 'Source ZIP checksum does not match.' }
-$sourceValidationArguments = @{ ReleaseDirectory = $releaseRoot }
+$sourceValidationArguments = @{ ReleaseDirectory = $releaseRoot; BuildDirectory = $buildRoot }
 if ($SkipTests) { $sourceValidationArguments.SkipBuild = $true }
 if (-not [string]::IsNullOrWhiteSpace($NinjaPath)) {
     $sourceValidationArguments.NinjaPath = $NinjaPath
@@ -273,6 +277,7 @@ if ($ManifestMode -in @('test', 'production')) {
 # packaged candidate are the same bytes. Signing rewrites the files, so signed
 # mode records the same evidence without demanding equality.
 $binaryIdentity = Get-CandidateBinaryIdentity -BuildDirectory $buildRoot -PayloadRoot $payloadRoot
+$qtRuntimeIdentity = @(Get-GameHQQtRuntimeIdentity -Qt $qt -AppDirectory (Join-Path $payloadRoot 'app'))
 if ($TrustMode -in @('unsigned-beta', 'unsigned-stable')) {
     $divergent = @($binaryIdentity | Where-Object { -not $_.identical })
     if ($divergent.Count -ne 0) {
@@ -281,11 +286,14 @@ if ($TrustMode -in @('unsigned-beta', 'unsigned-stable')) {
     }
 }
 if (-not $SkipTests) {
-    $env:PATH = (Join-Path $root 'tools\Qt\6.8.3\mingw_64\bin') + ';' + $env:PATH
-    Invoke-CandidateNativeTests -Root $root -BuildDirectory $buildRoot `
-        -TestPattern 'tst_(releasenotes|updatedownloader|updatepreflight|updateinstaller|updatertransaction)'
-    & (Join-Path $PSScriptRoot 'test-installer-language-acceptance.ps1') -SetupPath $setup
-    if ($LASTEXITCODE -ne 0) { throw 'Installer localization acceptance failed.' }
+    $previousPath = $env:PATH
+    try {
+        $env:PATH = "$($qt.CompilerBin);$($qt.Bin);$previousPath"
+        Invoke-CandidateNativeTests -Root $root -BuildDirectory $buildRoot `
+            -TestPattern 'tst_(releasenotes|updatedownloader|updatepreflight|updateinstaller|updatertransaction)'
+        & (Join-Path $PSScriptRoot 'test-installer-language-acceptance.ps1') -SetupPath $setup
+        if ($LASTEXITCODE -ne 0) { throw 'Installer localization acceptance failed.' }
+    } finally { $env:PATH = $previousPath }
 }
 $toolchain = Import-PowerShellDataFile (Join-Path $PSScriptRoot 'inno-toolchain.psd1')
 $evidencePaths = @($setup, $portableZip, $updateZip, $checksum, $sourceZip, $sourceChecksum)
@@ -325,8 +333,8 @@ $buildTools = [ordered]@{
     ninja = Get-ToolVersion $ninjaForEvidence @('--version')
     python = Get-ToolVersion 'python' @('--version')
     dotnetSdk = Get-ToolVersion 'dotnet' @('--version')
-    qt = Get-ToolVersion 'qmake' @('-query', 'QT_VERSION')
-    compiler = Get-ToolVersion 'g++' @('-dumpversion')
+    qt = $qt.Version
+    compiler = Get-ToolVersion (Join-Path $qt.CompilerBin 'g++.exe') @('-dumpversion')
     powerShell = $PSVersionTable.PSVersion.ToString()
     os = [System.Environment]::OSVersion.VersionString
 }
@@ -348,6 +356,7 @@ $evidence = [ordered]@{
     } else { $null }
     innoSetup = [ordered]@{ version = $toolchain.Version; installerSha256 = $toolchain.Sha256 }
     buildTools = $buildTools
+    qtRuntime = $qtRuntimeIdentity
     build = [ordered]@{
         sourceCommit = $sourceCommit
         buildDirectory = $buildLabel

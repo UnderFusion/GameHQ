@@ -29,6 +29,11 @@ if ($minimumUpdaterVersion -notmatch '^\d+\.\d+\.\d+$' `
 if ([string]::IsNullOrWhiteSpace($TrustMode)) {
     throw 'Set RELEASE_TRUST_MODE=unsigned-beta (or pass -TrustMode) explicitly.'
 }
+. (Join-Path $PSScriptRoot 'resolve-build-directory.ps1')
+. (Join-Path $PSScriptRoot 'resolve-qt.ps1')
+$buildRoot = Resolve-BuildDirectory -Root $root -BuildDirectory $BuildDirectory
+$requireReleaseQt = $GitTag -or $ManifestMode -eq 'production' -or $TrustMode -eq 'signed'
+$null = Resolve-GameHQQtKit -Root $root -BuildDirectory $buildRoot -RequireReleaseVersion:$requireReleaseQt
 $dist = Join-Path $root 'dist'
 $portableRoot = Join-Path $dist 'GameHQ'
 $payloadRoot = Join-Path $dist '.program-payload'

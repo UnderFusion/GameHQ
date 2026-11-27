@@ -9,6 +9,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $root = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
+. (Join-Path $PSScriptRoot 'resolve-qt.ps1')
 $version = (Get-Content -LiteralPath (Join-Path $root 'VERSION') -Raw).Trim()
 $identity = Import-PowerShellDataFile (Join-Path $PSScriptRoot 'distribution-identity.psd1')
 $python = (Get-Command python -ErrorAction Stop).Source
@@ -36,6 +37,7 @@ function Invoke-Checked([string]$Label, [scriptblock]$Action) {
 }
 
 $build = Resolve-ProjectPath $BuildDirectory
+$qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $build
 $payload = Resolve-ProjectPath $PayloadRoot
 $releaseRoot = Join-Path $root 'dist\releases'
 if ([string]::IsNullOrWhiteSpace($PortableZip)) {
@@ -64,7 +66,7 @@ New-Item -ItemType Directory -Path $workRoot -Force | Out-Null
 $before = [string]::Join("`n", @(& git -C $root status --porcelain=v1 --untracked-files=all))
 if ($LASTEXITCODE -ne 0) { throw 'Could not snapshot the checkout before acceptance.' }
 $env:GAMEHQ_OFFLINE_ACCEPTANCE = '1'
-$env:PATH = (Join-Path $root 'tools\Qt\6.8.3\mingw_64\bin') + ';' + $env:PATH
+$env:PATH = "$($qt.CompilerBin);$($qt.Bin);$env:PATH"
 
 Invoke-Checked 'fast offline sixteen-locale gate' {
     & (Join-Path $root 'tools\i18n\ci.ps1')

@@ -5,7 +5,7 @@ separately packaged Playnite integration and public integration protocol remain
 under MIT. The Windows package also redistributes runtime components under
 their own licenses.
 
-## Qt 6.8.3
+## Qt
 
 GameHQ dynamically links to Qt libraries and plugins. The open-source Qt build
 is available under the GNU Lesser General Public License version 3, with
@@ -17,13 +17,12 @@ individual third-party components under the licenses identified by Qt.
 
 The shared libraries remain replaceable in the package's `app` directory.
 
-## FFmpeg 7.1
+## FFmpeg
 
-The Qt Multimedia runtime includes dynamically loaded FFmpeg shared libraries.
-The shipped `avcodec-61.dll` reports FFmpeg 7.1 (`61.19.100`), LGPL 2.1-or-later,
-and this configuration:
-
-`--prefix=installed --disable-programs --disable-doc --disable-debug --enable-network --disable-lzma --enable-pic --disable-vulkan --disable-v4l2-m2m --disable-decoder=truemotion1 --enable-shared --disable-static`
+The Qt Multimedia runtime includes dynamically loaded FFmpeg shared libraries
+under LGPL 2.1-or-later. The Qt Multimedia SPDX document under
+`licenses/qt-sbom/` contains the upstream version and source details supplied
+with the selected Qt kit.
 
 - FFmpeg legal information: https://ffmpeg.org/legal.html
 - FFmpeg source code: https://ffmpeg.org/download.html#get-sources

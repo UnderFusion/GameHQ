@@ -21,6 +21,21 @@ together under `app/`; it must not be scattered through the package root.
 
 Reference: [Qt for Windows - Deployment](https://doc.qt.io/qt-6/windows-deployment.html).
 
+The Windows release workflow installs the Qt and MinGW SDKs recorded in
+`packaging/qt-toolchain.psd1`. The packaging scripts read the actual kit from
+the selected CMake build directory. Tagged, signed, and production-manifest
+packages enforce the release Qt version. Local development packages can use
+another supported kit with its own runtime DLLs and SPDX documents.
+
+Qt Quick defaults to Direct3D 11 on Windows, and HDR capture uses D3D11 and
+`D3DCompile`. The package takes `d3dcompiler_47.dll` from the selected Qt kit
+and skips host DXC discovery. A forced D3D12 backend needs separate deployment
+qualification. The package includes the kit's SQLite driver, FFmpeg libraries,
+and the MinGW runtime from the selected compiler. Release validation checks
+the staged bytes and records their SHA-256 identities.
+
+Reference: [Qt Windows graphics acceleration](https://doc.qt.io/qt-6.11/windows-graphics.html).
+
 The static update helper uses miniz 3.1.2, fetched from its tagged upstream
 archive with a pinned SHA-256 during configuration. It accepts only stored or
 deflated ZIP entries and applies GameHQ's own path, size, layout and manifest

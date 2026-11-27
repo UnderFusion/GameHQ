@@ -8,8 +8,8 @@ and Playnite integration package. This is engineering evidence, not legal advice
 | Component | Version / form | License basis | Evidence and obligation | Result |
 |---|---|---|---|---|
 | GameHQ core | Native executables and resources | GPL-3.0-only | Root and package GPL texts remain exact; every release publishes corresponding source. | Project license |
-| Qt | 6.8.3 shared DLLs, plugins, and QML | LGPL-3.0-only or GPL-3.0-only | Dynamically replaceable files; LGPL/GPL texts and four Qt SPDX SBOMs ship in `licenses/`. Upstream source links remain in the notices. | Compatible |
-| FFmpeg | 7.1 shared DLLs | LGPL-2.1-or-later | Runtime export reports 61.19.100, LGPL 2.1+, shared-only configuration, and no GPL/nonfree options. Exact configuration and upstream source links are recorded in `THIRD_PARTY_NOTICES.md`. | Compatible |
+| Qt | Shared DLLs, plugins, and QML from the selected kit | LGPL-3.0-only or GPL-3.0-only | Dynamically replaceable files, LGPL/GPL texts, and runtime module SPDX documents. The package notices record the Qt version. | Compatible |
+| FFmpeg | Shared DLLs from the selected Qt Multimedia kit | LGPL-2.1-or-later | The Qt Multimedia SPDX document records upstream version and source details supplied with the kit. Release validation checks the staged DLLs against that kit. | Compatible |
 | MinGW-w64 / GCC | GCC 13.1 runtime DLLs | Upstream licenses plus runtime exceptions | Package includes the GCC exception and MinGW runtime notices; compiler runtime remains dynamically replaceable. | Compatible |
 | miniz | 3.1.2 statically linked into updater | MIT | Archive URL and SHA-256 are pinned by CMake; full notice ships as `licenses/miniz.txt`. | Compatible |
 | Monocypher | 4.0.3 statically linked | BSD-2-Clause selected from BSD-2-Clause OR CC0-1.0 | Official archive and SHA-512 are pinned; source headers and shipped notice agree. | Compatible |
@@ -56,7 +56,7 @@ enter a release.
 ## Release controls
 
 The package must continue to include `THIRD_PARTY_NOTICES.md`, all required
-files under `licenses/`, the four Qt 6.8.3 SPDX SBOMs, and the Bouncy Castle
+files under `licenses/`, the selected Qt runtime SPDX documents, and the Bouncy Castle
 notice inside the Playnite package. Every GPL core release publishes exact
 corresponding source and a checksum and binds them from each binary package.
 The automated inventory gate rejects unclassified release files, source
