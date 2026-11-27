@@ -110,10 +110,12 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $PSNativeCommandUseErrorActionPreference = $true
+          $toolchain = Import-PowerShellDataFile packaging/qt-toolchain.psd1
+          $qtModules = $toolchain.Modules
           python -m pip install --disable-pip-version-check aqtinstall==3.3.0
-          python -m aqt install-qt windows desktop 6.8.3 win64_mingw `
-            -O "$PWD\tools\Qt" -m qtmultimedia
-          python -m aqt install-tool windows desktop tools_mingw1310 `
+          python -m aqt install-qt windows desktop $toolchain.Version $toolchain.Architecture `
+            -O "$PWD\tools\Qt" -m @qtModules
+          python -m aqt install-tool windows desktop $toolchain.CompilerPackage `
             -O "$PWD\tools\Qt"
 
       - name: Verify localization extraction is current
@@ -121,7 +123,9 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $PSNativeCommandUseErrorActionPreference = $true
-          $lupdate = "$PWD\tools\Qt\6.8.3\mingw_64\bin\lupdate.exe"
+          . packaging/resolve-qt.ps1
+          $kit = Resolve-GameHQQtKit -Root $PWD.Path
+          $lupdate = Join-Path $kit.Bin 'lupdate.exe'
           & tools/i18n/sync.ps1 -Check -LUpdate $lupdate
 
       - name: Configure and build release binaries
@@ -129,15 +133,16 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $PSNativeCommandUseErrorActionPreference = $true
-          $qt = "$PWD\tools\Qt\6.8.3\mingw_64"
-          $mingw = "$PWD\tools\Qt\Tools\mingw1310_64\bin"
-          $env:PATH = "$mingw;$qt\bin;$env:PATH"
+          . packaging/resolve-qt.ps1
+          $kit = Resolve-GameHQQtKit -Root $PWD.Path
+          $mingw = $kit.CompilerBin
+          $env:PATH = "$mingw;$($kit.Bin);$env:PATH"
           cmake -S . -B out -G Ninja `
             -DCMAKE_BUILD_TYPE=Release `
             -DGAMEHQ_BUILD_TESTS=ON `
             -DGAMEHQ_ENABLE_PSEUDO_LOCALES=OFF `
             -DGAMEHQ_RELEASE_TRUST_TEST_KEYS=OFF `
-            "-DCMAKE_PREFIX_PATH=$qt" `
+            "-DCMAKE_PREFIX_PATH=$($kit.Prefix)" `
             "-DCMAKE_C_COMPILER=$mingw\gcc.exe" `
             "-DCMAKE_CXX_COMPILER=$mingw\g++.exe" `
             "-DCMAKE_MAKE_PROGRAM=$env:NINJA_EXE"
@@ -148,9 +153,9 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $PSNativeCommandUseErrorActionPreference = $true
-          $qt = "$PWD\tools\Qt\6.8.3\mingw_64"
-          $mingw = "$PWD\tools\Qt\Tools\mingw1310_64\bin"
-          $env:PATH = "$mingw;$qt\bin;$env:PATH"
+          . packaging/resolve-qt.ps1
+          $kit = Resolve-GameHQQtKit -Root $PWD.Path -BuildDirectory out
+          $env:PATH = "$($kit.CompilerBin);$($kit.Bin);$env:PATH"
           python -B tools/testing/test_run_regression.py
           python tools/testing/run_regression.py --build-dir out `
             --output-dir out/test-evidence --profile ci
@@ -178,9 +183,6 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          $qt = "$PWD\tools\Qt\6.8.3\mingw_64"
-          $mingw = "$PWD\tools\Qt\Tools\mingw1310_64\bin"
-          $env:PATH = "$mingw;$qt\bin;$env:PATH"
           & packaging/make-dist.ps1 -TrustMode unsigned-beta -ManifestMode test `
             -NinjaPath $env:NINJA_EXE
           & packaging/assert-beta-artifact-set.ps1
