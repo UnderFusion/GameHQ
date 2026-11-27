@@ -244,6 +244,7 @@ signals:
 private:
     friend class InputEngineShutdownTest;
     friend class InputReleaseHandoffTest;
+    friend class ControllerStateLifetimeTest;
     friend class ControllerClipE2ETest;
     friend class PresetSwitchTest;
     friend class GameSessionPresetTest;

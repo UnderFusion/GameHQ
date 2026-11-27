@@ -1654,6 +1654,13 @@ target_link_libraries(tst_inputreleasehandoff PRIVATE ${PRESET_SWITCH_LIBS})
 target_include_directories(tst_inputreleasehandoff PRIVATE "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
 target_compile_definitions(tst_inputreleasehandoff PRIVATE UNICODE _UNICODE)
 
+# t40/A10: per-controller state across thousands of weak reconnects.
+gamehq_add_test(tst_controllerstatelifetime tst_controllerstatelifetime.cpp ${PRESET_SWITCH_SOURCES}
+    "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoff.cpp")
+target_link_libraries(tst_controllerstatelifetime PRIVATE ${PRESET_SWITCH_LIBS})
+target_include_directories(tst_controllerstatelifetime PRIVATE "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
+target_compile_definitions(tst_controllerstatelifetime PRIVATE UNICODE _UNICODE)
+
 # cpo-o06e: the bounded neutral-state handoff, with no desktop session and no
 # device: the one definition of "neutral", the held-control tracker and the
 # runner's order (wait while the pad is held, release exactly once afterwards).

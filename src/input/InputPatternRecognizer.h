@@ -118,6 +118,17 @@ public:
     // release-gated instead of acting under the table that replaced its own.
     QStringList downControls(const QString& deviceGroup, const QString& deviceProfile) const;
 
+    // A route nothing can press again (a retired weak controller): frees its
+    // per-control states and their timers. A state still pending (held, in a
+    // tap window, an open chord) or physically down is kept, so no gesture in
+    // progress loses the state it depends on. Returns how many were freed.
+    int forgetRoute(const QString& deviceGroup, const QString& deviceProfile);
+    bool hasPendingState(const QString& deviceGroup, const QString& deviceProfile) const;
+
+    // Diagnostics: per-(route, control) states held, and the timers they own.
+    int stateCount() const { return int(m_states.size()); }
+    int timerCount() const { return 3 * int(m_states.size()); }
+
 signals:
     // A pattern completed. `gesture` is exact: Tap carries the number of taps
     // actually performed, Hold carries the threshold that just elapsed.

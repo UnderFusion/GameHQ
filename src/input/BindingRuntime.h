@@ -134,6 +134,30 @@ public:
     QStringList armedReleaseGates() const;
     QStringList downControls(const QString& deviceGroup, const QString& deviceProfile) const;
 
+    // A retired route (see InputEngine::pruneStaleControllers): drops what the
+    // runtime keeps per route - idle recognizer states and timers, press
+    // contexts, native-control marks, release gates, the relation cache and
+    // the profile's alias chain. Pending gesture state is kept.
+    void forgetRoute(const QString& deviceGroup, const QString& deviceProfile);
+    bool hasPendingGesture(const QString& deviceGroup, const QString& deviceProfile) const;
+
+    // Diagnostics: how much per-route state the runtime holds right now.
+    struct RetainedState {
+        int recognizerStates = 0;
+        int recognizerTimers = 0;
+        int pressContexts = 0;
+        int nativeSystemControls = 0;
+        int relations = 0;
+        int releaseGates = 0;
+        int profileAliases = 0;
+        int total() const
+        {
+            return recognizerStates + pressContexts + nativeSystemControls + relations
+                + releaseGates + profileAliases;
+        }
+    };
+    RetainedState retainedState() const;
+
     // Deterministic content fingerprint of an effective table, sorted by row so
     // storage order cannot fake a change. This is the missing half of the
     // switch's no-op identity: the same winner with the same fingerprint is a

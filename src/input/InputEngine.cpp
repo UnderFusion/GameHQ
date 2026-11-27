@@ -867,9 +867,13 @@ void InputEngine::pruneStaleControllers()
         [&](const QString& logicalId) {
             return logicalId == pinned || logicalId == m_lastControllerRoute
                 || logicalId == pendingProfile
-                || !m_runtime->downControls(controller, logicalId).isEmpty();
+                || !m_runtime->downControls(controller, logicalId).isEmpty()
+                || m_runtime->hasPendingGesture(controller, logicalId);
         });
     for (const QString& logicalId : pruned) {
+        // t40: the runtime's per-route state for it, timers included, would
+        // otherwise outlive every weak reconnect for the rest of the session.
+        m_runtime->forgetRoute(controller, logicalId);
         m_profileMigrationAliases.remove(logicalId);
         m_legacyViewFallbackHeld.remove(logicalId);
         // Nothing can press this route again, so a table installed for it

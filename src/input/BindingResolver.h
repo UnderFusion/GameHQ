@@ -193,6 +193,7 @@ public:
 
     // Bridge inputs for the materializer; both are cheap copies of small sets.
     QStringList aliasesFor(const QString& profile) const { return m_profileAliases.value(profile); }
+    int aliasedProfileCount() const { return int(m_profileAliases.size()); }
     QVector<Binding> validatedOverrides() const { return m_overrides; }
     // Bumped whenever the resolved facts change (reload, alias edit, chain
     // activation). Lets the materializer memoize without missing a change.

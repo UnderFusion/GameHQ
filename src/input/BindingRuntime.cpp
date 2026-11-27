@@ -318,6 +318,55 @@ bool BindingRuntime::release(const QString& group, const QString& profile,
     return m_recognizer.release(*it, trigger);
 }
 
+void BindingRuntime::forgetRoute(const QString& deviceGroup, const QString& deviceProfile)
+{
+    if (m_recognizer.hasPendingState(deviceGroup, deviceProfile)) {
+        // Something still depends on it; the per-route caches stay with it.
+        m_recognizer.forgetRoute(deviceGroup, deviceProfile);
+        return;
+    }
+    m_recognizer.forgetRoute(deviceGroup, deviceProfile);
+    const QString prefix = deviceGroup + QChar(0x1f) + deviceProfile + QChar(0x1f);
+    const auto dropPrefixed = [&prefix](QSet<QString>& set) {
+        for (auto it = set.begin(); it != set.end();) {
+            if (it->startsWith(prefix))
+                it = set.erase(it);
+            else
+                ++it;
+        }
+    };
+    dropPrefixed(m_nativeSystemControls);
+    dropPrefixed(m_releaseGates);
+    for (auto it = m_pressContexts.begin(); it != m_pressContexts.end();) {
+        if (it.key().startsWith(prefix))
+            it = m_pressContexts.erase(it);
+        else
+            ++it;
+    }
+    m_relations.remove(deviceGroup + QLatin1Char('\x1f') + deviceProfile);
+    if (!deviceProfile.isEmpty())
+        m_resolver.setProfileAliases(deviceProfile, {});
+}
+
+bool BindingRuntime::hasPendingGesture(const QString& deviceGroup,
+                                       const QString& deviceProfile) const
+{
+    return m_recognizer.hasPendingState(deviceGroup, deviceProfile);
+}
+
+BindingRuntime::RetainedState BindingRuntime::retainedState() const
+{
+    RetainedState s;
+    s.recognizerStates = m_recognizer.stateCount();
+    s.recognizerTimers = m_recognizer.timerCount();
+    s.pressContexts = int(m_pressContexts.size());
+    s.nativeSystemControls = int(m_nativeSystemControls.size());
+    s.relations = int(m_relations.size());
+    s.releaseGates = int(m_releaseGates.size());
+    s.profileAliases = m_resolver.aliasedProfileCount();
+    return s;
+}
+
 void BindingRuntime::cancelAll()
 {
     m_recognizer.invalidate();

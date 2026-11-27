@@ -149,6 +149,35 @@ void InputPatternRecognizer::notePhysicalRelease(const QString& deviceGroup,
     (*it)->physicallyDown = false;
 }
 
+int InputPatternRecognizer::forgetRoute(const QString& deviceGroup, const QString& deviceProfile)
+{
+    const QString prefix = deviceGroup + QChar(0x1f) + deviceProfile + QChar(0x1f);
+    int freed = 0;
+    for (auto it = m_states.begin(); it != m_states.end();) {
+        ControlState* state = it.value();
+        if (!it.key().startsWith(prefix) || state->pending() || state->physicallyDown) {
+            ++it;
+            continue;
+        }
+        m_openChords.removeAll(state);   // not pending, so not listed; kept exact
+        it = m_states.erase(it);
+        delete state;                    // its timers go with it, stopped
+        ++freed;
+    }
+    return freed;
+}
+
+bool InputPatternRecognizer::hasPendingState(const QString& deviceGroup,
+                                             const QString& deviceProfile) const
+{
+    const QString prefix = deviceGroup + QChar(0x1f) + deviceProfile + QChar(0x1f);
+    for (auto it = m_states.cbegin(); it != m_states.cend(); ++it) {
+        if (it.key().startsWith(prefix) && (it.value()->pending() || it.value()->physicallyDown))
+            return true;
+    }
+    return false;
+}
+
 QStringList InputPatternRecognizer::downControls(const QString& deviceGroup,
                                                  const QString& deviceProfile) const
 {
