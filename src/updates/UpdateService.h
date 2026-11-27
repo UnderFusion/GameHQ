@@ -154,6 +154,10 @@ Q_SIGNALS:
     void nextAllowedCheckChanged(const QDateTime &when);
     void prepareForUpdateRequested();
     void quiescenceReached();
+    // Emitted whenever a preparation or quiescence ends without installing,
+    // whoever ended it (a failed revalidation, a changed release, the owner),
+    // so the caller always resumes the capture work it paused.
+    void preparationCancelled();
     void installApproved(const VerifiedUpdate &verified);
 
 private:

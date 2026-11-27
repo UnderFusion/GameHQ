@@ -101,6 +101,15 @@ void App::wireUpdates()
         m_screenshots->prepareForUpdate();
         m_framePump->prepareForUpdate();
     });
+    // A revalidation failure or a changed release ends the preparation inside
+    // UpdateService; without this the replay pump stayed stopped until restart.
+    // Both cancellations are idempotent with the explicit calls below.
+    connect(m_updates.get(), &UpdateService::preparationCancelled, this, [this] {
+        m_updatePreparationTimer->stop();
+        m_screenshots->cancelUpdatePreparation();
+        m_framePump->cancelUpdatePreparation();
+        qInfo() << "Update preparation ended without installing; capture work resumed";
+    });
     connect(m_updates.get(), &UpdateService::installApproved, this,
             [this](const VerifiedUpdate &verified) {
         QString transactionPath;

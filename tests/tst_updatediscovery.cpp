@@ -645,6 +645,61 @@ private slots:
         QCOMPARE(skipped.size(), 1);
         QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
     }
+
+    void everyAbandonedPreparationAsksTheAppToResumeCapture_data()
+    {
+        QTest::addColumn<int>("answer");
+        QTest::addColumn<QString>("after");
+        QTest::newRow("withdrawn") << 404 << QStringLiteral("ReadyToInstall");
+        QTest::newRow("server-error") << 500 << QStringLiteral("ReadyToInstall");
+        QTest::newRow("release-changed") << 200 << QStringLiteral("UpdateAvailable");
+        QTest::newRow("owner-cancel") << 0 << QStringLiteral("ReadyToInstall");
+    }
+
+    void everyAbandonedPreparationAsksTheAppToResumeCapture()
+    {
+        // The service ends a preparation itself when revalidation fails; the
+        // app paused replay capture for it and must hear about every ending.
+        QFETCH(int, answer);
+        QFETCH(QString, after);
+        QVERIFY(fakePackagedInstall());
+        auto s = offering(release(QStringLiteral("v0.8.1")));
+        QVERIFY(s);
+        QSignalSpy cancelled(s.get(), &UpdateService::preparationCancelled);
+        QSignalSpy approved(s.get(), &UpdateService::installApproved);
+        s->deliverVerifiedDownloadForTesting(fakeVerified(QStringLiteral("0.8.1")));
+        s->installAndRestart();
+        if (answer == 0) {
+            s->cancelPreparation(QStringLiteral("capture timed out"));
+        } else {
+            if (answer == 200)
+                m_server->queue.append(releases({release(QStringLiteral("v0.8.2"))}, "\"new\""));
+            else
+                m_server->queue.append({answer, "Fixture", {}, {}});
+            s->markQuiescent();
+        }
+        QTRY_COMPARE_WITH_TIMEOUT(s->stateName(), after, 10000);
+        QCOMPARE(cancelled.size(), 1);
+        QCOMPARE(approved.size(), 0);
+        QVERIFY(!s->errorText().isEmpty());
+    }
+
+    void anApprovedInstallationIsNotReportedAsCancelled()
+    {
+        QVERIFY(fakePackagedInstall());
+        auto s = offering(release(QStringLiteral("v0.8.1")));
+        QVERIFY(s);
+        QSignalSpy cancelled(s.get(), &UpdateService::preparationCancelled);
+        QSignalSpy approved(s.get(), &UpdateService::installApproved);
+        s->deliverVerifiedDownloadForTesting(fakeVerified(QStringLiteral("0.8.1")));
+        s->installAndRestart();
+        m_server->queue.append(releases({release(QStringLiteral("v0.8.1"))}, "\"same\""));
+        s->markQuiescent();
+        QTRY_COMPARE_WITH_TIMEOUT(approved.size(), 1, 5000);
+        s->markInstalling();
+        QCOMPARE(s->stateName(), QStringLiteral("Installing"));
+        QCOMPARE(cancelled.size(), 0);
+    }
 };
 
 QTEST_GUILESS_MAIN(TestUpdateDiscovery)

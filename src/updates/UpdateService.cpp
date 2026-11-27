@@ -143,8 +143,11 @@ void UpdateService::setState(State state)
 {
     if (m_state == state)
         return;
+    const bool wasPreparing = m_state == State::PreparingForUpdate || m_state == State::Quiescent;
     m_state = state;
     Q_EMIT stateChanged();
+    if (wasPreparing && state != State::Quiescent && state != State::Installing)
+        Q_EMIT preparationCancelled();
     scheduleChannelCheck();
 }
 
