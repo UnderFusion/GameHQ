@@ -77,9 +77,41 @@ struct FramePumpWorker::Pipeline
     QSize pendingContentSize;
     QSize pendingClientSize;
     QElapsedTimer pendingContentClock;
+    DirectXPixelFormat poolFormat = DirectXPixelFormat_B8G8R8A8UIntNormalized;
+    float hdrSdrWhiteNits = 0.0f;
+
+    // #41 pointer policy actually in force on `session`: 1 or 0 when Windows
+    // read it back, -1 when the OS offers no control (it then always draws it).
+    int sessionCursor = -1;
+
+    // One screenshot whose pointer policy differs from the replay session's.
+    // A separate session on the same item and device, without an encoder; it
+    // exists only until its first fresh frame, a cancel or the pipeline ends.
+    // The replay session's own pointer setting is never touched for it.
+    struct StillCapture
+    {
+        IDirect3D11CaptureFramePool*  framePool = nullptr;
+        IGraphicsCaptureSession*      session   = nullptr;
+        ID3D11Texture2D*              clientTexture = nullptr;
+        capture::hdr::GpuToneMapper*  toneMapper = nullptr;
+        quint64                       requestId = 0;
+        long long                     startQpc100ns = 0;
+        bool                          cursor = false;
+
+        ~StillCapture()
+        {
+            if (toneMapper) { delete toneMapper; toneMapper = nullptr; }
+            if (clientTexture) { clientTexture->Release(); clientTexture = nullptr; }
+            if (session)   { IInspectable* s = session;   session = nullptr;   wgcCloseAndRelease(s); }
+            if (framePool) { IInspectable* p = framePool; framePool = nullptr; wgcCloseAndRelease(p); }
+        }
+    };
+    StillCapture*                 still = nullptr;
 
     ~Pipeline()
     {
+        // Borrows item, devices and context: always released first.
+        if (still) { delete still; still = nullptr; }
         if (readinessTimer) { readinessTimer->stop(); delete readinessTimer; }
         if (timer) { timer->stop(); delete timer; timer = nullptr; }
         // Finalize + release the recorder BEFORE the D3D device/context it borrows

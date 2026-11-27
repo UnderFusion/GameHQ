@@ -23,6 +23,7 @@ inline constexpr QLatin1StringView CaptureScreenshotFormat{ "capture.screenshot_
 inline constexpr QLatin1StringView CaptureJpegQuality{ "capture.jpeg_quality" };           // 1-100, only when format=jpg
 inline constexpr QLatin1StringView CaptureScreenshotSound{ "capture.screenshot_sound" };
 inline constexpr QLatin1StringView CaptureScreenshotNotify{ "capture.screenshot_notify" };
+inline constexpr QLatin1StringView CaptureScreenshotCursor{ "capture.screenshot_cursor" }; // OS mouse pointer in screenshots (#41)
 
 // replay.* — rolling buffer and saved-clip encoding.
 inline constexpr QLatin1StringView ReplayClipSound{ "replay.clip_sound" };
@@ -33,6 +34,7 @@ inline constexpr QLatin1StringView ReplayBitrateMbps{ "replay.bitrate_mbps" };
 inline constexpr QLatin1StringView ReplayLengthSeconds{ "replay.length_seconds" };   // UI set {30,60,180,300,600,900}
 inline constexpr QLatin1StringView ReplaySegmentSeconds{ "replay.segment_seconds" }; // ring granularity, not in the UI
 inline constexpr QLatin1StringView ReplayAuto{ "replay.auto" };                      // auto-arm master switch
+inline constexpr QLatin1StringView ReplayCursor{ "replay.cursor" };                  // OS mouse pointer in replays (#41)
 inline constexpr QLatin1StringView ReplayManualIdleSeconds{ "replay.manual_idle_s" }; // cold manual arm, 10-600 s
 
 // input.* / audio.*

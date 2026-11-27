@@ -201,8 +201,11 @@ FramePumpService::FramePumpService(ConfigManager* config, CaptureLocations* loca
     // A light foreground poll feeds the target policy and arms automatic replay.
     m_autoEnabled = m_config ? m_config->value(ConfigKeys::ReplayAuto, true).toBool() : true;
     m_ownerClock.start();
+    publishCursorPolicy();
     if (m_config) {
         connect(m_config, &ConfigManager::valueChanged, this, [this](const QString& key) {
+            if (key == ConfigKeys::CaptureScreenshotCursor || key == ConfigKeys::ReplayCursor)
+                publishCursorPolicy();
             if (key == ConfigKeys::CaptureMode || key == ConfigKeys::CaptureAllowedExecutables
                 || key == ConfigKeys::CaptureBackground) {
                 enforceTargetPolicy();
@@ -212,7 +215,10 @@ FramePumpService::FramePumpService(ConfigManager* config, CaptureLocations* loca
                     autoTick();
             }
         });
-        connect(m_config, &ConfigManager::groupReset, this, &FramePumpService::autoTick);
+        connect(m_config, &ConfigManager::groupReset, this, [this] {
+            publishCursorPolicy();
+            autoTick();
+        });
     }
     m_autoTimer = new QTimer(this);
     m_autoTimer->setInterval(1500);
@@ -680,6 +686,17 @@ void FramePumpService::startBuffer(const ForegroundGame& g, bool recordReplay)
     if (!queued)
         m_buffer.confirm(generation, ReplayBufferState::Failed,
                          QStringLiteral("Could not dispatch replay startup"));
+}
+
+// Copied at dispatch, never read on the worker (#41).
+void FramePumpService::publishCursorPolicy()
+{
+    const bool screenshot = m_config
+        ? m_config->value(ConfigKeys::CaptureScreenshotCursor, false).toBool() : false;
+    const bool replay = m_config ? m_config->value(ConfigKeys::ReplayCursor, true).toBool() : true;
+    QMetaObject::invokeMethod(m_worker, [worker = m_worker, screenshot, replay] {
+        worker->setCursorPolicy(screenshot, replay);
+    }, Qt::QueuedConnection);
 }
 
 void FramePumpService::enforceTargetPolicy()

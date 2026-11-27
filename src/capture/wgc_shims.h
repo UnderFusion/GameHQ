@@ -194,6 +194,16 @@ IGraphicsCaptureSession : public IInspectable {
     virtual HRESULT STDMETHODCALLTYPE StartCapture() = 0;                           // slot 6
 };
 
+// Windows.Graphics.Capture.IGraphicsCaptureSession2 : IInspectable
+//   {2C39AE40-7D2E-5044-804E-8B6799D4CF9E}  — get/put IsCursorCaptureEnabled
+// (Windows 10 2004+). Session-wide: one value for every frame the session
+// delivers. A missing interface means Windows always composites the pointer.
+struct __declspec(uuid("2C39AE40-7D2E-5044-804E-8B6799D4CF9E"))
+IGraphicsCaptureSession2 : public IInspectable {
+    virtual HRESULT STDMETHODCALLTYPE get_IsCursorCaptureEnabled(unsigned char* value) = 0; // slot 6
+    virtual HRESULT STDMETHODCALLTYPE put_IsCursorCaptureEnabled(unsigned char value) = 0;  // slot 7
+};
+
 // Windows.Graphics.Capture.IGraphicsCaptureSession3 : IInspectable
 //   {F2CDD966-22AE-5EA1-9596-3A289344C3BE}  — get/put IsBorderRequired (Win11).
 // NOT declared by mingw's headers (only forward-declared); this is the public SDK
@@ -294,6 +304,8 @@ static const GUID IID_IDirect3D11CaptureFramePoolStatics2 =
     { 0x589B103F, 0x6BBC, 0x5DF5, { 0xA9, 0x91, 0x02, 0xE2, 0x8B, 0x3B, 0x66, 0xD5 } };
 static const GUID IID_IGraphicsCaptureSession =
     { 0x814E42A9, 0xF70F, 0x4AD7, { 0x93, 0x9B, 0xFD, 0xDC, 0xC6, 0xEB, 0x88, 0x0D } };
+static const GUID IID_IGraphicsCaptureSession2 =
+    { 0x2C39AE40, 0x7D2E, 0x5044, { 0x80, 0x4E, 0x8B, 0x67, 0x99, 0xD4, 0xCF, 0x9E } };
 static const GUID IID_IGraphicsCaptureSession3 =
     { 0xF2CDD966, 0x22AE, 0x5EA1, { 0x95, 0x96, 0x3A, 0x28, 0x93, 0x44, 0xC3, 0xBE } };
 static const GUID IID_IGraphicsCaptureAccessStatics =

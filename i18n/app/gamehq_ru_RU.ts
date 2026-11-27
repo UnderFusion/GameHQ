@@ -621,11 +621,11 @@
       <translation>%1 мс (с запасом)</translation>
     </message>
     <message id="gamehq.duration.minutes" numerus="yes">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="59"></location>
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="61"></location>
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="63"></location>
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="65"></location>
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="67"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="66"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="68"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="70"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="72"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="74"></location>
       <source>%n minute(s)</source>
       <translation>
         <numerusform>%n минута</numerusform>
@@ -634,7 +634,7 @@
       </translation>
     </message>
     <message id="gamehq.duration.seconds" numerus="yes">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="57"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="64"></location>
       <source>%n second(s)</source>
       <translation>
         <numerusform>%n секунда</numerusform>
@@ -1311,16 +1311,16 @@
       <translation>GitHub не смог повторно проверить этот выпуск перед установкой. Повторите попытку позже.</translation>
     </message>
     <message id="gamehq.format.fps">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="87"></location>
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="89"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="94"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="96"></location>
       <source>%1 fps</source>
       <translation>%1 FPS</translation>
     </message>
     <message id="gamehq.format.megabits_per_second">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="114"></location>
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="116"></location>
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="118"></location>
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="121"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="123"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="125"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="127"></location>
       <source>%1 Mbps</source>
       <translation>%1 Мбит/с</translation>
     </message>
@@ -2884,7 +2884,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.capture.allowlist.add">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="92"></location>
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="243"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="250"></location>
       <source>Add game executable…</source>
       <translation>Добавить исполняемый файл игры…</translation>
     </message>
@@ -2949,29 +2949,39 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Выберите, когда, как и где GameHQ сохраняет снимки экрана.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="185"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="192"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
       <translation>Используется вместе с главными переключателями на странице «Уведомления и звук».</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="188"></location>
       <source>Feedback</source>
       <translation>Обратная связь</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="200"></location>
       <source>Screenshot notification</source>
       <translation>Уведомление о снимке экрана</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="188"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="195"></location>
       <source>Screenshot sound</source>
       <translation>Звук снимка экрана</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="183"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="190"></location>
       <source>After a screenshot</source>
       <translation>После снимка экрана</translation>
+    </message>
+    <message id="gamehq.settings.capture.image.cursor.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="167"></location>
+      <source>Include the Windows mouse pointer in screenshots. Cursors and crosshairs drawn by the game are always kept.</source>
+      <translation>Включать указатель мыши Windows в снимки экрана. Курсоры и прицелы, отрисованные игрой, всегда сохраняются.</translation>
+    </message>
+    <message id="gamehq.settings.capture.image.cursor.label">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="165"></location>
+      <source>Show mouse cursor</source>
+      <translation>Показывать курсор мыши</translation>
     </message>
     <message id="gamehq.settings.capture.image.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="147"></location>
@@ -2994,7 +3004,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>JPEG (файлы меньше)</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="165"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="172"></location>
       <source>JPEG quality</source>
       <translation>Качество JPEG</translation>
     </message>
@@ -3050,37 +3060,37 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Игры в белом списке</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="258"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="265"></location>
       <source>Choose the clips folder</source>
       <translation>Выберите папку клипов</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="258"></location>
       <source>Choose the screenshots folder</source>
       <translation>Выберите папку снимков экрана</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="211"></location>
       <source>Changing a location never moves or deletes existing media.</source>
       <translation>Изменение расположения никогда не перемещает и не удаляет уже сохранённые файлы.</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="200"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="207"></location>
       <source>Storage</source>
       <translation>Хранилище</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="219"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="226"></location>
       <source>Replay clips</source>
       <translation>Клипы повторов</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="208"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="215"></location>
       <source>Screenshots</source>
       <translation>Снимки экрана</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="202"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="209"></location>
       <source>Where captures are saved</source>
       <translation>Куда сохраняются записи</translation>
     </message>
@@ -4581,6 +4591,16 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Mapping presets</source>
       <translation>Пресеты раскладок</translation>
     </message>
+    <message id="gamehq.settings.replay.buffer.cursor.description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="53"></location>
+      <source>Include the Windows mouse pointer in replays. A change applies to newly recorded video. Cursors and crosshairs drawn by the game are always kept.</source>
+      <translation>Включать указатель мыши Windows в повторы. Изменение применяется к новой записи видео. Курсоры и прицелы, отрисованные игрой, всегда сохраняются.</translation>
+    </message>
+    <message id="gamehq.settings.replay.buffer.cursor.label">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="51"></location>
+      <source>Show mouse cursor</source>
+      <translation>Показывать курсор мыши</translation>
+    </message>
     <message id="gamehq.settings.replay.buffer.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="41"></location>
       <source>Recording changes restart an active buffer so new values apply immediately.</source>
@@ -4602,7 +4622,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Буфер</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.length">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="51"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="58"></location>
       <source>Replay length</source>
       <translation>Длительность повтора</translation>
     </message>
@@ -4617,77 +4637,77 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Управление скользящим буфером для клипов мгновенного повтора.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.desktop">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="162"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="169"></location>
       <source>Desktop audio</source>
       <translation>Звук рабочего стола</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.desktop_description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="150"></location>
       <source>Records everything on the default Windows output, including chat and music apps.</source>
       <translation>Записывает всё, что звучит через устройство вывода Windows по умолчанию, включая чаты и музыкальные приложения.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.game">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="156"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="163"></location>
       <source>Game audio</source>
       <translation>Звук игры</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.game_description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="146"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="153"></location>
       <source>Records only the current game, whichever output device it plays on.</source>
       <translation>Записывает только текущую игру, на каком бы устройстве вывода она ни звучала.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.game_unsupported">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="165"></location>
       <source>Game audio (needs Windows 11)</source>
       <translation>Звук игры (требуется Windows 11)</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.label">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="131"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="138"></location>
       <source>Audio source</source>
       <translation>Источник звука</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.off">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="164"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="171"></location>
       <source>Off</source>
       <translation>Выключено</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.off_description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="135"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="142"></location>
       <source>Replay clips are saved without sound.</source>
       <translation>Клипы повтора сохраняются без звука.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.unsupported_description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="146"></location>
       <source>Game audio needs Windows 11. Desktop audio records everything on the default Windows output.</source>
       <translation>Для звука игры требуется Windows 11. Звук рабочего стола записывает всё, что звучит через устройство вывода Windows по умолчанию.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.bitrate">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="107"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="114"></location>
       <source>Video bitrate</source>
       <translation>Битрейт видео</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.bitrate_description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="109"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="116"></location>
       <source>Higher values improve motion detail but use more storage and encoder bandwidth.</source>
       <translation>Более высокие значения улучшают детализацию движения, но требуют больше места и пропускной способности кодировщика.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="79"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="86"></location>
       <source>Balance motion detail, resolution, storage use, and encoder load.</source>
       <translation>Баланс между детализацией движения, разрешением, расходом места и нагрузкой на кодировщик.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.eyebrow">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="75"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="82"></location>
       <source>Encoding</source>
       <translation>Кодирование</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.frame_rate">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="89"></location>
       <source>Frame rate</source>
       <translation>Частота кадров</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.resolution">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="95"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="102"></location>
       <source>Resolution</source>
       <translation>Разрешение</translation>
     </message>
@@ -4702,32 +4722,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation type="vanished">Системный звук</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.title">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="77"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="84"></location>
       <source>Recording quality</source>
       <translation>Качество записи</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="188"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="195"></location>
       <source>Saved replays go to %1. Failures always notify you.</source>
       <translation>Сохранённые повторы попадают в %1. Об ошибках вы получите уведомление всегда.</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="184"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="191"></location>
       <source>Feedback</source>
       <translation>Обратная связь</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.notification">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="196"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="203"></location>
       <source>Clip saved notification</source>
       <translation>Уведомление о сохранении клипа</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.sound">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="191"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="198"></location>
       <source>Clip saved sound</source>
       <translation>Звук сохранения клипа</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.title">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="186"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="193"></location>
       <source>After saving a clip</source>
       <translation>После сохранения клипа</translation>
     </message>

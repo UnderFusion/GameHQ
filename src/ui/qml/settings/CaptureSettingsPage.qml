@@ -161,6 +161,13 @@ SettingsPage {
             }
         }
         SettingsRow {
+            //% "Show mouse cursor"
+            label: qsTrId("gamehq.settings.capture.image.cursor.label")
+            //% "Include the Windows mouse pointer in screenshots. Cursors and crosshairs drawn by the game are always kept."
+            description: qsTrId("gamehq.settings.capture.image.cursor.description")
+            SettingsToggle { configKey: "capture.screenshot_cursor"; defaultValue: false }
+        }
+        SettingsRow {
             //% "JPEG quality"
             label: qsTrId("gamehq.settings.capture.image.jpeg_quality")
             visible: formatCombo.currentIndex >= 0

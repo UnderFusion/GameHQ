@@ -15,6 +15,7 @@
 #include <QImage>
 #include <QSignalSpy>
 #include <QSemaphore>
+#include <QMutex>
 #include <QElapsedTimer>
 #include <QTemporaryDir>
 #include <QScopeGuard>
@@ -29,6 +30,7 @@
 #include <mfreadwrite.h>
 #include <algorithm>
 #include <atomic>
+#include <utility>
 
 namespace {
 
@@ -169,6 +171,33 @@ void countReuseStops(QtMsgType type, const QMessageLogContext& context, const QS
     if (g_previousHandler)
         g_previousHandler(type, context, message);
 }
+
+// Collects the worker's pointer-policy log lines (#41).
+QMutex g_pointerLogMutex;
+QStringList g_pointerLog;
+QtMessageHandler g_pointerPrevious = nullptr;
+
+void collectPointerLog(QtMsgType type, const QMessageLogContext& context, const QString& message)
+{
+    if (message.contains(QLatin1String("mouse pointer")) || message.contains(QLatin1String("one-shot"))
+        || message.contains(QLatin1String("experimental HDR path armed"))) {
+        QMutexLocker lock(&g_pointerLogMutex);
+        g_pointerLog.append(message);
+    }
+    if (g_pointerPrevious)
+        g_pointerPrevious(type, context, message);
+}
+
+struct PointerLog
+{
+    PointerLog() { take(); g_pointerPrevious = qInstallMessageHandler(collectPointerLog); }
+    ~PointerLog() { qInstallMessageHandler(g_pointerPrevious); }
+    QStringList take()
+    {
+        QMutexLocker lock(&g_pointerLogMutex);
+        return std::exchange(g_pointerLog, {});
+    }
+};
 
 struct ReuseStopCounter
 {
@@ -1129,6 +1158,399 @@ private slots:
         QVERIFY2(idleHandles < warmHandles + 30, qPrintable(series.join(u' ')));
         QVERIFY2(idlePrivate < warmPrivate + 16ll * 1024 * 1024, qPrintable(series.join(u' ')));
         QCOMPARE(reuseStops.count(), 0);
+    }
+
+    // #41: screenshot and replay pointer settings are independent although
+    // both outputs share one WGC session. The fixture sits under the pointer
+    // wherever the owner left it (it is never moved), at the bottom of the
+    // z-order and never activated. Every output must keep the game-drawn
+    // crosshair; the Windows pointer appears only where its setting is on.
+    void cursorSettingsStayIndependentForScreenshotsAndReplays_data()
+    {
+        QTest::addColumn<bool>("hdr");
+        QTest::newRow("sdr") << false;
+        QTest::newRow("hdr") << true;
+    }
+
+    void cursorSettingsStayIndependentForScreenshotsAndReplays()
+    {
+        QFETCH(bool, hdr);
+        if (!qEnvironmentVariableIsSet("GAMEHQ_TEST_WGC_NATIVE"))
+            QSKIP("Requires an interactive Windows desktop and a WGC-capable GPU");
+        QVERIFY(GameDetector::onInputDesktop());
+        const auto previousDpi = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+        QVERIFY(previousDpi);
+        const auto restoreDpi = qScopeGuard([&] { SetThreadDpiAwarenessContext(previousDpi); });
+        // Without a visible pointer (no mouse attached, or hidden by the
+        // foreground app) its pixels cannot be compared. The policy Windows
+        // reports for each session and the session serving each screenshot
+        // are still verified; pixel checks then only prove nothing leaks.
+        CURSORINFO pointer{sizeof(CURSORINFO)};
+        QVERIFY(GetCursorInfo(&pointer));
+        const bool pointerVisible = (pointer.flags & CURSOR_SHOWING) != 0;
+        if (!pointerVisible)
+            qWarning() << "Windows reports no visible mouse pointer: pointer pixels are not observable";
+        const POINT anchor = pointer.ptScreenPos;
+        // Pointer at client (120, 100): the cursor image extends right/down.
+        constexpr int kHotX = 120, kHotY = 100;
+        const HINSTANCE instance = GetModuleHandleW(nullptr);
+        const HBRUSH blue = CreateSolidBrush(RGB(0, 70, 220));
+        const HBRUSH magenta = CreateSolidBrush(RGB(255, 0, 255));
+        QVERIFY(blue && magenta);
+        const auto deleteBrushes = qScopeGuard([&] { DeleteObject(blue); DeleteObject(magenta); });
+        WNDCLASSW windowClass{};
+        windowClass.lpfnWndProc = DefWindowProcW;
+        windowClass.hInstance = instance;
+        windowClass.hbrBackground = blue;
+        windowClass.hCursor = LoadCursorW(nullptr, IDC_ARROW);
+        windowClass.lpszClassName = L"GameHQCursorPolicyFixture";
+        QVERIFY(RegisterClassW(&windowClass));
+        const auto unregister = qScopeGuard([&] { UnregisterClassW(windowClass.lpszClassName, instance); });
+        RECT frame{0, 0, 360, 260};
+        AdjustWindowRectEx(&frame, WS_OVERLAPPEDWINDOW, FALSE, WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW);
+        const HWND game = CreateWindowExW(WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW, windowClass.lpszClassName,
+            L"Cursor fixture", WS_OVERLAPPEDWINDOW, 0, 0, frame.right - frame.left, frame.bottom - frame.top,
+            nullptr, nullptr, instance, nullptr);
+        QVERIFY(game);
+        const auto destroyGame = qScopeGuard([&] { DestroyWindow(game); });
+        const DWORD squareCorners = 1;
+        DwmSetWindowAttribute(game, 33, &squareCorners, sizeof(squareCorners));
+        QVERIFY(SetWindowPos(game, HWND_BOTTOM, 0, 0, 0, 0,
+                             SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_SHOWWINDOW));
+        // Place the client so the pointer's hotspot lands on (kHotX, kHotY).
+        POINT origin{0, 0};
+        QVERIFY(ClientToScreen(game, &origin));
+        RECT outer{};
+        QVERIFY(GetWindowRect(game, &outer));
+        QVERIFY(SetWindowPos(game, nullptr, outer.left + anchor.x - kHotX - origin.x,
+                             outer.top + anchor.y - kHotY - origin.y, 0, 0,
+                             SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE));
+        RECT client{};
+        QVERIFY(GetClientRect(game, &client));
+        const QSize clientSize(client.right, client.bottom);
+        QVERIFY(clientSize.width() >= 300 && clientSize.height() >= 200);
+        UpdateWindow(game);
+        QVERIFY(SUCCEEDED(DwmFlush()));
+
+        // Painted by the "game": a magenta crosshair far from the pointer, a
+        // phase stripe that identifies which policy step a frame belongs to,
+        // and a toggling patch that keeps WGC delivering frames.
+        const QRect crosshair(250, 160, 40, 40);
+        QColor phaseColour(Qt::black);
+        bool alternate = false;
+        QTimer repaint;
+        connect(&repaint, &QTimer::timeout, this, [&] {
+            const HDC dc = GetDC(game);
+            if (!dc)
+                return;
+            RECT h{crosshair.left(), crosshair.center().y() - 2, crosshair.right() + 1, crosshair.center().y() + 3};
+            RECT v{crosshair.center().x() - 2, crosshair.top(), crosshair.center().x() + 3, crosshair.bottom() + 1};
+            FillRect(dc, &h, magenta);
+            FillRect(dc, &v, magenta);
+            const HBRUSH stripe = CreateSolidBrush(RGB(phaseColour.red(), phaseColour.green(), phaseColour.blue()));
+            RECT band{8, clientSize.height() - 32, 72, clientSize.height() - 8};
+            FillRect(dc, &band, stripe);
+            DeleteObject(stripe);
+            RECT patch{clientSize.width() - 24, 8, clientSize.width() - 8, 24};
+            FillRect(dc, &patch, alternate ? blue : GetSysColorBrush(COLOR_WINDOW));
+            ReleaseDC(game, dc);
+            alternate = !alternate;
+        });
+        repaint.setTimerType(Qt::PreciseTimer);
+        repaint.start(16);
+
+        // Pixels around the hotspot that are not fixture blue: the pointer.
+        const auto pointerPixels = [&](const QImage& image) {
+            int count = 0;
+            for (int y = kHotY - 2; y < kHotY + 30 && y < image.height(); ++y)
+                for (int x = kHotX - 2; x < kHotX + 22 && x < image.width(); ++x)
+                    if (!isFixtureBlue(image.pixelColor(x, y)))
+                        ++count;
+            return count;
+        };
+        const auto crosshairIntact = [&](const QImage& image) {
+            const QColor c = image.pixelColor(crosshair.center());
+            const QColor arm = image.pixelColor(crosshair.left() + 4, crosshair.center().y());
+            return c.red() > 180 && c.blue() > 180 && c.green() < 90
+                && arm.red() > 180 && arm.blue() > 180 && arm.green() < 90;
+        };
+        const auto phaseOf = [&](const QImage& image) {
+            return image.pixelColor(40, clientSize.height() - 20);
+        };
+        const auto samePhase = [](const QColor& a, const QColor& b) {
+            return std::abs(a.red() - b.red()) < 50 && std::abs(a.green() - b.green()) < 50
+                && std::abs(a.blue() - b.blue()) < 50;
+        };
+        const auto pointerStill = [&] {
+            POINT now{};
+            return GetCursorPos(&now) && now.x == anchor.x && now.y == anchor.y;
+        };
+
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/wgc-cursor-XXXXXX");
+        QVERIFY(dir.isValid());
+        ConfigManager config(dir.filePath("config.json"));
+        config.setValue(ConfigKeys::CaptureMode, QStringLiteral("whitelist"));
+        QVERIFY(config.setCaptureExecutableAllowed(QCoreApplication::applicationFilePath(), true));
+        config.setValue(ConfigKeys::ReplayAuto, true);
+        config.setValue(ConfigKeys::ReplayFps, 30);
+        config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, hdr);
+        config.setValue(ConfigKeys::AudioSource, QStringLiteral("off"));
+        // Defaults are what existing users get: screenshot off, replay on.
+        QCOMPARE(config.value(ConfigKeys::CaptureScreenshotCursor, true).toBool(), false);
+        QCOMPARE(config.value(ConfigKeys::ReplayCursor, false).toBool(), true);
+        CaptureLocations locations(&config);
+        QVERIFY(locations.setBaseRoot(CaptureLocations::Kind::Clips, dir.path()));
+        ForegroundGame target;
+        target.valid = true;
+        target.hwnd = game;
+        target.pid = GetCurrentProcessId();
+        QVERIFY(ProcessIdentity::creationTimeOf(GetCurrentProcess(), target.processStarted));
+        target.w = clientSize.width();
+        target.h = clientSize.height();
+        target.executablePath = QCoreApplication::applicationFilePath();
+        target.gameName = QStringLiteral("Cursor fixture");
+        ReuseStopCounter reuseStops;
+        PointerLog pointerLog;
+        FramePumpService pump(&config, &locations);
+        pump.m_autoTimer->stop();
+        QStringList restarts;
+        connect(pump.m_worker, &FramePumpWorker::restartRequested, this,
+                [&restarts](quint64, const QString& reason) { restarts.append(reason); },
+                Qt::QueuedConnection);
+        pump.pinTarget(target);
+        QVERIFY(pump.hasPinnedTarget());
+        pump.restartBuffer();
+        QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() == ReplayBufferState::Recording, 7000);
+        {
+            const QStringList start = pointerLog.take();
+            if (start.join(u'\n').contains(QLatin1String("cannot change mouse pointer capture")))
+                QSKIP("This Windows build cannot control pointer capture");
+            const bool hdrArmed = start.join(u'|').contains(QLatin1String("experimental HDR path armed"));
+            if (hdr != hdrArmed)
+                QSKIP("The FP16 HDR capture path needs an HDR-active display and GPU support");
+            QVERIFY2(start.contains(QStringLiteral("FramePump: mouse pointer captured in the replay session")),
+                     qPrintable(start.join(u'|')));
+        }
+        bool replaySessionCursor = true;
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
+
+        QSignalSpy ready(&pump, &FramePumpService::windowScreenshotReady);
+        QSignalSpy failed(&pump, &FramePumpService::windowScreenshotFailed);
+        quint64 nextShot = 1;
+        const auto shoot = [&](QImage* image, QString* reason) {
+            ready.clear();
+            failed.clear();
+            const quint64 id = nextShot++;
+            QElapsedTimer clock;
+            clock.start();
+            pump.captureWindowScreenshot(id);
+            while (ready.isEmpty() && failed.isEmpty() && clock.elapsed() < 7000)
+                QTest::qWait(5);
+            if (!failed.isEmpty()) {
+                *reason = failed.constFirst().at(0).toString();
+                return qint64(-1);
+            }
+            if (ready.isEmpty()) {
+                *reason = QStringLiteral("screenshot %1 timed out").arg(id);
+                return qint64(-1);
+            }
+            *image = qvariant_cast<QImage>(ready.constFirst().at(0));
+            return clock.elapsed();
+        };
+        const QString evidence = qEnvironmentVariable("GAMEHQ_TEST_EVIDENCE_DIR");
+
+        struct Step { const char* name; bool screenshot; bool replay; QColor phase; };
+        const Step steps[] = {
+            {"defaults: screenshot off, replay on", false, true, QColor(220, 40, 40)},
+            {"both on", true, true, QColor(40, 200, 60)},
+            {"screenshot on, replay off", true, false, QColor(230, 220, 40)},
+            {"both off", false, false, QColor(40, 220, 220)},
+        };
+        QStringList timings;
+        for (const Step& step : steps) {
+            bool verified = false;
+            for (int attempt = 0; attempt < 3 && !verified; ++attempt) {
+                config.setValue(ConfigKeys::CaptureScreenshotCursor, step.screenshot);
+                config.setValue(ConfigKeys::ReplayCursor, step.replay);
+                // The policy reaches the worker as a queued call; paint the new
+                // phase only after it so every frame of this phase follows it.
+                QTest::qWait(150);
+                phaseColour = step.phase;
+                QTest::qWait(600);
+                // Windows' read-back of the replay session's pointer setting.
+                const QStringList applied = pointerLog.take();
+                if (step.replay != replaySessionCursor) {
+                    const QString line = QStringLiteral("FramePump: mouse pointer %1 in the replay session")
+                        .arg(step.replay ? QStringLiteral("captured") : QStringLiteral("hidden"));
+                    QVERIFY2(applied.contains(line), qPrintable(QStringLiteral("%1: %2")
+                                                                    .arg(step.name, applied.join(u'|'))));
+                    replaySessionCursor = step.replay;
+                } else {
+                    QVERIFY2(applied.isEmpty(), qPrintable(applied.join(u'|')));
+                }
+                if (pointerVisible && !pointerStill())
+                    continue;
+                for (int s = 0; s < 3; ++s) {
+                    QImage image;
+                    QString reason;
+                    const qint64 ms = shoot(&image, &reason);
+                    QVERIFY2(ms >= 0, qPrintable(QStringLiteral("%1: %2").arg(step.name, reason)));
+                    timings.append(QString::number(ms));
+                    QCOMPARE(image.size(), clientSize);
+                    QVERIFY2(crosshairIntact(image), step.name);
+                    QVERIFY2(samePhase(phaseOf(image), step.phase), step.name);
+                    const int pixels = pointerPixels(image);
+                    if (!evidence.isEmpty())
+                        image.save(QDir(evidence).filePath(QStringLiteral("cursor-shot-%1%2-%3.png")
+                            .arg(int(step.screenshot)).arg(int(step.replay)).arg(s)));
+                    // A differing policy must be served by a one-shot session
+                    // with the screenshot's own setting; a matching one by the
+                    // replay session's frame.
+                    const QStringList served = pointerLog.take();
+                    const QString oneShot = QStringLiteral("one-shot session (pointer %1,")
+                        .arg(step.screenshot ? QStringLiteral("on") : QStringLiteral("off"));
+                    const bool usedOneShot = served.size() == 1 && served.constFirst().contains(oneShot);
+                    QVERIFY2(usedOneShot == (step.screenshot != step.replay) && (usedOneShot || served.isEmpty()),
+                             qPrintable(QStringLiteral("%1: %2").arg(step.name, served.join(u'|'))));
+                    if (!pointerVisible)
+                        QVERIFY2(pixels == 0, qPrintable(QStringLiteral("%1: %2 foreign px").arg(step.name).arg(pixels)));
+                    else if (step.screenshot)
+                        QVERIFY2(pixels >= 20, qPrintable(QStringLiteral("%1: pointer missing (%2 px)")
+                                                              .arg(step.name).arg(pixels)));
+                    else
+                        QVERIFY2(pixels == 0, qPrintable(QStringLiteral("%1: pointer leaked (%2 px)")
+                                                             .arg(step.name).arg(pixels)));
+                }
+                QTest::qWait(300);
+                QSignalSpy saved(&pump, &FramePumpService::clipSaved);
+                QSignalSpy clipFailed(&pump, &FramePumpService::clipFailed);
+                pump.saveReplay(CaptureRequest::create(CaptureRequest::Source::Ui));
+                QTRY_VERIFY_WITH_TIMEOUT(!saved.isEmpty() || !clipFailed.isEmpty(), 15000);
+                QVERIFY2(clipFailed.isEmpty(), qPrintable(clipFailed.isEmpty() ? QString()
+                                                              : clipFailed.constFirst().at(1).toString()));
+                if (pointerVisible && !pointerStill())
+                    continue;
+                QString error;
+                const QList<QImage> frames = decodeAllFrames(saved.constFirst().at(0).toString(), &error);
+                int phaseFrames = 0;
+                for (qsizetype f = 0; f < frames.size(); ++f) {
+                    if (!samePhase(phaseOf(frames[f]), step.phase))
+                        continue;
+                    ++phaseFrames;
+                    QVERIFY2(crosshairIntact(frames[f]), qPrintable(QStringLiteral("%1: frame %2 lost the crosshair")
+                                                                       .arg(step.name).arg(f)));
+                    const int pixels = pointerPixels(frames[f]);
+                    if (!evidence.isEmpty() && phaseFrames == 1)
+                        frames[f].save(QDir(evidence).filePath(QStringLiteral("cursor-clip-%1%2.png")
+                            .arg(int(step.screenshot)).arg(int(step.replay))));
+                    if (!pointerVisible)
+                        QVERIFY2(pixels <= 2, qPrintable(QStringLiteral("%1: clip frame %2 has %3 foreign px")
+                                                             .arg(step.name).arg(f).arg(pixels)));
+                    else if (step.replay)
+                        QVERIFY2(pixels >= 20, qPrintable(QStringLiteral("%1: clip frame %2 lacks the pointer (%3 px)")
+                                                              .arg(step.name).arg(f).arg(pixels)));
+                    else
+                        QVERIFY2(pixels <= 2, qPrintable(QStringLiteral("%1: clip frame %2 shows the pointer (%3 px)")
+                                                             .arg(step.name).arg(f).arg(pixels)));
+                }
+                // The phase spans all three screenshots: none of them may have
+                // changed the pointer in the recording.
+                QVERIFY2(phaseFrames >= 15, qPrintable(QStringLiteral("%1: only %2 of %3 frames in phase %4")
+                                                           .arg(step.name).arg(phaseFrames).arg(frames.size())
+                                                           .arg(error)));
+                qInfo().noquote() << QStringLiteral("%1: 3 screenshots and %2 clip frames verified")
+                                         .arg(step.name).arg(phaseFrames);
+                verified = true;
+            }
+            if (!verified)
+                QSKIP("The mouse pointer kept moving, so its capture could not be compared");
+        }
+        QVERIFY2(restarts.isEmpty(), qPrintable(restarts.join(u"; ")));
+        QCOMPARE(reuseStops.count(), 0);
+        if (!pointerVisible)
+            qWarning() << "pointer pixels were not observable; policy read-back and session routing verified";
+
+        // Repeated one-shot screenshots (pointer off while the replay draws
+        // it) must not accumulate sessions, textures or handles.
+        config.setValue(ConfigKeys::CaptureScreenshotCursor, false);
+        config.setValue(ConfigKeys::ReplayCursor, true);
+        QTest::qWait(300);
+        auto sample = [](qint64* privateBytes, qint64* handles) {
+            PROCESS_MEMORY_COUNTERS_EX counters{};
+            counters.cb = sizeof(counters);
+            GetProcessMemoryInfo(GetCurrentProcess(), reinterpret_cast<PROCESS_MEMORY_COUNTERS*>(&counters),
+                                 sizeof(counters));
+            *privateBytes = qint64(counters.PrivateUsage);
+            DWORD count = 0;
+            GetProcessHandleCount(GetCurrentProcess(), &count);
+            *handles = count;
+        };
+        qint64 warmPrivate = 0, warmHandles = 0, endPrivate = 0, endHandles = 0;
+        constexpr int kShots = 60;
+        for (int s = 0; s < kShots; ++s) {
+            if (s == 10)
+                sample(&warmPrivate, &warmHandles);
+            QImage image;
+            QString reason;
+            QVERIFY2(shoot(&image, &reason) >= 0, qPrintable(QStringLiteral("soak %1: %2").arg(s).arg(reason)));
+            QVERIFY(crosshairIntact(image));
+        }
+        ready.clear();
+        QTest::qWait(500);
+        sample(&endPrivate, &endHandles);
+        qInfo().noquote() << QStringLiteral("cursor soak: %1 one-shot screenshots, warm %2MB/%3h end %4MB/%5h, "
+                                            "latency ms [%6]")
+            .arg(kShots).arg(warmPrivate >> 20).arg(warmHandles).arg(endPrivate >> 20).arg(endHandles)
+            .arg(timings.join(u' '));
+        QVERIFY2(endHandles - warmHandles < 10, qPrintable(QStringLiteral("%1 -> %2 handles")
+                                                              .arg(warmHandles).arg(endHandles)));
+        QVERIFY2(endPrivate - warmPrivate < 24ll * 1024 * 1024, "private bytes grew");
+        QVERIFY(pump.bufferState() == ReplayBufferState::Recording
+                || pump.bufferState() == ReplayBufferState::Ready);
+
+        // Replay off: the screenshot-only session itself follows the
+        // screenshot setting, so no one-shot session is needed.
+        config.setValue(ConfigKeys::ReplayAuto, false);
+        pump.restartBuffer();
+        QTest::qWait(500);
+        pointerLog.take();
+        for (const bool shotCursor : {true, false, true}) {
+            config.setValue(ConfigKeys::CaptureScreenshotCursor, shotCursor);
+            QTest::qWait(300);
+            QImage image;
+            QString reason;
+            QVERIFY2(shoot(&image, &reason) >= 0, qPrintable(QStringLiteral("replay off: ") + reason));
+            QVERIFY(crosshairIntact(image));
+            QTest::qWait(100);
+            const QStringList lines = pointerLog.take();
+            QVERIFY2(!lines.join(u'|').contains(QLatin1String("one-shot")), qPrintable(lines.join(u'|')));
+            QVERIFY2(lines.contains(QStringLiteral("FramePump: mouse pointer %1 in the screenshot session")
+                                        .arg(shotCursor ? QStringLiteral("captured") : QStringLiteral("hidden"))),
+                     qPrintable(lines.join(u'|')));
+            const int pixels = pointerPixels(image);
+            if (!pointerVisible || !shotCursor)
+                QVERIFY2(pixels == 0, qPrintable(QStringLiteral("replay off: %1 foreign px").arg(pixels)));
+            else
+                QVERIFY2(pixels >= 20, qPrintable(QStringLiteral("replay off: pointer missing (%1 px)").arg(pixels)));
+        }
+        QVERIFY(pump.bufferState() != ReplayBufferState::Recording);
+        config.setValue(ConfigKeys::ReplayAuto, true);
+        config.setValue(ConfigKeys::CaptureScreenshotCursor, false);
+        pump.restartBuffer();
+        QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() == ReplayBufferState::Recording, 7000);
+        QTest::qWait(300);
+
+        // A request cancelled by a target change fails cleanly and leaves no
+        // one-shot session behind.
+        failed.clear();
+        pump.captureWindowScreenshot(nextShot++);
+        pump.useAutomaticCapture();
+        QTRY_VERIFY_WITH_TIMEOUT(!failed.isEmpty() || !ready.isEmpty(), 7000);
+        QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() != ReplayBufferState::Recording, 7000);
+        QVERIFY(restarts.isEmpty());
     }
 
     void removingAnAllowedGameStopsAutoAndColdManualCapture()

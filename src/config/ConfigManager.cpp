@@ -30,6 +30,8 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::CaptureJpegQuality,      90 },              // 1-100, only used when format=jpg
         { ConfigKeys::CaptureScreenshotSound,  true },
         { ConfigKeys::CaptureScreenshotNotify, true },
+        // #41: Beta 3 screenshots had no Windows pointer, replays had one.
+        { ConfigKeys::CaptureScreenshotCursor, false },
         { ConfigKeys::ReplayClipSound,         true },
         { ConfigKeys::ReplayClipNotify,        true },
         { ConfigKeys::ReplayResolution,        "1920x1080" },
@@ -44,6 +46,7 @@ QJsonObject ConfigManager::defaults()
         // Always-on recording: auto-arm the replay buffer whenever a game is
         // foreground (per capture.mode). Settings → Replay is the master switch.
         { ConfigKeys::ReplayAuto,              true },
+        { ConfigKeys::ReplayCursor,            true },
         { ConfigKeys::ReplayManualIdleSeconds, 90 },
         // Gesture timing. The legacy input.share_hold_ms default stays listed so
         // an existing file that still carries it canonicalizes away instead of

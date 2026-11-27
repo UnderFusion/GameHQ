@@ -55,6 +55,10 @@ public slots:
                             quint64 requestId, quint64 chainId);
     void captureScreenshotOnWorker(quint64 generation, quint64 requestId);
     void cancelScreenshotOnWorker(quint64 requestId);
+    // #41: Windows mouse pointer in screenshots and in the replay. The live
+    // session follows the replay value (the screenshot value when it records
+    // no replay); a screenshot needing the other value uses a one-shot session.
+    void setCursorPolicy(bool screenshotCursor, bool replayCursor);
     void prepareForUpdate(quint64 generation);
     void cancelUpdatePreparation();
 
@@ -94,6 +98,12 @@ private:
     void reportBufferState(ReplayBufferState::State state, const QString& reason = {});
     void checkReplayReadiness();     // low-frequency lifecycle check, outside poll()
     void completeScreenshot();
+    bool wantedSessionCursor(const Pipeline* pipe) const;
+    void applySessionCursor(Pipeline* pipe);
+    bool screenshotNeedsStillCapture() const;
+    bool startStillCapture(quint64 requestId, QString* reason);
+    void pollStillCapture();
+    void finishStillCapture(const QImage& image, const QString& failure);
 
     // startPump bring-up, one phase per step, in call order. Each reports its own
     // failure via failStep() and returns false; startPump owns the single
@@ -131,6 +141,9 @@ private:
     bool m_screenshotPending = false;
     quint64 m_screenshotRequestId = 0;
     QElapsedTimer m_screenshotPendingClock;
+    bool m_screenshotCursor = false;  // ConfigKeys::CaptureScreenshotCursor default
+    bool m_replayCursor = true;       // ConfigKeys::ReplayCursor default
+    bool m_cursorUnsupportedLogged = false;
     // Runtime audio read failures that already forced a re-arm, in a short
     // window; past the limit the buffer fails instead of re-arming forever.
     QString m_audioFailure;          // reason while the current Failed state is an audio failure
@@ -223,6 +236,7 @@ private:
     void clearCaptureTargets();
     void publishCaptureTarget();
     void enforceTargetPolicy();
+    void publishCursorPolicy();
     void stopBuffer();
     void ownersChanged(const char* reason, quint64 requestId = 0);
 

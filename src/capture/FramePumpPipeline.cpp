@@ -307,6 +307,33 @@ QImage readBgraTexture(ID3D11Texture2D* texture, ID3D11Device* device,
     return image;
 }
 
+// #41: request the pointer policy and return what Windows reports back
+// (1 drawn, 0 hidden), or -1 when this build has no control over it.
+int setSessionCursor(IGraphicsCaptureSession* session, bool enabled)
+{
+    IGraphicsCaptureSession2* session2 = nullptr;
+    if (!session || FAILED(session->QueryInterface(IID_IGraphicsCaptureSession2,
+                                                   reinterpret_cast<void**>(&session2)))
+        || !session2)
+        return -1;
+    session2->put_IsCursorCaptureEnabled(enabled ? 1 : 0);
+    unsigned char actual = enabled ? 0 : 1;
+    const HRESULT read = session2->get_IsCursorCaptureEnabled(&actual);
+    session2->Release();
+    return SUCCEEDED(read) ? (actual ? 1 : 0) : -1;
+}
+
+IDirect3D11CaptureFramePoolStatics2* framePoolStatics(HRESULT* result)
+{
+    IDirect3D11CaptureFramePoolStatics2* statics = nullptr;
+    HSTRING poolClass = nullptr;
+    WindowsCreateString(kWgcFramePoolClass, UINT32(wcslen(kWgcFramePoolClass)), &poolClass);
+    *result = RoGetActivationFactory(poolClass, IID_IDirect3D11CaptureFramePoolStatics2,
+                                     reinterpret_cast<void**>(&statics));
+    if (poolClass) WindowsDeleteString(poolClass);
+    return SUCCEEDED(*result) ? statics : nullptr;
+}
+
 // Step 9 — stale replay-cache cleanup. On worker start, drop segment files a
 // previous session left behind (same 10-minute threshold the ring restore in
 // SegmentRecorder::begin uses, so a quick app restart keeps its ring) and
@@ -551,12 +578,8 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
                                     const CaptureBorder::SessionPolicy& borderPolicy)
 {
     HWND hwnd = reinterpret_cast<HWND>(hwndVoid);
-    IDirect3D11CaptureFramePoolStatics2* poolStatics2 = nullptr;
-    HSTRING poolClass = nullptr;
-    WindowsCreateString(kWgcFramePoolClass, UINT32(wcslen(kWgcFramePoolClass)), &poolClass);
-    HRESULT hr = RoGetActivationFactory(poolClass, IID_IDirect3D11CaptureFramePoolStatics2,
-                                        reinterpret_cast<void**>(&poolStatics2));
-    if (poolClass) WindowsDeleteString(poolClass);
+    HRESULT hr = S_OK;
+    IDirect3D11CaptureFramePoolStatics2* poolStatics2 = framePoolStatics(&hr);
     if (FAILED(hr) || !poolStatics2)
         return failStep("RoGetActivationFactory(FramePoolStatics2)", hr);
 
@@ -580,6 +603,7 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
                          UINT(pipe->clientSize.width()), UINT(pipe->clientSize.height()),
                          sdrWhiteNits)) {
             pipe->hdrToneMapper = mapper.release();   // owned by Pipeline from here
+            pipe->hdrSdrWhiteNits = sdrWhiteNits;
             poolFormat = DirectXPixelFormat_R16G16B16A16Float;
             qInfo().noquote() << QStringLiteral(
                 "FramePump: experimental HDR path armed (%1) — capturing FP16, "
@@ -629,6 +653,7 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
         return failStep("CreateFreeThreaded", hr);
     pipe->poolW = srcW;
     pipe->poolH = srcH;
+    pipe->poolFormat = poolFormat;
     pipe->hdrToneMapActive = (pipe->hdrToneMapper != nullptr);
 
     hr = pipe->framePool->CreateCaptureSession(pipe->item, &pipe->session);
@@ -668,9 +693,186 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
     qInfo().noquote() << "FramePump: capture border" << pipe->borderDetail;
     emit borderStateChanged(m_pumpGeneration, int(pipe->borderState), pipe->borderDetail);
 
+    // Before StartCapture, so the very first frame already follows it.
+    applySessionCursor(pipe);
+
     hr = pipe->session->StartCapture();
     if (FAILED(hr)) return failStep("StartCapture", hr);
     return true;
+}
+
+bool FramePumpWorker::wantedSessionCursor(const Pipeline* pipe) const
+{
+    return pipe->recordReplay ? m_replayCursor : m_screenshotCursor;
+}
+
+// Applies to the live session prospectively: frames already in the replay
+// ring keep the pointer state they were recorded with.
+void FramePumpWorker::applySessionCursor(Pipeline* pipe)
+{
+    if (!pipe || !pipe->session)
+        return;
+    const bool wanted = wantedSessionCursor(pipe);
+    const int previous = pipe->sessionCursor;
+    pipe->sessionCursor = setSessionCursor(pipe->session, wanted);
+    if (pipe->sessionCursor < 0) {
+        if (!m_cursorUnsupportedLogged)
+            qWarning() << "FramePump: this Windows build cannot change mouse pointer capture"
+                          " - the pointer is always captured";
+        m_cursorUnsupportedLogged = true;
+    } else if (pipe->sessionCursor != previous) {
+        qInfo().noquote() << QStringLiteral("FramePump: mouse pointer %1 in the %2 session")
+            .arg(pipe->sessionCursor ? QStringLiteral("captured") : QStringLiteral("hidden"),
+                 pipe->recordReplay ? QStringLiteral("replay") : QStringLiteral("screenshot"));
+    }
+    if (pipe->sessionCursor >= 0 && (pipe->sessionCursor == 1) != wanted)
+        qWarning() << "FramePump: Windows kept the mouse pointer" << (pipe->sessionCursor ? "on" : "off")
+                   << "although" << (wanted ? "on" : "off") << "was requested";
+}
+
+void FramePumpWorker::setCursorPolicy(bool screenshotCursor, bool replayCursor)
+{
+    if (m_screenshotCursor == screenshotCursor && m_replayCursor == replayCursor)
+        return;
+    m_screenshotCursor = screenshotCursor;
+    m_replayCursor = replayCursor;
+    if (m_pipe)
+        applySessionCursor(m_pipe);
+}
+
+bool FramePumpWorker::screenshotNeedsStillCapture() const
+{
+    // No control at all: Windows draws the pointer in every session, so a
+    // second one would only cost time and produce the same pixels.
+    return m_pipe && m_pipe->sessionCursor >= 0
+        && (m_pipe->sessionCursor == 1) != m_screenshotCursor;
+}
+
+bool FramePumpWorker::startStillCapture(quint64 requestId, QString* reason)
+{
+    Pipeline* const pipe = m_pipe;
+    auto still = std::make_unique<Pipeline::StillCapture>();
+    still->requestId = requestId;
+    still->cursor = m_screenshotCursor;
+    const auto fail = [reason](const QString& what, HRESULT hr) {
+        *reason = QStringLiteral("Could not start the screenshot capture (%1 hr=0x%2)")
+                      .arg(what).arg(quint32(hr), 8, 16, QLatin1Char('0'));
+        qWarning().noquote() << "Screenshot:" << *reason;
+        return false;
+    };
+    if (pipe->hdrToneMapActive) {
+        still->toneMapper = new capture::hdr::GpuToneMapper();
+        if (!still->toneMapper->init(pipe->d3dDevice, pipe->d3dCtx, UINT(pipe->clientSize.width()),
+                                     UINT(pipe->clientSize.height()), pipe->hdrSdrWhiteNits))
+            return fail(QStringLiteral("HDR tone mapping"), E_FAIL);
+    }
+    HRESULT hr = S_OK;
+    IDirect3D11CaptureFramePoolStatics2* statics = framePoolStatics(&hr);
+    if (!statics)
+        return fail(QStringLiteral("frame pool factory"), hr);
+    hr = statics->CreateFreeThreaded(pipe->winrtDevice, pipe->poolFormat, 2,
+                                     WgcSizeInt32{ pipe->poolW, pipe->poolH }, &still->framePool);
+    statics->Release();
+    if (FAILED(hr) || !still->framePool)
+        return fail(QStringLiteral("frame pool"), hr);
+    hr = still->framePool->CreateCaptureSession(pipe->item, &still->session);
+    if (FAILED(hr) || !still->session)
+        return fail(QStringLiteral("session"), hr);
+    if (setSessionCursor(still->session, still->cursor) != int(still->cursor))
+        return fail(QStringLiteral("mouse pointer setting"), E_NOTIMPL);
+    // Same border verdict as the replay session; never a new access prompt.
+    if (pipe->borderState == CaptureBorder::Hidden) {
+        IGraphicsCaptureSession3* session3 = nullptr;
+        if (SUCCEEDED(still->session->QueryInterface(IID_IGraphicsCaptureSession3,
+                                                     reinterpret_cast<void**>(&session3))) && session3) {
+            session3->put_IsBorderRequired(0);
+            session3->Release();
+        }
+    }
+    still->startQpc100ns = qpcNow100ns();
+    hr = still->session->StartCapture();
+    if (FAILED(hr))
+        return fail(QStringLiteral("StartCapture"), hr);
+    pipe->still = still.release();
+    return true;
+}
+
+// Runs on the replay poll tick after the replay frames, so it never delays
+// or reorders what the recorder receives. Every frame of this fresh session
+// was composed after its StartCapture; the newest valid one is saved.
+void FramePumpWorker::pollStillCapture()
+{
+    Pipeline::StillCapture* const still = m_pipe->still;
+    IDirect3D11CaptureFrame* latest = nullptr;
+    QRect latestCrop;
+    for (int index = 0; index < 8; ++index) {
+        IDirect3D11CaptureFrame* frame = nullptr;
+        const HRESULT hr = still->framePool->TryGetNextFrame(&frame);
+        if (FAILED(hr)) {
+            if (latest) latest->Release();
+            finishStillCapture({}, QStringLiteral("Windows capture stopped delivering frames"));
+            return;
+        }
+        if (!frame)
+            break;
+        WgcSizeInt32 content{};
+        const QSize frameSize = SUCCEEDED(frame->get_ContentSize(&content))
+            ? QSize(content.Width, content.Height) : QSize();
+        const QRect crop = clientCrop(m_pipe->hwnd, frameSize);
+        // A size the replay session would also reject is never saved.
+        if (frameSize != QSize(m_pipe->poolW, m_pipe->poolH) || crop.isEmpty()
+            || crop.size() != m_pipe->clientSize) {
+            frame->Release();
+            continue;
+        }
+        if (latest) latest->Release();
+        latest = frame;
+        latestCrop = crop;
+    }
+    if (!latest)
+        return;
+    QImage image;
+    IDirect3DSurface* surface = nullptr;
+    if (SUCCEEDED(latest->get_Surface(&surface)) && surface) {
+        IDirect3DDxgiInterfaceAccess* access = nullptr;
+        if (SUCCEEDED(surface->QueryInterface(IID_IDirect3DDxgiInterfaceAccess,
+                                              reinterpret_cast<void**>(&access))) && access) {
+            ID3D11Texture2D* tex = nullptr;
+            if (SUCCEEDED(access->GetInterface(__uuidof(ID3D11Texture2D),
+                                               reinterpret_cast<void**>(&tex))) && tex) {
+                ID3D11Texture2D* out = copyClientTexture(tex, still->clientTexture, latestCrop,
+                                                         m_pipe->d3dDevice, m_pipe->d3dCtx);
+                if (out && still->toneMapper)
+                    out = still->toneMapper->apply(out);
+                image = readBgraTexture(out, m_pipe->d3dDevice, m_pipe->d3dCtx);
+                tex->Release();
+            }
+            access->Release();
+        }
+        surface->Release();
+    }
+    latest->Release();
+    finishStillCapture(image, image.isNull() ? QStringLiteral("Could not read pixels from the game window")
+                                             : QString());
+}
+
+void FramePumpWorker::finishStillCapture(const QImage& image, const QString& failure)
+{
+    const quint64 requestId = m_pipe->still->requestId;
+    const bool cursor = m_pipe->still->cursor;
+    const qint64 ms = (qpcNow100ns() - m_pipe->still->startQpc100ns) / 10000;
+    delete m_pipe->still;
+    m_pipe->still = nullptr;
+    if (!failure.isEmpty()) {
+        emit windowScreenshotFailed(m_pumpGeneration, requestId, failure);
+        return;
+    }
+    qInfo().noquote() << QStringLiteral("Screenshot: captured window client %1x%2 from a one-shot "
+                                        "session (pointer %3, %4 ms)")
+        .arg(image.width()).arg(image.height())
+        .arg(cursor ? QStringLiteral("on") : QStringLiteral("off")).arg(ms);
+    emit windowScreenshotReady(m_pumpGeneration, requestId, image, m_pipe->gameName,
+                               m_pipe->executablePath);
 }
 
 void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned long pid, int encodeWidth,
@@ -808,6 +1010,13 @@ void FramePumpWorker::stopPump()
     if (m_screenshotPending) {
         m_screenshotPending = false;
         emit windowScreenshotFailed(m_pumpGeneration, m_screenshotRequestId,
+            QStringLiteral("Screenshot cancelled because the capture target changed"));
+    }
+    if (m_pipe->still) {
+        const quint64 requestId = m_pipe->still->requestId;
+        delete m_pipe->still;
+        m_pipe->still = nullptr;
+        emit windowScreenshotFailed(m_pumpGeneration, requestId,
             QStringLiteral("Screenshot cancelled because the capture target changed"));
     }
     teardown();
@@ -1051,6 +1260,8 @@ void FramePumpWorker::poll()
         if (!m_pipe->timer->isActive())
             return;
     }
+    if (m_pipe->still)
+        pollStillCapture();
     if (m_screenshotPending && !m_pipe->paused && m_pipe->frameClock.isValid()
         && m_pipe->frameClock.elapsed() < kFreshFrameMs && m_screenshotPendingClock.elapsed() >= 200
         && !m_pipe->lastClientCrop.isEmpty()
@@ -1077,8 +1288,14 @@ void FramePumpWorker::captureScreenshotOnWorker(quint64 generation, quint64 requ
             QStringLiteral("No window capture session is available"));
         return;
     }
-    if (m_screenshotPending) {
+    if (m_screenshotPending || m_pipe->still) {
         emit windowScreenshotFailed(m_pumpGeneration, requestId, QStringLiteral("A screenshot is already pending"));
+        return;
+    }
+    if (screenshotNeedsStillCapture()) {
+        QString reason;
+        if (!startStillCapture(requestId, &reason))
+            emit windowScreenshotFailed(m_pumpGeneration, requestId, reason);
         return;
     }
     m_screenshotRequestId = requestId;
@@ -1090,6 +1307,10 @@ void FramePumpWorker::cancelScreenshotOnWorker(quint64 requestId)
 {
     if (m_screenshotPending && m_screenshotRequestId == requestId)
         m_screenshotPending = false;
+    if (m_pipe && m_pipe->still && m_pipe->still->requestId == requestId) {
+        delete m_pipe->still;
+        m_pipe->still = nullptr;
+    }
 }
 
 void FramePumpWorker::completeScreenshot()

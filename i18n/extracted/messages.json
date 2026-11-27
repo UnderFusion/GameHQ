@@ -2162,23 +2162,23 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 59
+          "line": 66
         },
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 61
+          "line": 68
         },
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 63
+          "line": 70
         },
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 65
+          "line": 72
         },
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 67
+          "line": 74
         }
       ],
       "plural": true,
@@ -2197,7 +2197,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 57
+          "line": 64
         }
       ],
       "plural": true,
@@ -4612,11 +4612,11 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 87
+          "line": 94
         },
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 89
+          "line": 96
         }
       ],
       "plural": false,
@@ -4635,19 +4635,19 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 114
+          "line": 121
         },
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 116
+          "line": 123
         },
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 118
+          "line": 125
         },
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 120
+          "line": 127
         }
       ],
       "plural": false,
@@ -10008,7 +10008,7 @@
         },
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 243
+          "line": 250
         }
       ],
       "plural": false,
@@ -10231,7 +10231,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 185
+          "line": 192
         }
       ],
       "plural": false,
@@ -10248,7 +10248,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 181
+          "line": 188
         }
       ],
       "plural": false,
@@ -10265,7 +10265,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 193
+          "line": 200
         }
       ],
       "plural": false,
@@ -10282,7 +10282,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 188
+          "line": 195
         }
       ],
       "plural": false,
@@ -10299,7 +10299,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 183
+          "line": 190
         }
       ],
       "plural": false,
@@ -10307,6 +10307,40 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "e95395b3a4ac831ae603127e93f9514d8651a04fd43ffcd083c73537c9985195"
+    },
+    {
+      "id": "gamehq.settings.capture.image.cursor.description",
+      "source": "Include the Windows mouse pointer in screenshots. Cursors and crosshairs drawn by the game are always kept.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 167
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b2a3b7db27747e45ec53caff2eaa6816f7bea1828a266ca01ddd23dd2c42236c"
+    },
+    {
+      "id": "gamehq.settings.capture.image.cursor.label",
+      "source": "Show mouse cursor",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 165
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9e1c08c5052ec6c84993d2f8eef3ba70ecfcc8ee45632637b3dd387a54fe7f1d"
     },
     {
       "id": "gamehq.settings.capture.image.description",
@@ -10384,7 +10418,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 165
+          "line": 172
         }
       ],
       "plural": false,
@@ -10575,7 +10609,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 258
+          "line": 265
         }
       ],
       "plural": false,
@@ -10592,7 +10626,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 251
+          "line": 258
         }
       ],
       "plural": false,
@@ -10609,7 +10643,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 204
+          "line": 211
         }
       ],
       "plural": false,
@@ -10626,7 +10660,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 200
+          "line": 207
         }
       ],
       "plural": false,
@@ -10643,7 +10677,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 219
+          "line": 226
         }
       ],
       "plural": false,
@@ -10660,7 +10694,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 208
+          "line": 215
         }
       ],
       "plural": false,
@@ -10677,7 +10711,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 202
+          "line": 209
         }
       ],
       "plural": false,
@@ -15816,6 +15850,40 @@
       "source_hash": "f87eaed9ed9eadbbcc0477cdde404a235474437d903422b6a70ae684e4eb1dd5"
     },
     {
+      "id": "gamehq.settings.replay.buffer.cursor.description",
+      "source": "Include the Windows mouse pointer in replays. A change applies to newly recorded video. Cursors and crosshairs drawn by the game are always kept.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 53
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "17de37d263ef0ae90697d97ab3849014d4b6eb2ffb06710639747bb1b09cd9c6"
+    },
+    {
+      "id": "gamehq.settings.replay.buffer.cursor.label",
+      "source": "Show mouse cursor",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 51
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9e1c08c5052ec6c84993d2f8eef3ba70ecfcc8ee45632637b3dd387a54fe7f1d"
+    },
+    {
       "id": "gamehq.settings.replay.buffer.description",
       "source": "Recording changes restart an active buffer so new values apply immediately.",
       "context": "ID",
@@ -15891,7 +15959,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 51
+          "line": 58
         }
       ],
       "plural": false,
@@ -15942,7 +16010,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 162
+          "line": 169
         }
       ],
       "plural": false,
@@ -15959,7 +16027,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 143
+          "line": 150
         }
       ],
       "plural": false,
@@ -15976,7 +16044,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 156
+          "line": 163
         }
       ],
       "plural": false,
@@ -15993,7 +16061,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 146
+          "line": 153
         }
       ],
       "plural": false,
@@ -16010,7 +16078,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 158
+          "line": 165
         }
       ],
       "plural": false,
@@ -16027,7 +16095,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 131
+          "line": 138
         }
       ],
       "plural": false,
@@ -16044,7 +16112,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 164
+          "line": 171
         }
       ],
       "plural": false,
@@ -16061,7 +16129,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 135
+          "line": 142
         }
       ],
       "plural": false,
@@ -16078,7 +16146,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 139
+          "line": 146
         }
       ],
       "plural": false,
@@ -16095,7 +16163,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 107
+          "line": 114
         }
       ],
       "plural": false,
@@ -16112,7 +16180,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 109
+          "line": 116
         }
       ],
       "plural": false,
@@ -16129,7 +16197,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 79
+          "line": 86
         }
       ],
       "plural": false,
@@ -16146,7 +16214,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 75
+          "line": 82
         }
       ],
       "plural": false,
@@ -16163,7 +16231,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 82
+          "line": 89
         }
       ],
       "plural": false,
@@ -16180,7 +16248,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 95
+          "line": 102
         }
       ],
       "plural": false,
@@ -16197,7 +16265,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 77
+          "line": 84
         }
       ],
       "plural": false,
@@ -16214,7 +16282,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 188
+          "line": 195
         }
       ],
       "plural": false,
@@ -16233,7 +16301,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 184
+          "line": 191
         }
       ],
       "plural": false,
@@ -16250,7 +16318,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 196
+          "line": 203
         }
       ],
       "plural": false,
@@ -16267,7 +16335,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 191
+          "line": 198
         }
       ],
       "plural": false,
@@ -16284,7 +16352,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 186
+          "line": 193
         }
       ],
       "plural": false,

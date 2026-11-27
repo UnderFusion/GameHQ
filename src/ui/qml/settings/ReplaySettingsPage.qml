@@ -47,6 +47,13 @@ SettingsPage {
             SettingsToggle { configKey: "replay.auto"; defaultValue: true }
         }
         SettingsRow {
+            //% "Show mouse cursor"
+            label: qsTrId("gamehq.settings.replay.buffer.cursor.label")
+            //% "Include the Windows mouse pointer in replays. A change applies to newly recorded video. Cursors and crosshairs drawn by the game are always kept."
+            description: qsTrId("gamehq.settings.replay.buffer.cursor.description")
+            SettingsToggle { configKey: "replay.cursor"; defaultValue: true }
+        }
+        SettingsRow {
             //% "Replay length"
             label: qsTrId("gamehq.settings.replay.buffer.length")
             showDivider: false
