@@ -230,6 +230,7 @@ find_package(Qt6 6.8 REQUIRED COMPONENTS
 qt_standard_project_setup(REQUIRES 6.5)
 qt_policy(SET QTP0004 NEW)
 
+include(cmake/GameHQTranslations.cmake)
 add_subdirectory(src)
 
 if(GAMEHQ_BUILD_TESTS)

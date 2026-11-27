@@ -333,11 +333,7 @@ if(GAMEHQ_ENABLE_PSEUDO_LOCALES)
         "${GAMEHQ_PSEUDO_I18N_DIR}/gamehq_en_XA.ts"
         "${GAMEHQ_PSEUDO_I18N_DIR}/gamehq_ar_XB.ts")
 endif()
-qt_add_translations(GameHQ
-    TS_FILES ${gamehq_app_ts_files}
-    RESOURCE_PREFIX "/i18n"
-    LRELEASE_OPTIONS -idbased
-)
+gamehq_add_id_translations(GameHQ TS_FILES ${gamehq_app_ts_files})
 
 set(gamehq_locale_manifest "${CMAKE_SOURCE_DIR}/i18n/locales.json")
 if(GAMEHQ_ENABLE_PSEUDO_LOCALES)

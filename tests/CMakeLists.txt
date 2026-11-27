@@ -826,14 +826,12 @@ gamehq_add_test(tst_bindingeditor
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_bindingeditor PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
-qt_add_translations(tst_bindingeditor
+gamehq_add_id_translations(tst_bindingeditor
     TS_FILES
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_en_US.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_pl_PL.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_zh_Hans.ts"
-    RESOURCE_PREFIX "/i18n"
     LUPDATE_OPTIONS -no-obsolete
-    LRELEASE_OPTIONS -idbased
 )
 
 # Catalog/default-binding invariants: unique ids, no duplicate default slots,
@@ -1371,7 +1369,7 @@ gamehq_add_test(tst_localizationcatalog
     tst_localizationcatalog.cpp)
 target_compile_definitions(tst_localizationcatalog PRIVATE
     GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
-qt_add_translations(tst_localizationcatalog
+gamehq_add_id_translations(tst_localizationcatalog
     TS_FILES
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_test_en_US.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_test_pl_PL.ts"
@@ -1380,9 +1378,7 @@ qt_add_translations(tst_localizationcatalog
         "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_es_419.ts"
         "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_uk_UA.ts"
         "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_it_IT.ts"
-    RESOURCE_PREFIX "/i18n"
     LUPDATE_OPTIONS -no-obsolete
-    LRELEASE_OPTIONS -idbased
 )
 
 # p4-7: inventory independently packaged runtimes and developer tools, then
@@ -1409,7 +1405,7 @@ gamehq_add_test(tst_languagemanager
     "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/localization/LanguageManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/localization/StartupLocalization.cpp")
-qt_add_translations(tst_languagemanager
+gamehq_add_id_translations(tst_languagemanager
     TS_FILES
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_en_US.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_de_DE.ts"
@@ -1420,9 +1416,7 @@ qt_add_translations(tst_languagemanager
         "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_es_419.ts"
         "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_uk_UA.ts"
         "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_it_IT.ts"
-    RESOURCE_PREFIX "/i18n"
     LUPDATE_OPTIONS -no-obsolete
-    LRELEASE_OPTIONS -idbased
 )
 qt_add_resources(tst_languagemanager "language_manager_fixtures"
     PREFIX "/i18n"
@@ -1444,14 +1438,12 @@ gamehq_add_test(tst_pseudolocales
 target_link_libraries(tst_pseudolocales PRIVATE Qt6::Gui Qt6::Quick)
 target_compile_definitions(tst_pseudolocales PRIVATE
     GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
-qt_add_translations(tst_pseudolocales
+gamehq_add_id_translations(tst_pseudolocales
     TS_FILES
         "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_en_US.ts"
         "${GAMEHQ_PSEUDO_I18N_DIR}/gamehq_en_XA.ts"
         "${GAMEHQ_PSEUDO_I18N_DIR}/gamehq_ar_XB.ts"
-    RESOURCE_PREFIX "/i18n"
-    LUPDATE_OPTIONS -no-obsolete
-    LRELEASE_OPTIONS -idbased)
+    LUPDATE_OPTIONS -no-obsolete)
 qt_add_resources(tst_pseudolocales "pseudo_locale_manifest"
     PREFIX "/pseudo-i18n"
     BASE "${GAMEHQ_PSEUDO_I18N_DIR}"
@@ -1463,13 +1455,11 @@ gamehq_add_test(tst_languagepreference
     "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/localization/LanguageManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/localization/LanguagePreference.cpp")
-qt_add_translations(tst_languagepreference
+gamehq_add_id_translations(tst_languagepreference
     TS_FILES
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_en_US.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_pl_PL.ts"
-    RESOURCE_PREFIX "/i18n"
     LUPDATE_OPTIONS -no-obsolete
-    LRELEASE_OPTIONS -idbased
 )
 qt_add_resources(tst_languagepreference "language_preference_fixtures"
     PREFIX "/i18n"
@@ -1486,14 +1476,12 @@ gamehq_add_test(tst_liveretranslation
 target_link_libraries(tst_liveretranslation PRIVATE Qt6::Quick Qt6::Widgets)
 target_compile_definitions(tst_liveretranslation PRIVATE
     GAMEHQ_VERSION="${GAMEHQ_VERSION_FULL}")
-qt_add_translations(tst_liveretranslation
+gamehq_add_id_translations(tst_liveretranslation
     TS_FILES
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_en_US.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_pl_PL.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_zh_Hans.ts"
-    RESOURCE_PREFIX "/i18n"
     LUPDATE_OPTIONS -no-obsolete
-    LRELEASE_OPTIONS -idbased
 )
 qt_add_resources(tst_liveretranslation "live_retranslation_fixtures"
     PREFIX "/i18n"
