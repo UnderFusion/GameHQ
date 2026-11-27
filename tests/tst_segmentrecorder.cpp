@@ -1,4 +1,5 @@
 #include "capture/SegmentRecorder.h"
+#include "capture/Fmp4Index.h"
 #include "capture/AudioCapture.h"
 #include "capture/CaptureUtil.h"
 #include "capture/ReplayExporter.h"
@@ -18,6 +19,7 @@
 #include <atomic>
 #include <array>
 #include <cmath>
+#include <cstdlib>
 #include <cstring>
 #include <stdexcept>
 #include <memory>
@@ -1468,6 +1470,242 @@ private slots:
         qInfo().noquote() << QStringLiteral("restart handles: %1 after warm-up, %2 after 6 more sessions")
                                  .arg(warm).arg(last);
         QVERIFY2(long(last) - long(warm) < 30, "handles grow across encoder restarts");
+    }
+
+    // --- #39 Media Foundation truncation of valid segments -------------------
+
+private:
+    // Samples Media Foundation's MP4 source returns for one stream.
+    static int mfSampleCount(const QString& file, DWORD stream)
+    {
+        Microsoft::WRL::ComPtr<IMFSourceReader> reader;
+        if (FAILED(MFCreateSourceReaderFromURL(reinterpret_cast<LPCWSTR>(file.utf16()), nullptr,
+                                               reader.GetAddressOf())))
+            return -1;
+        reader->SetStreamSelection(MF_SOURCE_READER_ALL_STREAMS, FALSE);
+        if (FAILED(reader->SetStreamSelection(stream, TRUE)))
+            return -1;
+        int count = 0;
+        for (int i = 0; i < 100000; ++i) {
+            Microsoft::WRL::ComPtr<IMFSample> sample;
+            DWORD flags = 0;
+            LONGLONG t = 0;
+            if (FAILED(reader->ReadSample(stream, 0, nullptr, &flags, &t, sample.GetAddressOf())))
+                return -1;
+            if (sample) ++count;
+            if (flags & MF_SOURCE_READERF_ENDOFSTREAM) break;
+        }
+        return count;
+    }
+
+    // Copy of a fragmented segment with a 'free' box before the first moof,
+    // sized so the LAST moof crosses a 256 KiB file offset. Windows' MPEG-4
+    // source stops reading at such a fragment although the file is valid
+    // (measured: only the last moof, only 256 KiB multiples). tfhd base
+    // offsets are moved with the data; the optional mfra index is dropped.
+    static bool writeStraddlingCopy(const QString& in, const QString& out)
+    {
+        QFile f(in);
+        if (!f.open(QIODevice::ReadOnly)) return false;
+        QByteArray d = f.readAll();
+        const auto be32 = [&](qint64 p) {
+            const auto* u = reinterpret_cast<const unsigned char*>(d.constData() + p);
+            return (quint32(u[0]) << 24) | (quint32(u[1]) << 16) | (quint32(u[2]) << 8) | quint32(u[3]);
+        };
+        struct Top { QByteArray type; qint64 off, size; };
+        std::vector<Top> tops;
+        for (qint64 off = 0; off + 8 <= d.size();) {
+            const qint64 size = be32(off);
+            if (size < 8 || off + size > d.size()) return false;
+            tops.push_back({ d.mid(off + 4, 4), off, size });
+            off += size;
+        }
+        qint64 firstMoof = -1, lastMoof = -1, lastMoofSize = 0;
+        for (const Top& t : tops)
+            if (t.type == "moof") { if (firstMoof < 0) firstMoof = t.off; lastMoof = t.off; lastMoofSize = t.size; }
+        if (firstMoof < 0) return false;
+        constexpr qint64 kGranule = 256 * 1024;
+        qint64 boundary = (lastMoof / kGranule + 1) * kGranule;
+        qint64 pad = boundary - lastMoof - lastMoofSize / 2;   // boundary lands mid-moof
+        while (pad < 8) { boundary += kGranule; pad += kGranule; }
+        QByteArray padded = d.left(firstMoof);
+        QByteArray freeBox(int(pad), '\0');
+        freeBox[0] = char(pad >> 24); freeBox[1] = char(pad >> 16); freeBox[2] = char(pad >> 8); freeBox[3] = char(pad);
+        freeBox.replace(4, 4, "free");
+        padded += freeBox;
+        for (const Top& t : tops) {
+            if (t.off < firstMoof || t.type == "mfra") continue;
+            QByteArray box = d.mid(t.off, t.size);
+            if (t.type == "moof") {   // shift absolute base_data_offset in every tfhd
+                for (int i = 8; i + 8 <= box.size(); ++i) {
+                    if (box.mid(i + 4, 4) != "tfhd") continue;
+                    const auto* u = reinterpret_cast<const unsigned char*>(box.constData() + i + 8);
+                    const quint32 flags = (quint32(u[1]) << 16) | (quint32(u[2]) << 8) | quint32(u[3]);
+                    if (!(flags & 1)) continue;
+                    quint64 base = 0;
+                    for (int k = 0; k < 8; ++k) base = (base << 8) | quint8(box[i + 16 + k]);
+                    base += quint64(pad);
+                    for (int k = 7; k >= 0; --k) { box[i + 16 + k] = char(base & 0xff); base >>= 8; }
+                }
+            }
+            padded += box;
+        }
+        QFile o(out);
+        return o.open(QIODevice::WriteOnly) && o.write(padded) == padded.size();
+    }
+
+    // One finalized 5 s segment with video and audio from the given recorder setup.
+    static QString recordSegment(const QString& dir)
+    {
+        HwVideo video;
+        if (!makeHwVideo(video, 640, 360)) return {};
+        SegmentRecorder recorder;
+        if (!recorder.begin(640, 360, 640, 360, 30, 6, 5, 30, dir, video.device.Get(),
+                            video.context.Get(), 48000, 2))
+            return {};
+        std::array<float, 1600 * 2> audio{};
+        for (int f = 0; f < 150; ++f) {
+            drawFrame(video, f);
+            const qint64 t = f * 10000000LL / 30;
+            recorder.writeFrame(video.texture.Get(), video.device.Get(), video.context.Get(), t);
+            for (unsigned i = 0; i < 1600; ++i)
+                audio[i * 2] = audio[i * 2 + 1] = float(0.2 * std::sin(6.283185307 * 440.0 * (f * 1600 + i) / 48000.0));
+            recorder.writeAudio(audio.data(), 1600, t);
+        }
+        const SegmentLease lease = recorder.snapshotForSave();
+        recorder.discardCurrentSegment();
+        recorder.end();
+        return lease.paths().isEmpty() ? QString() : lease.paths().first();
+    }
+
+private slots:
+    void exportRecoversSamplesMediaFoundationSkips_data()
+    {
+        QTest::addColumn<bool>("reuse");
+        QTest::newRow("per-segment-encoder") << false;
+        QTest::newRow("reused-encoder") << true;
+    }
+
+    void exportRecoversSamplesMediaFoundationSkips()
+    {
+        QFETCH(bool, reuse);
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        const auto restoreDefault = qScopeGuard([] { SegmentRecorder::setEncoderReuseEnabled(true); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_FULL)));
+        const auto mf = qScopeGuard([] { MFShutdown(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-mftail-XXXXXX");
+        QVERIFY(dir.isValid());
+        SegmentRecorder::setEncoderReuseEnabled(reuse);
+        const QString segment = recordSegment(dir.path());
+        if (segment.isEmpty())
+            QSKIP("No hardware D3D11 device for a recording");
+
+        std::vector<Fmp4Index::Track> index;
+        QString why;
+        QVERIFY2(Fmp4Index::read(segment, index, &why), qPrintable(why));
+        const auto track = [&](bool video) {
+            for (const auto& t : index) if (video ? t.video : t.audio) return int(t.samples.size());
+            return -1;
+        };
+        const int videoTotal = track(true), audioTotal = track(false);
+        QCOMPARE(videoTotal, 150);
+        QVERIFY(audioTotal > 200);
+        // Positive control: on an unshifted segment the index and MF agree.
+        QCOMPARE(mfSampleCount(segment, DWORD(MF_SOURCE_READER_FIRST_VIDEO_STREAM)), videoTotal);
+        QCOMPARE(mfSampleCount(segment, DWORD(MF_SOURCE_READER_FIRST_AUDIO_STREAM)), audioTotal);
+
+        const QString shifted = dir.path() + "/straddling.mp4";
+        QVERIFY(writeStraddlingCopy(segment, shifted));
+        std::vector<Fmp4Index::Track> shiftedIndex;
+        QVERIFY(Fmp4Index::read(shifted, shiftedIndex, &why));
+        const int mfVideo = mfSampleCount(shifted, DWORD(MF_SOURCE_READER_FIRST_VIDEO_STREAM));
+        qInfo().noquote() << QStringLiteral("Media Foundation reads %1 of %2 video samples from the shifted copy")
+                                 .arg(mfVideo).arg(videoTotal);
+        if (mfVideo == videoTotal)
+            qWarning("This Windows build no longer truncates the shifted copy; checking the export only");
+        else
+            QVERIFY(mfVideo > 0 && mfVideo < videoTotal);
+
+        // The export must contain every sample anyway, in order, with sync preserved.
+        const QString clip = dir.path() + "/recovered.mp4";
+        QVERIFY(ReplayExporter::concat({ shifted }, clip, QStringLiteral("mf-tail"),
+                                       ReplayExporter::Audio::Required));
+        VideoTrack exported;
+        QVERIFY(readVideoTrack(clip, exported));
+        QCOMPARE(exported.frames, videoTotal);
+        QVERIFY(exported.firstIsKey && exported.monotonic && exported.firstTime == 0);
+        QCOMPARE(mfSampleCount(clip, DWORD(MF_SOURCE_READER_FIRST_AUDIO_STREAM)), audioTotal);
+
+        // Same result as exporting the original, unshifted segment.
+        const QString reference = dir.path() + "/reference.mp4";
+        QVERIFY(ReplayExporter::concat({ segment }, reference, QStringLiteral("mf-tail-ref"),
+                                       ReplayExporter::Audio::Required));
+        VideoTrack expected;
+        QVERIFY(readVideoTrack(reference, expected));
+        QCOMPARE(exported.frames, expected.frames);
+        QCOMPARE(mfSampleCount(reference, DWORD(MF_SOURCE_READER_FIRST_AUDIO_STREAM)), audioTotal);
+        QVERIFY(std::abs(QFileInfo(clip).size() - QFileInfo(reference).size()) < 4096);
+    }
+
+    void exportFailsWhenASegmentIsCutShort()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_FULL)));
+        const auto mf = qScopeGuard([] { MFShutdown(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-mfcut-XXXXXX");
+        QVERIFY(dir.isValid());
+        const QString segment = recordSegment(dir.path());
+        if (segment.isEmpty())
+            QSKIP("No hardware D3D11 device for a recording");
+        // Damaged copies whose samples are gone. Nothing can recover them, so
+        // the export must report failure instead of succeeding short.
+        QFile in(segment);
+        QVERIFY(in.open(QIODevice::ReadOnly));
+        QByteArray bytes = in.readAll();
+        in.close();
+        // Walk the top-level boxes: a byte search can match "moof" inside video data.
+        qint64 lastMoof = -1;
+        for (qint64 off = 0; off + 8 <= bytes.size();) {
+            const auto* u = reinterpret_cast<const unsigned char*>(bytes.constData() + off);
+            const qint64 size = (qint64(u[0]) << 24) | (qint64(u[1]) << 16) | (qint64(u[2]) << 8) | qint64(u[3]);
+            if (size < 8) break;
+            if (bytes.mid(off + 4, 4) == "moof") lastMoof = off;
+            off += size;
+        }
+        QVERIFY(lastMoof > 0);
+        const qint64 firstMoof = bytes.indexOf("moof") - 4;
+        QVERIFY(firstMoof > 0 && firstMoof < lastMoof);
+        const auto writeCut = [&](const QString& path, qint64 keep) {
+            QFile out(path);
+            return out.open(QIODevice::WriteOnly) && out.write(bytes.left(keep)) == keep;
+        };
+        // 1) The whole last fragment is gone: the index is consistent, only
+        //    the recorded duration shows the loss.
+        const QString noTail = dir.path() + "/no-tail.mp4";
+        QVERIFY(writeCut(noTail, lastMoof));
+        std::vector<Fmp4Index::Track> index;
+        QVERIFY(Fmp4Index::read(noTail, index));
+        QVERIFY(!ReplayExporter::concat({ noTail }, dir.path() + "/no-tail-export.mp4",
+                                        QStringLiteral("mf-cut-tail"), ReplayExporter::Audio::Any));
+        // 2) Cut inside the first fragment's data: no usable index either.
+        const QString cutEarly = dir.path() + "/cut-early.mp4";
+        QVERIFY(writeCut(cutEarly, firstMoof + 4096));
+        QVERIFY(!Fmp4Index::read(cutEarly, index));
+        QVERIFY(!ReplayExporter::concat({ cutEarly }, dir.path() + "/cut-early-export.mp4",
+                                        QStringLiteral("mf-cut-early"), ReplayExporter::Audio::Any));
+    }
+
+    void annexBConversionMatchesTheMp4Source()
+    {
+        QByteArray sample = QByteArray::fromHex("0000000209300000000361e0aa");
+        QVERIFY(Fmp4Index::lengthPrefixedToAnnexB(sample));
+        QCOMPARE(sample.toHex(), QByteArray("0000000109300000000161e0aa"));
+        QByteArray broken = QByteArray::fromHex("00000009093000");
+        QVERIFY(!Fmp4Index::lengthPrefixedToAnnexB(broken));
     }
 
     void earlySnapshot_data()

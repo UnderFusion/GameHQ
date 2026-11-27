@@ -1,4 +1,5 @@
 #include "capture/ReplayExporter.h"
+#include "capture/Fmp4Index.h"
 
 #include <windows.h>
 #include <mfapi.h>
@@ -199,7 +200,8 @@ enum class CopyStatus { Ok, ReadFailed, WriteFailed };
 // segment is flagged as a discontinuity (each seg starts with IDR).
 CopyStatus copySamples(IMFSourceReader* reader, DWORD srcStream, IMFSinkWriter* writer,
                        DWORD dstStream, LONGLONG offset, LONGLONG fallbackDur,
-                       const char* what, LONGLONG& segMaxEnd, int& samples)
+                       const char* what, LONGLONG& segMaxEnd, int& samples,
+                       LONGLONG& lastTs, DWORD& lastLen)
 {
     bool firstOfSeg = true;
     for (;;) {
@@ -235,9 +237,118 @@ CopyStatus copySamples(IMFSourceReader* reader, DWORD srcStream, IMFSinkWriter* 
 
         const LONGLONG end = ts + dur;
         if (end > segMaxEnd) segMaxEnd = end;
+        lastTs = ts;
+        lastLen = 0;
+        sample->GetTotalLength(&lastLen);
         sample->Release();
         ++samples;
     }
+}
+
+// Media Foundation's MPEG-4 source sometimes stops at a valid fragment and
+// reports end of stream early (it depends only on the fragment's position in
+// the file). Compare what it returned with the segment's own sample index and
+// copy any missing samples straight from the file, unchanged, in the form the
+// source would have produced (#39). Nothing is ever invented: a sample that
+// cannot be read, or an index that does not line up with what Media
+// Foundation returned, makes the segment incomplete and the export fails.
+CopyStatus recoverTail(const QString& path, const Fmp4Index::Track& track, bool video,
+                       IMFMediaType* nativeType, int readCount, LONGLONG lastTs, DWORD lastLen,
+                       IMFSinkWriter* writer, DWORD dstStream, LONGLONG offset,
+                       LONGLONG& segMaxEnd, int& samples, const QString& tag, int segmentIndex)
+{
+    const int total = int(track.samples.size());
+    if (readCount >= total)
+        return CopyStatus::Ok;
+    const char* what = video ? "video" : "audio";
+    QByteArray sequenceHeader;
+    if (video && nativeType) {
+        UINT32 len = 0;
+        if (SUCCEEDED(nativeType->GetBlobSize(MF_MT_MPEG_SEQUENCE_HEADER, &len)) && len) {
+            sequenceHeader.resize(int(len));
+            nativeType->GetBlob(MF_MT_MPEG_SEQUENCE_HEADER,
+                                reinterpret_cast<UINT8*>(sequenceHeader.data()), len, &len);
+        }
+    }
+    const auto expectedLength = [&](const Fmp4Index::Sample& s) {
+        return DWORD(s.size) + DWORD(video && s.sync ? sequenceHeader.size() : 0);
+    };
+    // Anchor on the last sample Media Foundation delivered: it must be the
+    // index entry at the same position, or the two views disagree.
+    LONGLONG anchorTs = 0, anchorIndexTime = 0;
+    if (readCount > 0) {
+        const Fmp4Index::Sample& last = track.samples[size_t(readCount - 1)];
+        if (lastLen != expectedLength(last)) {
+            qWarning().noquote() << QStringLiteral(
+                "ReplaySave[%1]: segment %2 %3 ended after %4 of %5 samples and the file index does "
+                "not match the last one read (%6 vs %7 bytes) - segment incomplete")
+                .arg(tag).arg(segmentIndex).arg(QLatin1String(what)).arg(readCount).arg(total)
+                .arg(lastLen).arg(expectedLength(last));
+            return CopyStatus::ReadFailed;
+        }
+        anchorTs = lastTs;
+        anchorIndexTime = last.time;
+    }
+    for (int i = readCount; i < total; ++i) {
+        const Fmp4Index::Sample& s = track.samples[size_t(i)];
+        QByteArray payload;
+        if (!Fmp4Index::readPayload(path, s, payload)
+            || (video && !Fmp4Index::lengthPrefixedToAnnexB(payload))) {
+            qWarning().noquote() << QStringLiteral(
+                "ReplaySave[%1]: segment %2 %3 sample %4 of %5 could not be recovered from the file - "
+                "segment incomplete")
+                .arg(tag).arg(segmentIndex).arg(QLatin1String(what)).arg(i + 1).arg(total);
+            return CopyStatus::ReadFailed;
+        }
+        if (video && s.sync)
+            payload.prepend(sequenceHeader);   // as the MP4 source does for IDR frames
+        IMFMediaBuffer* buffer = nullptr;
+        IMFSample* sample = nullptr;
+        BYTE* dst = nullptr;
+        HRESULT hr = MFCreateMemoryBuffer(DWORD(payload.size()), &buffer);
+        if (SUCCEEDED(hr)) hr = buffer->Lock(&dst, nullptr, nullptr);
+        if (SUCCEEDED(hr)) {
+            memcpy(dst, payload.constData(), size_t(payload.size()));
+            buffer->Unlock();
+            buffer->SetCurrentLength(DWORD(payload.size()));
+            hr = MFCreateSample(&sample);
+        }
+        if (SUCCEEDED(hr)) hr = sample->AddBuffer(buffer);
+        if (buffer) buffer->Release();
+        if (FAILED(hr)) {
+            if (sample) sample->Release();
+            return CopyStatus::ReadFailed;
+        }
+        // Keep the file's own spacing, continued from the last delivered sample.
+        const LONGLONG ts = anchorTs + (s.time - anchorIndexTime);
+        sample->SetSampleTime(ts + offset);
+        sample->SetSampleDuration(s.duration);
+        if (s.sync)
+            sample->SetUINT32(MFSampleExtension_CleanPoint, TRUE);
+        if (readCount == 0 && i == 0)
+            sample->SetUINT32(MFSampleExtension_Discontinuity, TRUE);
+        hr = writer->WriteSample(dstStream, sample);
+        sample->Release();
+        if (FAILED(hr)) {
+            qWarning().nospace() << "ReplayExporter: recovered " << what << " write failed hr=0x"
+                                 << Qt::hex << quint32(hr);
+            return CopyStatus::WriteFailed;
+        }
+        if (ts + s.duration > segMaxEnd) segMaxEnd = ts + s.duration;
+        ++samples;
+    }
+    qWarning().noquote() << QStringLiteral(
+        "ReplaySave[%1]: segment %2 %3: Media Foundation stopped after %4 of %5 samples; "
+        "recovered the remaining %6 from the file")
+        .arg(tag).arg(segmentIndex).arg(QLatin1String(what)).arg(readCount).arg(total).arg(total - readCount);
+    return CopyStatus::Ok;
+}
+
+const Fmp4Index::Track* findTrack(const std::vector<Fmp4Index::Track>& tracks, bool video)
+{
+    for (const Fmp4Index::Track& t : tracks)
+        if (video ? t.video : t.audio) return &t;
+    return nullptr;
 }
 
 bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstring& outFile,
@@ -300,9 +411,26 @@ bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstrin
         LONGLONG segMaxEnd   = 0;
         int      videoSamples = 0;
         int      audioSamples = 0;
-        const CopyStatus vs = copySamples(src.reader, (DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM,
-                                          w.writer, w.videoStream, offset, w.frameDurGuess,
-                                          "video", segMaxEnd, videoSamples);
+        // The segment's own sample index: the exact count Media Foundation
+        // must return, and the source for anything it fails to return.
+        const QString qPath = fromWide(path);
+        std::vector<Fmp4Index::Track> index;
+        QString indexWhy;
+        const bool indexed = Fmp4Index::read(qPath, index, &indexWhy);
+        if (!indexed)
+            qWarning().noquote() << QStringLiteral("ReplaySave[%1]: segment %2 has no usable sample index (%3) - "
+                                                   "checking its length against the file duration instead")
+                                        .arg(tag).arg(segmentIndex).arg(indexWhy);
+        const Fmp4Index::Track* videoIndex = indexed ? findTrack(index, true) : nullptr;
+        const Fmp4Index::Track* audioIndex = indexed ? findTrack(index, false) : nullptr;
+        LONGLONG lastTs = 0;
+        DWORD lastLen = 0;
+        CopyStatus vs = copySamples(src.reader, (DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM,
+                                    w.writer, w.videoStream, offset, w.frameDurGuess,
+                                    "video", segMaxEnd, videoSamples, lastTs, lastLen);
+        if (vs == CopyStatus::Ok && videoIndex)
+            vs = recoverTail(qPath, *videoIndex, true, src.videoType, videoSamples, lastTs, lastLen,
+                             w.writer, w.videoStream, offset, segMaxEnd, videoSamples, tag, segmentIndex);
         if (vs == CopyStatus::ReadFailed)
             skippedSegment = true;
         else if (vs == CopyStatus::WriteFailed)
@@ -311,12 +439,36 @@ bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstrin
             wroteAnything = true;
 
         if (!writeFailed && w.haveAudio && src.hasAudio) {
-            const CopyStatus as = copySamples(src.reader, (DWORD)MF_SOURCE_READER_FIRST_AUDIO_STREAM,
-                                              w.writer, w.audioStream, offset,
-                                              213333 /* ~1024 samples @ 48kHz fallback */,
-                                              "audio", segMaxEnd, audioSamples);
-            if (as != CopyStatus::Ok)
+            lastTs = 0;
+            lastLen = 0;
+            CopyStatus as = copySamples(src.reader, (DWORD)MF_SOURCE_READER_FIRST_AUDIO_STREAM,
+                                        w.writer, w.audioStream, offset,
+                                        213333 /* ~1024 samples @ 48kHz fallback */,
+                                        "audio", segMaxEnd, audioSamples, lastTs, lastLen);
+            if (as == CopyStatus::Ok && audioIndex)
+                as = recoverTail(qPath, *audioIndex, false, src.audioType, audioSamples, lastTs, lastLen,
+                                 w.writer, w.audioStream, offset, segMaxEnd, audioSamples, tag, segmentIndex);
+            if (as == CopyStatus::ReadFailed)
+                skippedSegment = true;
+            else if (as != CopyStatus::Ok)
                 writeFailed = true;
+        }
+        // A finalized segment's duration is where its last sample ends. Ending
+        // earlier means samples are missing that neither Media Foundation nor
+        // the index could supply (a truncated file loses whole fragments and
+        // its index shrinks with it): report it instead of exporting less.
+        if (!writeFailed) {
+            PROPVARIANT duration;
+            PropVariantInit(&duration);
+            if (SUCCEEDED(src.reader->GetPresentationAttribute(DWORD(MF_SOURCE_READER_MEDIASOURCE),
+                                                               MF_PD_DURATION, &duration))
+                && duration.vt == VT_UI8 && LONGLONG(duration.uhVal.QuadPart) > segMaxEnd + 500000) {
+                qWarning().noquote() << QStringLiteral("ReplaySave[%1]: segment %2 read %3 ms of %4 ms - segment incomplete")
+                                            .arg(tag).arg(segmentIndex).arg(segMaxEnd / 10000)
+                                            .arg(LONGLONG(duration.uhVal.QuadPart) / 10000);
+                skippedSegment = true;
+            }
+            PropVariantClear(&duration);
         }
         totalAudioSamples += audioSamples;
 

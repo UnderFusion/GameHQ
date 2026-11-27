@@ -24,6 +24,7 @@ qt_add_executable(GameHQ
     capture/HwH264Encoder.cpp capture/HwH264Encoder.h
     capture/SegmentLease.cpp capture/SegmentLease.h capture/ReplayExportTask.h
     capture/ReplayExporter.cpp capture/ReplayExporter.h
+    capture/Fmp4Index.cpp capture/Fmp4Index.h
     config/Paths.cpp       config/Paths.h
     config/LegacyMigration.cpp config/LegacyMigration.h
     config/PortableProfileImporter.cpp config/PortableProfileImporter.h
