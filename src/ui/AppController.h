@@ -57,6 +57,9 @@ class AppController : public QObject
     Q_PROPERTY(ReplayBufferState::State replayBufferState READ replayBufferState NOTIFY replayBufferStateChanged)
     Q_PROPERTY(QString replayBufferGame READ replayBufferGame NOTIFY replayBufferStateChanged)
     Q_PROPERTY(bool hdrDisplayActive READ hdrDisplayActive NOTIFY hdrStatusChanged)
+    // #41: Windows 10 2004 (build 19041) added pointer control to window
+    // capture. Older builds always draw the pointer, so the toggles are hidden.
+    Q_PROPERTY(bool cursorCaptureControlSupported READ cursorCaptureControlSupported CONSTANT)
     Q_PROPERTY(QString hdrStatusText READ hdrStatusText NOTIFY hdrStatusChanged)
     Q_PROPERTY(QString hdrDetailText READ hdrDetailText NOTIFY hdrStatusChanged)
 
@@ -102,6 +105,7 @@ public:
     ReplayBufferState::State replayBufferState() const { return m_replayBufferState; }
     QString replayBufferGame() const { return m_replayBufferGame; }
     bool hdrDisplayActive() const;
+    bool cursorCaptureControlSupported() const;
     QString hdrStatusText() const;
     QString hdrDetailText() const;
 

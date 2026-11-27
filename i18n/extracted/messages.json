@@ -2162,10 +2162,6 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 66
-        },
-        {
-          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
           "line": 68
         },
         {
@@ -2179,6 +2175,10 @@
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
           "line": 74
+        },
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 76
         }
       ],
       "plural": true,
@@ -2197,7 +2197,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 64
+          "line": 66
         }
       ],
       "plural": true,
@@ -4612,11 +4612,11 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 94
+          "line": 96
         },
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 96
+          "line": 98
         }
       ],
       "plural": false,
@@ -4635,10 +4635,6 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 121
-        },
-        {
-          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
           "line": 123
         },
         {
@@ -4648,6 +4644,10 @@
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
           "line": 127
+        },
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 129
         }
       ],
       "plural": false,
@@ -10008,7 +10008,7 @@
         },
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 250
+          "line": 252
         }
       ],
       "plural": false,
@@ -10231,7 +10231,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 192
+          "line": 194
         }
       ],
       "plural": false,
@@ -10248,7 +10248,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 188
+          "line": 190
         }
       ],
       "plural": false,
@@ -10265,7 +10265,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 200
+          "line": 202
         }
       ],
       "plural": false,
@@ -10282,7 +10282,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 195
+          "line": 197
         }
       ],
       "plural": false,
@@ -10299,7 +10299,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 190
+          "line": 192
         }
       ],
       "plural": false,
@@ -10316,7 +10316,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 167
+          "line": 169
         }
       ],
       "plural": false,
@@ -10418,7 +10418,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 172
+          "line": 174
         }
       ],
       "plural": false,
@@ -10609,7 +10609,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 265
+          "line": 267
         }
       ],
       "plural": false,
@@ -10626,7 +10626,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 258
+          "line": 260
         }
       ],
       "plural": false,
@@ -10643,7 +10643,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 211
+          "line": 213
         }
       ],
       "plural": false,
@@ -10660,7 +10660,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 207
+          "line": 209
         }
       ],
       "plural": false,
@@ -10677,7 +10677,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 226
+          "line": 228
         }
       ],
       "plural": false,
@@ -10694,7 +10694,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 215
+          "line": 217
         }
       ],
       "plural": false,
@@ -10711,7 +10711,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 209
+          "line": 211
         }
       ],
       "plural": false,
@@ -15857,7 +15857,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 53
+          "line": 55
         }
       ],
       "plural": false,
@@ -15959,7 +15959,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 58
+          "line": 60
         }
       ],
       "plural": false,
@@ -16010,7 +16010,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 169
+          "line": 171
         }
       ],
       "plural": false,
@@ -16027,7 +16027,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 150
+          "line": 152
         }
       ],
       "plural": false,
@@ -16044,7 +16044,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 163
+          "line": 165
         }
       ],
       "plural": false,
@@ -16061,7 +16061,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 153
+          "line": 155
         }
       ],
       "plural": false,
@@ -16078,7 +16078,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 165
+          "line": 167
         }
       ],
       "plural": false,
@@ -16095,7 +16095,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 138
+          "line": 140
         }
       ],
       "plural": false,
@@ -16112,7 +16112,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 171
+          "line": 173
         }
       ],
       "plural": false,
@@ -16129,7 +16129,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 142
+          "line": 144
         }
       ],
       "plural": false,
@@ -16146,7 +16146,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 146
+          "line": 148
         }
       ],
       "plural": false,
@@ -16163,7 +16163,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 114
+          "line": 116
         }
       ],
       "plural": false,
@@ -16180,7 +16180,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 116
+          "line": 118
         }
       ],
       "plural": false,
@@ -16197,7 +16197,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 86
+          "line": 88
         }
       ],
       "plural": false,
@@ -16214,7 +16214,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 82
+          "line": 84
         }
       ],
       "plural": false,
@@ -16231,7 +16231,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 89
+          "line": 91
         }
       ],
       "plural": false,
@@ -16248,7 +16248,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 102
+          "line": 104
         }
       ],
       "plural": false,
@@ -16265,7 +16265,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 84
+          "line": 86
         }
       ],
       "plural": false,
@@ -16282,7 +16282,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 195
+          "line": 197
         }
       ],
       "plural": false,
@@ -16301,7 +16301,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 191
+          "line": 193
         }
       ],
       "plural": false,
@@ -16318,7 +16318,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 203
+          "line": 205
         }
       ],
       "plural": false,
@@ -16335,7 +16335,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 198
+          "line": 200
         }
       ],
       "plural": false,
@@ -16352,7 +16352,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 193
+          "line": 195
         }
       ],
       "plural": false,

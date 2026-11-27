@@ -49,6 +49,8 @@ SettingsPage {
         SettingsRow {
             //% "Show mouse cursor"
             label: qsTrId("gamehq.settings.replay.buffer.cursor.label")
+            // Windows before 10 2004 always captures the pointer (#41).
+            visible: app.cursorCaptureControlSupported
             //% "Include the Windows mouse pointer in replays. A change applies to newly recorded video. Cursors and crosshairs drawn by the game are always kept."
             description: qsTrId("gamehq.settings.replay.buffer.cursor.description")
             SettingsToggle { configKey: "replay.cursor"; defaultValue: true }

@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-11-27T23:24:17Z"
+    "recorded_at": "2026-11-27T23:33:40Z"
   },
   "baseline": {
     "path": "git:c03491fd5ffce2d1ac92b99b27f8b6116fb44fee:i18n/app/gamehq_de_DE.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_de_DE.ts",
-    "sha256": "e0b669ab9fd9806dca4db3261b99e701ed93c166f2ac318862bb879132fc208f",
+    "sha256": "cb6589beb42c22a3fb9b4dc5e04fd181080a9ed8255844fb93cb4cb562c8f48e",
     "message_count": 1145
   },
   "coverage": [
@@ -1098,11 +1098,11 @@
       "source_hash": "7ad8b719d36376c448d71267be828ed0f7ccc5e346fd1edf382a866f296b3303",
       "translation_hash": "180720958af1f0e234a0f9851f52496e78283120f64b650732e54db6d09656ca",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:66",
         "src/ui/qml/settings/ReplaySettingsPage.qml:68",
         "src/ui/qml/settings/ReplaySettingsPage.qml:70",
         "src/ui/qml/settings/ReplaySettingsPage.qml:72",
-        "src/ui/qml/settings/ReplaySettingsPage.qml:74"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:74",
+        "src/ui/qml/settings/ReplaySettingsPage.qml:76"
       ],
       "decision": "accepted"
     },
@@ -1111,7 +1111,7 @@
       "source_hash": "b3ee28f436ae7784f841c6ba9c016b775d5f2e36926ddb12020dae7a2d44fb16",
       "translation_hash": "9c8e42dcc3b1adfca38cba454576e55428a44390047c677eef0e3bf4706dfce2",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:64"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:66"
       ],
       "decision": "accepted"
     },
@@ -2312,8 +2312,8 @@
       "source_hash": "4079b4bc99d0ea96b50f43cf1a8f029051c048ea71419bd8134352610ada7c3f",
       "translation_hash": "3c9ca3db4561a8f35096e3c680829f3f44356d6218909aa9f2046b1ba2f55272",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:94",
-        "src/ui/qml/settings/ReplaySettingsPage.qml:96"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:96",
+        "src/ui/qml/settings/ReplaySettingsPage.qml:98"
       ],
       "decision": "corrected"
     },
@@ -2322,10 +2322,10 @@
       "source_hash": "d515621e4a8842a15fd8688186c3c7b30f3349c15e04ddfec46a926448c15717",
       "translation_hash": "1fa24b1048855c9f4bdeb7e5d0b8ff2a5823765cb7c71b1ad6cae30aff3c55f7",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:121",
         "src/ui/qml/settings/ReplaySettingsPage.qml:123",
         "src/ui/qml/settings/ReplaySettingsPage.qml:125",
-        "src/ui/qml/settings/ReplaySettingsPage.qml:127"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:127",
+        "src/ui/qml/settings/ReplaySettingsPage.qml:129"
       ],
       "decision": "accepted"
     },
@@ -5028,7 +5028,7 @@
       "translation_hash": "e29b39b4a5c3c63450cb97d3fa78c1ec12a1814beea7a962353c8b8e5b2671b8",
       "locations": [
         "src/ui/qml/settings/CaptureSettingsPage.qml:92",
-        "src/ui/qml/settings/CaptureSettingsPage.qml:250"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:252"
       ],
       "decision": "accepted"
     },
@@ -5145,7 +5145,7 @@
       "source_hash": "6ac5bfb3cf7887a776f213ab3c25c85fa3054b0f6c835073ea2b8dbb2ddc4c3e",
       "translation_hash": "d7b4f53fd080cd7234edab4e321942c5f8a5490770c5ab1c870bcb41da90eb9c",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:192"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:194"
       ],
       "decision": "corrected"
     },
@@ -5154,7 +5154,7 @@
       "source_hash": "1933b110d76d7853546120eb1dba8f58525b28e4d105dbc7c32bbfcd792c2ec0",
       "translation_hash": "336e3174e00f57d9acde8d48725a481657fb16856bbacf31558fadf3ccd76b93",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:188"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:190"
       ],
       "decision": "corrected"
     },
@@ -5163,7 +5163,7 @@
       "source_hash": "84a66f71c679e87865b73a1aa264a87bfb79ae6721fe78326e0ee5dfa1448244",
       "translation_hash": "b512d365ffe1f60e327ca6804c7c412a022ff3bfc28bdc25c2da0154f1a21ca3",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:200"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:202"
       ],
       "decision": "corrected"
     },
@@ -5172,7 +5172,7 @@
       "source_hash": "2210b8dbc6e952a47de1bb6807b7b5501f60ffe70c82702ec05f4325663c734f",
       "translation_hash": "660ad0a1931ddc8a6f91332b5989aec9a3181ca074527a81919081a6ea13cd48",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:195"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:197"
       ],
       "decision": "corrected"
     },
@@ -5181,7 +5181,7 @@
       "source_hash": "e95395b3a4ac831ae603127e93f9514d8651a04fd43ffcd083c73537c9985195",
       "translation_hash": "4206406851f4d6173026fb93c196ac4c102c77074408369c90ff9c2d1bfaf66e",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:190"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:192"
       ],
       "decision": "accepted"
     },
@@ -5190,7 +5190,7 @@
       "source_hash": "b2a3b7db27747e45ec53caff2eaa6816f7bea1828a266ca01ddd23dd2c42236c",
       "translation_hash": "78463304f7187906ad2ec6c9235891b3a2ddc788b402d5efc0dc5efda0b410fe",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:167"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:169"
       ],
       "decision": "accepted"
     },
@@ -5244,7 +5244,7 @@
       "source_hash": "9ffbea44636a14d5e09217d38b3457a316583e1cff2bb11543c6f6cb0be78880",
       "translation_hash": "f9e1497e5a82014683cd948184e899151e3b323b3c3a0de820b70ec4be93b839",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:172"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:174"
       ],
       "decision": "accepted"
     },
@@ -5344,7 +5344,7 @@
       "source_hash": "1f121b462eaaa5f3f86922ab79373edc58eaaf8b4e7ce3ee1aef63e0c05a8b59",
       "translation_hash": "8f0d2a660d4170cb7ebf644eaea4df6f37cc2e8d185726ad4681cb9d94223578",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:265"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:267"
       ],
       "decision": "corrected"
     },
@@ -5353,7 +5353,7 @@
       "source_hash": "1f00f38c7b2f2df2628406c2318bfceae4dfe367f6feff789a55beabdd4b33fa",
       "translation_hash": "a793c50eadbb77eb70e8c6edb7f99e6c7147ec2d124c68a094b807f60cdc357c",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:258"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:260"
       ],
       "decision": "corrected"
     },
@@ -5362,7 +5362,7 @@
       "source_hash": "c05aaac50dbda69d12fe6a1cc56a812ebdd488480258251c0ad9200ef2a5f8ea",
       "translation_hash": "8317f24fcc6a5b045d8c33ad4d570f7634034901edc9f685912260683cec5517",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:211"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:213"
       ],
       "decision": "corrected"
     },
@@ -5371,7 +5371,7 @@
       "source_hash": "d1e819dc3f83c285cbbd35fcfc62aa4b5b2b0546432a4129531485363eb72acb",
       "translation_hash": "6672eaf4eab450b1732330afff3f74ae909565fe8109618434a3c735c57c700d",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:207"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:209"
       ],
       "decision": "corrected"
     },
@@ -5380,7 +5380,7 @@
       "source_hash": "248ca995299cb59069e10f8f491190c672df4155ef54ca68559557512480c18e",
       "translation_hash": "9bdfbc398613e21bf23b366da445d7408311248e05768b75c9f39225af834fa3",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:226"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:228"
       ],
       "decision": "corrected"
     },
@@ -5389,7 +5389,7 @@
       "source_hash": "113704fa1f2848c9a11659f5056c4a62d40ca521edb625276cb4280fb9d9702c",
       "translation_hash": "d3385916db7feaa05d90d0a39e5642be61bbf726f5a08a721afefba171354a09",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:215"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:217"
       ],
       "decision": "corrected"
     },
@@ -5398,7 +5398,7 @@
       "source_hash": "e1592bd45700346021646ccaab11282de5ea6d69b7dd6bff137f39c7dac81eea",
       "translation_hash": "2142e3e83915a88e839db1824bf13cc53d56667f44778cd94009de86d7a630ca",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:209"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:211"
       ],
       "decision": "corrected"
     },
@@ -8050,7 +8050,7 @@
       "source_hash": "17de37d263ef0ae90697d97ab3849014d4b6eb2ffb06710639747bb1b09cd9c6",
       "translation_hash": "360086fcad12901a3676a7829bba1a9de2f05439fcf1cfafc1d1e27413450ecb",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:53"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:55"
       ],
       "decision": "accepted"
     },
@@ -8104,7 +8104,7 @@
       "source_hash": "93e83e44e3c52cd50f5216129956a88241aa0ce1f905e180c7f258f151b18e4c",
       "translation_hash": "bfcbb2b9485666d85a4451937920b4ffabf2ef88ef138df74aad0d6f7d1b9a3f",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:58"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:60"
       ],
       "decision": "corrected"
     },
@@ -8131,7 +8131,7 @@
       "source_hash": "d90b2bfffe53523f630106ed8ddfb827c7699242bc7ef5876ab09f16f3a63b17",
       "translation_hash": "2c7fcdba4914a076623736868ea3ef5419945aead371560d85f35a17de506d9a",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:169"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:171"
       ],
       "decision": "accepted"
     },
@@ -8140,7 +8140,7 @@
       "source_hash": "22dff4ef28748eb51ee9a4657d1bf544745b832bdf3477f3fc17d59b71ddc45e",
       "translation_hash": "71be2385e2598091bcdb1a2ad6adf6cd4978b7de191edb565ae10f098dbc8482",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:150"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:152"
       ],
       "decision": "accepted"
     },
@@ -8149,7 +8149,7 @@
       "source_hash": "c5e61650db6cecdccd09395524a8b588b621c191fe9afcebbf9aca210eeb5f32",
       "translation_hash": "3851c51b6e0f85eaea52531009e5e1f74571404522c059cc905d5f94a6bb2de6",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:163"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:165"
       ],
       "decision": "accepted"
     },
@@ -8158,7 +8158,7 @@
       "source_hash": "d6a918d673fa271f68e7a7674780cae1113a9cf8e13c46edb7a728b063d17e3b",
       "translation_hash": "70274aaff577c0039323e1db80a1eb8fee1bfe008ebe6ba10758d87fcf2feeff",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:153"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:155"
       ],
       "decision": "accepted"
     },
@@ -8167,7 +8167,7 @@
       "source_hash": "a2539d9e2e4acae57dcc09e51990833fb68c1f69d469792f69d89e23daf78a5c",
       "translation_hash": "8c6a5d6eaf8ca19aeb81cf80aca17b6466f86792f3e8a1c7c384b4fcfaae9129",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:165"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:167"
       ],
       "decision": "accepted"
     },
@@ -8176,7 +8176,7 @@
       "source_hash": "298f23aa5d84283e6c4dd606bde31560cc8bf67bb9ab7b51bacdf392681d1059",
       "translation_hash": "aaec26ba621bc6fe0ed23d809af5dbe2ccad18f098ab00299dd751ffd8ab57ee",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:138"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:140"
       ],
       "decision": "accepted"
     },
@@ -8185,7 +8185,7 @@
       "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
       "translation_hash": "2ee6720fd45d39dd3bd41c7af7d73b4b0b52647fa5da7d91c6c4c28f97cd539f",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:171"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:173"
       ],
       "decision": "accepted"
     },
@@ -8194,7 +8194,7 @@
       "source_hash": "d66bdfa74b682bf09797e468c027ccc27ec0321a495478592dbaba1f158a94ce",
       "translation_hash": "2c4af5877e12044527e49e0bed9d22128159088c0530b7cf6874ff9622af2d88",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:142"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:144"
       ],
       "decision": "accepted"
     },
@@ -8203,7 +8203,7 @@
       "source_hash": "a94bcc395e7f9909efc6af37e8be4583de24634f2a975b66aa60ae67009e9ba4",
       "translation_hash": "abb2e3641f3e6267a77090a5d3bce94052a9d8222dfd248ff370b3bad1e84878",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:146"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:148"
       ],
       "decision": "accepted"
     },
@@ -8212,7 +8212,7 @@
       "source_hash": "6bc2b26df8e6cc63abefd6fc9e81fc123785b934fe67d6247c44197a4d5e1d45",
       "translation_hash": "b5a9368c6ad0288d173db02b2f7d2c6a2d23c31998cd946669ae8b0ba6d223b8",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:114"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:116"
       ],
       "decision": "corrected"
     },
@@ -8221,7 +8221,7 @@
       "source_hash": "f42fdd4cb88126e1388ce5770012abb1c040018dc9ce120281271049e9791aa5",
       "translation_hash": "1bf8bcbf112d3166ebb070d1f7a76cc320a7940d7f4c50b03710a53b2cf2df89",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:116"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:118"
       ],
       "decision": "corrected"
     },
@@ -8230,7 +8230,7 @@
       "source_hash": "f9a1f721dfab5544173ce558bc2e2e4cfa8c90a9a272183760374650649ec3ff",
       "translation_hash": "7a4b4593e852185493a84a0aa1c9ad0b972649717e7713b0f0ef794a0f4af4a8",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:86"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:88"
       ],
       "decision": "corrected"
     },
@@ -8239,7 +8239,7 @@
       "source_hash": "56c6d315965b2ce2d2aa4973da99724952f54e6cba595b07ae995b083b780589",
       "translation_hash": "14848f329e1764a2f49f85068fe99c563841df9c726d54f128d27638f2223007",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:82"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:84"
       ],
       "decision": "corrected"
     },
@@ -8248,7 +8248,7 @@
       "source_hash": "81b7b3410be171b40cd7e53823cc92743f6c1d9b58068b5178c307c4018e788f",
       "translation_hash": "e5a682fef4bfe4db8ab56ef3c2c9b640644f475c08fddf97fda3e52ed4e8c0d4",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:89"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:91"
       ],
       "decision": "accepted"
     },
@@ -8257,7 +8257,7 @@
       "source_hash": "91fd9bcc41bd3875bec6d5631af6f26c2cd27b5c543881356a905a57068d3f94",
       "translation_hash": "83fd5a31b09357930dc7885d35a03da1674708a7a77e8bec513888c70d2f49b1",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:102"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:104"
       ],
       "decision": "corrected"
     },
@@ -8266,7 +8266,7 @@
       "source_hash": "06aa2c6577cddc0cd59da304067a43a8686883d61f2412c5bde96da27c375a37",
       "translation_hash": "6fe90d14dd92cf32d8eb0fb4a0813da6401f112f66932c1ac99127cf8988dbb0",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:84"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:86"
       ],
       "decision": "corrected"
     },
@@ -8275,7 +8275,7 @@
       "source_hash": "dd87a2f68e1e0196b5b8fa7837877be6bebed249632d5f5ffe9d265e9097d13d",
       "translation_hash": "13d43463d7dd95664fd96263cb9bdfe62276cf171652df24363d8ce72e580bac",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:195"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:197"
       ],
       "decision": "corrected"
     },
@@ -8284,7 +8284,7 @@
       "source_hash": "1933b110d76d7853546120eb1dba8f58525b28e4d105dbc7c32bbfcd792c2ec0",
       "translation_hash": "336e3174e00f57d9acde8d48725a481657fb16856bbacf31558fadf3ccd76b93",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:191"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:193"
       ],
       "decision": "corrected"
     },
@@ -8293,7 +8293,7 @@
       "source_hash": "c4c42e6712e20d9d162ccb9e258a63bb305f040a2806d6bbab479338b562b5bf",
       "translation_hash": "1e503c0f6d175b6fafc4c6f00a7b2c79caf6400cd88af66d4a2f73f3e5372bcb",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:203"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:205"
       ],
       "decision": "corrected"
     },
@@ -8302,7 +8302,7 @@
       "source_hash": "8056b6922984ffb5af187a1f2cf33598d222ac323cb50d8dab54fb1af175c24b",
       "translation_hash": "806dc858ca6e47a7fa93034979b27ab2ac5e2fa8bcf70691696e7f5b67ed45e7",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:198"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:200"
       ],
       "decision": "corrected"
     },
@@ -8311,7 +8311,7 @@
       "source_hash": "d15adab55c8d3e1be8cc6f6c903f9f2773ea4f4f89cd89abfce172325f26bb4d",
       "translation_hash": "e12cec434abf7768d270c7cce5798a7e31af37e63768ab217219baf44a18bf2e",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:193"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:195"
       ],
       "decision": "corrected"
     },
@@ -19077,7 +19077,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_de_DE.ts",
-      "sha256": "e0b669ab9fd9806dca4db3261b99e701ed93c166f2ac318862bb879132fc208f",
+      "sha256": "cb6589beb42c22a3fb9b4dc5e04fd181080a9ed8255844fb93cb4cb562c8f48e",
       "reviewed_units": 1145
     },
     {

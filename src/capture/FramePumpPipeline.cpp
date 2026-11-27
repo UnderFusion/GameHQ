@@ -715,6 +715,10 @@ void FramePumpWorker::applySessionCursor(Pipeline* pipe)
     const bool wanted = wantedSessionCursor(pipe);
     const int previous = pipe->sessionCursor;
     pipe->sessionCursor = setSessionCursor(pipe->session, wanted);
+    // Frames already queued in the pool, or composed in the next few vsyncs,
+    // can carry the old pointer state. 50 ms covers three 60 Hz frames.
+    if (pipe->sessionCursor != previous)
+        pipe->cursorPolicyQpc100ns = qpcNow100ns() + 50 * 10000;
     if (pipe->sessionCursor < 0) {
         if (!m_cursorUnsupportedLogged)
             qWarning() << "FramePump: this Windows build cannot change mouse pointer capture"
@@ -1229,8 +1233,10 @@ void FramePumpWorker::poll()
                     // (throttled to the target fps inside writeFrame).
                     if (encodeTex) {
                         m_pipe->lastClientCrop = crop;
+                        m_pipe->lastFrameQpc100ns = frameTime.Duration;
                         m_pipe->frameClock.restart();
-                        if (m_screenshotPending)
+                        if (m_screenshotPending
+                            && frameTime.Duration >= m_pipe->cursorPolicyQpc100ns)
                             completeScreenshot();
                         if (m_pipe->paused) {
                             m_pipe->paused = false;
@@ -1262,8 +1268,18 @@ void FramePumpWorker::poll()
     }
     if (m_pipe->still)
         pollStillCapture();
+    // A static window may present no frame after a pointer-setting change.
+    // A fresh session can only deliver frames with the current setting.
+    if (m_screenshotPending && !m_pipe->still && m_screenshotPendingClock.elapsed() >= 300
+        && m_pipe->lastFrameQpc100ns < m_pipe->cursorPolicyQpc100ns) {
+        m_screenshotPending = false;
+        QString reason;
+        if (!startStillCapture(m_screenshotRequestId, &reason))
+            emit windowScreenshotFailed(m_pumpGeneration, m_screenshotRequestId, reason);
+    }
     if (m_screenshotPending && !m_pipe->paused && m_pipe->frameClock.isValid()
         && m_pipe->frameClock.elapsed() < kFreshFrameMs && m_screenshotPendingClock.elapsed() >= 200
+        && m_pipe->lastFrameQpc100ns >= m_pipe->cursorPolicyQpc100ns
         && !m_pipe->lastClientCrop.isEmpty()
         && m_pipe->lastClientCrop == clientCrop(m_pipe->hwnd, QSize(m_pipe->poolW, m_pipe->poolH)))
         completeScreenshot();
@@ -1325,7 +1341,13 @@ void FramePumpWorker::completeScreenshot()
             QStringLiteral("Could not read pixels from the game window"));
         return;
     }
-    qInfo() << "Screenshot: captured window client" << image.size();
+    if (m_pipe->cursorPolicyQpc100ns)
+        qInfo().noquote() << QStringLiteral("Screenshot: captured window client %1x%2, frame %3 ms "
+                                            "after the pointer setting took effect")
+            .arg(image.width()).arg(image.height())
+            .arg((m_pipe->lastFrameQpc100ns - m_pipe->cursorPolicyQpc100ns) / 10000);
+    else
+        qInfo() << "Screenshot: captured window client" << image.size();
     emit windowScreenshotReady(m_pumpGeneration, m_screenshotRequestId, image, m_pipe->gameName,
                             m_pipe->executablePath);
 }

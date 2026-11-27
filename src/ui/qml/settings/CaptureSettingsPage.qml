@@ -163,6 +163,8 @@ SettingsPage {
         SettingsRow {
             //% "Show mouse cursor"
             label: qsTrId("gamehq.settings.capture.image.cursor.label")
+            // Windows before 10 2004 always captures the pointer (#41).
+            visible: app.cursorCaptureControlSupported
             //% "Include the Windows mouse pointer in screenshots. Cursors and crosshairs drawn by the game are always kept."
             description: qsTrId("gamehq.settings.capture.image.cursor.description")
             SettingsToggle { configKey: "capture.screenshot_cursor"; defaultValue: false }

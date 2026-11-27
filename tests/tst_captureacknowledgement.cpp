@@ -16,6 +16,7 @@
 #include <QSignalSpy>
 #include <QSemaphore>
 #include <QMutex>
+#include <QRegularExpression>
 #include <QElapsedTimer>
 #include <QTemporaryDir>
 #include <QScopeGuard>
@@ -180,6 +181,7 @@ QtMessageHandler g_pointerPrevious = nullptr;
 void collectPointerLog(QtMsgType type, const QMessageLogContext& context, const QString& message)
 {
     if (message.contains(QLatin1String("mouse pointer")) || message.contains(QLatin1String("one-shot"))
+        || message.contains(QLatin1String("after the pointer setting"))
         || message.contains(QLatin1String("experimental HDR path armed"))) {
         QMutexLocker lock(&g_pointerLogMutex);
         g_pointerLog.append(message);
@@ -1370,9 +1372,14 @@ private slots:
             {"both off", false, false, QColor(40, 220, 220)},
         };
         QStringList timings;
+        int pixelSteps = 0;
         for (const Step& step : steps) {
             bool verified = false;
             for (int attempt = 0; attempt < 3 && !verified; ++attempt) {
+                // A visible pointer that moves cannot be compared at a fixed
+                // spot. After three tries the step still verifies everything
+                // except pointer pixels; it never moves the pointer itself.
+                const bool lastAttempt = attempt == 2;
                 config.setValue(ConfigKeys::CaptureScreenshotCursor, step.screenshot);
                 config.setValue(ConfigKeys::ReplayCursor, step.replay);
                 // The policy reaches the worker as a queued call; paint the new
@@ -1391,7 +1398,8 @@ private slots:
                 } else {
                     QVERIFY2(applied.isEmpty(), qPrintable(applied.join(u'|')));
                 }
-                if (pointerVisible && !pointerStill())
+                bool comparePixels = pointerVisible && pointerStill();
+                if (pointerVisible && !comparePixels && !lastAttempt)
                     continue;
                 for (int s = 0; s < 3; ++s) {
                     QImage image;
@@ -1413,9 +1421,18 @@ private slots:
                     const QString oneShot = QStringLiteral("one-shot session (pointer %1,")
                         .arg(step.screenshot ? QStringLiteral("on") : QStringLiteral("off"));
                     const bool usedOneShot = served.size() == 1 && served.constFirst().contains(oneShot);
-                    QVERIFY2(usedOneShot == (step.screenshot != step.replay) && (usedOneShot || served.isEmpty()),
+                    // The replay session's frame must postdate its last
+                    // pointer-setting change, never a queued older frame.
+                    static const QRegularExpression liveAge(
+                        QStringLiteral("frame (-?\\d+) ms after the pointer setting"));
+                    const QRegularExpressionMatch live = served.size() == 1
+                        ? liveAge.match(served.constFirst()) : QRegularExpressionMatch();
+                    const bool usedLive = live.hasMatch() && live.captured(1).toLongLong() >= 0;
+                    QVERIFY2(step.screenshot != step.replay ? usedOneShot : usedLive,
                              qPrintable(QStringLiteral("%1: %2").arg(step.name, served.join(u'|'))));
-                    if (!pointerVisible)
+                    if (pointerVisible && !comparePixels)
+                        {}  // moving pointer: pixels not comparable
+                    else if (!pointerVisible)
                         QVERIFY2(pixels == 0, qPrintable(QStringLiteral("%1: %2 foreign px").arg(step.name).arg(pixels)));
                     else if (step.screenshot)
                         QVERIFY2(pixels >= 20, qPrintable(QStringLiteral("%1: pointer missing (%2 px)")
@@ -1431,8 +1448,11 @@ private slots:
                 QTRY_VERIFY_WITH_TIMEOUT(!saved.isEmpty() || !clipFailed.isEmpty(), 15000);
                 QVERIFY2(clipFailed.isEmpty(), qPrintable(clipFailed.isEmpty() ? QString()
                                                               : clipFailed.constFirst().at(1).toString()));
-                if (pointerVisible && !pointerStill())
-                    continue;
+                if (comparePixels && !pointerStill()) {
+                    if (!lastAttempt)
+                        continue;
+                    comparePixels = false;
+                }
                 QString error;
                 const QList<QImage> frames = decodeAllFrames(saved.constFirst().at(0).toString(), &error);
                 int phaseFrames = 0;
@@ -1446,7 +1466,9 @@ private slots:
                     if (!evidence.isEmpty() && phaseFrames == 1)
                         frames[f].save(QDir(evidence).filePath(QStringLiteral("cursor-clip-%1%2.png")
                             .arg(int(step.screenshot)).arg(int(step.replay))));
-                    if (!pointerVisible)
+                    if (pointerVisible && !comparePixels)
+                        {}  // moving pointer: pixels not comparable
+                    else if (!pointerVisible)
                         QVERIFY2(pixels <= 2, qPrintable(QStringLiteral("%1: clip frame %2 has %3 foreign px")
                                                              .arg(step.name).arg(f).arg(pixels)));
                     else if (step.replay)
@@ -1461,13 +1483,18 @@ private slots:
                 QVERIFY2(phaseFrames >= 15, qPrintable(QStringLiteral("%1: only %2 of %3 frames in phase %4")
                                                            .arg(step.name).arg(phaseFrames).arg(frames.size())
                                                            .arg(error)));
-                qInfo().noquote() << QStringLiteral("%1: 3 screenshots and %2 clip frames verified")
-                                         .arg(step.name).arg(phaseFrames);
+                qInfo().noquote() << QStringLiteral("%1: 3 screenshots and %2 clip frames verified (%3)")
+                                         .arg(step.name).arg(phaseFrames)
+                                         .arg(comparePixels ? QStringLiteral("pointer pixels compared")
+                                              : pointerVisible ? QStringLiteral("pointer moved, pixels not compared")
+                                                               : QStringLiteral("no visible pointer"));
+                if (comparePixels)
+                    ++pixelSteps;
                 verified = true;
             }
-            if (!verified)
-                QSKIP("The mouse pointer kept moving, so its capture could not be compared");
+            QVERIFY(verified);
         }
+        qInfo().noquote() << QStringLiteral("pointer pixels compared in %1 of 4 steps").arg(pixelSteps);
         QVERIFY2(restarts.isEmpty(), qPrintable(restarts.join(u"; ")));
         QCOMPARE(reuseStops.count(), 0);
         if (!pointerVisible)
@@ -1526,12 +1553,27 @@ private slots:
             QVERIFY(crosshairIntact(image));
             QTest::qWait(100);
             const QStringList lines = pointerLog.take();
-            QVERIFY2(!lines.join(u'|').contains(QLatin1String("one-shot")), qPrintable(lines.join(u'|')));
+            // The live session's frame must have been composed after the
+            // setting took effect; a static scene may fall back to a fresh
+            // one-shot session with the same setting instead.
+            static const QRegularExpression age(QStringLiteral("frame (-?\\d+) ms after the pointer setting"));
+            bool fresh = false;
+            for (const QString& line : lines) {
+                const QRegularExpressionMatch m = age.match(line);
+                if (m.hasMatch())
+                    fresh = m.captured(1).toLongLong() >= 0;
+                else if (line.contains(QStringLiteral("one-shot session (pointer %1,")
+                                           .arg(shotCursor ? QStringLiteral("on") : QStringLiteral("off"))))
+                    fresh = true;
+            }
+            QVERIFY2(fresh, qPrintable(lines.join(u'|')));
             QVERIFY2(lines.contains(QStringLiteral("FramePump: mouse pointer %1 in the screenshot session")
                                         .arg(shotCursor ? QStringLiteral("captured") : QStringLiteral("hidden"))),
                      qPrintable(lines.join(u'|')));
             const int pixels = pointerPixels(image);
-            if (!pointerVisible || !shotCursor)
+            if (pointerVisible && !pointerStill())
+                {}  // moving pointer: pixels not comparable
+            else if (!pointerVisible || !shotCursor)
                 QVERIFY2(pixels == 0, qPrintable(QStringLiteral("replay off: %1 foreign px").arg(pixels)));
             else
                 QVERIFY2(pixels >= 20, qPrintable(QStringLiteral("replay off: pointer missing (%1 px)").arg(pixels)));

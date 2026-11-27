@@ -232,3 +232,8 @@ void AppController::resetCategory(const QString& category)
     for (const QString& key : SettingsCategories::keys().value(category))
         resetConfig(key);
 }
+
+bool AppController::cursorCaptureControlSupported() const
+{
+    return CaptureUtil::windowsBuildNumber() >= 19041;
+}

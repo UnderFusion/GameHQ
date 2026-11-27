@@ -83,6 +83,10 @@ struct FramePumpWorker::Pipeline
     // #41 pointer policy actually in force on `session`: 1 or 0 when Windows
     // read it back, -1 when the OS offers no control (it then always draws it).
     int sessionCursor = -1;
+    // Frames composed before this QPC time (100 ns) may still show the
+    // previous pointer setting; a screenshot never uses them.
+    long long cursorPolicyQpc100ns = 0;
+    long long lastFrameQpc100ns = 0;   // capture time of the frame in clientTexture
 
     // One screenshot whose pointer policy differs from the replay session's.
     // A separate session on the same item and device, without an encoder; it

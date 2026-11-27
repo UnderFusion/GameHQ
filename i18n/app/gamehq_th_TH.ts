@@ -621,18 +621,18 @@
       <translation>%1 ms (ผ่อนปรน)</translation>
     </message>
     <message id="gamehq.duration.minutes" numerus="yes">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="66"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="68"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="70"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="72"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="74"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="76"></location>
       <source>%n minute(s)</source>
       <translation>
         <numerusform>%n นาที</numerusform>
       </translation>
     </message>
     <message id="gamehq.duration.seconds" numerus="yes">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="64"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="66"></location>
       <source>%n second(s)</source>
       <translation>
         <numerusform>%n วินาที</numerusform>
@@ -1307,16 +1307,16 @@
       <translation>GitHub ไม่สามารถตรวจสอบความถูกต้องของรุ่นนี้อีกครั้งก่อนติดตั้ง ลองอีกครั้งภายหลัง</translation>
     </message>
     <message id="gamehq.format.fps">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="94"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="96"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="98"></location>
       <source>%1 fps</source>
       <translation>%1 เฟรมต่อวินาที</translation>
     </message>
     <message id="gamehq.format.megabits_per_second">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="121"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="123"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="125"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="127"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="129"></location>
       <source>%1 Mbps</source>
       <translation>%1Mbps</translation>
     </message>
@@ -2874,7 +2874,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.capture.allowlist.add">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="92"></location>
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="250"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="252"></location>
       <source>Add game executable…</source>
       <translation>เพิ่มไฟล์โปรแกรมของเกม…</translation>
     </message>
@@ -2939,32 +2939,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>เลือกเวลา วิธี และตำแหน่งที่ GameHQ บันทึกภาพหน้าจอ</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="192"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="194"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
       <translation>รวมกับสวิตช์หลักในหน้าการแจ้งเตือนและเสียง</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="188"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="190"></location>
       <source>Feedback</source>
       <translation>การตอบสนอง</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="200"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="202"></location>
       <source>Screenshot notification</source>
       <translation>การแจ้งเตือนภาพหน้าจอ</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
       <source>Screenshot sound</source>
       <translation>เสียงเมื่อจับภาพหน้าจอ</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="190"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="192"></location>
       <source>After a screenshot</source>
       <translation>หลังจากจับภาพหน้าจอ</translation>
     </message>
     <message id="gamehq.settings.capture.image.cursor.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="167"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="169"></location>
       <source>Include the Windows mouse pointer in screenshots. Cursors and crosshairs drawn by the game are always kept.</source>
       <translation>รวมตัวชี้เมาส์ของ Windows ไว้ในภาพหน้าจอ เคอร์เซอร์และเป้าเล็งที่เกมวาดจะถูกเก็บไว้เสมอ</translation>
     </message>
@@ -2994,7 +2994,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>JPEG (ไฟล์ขนาดเล็ก)</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="172"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="174"></location>
       <source>JPEG quality</source>
       <translation>คุณภาพ JPEG</translation>
     </message>
@@ -3050,37 +3050,37 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>เกมที่อนุญาตพิเศษ</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="265"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="267"></location>
       <source>Choose the clips folder</source>
       <translation>เลือกโฟลเดอร์คลิป</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="258"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="260"></location>
       <source>Choose the screenshots folder</source>
       <translation>เลือกโฟลเดอร์ภาพหน้าจอ</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="211"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="213"></location>
       <source>Changing a location never moves or deletes existing media.</source>
       <translation>การเปลี่ยนสถานที่จะไม่ย้ายหรือลบสื่อที่มีอยู่</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="207"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="209"></location>
       <source>Storage</source>
       <translation>พื้นที่จัดเก็บ</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="226"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="228"></location>
       <source>Replay clips</source>
       <translation>คลิปรีเพลย์</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="215"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="217"></location>
       <source>Screenshots</source>
       <translation>ภาพหน้าจอ</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="209"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="211"></location>
       <source>Where captures are saved</source>
       <translation>ตำแหน่งที่บันทึกการจับภาพ</translation>
     </message>
@@ -4578,7 +4578,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>พรีเซ็ตการแมป</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.cursor.description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="53"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="55"></location>
       <source>Include the Windows mouse pointer in replays. A change applies to newly recorded video. Cursors and crosshairs drawn by the game are always kept.</source>
       <translation>รวมตัวชี้เมาส์ของ Windows ไว้ในรีเพลย์ การเปลี่ยนแปลงจะมีผลกับวิดีโอที่บันทึกใหม่ เคอร์เซอร์และเป้าเล็งที่เกมวาดจะถูกเก็บไว้เสมอ</translation>
     </message>
@@ -4608,7 +4608,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>บัฟเฟอร์</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.length">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="58"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="60"></location>
       <source>Replay length</source>
       <translation>ความยาวรีเพลย์</translation>
     </message>
@@ -4623,77 +4623,77 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>จัดการบัฟเฟอร์แบบต่อเนื่องที่ใช้สร้างคลิปรีเพลย์ย้อนหลัง</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.desktop">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="169"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="171"></location>
       <source>Desktop audio</source>
       <translation>เสียงเดสก์ท็อป</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.desktop_description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="150"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="152"></location>
       <source>Records everything on the default Windows output, including chat and music apps.</source>
       <translation>บันทึกทุกเสียงจากเอาต์พุตเริ่มต้นของ Windows รวมถึงแอปแชตและเพลง</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.game">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="165"></location>
       <source>Game audio</source>
       <translation>เสียงเกม</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.game_description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="153"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="155"></location>
       <source>Records only the current game, whichever output device it plays on.</source>
       <translation>บันทึกเฉพาะเสียงของเกมปัจจุบัน ไม่ว่าจะเล่นผ่านอุปกรณ์เอาต์พุตใด</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.game_unsupported">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="165"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="167"></location>
       <source>Game audio (needs Windows 11)</source>
       <translation>เสียงเกม (ต้องใช้ Windows 11)</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.label">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="140"></location>
       <source>Audio source</source>
       <translation>แหล่งเสียง</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.off">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="171"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="173"></location>
       <source>Off</source>
       <translation>ปิด</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.off_description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="142"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="144"></location>
       <source>Replay clips are saved without sound.</source>
       <translation>คลิปรีเพลย์จะถูกบันทึกโดยไม่มีเสียง</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.audio_source.unsupported_description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="146"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="148"></location>
       <source>Game audio needs Windows 11. Desktop audio records everything on the default Windows output.</source>
       <translation>เสียงเกมต้องใช้ Windows 11 ส่วนเสียงเดสก์ท็อปจะบันทึกทุกเสียงจากเอาต์พุตเริ่มต้นของ Windows</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.bitrate">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="114"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="116"></location>
       <source>Video bitrate</source>
       <translation>บิตเรตของวิดีโอ</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.bitrate_description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="116"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="118"></location>
       <source>Higher values improve motion detail but use more storage and encoder bandwidth.</source>
       <translation>ค่าที่สูงกว่าจะปรับปรุงรายละเอียดการเคลื่อนไหว แต่ใช้พื้นที่จัดเก็บและแบนด์วิธของตัวเข้ารหัสมากขึ้น</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="86"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="88"></location>
       <source>Balance motion detail, resolution, storage use, and encoder load.</source>
       <translation>ปรับสมดุลรายละเอียดการเคลื่อนไหว ความละเอียด การใช้พื้นที่จัดเก็บ และโหลดตัวเข้ารหัส</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.eyebrow">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="84"></location>
       <source>Encoding</source>
       <translation>การเข้ารหัส</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.frame_rate">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="89"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="91"></location>
       <source>Frame rate</source>
       <translation>อัตราเฟรม</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.resolution">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="102"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="104"></location>
       <source>Resolution</source>
       <translation>ความละเอียด</translation>
     </message>
@@ -4708,32 +4708,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation type="vanished">ระบบเสียง</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.title">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="84"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="86"></location>
       <source>Recording quality</source>
       <translation>คุณภาพการบันทึก</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="197"></location>
       <source>Saved replays go to %1. Failures always notify you.</source>
       <translation>รีเพลย์ที่บันทึกไว้จะอยู่ใน %1 และจะแจ้งเตือนทุกครั้งที่เกิดข้อผิดพลาด</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="191"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="193"></location>
       <source>Feedback</source>
       <translation>การตอบสนอง</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.notification">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="205"></location>
       <source>Clip saved notification</source>
       <translation>การแจ้งเตือนเมื่อบันทึกคลิป</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.sound">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="198"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="200"></location>
       <source>Clip saved sound</source>
       <translation>เสียงแจ้งเมื่อบันทึกคลิป</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.title">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="193"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="195"></location>
       <source>After saving a clip</source>
       <translation>หลังจากบันทึกคลิปแล้ว</translation>
     </message>
