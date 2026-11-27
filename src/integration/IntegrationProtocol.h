@@ -14,6 +14,12 @@ class FrameDecoder
 {
 public:
     bool append(const QByteArray &bytes, QList<Message> &messages, QString &error);
+    // The same, but extracts at most maxFrames complete frames; the rest stay
+    // buffered for the next call (bytes may be empty to continue draining).
+    bool append(const QByteArray &bytes, QList<Message> &messages, QString &error,
+                int maxFrames);
+    bool hasCompleteFrame() const;
+    qsizetype bufferedBytes() const { return m_buffer.size(); }
     void clear();
 
 private:

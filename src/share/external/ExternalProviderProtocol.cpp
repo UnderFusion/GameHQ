@@ -115,6 +115,20 @@ QByteArray encodeFrame(const QJsonObject& object, QString& error)
 
 bool FrameDecoder::append(const QByteArray& bytes, QList<QJsonObject>& messages, QString& error)
 {
+    return append(bytes, messages, error, -1);
+}
+
+bool FrameDecoder::hasCompleteFrame() const
+{
+    if (m_buffer.size() < 4)
+        return false;
+    const quint32 length = qFromLittleEndian<quint32>(m_buffer.constData());
+    return m_buffer.size() >= 4 + static_cast<qsizetype>(length);
+}
+
+bool FrameDecoder::append(const QByteArray& bytes, QList<QJsonObject>& messages, QString& error,
+                          int maxFrames)
+{
     error.clear();
     if (bytes.size() > kMaxBufferedBytes - m_buffer.size()) {
         error = QStringLiteral("input queue exceeded its limit");
@@ -122,6 +136,7 @@ bool FrameDecoder::append(const QByteArray& bytes, QList<QJsonObject>& messages,
     }
     m_buffer.append(bytes);
 
+    int taken = 0;
     while (m_buffer.size() >= 4) {
         const quint32 length = qFromLittleEndian<quint32>(m_buffer.constData());
         if (length == 0 || length > kMaxFrameBytes) {
@@ -129,8 +144,9 @@ bool FrameDecoder::append(const QByteArray& bytes, QList<QJsonObject>& messages,
             return false;
         }
         const qsizetype frameSize = 4 + static_cast<qsizetype>(length);
-        if (m_buffer.size() < frameSize)
+        if (m_buffer.size() < frameSize || (maxFrames >= 0 && taken >= maxFrames))
             return true;
+        ++taken;
 
         QStringDecoder decoder(QStringDecoder::Utf8);
         const QString text = decoder.decode(m_buffer.mid(4, length));

@@ -2,6 +2,7 @@
 
 #include <QJsonObject>
 #include <QLocalSocket>
+#include <QTimer>
 
 #include <utility>
 
@@ -65,6 +66,10 @@ void LocalIntegrationServer::acceptConnections()
         state.peer = integration::identifyLocalPeer(socket);
         qInfo().noquote() << "Integration client" << state.id << "is"
                           << integration::describeLocalPeer(state.peer);
+        // Qt's socket buffer is unlimited by default: a burst arriving while
+        // the GUI thread is busy would sit there in full. Hold no more than
+        // the decoder may; the rest waits in the pipe (the writer's backpressure).
+        socket->setReadBufferSize(integration::MaximumBufferedBytes);
         m_clients.insert(socket, state);
         emit clientConnected(state.id);
         connect(socket, &QLocalSocket::readyRead, this,
@@ -106,12 +111,21 @@ void LocalIntegrationServer::readClient(QLocalSocket *socket)
     if (it == m_clients.end())
         return;
     const quint64 id = it->id;
+    it->drainScheduled = false;
     QList<integration::Message> messages;
     QString error;
-    if (!it->decoder.append(socket->readAll(), messages, error)) {
+    // Take only what the decoder has room for, and decode a bounded number of
+    // frames per turn so one busy client cannot hold the GUI thread. Valid
+    // traffic is never rejected for arriving faster than it is handled.
+    const qsizetype room = integration::MaximumBufferedBytes - it->decoder.bufferedBytes();
+    const QByteArray incoming = room > 0
+        ? socket->read(qMin<qint64>(socket->bytesAvailable(), room)) : QByteArray();
+    m_peakBufferedBytes = qMax(m_peakBufferedBytes, it->decoder.bufferedBytes() + incoming.size());
+    if (!it->decoder.append(incoming, messages, error, kMaxMessagesPerTurn)) {
         rejectClient(socket, error);
         return;
     }
+    m_peakMessagesPerRead = qMax(m_peakMessagesPerRead, int(messages.size()));
     // One read can carry several frames, and messageReceived is delivered
     // synchronously. A handler is allowed to disconnect this client - a
     // malformed lifecycle message does exactly that - which erases the entry
@@ -124,6 +138,14 @@ void LocalIntegrationServer::readClient(QLocalSocket *socket)
         if (current == m_clients.cend() || current->id != id)
             return;
         emit messageReceived(id, message);
+    }
+    // More already here? Continue next turn - once, however often we get here.
+    const auto again = m_clients.find(socket);
+    if (again == m_clients.end() || again->id != id || again->drainScheduled)
+        return;
+    if (again->decoder.hasCompleteFrame() || socket->bytesAvailable() > 0) {
+        again->drainScheduled = true;
+        QTimer::singleShot(0, socket, [this, socket] { readClient(socket); });
     }
 }
 

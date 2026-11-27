@@ -14,6 +14,8 @@ class LocalIntegrationServer final : public QObject
     Q_OBJECT
 public:
     static constexpr auto ServerName = "GameHQ.Local.v1";
+    // Frames one client may have dispatched in one event-loop turn.
+    static constexpr int kMaxMessagesPerTurn = 64;
 
     explicit LocalIntegrationServer(QObject *parent = nullptr);
     ~LocalIntegrationServer() override;
@@ -29,6 +31,10 @@ public:
     // The process behind a connected client, read from the pipe when it was
     // accepted; empty for an unknown id.
     integration::LocalPeer clientPeer(quint64 clientId) const;
+    // Diagnostics: the most bytes taken from one client and held undecoded at
+    // once, and the most frames dispatched from one read.
+    qsizetype peakBufferedBytes() const { return m_peakBufferedBytes; }
+    int peakMessagesPerRead() const { return m_peakMessagesPerRead; }
 
 signals:
     void clientConnected(quint64 clientId);
@@ -41,6 +47,7 @@ private:
         quint64 id = 0;
         integration::FrameDecoder decoder;
         integration::LocalPeer peer;
+        bool drainScheduled = false;   // one queued continuation at most
     };
 
     void acceptConnections();
@@ -50,4 +57,6 @@ private:
     QLocalServer m_server;
     QHash<QLocalSocket *, ClientState> m_clients;
     quint64 m_nextClientId = 1;
+    qsizetype m_peakBufferedBytes = 0;
+    int m_peakMessagesPerRead = 0;
 };

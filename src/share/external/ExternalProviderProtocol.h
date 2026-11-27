@@ -74,6 +74,11 @@ public:
     // UTF-8/JSON, not an object, missing type, or an input queue over its
     // limit); the connection must then be dropped.
     bool append(const QByteArray& bytes, QList<QJsonObject>& messages, QString& error);
+    // At most maxFrames per call; the rest stay buffered (bytes may be empty).
+    bool append(const QByteArray& bytes, QList<QJsonObject>& messages, QString& error,
+                int maxFrames);
+    bool hasCompleteFrame() const;
+    qsizetype bufferedBytes() const { return m_buffer.size(); }
 
 private:
     QByteArray m_buffer;

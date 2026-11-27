@@ -571,6 +571,15 @@ gamehq_add_test(tst_integrationservice
     "${CMAKE_SOURCE_DIR}/src/integration/IntegrationService.h")
 target_link_libraries(tst_integrationservice PRIVATE Qt6::Network)
 
+# t42/A12: both local IPC endpoints under bursts, stalls and malformed input.
+gamehq_add_test(tst_ipcbounds
+    tst_ipcbounds.cpp
+    "${CMAKE_SOURCE_DIR}/src/integration/IntegrationProtocol.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.h")
+target_link_libraries(tst_ipcbounds PRIVATE Qt6::Network psapi)
+
 add_executable(integration_server_fixture
     integration_server_fixture.cpp
     "${CMAKE_SOURCE_DIR}/src/integration/IntegrationProtocol.cpp"

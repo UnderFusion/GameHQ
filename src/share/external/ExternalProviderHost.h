@@ -66,8 +66,17 @@ private:
         ExternalProvider* provider = nullptr;
         int violations = 0;
         bool handshaken = false;
+        bool drainScheduled = false;   // one queued continuation at most
     };
 
+public:
+    // Frames one provider may have dispatched in one event-loop turn.
+    static constexpr int kMaxMessagesPerTurn = 64;
+    // Diagnostics: most bytes taken from one provider and held undecoded at once.
+    qsizetype peakBufferedBytes() const { return m_peakBufferedBytes; }
+    int peakMessagesPerRead() const { return m_peakMessagesPerRead; }
+
+private:
     void acceptConnections();
     void readSocket(QLocalSocket* socket);
     void dispatch(const std::shared_ptr<Conn>& conn, const QJsonObject& message);
@@ -87,6 +96,8 @@ private:
     ProviderRegistry* m_registry;
     QLocalServer m_server;
     QHash<QLocalSocket*, std::shared_ptr<Conn>> m_conns;
+    qsizetype m_peakBufferedBytes = 0;
+    int m_peakMessagesPerRead = 0;
     QString m_appVersion;
     int m_handshakeTimeoutMs = kDefaultHandshakeTimeoutMs;
     int m_targetsTimeoutMs = 10000;

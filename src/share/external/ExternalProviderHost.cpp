@@ -80,6 +80,8 @@ void ExternalProviderHost::acceptConnections()
                            QStringLiteral("handshake timeout"));
         });
         conn->handshakeTimer->start();
+        // Bounded transport buffer: no more than the decoder may hold.
+        socket->setReadBufferSize(kMaxBufferedBytes);
         m_conns.insert(socket, conn);
         connect(socket, &QLocalSocket::readyRead, this, [this, socket] { readSocket(socket); });
         connect(socket, &QLocalSocket::disconnected, this,
@@ -93,17 +95,31 @@ void ExternalProviderHost::readSocket(QLocalSocket* socket)
     if (it == m_conns.cend())
         return;
     const std::shared_ptr<Conn> conn = *it;   // keeps the state alive across a mid-loop close
+    conn->drainScheduled = false;
     QList<QJsonObject> messages;
     QString error;
-    if (!conn->decoder.append(socket->readAll(), messages, error)) {
+    // Only what the decoder has room for, and a bounded number of frames per
+    // turn; valid traffic is never rejected for arriving faster than handled.
+    const qsizetype room = kMaxBufferedBytes - conn->decoder.bufferedBytes();
+    const QByteArray incoming = room > 0
+        ? socket->read(qMin<qint64>(socket->bytesAvailable(), room)) : QByteArray();
+    m_peakBufferedBytes = qMax(m_peakBufferedBytes, conn->decoder.bufferedBytes() + incoming.size());
+    if (!conn->decoder.append(incoming, messages, error, kMaxMessagesPerTurn)) {
         // The stream can no longer be trusted, so there is nothing to reply to.
         closeConnection(socket, error);
         return;
     }
+    m_peakMessagesPerRead = qMax(m_peakMessagesPerRead, int(messages.size()));
     for (const QJsonObject& message : std::as_const(messages)) {
         if (!m_conns.contains(socket))
             return;   // a handler closed this connection
         dispatch(conn, message);
+    }
+    if (!m_conns.contains(socket) || conn->drainScheduled)
+        return;
+    if (conn->decoder.hasCompleteFrame() || socket->bytesAvailable() > 0) {
+        conn->drainScheduled = true;
+        QTimer::singleShot(0, socket, [this, socket] { readSocket(socket); });
     }
 }
 

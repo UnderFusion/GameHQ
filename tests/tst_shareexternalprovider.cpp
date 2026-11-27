@@ -11,6 +11,7 @@
 #include <QSignalSpy>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QThread>
 #include <QUuid>
 #include <QtEndian>
 
@@ -176,6 +177,58 @@ private slots:
         QCOMPARE(row.value("available").toBool(), true);
         // Self-declared, so it is always presented as third-party.
         QVERIFY(row.value("privacy").toString().length() > 10);
+    }
+
+    // ── t42: bursts and malformed framing ───────────────────────────────
+    void aValidBurstWhileGameHQStallsKeepsTheProvider()
+    {
+        Service s;
+        ExternalProviderHost host(s.registry());
+        QString err;
+        QVERIFY(host.start(err, m_pipe));
+        Peer peer;
+        QVERIFY(!register_(peer, "ext.burst", { "image" }).isEmpty());
+        // ~1 MB of valid, harmless frames (answers to no pending query),
+        // written while GameHQ's thread is busy.
+        QByteArray burst;
+        for (int i = 0; i < 3000; ++i) {
+            QString e;
+            burst += encodeFrame({ { "type", "targets.result" }, { "requestId", QString("stale%1").arg(i) },
+                                   { "targets", QJsonArray{} }, { "pad", QString(300, 'x') } }, e);
+        }
+        peer.sendRaw(burst);
+        QThread::msleep(800);
+        QElapsedTimer t;
+        t.start();
+        while (t.elapsed() < 3000)
+            peer.pump(10);
+        qInfo() << burst.size() << "bytes: peak taken" << host.peakBufferedBytes()
+                << "bytes, max frames per read" << host.peakMessagesPerRead();
+        QCOMPARE(peer.socket.state(), QLocalSocket::ConnectedState);
+        QVERIFY(s.registry()->find("ext.burst"));
+        QVERIFY(host.peakBufferedBytes() <= kMaxBufferedBytes);
+        QVERIFY(host.peakMessagesPerRead() <= ExternalProviderHost::kMaxMessagesPerTurn);
+        // Still a working provider afterwards.
+        const QString file = capture("after-burst.png");
+        QVERIFY(s.open(file));
+        QVERIFY(s.requestTargets("ext.burst"));
+        QVERIFY(!peer.waitFor("targets.request").isEmpty());
+    }
+
+    void anOversizedLengthIsRefusedBeforeItsPayload()
+    {
+        Service s;
+        ExternalProviderHost host(s.registry());
+        QString err;
+        QVERIFY(host.start(err, m_pipe));
+        Peer peer;
+        QVERIFY(!register_(peer, "ext.huge", { "image" }).isEmpty());
+        QByteArray header(4, '\0');
+        qToLittleEndian<quint32>(0x7fffffffu, header.data());
+        peer.sendRaw(header);   // claims 2 GiB; nothing more is sent
+        QVERIFY(peer.waitClosed());
+        QVERIFY(!s.registry()->find("ext.huge"));
+        QVERIFY(host.peakBufferedBytes() < 1024);
     }
 
     void newerAndOlderProtocolRanges()
