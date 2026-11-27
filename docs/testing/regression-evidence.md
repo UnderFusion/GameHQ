@@ -12,21 +12,23 @@ those branches keep stable manifest verification.
 ## Desktop-safe checkpoint
 
 Use a clean checkout and a fresh build directory. Install or select the
-project's pinned Qt 6.8.3 and MinGW 13.1 toolchain. This example uses the
+project's pinned Qt 6.11.3 and MinGW 13.1 toolchain. This example uses the
 project-local paths from the developer setup. In a separate worktree, point
 `$toolchain` at the same installed toolchain. Dependencies are resolved by
 CMake from the pinned sources during a new configure.
 
 ```powershell
 $toolchain = "$PWD/tools"
-$qt = "$toolchain/Qt/6.8.3/mingw_64"
-$mingw = "$toolchain/Qt/Tools/mingw1310_64/bin"
+. ./packaging/resolve-qt.ps1
+$kit = Resolve-GameHQQtKit -Root $PWD.Path
+$qt = $kit.Prefix
+$mingw = $kit.CompilerBin
 $cmake = "$toolchain/cmake/bin/cmake.exe"
 $ninja = "$toolchain/Ninja/1.13.2/ninja.exe"
 $env:PATH = "$mingw;$qt/bin;$env:PATH"
 & $cmake -S . -B out-evidence -G Ninja -DCMAKE_BUILD_TYPE=Release `
   -DGAMEHQ_BUILD_TESTS=ON -DGAMEHQ_RELEASE_TRUST_TEST_KEYS=OFF `
-  "-DCMAKE_PREFIX_PATH=$qt" "-DCMAKE_C_COMPILER=$mingw/gcc.exe" `
+  "-DCMAKE_PREFIX_PATH=$qt" "-DQt6_DIR=$qt/lib/cmake/Qt6" "-DCMAKE_C_COMPILER=$mingw/gcc.exe" `
   "-DCMAKE_CXX_COMPILER=$mingw/g++.exe" "-DCMAKE_MAKE_PROGRAM=$ninja"
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 

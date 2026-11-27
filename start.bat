@@ -7,9 +7,6 @@ echo [GameHQ] v%VER%
 
 set "CMAKE=%~dp0tools\cmake\bin\cmake.exe"
 set "NINJA=%~dp0tools\ninja.exe"
-set "QT=%~dp0tools\Qt\6.8.3\mingw_64"
-set "MINGW=%~dp0tools\Qt\Tools\mingw1310_64\bin"
-set "PATH=%MINGW%;%QT%\bin;%PATH%"
 set "BUILD_OK=0"
 
 if not exist "%CMAKE%" (
@@ -17,15 +14,17 @@ if not exist "%CMAKE%" (
     goto restart
 )
 
-set "NEED_CONFIG=0"
-if not exist "out\build.ninja" set "NEED_CONFIG=1"
-if not exist "out\CMakeCache.txt" set "NEED_CONFIG=1"
-if exist "out\CMakeCache.txt" (
-    findstr /I /L /C:"CMAKE_HOME_DIRECTORY:INTERNAL=%CD:\=/%" "out\CMakeCache.txt" >nul 2>&1
-    if errorlevel 1 set "NEED_CONFIG=1"
-    findstr /L /C:"GAMEHQ_ENABLE_PSEUDO_LOCALES:BOOL=ON" "out\CMakeCache.txt" >nul 2>&1
-    if errorlevel 1 set "NEED_CONFIG=1"
+set "QT="
+for /f "tokens=1-3 delims=|" %%I in ('powershell.exe -NoProfile -ExecutionPolicy Bypass -File "packaging\select-dev-qt.ps1"') do (
+    set "QT=%%I"
+    set "MINGW=%%J"
+    set "NEED_CONFIG=%%K"
 )
+if not defined QT (
+    echo [GameHQ] ERROR: the developer Qt kit could not be selected. See docs\dev-setup.md.
+    exit /b 1
+)
+set "PATH=%MINGW%;%QT%\bin;%PATH%"
 
 if "%NEED_CONFIG%"=="1" (
     echo [GameHQ] Configuring the developer build tree in out\...
@@ -34,6 +33,7 @@ if "%NEED_CONFIG%"=="1" (
     "%CMAKE%" -S . -B out --fresh -G Ninja -DCMAKE_BUILD_TYPE=Debug ^
       -DGAMEHQ_ENABLE_PSEUDO_LOCALES=ON ^
       "-DCMAKE_PREFIX_PATH=%QT%" ^
+      "-DQt6_DIR=%QT:\=/%/lib/cmake/Qt6" ^
       "-DCMAKE_C_COMPILER=%MINGW%\gcc.exe" ^
       "-DCMAKE_CXX_COMPILER=%MINGW%\g++.exe" ^
       "-DCMAKE_MAKE_PROGRAM=%NINJA%"

@@ -32,8 +32,7 @@ if ([string]::IsNullOrWhiteSpace($TrustMode)) {
 . (Join-Path $PSScriptRoot 'resolve-build-directory.ps1')
 . (Join-Path $PSScriptRoot 'resolve-qt.ps1')
 $buildRoot = Resolve-BuildDirectory -Root $root -BuildDirectory $BuildDirectory
-$requireReleaseQt = $GitTag -or $ManifestMode -eq 'production' -or $TrustMode -eq 'signed'
-$null = Resolve-GameHQQtKit -Root $root -BuildDirectory $buildRoot -RequireReleaseVersion:$requireReleaseQt
+$null = Resolve-GameHQQtKit -Root $root -BuildDirectory $buildRoot -RequireReleaseVersion
 $dist = Join-Path $root 'dist'
 $portableRoot = Join-Path $dist 'GameHQ'
 $payloadRoot = Join-Path $dist '.program-payload'

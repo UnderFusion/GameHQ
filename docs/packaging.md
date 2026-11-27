@@ -22,10 +22,11 @@ together under `app/`; it must not be scattered through the package root.
 Reference: [Qt for Windows - Deployment](https://doc.qt.io/qt-6/windows-deployment.html).
 
 The Windows release workflow installs the Qt and MinGW SDKs recorded in
-`packaging/qt-toolchain.psd1`. The packaging scripts read the actual kit from
-the selected CMake build directory. Tagged, signed, and production-manifest
-packages enforce the release Qt version. Local development packages can use
-another supported kit with its own runtime DLLs and SPDX documents.
+`packaging/qt-toolchain.psd1`. Developer builds and localization tools default
+to that pin. The packaging scripts read the actual kit from the selected CMake
+build directory and enforce the pin for every release layout, including local
+fixture builds. A developer can explicitly select another supported kit for
+the local `build/` package with its own runtime DLLs and SPDX documents.
 
 Qt Quick defaults to Direct3D 11 on Windows, and HDR capture uses D3D11 and
 `D3DCompile`. The package takes `d3dcompiler_47.dll` from the selected Qt kit

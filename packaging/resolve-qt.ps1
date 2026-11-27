@@ -4,9 +4,13 @@ function Resolve-GameHQQtKit {
     param(
         [Parameter(Mandatory = $true)][string]$Root,
         [string]$BuildDirectory,
+        [string]$QtPrefix,
         [switch]$RequireReleaseVersion
     )
 
+    if ($BuildDirectory -and $QtPrefix) {
+        throw 'Choose a configured build directory or an explicit Qt prefix.'
+    }
     $pin = Import-PowerShellDataFile (Join-Path $PSScriptRoot 'qt-toolchain.psd1')
     if ($BuildDirectory) {
         $cachePath = Join-Path $BuildDirectory 'CMakeCache.txt'
@@ -22,10 +26,19 @@ function Resolve-GameHQQtKit {
         $prefix = [IO.Path]::GetFullPath((Join-Path $qtConfig '..\..\..'))
         $compilerBin = Split-Path -Parent $compiler
     } else {
-        $prefix = Join-Path $Root "tools\Qt\$($pin.Version)\$($pin.KitDirectory)"
+        if (-not $QtPrefix) {
+            $QtPrefix = "tools\Qt\$($pin.Version)\$($pin.KitDirectory)"
+            $RequireReleaseVersion = $true
+        }
+        $prefix = if ([IO.Path]::IsPathRooted($QtPrefix)) {
+            [IO.Path]::GetFullPath($QtPrefix)
+        } else {
+            [IO.Path]::GetFullPath((Join-Path $Root $QtPrefix))
+        }
         $compilerBin = Join-Path $Root "tools\Qt\Tools\$($pin.CompilerDirectory)\bin"
     }
 
+    $prefix = $prefix.TrimEnd('\', '/')
     $bin = Join-Path $prefix 'bin'
     $qtPaths = Join-Path $bin 'qtpaths.exe'
     foreach ($required in @($qtPaths, (Join-Path $prefix 'lib\cmake\Qt6\Qt6Config.cmake'),
@@ -43,7 +56,7 @@ function Resolve-GameHQQtKit {
         [IO.Path]::GetFullPath($reportedPrefix).TrimEnd('\', '/') -ne $prefix.TrimEnd('\', '/')) {
         throw "The selected Qt kit reports a different installation prefix: $reportedPrefix"
     }
-    if ((-not $BuildDirectory -or $RequireReleaseVersion) -and $version -ne $pin.Version) {
+    if ($RequireReleaseVersion -and $version -ne $pin.Version) {
         throw "The configured release kit requires Qt $($pin.Version), found $version."
     }
 

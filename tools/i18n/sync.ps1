@@ -9,15 +9,9 @@ $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $syncScript = Join-Path $PSScriptRoot 'sync.py'
 
 if (-not $LUpdate) {
-    $bundled = Join-Path $projectRoot 'tools\Qt\6.8.3\mingw_64\bin\lupdate.exe'
-    if (Test-Path -LiteralPath $bundled) {
-        $LUpdate = $bundled
-    } else {
-        $command = Get-Command lupdate -ErrorAction SilentlyContinue
-        if ($command) {
-            $LUpdate = $command.Source
-        }
-    }
+    . (Join-Path $projectRoot 'packaging\resolve-qt.ps1')
+    $kit = Resolve-GameHQQtKit -Root $projectRoot -QtPrefix $env:GAMEHQ_DEV_QT_PREFIX
+    $LUpdate = Join-Path $kit.Bin 'lupdate.exe'
 }
 
 if (-not $LUpdate -or -not (Test-Path -LiteralPath $LUpdate)) {

@@ -103,7 +103,7 @@ if ($foreignReleaseNotes.Count -gt 0) {
 
 if (-not $SkipPackage) {
     $build = Resolve-BuildDirectory -Root $root -BuildDirectory $BuildDirectory
-    $qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $build
+    $qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $build -RequireReleaseVersion
     $payload = if ([IO.Path]::IsPathRooted($PayloadDirectory)) {
         [IO.Path]::GetFullPath($PayloadDirectory)
     } else { [IO.Path]::GetFullPath((Join-Path $root $PayloadDirectory)) }

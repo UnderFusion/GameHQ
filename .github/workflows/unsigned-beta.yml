@@ -143,6 +143,7 @@ jobs:
             -DGAMEHQ_ENABLE_PSEUDO_LOCALES=OFF `
             -DGAMEHQ_RELEASE_TRUST_TEST_KEYS=OFF `
             "-DCMAKE_PREFIX_PATH=$($kit.Prefix)" `
+            "-DQt6_DIR=$($kit.Prefix)/lib/cmake/Qt6" `
             "-DCMAKE_C_COMPILER=$mingw\gcc.exe" `
             "-DCMAKE_CXX_COMPILER=$mingw\g++.exe" `
             "-DCMAKE_MAKE_PROGRAM=$env:NINJA_EXE"

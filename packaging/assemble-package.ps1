@@ -65,7 +65,7 @@ if ($target -eq $payloadTarget -and $Mode -ne 'Neutral') {
     throw 'The program payload must be assembled with -Mode Neutral.'
 }
 
-$qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $source
+$qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $source -RequireReleaseVersion:($target -ne $devTarget)
 $qtBin = $qt.Bin
 $qtSbom = @(Get-GameHQQtSbom -Qt $qt)
 $runtimeInputs = Get-GameHQQtRuntimeInputs -Qt $qt

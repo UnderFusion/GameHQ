@@ -193,7 +193,7 @@ Authenticode-signed. See the [Code signing policy](docs/code-signing-policy.md).
 <details>
 <summary><strong>Building from source</strong></summary>
 
-GameHQ uses C++20, Qt 6.8.3/QML, CMake, Ninja, SQLite, Windows Graphics Capture,
+GameHQ uses C++20, Qt 6.11.3/QML, CMake, Ninja, SQLite, Windows Graphics Capture,
 Media Foundation, WASAPI, and Windows input APIs.
 
 See [Development Setup](docs/dev-setup.md) for the toolchain and

@@ -24,8 +24,7 @@ $root = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 # selection is a release-evidence defect, not something tests may mask.
 $buildRoot = Resolve-BuildDirectory -Root $root -BuildDirectory $BuildDirectory
 $buildLabel = Get-BuildDirectoryLabel -Root $root -BuildDirectory $buildRoot
-$requireReleaseQt = $GitTag -or $ManifestMode -eq 'production' -or $TrustMode -eq 'signed'
-$qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $buildRoot -RequireReleaseVersion:$requireReleaseQt
+$qt = Resolve-GameHQQtKit -Root $root -BuildDirectory $buildRoot -RequireReleaseVersion
 $sourceCommit = Get-SourceCommit -Root $root
 & (Join-Path $PSScriptRoot 'assert-privacy.ps1') -ReleaseDirectory $ReleaseDirectory
 & (Join-Path $PSScriptRoot 'assert-license-compliance.ps1') -BuildDirectory $buildRoot
