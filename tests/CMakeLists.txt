@@ -63,6 +63,19 @@ foreach(suite IN ITEMS interfacescaling overlaylayout overlaypanels)
 endforeach()
 set_tests_properties(tst_overlaypanels PROPERTIES ENVIRONMENT "QT_QUICK_BACKEND=software")
 
+gamehq_add_test(tst_mediasessionprototype
+    tst_mediasessionprototype.cpp
+    "${CMAKE_SOURCE_DIR}/spike/media-session/MediaSessionPrototype.h"
+    "${CMAKE_SOURCE_DIR}/spike/media-session/MediaSessionPrototype.cpp")
+target_include_directories(tst_mediasessionprototype PRIVATE
+    "${CMAKE_SOURCE_DIR}/spike/media-session")
+
+# The Windows broker probe is opt-in and never runs with CTest or GameHQ.
+add_executable(media_session_broker_probe EXCLUDE_FROM_ALL
+    "${CMAKE_SOURCE_DIR}/spike/media-session/WindowsBrokerProbe.cpp")
+set_target_properties(media_session_broker_probe PROPERTIES WIN32_EXECUTABLE FALSE)
+target_link_libraries(media_session_broker_probe PRIVATE runtimeobject uuid)
+
 gamehq_add_test(tst_gameidentity tst_gameidentity.cpp)
 
 # p7-1: every built-in key is explicitly live or restart-required. The policy
