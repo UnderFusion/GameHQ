@@ -2230,29 +2230,29 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>도구 표시</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="336"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>일부 파일을 삭제하지 못했습니다. 다른 프로그램에서 사용 중일 수 있습니다. 해당 파일을 사용 중인 프로그램을 모두 닫고 다시 시도하세요.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="341"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="343"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>파일을 삭제하지 못했습니다. 다른 프로그램에서 사용 중일 수 있습니다. 이 파일을 사용 중인 프로그램을 닫고 다시 시도하세요.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="347"></location>
-      <location filename="src/app/App_CaptureWiring.cpp" line="378"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="349"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="380"></location>
       <source>Couldn't delete</source>
       <translation>삭제하지 못했습니다</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="367"></location>
       <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
       <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
       <translation>일부 파일이 감시 폴더에 있습니다. GameHQ는 감시 폴더의 원본을 삭제하지 않으므로 해당 파일은 변경되지 않았습니다.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="372"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="374"></location>
       <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
       <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
       <translation>이 파일은 감시 폴더에 있습니다. GameHQ는 감시 폴더의 원본을 삭제하지 않으므로 이 파일은 변경되지 않았습니다.</translation>
@@ -2283,7 +2283,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>캡처 요청을 받았습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App_CaptureWiring.cpp" line="309"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="311"></location>
       <source>Reason: %1</source>
       <translation>원인: %1</translation>
     </message>
@@ -2348,7 +2348,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>리플레이 저장을 요청했습니다</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="290"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="292"></location>
       <source>Replay saved</source>
       <translation>리플레이 저장됨</translation>
     </message>
@@ -2363,17 +2363,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>스크린샷 저장됨</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="292"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ가 기본 설정으로 시작되었습니다. 이전 설정 파일은 그대로 보관되어 손실된 항목이 없습니다.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="281"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>Settings could not be read</source>
       <translation>설정을 읽을 수 없습니다</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="313"></location>
+      <location filename="src/app/App.cpp" line="319"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>일부 인터페이스 소리를 사용할 수 없습니다</translation>
     </message>
@@ -2874,9 +2874,19 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.capture.allowlist.add">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="92"></location>
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="236"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="243"></location>
       <source>Add game executable…</source>
       <translation>게임 실행 파일 추가…</translation>
+    </message>
+    <message id="gamehq.settings.capture.background.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <source>Keep capturing the last active game when you switch to another app.</source>
+      <translation>다른 앱으로 전환해도 마지막으로 활성화한 게임을 계속 캡처합니다.</translation>
+    </message>
+    <message id="gamehq.settings.capture.background.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="111"></location>
+      <source>Background capture</source>
+      <translation>백그라운드 캡처</translation>
     </message>
     <message id="gamehq.settings.capture.border.denied">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="49"></location>
@@ -2884,7 +2894,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Windows가 이 세션에서 테두리 숨기기를 허용하지 않았습니다.</translation>
     </message>
     <message id="gamehq.settings.capture.border.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="122"></location>
       <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
       <translation>Windows가 지원하는 경우 테두리 숨기기를 요청합니다. Windows 10은 지원하지 않습니다.</translation>
     </message>
@@ -2894,7 +2904,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Windows가 테두리 숨기기를 적용 중이라고 보고합니다. 그래도 테두리가 보일 수 있습니다.</translation>
     </message>
     <message id="gamehq.settings.capture.border.next_session">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="127"></location>
       <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
       <translation>다음 캡처 세션부터 적용됩니다. 변경해도 현재 세션과 리플레이 버퍼는 계속 실행됩니다.</translation>
     </message>
@@ -2904,12 +2914,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>이 세션에서는 테두리 숨기기를 요청하지 않았습니다.</translation>
     </message>
     <message id="gamehq.settings.capture.border.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
       <source>Windows capture border</source>
       <translation>Windows 캡처 테두리</translation>
     </message>
     <message id="gamehq.settings.capture.border.toggle">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="125"></location>
       <source>Request border suppression</source>
       <translation>테두리 숨기기 요청</translation>
     </message>
@@ -2929,62 +2939,62 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ에서 스크린샷을 저장할 시점, 방식 및 위치를 선택합니다.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="178"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="185"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
       <translation>알림 및 소리 페이지의 마스터 스위치와 함께 적용됩니다.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="174"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
       <source>Feedback</source>
       <translation>피드백</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="186"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
       <source>Screenshot notification</source>
       <translation>스크린샷 알림</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="188"></location>
       <source>Screenshot sound</source>
       <translation>스크린샷 소리</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="176"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="183"></location>
       <source>After a screenshot</source>
       <translation>스크린샷 촬영 후</translation>
     </message>
     <message id="gamehq.settings.capture.image.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="140"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="147"></location>
       <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
       <translation>PNG는 무손실 형식이며, JPEG는 일부 화질을 줄이는 대신 파일 크기가 작습니다.</translation>
     </message>
     <message id="gamehq.settings.capture.image.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
       <source>Image</source>
       <translation>이미지</translation>
     </message>
     <message id="gamehq.settings.capture.image.format">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
       <source>Format</source>
       <translation>형식</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="152"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="159"></location>
       <source>JPEG (smaller files)</source>
       <translation>JPEG(작은 파일)</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="165"></location>
       <source>JPEG quality</source>
       <translation>JPEG 품질</translation>
     </message>
     <message id="gamehq.settings.capture.image.png">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="157"></location>
       <source>PNG (lossless)</source>
       <translation>PNG(무손실)</translation>
     </message>
     <message id="gamehq.settings.capture.image.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="145"></location>
       <source>Format and quality</source>
       <translation>형식 및 품질</translation>
     </message>
@@ -3030,37 +3040,37 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>허용 목록의 게임</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="258"></location>
       <source>Choose the clips folder</source>
       <translation>클립 폴더 선택</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="244"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
       <source>Choose the screenshots folder</source>
       <translation>스크린샷 폴더 선택</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
       <source>Changing a location never moves or deletes existing media.</source>
       <translation>위치를 변경해도 기존 미디어는 이동하거나 삭제되지 않습니다.</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="200"></location>
       <source>Storage</source>
       <translation>저장소</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="212"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="219"></location>
       <source>Replay clips</source>
       <translation>리플레이 클립</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="208"></location>
       <source>Screenshots</source>
       <translation>스크린샷</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="202"></location>
       <source>Where captures are saved</source>
       <translation>캡처 저장 위치</translation>
     </message>
@@ -5419,93 +5429,123 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Steam Input may also use this button</source>
       <translation>Steam Input도 이 버튼을 사용할 수 있습니다</translation>
     </message>
+    <message id="gamehq.tray.automatic_capture">
+      <location filename="src/tray/TrayIcon.cpp" line="278"></location>
+      <source>Return to Automatic Capture</source>
+      <translation>자동 캡처로 돌아가기</translation>
+    </message>
     <message id="gamehq.tray.exit">
-      <location filename="src/tray/TrayIcon.cpp" line="244"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="282"></location>
       <source>Exit</source>
       <translation>종료</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
-      <location filename="src/tray/TrayIcon.cpp" line="228"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="257"></location>
       <source>Open Gallery</source>
       <translation>갤러리 열기</translation>
     </message>
+    <message id="gamehq.tray.pin_current_game">
+      <location filename="src/tray/TrayIcon.cpp" line="272"></location>
+      <source>Pin Current Game</source>
+      <translation>현재 게임 고정</translation>
+    </message>
     <message id="gamehq.tray.rescan_captures">
-      <location filename="src/tray/TrayIcon.cpp" line="232"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="261"></location>
       <source>Rescan Captures</source>
       <translation>캡처 다시 검색</translation>
     </message>
     <message id="gamehq.tray.save_replay">
-      <location filename="src/tray/TrayIcon.cpp" line="240"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="269"></location>
       <source>Save Replay</source>
       <translation>리플레이 저장</translation>
     </message>
+    <message id="gamehq.tray.select_capture_target">
+      <location filename="src/tray/TrayIcon.cpp" line="275"></location>
+      <source>Select Capture Target</source>
+      <translation>캡처 대상 선택</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.paused">
+      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <source>Paused</source>
+      <translation>일시 중지됨</translation>
+    </message>
     <message id="gamehq.tray.status.capture.ready">
-      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="201"></location>
       <source>Ready</source>
       <translation>준비됨</translation>
     </message>
     <message id="gamehq.tray.status.capture.screenshots_only">
-      <location filename="src/tray/TrayStatus.cpp" line="189"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="211"></location>
       <source>Screenshots only</source>
       <translation>스크린샷만</translation>
     </message>
     <message id="gamehq.tray.status.capture.starting">
-      <location filename="src/tray/TrayStatus.cpp" line="184"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="206"></location>
       <source>Starting</source>
       <translation>시작 중</translation>
     </message>
     <message id="gamehq.tray.status.capture.waiting">
-      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
       <source>Waiting for a supported game</source>
       <translation>지원 게임 대기 중</translation>
     </message>
     <message id="gamehq.tray.status.game.none">
-      <location filename="src/tray/TrayStatus.cpp" line="210"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="232"></location>
       <source>None detected</source>
       <translation>감지 없음</translation>
     </message>
+    <message id="gamehq.tray.status.state.background">
+      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
+      <source>Background game</source>
+      <translation>백그라운드 게임</translation>
+    </message>
     <message id="gamehq.tray.status.state.capture_problem">
-      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="168"></location>
       <source>Capture problem</source>
       <translation>캡처 문제</translation>
     </message>
     <message id="gamehq.tray.status.state.clip_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="151"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="163"></location>
       <source>Clip saved</source>
       <translation>클립 저장됨</translation>
     </message>
     <message id="gamehq.tray.status.state.game_detected">
-      <location filename="src/tray/TrayStatus.cpp" line="165"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="183"></location>
       <source>Game detected</source>
       <translation>게임 감지됨</translation>
     </message>
     <message id="gamehq.tray.status.state.idle">
-      <location filename="src/tray/TrayStatus.cpp" line="169"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="187"></location>
       <source>Idle</source>
       <translation>대기 중</translation>
     </message>
+    <message id="gamehq.tray.status.state.pinned">
+      <location filename="src/tray/TrayStatus.cpp" line="176"></location>
+      <source>Pinned game</source>
+      <translation>고정된 게임</translation>
+    </message>
     <message id="gamehq.tray.status.state.screenshot_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="146"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="158"></location>
       <source>Screenshot saved</source>
       <translation>스크린샷 저장됨</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.capture">
-      <location filename="src/tray/TrayStatus.cpp" line="228"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="250"></location>
       <source>Capture: %1</source>
       <translation>캡처: %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.game">
-      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="240"></location>
       <source>Game: %1</source>
       <translation>게임: %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.status">
-      <location filename="src/tray/TrayStatus.cpp" line="223"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="245"></location>
       <source>Status: %1</source>
       <translation>상태: %1</translation>
     </message>
     <message id="gamehq.tray.take_screenshot">
-      <location filename="src/tray/TrayIcon.cpp" line="236"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="265"></location>
       <source>Take Screenshot</source>
       <translation>스크린샷 촬영</translation>
     </message>

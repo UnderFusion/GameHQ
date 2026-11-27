@@ -1612,6 +1612,7 @@ gamehq_add_test(tst_captureacknowledgement
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
     "${CMAKE_SOURCE_DIR}/src/games/GameDetector.cpp"
+    "${CMAKE_SOURCE_DIR}/src/core/ProcessIdentity.cpp"
     "${CMAKE_SOURCE_DIR}/src/games/SteamAppLookup.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/ThumbnailService.cpp"
@@ -1619,7 +1620,7 @@ gamehq_add_test(tst_captureacknowledgement
 target_compile_definitions(tst_captureacknowledgement PRIVATE UNICODE _UNICODE)
 target_link_libraries(tst_captureacknowledgement PRIVATE
     Qt6::Gui Qt6::Widgets Qt6::Network
-    user32 gdi32 version winmm windowsapp runtimeobject ole32 oleaut32
+    user32 gdi32 version winmm dwmapi windowsapp runtimeobject ole32 oleaut32
     d3d11 dxgi dxguid uuid d3dcompiler mfplat mfreadwrite mfuuid mf avrt ksuser mmdevapi)
 # Worker startup sweeps its replay cache. Keep that cache isolated from user data.
 set_target_properties(tst_captureacknowledgement PROPERTIES
@@ -1698,6 +1699,7 @@ gamehq_add_test(tst_gamesessionpresets
     "${CMAKE_SOURCE_DIR}/src/input/GameSessionPresetBinder.cpp"
     "${CMAKE_SOURCE_DIR}/src/ui/CurrentGameService.cpp"
     "${CMAKE_SOURCE_DIR}/src/games/GameDetector.cpp"
+    "${CMAKE_SOURCE_DIR}/src/core/ProcessIdentity.cpp"
     "${CMAKE_SOURCE_DIR}/src/games/SteamAppLookup.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp")
 target_link_libraries(tst_gamesessionpresets PRIVATE ${PRESET_SWITCH_LIBS} version)

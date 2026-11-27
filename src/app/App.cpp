@@ -228,12 +228,18 @@ bool App::init()
     // success/failure signals of the two capture services. Nothing polls.
     m_tray->setConfigManager(m_config.get());
     TrayStatus* trayStatus = m_tray->status();
-    connect(m_framePump.get(), &FramePumpService::foregroundCaptureTarget, trayStatus,
-            &TrayStatus::setForegroundGame);
-    connect(m_framePump.get(), &FramePumpService::bufferStateChanged, trayStatus,
-            [trayStatus](ReplayBufferState::State state, const QString&) {
-                trayStatus->setReplayBufferState(static_cast<int>(state));
-            });
+    connect(m_framePump.get(), &FramePumpService::captureTargetChanged, trayStatus,
+            &TrayStatus::setCaptureTarget);
+    connect(m_tray.get(), &TrayIcon::captureMenuOpening, this, [this] {
+        const auto targets = m_framePump->captureTargets();
+        m_tray->setCaptureTargets(targets, m_framePump->hasPinnedTarget());
+    });
+    connect(m_tray.get(), &TrayIcon::captureTargetPinned,
+            m_framePump.get(), &FramePumpService::pinTarget);
+    connect(m_tray.get(), &TrayIcon::automaticCaptureRequested,
+            m_framePump.get(), &FramePumpService::useAutomaticCapture);
+    connect(m_framePump.get(), &FramePumpService::selectedBufferStateChanged,
+            trayStatus, &TrayStatus::setReplayBufferState);
     // Screenshot: only the confirmed save counts. `grabbed()` (pixels in hand)
     // and `skipped()` deliberately do not light the badge.
     connect(m_screenshots.get(), &ScreenshotService::captured, trayStatus,

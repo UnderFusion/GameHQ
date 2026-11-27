@@ -27,6 +27,7 @@ struct ForegroundGame
     QString gameName;            // resolved display title (best of the sources below)
     QString windowTitle;         // raw window caption (GetWindowTextW)
     unsigned long pid = 0;       // foreground process id (for process-scoped audio)
+    quint64 processStarted = 0;  // process creation FILETIME
     void* hwnd = nullptr;        // HWND (opaque here; cast in the .cpp)
     int x = 0, y = 0, w = 0, h = 0;   // window rect in screen space
 };
@@ -39,6 +40,10 @@ namespace GameDetector
     bool shouldCapture(const ForegroundGame& g, const ConfigManager* config);
     bool sameCaptureTarget(const ForegroundGame& first, const ForegroundGame& second);
     bool windowBelongsToProcess(void* hwnd, unsigned long pid);
+    bool windowMatchesProcess(void* hwnd, unsigned long pid, quint64 processStarted);
+    bool canRetainCaptureTarget(const ForegroundGame& target, const ConfigManager* config);
+    bool captureWindowAvailable(void* hwnd);
+    bool onInputDesktop();
     bool canRetainBehindPauseMenu(const ForegroundGame& menu, const ForegroundGame& target,
                                   const ConfigManager* config);
 }

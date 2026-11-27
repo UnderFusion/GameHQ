@@ -2225,29 +2225,29 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Afficher les outils</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="336"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Impossible de supprimer certains fichiers. Ils sont peut-être utilisés par d’autres programmes. Fermez les programmes qui les utilisent, puis réessayez.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="341"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="343"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Impossible de supprimer le fichier. Il est peut-être utilisé par un autre programme. Fermez le programme qui l’utilise, puis réessayez.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="347"></location>
-      <location filename="src/app/App_CaptureWiring.cpp" line="378"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="349"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="380"></location>
       <source>Couldn't delete</source>
       <translation>Échec de la suppression</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="367"></location>
       <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
       <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
       <translation>Certains fichiers se trouvent dans des dossiers surveillés. GameHQ n’y supprime pas les originaux : ils n’ont donc pas été modifiés.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="372"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="374"></location>
       <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
       <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
       <translation>Ce fichier se trouve dans un dossier surveillé. GameHQ n’y supprime pas les originaux : il n’a donc pas été modifié.</translation>
@@ -2278,7 +2278,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Demande de capture reçue</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App_CaptureWiring.cpp" line="309"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="311"></location>
       <source>Reason: %1</source>
       <translation>Raison : %1</translation>
     </message>
@@ -2343,7 +2343,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Enregistrement du replay demandé</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="290"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="292"></location>
       <source>Replay saved</source>
       <translation>Replay enregistré</translation>
     </message>
@@ -2358,17 +2358,17 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Capture d’écran enregistrée</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="292"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ a démarré avec les paramètres par défaut. Votre ancien fichier de paramètres a été conservé afin de ne rien perdre.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="281"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>Settings could not be read</source>
       <translation>Impossible de lire les paramètres</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="313"></location>
+      <location filename="src/app/App.cpp" line="319"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Certains sons d’interface sont indisponibles</translation>
     </message>
@@ -2864,9 +2864,19 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     </message>
     <message id="gamehq.settings.capture.allowlist.add">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="92"></location>
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="236"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="243"></location>
       <source>Add game executable…</source>
       <translation>Ajouter l’exécutable du jeu…</translation>
+    </message>
+    <message id="gamehq.settings.capture.background.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <source>Keep capturing the last active game when you switch to another app.</source>
+      <translation>Continue la capture du dernier jeu actif quand vous passez à une autre application.</translation>
+    </message>
+    <message id="gamehq.settings.capture.background.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="111"></location>
+      <source>Background capture</source>
+      <translation>Capture en arrière-plan</translation>
     </message>
     <message id="gamehq.settings.capture.border.denied">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="49"></location>
@@ -2874,7 +2884,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Windows n’a pas autorisé la suppression de la bordure pour cette session.</translation>
     </message>
     <message id="gamehq.settings.capture.border.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="122"></location>
       <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
       <translation>Demande la suppression de la bordure lorsque Windows la prend en charge. Windows 10 ne la prend pas en charge.</translation>
     </message>
@@ -2884,7 +2894,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Windows signale la suppression de la bordure comme active. Une bordure peut néanmoins rester visible.</translation>
     </message>
     <message id="gamehq.settings.capture.border.next_session">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="127"></location>
       <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
       <translation>S’applique à la prochaine session de capture. Modifier ce réglage laisse la session actuelle et le tampon de replay en cours.</translation>
     </message>
@@ -2894,12 +2904,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>La suppression de la bordure n’a pas été demandée pour cette session.</translation>
     </message>
     <message id="gamehq.settings.capture.border.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
       <source>Windows capture border</source>
       <translation>Bordure de capture Windows</translation>
     </message>
     <message id="gamehq.settings.capture.border.toggle">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="125"></location>
       <source>Request border suppression</source>
       <translation>Demander la suppression de la bordure</translation>
     </message>
@@ -2919,62 +2929,62 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Choisir quand, comment et où GameHQ enregistre les captures d’écran.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="178"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="185"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
       <translation>Ces options sont combinées aux interrupteurs principaux de la page Notifications et son.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="174"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
       <source>Feedback</source>
       <translation>Retours</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="186"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
       <source>Screenshot notification</source>
       <translation>Notification de capture d’écran</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="188"></location>
       <source>Screenshot sound</source>
       <translation>Son de capture d’écran</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="176"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="183"></location>
       <source>After a screenshot</source>
       <translation>Après une capture d’écran</translation>
     </message>
     <message id="gamehq.settings.capture.image.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="140"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="147"></location>
       <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
       <translation>Le PNG est sans perte ; le JPEG réduit la taille des fichiers au prix d’une légère perte de qualité.</translation>
     </message>
     <message id="gamehq.settings.capture.image.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
       <source>Image</source>
       <translation>Image</translation>
     </message>
     <message id="gamehq.settings.capture.image.format">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
       <source>Format</source>
       <translation>Format</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="152"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="159"></location>
       <source>JPEG (smaller files)</source>
       <translation>JPEG (fichiers plus petits)</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="165"></location>
       <source>JPEG quality</source>
       <translation>Qualité JPEG</translation>
     </message>
     <message id="gamehq.settings.capture.image.png">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="157"></location>
       <source>PNG (lossless)</source>
       <translation>PNG (sans perte)</translation>
     </message>
     <message id="gamehq.settings.capture.image.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="145"></location>
       <source>Format and quality</source>
       <translation>Format et qualité</translation>
     </message>
@@ -3020,37 +3030,37 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Jeux autorisés</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="258"></location>
       <source>Choose the clips folder</source>
       <translation>Choisir le dossier des clips</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="244"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
       <source>Choose the screenshots folder</source>
       <translation>Choisir le dossier des captures d’écran</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
       <source>Changing a location never moves or deletes existing media.</source>
       <translation>Changer d’emplacement ne déplace ni ne supprime les médias existants.</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="200"></location>
       <source>Storage</source>
       <translation>Stockage</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="212"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="219"></location>
       <source>Replay clips</source>
       <translation>Clips de replay</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="208"></location>
       <source>Screenshots</source>
       <translation>Captures d’écran</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="202"></location>
       <source>Where captures are saved</source>
       <translation>Emplacement des captures</translation>
     </message>
@@ -5411,88 +5421,118 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <source>Steam Input may also use this button</source>
       <translation>Steam Input peut aussi utiliser ce bouton</translation>
     </message>
+    <message id="gamehq.tray.automatic_capture">
+      <location filename="src/tray/TrayIcon.cpp" line="278"></location>
+      <source>Return to Automatic Capture</source>
+      <translation>Revenir à la capture automatique</translation>
+    </message>
     <message id="gamehq.tray.exit">
-      <location filename="src/tray/TrayIcon.cpp" line="244"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="282"></location>
       <source>Exit</source>
       <translation>Quitter</translation>
     </message>
+    <message id="gamehq.tray.pin_current_game">
+      <location filename="src/tray/TrayIcon.cpp" line="272"></location>
+      <source>Pin Current Game</source>
+      <translation>Épingler le jeu actuel</translation>
+    </message>
     <message id="gamehq.tray.rescan_captures">
-      <location filename="src/tray/TrayIcon.cpp" line="232"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="261"></location>
       <source>Rescan Captures</source>
       <translation>Analyser à nouveau les captures</translation>
     </message>
     <message id="gamehq.tray.save_replay">
-      <location filename="src/tray/TrayIcon.cpp" line="240"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="269"></location>
       <source>Save Replay</source>
       <translation>Enregistrer le replay</translation>
     </message>
+    <message id="gamehq.tray.select_capture_target">
+      <location filename="src/tray/TrayIcon.cpp" line="275"></location>
+      <source>Select Capture Target</source>
+      <translation>Choisir le jeu à capturer</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.paused">
+      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <source>Paused</source>
+      <translation>En pause</translation>
+    </message>
     <message id="gamehq.tray.status.capture.ready">
-      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="201"></location>
       <source>Ready</source>
       <translation>Prêt</translation>
     </message>
     <message id="gamehq.tray.status.capture.screenshots_only">
-      <location filename="src/tray/TrayStatus.cpp" line="189"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="211"></location>
       <source>Screenshots only</source>
       <translation>Captures d'écran uniquement</translation>
     </message>
     <message id="gamehq.tray.status.capture.starting">
-      <location filename="src/tray/TrayStatus.cpp" line="184"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="206"></location>
       <source>Starting</source>
       <translation>Démarrage</translation>
     </message>
     <message id="gamehq.tray.status.capture.waiting">
-      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
       <source>Waiting for a supported game</source>
       <translation>En attente d'un jeu compatible</translation>
     </message>
     <message id="gamehq.tray.status.game.none">
-      <location filename="src/tray/TrayStatus.cpp" line="210"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="232"></location>
       <source>None detected</source>
       <translation>Aucun détecté</translation>
     </message>
+    <message id="gamehq.tray.status.state.background">
+      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
+      <source>Background game</source>
+      <translation>Jeu en arrière-plan</translation>
+    </message>
     <message id="gamehq.tray.status.state.capture_problem">
-      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="168"></location>
       <source>Capture problem</source>
       <translation>Problème de capture</translation>
     </message>
     <message id="gamehq.tray.status.state.clip_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="151"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="163"></location>
       <source>Clip saved</source>
       <translation>Clip enregistré</translation>
     </message>
     <message id="gamehq.tray.status.state.game_detected">
-      <location filename="src/tray/TrayStatus.cpp" line="165"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="183"></location>
       <source>Game detected</source>
       <translation>Jeu détecté</translation>
     </message>
     <message id="gamehq.tray.status.state.idle">
-      <location filename="src/tray/TrayStatus.cpp" line="169"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="187"></location>
       <source>Idle</source>
       <translation>Inactif</translation>
     </message>
+    <message id="gamehq.tray.status.state.pinned">
+      <location filename="src/tray/TrayStatus.cpp" line="176"></location>
+      <source>Pinned game</source>
+      <translation>Jeu épinglé</translation>
+    </message>
     <message id="gamehq.tray.status.state.screenshot_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="146"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="158"></location>
       <source>Screenshot saved</source>
       <translation>Capture d'écran enregistrée</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.capture">
-      <location filename="src/tray/TrayStatus.cpp" line="228"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="250"></location>
       <source>Capture: %1</source>
       <translation>Capture : %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.game">
-      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="240"></location>
       <source>Game: %1</source>
       <translation>Jeu : %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.status">
-      <location filename="src/tray/TrayStatus.cpp" line="223"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="245"></location>
       <source>Status: %1</source>
       <translation>État : %1</translation>
     </message>
     <message id="gamehq.tray.take_screenshot">
-      <location filename="src/tray/TrayIcon.cpp" line="236"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="265"></location>
       <source>Take Screenshot</source>
       <translation>Prendre une capture d’écran</translation>
     </message>
@@ -5910,7 +5950,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Notes de version</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
-      <location filename="src/tray/TrayIcon.cpp" line="228"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="257"></location>
       <source>Open Gallery</source>
       <translation>Ouvrir la galerie</translation>
     </message>

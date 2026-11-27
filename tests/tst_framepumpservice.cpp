@@ -148,18 +148,18 @@ private slots:
     {
         ReplayBufferOwners owners;
         const auto manual = owners.acquireManual(0, 90);
-        const auto hdr = owners.acquireHdr();
+        const auto hdr = owners.acquireScreenshot();
         QVERIFY(hdr != 0);
-        QCOMPARE(owners.acquireHdr(), quint64(0));
-        QVERIFY(owners.finishHdr(hdr));
+        QCOMPARE(owners.acquireScreenshot(), quint64(0));
+        QVERIFY(owners.finishScreenshot(hdr));
         QVERIFY(owners.owns(ReplayBufferOwners::ManualSave));
-        const auto nextHdr = owners.acquireHdr();
-        QVERIFY(!owners.finishHdr(hdr));
+        const auto nextHdr = owners.acquireScreenshot();
+        QVERIFY(!owners.finishScreenshot(hdr));
         QVERIFY(owners.beginSave(manual));
         QVERIFY(owners.finishSave(manual));
-        QVERIFY(owners.owns(ReplayBufferOwners::HdrScreenshot));
+        QVERIFY(owners.owns(ReplayBufferOwners::WindowScreenshot));
         QVERIFY(owners.needsSession());
-        QVERIFY(owners.finishHdr(nextHdr));
+        QVERIFY(owners.finishScreenshot(nextHdr));
         QVERIFY(!owners.needsSession());
     }
 

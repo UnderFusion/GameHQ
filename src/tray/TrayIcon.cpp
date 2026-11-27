@@ -124,6 +124,13 @@ TrayIcon::TrayIcon(QObject* parent, bool show)
     // Qt fades the icon for us in the disabled state.
     m_replayAction = m_menu->addAction(makeGlyph(ink, drawReplay), QString());
     m_replayAction->setEnabled(false);
+    m_pinCurrentAction = m_menu->addAction(QString(), this, [this] {
+        emit captureTargetPinned(m_currentCaptureTarget);
+    });
+    m_captureTargetsMenu = m_menu->addMenu(QString());
+    m_automaticCaptureAction = m_menu->addAction(QString(), this, &TrayIcon::automaticCaptureRequested);
+    setCaptureTargets({}, false);
+    connect(m_menu, &QMenu::aboutToShow, this, &TrayIcon::captureMenuOpening);
     m_menu->addSeparator();
 
     m_quitAction = m_menu->addAction(makeGlyph(ink, drawExit), QString());
@@ -217,6 +224,28 @@ QIcon TrayIcon::trayIcon() const
     return m_tray->icon();
 }
 
+void TrayIcon::setCaptureTargets(const QList<ForegroundGame>& targets, bool pinned)
+{
+    m_currentCaptureTarget = targets.isEmpty() ? ForegroundGame{} : targets.front();
+    m_pinCurrentAction->setEnabled(m_currentCaptureTarget.valid);
+    m_automaticCaptureAction->setEnabled(pinned);
+    m_captureTargetsMenu->setEnabled(!targets.isEmpty());
+    m_captureTargetsMenu->clear();
+    for (const auto& target : targets) {
+        const QString name = target.gameName.isEmpty() ? target.processName : target.gameName;
+        QString label = name;
+        for (const auto& other : targets) {
+            if (other.hwnd != target.hwnd && other.gameName == target.gameName) {
+                label = QStringLiteral("%1 (%2 / %3)").arg(name).arg(target.pid)
+                    .arg(reinterpret_cast<quintptr>(target.hwnd), 0, 16);
+                break;
+            }
+        }
+        label.replace(QLatin1Char('&'), QStringLiteral("&&"));
+        m_captureTargetsMenu->addAction(label, this, [this, target] { emit captureTargetPinned(target); });
+    }
+}
+
 void TrayIcon::retranslate()
 {
     if (!m_openAction)
@@ -238,6 +267,15 @@ void TrayIcon::retranslate()
         //: Disabled tray menu placeholder for saving the replay buffer.
         //% "Save Replay"
         QT_TRID_NOOP("gamehq.tray.save_replay"), "Save Replay"));
+    m_pinCurrentAction->setText(NativeText::get(
+        //% "Pin Current Game"
+        QT_TRID_NOOP("gamehq.tray.pin_current_game"), "Pin Current Game"));
+    m_captureTargetsMenu->setTitle(NativeText::get(
+        //% "Select Capture Target"
+        QT_TRID_NOOP("gamehq.tray.select_capture_target"), "Select Capture Target"));
+    m_automaticCaptureAction->setText(NativeText::get(
+        //% "Return to Automatic Capture"
+        QT_TRID_NOOP("gamehq.tray.automatic_capture"), "Return to Automatic Capture"));
     m_quitAction->setText(NativeText::get(
         //: Tray menu command that exits GameHQ.
         //% "Exit"

@@ -2221,28 +2221,28 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Show tools</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="336"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="341"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="343"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="347"></location>
-      <location filename="src/app/App_CaptureWiring.cpp" line="378"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="349"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="380"></location>
       <source>Couldn't delete</source>
       <translation>Couldn't delete</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="367"></location>
       <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
       <translation>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="372"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="374"></location>
       <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
       <translation>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</translation>
     </message>
@@ -2272,7 +2272,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Capture request received</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App_CaptureWiring.cpp" line="309"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="311"></location>
       <source>Reason: %1</source>
       <translation>Reason: %1</translation>
     </message>
@@ -2337,7 +2337,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Replay save requested</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="290"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="292"></location>
       <source>Replay saved</source>
       <translation>Replay saved</translation>
     </message>
@@ -2352,17 +2352,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Screenshot saved</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="292"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="281"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>Settings could not be read</source>
       <translation>Settings could not be read</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="313"></location>
+      <location filename="src/app/App.cpp" line="319"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Some interface sounds are unavailable</translation>
     </message>
@@ -2858,9 +2858,19 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.capture.allowlist.add">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="92"></location>
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="236"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="243"></location>
       <source>Add game executable…</source>
       <translation>Add game executable…</translation>
+    </message>
+    <message id="gamehq.settings.capture.background.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <source>Keep capturing the last active game when you switch to another app.</source>
+      <translation>Keep capturing the last active game when you switch to another app.</translation>
+    </message>
+    <message id="gamehq.settings.capture.background.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="111"></location>
+      <source>Background capture</source>
+      <translation>Background capture</translation>
     </message>
     <message id="gamehq.settings.capture.border.denied">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="49"></location>
@@ -2868,7 +2878,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Windows did not allow border suppression for this session.</translation>
     </message>
     <message id="gamehq.settings.capture.border.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="122"></location>
       <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
       <translation>Requests border suppression where Windows supports it. Windows 10 does not support this.</translation>
     </message>
@@ -2878,7 +2888,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Windows reports border suppression active. A visible border may still remain.</translation>
     </message>
     <message id="gamehq.settings.capture.border.next_session">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="127"></location>
       <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
       <translation>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</translation>
     </message>
@@ -2888,12 +2898,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Border suppression was not requested for this session.</translation>
     </message>
     <message id="gamehq.settings.capture.border.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
       <source>Windows capture border</source>
       <translation>Windows capture border</translation>
     </message>
     <message id="gamehq.settings.capture.border.toggle">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="125"></location>
       <source>Request border suppression</source>
       <translation>Request border suppression</translation>
     </message>
@@ -2913,62 +2923,62 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Choose when, how, and where GameHQ saves screenshots.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="178"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="185"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
       <translation>Combined with the master switches on the Notifications &amp; Sound page.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="174"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
       <source>Feedback</source>
       <translation>Feedback</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="186"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
       <source>Screenshot notification</source>
       <translation>Screenshot notification</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="188"></location>
       <source>Screenshot sound</source>
       <translation>Screenshot sound</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="176"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="183"></location>
       <source>After a screenshot</source>
       <translation>After a screenshot</translation>
     </message>
     <message id="gamehq.settings.capture.image.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="140"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="147"></location>
       <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
       <translation>PNG is lossless; JPEG trades some quality for smaller files.</translation>
     </message>
     <message id="gamehq.settings.capture.image.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
       <source>Image</source>
       <translation>Image</translation>
     </message>
     <message id="gamehq.settings.capture.image.format">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
       <source>Format</source>
       <translation>Format</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="152"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="159"></location>
       <source>JPEG (smaller files)</source>
       <translation>JPEG (smaller files)</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="165"></location>
       <source>JPEG quality</source>
       <translation>JPEG quality</translation>
     </message>
     <message id="gamehq.settings.capture.image.png">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="157"></location>
       <source>PNG (lossless)</source>
       <translation>PNG (lossless)</translation>
     </message>
     <message id="gamehq.settings.capture.image.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="145"></location>
       <source>Format and quality</source>
       <translation>Format and quality</translation>
     </message>
@@ -3014,37 +3024,37 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Whitelisted games</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="258"></location>
       <source>Choose the clips folder</source>
       <translation>Choose the clips folder</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="244"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
       <source>Choose the screenshots folder</source>
       <translation>Choose the screenshots folder</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
       <source>Changing a location never moves or deletes existing media.</source>
       <translation>Changing a location never moves or deletes existing media.</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="200"></location>
       <source>Storage</source>
       <translation>Storage</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="212"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="219"></location>
       <source>Replay clips</source>
       <translation>Replay clips</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="208"></location>
       <source>Screenshots</source>
       <translation>Screenshots</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="202"></location>
       <source>Where captures are saved</source>
       <translation>Where captures are saved</translation>
     </message>
@@ -5405,88 +5415,118 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Steam Input may also use this button</source>
       <translation>Steam Input may also use this button</translation>
     </message>
+    <message id="gamehq.tray.automatic_capture">
+      <location filename="src/tray/TrayIcon.cpp" line="278"></location>
+      <source>Return to Automatic Capture</source>
+      <translation>Return to Automatic Capture</translation>
+    </message>
     <message id="gamehq.tray.exit">
-      <location filename="src/tray/TrayIcon.cpp" line="244"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="282"></location>
       <source>Exit</source>
       <translation>Exit</translation>
     </message>
+    <message id="gamehq.tray.pin_current_game">
+      <location filename="src/tray/TrayIcon.cpp" line="272"></location>
+      <source>Pin Current Game</source>
+      <translation>Pin Current Game</translation>
+    </message>
     <message id="gamehq.tray.rescan_captures">
-      <location filename="src/tray/TrayIcon.cpp" line="232"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="261"></location>
       <source>Rescan Captures</source>
       <translation>Rescan Captures</translation>
     </message>
     <message id="gamehq.tray.save_replay">
-      <location filename="src/tray/TrayIcon.cpp" line="240"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="269"></location>
       <source>Save Replay</source>
       <translation>Save Replay</translation>
     </message>
+    <message id="gamehq.tray.select_capture_target">
+      <location filename="src/tray/TrayIcon.cpp" line="275"></location>
+      <source>Select Capture Target</source>
+      <translation>Select Capture Target</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.paused">
+      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <source>Paused</source>
+      <translation>Paused</translation>
+    </message>
     <message id="gamehq.tray.status.capture.ready">
-      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="201"></location>
       <source>Ready</source>
       <translation>Ready</translation>
     </message>
     <message id="gamehq.tray.status.capture.screenshots_only">
-      <location filename="src/tray/TrayStatus.cpp" line="189"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="211"></location>
       <source>Screenshots only</source>
       <translation>Screenshots only</translation>
     </message>
     <message id="gamehq.tray.status.capture.starting">
-      <location filename="src/tray/TrayStatus.cpp" line="184"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="206"></location>
       <source>Starting</source>
       <translation>Starting</translation>
     </message>
     <message id="gamehq.tray.status.capture.waiting">
-      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
       <source>Waiting for a supported game</source>
       <translation>Waiting for a supported game</translation>
     </message>
     <message id="gamehq.tray.status.game.none">
-      <location filename="src/tray/TrayStatus.cpp" line="210"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="232"></location>
       <source>None detected</source>
       <translation>None detected</translation>
     </message>
+    <message id="gamehq.tray.status.state.background">
+      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
+      <source>Background game</source>
+      <translation>Background game</translation>
+    </message>
     <message id="gamehq.tray.status.state.capture_problem">
-      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="168"></location>
       <source>Capture problem</source>
       <translation>Capture problem</translation>
     </message>
     <message id="gamehq.tray.status.state.clip_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="151"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="163"></location>
       <source>Clip saved</source>
       <translation>Clip saved</translation>
     </message>
     <message id="gamehq.tray.status.state.game_detected">
-      <location filename="src/tray/TrayStatus.cpp" line="165"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="183"></location>
       <source>Game detected</source>
       <translation>Game detected</translation>
     </message>
     <message id="gamehq.tray.status.state.idle">
-      <location filename="src/tray/TrayStatus.cpp" line="169"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="187"></location>
       <source>Idle</source>
       <translation>Idle</translation>
     </message>
+    <message id="gamehq.tray.status.state.pinned">
+      <location filename="src/tray/TrayStatus.cpp" line="176"></location>
+      <source>Pinned game</source>
+      <translation>Pinned game</translation>
+    </message>
     <message id="gamehq.tray.status.state.screenshot_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="146"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="158"></location>
       <source>Screenshot saved</source>
       <translation>Screenshot saved</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.capture">
-      <location filename="src/tray/TrayStatus.cpp" line="228"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="250"></location>
       <source>Capture: %1</source>
       <translation>Capture: %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.game">
-      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="240"></location>
       <source>Game: %1</source>
       <translation>Game: %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.status">
-      <location filename="src/tray/TrayStatus.cpp" line="223"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="245"></location>
       <source>Status: %1</source>
       <translation>Status: %1</translation>
     </message>
     <message id="gamehq.tray.take_screenshot">
-      <location filename="src/tray/TrayIcon.cpp" line="236"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="265"></location>
       <source>Take Screenshot</source>
       <translation>Take Screenshot</translation>
     </message>
@@ -5903,7 +5943,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Release notes</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
-      <location filename="src/tray/TrayIcon.cpp" line="228"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="257"></location>
       <source>Open Gallery</source>
       <translation>Open Gallery</translation>
     </message>

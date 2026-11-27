@@ -5981,6 +5981,28 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -11459,6 +11481,17 @@
           },
           "updated_at": null
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -11481,6 +11514,17 @@
           },
           "updated_at": null
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -11495,6 +11539,28 @@
         "gamehq.tray.save_replay": {
           "domain": "application",
           "source_hash": "6f33ed88c5e0d53c493a9d6f5f61da79157b680e32bb05742a94a18d4587ea86",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -11558,6 +11624,17 @@
           },
           "updated_at": null
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -11594,6 +11671,17 @@
         "gamehq.tray.status.state.idle": {
           "domain": "application",
           "source_hash": "2a99ff7d2150f8069e6f1c5d3648d4c9e5e9825c9596e1ad8f518eda3b965b8a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -12474,7 +12562,7 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
+          "total": 1141,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -13020,6 +13108,8 @@
             "gamehq.settings.advanced.storage.available",
             "gamehq.settings.advanced.version.current",
             "gamehq.settings.capture.allowlist.add",
+            "gamehq.settings.capture.background.description",
+            "gamehq.settings.capture.background.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -13518,19 +13608,25 @@
             "gamehq.steam_input.control.guide",
             "gamehq.steam_input.notice.body",
             "gamehq.steam_input.notice.title",
+            "gamehq.tray.automatic_capture",
             "gamehq.tray.exit",
             "gamehq.tray.open_gallery",
+            "gamehq.tray.pin_current_game",
             "gamehq.tray.rescan_captures",
             "gamehq.tray.save_replay",
+            "gamehq.tray.select_capture_target",
+            "gamehq.tray.status.capture.paused",
             "gamehq.tray.status.capture.ready",
             "gamehq.tray.status.capture.screenshots_only",
             "gamehq.tray.status.capture.starting",
             "gamehq.tray.status.capture.waiting",
             "gamehq.tray.status.game.none",
+            "gamehq.tray.status.state.background",
             "gamehq.tray.status.state.capture_problem",
             "gamehq.tray.status.state.clip_saved",
             "gamehq.tray.status.state.game_detected",
             "gamehq.tray.status.state.idle",
+            "gamehq.tray.status.state.pinned",
             "gamehq.tray.status.state.screenshot_saved",
             "gamehq.tray.status.tooltip.capture",
             "gamehq.tray.status.tooltip.game",
@@ -19605,6 +19701,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "41b3611f3ea5fc69e48291fb7b2b0bbd2049f2ebad196f0ab1119d1bcca2bfc7",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "28d4ac2966dd31018910356ed0184fc62ef1b867b8560c8751395322fb8ca59d",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -25083,6 +25201,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "2301939d66fa4d6e2e88713e6e1c89fc18f76f926359582c684486cb4670ba81",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -25105,6 +25234,17 @@
           },
           "updated_at": "2026-09-04T12:00:00Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "97f6b0a3cc9f2fa04d4c86fd87a858a57f9a08a430c99febcfc2818373b6f2ca",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -25126,6 +25266,28 @@
             "actor": "codex-gpt-5-contextual-de-de-review"
           },
           "updated_at": "2026-09-04T12:00:00Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "e72c829414ad31b5d8f699026d9aa33848f1de5f5bf4d1499b24506616a825a9",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "d257de70b6e1279dd551fc7a010c5c5dd4fcf5d051253e29eaa22fc194e7f60f",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -25182,6 +25344,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "b5afb03df3ec70dc7fdc6684ffad7f437f3a9f58016a6d1af8734e3a131ce48f",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -25225,6 +25398,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "cd962d9ac62f0f297a86ad0ff8643aef928c431eb5731149d792a98b5204c542",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -26098,8 +26282,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -32095,6 +32279,28 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "2737c4464cf7b08431b7bca6c1f7a17535b50bda01d15b514633c3d103be87e7",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "076c757de7d8cd0ce2e6a52c224af4f018a0aec4a92b0faa260ed08497547ef3",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -37573,6 +37779,17 @@
           },
           "updated_at": null
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "350eca15555286ea9182866befaccdcdf04f34d77439c3c70f035c1db02b3aee",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -37595,6 +37812,17 @@
           },
           "updated_at": null
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "8403b01bf4b6817f5f009a89367384eec66ec7c36eccad18ebbff29b105e6a7f",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -37610,6 +37838,28 @@
           "domain": "application",
           "source_hash": "6f33ed88c5e0d53c493a9d6f5f61da79157b680e32bb05742a94a18d4587ea86",
           "translation_hash": "d323014f3ed60fdd39665578ae76cc98e481a2489745606103a39be04c32c628",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "f1d13afe53bddad14e3eb0bc12de635b07740e5e171cfcdc8abf36721c19f03c",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "7335216883099036d42eef1fe29d908643ce1d31e5f44f6a7866c968ee5f5108",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -37672,6 +37922,17 @@
           },
           "updated_at": null
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "5fa8a214d4b64a40c56dae6f6c432366183deb243cd0e6ff5cb483e42cccc400",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -37709,6 +37970,17 @@
           "domain": "application",
           "source_hash": "2a99ff7d2150f8069e6f1c5d3648d4c9e5e9825c9596e1ad8f518eda3b965b8a",
           "translation_hash": "25c9797b6b4a8832197a24bc7cc2c53e667a07b3934587399764203221b5c2f8",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "896581b87c57c4551f64c12ee4c29a24124af7a547d70fc2b0df2f0b02cdce9d",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -38588,8 +38860,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -44585,6 +44857,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "e4fe4eb283ca67b16ba031f491d34c958d29ea3e10b536e8c7d7ff32049f7e75",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "11585f476d1a7f3ce41b64b008b35900071466b1992febb758e406d704fa6c25",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -50063,6 +50357,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "ae56d5390552ce5bda8d72b45adfe5fd219dcfb3c540a948e391f7f37c5972f0",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -50085,6 +50390,17 @@
           },
           "updated_at": "2026-09-04T20:00:00Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "56a9d3792728bded4f81608e5eecaef1609630cd117d367488acc5531171f1ef",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -50106,6 +50422,28 @@
             "actor": "codex-gpt-5-contextual-es-419"
           },
           "updated_at": "2026-09-04T20:00:00Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "5e6b008c948a51e430f581865f2447c0c9cb861d13b27271af24d7ed177af5db",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "adf377fcb653eaf86bc85e8b1324db6f2317fd893b1d902bdd80d76ec39cab42",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -50162,6 +50500,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "43c0dcbec2b7f81c3b126d66d192da7ad216cfe383bbff636616269a8d490ef5",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -50205,6 +50554,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "b7ca969713ef36cb45889b41f39cd9a8833576611de2ecf65d595ff99279edca",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -51078,8 +51438,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -57075,6 +57435,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "a337abad41df886c85bd17206eae4b0b2dad41d7f2269dbf8efc267e42d19190",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "11585f476d1a7f3ce41b64b008b35900071466b1992febb758e406d704fa6c25",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -62553,6 +62935,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "ae56d5390552ce5bda8d72b45adfe5fd219dcfb3c540a948e391f7f37c5972f0",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -62575,6 +62968,17 @@
           },
           "updated_at": "2026-09-04T02:45:50Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "56a9d3792728bded4f81608e5eecaef1609630cd117d367488acc5531171f1ef",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -62596,6 +63000,28 @@
             "actor": "codex-gpt-5-contextual-es-es-review"
           },
           "updated_at": "2026-09-04T02:45:50Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "13200e38816f2dd765ea25dc9d07d48e225275a726e1648262e5fcd83c8ade0f",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "adf377fcb653eaf86bc85e8b1324db6f2317fd893b1d902bdd80d76ec39cab42",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -62652,6 +63078,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "43c0dcbec2b7f81c3b126d66d192da7ad216cfe383bbff636616269a8d490ef5",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -62695,6 +63132,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "b7ca969713ef36cb45889b41f39cd9a8833576611de2ecf65d595ff99279edca",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -63568,8 +64016,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -69565,6 +70013,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "c5447e3561b0088d9cce58fcf009f315e4777b856dce942a307b4d1929a49717",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "300fc06b28868cecc6e8f04f0cdcaa55ebb9b63aff4c641b7ec1b55d11ce28c5",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -75043,6 +75513,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "fe2ea9423670dce953e5219d1aa120dd33529ed8ef30d685f4b1e0f51951ce4a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -75065,6 +75546,17 @@
           },
           "updated_at": "2026-09-04T16:30:00Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "e3fa6bd0e3685ff861f8c6baed49822d87758a0caa2789f5407ac77bf89193b3",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -75086,6 +75578,28 @@
             "actor": "codex-gpt-5-contextual-fr-fr"
           },
           "updated_at": "2026-09-04T16:30:00Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "29dd351feade9bae93aa0f8bbfed3f2ad06c121da80d00a29a56d460b8952934",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "3f7e05a0837e6eb5840bcc7d0f88ecb76e54bf73b5fe8ff4b2608a377e425342",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -75142,6 +75656,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "e740fc34500b54a0eef39fbd9a36e170436ef0ef0b3aca8440802d142b032e81",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -75185,6 +75710,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "04a7e55fc0a7af4719cbeb569fc884e67f2f9c0581ef67caa4a0ce6dcf682fd1",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -76058,8 +76594,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -82055,6 +82591,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "71d522e811262f3e706a9eb7f06b392ca888ab2a84ec56570fc5adb1f1e43809",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "8651165b6906d8f13fe8c8d30b6130e45a8173de9114f99180890c3ebbcfe68c",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -87533,6 +88091,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "560c61ba93b5f5f56d3e6a53ebcc1b6bce663584f18061af2e05674f41d9bd3a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -87555,6 +88124,17 @@
           },
           "updated_at": "2026-09-04T13:20:00Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "770b249838f203b89feef1d07ee5ea8bfe400540182136cbc39a5ab9b3e5a2a6",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -87576,6 +88156,28 @@
             "actor": "claude-opus-5-contextual-it-it-review"
           },
           "updated_at": "2026-09-04T13:20:00Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "72e6e11d6b9affe4c7134df1bb508e38eaa1570aa1f6674a1f2df3f555a036d2",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "be85ccb39f6a2d77911a6a4b03a5b83aff786e7144258fec1b9fe6b6a624da5f",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -87632,6 +88234,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "a3c2956c7139011ac7dfe23136fc3475bef3c6f7e8d25253eee8c1fbd2d2baaa",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -87675,6 +88288,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "fe279b03966e48e52c38a3d7199767db066dd2da27caafac71b943ac503ced9c",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -88548,8 +89172,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -94545,6 +95169,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "b23668287af747b5dfbe8439384b9ccfa2e912dff5bd213616f3732ad5d5ede5",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "7f68e06cebfb2aaf97b4dca7135c53eed87e48108f454e0b54260dfd3df3f8c7",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -100023,6 +100669,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "d43f16144167da98a064c18640138bb3988828cfba479cdf62e01f8ea3b33095",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -100045,6 +100702,17 @@
           },
           "updated_at": "2026-09-04T14:30:00Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "ea28b71f58c7eaddf659524109b0f6a57d72cde3c0f30822597391a17e04cba5",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -100066,6 +100734,28 @@
             "actor": "codex-gpt-5-contextual-ja-jp"
           },
           "updated_at": "2026-09-04T14:30:00Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "bd776accd8400671d0d5097f260ac3cadb950dee7d17759ba031f2bf8fca3a8a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "86ce1bf9eef5f64dec434766556fa8c053c063e8b985bcc52c964d87f278851d",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -100122,6 +100812,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "edacc5d4a229eab3906b6b446ce682fc5e83bb5dd9bcd256d2907e8ee1dccc5d",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -100165,6 +100866,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "3006217b34c2789183ab3d18f6dbcce21efa6c7718684228d8db42976fabe460",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -101038,8 +101750,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -107035,6 +107747,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "71bef4f4327ab408a1ce4bd86864d13cd5fa31d42f3db8bcf0b920dbc26d460c",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "a30bf10487114329a8bf164e40b65a07ff794dd6152d0884664c54c1dfd2e8dc",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -112513,6 +113247,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "7fb410abb0bdec1dc18a0b2d28b58856a494704300737768eed376962199ce97",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -112535,6 +113280,17 @@
           },
           "updated_at": "2026-09-04T20:00:00Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "752c5927caa17820508b0682add98f020345fd573e5ae7c83029ce8ec4ea797a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -112556,6 +113312,28 @@
             "actor": "codex-gpt-5-contextual-ko-kr"
           },
           "updated_at": "2026-09-04T20:00:00Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "814926aaf7d6bdab4786984d56a96ff2249871f84b822cbfa76dc110cddd58f6",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "06118ceed1829521cf005b0b7f3c712ba48dda2857db9a268bd1062d718d484a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -112612,6 +113390,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "9c1a3920e8361fc56551ec7bd64280edef8f3b4d50d1d4a7df79975b5f7bc243",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -112655,6 +113444,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "e390b303d53e050ec12a3c2ad7138d1de3e0b717c153201dbe6a87c83403312c",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -113528,8 +114328,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -119525,6 +120325,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "96269e9091b85c1551a11d2dc433a5fe07949aaade23d44576806e50bee72439",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "8bfc52a569af7a4c34df494ea0f5ec8e42011eeeec3fb31baef99d8145746e26",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -125003,6 +125825,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "f68f64d4885ad6865ccc06bb4e08b7a47cccf41ef1493c6ce724ca8deda65082",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -125025,6 +125858,17 @@
           },
           "updated_at": "2026-09-03T22:45:00Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "abf6cbe202f5dd2e619fec1691860223514cd101c6be59925c958f89ad4b23b1",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -125046,6 +125890,28 @@
             "actor": "codex-gpt-5-contextual-pl-review"
           },
           "updated_at": "2026-09-03T22:45:00Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "80e236e3f165f501057a10623b8c4f82c28fc72f7597a0227f737935a388f686",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "4d299e072df1a1a5a74fd3dc59e3259c65a446c4c2bf5483b2723f1ef26f42e9",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -125102,6 +125968,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "d023fabde56d7eca5417d7f6933d1d3dbfa98f16fdadf3b63f9ab689b6cb2fcb",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -125145,6 +126022,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "0fe606eee1e7825da0cae7f445f75d2ac0444c6d8c7b733068c530b3c15fca00",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -126018,8 +126906,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -132015,6 +132903,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "42f2d9f391b9eb8aa18f028c3b9c6cd1799052f3fdf9bfc0ae99f34b001a9b81",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "192f64b949ecd1d2a3930a06d0ece84ebc7eba7b3319285c2eba2c3ed2be87f2",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -137493,6 +138403,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "d2ab73627e6456fa075826b2ed07a24176f41208ada7301e065d81f7bbe2cab1",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -137515,6 +138436,17 @@
           },
           "updated_at": "2026-09-04T03:19:03Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "72e64906195f5a8b5981ac8caf53143748d8bbef971eb50ff112ca9f9d984c49",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -137536,6 +138468,28 @@
             "actor": "codex-gpt-5-contextual-pt-br-review"
           },
           "updated_at": "2026-09-04T03:19:03Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "bbb98e369c52c0c4657e4f5c5d9f9c184743cb89175c30baef3307c9a82bb565",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "9609b912a5cc19de044748d9e3a81f4b19c1fd5a424319ce5c731fc27675bc49",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -137592,6 +138546,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "acf9acb1c8e8866095e1f3f7a453c4fbef0962ed454263dc3851802c86bfe418",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -137635,6 +138600,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "88cb8744ab9e92a37865a2fbabce4c1b5e957ad283899368dfa3a06b1cd7dffd",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -138508,8 +139484,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -144505,6 +145481,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "18f7f304011a69e95584b066f935a444ead187600f481a4fda2d925a2cf73146",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "9b8158192b66ea33ff7fd2df01daeefd7dae76aea77a25fac0fa0815b18cd138",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -149983,6 +150981,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "a3c158f14ced5e85f3d23c3c3f9aa39c646e5b6aeca854625c1985a996be4d8e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -150005,6 +151014,17 @@
           },
           "updated_at": "2026-09-04T04:00:00Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "94c7ecb62b8f47c27073ccf569799f346ace9aceaa38244d7593ebf8aa164c92",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -150026,6 +151046,28 @@
             "actor": "claude-opus-5-contextual-ru-review"
           },
           "updated_at": "2026-09-04T04:00:00Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "e8ef69c05974b8bab3a68d1a7378d8d90806ac62250e0eb75de3d5634444b5ea",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "ab1d728c880a84e87514bbf08f03f6675deb5db3f874b933ab9bd8002234cc1e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -150082,6 +151124,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "b35080789af6c7227b405c8cc7f6dce980aa0c29f4f3fde3ba5d247bc3ab3a61",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -150125,6 +151178,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "8852e4c3ad1422136385d5383c6eac1ca8512755fb9ab290d5a5587c9f38e230",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -150998,8 +152062,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -156995,6 +158059,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "717cca8c310f16fc93aadb246c814bae03be477b3cb697bd76d2e5df3a2c3a7d",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "5177ee2650d11dac065a3ba5062695717dc4fb0086d101db9e9cfb89f3d8ef0b",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -162473,6 +163559,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "16d789d9d9c94258c8b7fa7f42d558241752c13a0968ed6f527d6c22bbe75dfb",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -162495,6 +163592,17 @@
           },
           "updated_at": "2026-09-04T17:00:00Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "fab9573b87c3f648a8ee58165e5a0b8758317973d371b8b53e806b3d188afa22",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -162516,6 +163624,28 @@
             "actor": "codex-gpt-5-contextual-th-th"
           },
           "updated_at": "2026-09-04T17:00:00Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "7d0cfd9ee5602dc5ed85c566cfc83de092ddca1785e1bd6780aa4942c9c695f2",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "c24bcdbb51785643c1db6f7d5fb36e4e1aeca2227c6a9c8cfc4f432b52767402",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -162572,6 +163702,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "2a33f85886e131dac3895b8545945337f848a6d03a1e5792b74fe1f20d477d75",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -162615,6 +163756,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "b778ac034928b71e3cc4b672a51805361919a854e12453dfb15c01e8fc38dd3c",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -163488,8 +164640,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -169485,6 +170637,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "0beca0955618f0aa79dc987963ad9314d18e3a626eae5761ffcee7c423b96c76",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "4e6d8fd1afa5b8403aa5a63b76c184cc13242282aa202a4139713ffbc88f32b6",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -174963,6 +176137,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "ef9e01dc857eaba624c575fd2f42221a9f30c2a41b18394c965f816a77e5f2d0",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -174985,6 +176170,17 @@
           },
           "updated_at": "2026-09-04T08:11:57Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "2e7efb4a89ad03248f40942a95bfd1075be0b93425f8bdf47427d7235ba986f1",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -175006,6 +176202,28 @@
             "actor": "codex-gpt-5-contextual-tr-tr"
           },
           "updated_at": "2026-09-04T08:11:57Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "3004c33128fbd4628000e92e312a06afb3fd6215f7210f277ccc0a2ad60c663c",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "c19da5b97070b075cf9f1cc037c8e8ed87b007434c1c9ceba763ed8cdf48ae24",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -175062,6 +176280,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "f35b9d9e1e76daa4ea6b6113d16d67be3b628d9aeb3ecc7ba8f0bf9b2137fb1a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -175105,6 +176334,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "c741cba95e08b70897261a473797364e7681f314aa3905b171e55a37856e62b9",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -175978,8 +177218,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -181975,6 +183215,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "b22774711aa9c2a1a236a6a3a0d85163503c5fd63cfd8451432a2f22a52d7445",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "cbbc6b9920098e358a4610f6516de83b2a553c30c57981934204a362f2867974",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -187453,6 +188715,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "31f31d1f6979d1778b23e76f5e35b4aaf6d0b6c7e8d75d10a3df0a0f29e79029",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -187475,6 +188748,17 @@
           },
           "updated_at": "2026-09-04T11:59:30Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "7ab7f33001c6c2fe8c68f29993efece061ace827d263d944773334bb48df8dbe",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -187496,6 +188780,28 @@
             "actor": "codex-gpt-5-contextual-uk-UA"
           },
           "updated_at": "2026-09-04T11:59:30Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "96718ec37953bd66a44b4dce37471c396971521a458b48ddef70bf73471d403e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "196fbac53b482608936d7e2351ab31d8347e9b14bdd5ed6941e2bf874319b9b8",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -187552,6 +188858,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "dc43342fa13d234a87a74f89a8e03aa20c1512e16689e48e02e92c9b27684a19",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -187595,6 +188912,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "6544e7625c88b9519b49fddabf7f888bf7b0694535fb4ddfd4ca3f6e525ab36a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -188468,8 +189796,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -194465,6 +195793,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "90ee0416a9a35a3e2ea21b5b14b574e64a12ab73ff1a2e39f0bbd7674cbf91aa",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "39e51e203c72e07fab0a30f9020c3e4506135e0f9b44441ee73620e686129a6e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -199943,6 +201293,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "ef75fb090259b0f4f94e9e332a87da02b74cb4caab01c4b9a0f58934f36d3bb0",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -199965,6 +201326,17 @@
           },
           "updated_at": "2026-09-04T03:10:00Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "25069c40aaa10a0017b4a5b36902bd47d21713a543593eb09af94c8033a361ed",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -199986,6 +201358,28 @@
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
           "updated_at": "2026-09-04T03:10:00Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "fcac2a3144198233fcede89fcae2e919e7773f4902ebd22d6de7e2dce6e52e59",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "d1342712f9ccf4991a2171ebcd3b7c713eee8d6392a44884d9bf6af21e4e2733",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -200042,6 +201436,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "0a7824d49005080f12b70bafe64682631b0187da3aa8c74be96588362cce089b",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -200085,6 +201490,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "7a2bce9398f795fa18f0191b293541e3876a174b757dff24e9bd7cbaf8df064b",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -200958,8 +202374,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },
@@ -206955,6 +208371,28 @@
           },
           "updated_at": "2026-11-24T17:36:26Z"
         },
+        "gamehq.settings.capture.background.description": {
+          "domain": "application",
+          "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+          "translation_hash": "0d089026002d0822b58c85567c9d7ccd63eccdd3a849384d9fa797e7dfe1ab72",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.settings.capture.background.title": {
+          "domain": "application",
+          "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+          "translation_hash": "f95919f4cb2692ced8eb79757bc337ff391c15ab32a4e1adc1415f8e3b2fdf18",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.settings.capture.border.denied": {
           "domain": "application",
           "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
@@ -212433,6 +213871,17 @@
           },
           "updated_at": "2026-09-28T12:00:00Z"
         },
+        "gamehq.tray.automatic_capture": {
+          "domain": "application",
+          "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+          "translation_hash": "aca2939b5c4f9841161db9a99d4a27a337f0ec4dc82ef76fb1e788a8493aa706",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.exit": {
           "domain": "application",
           "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
@@ -212455,6 +213904,17 @@
           },
           "updated_at": "2026-09-04T06:45:28Z"
         },
+        "gamehq.tray.pin_current_game": {
+          "domain": "application",
+          "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+          "translation_hash": "1657c6f4c3c1d361d1c35bd613a8999bdcb118a026cbcfe9666211805a561585",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.rescan_captures": {
           "domain": "application",
           "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
@@ -212476,6 +213936,28 @@
             "actor": "codex-gpt-5-contextual-zh-hant"
           },
           "updated_at": "2026-09-04T06:45:28Z"
+        },
+        "gamehq.tray.select_capture_target": {
+          "domain": "application",
+          "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+          "translation_hash": "9d2173d17f0f995a6fd3c28066a8334ef5d5ef4ec12d4105bc626952d9d9b469",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
+        "gamehq.tray.status.capture.paused": {
+          "domain": "application",
+          "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+          "translation_hash": "41bf1d05a1056fa83ef5463378745faaf22ad087e0859706c5827e4b26d163af",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.capture.ready": {
           "domain": "application",
@@ -212532,6 +214014,17 @@
           },
           "updated_at": "2026-11-26T12:00:00Z"
         },
+        "gamehq.tray.status.state.background": {
+          "domain": "application",
+          "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+          "translation_hash": "a0e13e80a74dc4cef39403d48b3a2ae71e8bf22018da0f26fe31c63754e7ada3",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
+        },
         "gamehq.tray.status.state.capture_problem": {
           "domain": "application",
           "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
@@ -212575,6 +214068,17 @@
             "actor": "gamehq-agent"
           },
           "updated_at": "2026-11-26T12:00:00Z"
+        },
+        "gamehq.tray.status.state.pinned": {
+          "domain": "application",
+          "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+          "translation_hash": "dc70cc076dd40f8d92fe6808d71f2330ebdff3a689b5584ad79b89a64248abe8",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "codex"
+          },
+          "updated_at": "2026-11-27T21:07:00Z"
         },
         "gamehq.tray.status.state.screenshot_saved": {
           "domain": "application",
@@ -213448,8 +214952,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1133,
-          "current": 1133,
+          "total": 1141,
+          "current": 1141,
           "missing": [],
           "stale": []
         },

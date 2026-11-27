@@ -7,12 +7,12 @@
 class ReplayBufferOwners
 {
 public:
-    enum Owner { Auto = 1, ManualSave = 2, HdrScreenshot = 4 };
+    enum Owner { Auto = 1, ManualSave = 2, WindowScreenshot = 4 };
     unsigned mask() const { return (m_auto ? Auto : 0) | (m_manual ? ManualSave : 0)
-                                  | (m_hdr ? HdrScreenshot : 0); }
+                                  | (m_screenshot ? WindowScreenshot : 0); }
     bool owns(Owner owner) const { return (mask() & owner) != 0; }
     bool needsSession() const { return mask() != 0; }
-    bool hasExplicitOwner() const { return m_manual || m_hdr; }
+    bool hasExplicitOwner() const { return m_manual || m_screenshot; }
     bool savePending() const { return m_savePending; }
     quint64 manualToken() const { return m_manual; }
     void setAuto(bool enabled) { m_auto = enabled; }
@@ -52,17 +52,17 @@ public:
     {
         return nowMs >= m_idleDeadline && releaseColdManual();
     }
-    quint64 acquireHdr()
+    quint64 acquireScreenshot()
     {
-        if (m_hdr)
+        if (m_screenshot)
             return 0;
-        return m_hdr = ++m_sequence;
+        return m_screenshot = ++m_sequence;
     }
-    bool finishHdr(quint64 token)
+    bool finishScreenshot(quint64 token)
     {
-        if (!token || token != m_hdr)
+        if (!token || token != m_screenshot)
             return false;
-        m_hdr = 0;
+        m_screenshot = 0;
         return true;
     }
 
@@ -71,6 +71,6 @@ private:
     bool m_savePending = false;
     quint64 m_sequence = 0;
     quint64 m_manual = 0;
-    quint64 m_hdr = 0;
+    quint64 m_screenshot = 0;
     qint64 m_idleDeadline = 0;
 };

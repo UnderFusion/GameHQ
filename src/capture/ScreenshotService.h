@@ -1,7 +1,6 @@
 #pragma once
 
 #include "capture/CaptureRequest.h"
-#include "games/GameDetector.h"
 #include <QObject>
 #include <QString>
 #include <QThreadPool>
@@ -11,12 +10,8 @@ class QImage;
 class ConfigManager;
 class CaptureLocations;
 
-// Grabs a screenshot of the foreground game and saves it as PNG under the
-// effective screenshot root: <root>/<Game>/Screenshots/<timestamp>.png.
-//
-// SDR targets use the original GDI screen-DC BitBlt path. With experimental
-// HDR enabled, capture() asks FramePumpService for a tone-mapped FP16 WGC frame
-// and saveImage() feeds it through the same asynchronous encoding tail.
+// Requests a window frame from the capture worker, then encodes it under the
+// effective screenshot root: <root>/<Game>/Screenshots/<timestamp>.<format>.
 class ScreenshotService : public QObject
 {
     Q_OBJECT
@@ -39,7 +34,7 @@ public slots:
     // pixels already.
     void saveImage(const QImage& img, const QString& gameName,
                    const QString& executablePath = QString(), quint64 operationId = 0);
-    void reportHdrCaptureFailure(const QString& reason, quint64 operationId = 0) { emit failed(reason, operationId); }
+    void reportWindowCaptureFailure(const QString& reason, quint64 operationId = 0);
     void prepareForUpdate();
     void cancelUpdatePreparation();
 
@@ -49,7 +44,7 @@ signals:
     void grabbed();                        // pixels are in hand — play shutter NOW
     void captured(const QString& filePath, const QString& gameName,
                   const QString& executablePath, quint64 operationId = 0);
-    void hdrCaptureRequested(const ForegroundGame& target, quint64 operationId);
+    void windowCaptureRequested(quint64 operationId);
     void skipped(const QString& reason, quint64 operationId = 0);   // gate said "not in a game"
     void failed(const QString& reason, quint64 operationId = 0);    // grab or save error
     void updateReady();
@@ -64,7 +59,6 @@ private:
     static constexpr qint64 kStalePendingMaxAgeSecs = 600;
 
     bool encodeBacklogFull() const;
-    QImage grabRect(void* hwnd, int x, int y, int w, int h) const;
     // Shared tail of capture()/saveImage(): read format/quality on this thread,
     // then encode + write on a pool thread and emit captured()/failed().
     void encodeAndSave(const QImage& img, const QString& gameName,

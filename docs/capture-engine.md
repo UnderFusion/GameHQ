@@ -1,14 +1,14 @@
 # Capture Engine
 
-> Milestones 0.4 (screenshots) / 0.5 (video). Target API: **Windows Graphics Capture** (WinRT, Win10 1903+), no injection. SDR screenshots retain GDI; HDR screenshots and replay share the FP16 WGC frame pump and GPU tone mapper.
+> Screenshots and replay use Windows Graphics Capture (WinRT, Windows 10 1903+). Both save the selected game's client area.
 >
 > **TOOLCHAIN (resolved dev.47): WGC runs on the project MinGW kit — no MSVC.** WGC is WinRT and MinGW can't build C++/WinRT (`cppwinrt`), but WGC has a raw-ABI path that doesn't need it: hand-declare the missing interface vtables/IIDs (`src/capture/wgc_shims.h`) and link the import libs mingw already ships (`windowsapp runtimeobject ole32 oleaut32 d3d11 dxgi dxguid uuid`). Every "requires MSVC / install VS Build Tools" note below is superseded.
 
-## Screenshots — SDR GDI path and HDR WGC path
+## Screenshots
 
-`GameDetector` resolves and gates the foreground game. On an SDR output, `ScreenshotService` uses screen-DC `BitBlt` (`SRCCOPY | CAPTUREBLT`) and reads the result into a `QImage`. When the experimental HDR flag is enabled and the target output has HDR active, it instead asks `FramePumpService` for the next FP16 WGC frame after `GpuToneMapper` converts it to BGRA8 SDR; a staging-texture readback produces the `QImage`. Both paths then write PNG or JPEG under `<ScreenshotsRoot>/<Game>/Screenshots/` and share the DB, thumbnail, gallery, sound and notification tail.
+`FramePumpService` resolves the target and reads a recent WGC frame from the same worker used for replay. The worker crops the texture to the client area in physical pixels and tone-maps HDR frames to SDR. With replay off, a screenshot uses a short-lived window session without a recorder or audio capture. If the window cannot supply valid pixels, the request reports a capture failure.
 
-**Threading (dev.13)**: only the `BitBlt` grab (~30 ms) runs on the UI thread; the format/quality config read also happens here (`ConfigManager` is not meant for concurrent access), then `grabbed()` fires (→ shutter sound, if enabled, plays immediately) and the encode + disk write hands off to a `QThreadPool` worker (`QImageWriter`; PNG uses `setCompression(1)` = speed over size, JPEG uses `setQuality(capture.jpeg_quality)`). A synchronous 4K encode took ~2.7 s and froze the UI/overlay — that is gone. The `captured()` signal (DB insert + tray notification) is delivered back to the UI thread from the worker. Default format is JPEG at `capture.jpeg_quality` 90 (since 0.7.9 on dev); PNG stays available but is near-uncompressed (~10 MB at 1440p, ~25 MB at 4K) — storage cleanup is 0.7 scope.
+The capture worker reads the texture into a `QImage`. The GUI thread reads format and quality settings, then emits `grabbed()` for shutter feedback. A `QThreadPool` worker writes the image to `<ScreenshotsRoot>/<Game>/Screenshots/`. The `captured()` signal drives the database, gallery and tray notification. JPEG defaults to quality 90. PNG uses low compression to keep encoding fast.
 
 **Publication is atomic (0.6.36)**: `src/capture/CapturePublisher.{h,cpp}` reserves a capture's timestamped name by creating `<name>.part` *exclusively*, so the two encoder threads can never be handed the same path — the previous `exists()`-then-write check could. `QImageWriter` encodes into that `.part` file, which the scanner ignores (`kImageSuffixes` in `CaptureScanner.cpp`), and only a rename publishes it under the real name. A failed encode discards the reservation; a failed publish keeps the `.part` rather than exposing a truncated image, and `ScreenshotService`'s constructor sweeps `.part` files older than 10 minutes left by a crash. **0.7.8 routes saved replay clips through the same publisher.** `FramePumpWorker::saveReplayOnWorker()` reserves `<stamp>.mp4` before the export starts (a second save inside the same second gets `<stamp>_2.mp4`), `ReplayExporter::concat()` remuxes into the reserved `.part` — the MP4 sink writer truncates the reserved file, so the name stays claimed for the whole export — and `CapturePublisher::publish()` renames it into place. The previous code deleted the final path before renaming and again on failure, which destroyed an existing clip that happened to carry the same timestamp; no failure path deletes anything but its own reservation now. The clip's preview name comes from `CapturePublisher::companionPath()`, so it inherits the same `_2` and stays the `<clip base>_clip.png` pair `ThumbnailService::ensureThumbnail()` reattaches. `FramePumpService`'s constructor sweeps abandoned `.part` files under the clips root the same way. Backpressure is bounded too: a capture is refused with a `skipped()` reason once 8 encodes or 256 MB of retained frames are already queued, because the pool's queue is unbounded and a 4K frame is ~33 MB.
 
@@ -18,11 +18,13 @@ In Settings → Capture, select **Whitelisted games** and add the executable tha
 
 **Known limitation**: native HDR JPEG XR output and its SDR companion pair remain separate work. The current HDR screenshot is an SDR PNG/JPEG produced through the same tone mapper as replay.
 
-## Screenshots — HDR WGC readback
+## Capture target
 
-`GraphicsCaptureItem` from the active game HWND (`CreateForWindow`) → FP16 frame pool → `GpuToneMapper` BGRA8 target → staging readback → `QImageWriter` → the shared save/DB/thumbnail path.
+Foreground capture is the default. Enable **Background capture** in Settings to keep capturing the last eligible game while another app has focus. Focusing a different eligible game starts a new replay buffer. The tray can pin the last focused game or a recently seen game window for the session. A pin overrides the setting until it is cleared or the window closes.
 
-The screenshot request forces the frame pump onto the current game when its stored target differs. This prevents a replay buffer armed on Steam or another foreground window from continuing to record that stale HWND after the game takes focus.
+Screenshots and replays share that target. A minimized window or a stalled frame stream pauses capture. The tray reports the game, whether it is pinned or in the background, and whether capture is paused.
+
+Background and pinned replay sessions start with an empty buffer when they rearm. Foreground replay can recover recent segments for the same window and process instance. An export already in progress keeps its segments until it finishes.
 
 ## WGC frame pump (0.5 Step 3, shipped dev.47, MinGW raw-ABI)
 

@@ -2230,29 +2230,29 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>顯示工具</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="336"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>部分檔案無法刪除。它們可能正被其他程式使用。請關閉正在使用這些檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="341"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="343"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>無法刪除該檔案。它可能正被其他程式使用。請關閉正在使用該檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="347"></location>
-      <location filename="src/app/App_CaptureWiring.cpp" line="378"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="349"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="380"></location>
       <source>Couldn't delete</source>
       <translation>無法刪除</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="367"></location>
       <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
       <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
       <translation>部分檔案位於監看資料夾中。GameHQ 不會刪除這些資料夾中的原始檔案，因此未對其進行任何變更。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="372"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="374"></location>
       <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
       <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
       <translation>此檔案位於監看資料夾中。GameHQ 不會刪除這些資料夾中的原始檔案，因此未對其進行任何變更。</translation>
@@ -2283,7 +2283,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>已收到擷取請求</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App_CaptureWiring.cpp" line="309"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="311"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
     </message>
@@ -2348,7 +2348,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>已請求儲存重播</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="290"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="292"></location>
       <source>Replay saved</source>
       <translation>重播已儲存</translation>
     </message>
@@ -2363,17 +2363,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>螢幕截圖已儲存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="292"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用預設設定啟動。系統保留了之前的設定檔案，因此沒有遺失任何內容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="281"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>Settings could not be read</source>
       <translation>無法讀取設定</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="313"></location>
+      <location filename="src/app/App.cpp" line="319"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分介面音效無法使用</translation>
     </message>
@@ -2874,9 +2874,19 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.capture.allowlist.add">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="92"></location>
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="236"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="243"></location>
       <source>Add game executable…</source>
       <translation>新增遊戲執行檔…</translation>
+    </message>
+    <message id="gamehq.settings.capture.background.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <source>Keep capturing the last active game when you switch to another app.</source>
+      <translation>切換至其他應用程式時，繼續擷取上次使用的遊戲。</translation>
+    </message>
+    <message id="gamehq.settings.capture.background.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="111"></location>
+      <source>Background capture</source>
+      <translation>背景擷取</translation>
     </message>
     <message id="gamehq.settings.capture.border.denied">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="49"></location>
@@ -2884,7 +2894,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Windows 未允許在此工作階段隱藏邊框。</translation>
     </message>
     <message id="gamehq.settings.capture.border.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="122"></location>
       <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
       <translation>在 Windows 支援時要求隱藏邊框。Windows 10 不支援此功能。</translation>
     </message>
@@ -2894,7 +2904,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Windows 回報邊框隱藏已生效。可見的邊框仍可能存在。</translation>
     </message>
     <message id="gamehq.settings.capture.border.next_session">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="127"></location>
       <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
       <translation>將於下次擷取工作階段生效。變更此項不會中斷目前的工作階段和重播緩衝區。</translation>
     </message>
@@ -2904,12 +2914,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>此工作階段未要求隱藏邊框。</translation>
     </message>
     <message id="gamehq.settings.capture.border.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
       <source>Windows capture border</source>
       <translation>Windows 擷取邊框</translation>
     </message>
     <message id="gamehq.settings.capture.border.toggle">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="125"></location>
       <source>Request border suppression</source>
       <translation>要求隱藏邊框</translation>
     </message>
@@ -2929,62 +2939,62 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>選擇 GameHQ 儲存螢幕截圖的時機、方式和位置。</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="178"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="185"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
       <translation>與「通知與聲音」頁面上的主開關配合使用。</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="174"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
       <source>Feedback</source>
       <translation>回饋</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="186"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
       <source>Screenshot notification</source>
       <translation>螢幕截圖通知</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="188"></location>
       <source>Screenshot sound</source>
       <translation>螢幕截圖聲音</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="176"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="183"></location>
       <source>After a screenshot</source>
       <translation>截圖之後</translation>
     </message>
     <message id="gamehq.settings.capture.image.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="140"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="147"></location>
       <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
       <translation>PNG 為無損格式；JPEG 以少量畫質換取更小的檔案。</translation>
     </message>
     <message id="gamehq.settings.capture.image.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
       <source>Image</source>
       <translation>圖片</translation>
     </message>
     <message id="gamehq.settings.capture.image.format">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
       <source>Format</source>
       <translation>格式</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="152"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="159"></location>
       <source>JPEG (smaller files)</source>
       <translation>JPEG（檔案更小）</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="165"></location>
       <source>JPEG quality</source>
       <translation>JPEG 品質</translation>
     </message>
     <message id="gamehq.settings.capture.image.png">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="157"></location>
       <source>PNG (lossless)</source>
       <translation>PNG（無損）</translation>
     </message>
     <message id="gamehq.settings.capture.image.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="145"></location>
       <source>Format and quality</source>
       <translation>格式和品質</translation>
     </message>
@@ -3030,37 +3040,37 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>允許清單中的遊戲</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="258"></location>
       <source>Choose the clips folder</source>
       <translation>選擇短片資料夾</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="244"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
       <source>Choose the screenshots folder</source>
       <translation>選擇截圖資料夾</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
       <source>Changing a location never moves or deletes existing media.</source>
       <translation>變更位置絕不會移動或刪除已有的媒體檔案。</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="200"></location>
       <source>Storage</source>
       <translation>儲存</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="212"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="219"></location>
       <source>Replay clips</source>
       <translation>重播短片</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="208"></location>
       <source>Screenshots</source>
       <translation>螢幕截圖</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="202"></location>
       <source>Where captures are saved</source>
       <translation>擷取內容的儲存位置</translation>
     </message>
@@ -5419,93 +5429,123 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Steam Input may also use this button</source>
       <translation>Steam Input 也可能使用此按鈕</translation>
     </message>
+    <message id="gamehq.tray.automatic_capture">
+      <location filename="src/tray/TrayIcon.cpp" line="278"></location>
+      <source>Return to Automatic Capture</source>
+      <translation>恢復自動擷取</translation>
+    </message>
     <message id="gamehq.tray.exit">
-      <location filename="src/tray/TrayIcon.cpp" line="244"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="282"></location>
       <source>Exit</source>
       <translation>離開</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
-      <location filename="src/tray/TrayIcon.cpp" line="228"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="257"></location>
       <source>Open Gallery</source>
       <translation>開啟圖庫</translation>
     </message>
+    <message id="gamehq.tray.pin_current_game">
+      <location filename="src/tray/TrayIcon.cpp" line="272"></location>
+      <source>Pin Current Game</source>
+      <translation>釘選目前遊戲</translation>
+    </message>
     <message id="gamehq.tray.rescan_captures">
-      <location filename="src/tray/TrayIcon.cpp" line="232"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="261"></location>
       <source>Rescan Captures</source>
       <translation>重新掃描擷取內容</translation>
     </message>
     <message id="gamehq.tray.save_replay">
-      <location filename="src/tray/TrayIcon.cpp" line="240"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="269"></location>
       <source>Save Replay</source>
       <translation>儲存重播</translation>
     </message>
+    <message id="gamehq.tray.select_capture_target">
+      <location filename="src/tray/TrayIcon.cpp" line="275"></location>
+      <source>Select Capture Target</source>
+      <translation>選擇擷取目標</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.paused">
+      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <source>Paused</source>
+      <translation>已暫停</translation>
+    </message>
     <message id="gamehq.tray.status.capture.ready">
-      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="201"></location>
       <source>Ready</source>
       <translation>就緒</translation>
     </message>
     <message id="gamehq.tray.status.capture.screenshots_only">
-      <location filename="src/tray/TrayStatus.cpp" line="189"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="211"></location>
       <source>Screenshots only</source>
       <translation>僅螢幕擷取畫面</translation>
     </message>
     <message id="gamehq.tray.status.capture.starting">
-      <location filename="src/tray/TrayStatus.cpp" line="184"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="206"></location>
       <source>Starting</source>
       <translation>正在啟動</translation>
     </message>
     <message id="gamehq.tray.status.capture.waiting">
-      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
       <source>Waiting for a supported game</source>
       <translation>等待支援的遊戲</translation>
     </message>
     <message id="gamehq.tray.status.game.none">
-      <location filename="src/tray/TrayStatus.cpp" line="210"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="232"></location>
       <source>None detected</source>
       <translation>未偵測到</translation>
     </message>
+    <message id="gamehq.tray.status.state.background">
+      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
+      <source>Background game</source>
+      <translation>背景遊戲</translation>
+    </message>
     <message id="gamehq.tray.status.state.capture_problem">
-      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="168"></location>
       <source>Capture problem</source>
       <translation>擷取問題</translation>
     </message>
     <message id="gamehq.tray.status.state.clip_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="151"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="163"></location>
       <source>Clip saved</source>
       <translation>已儲存剪輯</translation>
     </message>
     <message id="gamehq.tray.status.state.game_detected">
-      <location filename="src/tray/TrayStatus.cpp" line="165"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="183"></location>
       <source>Game detected</source>
       <translation>偵測到遊戲</translation>
     </message>
     <message id="gamehq.tray.status.state.idle">
-      <location filename="src/tray/TrayStatus.cpp" line="169"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="187"></location>
       <source>Idle</source>
       <translation>閒置</translation>
     </message>
+    <message id="gamehq.tray.status.state.pinned">
+      <location filename="src/tray/TrayStatus.cpp" line="176"></location>
+      <source>Pinned game</source>
+      <translation>已釘選遊戲</translation>
+    </message>
     <message id="gamehq.tray.status.state.screenshot_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="146"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="158"></location>
       <source>Screenshot saved</source>
       <translation>已儲存螢幕擷取畫面</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.capture">
-      <location filename="src/tray/TrayStatus.cpp" line="228"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="250"></location>
       <source>Capture: %1</source>
       <translation>擷取：%1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.game">
-      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="240"></location>
       <source>Game: %1</source>
       <translation>遊戲：%1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.status">
-      <location filename="src/tray/TrayStatus.cpp" line="223"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="245"></location>
       <source>Status: %1</source>
       <translation>狀態：%1</translation>
     </message>
     <message id="gamehq.tray.take_screenshot">
-      <location filename="src/tray/TrayIcon.cpp" line="236"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="265"></location>
       <source>Take Screenshot</source>
       <translation>擷取螢幕截圖</translation>
     </message>

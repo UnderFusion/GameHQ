@@ -2240,29 +2240,29 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Показати інструменти</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="336"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Деякі файли не вдалося видалити. Можливо, їх використовують інші програми. Закрийте програми, які їх використовують, і спробуйте ще раз.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="341"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="343"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Не вдалося видалити файл. Можливо, його використовує інша програма. Закрийте програму, яка його використовує, і спробуйте ще раз.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="347"></location>
-      <location filename="src/app/App_CaptureWiring.cpp" line="378"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="349"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="380"></location>
       <source>Couldn't delete</source>
       <translation>Не вдалося видалити</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_many">
-      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="367"></location>
       <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
       <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
       <translation>Деякі файли розташовані у відстежуваних папках. GameHQ не видаляє звідти оригінали, тому їх не змінено.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_kept_imported.body_one">
-      <location filename="src/app/App_CaptureWiring.cpp" line="372"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="374"></location>
       <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
       <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
       <translation>Цей файл розташований у відстежуваній папці. GameHQ не видаляє звідти оригінали, тому його не змінено.</translation>
@@ -2293,7 +2293,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Запит на захоплення отримано</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App_CaptureWiring.cpp" line="309"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="311"></location>
       <source>Reason: %1</source>
       <translation>Причина: %1</translation>
     </message>
@@ -2358,7 +2358,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Надіслано запит на збереження повтору</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App_CaptureWiring.cpp" line="290"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="292"></location>
       <source>Replay saved</source>
       <translation>Повтор збережено</translation>
     </message>
@@ -2373,17 +2373,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Знімок екрана збережено</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="292"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ запустився з типовими налаштуваннями. Попередній файл налаштувань збережено, тож нічого не втрачено.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="281"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>Settings could not be read</source>
       <translation>Не вдалося прочитати налаштування</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="313"></location>
+      <location filename="src/app/App.cpp" line="319"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Деякі звуки інтерфейсу недоступні</translation>
     </message>
@@ -2884,9 +2884,19 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.capture.allowlist.add">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="92"></location>
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="236"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="243"></location>
       <source>Add game executable…</source>
       <translation>Додати виконуваний файл гри…</translation>
+    </message>
+    <message id="gamehq.settings.capture.background.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <source>Keep capturing the last active game when you switch to another app.</source>
+      <translation>Продовжувати захоплення останньої активної гри після переходу до іншої програми.</translation>
+    </message>
+    <message id="gamehq.settings.capture.background.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="111"></location>
+      <source>Background capture</source>
+      <translation>Фонове захоплення</translation>
     </message>
     <message id="gamehq.settings.capture.border.denied">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="49"></location>
@@ -2894,7 +2904,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Windows не дозволила приховати рамку в цьому сеансі.</translation>
     </message>
     <message id="gamehq.settings.capture.border.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="122"></location>
       <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
       <translation>Запитує приховування рамки там, де Windows це підтримує. Windows 10 цього не підтримує.</translation>
     </message>
@@ -2904,7 +2914,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Windows повідомляє, що приховування рамки активне. Видима рамка все одно може залишитися.</translation>
     </message>
     <message id="gamehq.settings.capture.border.next_session">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="127"></location>
       <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
       <translation>Застосовується до наступного сеансу захоплення. Зміна не зупиняє поточний сеанс і буфер повторів.</translation>
     </message>
@@ -2914,12 +2924,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Приховування рамки для цього сеансу не запитувалося.</translation>
     </message>
     <message id="gamehq.settings.capture.border.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="120"></location>
       <source>Windows capture border</source>
       <translation>Рамка захоплення Windows</translation>
     </message>
     <message id="gamehq.settings.capture.border.toggle">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="125"></location>
       <source>Request border suppression</source>
       <translation>Запитувати приховування рамки</translation>
     </message>
@@ -2939,62 +2949,62 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Виберіть, коли, як і куди GameHQ зберігає знімки екрана.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="178"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="185"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
       <translation>Працює разом із головними перемикачами на сторінці «Сповіщення та звук».</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="174"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
       <source>Feedback</source>
       <translation>Зворотний зв’язок</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="186"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
       <source>Screenshot notification</source>
       <translation>Сповіщення про знімок екрана</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="188"></location>
       <source>Screenshot sound</source>
       <translation>Звук знімка екрана</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="176"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="183"></location>
       <source>After a screenshot</source>
       <translation>Після знімка екрана</translation>
     </message>
     <message id="gamehq.settings.capture.image.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="140"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="147"></location>
       <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
       <translation>PNG — без втрат; JPEG жертвує частиною якості заради менших файлів.</translation>
     </message>
     <message id="gamehq.settings.capture.image.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
       <source>Image</source>
       <translation>Зображення</translation>
     </message>
     <message id="gamehq.settings.capture.image.format">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="143"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
       <source>Format</source>
       <translation>Формат</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="152"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="159"></location>
       <source>JPEG (smaller files)</source>
       <translation>JPEG (менші файли)</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="165"></location>
       <source>JPEG quality</source>
       <translation>Якість JPEG</translation>
     </message>
     <message id="gamehq.settings.capture.image.png">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="150"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="157"></location>
       <source>PNG (lossless)</source>
       <translation>PNG (без втрат)</translation>
     </message>
     <message id="gamehq.settings.capture.image.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="145"></location>
       <source>Format and quality</source>
       <translation>Формат і якість</translation>
     </message>
@@ -3040,37 +3050,37 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Ігри з білого списку</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="258"></location>
       <source>Choose the clips folder</source>
       <translation>Виберіть папку для кліпів</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="244"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="251"></location>
       <source>Choose the screenshots folder</source>
       <translation>Виберіть папку для знімків екрана</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
       <source>Changing a location never moves or deletes existing media.</source>
       <translation>Зміна розташування ніколи не переміщує й не видаляє наявні файли.</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="193"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="200"></location>
       <source>Storage</source>
       <translation>Сховище</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="212"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="219"></location>
       <source>Replay clips</source>
       <translation>Кліпи повторів</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="208"></location>
       <source>Screenshots</source>
       <translation>Знімки екрана</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="202"></location>
       <source>Where captures are saved</source>
       <translation>Куди зберігаються знімки та кліпи</translation>
     </message>
@@ -5433,93 +5443,123 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Steam Input may also use this button</source>
       <translation>Steam Input може також використовувати цю кнопку</translation>
     </message>
+    <message id="gamehq.tray.automatic_capture">
+      <location filename="src/tray/TrayIcon.cpp" line="278"></location>
+      <source>Return to Automatic Capture</source>
+      <translation>Повернутися до автоматичного захоплення</translation>
+    </message>
     <message id="gamehq.tray.exit">
-      <location filename="src/tray/TrayIcon.cpp" line="244"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="282"></location>
       <source>Exit</source>
       <translation>Вийти</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
-      <location filename="src/tray/TrayIcon.cpp" line="228"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="257"></location>
       <source>Open Gallery</source>
       <translation>Відкрити галерею</translation>
     </message>
+    <message id="gamehq.tray.pin_current_game">
+      <location filename="src/tray/TrayIcon.cpp" line="272"></location>
+      <source>Pin Current Game</source>
+      <translation>Закріпити поточну гру</translation>
+    </message>
     <message id="gamehq.tray.rescan_captures">
-      <location filename="src/tray/TrayIcon.cpp" line="232"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="261"></location>
       <source>Rescan Captures</source>
       <translation>Пересканувати медіафайли</translation>
     </message>
     <message id="gamehq.tray.save_replay">
-      <location filename="src/tray/TrayIcon.cpp" line="240"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="269"></location>
       <source>Save Replay</source>
       <translation>Зберегти повтор</translation>
     </message>
+    <message id="gamehq.tray.select_capture_target">
+      <location filename="src/tray/TrayIcon.cpp" line="275"></location>
+      <source>Select Capture Target</source>
+      <translation>Вибрати гру для захоплення</translation>
+    </message>
+    <message id="gamehq.tray.status.capture.paused">
+      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <source>Paused</source>
+      <translation>Призупинено</translation>
+    </message>
     <message id="gamehq.tray.status.capture.ready">
-      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="201"></location>
       <source>Ready</source>
       <translation>Готово</translation>
     </message>
     <message id="gamehq.tray.status.capture.screenshots_only">
-      <location filename="src/tray/TrayStatus.cpp" line="189"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="211"></location>
       <source>Screenshots only</source>
       <translation>Лише знімки екрана</translation>
     </message>
     <message id="gamehq.tray.status.capture.starting">
-      <location filename="src/tray/TrayStatus.cpp" line="184"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="206"></location>
       <source>Starting</source>
       <translation>Запуск</translation>
     </message>
     <message id="gamehq.tray.status.capture.waiting">
-      <location filename="src/tray/TrayStatus.cpp" line="196"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
       <source>Waiting for a supported game</source>
       <translation>Очікування підтримуваної гри</translation>
     </message>
     <message id="gamehq.tray.status.game.none">
-      <location filename="src/tray/TrayStatus.cpp" line="210"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="232"></location>
       <source>None detected</source>
       <translation>Не виявлено</translation>
     </message>
+    <message id="gamehq.tray.status.state.background">
+      <location filename="src/tray/TrayStatus.cpp" line="179"></location>
+      <source>Background game</source>
+      <translation>Гра у фоновому режимі</translation>
+    </message>
     <message id="gamehq.tray.status.state.capture_problem">
-      <location filename="src/tray/TrayStatus.cpp" line="156"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="168"></location>
       <source>Capture problem</source>
       <translation>Проблема запису</translation>
     </message>
     <message id="gamehq.tray.status.state.clip_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="151"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="163"></location>
       <source>Clip saved</source>
       <translation>Кліп збережено</translation>
     </message>
     <message id="gamehq.tray.status.state.game_detected">
-      <location filename="src/tray/TrayStatus.cpp" line="165"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="183"></location>
       <source>Game detected</source>
       <translation>Гру виявлено</translation>
     </message>
     <message id="gamehq.tray.status.state.idle">
-      <location filename="src/tray/TrayStatus.cpp" line="169"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="187"></location>
       <source>Idle</source>
       <translation>Очікування</translation>
     </message>
+    <message id="gamehq.tray.status.state.pinned">
+      <location filename="src/tray/TrayStatus.cpp" line="176"></location>
+      <source>Pinned game</source>
+      <translation>Закріплена гра</translation>
+    </message>
     <message id="gamehq.tray.status.state.screenshot_saved">
-      <location filename="src/tray/TrayStatus.cpp" line="146"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="158"></location>
       <source>Screenshot saved</source>
       <translation>Знімок екрана збережено</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.capture">
-      <location filename="src/tray/TrayStatus.cpp" line="228"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="250"></location>
       <source>Capture: %1</source>
       <translation>Запис: %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.game">
-      <location filename="src/tray/TrayStatus.cpp" line="218"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="240"></location>
       <source>Game: %1</source>
       <translation>Гра: %1</translation>
     </message>
     <message id="gamehq.tray.status.tooltip.status">
-      <location filename="src/tray/TrayStatus.cpp" line="223"></location>
+      <location filename="src/tray/TrayStatus.cpp" line="245"></location>
       <source>Status: %1</source>
       <translation>Стан: %1</translation>
     </message>
     <message id="gamehq.tray.take_screenshot">
-      <location filename="src/tray/TrayIcon.cpp" line="236"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="265"></location>
       <source>Take Screenshot</source>
       <translation>Зробити знімок екрана</translation>
     </message>

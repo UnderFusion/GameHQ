@@ -11,6 +11,7 @@ namespace {
 struct Registry {
     QMutex mutex;
     QHash<QString, int> references;
+    QHash<QString, QString> retiredPaths;
     quint64 nextOwner = 0;
 };
 
@@ -41,8 +42,12 @@ struct SegmentLease::State {
         QMutexLocker lock(&r.mutex);
         for (const QString& key : keys) {
             auto it = r.references.find(key);
-            if (--it.value() == 0)
+            if (--it.value() == 0) {
                 r.references.erase(it);
+                const QString retired = r.retiredPaths.take(key);
+                if (!retired.isEmpty())
+                    QFile::remove(retired);
+            }
         }
     }
 };
@@ -84,6 +89,17 @@ bool SegmentLease::removeIfUnleased(const QString& path)
     if (r.references.contains(pathKey(path)))
         return false;
     return QFile::remove(path) || !QFile::exists(path);
+}
+
+void SegmentLease::removeWhenUnleased(const QString& path)
+{
+    auto& r = registry();
+    QMutexLocker lock(&r.mutex);
+    const QString key = pathKey(path);
+    if (r.references.contains(key))
+        r.retiredPaths.insert(key, path);
+    else
+        QFile::remove(path);
 }
 
 void SegmentLease::trim(QStringList& paths, int keep)

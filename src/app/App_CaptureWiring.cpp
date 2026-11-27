@@ -254,12 +254,14 @@ void App::wireCaptureFeedback()
     };
     connect(m_screenshots.get(), &ScreenshotService::requestAccepted, this, acknowledgeCapture);
     connect(m_framePump.get(), &FramePumpService::requestAccepted, this, acknowledgeCapture);
-    connect(m_screenshots.get(), &ScreenshotService::hdrCaptureRequested,
-            m_framePump.get(), &FramePumpService::captureHdrScreenshot);
-    connect(m_framePump.get(), &FramePumpService::hdrScreenshotReady,
+    connect(m_screenshots.get(), &ScreenshotService::windowCaptureRequested,
+            m_framePump.get(), &FramePumpService::captureWindowScreenshot);
+    connect(m_framePump.get(), &FramePumpService::windowScreenshotReady,
             m_screenshots.get(), &ScreenshotService::saveImage);
-    connect(m_framePump.get(), &FramePumpService::hdrScreenshotFailed,
-            m_screenshots.get(), &ScreenshotService::reportHdrCaptureFailure);
+    connect(m_framePump.get(), &FramePumpService::windowScreenshotFailed,
+            m_screenshots.get(), &ScreenshotService::reportWindowCaptureFailure);
+    connect(m_framePump.get(), &FramePumpService::windowScreenshotSkipped,
+            m_screenshots.get(), &ScreenshotService::skipped);
     connect(m_framePump.get(), &FramePumpService::failed, this,
             [this](const QString& why) { qWarning() << "FramePump: failed —" << why; });
     // The ring freezes immediately, but do not say "saved" until the final MP4

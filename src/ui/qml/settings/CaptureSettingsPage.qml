@@ -106,6 +106,13 @@ SettingsPage {
                 }
             }
         }
+        SettingsRow {
+            //% "Background capture"
+            label: qsTrId("gamehq.settings.capture.background.title")
+            //% "Keep capturing the last active game when you switch to another app."
+            description: qsTrId("gamehq.settings.capture.background.description")
+            SettingsToggle { configKey: "capture.background"; defaultValue: false }
+        }
     }
 
     SettingsSection {

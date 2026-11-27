@@ -10,6 +10,7 @@
 
 #include <QObject>
 #include <QElapsedTimer>
+#include <QList>
 #include <QString>
 #include <QThread>
 #include <memory>
@@ -20,11 +21,9 @@ class QImage;
 class QTimer;
 class ReplayExportTask;
 
-// Auto-armed while a game is foreground (replay.auto, master switch in
-// Settings → Replay). On start it captures the current foreground game window
-// (gated by capture.mode, same as the screenshot path) via a free-threaded WGC
-// Direct3D11CaptureFramePool. The MTA worker feeds rolling H.264 segments and,
-// on HDR displays, exposes a tone-mapped BGRA8 frame for one-shot screenshots.
+// Screenshots and auto-armed replay share the selected game window. The MTA
+// worker crops each WGC frame to the client area and tone-maps HDR before
+// handing pixels to the screenshot readback or rolling replay recorder.
 //
 // All WinRT/D3D work runs on a dedicated MTA thread (FramePumpWorker): Qt's GUI
 // thread is initialised as an STA, which is incompatible with RoInitialize(MTA) and
@@ -46,8 +45,8 @@ public slots:
                    int fps, int bitrateMbps, int segmentSeconds, int lengthSeconds,
                    const QString& gameName, const QString& executablePath,
                    int audioSource,          // AudioSourcePolicy::Source
-                   bool hdrExperimentalEnabled = false,
-                   CaptureBorder::SessionPolicy borderPolicy = CaptureBorder::SessionPolicy{}); // build pipeline + start polling/encoding
+                   bool hdrExperimentalEnabled, CaptureBorder::SessionPolicy borderPolicy,
+                   quint64 processStarted, bool recordReplay, const QString& replayCacheKey);
     void stopPump();                 // stop polling + tear down the pipeline
     void stopPumpForGeneration(quint64 generation);
     // chainId is the CaptureRequest id that started this save; it labels every
@@ -55,7 +54,7 @@ public slots:
     void saveReplayOnWorker(const QString& clipsBaseRoot, quint64 generation,
                             quint64 requestId, quint64 chainId);
     void captureScreenshotOnWorker(quint64 generation, quint64 requestId);
-    void cancelHdrScreenshotOnWorker(quint64 requestId);
+    void cancelScreenshotOnWorker(quint64 requestId);
     void prepareForUpdate(quint64 generation);
     void cancelUpdatePreparation();
 
@@ -68,6 +67,8 @@ signals:
     // with the diagnostic detail behind it. Never derived from the setter HRESULT alone.
     void borderStateChanged(quint64 generation, int state, const QString& detail);
     void restartRequested(quint64 generation, const QString& reason);
+    void capturePausedChanged(quint64 generation, bool paused);
+    void captureTargetLost(quint64 generation);
     // Fired the instant the ring is frozen (~1 s into the hold), before the
     // slower remux — thumbnailPath is a preview grabbed from the freshest
     // completed segment so the "saved" toast can show it right away.
@@ -77,9 +78,9 @@ signals:
                    const QString& thumbnailPath, const QString& executablePath);
     void clipFailed(const QString& gameName, const QString& reason);
     void saveRequestFinished(quint64 requestId);
-    void hdrScreenshotReady(quint64 generation, quint64 requestId, const QImage& image, const QString& gameName,
+    void windowScreenshotReady(quint64 generation, quint64 requestId, const QImage& image, const QString& gameName,
                             const QString& executablePath);
-    void hdrScreenshotFailed(quint64 generation, quint64 requestId, const QString& reason);
+    void windowScreenshotFailed(quint64 generation, quint64 requestId, const QString& reason);
     void exportBusyChanged(bool busy);
     void updateReady(quint64 generation);
 
@@ -92,7 +93,7 @@ private:
     bool failStep(const char* step, long hr);
     void reportBufferState(ReplayBufferState::State state, const QString& reason = {});
     void checkReplayReadiness();     // low-frequency lifecycle check, outside poll()
-    void resolveStaleHdrScreenshot(); // static scene: WGC sends no new frame, use the last one
+    void completeScreenshot();
 
     // startPump bring-up, one phase per step, in call order. Each reports its own
     // failure via failStep() and returns false; startPump owns the single
@@ -129,9 +130,9 @@ private:
     quint64 m_exportGeneration = 0;  // fences callbacks across export shutdown/replacement
     bool m_updatePreparing = false;
     quint64 m_updateGeneration = 0; // request may follow a GUI-side start rejection
-    bool m_hdrScreenshotPending = false;
-    quint64 m_hdrRequestId = 0;
-    QElapsedTimer m_hdrPendingClock;
+    bool m_screenshotPending = false;
+    quint64 m_screenshotRequestId = 0;
+    QElapsedTimer m_screenshotPendingClock;
     // Runtime audio read failures that already forced a re-arm, in a short
     // window; past the limit the buffer fails instead of re-arming forever.
     QString m_audioFailure;          // reason while the current Failed state is an audio failure
@@ -159,6 +160,10 @@ public:
     ReplayBufferState::State bufferState() const { return m_buffer.state(); }
     int captureBorderState() const { return int(m_borderState); }
     QString captureBorderDetail() const { return m_borderDetail; }
+    QList<ForegroundGame> captureTargets();
+    bool hasPinnedTarget() const { return m_pinnedTarget.valid; }
+    void pinTarget(const ForegroundGame& target);
+    void useAutomaticCapture();
 
 public slots:
     // Share-hold: save the last N seconds as one clip. The request is the chain
@@ -167,7 +172,7 @@ public slots:
     void saveReplay(const CaptureRequest& request);
     // For callers with no press behind them (QML, internal retries).
     void saveReplay() { saveReplay(CaptureRequest::create(CaptureRequest::Source::Ui)); }
-    void captureHdrScreenshot(const ForegroundGame& target, quint64 operationId = 0);
+    void captureWindowScreenshot(quint64 operationId);
     // Replace the pipeline with new settings while preserving session owners.
     void restartBuffer();
     void shutdownForExit();
@@ -183,19 +188,19 @@ signals:
     void clipSaved(const QString& clipPath, const QString& gameName,
                    const QString& thumbnailPath, const QString& executablePath, quint64 operationId = 0);
     void clipFailed(const QString& gameName, const QString& reason, quint64 operationId = 0);
-    void hdrScreenshotReady(const QImage& image, const QString& gameName,
+    void windowScreenshotReady(const QImage& image, const QString& gameName,
                             const QString& executablePath, quint64 operationId = 0);
-    void hdrScreenshotFailed(const QString& reason, quint64 operationId = 0);
+    void windowScreenshotFailed(const QString& reason, quint64 operationId = 0);
+    void windowScreenshotSkipped(const QString& reason, quint64 operationId);
     // Every valid, non-excluded foreground window. `recognizedGame` says
     // whether it passes the game heuristic or has an external game identity;
     // only such a window may become a new library game row.
     void foregroundGameDetected(const QString& gameName, const QString& executablePath,
                                 bool recognizedGame);
-    // Same foreground observation plus whether GameHQ may capture it now
-    // (GameDetector::shouldCapture, the rule screenshots and replay share).
-    // Drives the tray status (#38): eligible but unbuffered = screenshots only.
-    void foregroundCaptureTarget(const QString& gameName, bool recognizedGame,
-                                 bool captureEligible);
+    // The selected capture target and its state, independently of focus.
+    void captureTargetChanged(const QString& gameName, bool recognizedGame,
+                              bool captureEligible, bool background, bool pinned, bool paused);
+    void selectedBufferStateChanged(int state);
     // Rolling buffer armed/disarmed — drives the Settings "buffer state" row.
     void recordingStateChanged(bool active, const QString& gameName);
     void bufferStateChanged(ReplayBufferState::State state, const QString& gameName);
@@ -211,16 +216,20 @@ private slots:
     void autoTick();                 // poll the foreground game → arm/disarm the buffer
 
 private:
-    void startBuffer(const ForegroundGame& target);
+    void startBuffer(const ForegroundGame& target, bool recordReplay = true);
     friend class ControllerClipE2ETest;
     friend class CaptureAcknowledgementTest;
     void updateAutoTarget(const ForegroundGame& current, bool restartRequested = false);
+    ForegroundGame selectTarget(const ForegroundGame& current);
+    bool backgroundEnabled() const;
+    void clearCaptureTargets();
+    void publishCaptureTarget();
     void enforceTargetPolicy();
     void stopBuffer();
     void ownersChanged(const char* reason, quint64 requestId = 0);
 
     quint64 m_activeReplayOperation = 0;
-    quint64 m_activeHdrOperation = 0;
+    quint64 m_activeScreenshotOperation = 0;
     ConfigManager* m_config = nullptr;
     CaptureLocations* m_locations = nullptr;
     QThread m_thread;
@@ -229,14 +238,20 @@ private:
     ReplayBufferOwners m_owners;
     QElapsedTimer m_ownerClock;
     ForegroundGame m_targetGame;
+    ForegroundGame m_selectedTarget;
+    ForegroundGame m_pinnedTarget;
+    ForegroundGame m_lastFocusedTarget;
+    QList<ForegroundGame> m_recentTargets;
+    bool m_selectedInBackground = false;
+    bool m_targetHasReplay = false;
+    bool m_capturePaused = false;
     bool m_exportBusy = false;
     bool m_preparingForUpdate = false;
     bool m_exitRequested = false;
     CaptureBorder::State m_borderState = CaptureBorder::Unknown;
     QString m_borderDetail;
 
-    // Always-on auto-arm (replay.auto): while enabled, the buffer records whenever a
-    // game is foreground (per capture.mode) — no manual arming needed.
+    // Auto-armed replay follows the selected target while ReplayAuto is on.
     QTimer* m_autoTimer = nullptr;
     bool m_autoEnabled = true;
     bool m_restartPending = false;

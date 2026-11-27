@@ -30,6 +30,12 @@
 // Preflight: refuse when the buffer is not running or an export is in flight.
 bool FramePumpWorker::saveGuard(const QString& saveId)
 {
+    if (m_pipe && (m_pipe->paused || !GameDetector::onInputDesktop()
+        || !GameDetector::captureWindowAvailable(m_pipe->hwnd)
+        || !GameDetector::windowMatchesProcess(m_pipe->hwnd, m_pipe->pid, m_pipe->processStarted))) {
+        emit clipFailed(m_pipe->gameName, QStringLiteral("The game window is unavailable for replay capture"));
+        return false;
+    }
     checkReplayReadiness();
     if (!ReplayBufferState::canSave(m_bufferState)) {
         emit clipFailed(QStringLiteral("Replay"), !m_audioFailure.isEmpty()

@@ -22,6 +22,7 @@ enum class WaitOutcome {
 // "<id>:<creation-time>" for this process, or empty if it cannot be read.
 QString currentToken();
 QString tokenFor(quint32 processId);
+bool creationTimeOf(void* processHandle, quint64& creationTime);
 
 bool parseToken(const QString& token, quint32& processId, quint64& creationTime);
 

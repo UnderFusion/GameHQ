@@ -26,17 +26,27 @@ TrayStatus::~TrayStatus() = default;
 
 void TrayStatus::setForegroundGame(const QString& name, bool recognizedGame, bool captureEligible)
 {
+    setCaptureTarget(name, recognizedGame, captureEligible, false, false, false);
+}
+
+void TrayStatus::setCaptureTarget(const QString& name, bool recognizedGame, bool captureEligible,
+                                  bool background, bool pinned, bool paused)
+{
     // Only a recognized game counts. FramePumpService reports every valid
     // foreground window, including ones the game heuristic rejects, and those
     // must not make the badge green.
     const QString trimmed = recognizedGame ? name.trimmed() : QString();
     const bool recognized = recognizedGame && !trimmed.isEmpty();
     const bool eligible = recognized && captureEligible;
-    if (trimmed == m_gameName && recognized == m_recognized && eligible == m_eligible)
+    if (trimmed == m_gameName && recognized == m_recognized && eligible == m_eligible
+        && background == m_background && pinned == m_pinned && paused == m_paused)
         return;
     m_gameName = trimmed;
     m_recognized = recognized;
     m_eligible = eligible;
+    m_background = background;
+    m_pinned = pinned;
+    m_paused = paused;
     publish();
 }
 
@@ -86,6 +96,8 @@ TrayStatus::Capture TrayStatus::capture() const
     // vouch for a window GameHQ may not capture.
     if (!m_eligible)
         return Capture::Waiting;
+    if (m_paused)
+        return Capture::Paused;
     switch (m_bufferState) {
     case ReplayBufferState::Starting:
         return Capture::Starting;
@@ -159,7 +171,13 @@ QString TrayStatus::statusText() const
         break;
     }
     if (m_recognized)
-        return NativeText::get(
+        return m_pinned ? NativeText::get(
+            //% "Pinned game"
+            QT_TRID_NOOP("gamehq.tray.status.state.pinned"), "Pinned game")
+            : m_background ? NativeText::get(
+            //% "Background game"
+            QT_TRID_NOOP("gamehq.tray.status.state.background"), "Background game")
+            : NativeText::get(
             //: Tray tooltip status line when a supported game is in the foreground.
             //% "Game detected"
             QT_TRID_NOOP("gamehq.tray.status.state.game_detected"), "Game detected");
@@ -172,6 +190,10 @@ QString TrayStatus::statusText() const
 QString TrayStatus::captureText() const
 {
     switch (capture()) {
+    case Capture::Paused:
+        return NativeText::get(
+            //% "Paused"
+            QT_TRID_NOOP("gamehq.tray.status.capture.paused"), "Paused");
     case Capture::Ready:
         return NativeText::get(
             //: Tray tooltip capture line when the replay buffer is armed and recording.

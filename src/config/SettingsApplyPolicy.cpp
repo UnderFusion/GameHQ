@@ -21,6 +21,7 @@ constexpr std::array restartKeys{
 
 constexpr std::array liveKeys{
     ConfigKeys::CaptureMode,
+    ConfigKeys::CaptureBackground,
     ConfigKeys::CaptureAllowedExecutables,
     ConfigKeys::CaptureHideBorder,
     ConfigKeys::CaptureScreenshotFormat,

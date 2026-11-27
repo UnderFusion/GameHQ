@@ -1,10 +1,12 @@
 #pragma once
 #include <QIcon>
+#include <QList>
 #include <QObject>
 #include <QSystemTrayIcon>
 
 #include "tray/TrayIconRenderer.h"
 #include "tray/TrayStatus.h"
+#include "games/GameDetector.h"
 
 class QMenu;
 class QAction;
@@ -41,6 +43,7 @@ public:
 
     QString tooltipText() const;
     QIcon trayIcon() const;
+    void setCaptureTargets(const QList<ForegroundGame>& targets, bool pinned);
 
 public slots:
     void retranslate();
@@ -49,6 +52,9 @@ signals:
     void openGalleryRequested();
     void rescanRequested();
     void screenshotRequested();
+    void captureMenuOpening();
+    void captureTargetPinned(const ForegroundGame& target);
+    void automaticCaptureRequested();
     void quitRequested();
 
 private:
@@ -63,6 +69,10 @@ private:
     QAction* m_rescanAction = nullptr;
     QAction* m_screenshotAction = nullptr;
     QAction* m_replayAction = nullptr;
+    QAction* m_pinCurrentAction = nullptr;
+    QAction* m_automaticCaptureAction = nullptr;
+    QMenu* m_captureTargetsMenu = nullptr;
+    ForegroundGame m_currentCaptureTarget;
     QAction* m_quitAction = nullptr;
 
     TrayStatus* m_status = nullptr;

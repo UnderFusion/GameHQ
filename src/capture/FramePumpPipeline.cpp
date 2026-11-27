@@ -12,6 +12,7 @@
 #include "capture/hdr/GpuToneMapper.h"
 #include "capture/hdr/HdrToneMapMath.h"
 #include "capture/SegmentRecorder.h"
+#include "capture/WindowCaptureGeometry.h"
 #include "capture/ReplayExportTask.h"
 #include "config/Paths.h"
 #include "core/GameIdentity.h"
@@ -37,6 +38,7 @@
 #include <cwchar>
 
 #include <mfapi.h>
+#include <dwmapi.h>
 #include <roapi.h>       // RoInitialize / RoUninitialize / RoGetActivationFactory
 #include <winstring.h>   // WindowsCreateString / WindowsDeleteString
 
@@ -125,6 +127,8 @@ FramePumpWorker::~FramePumpWorker()
 
 void FramePumpWorker::onThreadStarted()
 {
+    // WGC dimensions and DWM frame bounds are physical pixels.
+    SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
     // Fresh worker thread → uninitialised apartment → MTA is available.
     const HRESULT hr = RoInitialize(RO_INIT_MULTITHREADED);
     m_apartmentReady = SUCCEEDED(hr);
@@ -186,6 +190,52 @@ void FramePumpWorker::teardown()
 
 namespace
 {
+constexpr qint64 kFreshFrameMs = 2000;
+
+QRect clientCrop(HWND hwnd, const QSize& content)
+{
+    WINDOWINFO window{};
+    window.cbSize = sizeof(window);
+    if (!GetWindowInfo(hwnd, &window))
+        return {};
+    const auto rect = [](const RECT& r) {
+        return QRect(r.left, r.top, r.right - r.left, r.bottom - r.top);
+    };
+    RECT visible{};
+    const QRect client = rect(window.rcClient);
+    if (SUCCEEDED(DwmGetWindowAttribute(hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &visible, sizeof(visible)))) {
+        const QRect crop = WindowCaptureGeometry::clientCrop(rect(visible), client, content);
+        if (!crop.isEmpty())
+            return crop;
+    }
+    return WindowCaptureGeometry::clientCrop(rect(window.rcWindow), client, content);
+}
+
+ID3D11Texture2D* copyClientTexture(ID3D11Texture2D* source, ID3D11Texture2D*& target,
+                                   const QRect& crop, ID3D11Device* device,
+                                   ID3D11DeviceContext* context)
+{
+    D3D11_TEXTURE2D_DESC desc{};
+    source->GetDesc(&desc);
+    if (crop.isEmpty() || UINT(crop.right()) >= desc.Width || UINT(crop.bottom()) >= desc.Height)
+        return nullptr;
+    if (!target) {
+        desc.Width = UINT(crop.width());
+        desc.Height = UINT(crop.height());
+        desc.MipLevels = desc.ArraySize = desc.SampleDesc.Count = 1;
+        desc.SampleDesc.Quality = 0;
+        desc.Usage = D3D11_USAGE_DEFAULT;
+        desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+        desc.CPUAccessFlags = desc.MiscFlags = 0;
+        if (FAILED(device->CreateTexture2D(&desc, nullptr, &target)))
+            return nullptr;
+    }
+    const D3D11_BOX box{ UINT(crop.x()), UINT(crop.y()), 0,
+                         UINT(crop.right() + 1), UINT(crop.bottom() + 1), 1 };
+    context->CopySubresourceRegion(target, 0, 0, 0, 0, source, 0, &box);
+    return target;
+}
+
 QSize fitInsideEven(QSize source, QSize limit)
 {
     if (source.width() < 2 || source.height() < 2)
@@ -242,7 +292,7 @@ QImage readBgraTexture(ID3D11Texture2D* texture, ID3D11Device* device,
 
     QImage image(int(sourceDesc.Width), int(sourceDesc.Height), QImage::Format_ARGB32);
     const size_t rowBytes = size_t(sourceDesc.Width) * 4;
-    for (UINT y = 0; y < sourceDesc.Height; ++y) {
+    for (UINT y = 0; !image.isNull() && y < sourceDesc.Height; ++y) {
         std::memcpy(image.scanLine(int(y)),
                     static_cast<const unsigned char*>(mapped.pData)
                         + size_t(y) * mapped.RowPitch,
@@ -357,14 +407,14 @@ bool FramePumpWorker::createCaptureItem(Pipeline* pipe, void* hwndPtr, unsigned 
 
     // Device initialization and WinRT activation can outlive the original HWND.
     // Check on both sides of item creation, before any capture session starts.
-    if (GameDetector::windowBelongsToProcess(hwndPtr, pid))
+    if (GameDetector::windowMatchesProcess(hwndPtr, pid, pipe->processStarted))
         hr = interop->CreateForWindow(static_cast<HWND>(hwndPtr), IID_IGraphicsCaptureItem,
                                       reinterpret_cast<void**>(&pipe->item));
     else
         hr = E_HANDLE;
     interop->Release();
     if (FAILED(hr) || !pipe->item) return failStep("CreateForWindow", hr);
-    if (!GameDetector::windowBelongsToProcess(hwndPtr, pid))
+    if (!GameDetector::windowMatchesProcess(hwndPtr, pid, pipe->processStarted))
         return failStep("capture window owner changed", E_HANDLE);
 
     WgcSizeInt32 size{ 0, 0 };
@@ -381,7 +431,7 @@ bool FramePumpWorker::createCaptureItem(Pipeline* pipe, void* hwndPtr, unsigned 
 //     saved clip — Share-hold snapshots this ring and remuxes it into one file
 //     under <capturesRoot>/<Game>/Clips/ (Step 6/8, saveReplayOnWorker).
 //
-// A failed recorder may still serve HDR screenshots through capture-only WGC,
+// A failed recorder may still serve screenshots through capture-only WGC,
 // but must report Failed for replay instead of claiming that it is recording.
 void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW, int srcH,
                                      int encodeWidth, int encodeHeight, int fps, int bitrateMbps,
@@ -424,7 +474,6 @@ void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW
                 "instead of recording video-only or another source")
                 .arg(game ? QStringLiteral("game audio") : QStringLiteral("desktop audio"));
             reportBufferState(ReplayBufferState::Failed, pipe->audioFailure);
-            pipe->encClock.start();
             pipe->encStartQpc100ns = qpcNow100ns();
             return;
         }
@@ -447,11 +496,12 @@ void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW
                             .arg(pipe->audio->sampleRate())
                             .arg(pipe->audio->channels());
     }
+    if (!pipe->replayCacheKey.isEmpty())
+        cacheProfile += QLatin1Char('-') + pipe->replayCacheKey;
     const QString cacheDir = Paths::replayCacheDir() + QLatin1Char('/')
                              + GameIdentity::pathComponent(pipe->gameName) + QLatin1Char('/')
                              + cacheProfile;
-    // restoreRing() and pruning work inside this folder, so it must never
-    // resolve outside the replay cache.
+    // Replay segments must stay inside the replay cache.
     if (!GameIdentity::isInsideRoot(Paths::replayCacheDir(), cacheDir)) {
         qWarning() << "FramePump: refusing a replay cache folder outside the cache root"
                    << cacheDir << "— capture-only";
@@ -462,7 +512,9 @@ void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW
                                fps, bitrateMbps, segmentSeconds, lengthSeconds, cacheDir,
                                pipe->d3dDevice, pipe->d3dCtx,
                                pipe->audio ? pipe->audio->sampleRate() : 0,
-                               pipe->audio ? pipe->audio->channels() : 0)) {
+                               pipe->audio ? pipe->audio->channels() : 0,
+                               pipe->replayCacheKey.isEmpty() ? SegmentRecorder::CacheHistory::SessionOnly
+                                                             : SegmentRecorder::CacheHistory::Restore)) {
         qWarning() << "FramePump: segment recorder failed to start — capture-only";
         delete pipe->recorder;
         pipe->recorder = nullptr;
@@ -476,7 +528,6 @@ void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW
         pipe->recorder = nullptr;
         reportBufferState(ReplayBufferState::Failed, pipe->audioFailure);
     }
-    pipe->encClock.start();
     pipe->encStartQpc100ns = qpcNow100ns();   // A/V share this epoch
 }
 
@@ -521,7 +572,8 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
         const float sdrWhiteNits = output.sdrWhiteLevelNits > 0.0f
             ? output.sdrWhiteLevelNits
             : capture::hdr::kDefaultSdrWhiteLevelNits;
-        if (mapper->init(pipe->d3dDevice, pipe->d3dCtx, UINT(srcW), UINT(srcH),
+        if (mapper->init(pipe->d3dDevice, pipe->d3dCtx,
+                         UINT(pipe->clientSize.width()), UINT(pipe->clientSize.height()),
                          sdrWhiteNits)) {
             pipe->hdrToneMapper = mapper.release();   // owned by Pipeline from here
             poolFormat = DirectXPixelFormat_R16G16B16A16Float;
@@ -621,7 +673,8 @@ void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned
                                 int encodeHeight, int fps, int bitrateMbps, int segmentSeconds,
                                 int lengthSeconds, const QString& gameName,
                                 const QString& executablePath, int audioSource,
-                                bool hdrExperimentalEnabled, CaptureBorder::SessionPolicy borderPolicy)
+                                bool hdrExperimentalEnabled, CaptureBorder::SessionPolicy borderPolicy,
+                                quint64 processStarted, bool recordReplay, const QString& replayCacheKey)
 {
     if (generation <= m_pumpGeneration || thread()->isInterruptionRequested())
         return;
@@ -641,7 +694,8 @@ void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned
     }
 
     HWND hwnd = reinterpret_cast<HWND>(static_cast<quintptr>(hwndVal));
-    if (!GameDetector::windowBelongsToProcess(hwnd, pid)) {
+    if (!GameDetector::onInputDesktop() || !GameDetector::windowMatchesProcess(hwnd, pid, processStarted)
+        || !GameDetector::captureWindowAvailable(hwnd)) {
         failStep("capture window", E_HANDLE);
         return;
     }
@@ -651,18 +705,26 @@ void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned
     Pipeline* const pipe = ownedPipe.get();
     pipe->gameName = gameName;
     pipe->executablePath = executablePath;
+    pipe->hwnd = hwnd;
+    pipe->pid = pid;
+    pipe->processStarted = processStarted;
+    pipe->recordReplay = recordReplay;
+    pipe->replayCacheKey = replayCacheKey;
+    pipe->validationClock.start();
 
     int srcW = 0, srcH = 0;
     if (!createDevices(pipe) || !createCaptureItem(pipe, hwnd, pid, &srcW, &srcH))
         return;
-    if (srcW < 2 || srcH < 2) {
-        failStep("capture size", E_INVALIDARG);
+    pipe->clientSize = clientCrop(hwnd, QSize(srcW, srcH)).size();
+    if (pipe->clientSize.isEmpty()) {
+        failStep("capture client area", E_INVALIDARG);
         return;
     }
-    attachRecorder(pipe, pid, srcW, srcH, encodeWidth, encodeHeight, fps, bitrateMbps,
-                   segmentSeconds, lengthSeconds, audioSource);
     if (!createSession(pipe, hwnd, srcW, srcH, hdrExperimentalEnabled, borderPolicy))
         return;
+    if (recordReplay && GameDetector::windowMatchesProcess(hwnd, pid, processStarted))
+        attachRecorder(pipe, pid, pipe->clientSize.width(), pipe->clientSize.height(),
+                       encodeWidth, encodeHeight, fps, bitrateMbps, segmentSeconds, lengthSeconds, audioSource);
 
     // 6. Poll timer on this (worker) thread. PreciseTimer: the default coarse
     // timer has 5% slack, which at 16 ms drifts the poll cadence enough to
@@ -672,6 +734,7 @@ void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned
     pipe->timer->setInterval(16); // ~60 Hz; the pool itself caps at the monitor rate
     connect(pipe->timer, &QTimer::timeout, this, &FramePumpWorker::poll);
     pipe->fpsClock.start();
+    pipe->frameClock.start();
 
     m_pipe = ownedPipe.release();
     m_pipe->timer->start();
@@ -681,8 +744,6 @@ void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned
     pipe->readinessTimer->setInterval(250);
     connect(pipe->readinessTimer, &QTimer::timeout, this, &FramePumpWorker::checkReplayReadiness);
     pipe->readinessTimer->start();
-    if (pipe->recorder && pipe->recorder->isActive())
-        reportBufferState(ReplayBufferState::Recording);
     checkReplayReadiness();
     qInfo() << "FramePump: started (hwnd" << Qt::hex << hwndVal << Qt::dec << ")";
 
@@ -714,7 +775,7 @@ void FramePumpWorker::reportBufferState(ReplayBufferState::State state, const QS
 
 void FramePumpWorker::checkReplayReadiness()
 {
-    if (!m_pipe)
+    if (!m_pipe || !m_pipe->recordReplay)
         return;
     if (!m_pipe->recorder || !m_pipe->recorder->isActive()) {
         reportBufferState(ReplayBufferState::Failed, QStringLiteral("Replay recorder is not active"));
@@ -740,10 +801,10 @@ void FramePumpWorker::stopPump()
     m_bufferState = ReplayBufferState::Stopped;
     if (!m_pipe)
         return;
-    if (m_hdrScreenshotPending) {
-        m_hdrScreenshotPending = false;
-        emit hdrScreenshotFailed(m_pumpGeneration, m_hdrRequestId,
-            QStringLiteral("HDR screenshot cancelled because the capture target changed"));
+    if (m_screenshotPending) {
+        m_screenshotPending = false;
+        emit windowScreenshotFailed(m_pumpGeneration, m_screenshotRequestId,
+            QStringLiteral("Screenshot cancelled because the capture target changed"));
     }
     teardown();
     qInfo() << "FramePump: stopped";
@@ -754,7 +815,44 @@ void FramePumpWorker::poll()
     if (!m_pipe || !m_pipe->framePool || thread()->isInterruptionRequested())
         return;
 
-    if (m_pipe->audio && m_pipe->recorder && m_pipe->recorder->hasAudio()) {
+    if (!GameDetector::windowBelongsToProcess(m_pipe->hwnd, m_pipe->pid)
+        || (m_pipe->validationClock.elapsed() >= 250
+            && (!GameDetector::onInputDesktop()
+                || !GameDetector::windowMatchesProcess(m_pipe->hwnd, m_pipe->pid, m_pipe->processStarted)))) {
+        m_pipe->paused = true;
+        if (m_pipe->timer)
+            m_pipe->timer->stop();
+        const quint64 generation = m_pumpGeneration;
+        QMetaObject::invokeMethod(this, [this, generation] {
+            if (generation != m_pumpGeneration)
+                return;
+            stopPump();
+            emit captureTargetLost(generation);
+        }, Qt::QueuedConnection);
+        return;
+    }
+    if (m_pipe->validationClock.elapsed() >= 250)
+        m_pipe->validationClock.restart();
+    if (!GameDetector::captureWindowAvailable(m_pipe->hwnd)) {
+        m_pipe->resumeAfterQpc = qpcNow100ns();
+        if (!m_pipe->paused) {
+            m_pipe->paused = true;
+            m_pipe->frameClock.invalidate();
+            if (m_pipe->recorder)
+                m_pipe->recorder->discardCurrentSegment();
+            emit capturePausedChanged(m_pumpGeneration, true);
+        }
+        return;
+    }
+    if (!m_pipe->paused && m_pipe->frameClock.isValid()
+        && m_pipe->frameClock.elapsed() >= kFreshFrameMs) {
+        m_pipe->paused = true;
+        if (m_pipe->recorder)
+            m_pipe->recorder->discardCurrentSegment();
+        emit capturePausedChanged(m_pumpGeneration, true);
+    }
+
+    if (!m_pipe->paused && m_pipe->audio && m_pipe->recorder && m_pipe->recorder->hasAudio()) {
         constexpr int kMaxAudioPacketsPerTick = 32;
         int packets = 0;
         for (; packets < kMaxAudioPacketsPerTick && !thread()->isInterruptionRequested(); ++packets) {
@@ -765,7 +863,7 @@ void FramePumpWorker::poll()
             if (got == 0)
                 break;
             // Audio timestamps are relative to the AUDIO capture's own start;
-            // re-express them on the video clock (encClock epoch) so the
+            // re-express them on the video clock's QPC epoch so the
             // recorder can keep both streams on one timeline.
             const qint64 rel = m_pipe->audio->startQpc100ns() + t100
                              - m_pipe->encStartQpc100ns;
@@ -804,7 +902,7 @@ void FramePumpWorker::poll()
         if (packets < kMaxAudioPacketsPerTick && !thread()->isInterruptionRequested())
             m_pipe->recorder->padAudioSilence(qpcNow100ns() - m_pipe->encStartQpc100ns
                                               - kAudioLatencyHeadroom100ns);
-    } else if (m_pipe->audio && m_pipe->recorder && m_pipe->recorder->audioLost()) {
+    } else if (!m_pipe->paused && m_pipe->audio && m_pipe->recorder && m_pipe->recorder->audioLost()) {
         // The encoder dropped the audio track mid-session; never keep recording
         // video-only segments while system audio is enabled.
         if (m_pipe->timer)
@@ -843,18 +941,31 @@ void FramePumpWorker::poll()
         if (!frame)          // pool drained — nothing more this tick
             break;
 
-        WgcSizeInt32 content{ 0, 0 };
-        if (SUCCEEDED(frame->get_ContentSize(&content)) && content.Width > 0 && content.Height > 0
-            && (content.Width != m_pipe->poolW || content.Height != m_pipe->poolH)) {
+        WgcSizeInt32 content{};
+        WgcTimeSpan frameTime{};
+        if (FAILED(frame->get_ContentSize(&content))
+            || FAILED(frame->get_SystemRelativeTime(&frameTime))
+            || frameTime.Duration < m_pipe->resumeAfterQpc
+            || qpcNow100ns() - frameTime.Duration >= kFreshFrameMs * 10000) {
+            frame->Release();
+            continue;
+        }
+        const QSize frameSize(content.Width, content.Height);
+        const QRect crop = clientCrop(m_pipe->hwnd, frameSize);
+        if (crop.isEmpty() || frameSize != QSize(m_pipe->poolW, m_pipe->poolH)
+            || crop.size() != m_pipe->clientSize) {
+            frame->Release();
+            m_pipe->lastClientCrop = {};
+            if (crop.isEmpty())
+                continue;
             // A window being dragged changes size every frame; wait for the
             // new size to hold before paying for a re-arm.
             constexpr qint64 kContentSizeSettleMs = 500;
-            if (content.Width != m_pipe->pendingContentSize.Width
-                || content.Height != m_pipe->pendingContentSize.Height) {
-                m_pipe->pendingContentSize = content;
+            if (frameSize != m_pipe->pendingContentSize || crop.size() != m_pipe->pendingClientSize) {
+                m_pipe->pendingContentSize = frameSize;
+                m_pipe->pendingClientSize = crop.size();
                 m_pipe->pendingContentClock.start();
             } else if (m_pipe->pendingContentClock.elapsed() >= kContentSizeSettleMs) {
-                frame->Release();
                 if (m_pipe->timer)
                     m_pipe->timer->stop();
                 qInfo().noquote() << QStringLiteral(
@@ -864,9 +975,9 @@ void FramePumpWorker::poll()
                 emit restartRequested(m_pumpGeneration, QStringLiteral("Game resolution changed"));
                 return;
             }
-        } else {
-            m_pipe->pendingContentSize = { 0, 0 };
+            continue;
         }
+        m_pipe->pendingContentSize = {};
 
         IDirect3DSurface* surface = nullptr;
         if (SUCCEEDED(frame->get_Surface(&surface)) && surface) {
@@ -889,14 +1000,11 @@ void FramePumpWorker::poll()
                     // t24: tone-map FP16 -> BGRA8 before the recorder ever sees the
                     // frame. writeFrame() below is completely unaware this stage
                     // exists — it always receives BGRA8, exactly as before.
-                    ID3D11Texture2D* encodeTex = tex;
-                    bool skipFrame = false;
-                    if (m_pipe->hdrToneMapActive) {
-                        encodeTex = m_pipe->hdrToneMapper->apply(tex);
-                        if (encodeTex)
-                            m_pipe->hdrHasFrame = true;
+                    ID3D11Texture2D* encodeTex = copyClientTexture(tex, m_pipe->clientTexture,
+                        crop, m_pipe->d3dDevice, m_pipe->d3dCtx);
+                    if (encodeTex && m_pipe->hdrToneMapActive) {
+                        encodeTex = m_pipe->hdrToneMapper->apply(encodeTex);
                         if (!encodeTex) {
-                            skipFrame = true;
                             if (!m_pipe->hdrToneMapWarned) {
                                 qWarning() << "FramePump: HDR tone-map apply() failed — "
                                               "dropping frames until it recovers (SDR path unaffected)";
@@ -906,29 +1014,27 @@ void FramePumpWorker::poll()
                     }
                     // 0.5 Step 4 — feed the live texture to the H.264 segment writer
                     // (throttled to the target fps inside writeFrame).
-                    if (m_hdrScreenshotPending) {
-                        m_hdrScreenshotPending = false;
-                        if (!skipFrame && m_pipe->hdrToneMapActive) {
-                            const QImage image = readBgraTexture(
-                                encodeTex, m_pipe->d3dDevice, m_pipe->d3dCtx);
-                            if (!image.isNull()) {
-                                qInfo() << "Screenshot: captured tone-mapped HDR frame"
-                                        << image.width() << "x" << image.height();
-                                emit hdrScreenshotReady(m_pumpGeneration, m_hdrRequestId, image, m_pipe->gameName,
-                                                        m_pipe->executablePath);
-                            } else {
-                                emit hdrScreenshotFailed(m_pumpGeneration, m_hdrRequestId,
-                                    QStringLiteral("could not read back the tone-mapped HDR frame"));
+                    if (encodeTex) {
+                        m_pipe->lastClientCrop = crop;
+                        m_pipe->frameClock.restart();
+                        if (m_screenshotPending)
+                            completeScreenshot();
+                        if (m_pipe->paused) {
+                            m_pipe->paused = false;
+                            emit capturePausedChanged(m_pumpGeneration, false);
+                            if (m_pipe->recorder) {
+                                m_pipe->timer->stop();
+                                emit restartRequested(m_pumpGeneration, QStringLiteral("Game frames resumed"));
                             }
-                        } else {
-                            emit hdrScreenshotFailed(m_pumpGeneration, m_hdrRequestId,
-                                QStringLiteral("HDR tone mapper is not producing frames"));
+                        } else if (m_pipe->recorder && frameTime.Duration >= m_pipe->encStartQpc100ns) {
+                            if (m_bufferState == ReplayBufferState::Starting && m_pipe->recorder->isActive())
+                                reportBufferState(ReplayBufferState::Recording);
+                            const qint64 t100 = frameTime.Duration - m_pipe->encStartQpc100ns;
+                            m_pipe->recorder->writeFrame(encodeTex, m_pipe->d3dDevice,
+                                                         m_pipe->d3dCtx, t100);
                         }
-                    }
-                    if (m_pipe->recorder && !skipFrame) {
-                        const qint64 t100 = m_pipe->encClock.nsecsElapsed() / 100;
-                        m_pipe->recorder->writeFrame(encodeTex, m_pipe->d3dDevice,
-                                                     m_pipe->d3dCtx, t100);
+                    } else {
+                        m_pipe->lastClientCrop = {};
                     }
                     tex->Release();
                 }
@@ -938,8 +1044,14 @@ void FramePumpWorker::poll()
         }
         frame->Release();
         ++m_pipe->frameCount;
+        if (!m_pipe->timer->isActive())
+            return;
     }
-    resolveStaleHdrScreenshot();
+    if (m_screenshotPending && !m_pipe->paused && m_pipe->frameClock.isValid()
+        && m_pipe->frameClock.elapsed() < kFreshFrameMs && m_screenshotPendingClock.elapsed() >= 200
+        && !m_pipe->lastClientCrop.isEmpty()
+        && m_pipe->lastClientCrop == clientCrop(m_pipe->hwnd, QSize(m_pipe->poolW, m_pipe->poolH)))
+        completeScreenshot();
     if (m_pipe->fpsClock.elapsed() >= 1000) {
         qInfo().noquote() << QStringLiteral("FramePump: %1x%2 DXGI_FORMAT=%3 fps=%4")
                                  .arg(m_pipe->lastW).arg(m_pipe->lastH)
@@ -952,50 +1064,43 @@ void FramePumpWorker::poll()
 void FramePumpWorker::captureScreenshotOnWorker(quint64 generation, quint64 requestId)
 {
     if (generation != m_pumpGeneration) {
-        emit hdrScreenshotFailed(generation, requestId,
-            QStringLiteral("HDR screenshot cancelled because the capture target changed"));
+        emit windowScreenshotFailed(generation, requestId,
+            QStringLiteral("Screenshot cancelled because the capture target changed"));
         return;
     }
-    if (!m_pipe || !m_pipe->hdrToneMapActive) {
-        emit hdrScreenshotFailed(m_pumpGeneration, requestId,
-            QStringLiteral("HDR replay frame pump is not active for the foreground game"));
+    if (!m_pipe) {
+        emit windowScreenshotFailed(m_pumpGeneration, requestId,
+            QStringLiteral("No window capture session is available"));
         return;
     }
-    if (m_hdrScreenshotPending) {
-        emit hdrScreenshotFailed(m_pumpGeneration, requestId, QStringLiteral("an HDR screenshot is already pending"));
+    if (m_screenshotPending) {
+        emit windowScreenshotFailed(m_pumpGeneration, requestId, QStringLiteral("A screenshot is already pending"));
         return;
     }
-    m_hdrRequestId = requestId;
-    m_hdrScreenshotPending = true;
-    m_hdrPendingClock.start();
+    m_screenshotRequestId = requestId;
+    m_screenshotPending = true;
+    m_screenshotPendingClock.start();
 }
 
-void FramePumpWorker::cancelHdrScreenshotOnWorker(quint64 requestId)
+void FramePumpWorker::cancelScreenshotOnWorker(quint64 requestId)
 {
-    if (m_hdrScreenshotPending && m_hdrRequestId == requestId)
-        m_hdrScreenshotPending = false;
+    if (m_screenshotPending && m_screenshotRequestId == requestId)
+        m_screenshotPending = false;
 }
 
-void FramePumpWorker::resolveStaleHdrScreenshot()
+void FramePumpWorker::completeScreenshot()
 {
-    // Windows Graphics Capture only delivers a frame when the window content
-    // changes. A paused game or a static menu sends nothing, so a request that
-    // waits for "the next frame" would never finish and block every later one.
-    // After a short wait, the last tone-mapped frame IS what is on screen.
-    constexpr qint64 kStaleFrameWaitMs = 250;
-    if (!m_hdrScreenshotPending || !m_pipe || !m_pipe->hdrToneMapActive
-        || !m_pipe->hdrHasFrame || m_hdrPendingClock.elapsed() < kStaleFrameWaitMs)
-        return;
-    m_hdrScreenshotPending = false;
-    const QImage image = readBgraTexture(m_pipe->hdrToneMapper->lastOutput(),
+    m_screenshotPending = false;
+    ID3D11Texture2D* texture = m_pipe->hdrToneMapActive
+        ? m_pipe->hdrToneMapper->lastOutput() : m_pipe->clientTexture;
+    const QImage image = readBgraTexture(texture,
                                          m_pipe->d3dDevice, m_pipe->d3dCtx);
     if (image.isNull()) {
-        emit hdrScreenshotFailed(m_pumpGeneration, m_hdrRequestId,
-            QStringLiteral("could not read back the tone-mapped HDR frame"));
+        emit windowScreenshotFailed(m_pumpGeneration, m_screenshotRequestId,
+            QStringLiteral("Could not read pixels from the game window"));
         return;
     }
-    qInfo() << "Screenshot: captured last tone-mapped HDR frame (static scene)"
-            << image.width() << "x" << image.height();
-    emit hdrScreenshotReady(m_pumpGeneration, m_hdrRequestId, image, m_pipe->gameName,
+    qInfo() << "Screenshot: captured window client" << image.size();
+    emit windowScreenshotReady(m_pumpGeneration, m_screenshotRequestId, image, m_pipe->gameName,
                             m_pipe->executablePath);
 }

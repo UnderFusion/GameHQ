@@ -54,6 +54,8 @@ public:
     SegmentRecorder(const SegmentRecorder&) = delete;
     SegmentRecorder& operator=(const SegmentRecorder&) = delete;
 
+    enum class CacheHistory { Restore, SessionOnly };
+
     // Encodes captured frames at (encodeWidth,encodeHeight) rounded down to
     // even. fps is the TARGET rate (source frames beyond it are dropped). Opens
     // segment 0.
@@ -70,7 +72,8 @@ public:
     bool begin(int sourceWidth, int sourceHeight, int encodeWidth, int encodeHeight,
                int fps, int bitrateMbps, int segmentSeconds, int lengthSeconds,
                const QString& cacheDir, ID3D11Device* dev, ID3D11DeviceContext* ctx,
-               unsigned audioRateHz = 0, unsigned audioChannels = 0);
+               unsigned audioRateHz = 0, unsigned audioChannels = 0,
+               CacheHistory history = CacheHistory::Restore);
 
     // Freeze the buffer for a save (Step 6): finalize the in-flight segment,
     // lease the newest chronological window covering ~lengthSeconds, and
@@ -185,6 +188,7 @@ private:
     long long m_segTicks = 50000000;         // segmentSeconds * 1e7
     long long m_frameInterval = 333333;      // 1e7 / fps
     QString   m_cacheDir;
+    CacheHistory m_cacheHistory = CacheHistory::Restore;
 
     // audio params (Step 7)
     unsigned  m_audioRate     = 0;

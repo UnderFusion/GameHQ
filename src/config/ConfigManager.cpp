@@ -23,6 +23,7 @@ QJsonObject ConfigManager::defaults()
 {
     return {
         { ConfigKeys::CaptureMode,             "only_in_games" }, // only_in_games | whitelist | always
+        { ConfigKeys::CaptureBackground,       false },
         { ConfigKeys::CaptureAllowedExecutables, QJsonArray{} },
         { ConfigKeys::CaptureHideBorder,       true },           // next WGC session only
         { ConfigKeys::CaptureScreenshotFormat, "jpg" },           // jpg | png

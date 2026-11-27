@@ -4,9 +4,9 @@
 
 #include <windows.h>
 
-namespace
+namespace ProcessIdentity
 {
-bool creationTimeOf(HANDLE process, quint64& creationTime)
+bool creationTimeOf(void* process, quint64& creationTime)
 {
     FILETIME creation{};
     FILETIME exited{};
@@ -17,10 +17,6 @@ bool creationTimeOf(HANDLE process, quint64& creationTime)
     creationTime = (quint64(creation.dwHighDateTime) << 32) | quint64(creation.dwLowDateTime);
     return true;
 }
-}
-
-namespace ProcessIdentity
-{
 QString tokenFor(quint32 processId)
 {
     HANDLE process = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, DWORD(processId));

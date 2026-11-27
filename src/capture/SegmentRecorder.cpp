@@ -82,7 +82,7 @@ SegmentRecorder::~SegmentRecorder()
 bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, int encodeHeight,
                             int fps, int bitrateMbps, int segmentSeconds, int lengthSeconds,
                             const QString& cacheDir, ID3D11Device* dev, ID3D11DeviceContext* ctx,
-                            unsigned audioRateHz, unsigned audioChannels)
+                            unsigned audioRateHz, unsigned audioChannels, CacheHistory history)
 {
     if (m_active)
         return true;
@@ -148,6 +148,7 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
     m_segmentWriteFailed = false;
     m_failedSegmentsInARow = 0;
     m_cacheDir = cacheDir;
+    m_cacheHistory = history;
     m_segIndex = 0;
     m_originTime = -1;
     m_segStartPts = 0;
@@ -158,7 +159,8 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
 
     QDir().mkpath(m_cacheDir);
 
-    restoreRing();
+    if (m_cacheHistory == CacheHistory::Restore)
+        restoreRing();
 
     if (!openSegment()) {
         end();   // closes the encoder, scaler and MF ref taken above
@@ -1287,9 +1289,16 @@ void SegmentRecorder::end()
 {
     // A hardware encoder may have only one available session. Release the
     // active slot before joining the thread preparing its replacement.
+    if (m_cacheHistory == CacheHistory::SessionOnly)
+        discardCurrentSegment();
     if (m_active || m_writer)
         closeSegment();
     discardPrep();
+    if (m_cacheHistory == CacheHistory::SessionOnly) {
+        for (const QString& path : std::as_const(m_segments))
+            SegmentLease::removeWhenUnleased(path);
+        m_segments.clear();
+    }
     if (m_encoder) { m_encoder->close(); m_encoder.reset(); }
     m_reuse = false;
     if (m_passthroughType) { m_passthroughType->Release(); m_passthroughType = nullptr; }

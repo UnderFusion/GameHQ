@@ -1,10 +1,13 @@
 #include "capture/FramePumpService.h"
 #include "capture/FramePumpPipeline.h"
+#include "capture/ReplayExporter.h"
 #include "capture/ScreenshotService.h"
+#include "capture/WindowCaptureGeometry.h"
 #include <QtTest>
 #include "config/ConfigManager.h"
 #include "config/CaptureLocations.h"
 #include "config/ConfigKeys.h"
+#include "core/ProcessIdentity.h"
 #include "integration/ExternalGameContext.h"
 #include <QDirIterator>
 #include <QImage>
@@ -14,6 +17,10 @@
 #include <QTemporaryDir>
 #include <QScopeGuard>
 #include <windows.h>
+#include <dwmapi.h>
+#include <mfapi.h>
+#include <mfidl.h>
+#include <mfreadwrite.h>
 #include <algorithm>
 
 class CaptureAcknowledgementTest : public QObject
@@ -49,7 +56,14 @@ private slots:
             HRESULT STDMETHODCALLTYPE get_DispatcherQueue(IDispatcherQueue**) override { return E_NOTIMPL; }
         } pool;
         FramePumpWorker worker;
+        const HWND window = CreateWindowExW(WS_EX_NOACTIVATE, L"STATIC", L"pool fixture",
+            WS_POPUP | WS_VISIBLE, -32000, -32000, 32, 32, nullptr, nullptr, nullptr, nullptr);
+        QVERIFY(window);
+        const auto cleanup = qScopeGuard([&] { DestroyWindow(window); });
         worker.m_pipe = new FramePumpWorker::Pipeline;
+        worker.m_pipe->hwnd = window;
+        worker.m_pipe->pid = GetCurrentProcessId();
+        worker.m_pipe->validationClock.start();
         worker.m_pipe->framePool = &pool;
         worker.m_pipe->fpsClock.start();
         int remainingAtControl = -1;
@@ -109,6 +123,7 @@ private slots:
 
         FramePumpService pump(nullptr, nullptr);
         pump.m_targetGame = game;
+        pump.m_targetHasReplay = true;
         pump.m_owners.setAuto(true);
         const auto generation = pump.m_buffer.requestStart("Game");
         QVERIFY(pump.m_buffer.confirm(generation, ReplayBufferState::Recording));
@@ -155,25 +170,232 @@ private slots:
         QCOMPARE(pump.m_buffer.state(), ReplayBufferState::Stopped);
     }
 
-    void hdrRequestForAWindowThatLostFocusCannotArmCapture()
+    void screenshotWithoutAnEligibleWindowCannotArmCapture()
     {
-        HWND window = CreateWindowExW(0, L"STATIC", L"HDR request fixture", 0,
-                                      0, 0, 32, 32, HWND_MESSAGE, nullptr, nullptr, nullptr);
-        QVERIFY(window);
-        const auto cleanup = qScopeGuard([&] { DestroyWindow(window); });
-        ForegroundGame requested;
-        requested.valid = requested.isGame = true;
-        requested.hwnd = window;
-        requested.pid = GetCurrentProcessId();
-        requested.w = requested.h = 32;
-        FramePumpService pump(nullptr, nullptr);
-        QSignalSpy failed(&pump, &FramePumpService::hdrScreenshotFailed);
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/policy-XXXXXX");
+        QVERIFY(dir.isValid());
+        ConfigManager config(dir.filePath("config.json"));
+        config.setValue(ConfigKeys::CaptureMode, QStringLiteral("whitelist"));
+        FramePumpService pump(&config, nullptr);
+        QSignalSpy skipped(&pump, &FramePumpService::windowScreenshotSkipped);
         const auto generation = pump.m_buffer.generation();
-        pump.captureHdrScreenshot(requested, 123);
-        QCOMPARE(failed.size(), 1);
-        QCOMPARE(failed.first().at(1).toULongLong(), 123ULL);
+        pump.captureWindowScreenshot(123);
+        QCOMPARE(skipped.size(), 1);
+        QCOMPARE(skipped.first().at(1).toULongLong(), 123ULL);
         QCOMPARE(pump.m_buffer.generation(), generation);
         QVERIFY(!pump.m_owners.needsSession());
+    }
+
+    void backgroundAndPinResolveTheSameWindowForEveryCapture()
+    {
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/policy-XXXXXX");
+        QVERIFY(dir.isValid());
+        ConfigManager config(dir.filePath("config.json"));
+        config.setValue(ConfigKeys::CaptureMode, QStringLiteral("always"));
+        config.setValue(ConfigKeys::ReplayAuto, false);
+        HWND first = CreateWindowExW(0, L"STATIC", L"Game A", 0, 0, 0, 32, 32,
+                                     HWND_MESSAGE, nullptr, nullptr, nullptr);
+        HWND second = CreateWindowExW(0, L"STATIC", L"Game B", 0, 0, 0, 32, 32,
+                                            HWND_MESSAGE, nullptr, nullptr, nullptr);
+        QVERIFY(first && second);
+        const auto cleanup = qScopeGuard([&] {
+            if (first)
+                DestroyWindow(first);
+            if (second)
+                DestroyWindow(second);
+        });
+        FILETIME created{}, exited{}, kernel{}, user{};
+        QVERIFY(GetProcessTimes(GetCurrentProcess(), &created, &exited, &kernel, &user));
+        ForegroundGame gameA;
+        gameA.valid = gameA.isGame = true;
+        gameA.hwnd = first;
+        gameA.pid = GetCurrentProcessId();
+        gameA.processStarted = (quint64(created.dwHighDateTime) << 32) | created.dwLowDateTime;
+        gameA.w = gameA.h = 32;
+        ForegroundGame gameB = gameA;
+        gameB.hwnd = second;
+        const auto desktopApp = [&] {
+            auto app = gameB;
+            app.isGame = false;
+            return app;
+        }();
+
+        FramePumpService pump(&config, nullptr);
+        pump.m_autoTimer->stop();
+        QCOMPARE(pump.selectTarget(gameA).hwnd, gameA.hwnd);
+        QVERIFY(!pump.selectTarget({}).valid);
+        config.setValue(ConfigKeys::CaptureBackground, true);
+        QCOMPARE(pump.selectTarget(gameA).hwnd, gameA.hwnd);
+        QCOMPARE(pump.selectTarget(desktopApp).hwnd, gameA.hwnd);
+        pump.m_pinnedTarget = gameA;
+        QCOMPARE(pump.selectTarget(gameB).hwnd, gameA.hwnd);
+        auto wrongProcessInstance = gameA;
+        ++wrongProcessInstance.processStarted;
+        QVERIFY(!GameDetector::canRetainCaptureTarget(wrongProcessInstance, &config));
+        QVERIFY(DestroyWindow(first));
+        first = nullptr;
+        QCOMPARE(pump.selectTarget({}).hwnd, gameB.hwnd);
+        QVERIFY(!pump.hasPinnedTarget());
+        QVERIFY(DestroyWindow(second));
+        second = nullptr;
+        QVERIFY(!pump.selectTarget({}).valid);
+    }
+
+    void clientCropUsesTheWindowOriginRegardlessOfScreenPosition()
+    {
+        const QRect frame(-64, 108, 816, 638);
+        const QRect client(-56, 138, 800, 600);
+        QCOMPARE(WindowCaptureGeometry::clientCrop(frame, client, frame.size()), QRect(8, 30, 800, 600));
+        QCOMPARE(WindowCaptureGeometry::clientCrop(client, client, client.size()), QRect(0, 0, 800, 600));
+        QVERIFY(WindowCaptureGeometry::clientCrop(frame, client, QSize(816, 600)).isEmpty());
+        QVERIFY(WindowCaptureGeometry::clientCrop(frame, client.translated(20, 0), frame.size()).isEmpty());
+    }
+
+    void retiredReplaySegmentSurvivesUntilTheLastExportLeaseEnds()
+    {
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/retired-XXXXXX");
+        QVERIFY(dir.isValid());
+        const QString path = dir.filePath(QStringLiteral("old_clip.mp4"));
+        QFile segment(path);
+        QVERIFY(segment.open(QIODevice::WriteOnly));
+        segment.close();
+        SegmentLease first({path});
+        SegmentLease second({path});
+        SegmentLease::removeWhenUnleased(path);
+        QVERIFY(QFile::exists(path));
+        first = SegmentLease{};
+        QVERIFY(QFile::exists(path));
+        second = SegmentLease{};
+        QVERIFY(!QFile::exists(path));
+    }
+
+    void captureClientThroughAnOccludingWindow()
+    {
+        if (!qEnvironmentVariableIsSet("GAMEHQ_TEST_WGC_NATIVE"))
+            QSKIP("Requires an interactive Windows desktop and a WGC-capable GPU");
+        QVERIFY(GameDetector::onInputDesktop());
+        const auto previousDpi = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+        QVERIFY(previousDpi);
+        const auto restoreDpi = qScopeGuard([&] { SetThreadDpiAwarenessContext(previousDpi); });
+        const HINSTANCE instance = GetModuleHandleW(nullptr);
+        const HBRUSH blue = CreateSolidBrush(RGB(0, 70, 220));
+        QVERIFY(blue);
+        const auto deleteBrush = qScopeGuard([&] { DeleteObject(blue); });
+        WNDCLASSW windowClass{};
+        windowClass.lpfnWndProc = DefWindowProcW;
+        windowClass.hInstance = instance;
+        windowClass.hbrBackground = blue;
+        windowClass.lpszClassName = L"GameHQClientCaptureFixture";
+        QVERIFY(RegisterClassW(&windowClass));
+        const auto unregister = qScopeGuard([&] { UnregisterClassW(windowClass.lpszClassName, instance); });
+        const HWND game = CreateWindowExW(WS_EX_NOACTIVATE, windowClass.lpszClassName, L"Window frame",
+            WS_OVERLAPPEDWINDOW, 120, 120, 380, 260, nullptr, nullptr, instance, nullptr);
+        QVERIFY(game);
+        const auto destroyGame = qScopeGuard([&] { DestroyWindow(game); });
+        ShowWindow(game, SW_SHOWNOACTIVATE);
+        UpdateWindow(game);
+        // Populate the native window's backing surface before moving it
+        // partly off screen. A freshly exposed GDI window may paint only the
+        // pixels the desktop compositor requests.
+        QVERIFY(SUCCEEDED(DwmFlush()));
+        QVERIFY(SetWindowPos(game, nullptr, -36, 120, 0, 0,
+                            SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOREDRAW));
+        const HWND cover = CreateWindowExW(WS_EX_TOPMOST | WS_EX_NOACTIVATE, L"STATIC", L"Cover",
+            WS_POPUP | WS_VISIBLE, 80, 170, 180, 100, nullptr, nullptr, instance, nullptr);
+        QVERIFY(cover);
+        const auto destroyCover = qScopeGuard([&] { DestroyWindow(cover); });
+        UpdateWindow(cover);
+
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/wgc-XXXXXX");
+        QVERIFY(dir.isValid());
+        ConfigManager config(dir.filePath("config.json"));
+        config.setValue(ConfigKeys::CaptureMode, QStringLiteral("whitelist"));
+        QVERIFY(config.setCaptureExecutableAllowed(QCoreApplication::applicationFilePath(), true));
+        config.setValue(ConfigKeys::ReplayAuto, false);
+        config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, false);
+        config.setValue(ConfigKeys::AudioSource, QStringLiteral("off"));
+        CaptureLocations locations(&config);
+        QVERIFY(locations.setBaseRoot(CaptureLocations::Kind::Clips, dir.path()));
+        RECT client{};
+        QVERIFY(GetClientRect(game, &client));
+        ForegroundGame target;
+        target.valid = true;
+        target.hwnd = game;
+        target.pid = GetCurrentProcessId();
+        QVERIFY(ProcessIdentity::creationTimeOf(GetCurrentProcess(), target.processStarted));
+        target.w = client.right;
+        target.h = client.bottom;
+        target.executablePath = QCoreApplication::applicationFilePath();
+        target.gameName = QStringLiteral("Fixture");
+        FramePumpService pump(&config, &locations);
+        pump.m_autoTimer->stop();
+        pump.pinTarget(target);
+        QVERIFY(pump.hasPinnedTarget());
+        QSignalSpy ready(&pump, &FramePumpService::windowScreenshotReady);
+        QSignalSpy failed(&pump, &FramePumpService::windowScreenshotFailed);
+        pump.captureWindowScreenshot(1);
+        QTRY_VERIFY_WITH_TIMEOUT(!ready.isEmpty() || !failed.isEmpty(), 7000);
+        QVERIFY2(failed.isEmpty(), qPrintable(failed.value(0).value(0).toString()));
+        const QImage image = qvariant_cast<QImage>(ready.constFirst().at(0));
+        QCOMPARE(image.size(), QSize(client.right, client.bottom));
+        const QColor corner = image.pixelColor(1, 1);
+        const QColor uncovered = image.pixelColor(image.width() - 2, image.height() / 2);
+        QVERIFY2(uncovered.blue() > uncovered.green() && uncovered.green() > uncovered.red(),
+                 qPrintable(uncovered.name()));
+        QCOMPARE(image.pixelColor(image.width() / 2, image.height() / 2).rgb(), uncovered.rgb());
+        QCOMPARE(corner.rgb(), uncovered.rgb());
+        QCOMPARE(ready.constFirst().at(1).toString(), target.gameName);
+        QCOMPARE(ready.constFirst().at(3).toULongLong(), 1ULL);
+
+        // Change a small visible patch so WGC delivers new frames while the
+        // same pinned window remains underneath the cover.
+        QTimer repaint;
+        bool alternate = false;
+        connect(&repaint, &QTimer::timeout, this, [&] {
+            const HDC dc = GetDC(game);
+            if (!dc)
+                return;
+            RECT patch{client.right - 24, 8, client.right - 8, 24};
+            FillRect(dc, &patch, alternate ? blue : GetSysColorBrush(COLOR_WINDOW));
+            ReleaseDC(game, dc);
+            alternate = !alternate;
+        });
+        repaint.setTimerType(Qt::PreciseTimer);
+        repaint.start(16);
+        config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, true);
+        config.setValue(ConfigKeys::ReplayAuto, true);
+        pump.restartBuffer();
+        QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() == ReplayBufferState::Recording
+                                  || pump.bufferState() == ReplayBufferState::Ready, 7000);
+        pump.captureWindowScreenshot(2);
+        QTRY_COMPARE_WITH_TIMEOUT(ready.size(), 2, 5000);
+        const QImage mapped = qvariant_cast<QImage>(ready.last().at(0));
+        QCOMPARE(mapped.size(), image.size());
+        const QColor mappedCenter = mapped.pixelColor(mapped.width() / 2, mapped.height() / 2);
+        QVERIFY(mappedCenter.blue() > mappedCenter.green() && mappedCenter.green() > mappedCenter.red());
+        QCOMPARE(ready.last().at(3).toULongLong(), 2ULL);
+        QTest::qWait(850);
+        QSignalSpy saved(&pump, &FramePumpService::clipSaved);
+        QSignalSpy clipFailed(&pump, &FramePumpService::clipFailed);
+        pump.saveReplay(CaptureRequest::create(CaptureRequest::Source::Ui));
+        QTRY_VERIFY_WITH_TIMEOUT(!saved.isEmpty() || !clipFailed.isEmpty(), 10000);
+        QVERIFY2(clipFailed.isEmpty(), qPrintable(clipFailed.value(0).value(1).toString()));
+        QCOMPARE(saved.constFirst().at(1).toString(), target.gameName);
+        const QString clipPath = saved.constFirst().at(0).toString();
+        QVERIFY(ReplayExporter::hasReadableVideo(clipPath));
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
+        IMFSourceReader* reader = nullptr;
+        QVERIFY(SUCCEEDED(MFCreateSourceReaderFromURL(clipPath.toStdWString().c_str(), nullptr, &reader)));
+        const auto releaseReader = qScopeGuard([&] { reader->Release(); });
+        IMFMediaType* video = nullptr;
+        QVERIFY(SUCCEEDED(reader->GetNativeMediaType(MF_SOURCE_READER_FIRST_VIDEO_STREAM, 0, &video)));
+        const auto releaseVideo = qScopeGuard([&] { video->Release(); });
+        UINT32 width = 0, height = 0;
+        QVERIFY(SUCCEEDED(MFGetAttributeSize(video, MF_MT_FRAME_SIZE, &width, &height)));
+        QCOMPARE(QSize(int(width), int(height)), QSize(client.right & ~1, client.bottom & ~1));
     }
 
     void removingAnAllowedGameStopsAutoAndColdManualCapture()

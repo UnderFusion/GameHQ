@@ -2,6 +2,7 @@
 #include "config/ConfigKeys.h"
 #include "config/ConfigManager.h"
 #include "core/GameIdentity.h"
+#include "core/ProcessIdentity.h"
 #include "games/SteamAppLookup.h"
 #include "integration/ExternalGameContext.h"
 
@@ -365,6 +366,7 @@ void describeWindow(HWND hwnd, ForegroundGame& g)
     if (pid) {
         HANDLE proc = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pid);
         if (proc) {
+            ProcessIdentity::creationTimeOf(proc, g.processStarted);
             wchar_t buf[MAX_PATH] = {};
             DWORD size = MAX_PATH;
             if (QueryFullProcessImageNameW(proc, 0, buf, &size)) {
@@ -585,6 +587,7 @@ bool GameDetector::sameCaptureTarget(const ForegroundGame& first, const Foregrou
 {
     return first.valid && second.valid && first.hwnd && first.hwnd == second.hwnd
         && first.pid && first.pid == second.pid
+        && first.processStarted == second.processStarted
         && first.hasExternalIdentity == second.hasExternalIdentity
         && first.externalSource == second.externalSource
         && first.externalSessionId == second.externalSessionId
@@ -598,18 +601,50 @@ bool GameDetector::windowBelongsToProcess(void* hwnd, unsigned long pid)
         && ownerPid == pid;
 }
 
-bool GameDetector::canRetainBehindPauseMenu(const ForegroundGame& menu,
-                                           const ForegroundGame& target,
-                                           const ConfigManager* config)
+bool GameDetector::windowMatchesProcess(void* hwnd, unsigned long pid, quint64 started)
 {
-    if (!menu.isPlaynitePauseMenu || !target.hwnd || !target.pid
-        || target.isExcludedProcess || target.isOverlaySurface
-        || !shouldCapture(target, config))
+    if (!windowBelongsToProcess(hwnd, pid))
         return false;
-    if (!windowBelongsToProcess(target.hwnd, target.pid))
+    if (!started)
+        return true;
+    const HANDLE process = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pid);
+    if (!process)
         return false;
-    // The captured HWND remains bound to the original WGC item. A Playnite
-    // stop/relaunch invalidates that association, even for the same game.
+    quint64 creationTime = 0;
+    const bool matches = ProcessIdentity::creationTimeOf(process, creationTime) && creationTime == started;
+    CloseHandle(process);
+    return matches;
+}
+
+bool GameDetector::captureWindowAvailable(void* window)
+{
+    const auto hwnd = static_cast<HWND>(window);
+    return hwnd && IsWindowVisible(hwnd) && !IsIconic(hwnd) && !isCloaked(hwnd);
+}
+
+bool GameDetector::onInputDesktop()
+{
+    const HDESK input = OpenInputDesktop(0, FALSE, DESKTOP_READOBJECTS);
+    if (!input)
+        return false;
+    wchar_t inputName[128]{}, threadName[128]{};
+    const bool matches = GetUserObjectInformationW(input, UOI_NAME, inputName, sizeof(inputName), nullptr)
+        && GetUserObjectInformationW(GetThreadDesktop(GetCurrentThreadId()), UOI_NAME,
+                                     threadName, sizeof(threadName), nullptr)
+        && lstrcmpiW(inputName, threadName) == 0;
+    CloseDesktop(input);
+    return matches;
+}
+
+bool GameDetector::canRetainCaptureTarget(const ForegroundGame& target, const ConfigManager* config)
+{
+    const bool explicitlyAllowed = config
+        && config->value(ConfigKeys::CaptureMode).toString() == QLatin1String("whitelist");
+    if (target.isExcludedProcess || target.isOverlaySurface || target.isPlaynitePauseMenu
+        || (!target.isGame && !explicitlyAllowed)
+        || !shouldCapture(target, config)
+        || !windowMatchesProcess(target.hwnd, target.pid, target.processStarted))
+        return false;
     if (target.hasExternalIdentity) {
         const auto* context = g_externalContext.load();
         if (!context) return false;
@@ -617,10 +652,17 @@ bool GameDetector::canRetainBehindPauseMenu(const ForegroundGame& menu,
                                                     target.isGame, isDescendantProcess);
         return match.confidence != integration::MatchConfidence::None
             && match.session.sourceId == target.externalSource
-            && match.session.sessionId == target.externalSessionId;
+            && match.session.sessionId == target.externalSessionId
+            && match.session.playniteGameId == target.externalId;
     }
-    return target.isGame || (config && config->value(ConfigKeys::CaptureMode).toString()
-                                         == QStringLiteral("whitelist"));
+    return true;
+}
+
+bool GameDetector::canRetainBehindPauseMenu(const ForegroundGame& menu,
+                                           const ForegroundGame& target,
+                                           const ConfigManager* config)
+{
+    return menu.isPlaynitePauseMenu && canRetainCaptureTarget(target, config);
 }
 
 bool GameDetector::shouldCapture(const ForegroundGame& g, const ConfigManager* config)

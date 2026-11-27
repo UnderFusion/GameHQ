@@ -3,13 +3,10 @@
 
 #include "capture/CapturePublisher.h"
 #include "capture/CaptureUtil.h"
-#include "capture/GdiReadback.h"
-#include "capture/HdrCapabilities.h"
 #include "config/ConfigKeys.h"
 #include "config/ConfigManager.h"
 #include "config/CaptureLocations.h"
 #include "core/GameIdentity.h"
-#include "games/GameDetector.h"
 
 #include <QDateTime>
 #include <QDebug>
@@ -20,8 +17,6 @@
 #include <QImageWriter>
 #include <QRunnable>
 #include <QThreadPool>
-
-#include <windows.h>
 
 ScreenshotService::ScreenshotService(ConfigManager* config, CaptureLocations* locations,
                                      QObject* parent)
@@ -72,90 +67,16 @@ void ScreenshotService::capture(const CaptureRequest& request)
         reject(QStringLiteral("still saving the previous screenshots"));
         return;
     }
-    const QString mode = m_config
-        ? m_config->value(ConfigKeys::CaptureMode,
-                          QStringLiteral("only_in_games")).toString()
-        : QStringLiteral("only_in_games");
-
-    const ForegroundGame g = GameDetector::current();
-    if (g.isPlaynitePauseMenu) {
-        reject(QStringLiteral("No game frame available for screenshot"));
-        return;
-    }
-    if (!GameDetector::shouldCapture(g, m_config)) {
-        reject(QStringLiteral("%1 (mode=%2, process=%3)")
-                   .arg(mode == QStringLiteral("whitelist")
-                            ? QStringLiteral("foreground window is not an allowed game executable")
-                            : QStringLiteral("foreground window is not a game"),
-                        mode, g.processName.isEmpty() ? QStringLiteral("?") : g.processName));
-        return;
-    }
-
-    const bool hdrExperimentalEnabled = m_config
-        && m_config->value(ConfigKeys::InternalCaptureExperimentalHdr,
-                           ConfigKeys::InternalCaptureExperimentalHdrDefault).toBool();
-    if (hdrExperimentalEnabled) {
-        const capture::HdrOutputInfo output =
-            capture::HdrCapabilities::forWindow(static_cast<HWND>(g.hwnd));
-        if (output.valid && output.hdrActive) {
-            qInfo().noquote() << QStringLiteral(
-                "Screenshot[%1]: HDR target detected (%2) - requesting tone-mapped WGC frame")
-                                     .arg(chain, output.describe());
-            emit hdrCaptureRequested(g, request.id);
-            return;
-        }
-    }
-
-    // SDR copies a screen rectangle. Discard the copy if the target moves,
-    // loses focus, or is replaced between the policy decision and the grab.
-    const auto stillVisible = [&g] {
-        const auto hwnd = static_cast<HWND>(g.hwnd);
-        RECT bounds{};
-        if (!GameDetector::windowBelongsToProcess(hwnd, g.pid) || !GetWindowRect(hwnd, &bounds)
-            || bounds.left != g.x || bounds.top != g.y || bounds.right != g.x + g.w
-            || bounds.bottom != g.y + g.h)
-            return false;
-        if (!g.viaShellFallback)
-            return GetForegroundWindow() == hwnd;
-        const POINT center{g.x + g.w / 2, g.y + g.h / 2};
-        return GetAncestor(WindowFromPoint(center), GA_ROOT) == hwnd;
-    };
-    if (!stillVisible()) {
-        reject(QStringLiteral("screenshot target changed or is covered"));
-        return;
-    }
-
-    QElapsedTimer t;
-    t.start();
-    const QImage img = grabRect(g.hwnd, g.x, g.y, g.w, g.h);
-    const qint64 grabMs = t.elapsed();
-    if (!stillVisible()) {
-        reject(QStringLiteral("screenshot target changed or is covered"));
-        return;
-    }
-    if (img.isNull()) {
-        const QString reason = QStringLiteral("GDI grab returned no pixels");
-        qWarning().noquote() << QStringLiteral("Screenshot[%1]: failed - %2").arg(chain, reason);
-        emit failed(reason, request.id);
-        return;
-    }
-
-    // The pixels are captured. Fire instant feedback NOW (the shutter sound) and
-    // hand the slow PNG encode + disk write to a worker thread, so pressing
-    // Share never freezes the UI/game overlay (a 4K frame took ~2.7 s inline).
-    emit grabbed();
-
-    const QString gameName = g.gameName.isEmpty() ? QStringLiteral("Unknown Game")
-                                                  : g.gameName;
-    qInfo().noquote() << QStringLiteral(
-                             "Screenshot[%1]: grabbed %2x%3 in %4ms - encoding in background")
-                             .arg(chain).arg(img.width()).arg(img.height()).arg(grabMs);
-    encodeAndSave(img, gameName, g.executablePath, request.id);
+    emit windowCaptureRequested(request.id);
 }
 
-// Save a caller-supplied image (a clip frame from the QML video surface) as a
-// screenshot. Same feedback + encode path as capture(), minus the GDI grab and
-// foreground gate — the caller already holds the pixels for a specific game.
+void ScreenshotService::reportWindowCaptureFailure(const QString& reason, quint64 operationId)
+{
+    qWarning().noquote() << QStringLiteral("Screenshot[%1]: failed - %2").arg(operationId).arg(reason);
+    emit failed(reason, operationId);
+}
+
+// The caller already holds pixels for a specific game, from WGC or a clip.
 void ScreenshotService::saveImage(const QImage& img, const QString& gameName,
                                   const QString& executablePath, quint64 operationId)
 {
@@ -276,20 +197,4 @@ void ScreenshotService::prepareForUpdate()
 void ScreenshotService::cancelUpdatePreparation()
 {
     m_updatePreparing.store(false);
-}
-
-// Screen-DC BitBlt of the window's screen rectangle. CAPTUREBLT pulls in
-// layered windows; whatever is composited on that region of the monitor is
-// grabbed (correct for a foreground fullscreen/borderless game).
-QImage ScreenshotService::grabRect(void* hwndPtr, int x, int y, int w, int h) const
-{
-    Q_UNUSED(hwndPtr);
-    if (w <= 0 || h <= 0)
-        return {};
-    HDC screen = GetDC(nullptr);
-    if (!screen)
-        return {};
-    const QImage img = GdiReadback::readRect(screen, x, y, w, h);
-    ReleaseDC(nullptr, screen);
-    return img;
 }

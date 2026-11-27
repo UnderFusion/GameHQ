@@ -7805,7 +7805,7 @@
       "locations": [
         {
           "file": "src/app/App_CaptureWiring.cpp",
-          "line": 334
+          "line": 336
         }
       ],
       "plural": false,
@@ -7822,7 +7822,7 @@
       "locations": [
         {
           "file": "src/app/App_CaptureWiring.cpp",
-          "line": 341
+          "line": 343
         }
       ],
       "plural": false,
@@ -7839,11 +7839,11 @@
       "locations": [
         {
           "file": "src/app/App_CaptureWiring.cpp",
-          "line": 347
+          "line": 349
         },
         {
           "file": "src/app/App_CaptureWiring.cpp",
-          "line": 378
+          "line": 380
         }
       ],
       "plural": false,
@@ -7860,7 +7860,7 @@
       "locations": [
         {
           "file": "src/app/App_CaptureWiring.cpp",
-          "line": 365
+          "line": 367
         }
       ],
       "plural": false,
@@ -7879,7 +7879,7 @@
       "locations": [
         {
           "file": "src/app/App_CaptureWiring.cpp",
-          "line": 372
+          "line": 374
         }
       ],
       "plural": false,
@@ -7983,7 +7983,7 @@
       "locations": [
         {
           "file": "src/app/App_CaptureWiring.cpp",
-          "line": 309
+          "line": 311
         }
       ],
       "plural": false,
@@ -8189,7 +8189,7 @@
       "locations": [
         {
           "file": "src/app/App_CaptureWiring.cpp",
-          "line": 290
+          "line": 292
         }
       ],
       "plural": false,
@@ -8240,7 +8240,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 286
+          "line": 292
         }
       ],
       "plural": false,
@@ -8259,7 +8259,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 281
+          "line": 287
         }
       ],
       "plural": false,
@@ -8276,7 +8276,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 313
+          "line": 319
         }
       ],
       "plural": false,
@@ -10008,7 +10008,7 @@
         },
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 236
+          "line": 243
         }
       ],
       "plural": false,
@@ -10016,6 +10016,40 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "db813938f6111c93cb5e6c0ed48a6523256cb1ea3864e3f00264be0e5fe63ecf"
+    },
+    {
+      "id": "gamehq.settings.capture.background.description",
+      "source": "Keep capturing the last active game when you switch to another app.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 113
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9"
+    },
+    {
+      "id": "gamehq.settings.capture.background.title",
+      "source": "Background capture",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 111
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103"
     },
     {
       "id": "gamehq.settings.capture.border.denied",
@@ -10042,7 +10076,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 115
+          "line": 122
         }
       ],
       "plural": false,
@@ -10076,7 +10110,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 120
+          "line": 127
         }
       ],
       "plural": false,
@@ -10110,7 +10144,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 113
+          "line": 120
         }
       ],
       "plural": false,
@@ -10127,7 +10161,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 118
+          "line": 125
         }
       ],
       "plural": false,
@@ -10197,7 +10231,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 178
+          "line": 185
         }
       ],
       "plural": false,
@@ -10214,7 +10248,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 174
+          "line": 181
         }
       ],
       "plural": false,
@@ -10231,7 +10265,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 186
+          "line": 193
         }
       ],
       "plural": false,
@@ -10248,7 +10282,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 181
+          "line": 188
         }
       ],
       "plural": false,
@@ -10265,7 +10299,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 176
+          "line": 183
         }
       ],
       "plural": false,
@@ -10282,7 +10316,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 140
+          "line": 147
         }
       ],
       "plural": false,
@@ -10299,7 +10333,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 136
+          "line": 143
         }
       ],
       "plural": false,
@@ -10316,7 +10350,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 143
+          "line": 150
         }
       ],
       "plural": false,
@@ -10333,7 +10367,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 152
+          "line": 159
         }
       ],
       "plural": false,
@@ -10350,7 +10384,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 158
+          "line": 165
         }
       ],
       "plural": false,
@@ -10367,7 +10401,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 150
+          "line": 157
         }
       ],
       "plural": false,
@@ -10384,7 +10418,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 138
+          "line": 145
         }
       ],
       "plural": false,
@@ -10541,7 +10575,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 251
+          "line": 258
         }
       ],
       "plural": false,
@@ -10558,7 +10592,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 244
+          "line": 251
         }
       ],
       "plural": false,
@@ -10575,7 +10609,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 197
+          "line": 204
         }
       ],
       "plural": false,
@@ -10592,7 +10626,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 193
+          "line": 200
         }
       ],
       "plural": false,
@@ -10609,7 +10643,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 212
+          "line": 219
         }
       ],
       "plural": false,
@@ -10626,7 +10660,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 201
+          "line": 208
         }
       ],
       "plural": false,
@@ -10643,7 +10677,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 195
+          "line": 202
         }
       ],
       "plural": false,
@@ -18747,6 +18781,23 @@
       "source_hash": "eee351f9081f1e261bfbcfbe8b2c04e4db4dfd696238160aac6a2d84e42e1101"
     },
     {
+      "id": "gamehq.tray.automatic_capture",
+      "source": "Return to Automatic Capture",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayIcon.cpp",
+          "line": 278
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe"
+    },
+    {
       "id": "gamehq.tray.exit",
       "source": "Exit",
       "context": "ID",
@@ -18754,7 +18805,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 244
+          "line": 282
         }
       ],
       "plural": false,
@@ -18771,7 +18822,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 228
+          "line": 257
         }
       ],
       "plural": false,
@@ -18781,6 +18832,23 @@
       "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8"
     },
     {
+      "id": "gamehq.tray.pin_current_game",
+      "source": "Pin Current Game",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayIcon.cpp",
+          "line": 272
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40"
+    },
+    {
       "id": "gamehq.tray.rescan_captures",
       "source": "Rescan Captures",
       "context": "ID",
@@ -18788,7 +18856,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 232
+          "line": 261
         }
       ],
       "plural": false,
@@ -18805,7 +18873,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 240
+          "line": 269
         }
       ],
       "plural": false,
@@ -18815,6 +18883,40 @@
       "source_hash": "6f33ed88c5e0d53c493a9d6f5f61da79157b680e32bb05742a94a18d4587ea86"
     },
     {
+      "id": "gamehq.tray.select_capture_target",
+      "source": "Select Capture Target",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayIcon.cpp",
+          "line": 275
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5"
+    },
+    {
+      "id": "gamehq.tray.status.capture.paused",
+      "source": "Paused",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 196
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3"
+    },
+    {
       "id": "gamehq.tray.status.capture.ready",
       "source": "Ready",
       "context": "ID",
@@ -18822,7 +18924,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 179
+          "line": 201
         }
       ],
       "plural": false,
@@ -18839,7 +18941,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 189
+          "line": 211
         }
       ],
       "plural": false,
@@ -18856,7 +18958,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 184
+          "line": 206
         }
       ],
       "plural": false,
@@ -18873,7 +18975,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 196
+          "line": 218
         }
       ],
       "plural": false,
@@ -18890,7 +18992,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 210
+          "line": 232
         }
       ],
       "plural": false,
@@ -18900,6 +19002,23 @@
       "source_hash": "96fedff499225cc8e7c91d614d8c461a4dcf8b4440867c0bb1ebcdbc0c042a42"
     },
     {
+      "id": "gamehq.tray.status.state.background",
+      "source": "Background game",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 179
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097"
+    },
+    {
       "id": "gamehq.tray.status.state.capture_problem",
       "source": "Capture problem",
       "context": "ID",
@@ -18907,7 +19026,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 156
+          "line": 168
         }
       ],
       "plural": false,
@@ -18924,7 +19043,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 151
+          "line": 163
         }
       ],
       "plural": false,
@@ -18941,7 +19060,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 165
+          "line": 183
         }
       ],
       "plural": false,
@@ -18958,7 +19077,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 169
+          "line": 187
         }
       ],
       "plural": false,
@@ -18968,6 +19087,23 @@
       "source_hash": "2a99ff7d2150f8069e6f1c5d3648d4c9e5e9825c9596e1ad8f518eda3b965b8a"
     },
     {
+      "id": "gamehq.tray.status.state.pinned",
+      "source": "Pinned game",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayStatus.cpp",
+          "line": 176
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a"
+    },
+    {
       "id": "gamehq.tray.status.state.screenshot_saved",
       "source": "Screenshot saved",
       "context": "ID",
@@ -18975,7 +19111,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 146
+          "line": 158
         }
       ],
       "plural": false,
@@ -18992,7 +19128,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 228
+          "line": 250
         }
       ],
       "plural": false,
@@ -19011,7 +19147,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 218
+          "line": 240
         }
       ],
       "plural": false,
@@ -19030,7 +19166,7 @@
       "locations": [
         {
           "file": "src/tray/TrayStatus.cpp",
-          "line": 223
+          "line": 245
         }
       ],
       "plural": false,
@@ -19049,7 +19185,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 236
+          "line": 265
         }
       ],
       "plural": false,

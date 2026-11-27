@@ -22,6 +22,7 @@ public:
     quint64 ownerId() const;
 
     static bool removeIfUnleased(const QString& path);
+    static void removeWhenUnleased(const QString& path);
     // Retain the newest keep paths PLUS all leases. An old lease must never
     // stop us from deleting later, unleased paths outside the normal window.
     static void trim(QStringList& chronologicalPaths, int keep);

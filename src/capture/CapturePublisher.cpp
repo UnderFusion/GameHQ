@@ -121,6 +121,12 @@ Reservation reserve(const QString& dir, const QString& stampFormat, const QStrin
         if (!pending.open(QIODevice::NewOnly | QIODevice::WriteOnly))
             continue;   // another encode owns this name
         pending.close();
+        // A previous writer may have published between the first existence
+        // check and acquisition of the now-free pending name.
+        if (QFile::exists(finalPath)) {
+            QFile::remove(pending.fileName());
+            continue;
+        }
         recordReservation(pending.fileName());
         return { finalPath, pending.fileName() };
     }

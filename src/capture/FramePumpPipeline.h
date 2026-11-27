@@ -12,6 +12,8 @@
 #include "capture/hdr/GpuToneMapper.h"
 
 #include <QElapsedTimer>
+#include <QRect>
+#include <QSize>
 #include <QString>
 #include <QTimer>
 #include <QVector>
@@ -35,6 +37,18 @@ struct FramePumpWorker::Pipeline
     QVector<float>                audioBuf;
     QString                       gameName;                // for the saved-clip Clips/ path
     QString                       executablePath;          // for sidebar game icon metadata
+    HWND                          hwnd        = nullptr;
+    unsigned long                 pid         = 0;
+    quint64                       processStarted = 0;
+    QSize                         clientSize;
+    QRect                         lastClientCrop;
+    ID3D11Texture2D*              clientTexture = nullptr;
+    QElapsedTimer                 validationClock;
+    QElapsedTimer                 frameClock;
+    qint64                        resumeAfterQpc = 0;
+    bool                          paused = false;
+    bool                          recordReplay = false;
+    QString                       replayCacheKey;
 
     // What actually happened to the Windows capture border for this session (p4-2).
     // Never assumed — derived from the OS build, the access request and the read-back.
@@ -49,11 +63,9 @@ struct FramePumpWorker::Pipeline
     capture::hdr::GpuToneMapper*  hdrToneMapper     = nullptr;
     bool                          hdrToneMapActive  = false;
     bool                          hdrToneMapWarned  = false;  // log a failed apply() once, not per-frame
-    bool                          hdrHasFrame       = false;  // mapper output holds a real tone-mapped frame
 
     QElapsedTimer fpsClock;
-    QElapsedTimer encClock;   // monotonic PTS source for the recorder
-    long long encStartQpc100ns = 0;   // QPC epoch of encClock's t=0 (A/V alignment)
+    long long encStartQpc100ns = 0;   // shared QPC epoch for WGC and WASAPI
     int  frameCount = 0;
     UINT lastW = 0, lastH = 0;
     int  lastFmt = 0;
@@ -62,7 +74,8 @@ struct FramePumpWorker::Pipeline
     // changes resolution keeps delivering frames at the old pool size, so a
     // content size that differs (and has settled) re-arms the pipeline.
     INT32 poolW = 0, poolH = 0;
-    WgcSizeInt32 pendingContentSize{ 0, 0 };
+    QSize pendingContentSize;
+    QSize pendingClientSize;
     QElapsedTimer pendingContentClock;
 
     ~Pipeline()
@@ -76,6 +89,7 @@ struct FramePumpWorker::Pipeline
         // Also before d3dDevice/d3dCtx — GpuToneMapper's shaders/textures were
         // created from them.
         if (hdrToneMapper) { delete hdrToneMapper; hdrToneMapper = nullptr; }
+        if (clientTexture) clientTexture->Release();
         // Close (WinRT dispose) the session first - that stops capture - then
         // the pool, which frees its buffers and its hold on winrtDevice.
         // Release() alone left every switched-away pool alive (#39).

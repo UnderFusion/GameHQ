@@ -65,6 +65,7 @@ private slots:
     void switchingGamesNeverKeepsTheOldName();
     void graceBufferDoesNotVouchForIneligibleWindow();
     void screenshotOnlyModeBadgesAndRestores();
+    void pinnedTargetReportsPausedWithoutReadyBadge();
     void rapidScreenshotThenClipShowsNewest();
     void repeatedUpdatesStayBounded();
 };
@@ -310,6 +311,22 @@ void TestTrayStatus::screenshotOnlyModeBadgesAndRestores()
     QCOMPARE(visualName(status.visual()), QStringLiteral("screenshot"));
     QTRY_COMPARE_WITH_TIMEOUT(visualName(status.visual()), QStringLiteral("ready"), kTransientDeadline);
     QVERIFY(status.tooltip().contains(QStringLiteral("Capture: Screenshots only")));
+}
+
+void TestTrayStatus::pinnedTargetReportsPausedWithoutReadyBadge()
+{
+    TrayStatus status;
+    status.setCaptureTarget(QStringLiteral("Game A"), true, true, true, true, true);
+    status.setReplayBufferState(kBufferReady);
+    QCOMPARE(status.gameName(), QStringLiteral("Game A"));
+    QCOMPARE(status.capture(), TrayStatus::Capture::Paused);
+    QCOMPARE(status.baseVisual(), TrayStatus::Visual::Idle);
+    QVERIFY(status.tooltip().contains(QStringLiteral("Pinned game")));
+
+    status.setCaptureTarget(QStringLiteral("Game B"), true, true, true, false, false);
+    QCOMPARE(status.capture(), TrayStatus::Capture::Ready);
+    QVERIFY(status.tooltip().contains(QStringLiteral("Background game")));
+    QVERIFY(!status.tooltip().contains(QStringLiteral("Game A")));
 }
 
 void TestTrayStatus::rapidScreenshotThenClipShowsNewest()

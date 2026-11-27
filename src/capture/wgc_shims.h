@@ -137,7 +137,7 @@ IGraphicsCaptureItemInterop : public IUnknown {
 struct __declspec(uuid("FA50C623-38DA-4B32-ACF3-FA9734AD800E"))
 IDirect3D11CaptureFrame : public IInspectable {
     virtual HRESULT STDMETHODCALLTYPE get_Surface(IDirect3DSurface** value) = 0;    // slot 6
-    virtual HRESULT STDMETHODCALLTYPE get_SystemRelativeTime(WgcTimeSpan* value) = 0; // slot 7 (stub)
+    virtual HRESULT STDMETHODCALLTYPE get_SystemRelativeTime(WgcTimeSpan* value) = 0; // slot 7
     virtual HRESULT STDMETHODCALLTYPE get_ContentSize(WgcSizeInt32* value) = 0;     // slot 8
 };
 
