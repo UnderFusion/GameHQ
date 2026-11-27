@@ -89,6 +89,29 @@ GameInputEventBatch GameInputEventQueue::waitTake()
     return takeLocked();
 }
 
+bool GameInputEventQueue::waitForDrainRequest()
+{
+    QMutexLocker lock(&m_mutex);
+    while (accepting()
+           && (m_drainRequested
+               || (m_discrete.isEmpty() && m_latestStates.isEmpty() && !m_forceResync))) {
+        m_available.wait(&m_mutex);
+    }
+    if (!accepting())
+        return false;
+    m_drainRequested = true;
+    return true;
+}
+
+GameInputEventBatch GameInputEventQueue::takeForDrain()
+{
+    QMutexLocker lock(&m_mutex);
+    // Events pushed while this drain was pending are taken here too; any
+    // pushed after it see no outstanding drain and wake the waiter.
+    m_drainRequested = false;
+    return takeLocked();
+}
+
 void GameInputEventQueue::stopAccepting()
 {
     m_accepting.store(false, std::memory_order_release);

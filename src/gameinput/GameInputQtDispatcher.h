@@ -22,15 +22,19 @@ public:
 
     void start();
     void shutdown();
+    // Deliveries posted to the GUI thread and not yet run: at most one.
+    int pendingDeliveries() const { return m_pendingDeliveries.load(std::memory_order_acquire); }
 
 signals:
     void eventsReady(const ModernInput::GameInputEventBatch& batch);
 
 private:
     void workerLoop();
+    void drain();
 
     std::shared_ptr<GameInputEventQueue> m_queue;
     std::atomic_bool m_running{false};
+    std::atomic_int m_pendingDeliveries{0};
     std::thread m_worker;
 };
 

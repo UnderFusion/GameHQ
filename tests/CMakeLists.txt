@@ -193,6 +193,13 @@ gamehq_add_test(tst_gameinputwrapper
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputWrapper.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputWrapper.h")
 
+# t35/A06: the queue-to-Qt hand-off stays bounded while the GUI thread stalls.
+gamehq_add_test(tst_gameinputdelivery
+    tst_gameinputdelivery.cpp
+    "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputEventQueue.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputQtDispatcher.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputQtDispatcher.h")
+
 # cpo-o06c: the GameInput focus policy has exactly one owner. This pins the
 # application sequence the runtime sees (including the restore before a session
 # goes away) against the fake runtime, with no desktop session or device.
