@@ -1,5 +1,18 @@
 # Windows acceptance for GameHQ capture
 
+> **Status (0.8.2 Beta 4):** The owner does not run this matrix. Beta 4 ships after the autonomous checks below, and real-game acceptance is collected from community testers on issues #38 and #40. Rows remain open until a tester or a later controlled session reports them; automated results never mark a row as passed.
+
+## Autonomous coverage
+
+`tests/tst_captureacknowledgement.cpp` runs with `GAMEHQ_TEST_WGC_NATIVE=1` on a desktop session. Its fixtures stay at the bottom of the z-order, are never activated and use square corners:
+
+- `captureFollowsTheClientWhileTheWindowMovesAndResizes`: moves off the left edge, below the work area, below the monitor and back during recording, then resizes, minimizes and restores. Every screenshot and decoded replay frame must contain only the client area, moves must not restart capture and a resize re-arms once.
+- `aStaticSceneGapStillExportsTheReplay`: a replay spanning 700 ms without new frames saves at full length.
+- `pinSwitchesKeepAttributionAndFlatResources`: 20 pin switches between two fixture games, with attribution checks on screenshots, replay frames and previews, and bounds on private bytes and handles.
+- All three fail if hardware encoder reuse is abandoned.
+
+Not covered: real games, Playnite, audio routing, overlay and controller, mixed-DPI displays and AMD GPUs.
+
 Plan item `lnov-38-bg-windows` covers issues [#38](https://github.com/UnderFusion/GameHQ/issues/38) and [#40](https://github.com/UnderFusion/GameHQ/issues/40). The baseline is published `v0.8.2-beta3` at `71a56d46f819ad3f2d63d68d1b1a2a1b76c3dc8f`. The candidate build in this worktree is `out/capture-38-40/GameHQ.exe`. Use the exact candidate commit and executable hash in the qualification receipt.
 
 ## Owner-controlled setup

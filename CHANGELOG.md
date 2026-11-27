@@ -4,7 +4,14 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
-### 0.8.2 Beta 3 draft
+### 0.8.2 Beta 4
+
+- Optional background capture keeps capturing the last active game after you switch apps. The tray can pin a game, select a capture target and return to automatic capture, and its tooltip shows pinned, background and paused states.
+- Screenshots and replays capture only the selected game's client area, without title bars, the taskbar, overlapping windows or desktop pixels when the game is covered or partly off-screen (#40). Moving the window keeps recording; resizing re-arms once.
+- Fixed the client-area capture disabling hardware encoder reuse in SDR recordings, and fixed replays failing to save after a static scene when the encoder is reused (#39).
+- Real-game, Playnite, audio-routing, overlay, controller, mixed-DPI and AMD acceptance are collected from community testing. See the [Beta 4 release notes](docs/releases/0.8.2-beta4.md).
+
+### 0.8.2 Beta 3
 
 - Replay capture reuses a hardware encoder where supported, reducing memory and stopping Windows handle growth in the measured NVIDIA run. Capture releases Windows frame resources on teardown.
 - Replay export restores audio and video samples skipped at the ends of some segments. Recording can ride out brief encoder stalls and falls back to per-segment encoding if reuse fails.
