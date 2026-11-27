@@ -9,7 +9,11 @@
 param(
     # A GitHub pre-release package is validated without exposing it: the public
     # installer manifest must still name only older versions.
-    [switch]$Prerelease
+    [switch]$Prerelease,
+
+    # Development CI can validate a candidate before it is listed. Stable
+    # verification and release tooling continue to use the explicit modes.
+    [switch]$AllowUnlistedCandidate
 )
 
 $ErrorActionPreference = "Stop"
@@ -53,6 +57,11 @@ if ($installerManifest -notmatch "AddonId:\s*GameHQ_Integration") {
 }
 $manifestVersions = @([regex]::Matches($installerManifest, '(?m)^\s*-\s+Version:\s*(?<version>\d+\.\d+\.\d+)\s*$') |
     ForEach-Object { $_.Groups['version'].Value })
+if ($AllowUnlistedCandidate -and $version -match '^\d+\.\d+\.\d+$' -and
+    $manifestVersions.Count -gt 0 -and $manifestVersions -notcontains $version -and
+    [version]$manifestVersions[0] -lt [version]$version) {
+    $Prerelease = $true
+}
 if ($Prerelease) {
     if ($manifestVersions -contains $version) {
         $failures += "Pre-release $version must not be listed in InstallerManifest.yaml yet"

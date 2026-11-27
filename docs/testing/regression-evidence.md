@@ -5,6 +5,9 @@ It keeps the full CTest suite, repeats concurrency-sensitive tests three times
 as separate invocations, and uploads receipts even when a test fails. Playnite
 keeps its locked restore and test step and contributes its TRX report.
 Localization gates, package validation and release trust checks run separately.
+Development CI accepts the existing Playnite prerelease verification mode for
+an unlisted newer candidate. Main, release branches and pull requests targeting
+those branches keep stable manifest verification.
 
 ## Desktop-safe checkpoint
 

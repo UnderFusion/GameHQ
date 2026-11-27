@@ -76,7 +76,10 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           & packaging/update-public-downloads.ps1 -Check
-          & integrations/playnite/packaging/verify.ps1
+          $stable = $env:GITHUB_REF -eq 'refs/heads/main' -or
+            $env:GITHUB_REF -like 'refs/heads/release/*' -or
+            $env:GITHUB_BASE_REF -eq 'main' -or $env:GITHUB_BASE_REF -like 'release/*'
+          & integrations/playnite/packaging/verify.ps1 -AllowUnlistedCandidate:(-not $stable)
 
       - name: Bootstrap pinned Ninja
         shell: pwsh
@@ -153,7 +156,7 @@ jobs:
             --output-dir out/test-evidence --profile ci
           dotnet restore integrations/playnite/tests/GameHQ.Playnite.Tests/GameHQ.Playnite.Tests.csproj --locked-mode
           dotnet test integrations/playnite/tests/GameHQ.Playnite.Tests/GameHQ.Playnite.Tests.csproj `
-            --configuration Release --no-restore --logger 'trx;LogFileName=Playnite.trx' `
+            --configuration Release --no-restore --logger 'trx;LogFilePrefix=Playnite' `
             --results-directory "$PWD\out\test-evidence\playnite"
 
       - name: Upload automated regression evidence
