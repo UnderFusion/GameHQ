@@ -1469,10 +1469,13 @@ qt_add_resources(tst_languagepreference "language_preference_fixtures"
 
 gamehq_add_test(tst_liveretranslation
     tst_liveretranslation.cpp
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/localization/LanguageManager.cpp"
-    "${CMAKE_SOURCE_DIR}/src/tray/TrayIcon.cpp")
+    "${CMAKE_SOURCE_DIR}/src/tray/TrayIcon.cpp"
+    "${CMAKE_SOURCE_DIR}/src/tray/TrayIconRenderer.cpp"
+    "${CMAKE_SOURCE_DIR}/src/tray/TrayStatus.cpp")
 target_link_libraries(tst_liveretranslation PRIVATE Qt6::Quick Qt6::Widgets)
 target_compile_definitions(tst_liveretranslation PRIVATE
     GAMEHQ_VERSION="${GAMEHQ_VERSION_FULL}")

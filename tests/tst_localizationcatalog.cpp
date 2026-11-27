@@ -819,6 +819,9 @@ void LocalizationCatalogTest::productionQmlHasNoHardcodedUserText()
 
     QStringList failures;
     for (const QString &path : productionQmlFiles()) {
+        // These two prototype labels are only reachable when
+        // GAMEHQ_INTERNAL_OVERLAY_PANELS is enabled in a development build.
+        const bool internalPanel = path.endsWith(QStringLiteral("/components/InternalOverlayPanelHost.qml"));
         QFile file(path);
         QVERIFY2(file.open(QIODevice::ReadOnly), qPrintable(path));
         const QStringList lines = QString::fromUtf8(file.readAll()).split(u'\n');
@@ -826,6 +829,10 @@ void LocalizationCatalogTest::productionQmlHasNoHardcodedUserText()
             auto matches = assignment.globalMatch(lines[index]);
             while (matches.hasNext()) {
                 const QString literal = matches.next().captured(1).trimmed();
+                if (internalPanel && (literal == QStringLiteral("Internal test panel")
+                                      || literal == QStringLiteral("Back to gallery"))) {
+                    continue;
+                }
                 if (!literal.contains(alphabetic) || color.match(literal).hasMatch()
                     || escapedGlyph.match(literal).hasMatch()
                     || stableUiToken.match(literal).hasMatch()) {
