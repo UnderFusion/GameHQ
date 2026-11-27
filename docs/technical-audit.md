@@ -1,13 +1,15 @@
 # Technical Audit
 
-Date: 2026-07-16. Scope: full codebase - C++ service layer, QML, config, storage,
-capture/replay, input, docs, and test coverage.
+Historical snapshot from 2026-07-16 covering the C++ service layer, QML,
+configuration, storage, capture/replay, input, documentation and tests.
+Finding status, counts and manual results below describe that snapshot.
+[Current architecture and verification routes](architecture.md)
 
 This audit supersedes the 2026-07-09 pass. That earlier audit's findings all
 landed; they are summarized under [Prior Wave](#prior-wave-2026-07-09) rather
 than repeated as open items.
 
-## Current Shape
+## Shape at the July audit
 
 GameHQ is a Qt/QML Windows app with a native C++ service layer:
 

@@ -1,6 +1,8 @@
 # Architecture
 
-Module map and repo layout. Each module should keep one primary responsibility. Spec details live in [product-spec.md](product-spec.md); refactor risks and next cleanup steps live in [technical-audit.md](technical-audit.md).
+Current architecture reviewed against `e6c50b0` on 2026-11-27. Each module
+keeps one primary responsibility. Product behavior and earlier findings are
+recorded separately. [Product specification](product-spec.md), [July audit snapshot](technical-audit.md)
 
 ## Module Diagram
 
@@ -19,7 +21,7 @@ GameHQ.exe
 |                  PhysicalControllerRegistry, binding resolution/runtime, mapping presets, HidCloakMonitor
 |-- gameinput/     GameInputRouter over Microsoft GameInput (IGameInputApi seam, GameInputQtDispatcher)
 |-- games/         GameDetector: foreground process, title resolution (cached per process), fullscreen heuristic; SteamAppLookup
-|-- storage/       CaptureDatabase, CaptureQueries, CaptureScanner, CaptureFolderWatcher, ThumbnailService, GameIconCache,
+|-- storage/       CaptureDatabase, CaptureQueries, CaptureScanner, CaptureFolderWatcher, ThumbnailScheduler, ThumbnailService, GameIconCache,
 |                  GameMetadataBackfill, GameRowRepair
 |-- config/        ConfigManager, ConfigKeys, SettingsCategories, SettingsApplyPolicy, CaptureLocations, LegacyMigration,
 |                  PortableProfileImporter, and Paths
@@ -27,7 +29,7 @@ GameHQ.exe
 |-- share/         ShareService + ShareProviderRegistry; built-in providers and the external provider host
 |-- telegram/      TDLib runtime loader, transport and TelegramAccount for Telegram Integrated (dormant unless built in)
 |-- integration/   IntegrationService over LocalIntegrationServer (`GameHQ.Local.v1` pipe, e.g. Playnite plugin)
-|-- updates/       UpdateService: GitHub release check, download, SHA-256 verification, hand-off to the updater
+|-- updates/       UpdateService: GitHub discovery, signed manifest and artifact verification, handoff to the updater
 |-- security/      ReleaseManifest + ReleaseTrust: signed release manifest verification (shared with GameHQUpdater)
 |-- tray/          TrayIcon and menu
 `-- diagnostics/   Logger
@@ -53,6 +55,47 @@ Separate executables built from src/:
 - `CaptureLocations` resolves portable-aware screenshot/clip roots, validates changes, retains prior managed roots for safe rescans, and passes plain path values across worker boundaries.
 - Win32/WinRT code stays in `.cpp` files where possible; headers should remain platform-clean unless the type boundary requires otherwise.
 
+## Ownership and dependency direction
+
+The composition root creates services and connects their lifetimes. The
+capture, input, share and update wiring live in the corresponding
+`App_*Wiring.cpp` files. The
+desktop and overlay depend on the controller and model contracts. Domain
+helpers stay below storage, capture, platform adapters and UI. Game identity
+is a Qt Core-only static target shared by GameHQ and its tests.
+[App composition](../src/app/App.cpp), [App wiring contract](../src/app/App.h), [Build graph](../src/CMakeLists.txt)
+
+| Owner | Current responsibility |
+| --- | --- |
+| GUI dispatcher | QML, controller and gallery models, overlay native ownership, settings and the live SQLite facade. A model update follows the corresponding storage commit. |
+| Capture worker | WGC, D3D, HDR processing and recording. COM and the media pipeline are started and torn down on the capture worker. A separate export task is joined before the worker's shutdown completes. |
+| Screenshot encoding pool | Bounded PNG/JPEG work after readback, with completion reported to the GUI. |
+| Library scan and thumbnails | The scanner gathers folder changes off the GUI thread and publishes a delta. GUI-owned storage applies reconciliation. The thumbnail scheduler bounds live decode work and checks for stale results before publishing. |
+| Input producers | Backend readers publish events. The GameInput dispatcher bounds queued delivery and routes the drain to the GUI. Binding and overlay routing stay in the input engine. |
+| Updater helper | Separate native process owns staged install, recovery and rollback. The running application provides its own health result. |
+
+[Capture worker](../src/capture/FramePumpService.cpp), [Capture pipeline](../src/capture/FramePumpPipeline.cpp), [Scanner](../src/storage/CaptureScanner.cpp), [Thumbnail scheduler](../src/storage/ThumbnailScheduler.cpp), [GameInput delivery](../src/gameinput/GameInputQtDispatcher.cpp), [Shutdown contracts](threading-and-shutdown.md)
+
+## Decisions that affect extensions
+
+- **Single-instance and updater ownership.** `QLockFile` decides instance
+  admission. The application mutex reports process lifetime to Setup and
+  Uninstall. The updater ties a handoff to its authorizing process, owns
+  package replacement, and preserves recovery state until confirmed health
+  and cleanup. [Application entry](../src/main.cpp), [Mutex contract](../src/core/ApplicationMutex.h), [Update lifecycle](updater.md)
+- **Controller identity.** Physical controller identity, backend route and
+  binding identity have distinct roles. Reuse the registry and binding
+  normalization when adding a producer. The input engine consumes the routed
+  events. [Physical registry](../src/input/PhysicalControllerRegistry.h), [Binding runtime](../src/input/BindingRuntime.h), [Controller guide](controller-input.md)
+- **Asynchronous library work.** Carry paths, IDs and results across threads.
+  The GUI-side library service owns commits and model publication. Thumbnail
+  generation follows capture commit and must tolerate a deleted or changed
+  row before its result returns. [Library service](../src/ui/CaptureLibraryService.cpp), [Gallery model](../src/ui/GalleryModel.cpp)
+- **Overlay panels.** The surface owns activation, focus and input mode.
+  A component receives explicit values and emits requests. Keep Win32
+  window mechanics in the overlay C++ layer and avoid recurring work while
+  a panel is inactive. [Overlay window](../src/ui/qml/OverlayWindow.qml), [Layout panel](../src/ui/qml/components/OverlayLayoutPanel.qml), [Presenter](../src/overlay/OverlayPresenter.cpp)
+
 ## Repository Layout
 
 ```txt
@@ -65,14 +108,14 @@ GameHQ/
 |   |-- input/ gameinput/ games/ storage/ config/ localization/
 |   |-- share/ telegram/ integration/ updates/ security/ tray/ diagnostics/
 |   `-- launcher/ updater/   separate GameHQLauncher / GameHQUpdater executables
-|-- tests/                opt-in pure-logic tests (-DGAMEHQ_BUILD_TESTS=ON)
+|-- tests/                opt-in unit, integration and synthetic tests (-DGAMEHQ_BUILD_TESTS=ON)
 |-- assets/
 |   |-- icons/  installer/  release-notes/
 |   `-- sounds/
 |-- i18n/                 translation catalogs and localization state
 |-- integrations/         Playnite companion plugin and share-provider samples
 |-- third_party/          vendored GameInput and TDLib inputs
-|-- tools/                i18n, release-manifest, input-receiver and manual-validation tooling
+|-- tools/                i18n, test evidence, release-manifest, input-receiver and manual validation
 |-- site/
 |-- packaging/            guarded local/release package assembly
 |-- out/                  git-ignored CMake/Ninja compiler workspace
@@ -82,9 +125,14 @@ GameHQ/
 
 ## Key Data Flows
 
-**Screenshot:** InputEngine or hotkey -> GameDetector gate -> SDR uses ScreenshotService GDI, HDR uses FramePumpService FP16 WGC plus GPU tone mapping -> async PNG/JPEG write -> AppController facade -> CaptureLibraryService -> CaptureDatabase insert -> ThumbnailService -> gallery refresh -> sound/notification.
+**Screenshot.** InputEngine or hotkey → capture policy → GDI or HDR frame
+readback → async image write → library commit → gallery publication and
+capture feedback. Thumbnails are scheduled separately.
 
-**Replay save:** InputEngine hold or hotkey -> current CaptureLocations clip root copied to FramePumpService worker -> SegmentRecorder ring snapshot -> ReplayExporter remux -> AppController facade -> CaptureLibraryService -> CaptureDatabase insert -> gallery refresh -> sound/notification.
+**Replay save.** InputEngine hold or hotkey → frame worker → ring lease →
+export/remux → library commit and capture feedback. `clipSaving` is a
+progress signal. Outcome comes through the saved or failed path.
+[Capture wiring](../src/app/App_CaptureWiring.cpp), [Replay and capture engine](capture-engine.md)
 
 **Overlay toggle:** InputEngine or hotkey -> OverlayManager show/hide -> foreground HWND remembered/restored -> QML overlay uses its own GalleryModel -> input routing follows overlay visibility.
 
@@ -97,11 +145,25 @@ Details (which object lives on which thread, shutdown order, file deletion rules
 - UI thread: Qt/QML, AppController and its helpers, models, overlay/toast windows, tray, sound, hotkeys, Raw Input/XInput polling, folder watching, network checks, and most short DB calls.
 - Frame pump (`FramePumpService`, a `QThread` with a moved worker): WGC frame pump, HDR tone mapping/readback, D3D access, and Media Foundation segment writing (`SegmentRecorder`). The recorder prepares the next segment on its own `std::thread`; `AudioCapture` drains game-audio loopback on its own `std::thread`; each replay export runs on a `ReplayExportTask` (`QThread`) owned and joined by the worker.
 - Screenshot encoding: `ScreenshotService` thread pool (2 threads) writes PNG/JPEG after the SDR GDI grab or HDR readback.
-- Library scan: `CaptureScanner` thread pool (1 thread) walks capture roots and creates thumbnails; clip thumbnails grab a frame on a short-lived COM thread that the caller waits for.
+- Library scan: `CaptureScanner` runs directory work in its one-worker pool. The live thumbnail scheduler has its own bounded workers.
 - Input devices: `WinMMDevice`, `MouseHookDevice` (WH_MOUSE_LL), the opt-in `SonyHidReader`, and `GameInputQtDispatcher` each run one `std::thread` and hand events to the UI thread.
 - Telegram Integrated (dormant unless built in): `TdJsonTransport` runs the TDLib receive loop on its own `QThread`.
 
 Current DB access stays behind the storage API. `CaptureDatabase` owns the public database facade, mutations, and migrations; read-only capture/game listing SQL lives in `CaptureQueries`. Keep queries short on the UI path; if scanning or repair work grows, move that work behind a worker boundary.
+
+## Stored state and command contracts
+
+Configuration uses sparse dotted-key overrides and atomic saves. The
+settings facade emits the individual value notifications and writes one
+geometry batch. Replay restart notification follows the save attempt for
+changed batch values. Configuration defaults and migration behavior are part
+of the schema contract. [Settings facade](../src/ui/AppController_Settings.cpp), [Configuration storage](../src/config/ConfigManager.cpp)
+
+Storage schema changes go through migrations. Keep supported portable path
+forms and prior records readable. Protocol changes retain the transport and
+version contracts for supported peers. Updater state names, health and
+release signature semantics are maintained with their acceptance tests.
+[Storage](storage.md), [Stored paths](../src/config/Paths.cpp), [Playnite protocol](integration-protocol.md), [Share protocol](share-provider-api-v1.md), [Updater contract](updater.md)
 
 ## QML Structure
 
@@ -135,3 +197,24 @@ The current safe refactor wave is complete. The near-term target is not a rewrit
 4. Keep file actions and capture commit logic behind `CaptureLibraryService`.
 5. Keep current-game foreground matching behind `CurrentGameService`.
 6. Keep game icon caching in `GameIconCache`, log metadata repair in `GameMetadataBackfill`, duplicate game-row repair in `GameRowRepair`, and read-only capture/game listing SQL in `CaptureQueries`.
+
+## Extension example
+
+The layout options panel is a reproducible starting point for a new overlay
+panel. Define the presentation in a component, pass in state and stable
+option keys, and route requests through the overlay window. Register the
+component in the QML module. Add tests for values, close behavior and focus
+transitions at the owning layer. The existing fixture instantiates the
+production panel offscreen and verifies row keys, values and footer hints.
+[Panel source](../src/ui/qml/components/OverlayLayoutPanel.qml), [Module registration](../src/CMakeLists.txt), [Offscreen fixture](../tests/qml/tst_overlaylayout.qml)
+
+In a test-enabled build configured as `out-evidence`, run:
+
+```powershell
+ctest --test-dir out-evidence -R '^tst_overlaylayout$' --output-on-failure
+```
+
+Use the clean-checkout commands for a broader verification receipt. Report
+CPU/GPU or latency results with the workload and toolchain. Keep native
+overlay, live capture and real-controller acceptance in their hardware
+matrix. [Regression evidence](testing/regression-evidence.md), [Profiling recipe](audit/t45-profiling/README.md), [Hardware acceptance](testing/acceptance-matrix.md)

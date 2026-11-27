@@ -42,6 +42,7 @@ Technical and product documentation for contributors and maintainers.
 | [storage.md](storage.md) | Portable paths, capture folders, and file layout |
 | [tdlib-runtime.md](tdlib-runtime.md) | Optional TDLib runtime for the dormant Telegram Integrated provider |
 | [threading-and-lifecycle.md](threading-and-lifecycle.md) | Threads, shutdown order, file deletion, crash recovery, error conventions |
+| [threading-and-shutdown.md](threading-and-shutdown.md) | Worker termination, join order, and shutdown verification |
 | [updater.md](updater.md) | Update check, download, verification, and safe install |
 
 ## Project maintenance
