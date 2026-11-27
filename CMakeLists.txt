@@ -76,6 +76,7 @@ FetchContent_MakeAvailable(monocypher)
 # trust: the TEST-ONLY signing key lives in a separate trust library that only
 # test targets link, so one build tree is both shippable and testable.
 option(GAMEHQ_BUILD_TESTS "Build the automated test target" OFF)
+option(GAMEHQ_INTERNAL_OVERLAY_PANELS "Enable the development overlay panel prototype" OFF)
 # Explicitly enabled only by the Beta 4 packaging build; normal builds stay OFF.
 option(GAMEHQ_SONY_HID_READER_DEFAULT "Enable the bounded Sony HID reader by build default" OFF)
 # Beta number of a GitHub pre-release build ("beta3" for tag v<VERSION>-beta3),

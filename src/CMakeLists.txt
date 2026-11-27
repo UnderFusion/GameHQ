@@ -242,6 +242,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/OverlaySidebar.qml
         ui/qml/components/OverlayCaptureStrip.qml
         ui/qml/components/OverlayLayoutPanel.qml
+        ui/qml/components/InternalOverlayPanelHost.qml
         ui/qml/components/OverlayPreview.qml
         ui/qml/components/OverlayFooter.qml
         ui/qml/components/OverlayViewer.qml
@@ -401,6 +402,9 @@ target_include_directories(GameHQ PRIVATE
     ${CMAKE_BINARY_DIR}/generated
     ${CMAKE_SOURCE_DIR}/third_party/gameinput/include
 )
+
+set_property(SOURCE overlay/OverlayManager.cpp APPEND PROPERTY
+    COMPILE_DEFINITIONS GAMEHQ_INTERNAL_OVERLAY_PANELS=$<BOOL:${GAMEHQ_INTERNAL_OVERLAY_PANELS}>)
 
 target_compile_definitions(GameHQ PRIVATE
     GAMEHQ_VERSION="${GAMEHQ_VERSION_FULL}"

@@ -9,6 +9,7 @@ Item {
     property var galleryModel
     property int currentIndex: 0
     property bool videoFocused: false
+    property bool suspended: false
 
     readonly property int displayedIndex: _displayedIndex
     // galleryModel.get() is an imperative call, so the binding has no way to
@@ -34,6 +35,8 @@ Item {
     // its THUMBNAIL, so the still layer keeps painting that frame until
     // videoFocused hands the stage over to the video surface.
     readonly property url _targetUrl: {
+        if (root.suspended)
+            return ""
         root._modelRevision
         const rec = (root.currentIndex >= 0 && root.galleryModel && root.galleryModel.rowCount() > 0)
             ? root.galleryModel.get(root.currentIndex) : ({})

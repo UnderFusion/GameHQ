@@ -229,6 +229,14 @@ documented, rejected alternative — see
 - `components/OverlayFooter.qml` renders contextual footer hints.
 - `components/OverlayActionMenu.qml` renders per-capture actions and is also reused by the desktop pad action menu.
 
+### Internal panel prototype
+
+Configure a development build with `-DGAMEHQ_INTERNAL_OVERLAY_PANELS=ON` to
+enable the internal test panel. Open it with the button in the gallery or
+step past the sidebar mode control and press Confirm. Back or Confirm in
+the test panel returns to the gallery. The default build leaves the panel host
+unloaded. `tst_overlaypanels` exercises both configurations offscreen.
+
 ## Known risks
 
 - Focus-restoration flakiness; the neutral handoff has a 400 ms bound, and a close that runs into it says so (`neutral-handoff=timeout`) rather than claiming a clean hand-back.

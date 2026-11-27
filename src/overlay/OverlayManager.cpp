@@ -128,6 +128,15 @@ bool OverlayManager::isVisible() const
     return m_window && m_window->isVisible();
 }
 
+bool OverlayManager::internalPanelsEnabled() const
+{
+#if defined(GAMEHQ_INTERNAL_OVERLAY_PANELS) && GAMEHQ_INTERNAL_OVERLAY_PANELS
+    return true;
+#else
+    return false;
+#endif
+}
+
 bool OverlayManager::ensureLoaded()
 {
     if (m_window)

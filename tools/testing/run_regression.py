@@ -50,7 +50,7 @@ HEADLESS = (
     )),
     Suite("public-feed", "mock", ("tst_updatediscovery",)),
     Suite("synthetic", "synthetic", (
-        "tst_gdireadback", "tst_overlaylayout", "tst_rawinputflood",
+        "tst_gdireadback", "tst_overlaylayout", "tst_overlaypanels", "tst_rawinputflood",
         "tst_segmentrecorder_synthetic",
     )),
 )

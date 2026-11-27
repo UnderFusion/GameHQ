@@ -99,6 +99,21 @@ Window {
     // can shift while the confirmation is open.
     property string pendingDeletePath: ""
 
+    readonly property bool galleryActive: !panelHost.item
+        || panelHost.item.activePanelId === panelHost.item.galleryPanel.id
+
+    function openTestPanel() {
+        if (!panelHost.item || !galleryActive || overlay.closing || overlayShare.isOpen
+                || deleteDialog.visible || viewer.open || content.menuOpen
+                || content.layoutPanelOpen)
+            return
+        content.stopVideoFocus()
+        content.collapseAutoSidebar()
+        sidebarPointerGrace.stop()
+        content.sidebarPointerHold = false
+        panelHost.item.activateTest()
+    }
+
     // The delete confirmation is modal: while it is visible every pad (and
     // keyboard, which emits the same signals) command goes to it or is
     // dropped, so nothing behind it can change or act on the gallery.
@@ -114,6 +129,26 @@ Window {
             deleteDialog.padConfirm()
         else if (command === "back")
             deleteDialog.padBack()
+        return true
+    }
+
+    // Only overlay-scoped commands come through here. Global capture stays
+    // in InputEngine, including Share's screenshot route outside playback.
+    function modalOrPanelTakesInput(command, direction) {
+        if (deleteDialogTakesInput(command, direction))
+            return true
+        if (galleryActive)
+            return false
+        if (overlayShare.isOpen) {
+            if (command === "navigateVertical")
+                overlayShare.padNavigate(direction)
+            else if (command === "confirm")
+                overlayShare.padConfirm()
+            else if (command === "back")
+                overlayShare.padBack()
+        } else if (!overlay.closing && (command === "back" || command === "confirm")) {
+            panelHost.item.activateGallery()
+        }
         return true
     }
 
@@ -321,7 +356,7 @@ Window {
         // grab) apply to the inline clip and to a clip shown full screen.
         // A menu, the options card or Share over the clip takes the pad:
         // Cross must pick their entry, not play/pause the clip behind them.
-        readonly property bool playbackActive: !content.menuOpen
+        readonly property bool playbackActive: overlayWindow.galleryActive && !content.menuOpen
             && !content.layoutPanelOpen && !overlayShare.isOpen
             && !deleteDialog.visible
             && (content.videoFocused || (viewer.open && viewer.currentIsVideo))
@@ -343,6 +378,7 @@ Window {
         property bool sidebarPointerHold: false
         property bool modeToggleFocused: false
         property bool optionsToggleFocused: false
+        property bool testPanelFocused: false
         // Overlay options card (gear): open state and its row cursor.
         property bool layoutPanelOpen: false
         property int layoutIndex: 0
@@ -370,6 +406,7 @@ Window {
             content.sidebarNavActive = false
             content.modeToggleFocused = false
             content.optionsToggleFocused = false
+            content.testPanelFocused = false
         }
 
         function toggleLayoutPanel() {
@@ -473,13 +510,15 @@ Window {
             if (count <= 0)
                 return
             content.noteSidebarNavigation()
-            const slots = count + 2   // + the options gear and the mode toggle
+            const slots = count + 2 + (panelHost.item ? 1 : 0)
             const current = content.optionsToggleFocused ? count
                           : content.modeToggleFocused ? count + 1
+                          : content.testPanelFocused ? count + 2
                           : content.sidebarIndex
             const idx = (current + direction + slots) % slots
             content.optionsToggleFocused = idx === count
             content.modeToggleFocused = idx === count + 1
+            content.testPanelFocused = idx === count + 2
             if (idx >= count) {
                 sounds.play("nav_tick")
                 return
@@ -645,6 +684,10 @@ Window {
                 viewer.toggleVideoPlayback()
                 return
             }
+            if (content.testPanelFocused) {
+                overlayWindow.openTestPanel()
+                return
+            }
             if (content.optionsToggleFocused) {
                 content.toggleLayoutPanel()
                 return
@@ -720,7 +763,7 @@ Window {
                 viewer.close()   // Circle leaves full screen before anything else
             else if (content.layoutPanelOpen)
                 content.toggleLayoutPanel()
-            else if (content.modeToggleFocused || content.optionsToggleFocused)
+            else if (content.modeToggleFocused || content.optionsToggleFocused || content.testPanelFocused)
                 content.collapseAutoSidebar()
             else if (content.menuOpen)
                 content.menuOpen = false
@@ -756,34 +799,34 @@ Window {
             // seeks once a clip is playing (see handleSeekStep).
             function onOverlayNavigate(direction) {
                 overlayWindow.notePadInput()
-                if (overlayWindow.deleteDialogTakesInput("navigate", direction))
+                if (overlayWindow.modalOrPanelTakesInput("navigate", direction))
                     return
                 content.handleSeekStep(direction)
             }
             function onOverlayNavigateVertical(direction) {
                 overlayWindow.notePadInput()
-                if (overlayWindow.deleteDialogTakesInput("navigateVertical", direction))
+                if (overlayWindow.modalOrPanelTakesInput("navigateVertical", direction))
                     return
                 content.revealControls()
                 content.handleNavigateVertical(direction)
             }
             function onOverlayConfirm() {
                 overlayWindow.notePadInput()
-                if (overlayWindow.deleteDialogTakesInput("confirm", 0))
+                if (overlayWindow.modalOrPanelTakesInput("confirm", 0))
                     return
                 content.revealControls()
                 content.handleConfirm()
             }
             function onOverlayFavorite() {
                 overlayWindow.notePadInput()
-                if (overlayWindow.deleteDialogTakesInput("favorite", 0))
+                if (overlayWindow.modalOrPanelTakesInput("favorite", 0))
                     return
                 content.revealControls()
                 content.handleFavorite()
             }
             function onOverlayMenu() {
                 overlayWindow.notePadInput()
-                if (overlayWindow.deleteDialogTakesInput("menu", 0))
+                if (overlayWindow.modalOrPanelTakesInput("menu", 0))
                     return
                 content.revealControls()
                 content.toggleMenu()
@@ -794,27 +837,27 @@ Window {
             // above), so the two stay fully independent.
             function onOverlayGameStep(direction) {
                 overlayWindow.notePadInput()
-                if (overlayWindow.deleteDialogTakesInput("gameStep", direction))
+                if (overlayWindow.modalOrPanelTakesInput("gameStep", direction))
                     return
                 content.revealControls()
                 content.handleCaptureStep(direction)
             }
             function onOverlayHideRequested() {
                 overlayWindow.notePadInput()
-                if (overlayWindow.deleteDialogTakesInput("back", 0))
+                if (overlayWindow.modalOrPanelTakesInput("back", 0))
                     return
                 content.revealControls()
                 content.handleBack()
             }
             function onPlaybackPlayPause() {
                 overlayWindow.notePadInput()
-                if (overlayWindow.deleteDialogTakesInput("playPause", 0))
+                if (overlayWindow.modalOrPanelTakesInput("playPause", 0))
                     return
                 content.togglePlayback()
             }
             function onPlaybackSeek(direction) {
                 overlayWindow.notePadInput()
-                if (overlayWindow.deleteDialogTakesInput("seek", direction))
+                if (overlayWindow.modalOrPanelTakesInput("seek", direction))
                     return
                 content.handleSeekStep(direction)
             }
@@ -822,7 +865,7 @@ Window {
             // screenshot instead of the global foreground screenshot.
             function onFrameGrabRequested() {
                 overlayWindow.notePadInput()
-                if (overlayWindow.deleteDialogTakesInput("frameGrab", 0))
+                if (overlayWindow.modalOrPanelTakesInput("frameGrab", 0))
                     return
                 if (overlayShare.isOpen)
                     return
@@ -839,6 +882,8 @@ Window {
         // instead) â€” body now owns the space the header used to take.
         Item {
             id: body
+            objectName: "overlayGalleryBody"
+            visible: overlayWindow.galleryActive
             anchors.top: parent.top
             // Hidden hints hand their height back to the preview.
             anchors.bottom: layoutPrefs.showHints ? footer.top : parent.bottom
@@ -862,11 +907,15 @@ Window {
                 onEntrySelected: function(index) {
                     content.modeToggleFocused = false
                     content.optionsToggleFocused = false
+                    content.testPanelFocused = false
                     content.selectSidebarEntryAt(index, "confirm")
                 }
                 onModeCycleRequested: content.cycleSidebarMode()
                 onPointerInsideChanged: {
-                    if (pointerInside) {
+                    if (!overlayWindow.galleryActive) {
+                        sidebarPointerGrace.stop()
+                        content.sidebarPointerHold = false
+                    } else if (pointerInside) {
                         sidebarPointerGrace.stop()
                         content.sidebarPointerHold = true
                     } else {
@@ -912,6 +961,7 @@ Window {
                 galleryModel: overlayGallery
                 currentIndex: strip.currentIndex
                 videoFocused: content.videoFocused
+                suspended: !overlayWindow.galleryActive
                 onPlayPauseRequested: content.toggleVideoPlayback()
                 onSeekRequested: function(deltaMs) { content.seekVideo(deltaMs) }
                 onBackRequested: content.handleBack()
@@ -954,11 +1004,26 @@ Window {
 
         OverlayFooter {
             id: footer
-            visible: layoutPrefs.showHints
+            visible: layoutPrefs.showHints && overlayWindow.galleryActive
             usingGamepad: overlayWindow.usingGamepad
             menuOpen: content.menuOpen
             layoutPanelOpen: content.layoutPanelOpen
             videoFocused: content.videoFocused
+        }
+
+        Loader {
+            id: panelHost
+            objectName: "internalPanelHostLoader"
+            anchors.fill: parent
+            active: overlay.internalPanelsEnabled && overlayWindow.visible
+            sourceComponent: InternalOverlayPanelHost {
+                entryHighlighted: content.testPanelFocused
+                onTestRequested: overlayWindow.openTestPanel()
+                onGalleryRequested: {
+                    if (!overlay.closing && !overlayShare.isOpen && !deleteDialog.visible)
+                        panelHost.item.activateGallery()
+                }
+            }
         }
     }
 
@@ -1022,6 +1087,7 @@ Window {
     ShareDialog {
         parent: uiSurface.contentItem
         id: overlayShare
+        objectName: "overlayCaptureShareDialog"
         // Set when the user still has a step to read before the overlay may
         // step aside (see the Connections below).
         property bool hideOverlayOnClose: false
@@ -1059,6 +1125,7 @@ Window {
     ConfirmDialog {
         parent: uiSurface.contentItem
         id: deleteDialog
+        objectName: "overlayDeleteDialog"
         anchors.fill: parent
         z: 200
         //% "Delete capture?"

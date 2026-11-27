@@ -61,6 +61,7 @@ class OverlayManager : public QObject
     // for up to its timeout; QML draws nothing meanwhile so the close looks
     // instant while the controller is still handed back safely.
     Q_PROPERTY(bool closing READ closing NOTIFY closingChanged)
+    Q_PROPERTY(bool internalPanelsEnabled READ internalPanelsEnabled CONSTANT FINAL)
 
 public:
     explicit OverlayManager(QQmlApplicationEngine* engine, QObject* parent = nullptr);
@@ -73,6 +74,7 @@ public:
     bool isVisible() const;
     bool foregroundAcquired() const { return m_foregroundAcquired; }
     bool closing() const { return m_closing; }
+    bool internalPanelsEnabled() const;
 
     // cpo-o06c: the one owner of the process-wide GameInput focus policy. The
     // app installs it at startup (and it outlives the overlay). Left null — as in

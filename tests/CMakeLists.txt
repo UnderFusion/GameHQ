@@ -54,13 +54,14 @@ set_tests_properties(tst_aboutbetatoggle PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM
 
 # Include the existing QML layout suites in the complete CTest run.
 find_program(GAMEHQ_QMLTESTRUNNER NAMES qmltestrunner HINTS "${CMAKE_PREFIX_PATH}/bin" REQUIRED)
-foreach(suite IN ITEMS interfacescaling overlaylayout)
+foreach(suite IN ITEMS interfacescaling overlaylayout overlaypanels)
     add_test(NAME tst_${suite}
         COMMAND "${GAMEHQ_QMLTESTRUNNER}" -input "${CMAKE_SOURCE_DIR}/tests/qml/tst_${suite}.qml"
                 -import "${CMAKE_SOURCE_DIR}/tests/qml/imports" -platform offscreen
                 -o -,txt -o "${GAMEHQ_QT_TEST_REPORT_DIR}/tst_${suite}.xml,junitxml")
     set_tests_properties(tst_${suite} PROPERTIES TIMEOUT 120)
 endforeach()
+set_tests_properties(tst_overlaypanels PROPERTIES ENVIRONMENT "QT_QUICK_BACKEND=software")
 
 gamehq_add_test(tst_gameidentity tst_gameidentity.cpp)
 
@@ -1804,6 +1805,7 @@ qt_add_resources(tst_overlaynative "overlay_qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/TileIconButton.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlayCaptureStrip.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlayLayoutPanel.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/InternalOverlayPanelHost.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/AppScrollBar.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/SettingsPageHeader.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/SettingsPage.qml"
