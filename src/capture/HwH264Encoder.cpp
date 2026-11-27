@@ -13,6 +13,7 @@
 #include <QStringList>
 #include <QThread>
 
+#include <algorithm>
 #include <cstring>
 
 namespace {
@@ -73,6 +74,11 @@ bool HwH264Encoder::open(const Settings& s, QString* why)
 {
     close();
     m_settings = s;
+    {
+        const size_t frameBytes = size_t(s.width) * s.height * 3 / 2;
+        const size_t byBytes = frameBytes ? kPendingBytesCap / frameBytes : kMinPending;
+        m_maxPending = std::max(kMinPending, std::min<size_t>(s.fps ? s.fps : 30, byBytes));
+    }
     m_failed = false;
     m_failure.clear();
     m_dropped = 0;
@@ -233,6 +239,7 @@ void HwH264Encoder::releaseMft()
         m_mft = nullptr;
     }
     m_needInput = 0;
+    m_inMft = 0;
     m_draining = false;
 }
 
@@ -304,6 +311,7 @@ bool HwH264Encoder::collectOutput()
     }
     HwH264Encoder::shiftSampleTime(db.pSample, -kTimeOffset);
     m_output.push_back(db.pSample);   // takes the reference (own or MFT-provided)
+    if (m_inMft > 0) --m_inMft;
     return true;
 }
 
@@ -335,6 +343,7 @@ bool HwH264Encoder::submitPending()
         p.sample->Release();
         --m_needInput;
         if (FAILED(hr)) { fail(hrText("ProcessInput", hr)); return false; }
+        ++m_inMft;
     }
     return true;
 }
@@ -387,7 +396,7 @@ bool HwH264Encoder::encode(IMFSample* nv12, bool forceKeyframe)
     nv12->GetSampleTime(&t);
     nv12->SetSampleTime(t + kTimeOffset);
     nv12->AddRef();
-    if (m_pending.size() >= kMaxPending) {
+    if (m_pending.size() >= m_maxPending) {
         // Never block the capture worker: drop the oldest waiting frame. A
         // keyframe request moves to the next frame so the segment still
         // starts with an IDR.
@@ -414,6 +423,11 @@ bool HwH264Encoder::drain(std::vector<IMFSample*>& out, int timeoutMs)
 {
     if (!m_mft || m_failed)
         return false;
+    if (m_injectDrainFailure) {
+        m_injectDrainFailure = false;
+        fail(QStringLiteral("injected drain failure"));
+        return false;
+    }
     QElapsedTimer timer;
     timer.start();
     bool complete = false;

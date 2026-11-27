@@ -268,6 +268,7 @@ private:
     IMFMediaType* m_passthroughType = nullptr;   // immutable copy; read by the prep thread
     ID3D11Device* m_dev = nullptr;           // borrowed (pipeline owns)
     unsigned m_segDroppedFrames = 0;
+    unsigned m_segInFlightPeak = 0;          // reused encoder: buffering peak, frames
     static std::atomic<bool> s_encoderReuse;
 
     bool m_active = false;

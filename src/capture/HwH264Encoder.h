@@ -66,12 +66,18 @@ public:
     bool drain(std::vector<IMFSample*>& out, int timeoutMs);
 
     unsigned droppedFrames() const { return m_dropped; }
+    size_t queueLimit() const { return m_maxPending; }
+    // Frames handed over but not yet returned: waiting in our queue plus
+    // inside the MFT. Times the frame interval, this is the buffering delay.
+    unsigned framesInFlight() const { return unsigned(m_pending.size()) + m_inMft; }
 
     // Shift presentation AND decode timestamp of an encoded sample by delta.
     static void shiftSampleTime(IMFSample* sample, long long delta);
 
-    // Tests: make the next encode() fail as if the MFT had rejected the input.
+    // Tests: make the next encode() fail as if the MFT had rejected the
+    // input, or the next drain() fail as if the encoder had stalled.
     void injectFailure() { m_injectFailure = true; }
+    void injectDrainFailure() { m_injectDrainFailure = true; }
 
 private:
     struct Pending { IMFSample* sample; bool key; };
@@ -96,11 +102,17 @@ private:
     std::deque<Pending>     m_pending;
     std::vector<IMFSample*> m_output;
     unsigned                m_dropped = 0;
+    unsigned                m_inMft = 0;      // accepted by ProcessInput, no output yet
     bool                    m_failed = false;
     bool                    m_injectFailure = false;
+    bool                    m_injectDrainFailure = false;
     QString                 m_failure;
 
-    // ~267 ms at 30 fps, ~25 MB of NV12 at 1080p: rides out short encoder
-    // stalls (measured: 4 frames under load) without an unbounded queue.
-    static constexpr size_t kMaxPending = 8;
+    // Frames waiting for the encoder: one second at the target rate, capped
+    // at 128 MB of NV12 and never below 8. Rides out a full encoder stall
+    // (measured up to ~1.2 s under heavy GPU load) while staying bounded;
+    // the per-segment path's sink writer queues RGB32 without any limit.
+    static constexpr size_t kMinPending = 8;
+    static constexpr size_t kPendingBytesCap = 128u * 1024u * 1024u;
+    size_t                  m_maxPending = kMinPending;
 };

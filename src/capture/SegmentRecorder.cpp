@@ -354,8 +354,8 @@ bool SegmentRecorder::startEncoderReuse(ID3D11Device* dev, ID3D11DeviceContext* 
     m_encoder = std::move(encoder);
     m_forceKeyframe = true;
     qInfo().noquote() << QStringLiteral(
-        "SegmentRecorder: reusing one hardware encoder (%1) for every segment")
-        .arg(m_encoder->encoderName());
+        "SegmentRecorder: reusing one hardware encoder (%1) for every segment, queue up to %2 frames")
+        .arg(m_encoder->encoderName()).arg(m_encoder->queueLimit());
     return true;
 }
 
@@ -696,6 +696,7 @@ bool SegmentRecorder::openSegment()
     m_segVideoFrames  = 0;
     m_segAudioPackets = 0;
     m_segDroppedFrames = 0;
+    m_segInFlightPeak = 0;
     m_forceKeyframe = true;   // reused encoder: the next frame is this segment's IDR
 
     qInfo().noquote() << QStringLiteral("SegmentRecorder: opened %1%2%3%4")
@@ -771,14 +772,16 @@ void SegmentRecorder::closeSegment()
     // Per-segment stats: frames vs the ~expected count at the target fps make
     // capture starvation visible; lastSegPts is the segment's video span.
     qInfo().noquote() << QStringLiteral(
-        "SegmentRecorder: finalized %1 (ring=%2/%3, %4 frames / %5 audio pkts, span=%6ms%7)")
+        "SegmentRecorder: finalized %1 (ring=%2/%3, %4 frames / %5 audio pkts, span=%6ms%7%8)")
         .arg(QDir(m_cacheDir).relativeFilePath(m_curPath))
         .arg(m_segments.size()).arg(m_keepSegments)
         .arg(m_segVideoFrames).arg(m_segAudioPackets)
         .arg(m_lastSegPts >= 0 ? m_lastSegPts / 10000 : 0)
         .arg(m_segDroppedFrames ? QStringLiteral(", %1 frames dropped waiting for the encoder")
                                       .arg(m_segDroppedFrames)
-                                : QString());
+                                : QString())
+        .arg(m_segInFlightPeak ? QStringLiteral(", encoder delay peak %1 frames").arg(m_segInFlightPeak)
+                               : QString());
     m_curPath.clear();
 }
 
@@ -1049,6 +1052,7 @@ void SegmentRecorder::writeEncodedFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
         return;
     }
     m_segDroppedFrames += m_encoder->droppedFrames() - droppedBefore;
+    m_segInFlightPeak = std::max(m_segInFlightPeak, m_encoder->framesInFlight());
     m_lastSegPts = gpts - m_segStartPts;
     m_nextDuePts += m_frameInterval;
     if (m_nextDuePts <= gpts)
@@ -1087,7 +1091,9 @@ void SegmentRecorder::drainEncoderIntoSegment(bool keep)
     if (!m_encoder)
         return;
     std::vector<IMFSample*> encoded;
-    const bool drained = m_encoder->drain(encoded, 1000);
+    // Bounded, unlike the per-segment path's Finalize: long enough for a full
+    // queue during a GPU stall (measured ~1.2 s), then fall back.
+    const bool drained = m_encoder->drain(encoded, 2000);
     if (keep) {
         writeEncoderOutput(encoded);
     } else {

@@ -20,6 +20,7 @@
 #include <cmath>
 #include <cstring>
 #include <stdexcept>
+#include <memory>
 #include <thread>
 #include <vector>
 #include <d3d11.h>
@@ -1288,6 +1289,185 @@ private slots:
                 .arg(at(decoded[1], yi)).arg(at(decoded[1], ci)).arg(at(decoded[1], ci + 1));
             QVERIFY2(dy <= 3 && du <= 3 && dv <= 3, "reused-encoder colours differ from the per-segment path");
         }
+    }
+
+    // --- #39 reused encoder: failure recovery and lifecycle (hardware) -------
+
+private:
+    // A started hardware recorder that reuses the encoder, or a skip reason.
+    struct ReuseSession {
+        HwVideo video;
+        std::unique_ptr<SegmentRecorder> recorder;
+        int frame = 0;
+        void write(int count, ID3D11Texture2D* tex = nullptr)
+        {
+            for (int i = 0; i < count; ++i, ++frame) {
+                drawFrame(video, frame);
+                recorder->writeFrame(tex ? tex : video.texture.Get(), video.device.Get(),
+                                     video.context.Get(), frame * 10000000LL / 30);
+            }
+        }
+    };
+    static QString startReuse(ReuseSession& s, const QString& dir, int segmentSeconds = 1)
+    {
+        if (!makeHwVideo(s.video, 640, 360))
+            return QStringLiteral("No hardware D3D11 device");
+        SegmentRecorder::setEncoderReuseEnabled(true);
+        s.recorder = std::make_unique<SegmentRecorder>();
+        if (!s.recorder->begin(640, 360, 640, 360, 30, 4, segmentSeconds, 30, dir,
+                               s.video.device.Get(), s.video.context.Get()))
+            return QStringLiteral("begin failed");
+        if (!s.recorder->reusesEncoder())
+            return QStringLiteral("No hardware encoder accepted NV12 here");
+        return {};
+    }
+    static void stopSession(ReuseSession& s)
+    {
+        if (s.recorder) {
+            s.recorder->discardCurrentSegment();
+            s.recorder->end();
+        }
+    }
+    // Every saved file decodes, starts on an IDR at t=0 and exports.
+    static bool savedClipIsSound(const SegmentLease& lease, const QString& out)
+    {
+        for (const QString& path : lease.paths()) {
+            VideoTrack track;
+            if (!readVideoTrack(path, track) || track.frames == 0 || !track.firstIsKey
+                || !track.monotonic || track.firstTime != 0)
+                return false;
+        }
+        return ReplayExporter::concat(lease.paths(), out, QStringLiteral("reuse-recovery"),
+                                      ReplayExporter::Audio::Any);
+    }
+
+private slots:
+    void reusedEncoderConversionFailureFallsBack()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-reuse-vp-XXXXXX");
+        QVERIFY(dir.isValid());
+        ReuseSession s;
+        if (const QString why = startReuse(s, dir.path()); !why.isEmpty())
+            QSKIP(qPrintable(why));
+        const auto finish = qScopeGuard([&] { stopSession(s); });
+        s.write(45);                                  // segment 0 closed, segment 1 in flight
+        const QString earlier = s.recorder->m_segments.value(0);
+        QVERIFY(!earlier.isEmpty());
+        // A frame the video processor cannot read (no render-target binding),
+        // like a lost or foreign device surface: conversion fails mid-recording.
+        D3D11_TEXTURE2D_DESC desc{};
+        s.video.texture->GetDesc(&desc);
+        desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+        Microsoft::WRL::ComPtr<ID3D11Texture2D> unreadable;
+        QVERIFY(SUCCEEDED(s.video.device->CreateTexture2D(&desc, nullptr, unreadable.GetAddressOf())));
+        s.write(1, unreadable.Get());
+        QVERIFY(!s.recorder->reusesEncoder());
+        QVERIFY(s.recorder->isActive());
+        s.write(60);                                  // per-segment encoder from here on
+        QVERIFY(s.recorder->isActive());
+        const SegmentLease saved = s.recorder->snapshotForSave();
+        QVERIFY(saved.paths().contains(earlier));     // earlier footage survived the fallback
+        QVERIFY(savedClipIsSound(saved, dir.path() + "/vp-fallback.mp4"));
+    }
+
+    void reusedEncoderDrainFailureKeepsEarlierSegments()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-reuse-drain-XXXXXX");
+        QVERIFY(dir.isValid());
+        ReuseSession s;
+        if (const QString why = startReuse(s, dir.path()); !why.isEmpty())
+            QSKIP(qPrintable(why));
+        const auto finish = qScopeGuard([&] { stopSession(s); });
+        s.write(45);
+        const QString earlier = s.recorder->m_segments.value(0);
+        const QString inFlight = s.recorder->m_curPath;
+        QVERIFY(!earlier.isEmpty() && !inFlight.isEmpty());
+        s.recorder->m_encoder->injectDrainFailure();   // the encoder stalls at the next boundary
+        s.write(30);
+        QVERIFY(!s.recorder->reusesEncoder());
+        QVERIFY(s.recorder->isActive());
+        QVERIFY(!QFileInfo::exists(inFlight));         // incomplete segment discarded, not saved
+        s.write(60);
+        const SegmentLease saved = s.recorder->snapshotForSave();
+        QVERIFY(saved.paths().contains(earlier));
+        QVERIFY(!saved.paths().contains(inFlight));
+        QVERIFY(savedClipIsSound(saved, dir.path() + "/drain-fallback.mp4"));
+    }
+
+    void reusedEncoderWriteFailureNeverReachesASavedClip()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-reuse-write-XXXXXX");
+        QVERIFY(dir.isValid());
+        ReuseSession s;
+        if (const QString why = startReuse(s, dir.path()); !why.isEmpty())
+            QSKIP(qPrintable(why));
+        const auto finish = qScopeGuard([&] { stopSession(s); });
+        s.write(45);
+        const QString poisoned = s.recorder->m_curPath;
+        s.recorder->m_injectWriteFailures = 1;         // the segment file rejects one sample
+        s.write(40);
+        QVERIFY(s.recorder->isActive());
+        QVERIFY(s.recorder->reusesEncoder());          // a file failure is not an encoder failure
+        QVERIFY(!QFileInfo::exists(poisoned));
+        const SegmentLease saved = s.recorder->snapshotForSave();
+        QVERIFY(!saved.paths().contains(poisoned));
+        QVERIFY(savedClipIsSound(saved, dir.path() + "/write-failure.mp4"));
+    }
+
+    void reusedEncoderShutdownKeepsFramesInsideTheEncoder()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_FULL)));   // the worker holds MF past end()
+        const auto mf = qScopeGuard([] { MFShutdown(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-reuse-stop-XXXXXX");
+        QVERIFY(dir.isValid());
+        ReuseSession s;
+        if (const QString why = startReuse(s, dir.path(), 5); !why.isEmpty())
+            QSKIP(qPrintable(why));
+        s.write(20);                                   // stop while frames are still in the encoder
+        const QString last = s.recorder->m_curPath;
+        s.recorder->end();                             // capture stop: drain, finalize, release
+        QVERIFY(!s.recorder->isActive());
+        VideoTrack track;
+        QVERIFY(readVideoTrack(last, track));
+        QCOMPARE(track.frames, 20);
+        QVERIFY(track.firstIsKey && track.monotonic);
+        s.recorder.reset();                            // destructor after end() is a no-op
+    }
+
+    void reusedEncoderRestartsWithoutGrowth()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_FULL)));   // the worker holds MF
+        const auto mf = qScopeGuard([] { MFShutdown(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-reuse-restart-XXXXXX");
+        QVERIFY(dir.isValid());
+        DWORD warm = 0, last = 0;
+        for (int cycle = 0; cycle < 8; ++cycle) {
+            ReuseSession s;                            // new device per session, like the pipeline
+            if (const QString why = startReuse(s, dir.path()); !why.isEmpty())
+                QSKIP(qPrintable(why));
+            s.write(40);
+            s.recorder->end();
+            s.recorder.reset();
+            GetProcessHandleCount(GetCurrentProcess(), cycle == 1 ? &warm : &last);
+        }
+        qInfo().noquote() << QStringLiteral("restart handles: %1 after warm-up, %2 after 6 more sessions")
+                                 .arg(warm).arg(last);
+        QVERIFY2(long(last) - long(warm) < 30, "handles grow across encoder restarts");
     }
 
     void earlySnapshot_data()
