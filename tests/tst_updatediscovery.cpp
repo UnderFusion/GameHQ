@@ -234,6 +234,18 @@ class TestUpdateDiscovery : public QObject
         QCOMPARE(m_server->requests.size(), before);
     }
 
+    QString discoveryCache() const
+    {
+        return m_dir->filePath(QStringLiteral("data/release-notes-cache/discovery.json"));
+    }
+
+    // The next check runs at once instead of waiting out the 5 s guard.
+    static void again(UpdateService &s)
+    {
+        s.resetRequestGuardForTesting();
+        s.checkNow();
+    }
+
 private slots:
     void init()
     {
@@ -699,6 +711,168 @@ private slots:
         s->markInstalling();
         QCOMPARE(s->stateName(), QStringLiteral("Installing"));
         QCOMPARE(cancelled.size(), 0);
+    }
+
+    // ---- Withdrawn offers (A04) -----------------------------------------
+    // GitHub answering that no offerable release exists is authoritative; a
+    // dropped connection is not. Only the first may retire an offer, and once
+    // retired it must not come back from memory or from the disk cache.
+    void aWithdrawnReleaseNeverReturns_data()
+    {
+        QTest::addColumn<int>("answer");
+        QTest::newRow("404") << 404;
+        QTest::newRow("empty-list") << 200;
+    }
+
+    void aWithdrawnReleaseNeverReturns()
+    {
+        QFETCH(int, answer);
+        QJsonObject withdrawn = release(QStringLiteral("v0.8.1"));
+        withdrawn.insert(QStringLiteral("body"), QStringLiteral("Withdrawn notes"));
+        auto s = offering(withdrawn);
+        QVERIFY(s);
+        QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
+        QVERIFY(!s->notes().isEmpty());
+        QSignalSpy changed(s.get(), &UpdateService::releaseChanged);
+        if (answer == 404)
+            m_server->queue.append({404, "Not Found", {}, {}});
+        else
+            m_server->queue.append(releases({}, "\"gone\""));
+        s->checkNow();
+        QVERIFY(settle(*s));
+        QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
+        QVERIFY(s->latestVersion().isEmpty());
+        QVERIFY(changed.size() >= 1);
+        QVERIFY(s->notes().isEmpty());
+        QVERIFY(!QFile::exists(discoveryCache()));
+
+        // A cooldown falls back to the last known result: nothing.
+        s->primeNextAllowedCheck(QDateTime::currentDateTimeUtc().addSecs(600));
+        s->checkNow();
+        QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
+        s->primeNextAllowedCheck({});
+
+        // A failed check has nothing good to keep.
+        m_server->queue.append({502, "Bad Gateway", {}, {}});
+        again(*s);
+        QVERIFY(settle(*s));
+        QCOMPARE(s->stateName(), QStringLiteral("Failed"));
+        QVERIFY(s->latestVersion().isEmpty());
+
+        // A rate limit likewise.
+        const QByteArray reset = QByteArray::number(QDateTime::currentSecsSinceEpoch() + 600);
+        m_server->queue.append({403, "Forbidden",
+                                {{"x-ratelimit-remaining", "0"}, {"x-ratelimit-reset", reset}}, {}});
+        again(*s);
+        QVERIFY(settle(*s));
+        QVERIFY(s->stateName() != QStringLiteral("UpdateAvailable"));
+        QVERIFY(s->latestVersion().isEmpty());
+        s->primeNextAllowedCheck({});
+
+        // A stale ETag cannot turn a 304 into an offer: with no release the
+        // request is unconditional and the fresh answer decides.
+        s->primeCachedEtag(QStringLiteral("\"stale\""));
+        m_server->queue.append(releases({release(QStringLiteral("v0.7.9"))}, "\"old\""));
+        const qsizetype before = m_server->requests.size();
+        again(*s);
+        QVERIFY(settle(*s));
+        QCOMPARE(m_server->requests.size(), before + 1);
+        QVERIFY(!m_server->requests.last().toLower().contains("if-none-match"));
+        QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
+        QVERIFY(s->latestVersion().isEmpty());
+
+        // A restart restores nothing.
+        auto restarted = service(QStringLiteral("0.7.9"));
+        restarted->restoreCachedRelease();
+        QVERIFY(restarted->latestVersion().isEmpty());
+        QCOMPARE(restarted->stateName(), QStringLiteral("Idle"));
+    }
+
+    void aWithdrawnSkippedReleaseIsForgottenToo()
+    {
+        auto s = offering(release(QStringLiteral("v0.8.1")));
+        QVERIFY(s);
+        s->skipVersion();
+        QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
+        m_server->queue.append({404, "Not Found", {}, {}});
+        s->checkNow();
+        QVERIFY(settle(*s));
+        QVERIFY(s->latestVersion().isEmpty());
+    }
+
+    void aTransientFailureKeepsTheValidOffer_data()
+    {
+        QTest::addColumn<int>("answer");
+        QTest::newRow("server-error") << 502;
+        QTest::newRow("rate-limit") << 403;
+        QTest::newRow("not-modified") << 304;
+    }
+
+    void aTransientFailureKeepsTheValidOffer()
+    {
+        QFETCH(int, answer);
+        auto s = offering(release(QStringLiteral("v0.8.1")));
+        QVERIFY(s);
+        s->primeCachedEtag(QStringLiteral("\"e1\""));
+        if (answer == 403) {
+            const QByteArray reset = QByteArray::number(QDateTime::currentSecsSinceEpoch() + 600);
+            m_server->queue.append({403, "Forbidden",
+                                    {{"x-ratelimit-remaining", "0"}, {"x-ratelimit-reset", reset}}, {}});
+        } else {
+            m_server->queue.append({answer, "Fixture", {{"ETag", "\"e1\""}}, {}});
+        }
+        s->checkNow();
+        QVERIFY(settle(*s));
+        QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
+        QCOMPARE(s->latestVersion(), QStringLiteral("0.8.1"));
+        QVERIFY(QFile::exists(discoveryCache()));
+        // The offer survives a restart as well.
+        auto restarted = service(QStringLiteral("0.7.9"));
+        restarted->restoreCachedRelease();
+        QCOMPARE(restarted->latestVersion(), QStringLiteral("0.8.1"));
+        QCOMPARE(restarted->stateName(), QStringLiteral("UpdateAvailable"));
+    }
+
+    void leavingTheBetaChannelRetiresTheBetaForGood()
+    {
+        auto s = offering(release(QStringLiteral("v0.8.1-beta1"), true), true);
+        QVERIFY(s);
+        QCOMPARE(s->latestVersion(), QStringLiteral("0.8.1-beta1"));
+        s->setIncludeBetas(false, false);
+        QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
+        QVERIFY(s->latestVersion().isEmpty());
+        QVERIFY(s->notes().isEmpty());
+        s->primeNextAllowedCheck(QDateTime::currentDateTimeUtc().addSecs(600));
+        s->checkNow();
+        QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
+        s->primeNextAllowedCheck({});
+        m_server->queue.append({502, "Bad Gateway", {}, {}});
+        again(*s);
+        QVERIFY(settle(*s));
+        QVERIFY(s->latestVersion().isEmpty());
+        // Back on the beta channel after a restart, the cleared cache restores nothing.
+        auto restarted = service(QStringLiteral("0.7.9"));
+        restarted->setIncludeBetas(true);
+        restarted->restoreCachedRelease();
+        QVERIFY(restarted->latestVersion().isEmpty());
+    }
+
+    void aRateLimitedRevalidationKeepsTheCooldown()
+    {
+        // The final pre-install check was rate-limited; the next check must
+        // wait out the limit instead of walking straight back into it.
+        QVERIFY(fakePackagedInstall());
+        auto s = offering(release(QStringLiteral("v0.8.1")));
+        QVERIFY(s);
+        s->deliverVerifiedDownloadForTesting(fakeVerified(QStringLiteral("0.8.1")));
+        s->installAndRestart();
+        const QByteArray reset = QByteArray::number(QDateTime::currentSecsSinceEpoch() + 600);
+        m_server->queue.append({403, "Forbidden",
+                                {{"x-ratelimit-remaining", "0"}, {"x-ratelimit-reset", reset}}, {}});
+        s->markQuiescent();
+        QTRY_COMPARE_WITH_TIMEOUT(s->stateName(), QStringLiteral("ReadyToInstall"), 5000);
+        QVERIFY(s->nextAllowedCheck().isValid());
+        QVERIFY(s->nextAllowedCheck() > QDateTime::currentDateTimeUtc());
     }
 };
 

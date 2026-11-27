@@ -195,9 +195,7 @@ void UpdateService::setIncludeBetas(bool include, bool recheck)
     if (!include && m_release.has_value() && m_release->prerelease
         && (m_state == State::UpdateAvailable || m_state == State::UpToDate
             || m_state == State::Failed || m_state == State::Idle || m_state == State::Checking)) {
-        QFile::remove(m_releaseCachePath);
-        m_release.reset();
-        Q_EMIT releaseChanged();
+        retireRelease();
         if (m_state != State::Checking)
             setState(State::UpToDate);
     }
@@ -245,6 +243,18 @@ bool UpdateService::finishObsoleteChannelCheck()
     // the final selected channel. Never apply its ETag or stale release offer.
     setState(fallbackAfterCheck());
     return true;
+}
+
+// Drops the offer everywhere it lives: memory, the discovery cache and the
+// release notes, so no later fallback or restart can bring it back.
+void UpdateService::retireRelease()
+{
+    QFile::remove(m_releaseCachePath);
+    m_notes->clear();
+    if (!m_release.has_value())
+        return;
+    m_release.reset();
+    Q_EMIT releaseChanged();
 }
 
 // A check that produced nothing usable never disturbs the last known-good
@@ -375,9 +385,7 @@ void UpdateService::applyRelease(const ReleaseInfo &release)
     if (!releaseIsNewerThanInstalled(release)) {
         qInfo() << "UpdateService: latest release" << identityOf(release)
                  << "is not newer than installed" << m_installedVersion;
-        QFile::remove(m_releaseCachePath);
-        m_release.reset();
-        Q_EMIT releaseChanged();
+        retireRelease();
         setState(State::UpToDate);
         return;
     }
@@ -415,7 +423,7 @@ void UpdateService::onSucceeded(const ReleaseInfo &release, const QString &etag)
     const bool offerable = channelAccepts(release) && releaseIsNewerThanInstalled(release);
     const bool incomplete = offerable && !release.hasCompleteUpdateAssets();
     m_retriedWithoutCache = false;
-    qInfo() << "UpdateService: release metadata unchanged (HTTP 304)";
+    qInfo() << "UpdateService: release metadata received" << identityOf(release);
     setNextAllowedCheck({});   // GitHub answered, so any cooldown is over
     if (!incomplete) {
         m_lastChecked = QDateTime::currentDateTimeUtc();
@@ -506,8 +514,10 @@ void UpdateService::onNotFound()
         return;
     if (finishObsoleteChannelCheck())
         return;
-    QFile::remove(m_releaseCachePath);
     if (m_revalidatingInstall) {
+        // The verified package stays ReadyToInstall: the owner may retry,
+        // and every retry asks GitHub again before installing.
+        QFile::remove(m_releaseCachePath);
         m_revalidatingInstall = false;
         cancelPreparation(NativeText::get(
             //: Update error shown when a downloaded release no longer exists online.
@@ -516,6 +526,12 @@ void UpdateService::onNotFound()
             "The downloaded release was withdrawn before installation."));
         return;
     }
+    // GitHub answered that no offerable release exists: authoritative, unlike
+    // a failed request. Forget the offer in memory too, or the next failure,
+    // 304 or cooldown fallback offers the withdrawn release again.
+    qInfo() << "UpdateService: no offerable release; retiring"
+            << (m_release ? identityOf(*m_release) : QStringLiteral("nothing"));
+    retireRelease();
     setNextAllowedCheck({});   // GitHub answered, so any cooldown is over
     m_lastChecked = QDateTime::currentDateTimeUtc();
     Q_EMIT lastCheckedChanged();
@@ -531,6 +547,9 @@ void UpdateService::onRateLimited(qint64 resetEpochSeconds)
     const QDateTime resetAt = resetEpochSeconds > 0
         ? QDateTime::fromSecsSinceEpoch(resetEpochSeconds, QTimeZone::UTC)
         : QDateTime();
+    // Remember it. Reporting the limit and then forgetting it meant the hourly
+    // automatic wake walked straight back into it, as did a retried install.
+    setNextAllowedCheck(UpdateSchedule::cooldownUntil(resetAt, QDateTime::currentDateTimeUtc()));
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
         cancelPreparation(NativeText::get(
@@ -541,9 +560,6 @@ void UpdateService::onRateLimited(qint64 resetEpochSeconds)
         return;
     }
     qWarning() << "UpdateService: GitHub rate-limited the update check, resets at" << resetAt;
-    // Remember it. Reporting the limit and then forgetting it meant the hourly
-    // automatic wake walked straight back into it.
-    setNextAllowedCheck(UpdateSchedule::cooldownUntil(resetAt, QDateTime::currentDateTimeUtc()));
     m_errorText = cooldownMessage();
     Q_EMIT errorChanged();
     // Never treat rate limiting as "no update" or as a hard failure: fall back

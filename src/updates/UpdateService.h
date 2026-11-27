@@ -138,6 +138,8 @@ public:
     // Test-only seam, compiled solely into tst_updatediscovery: stands in for a
     // signed package the downloader verified, which needs an HTTPS origin.
     void deliverVerifiedDownloadForTesting(const VerifiedUpdate &verified);
+    // Lifts the 5 s manual re-check guard so a sequence of answers runs at once.
+    void resetRequestGuardForTesting() { m_lastCheckRequest.invalidate(); }
 #endif
 
 Q_SIGNALS:
@@ -169,6 +171,7 @@ private:
     // "0.7.10" or "0.7.10-beta2"; what the user sees, skips and compares.
     static QString identityOf(const ReleaseInfo &release);
     State fallbackAfterCheck() const;
+    void retireRelease();
     void applyRelease(const ReleaseInfo &release);
     void onSucceeded(const ReleaseInfo &release, const QString &etag);
     void onUnchanged(const QString &etag);

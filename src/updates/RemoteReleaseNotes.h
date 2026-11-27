@@ -15,6 +15,8 @@ public:
     void select(const QString &version, const QString &tag, const QString &body,
                 const QString &locale);
     void retry();
+    // Forgets the selected release; an answer still in flight is dropped.
+    void clear();
     QString markdown() const { return m_markdown; }
     QVariantList blocks() const;
     bool loading() const { return m_loading; }

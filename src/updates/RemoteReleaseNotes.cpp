@@ -88,6 +88,19 @@ void RemoteReleaseNotes::select(const QString &version, const QString &tag,
     fetch(m_locale, m_generation);
 }
 
+void RemoteReleaseNotes::clear()
+{
+    ++m_generation;
+    const bool hadContent = !m_version.isEmpty() || !m_markdown.isEmpty() || m_loading;
+    m_version.clear();
+    m_tag.clear();
+    m_body.clear();
+    m_markdown.clear();
+    m_loading = false;
+    if (hadContent)
+        Q_EMIT changed();
+}
+
 void RemoteReleaseNotes::retry()
 {
     if (!m_loading && !m_version.isEmpty())
