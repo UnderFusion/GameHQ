@@ -70,6 +70,7 @@ private Q_SLOTS:
     void rejectsUntrustedAndRevokedKeys();
     void enforcesAntiRollbackAndEquivocation();
     void rejectsMalformedManifestSemantics();
+    void manifestByteLimitIncludesWhitespace();
     void bindsArtifactsToExactBytes();
     void selectsOnlyTheSignedUpdateArtifact();
 };
@@ -329,6 +330,28 @@ void ReleaseManifestTest::rejectsMalformedManifestSemantics()
                                             - noArtifacts.indexOf("\"artifacts\":[")),
                         "\"artifacts\":[],");
     QVERIFY(!check(noArtifacts));
+}
+
+void ReleaseManifestTest::manifestByteLimitIncludesWhitespace()
+{
+    const Vector vector = sharedVector();
+    QVERIFY(!vector.manifest.empty());
+    QCOMPARE(release_manifest::kMaximumManifestBytes, std::size_t(65536));
+
+    // Whitespace is valid JSON, and the bound applies to bytes before parsing.
+    // Reformatting must never make the original detached signature reusable.
+    QByteArray padded = toQByteArray(vector.manifest);
+    padded = padded.leftJustified(qsizetype(release_manifest::kMaximumManifestBytes), ' ');
+    release_manifest::Manifest parsed;
+    std::string error;
+    QVERIFY2(release_manifest::parse(toBytes(padded), parsed, error), error.c_str());
+    QCOMPARE(parsed.releaseSequence, 24ULL);
+
+    release_manifest::AcceptedRelease accepted;
+    QVERIFY(!release_manifest::verifyAndParse(toBytes(padded), vector.signature, nullptr,
+                                               accepted, error));
+    padded.append(' ');
+    QVERIFY(!release_manifest::parse(toBytes(padded), parsed, error));
 }
 
 void ReleaseManifestTest::bindsArtifactsToExactBytes()

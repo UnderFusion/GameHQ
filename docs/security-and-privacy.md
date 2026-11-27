@@ -71,3 +71,6 @@ The complete endpoint and consent inventory is maintained in
 [Privacy and network data flows](privacy-data-flow.md). Maintainer identity
 handling for signing is documented separately in
 [Maintainer identity privacy](maintainer-privacy.md).
+
+The pinned Windows build and its dependency findings are recorded in the
+[Security boundary and dependency audit](security-boundary-audit.md).

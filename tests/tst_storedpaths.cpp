@@ -56,6 +56,20 @@ private slots:
         QCOMPARE(resolved(stored(sibling)), sibling);
     }
 
+    void aSiblingSharingTheRootNameStaysAbsolute()
+    {
+        const QString sibling = QStringLiteral("C:/Games/GameHQ Archive/shot.png");
+        QCOMPARE(stored(sibling), sibling);
+        QCOMPARE(resolved(stored(sibling)), sibling);
+    }
+
+    void aPortablePathWithSpacesRoundTrips()
+    {
+        const QString local = QStringLiteral("C:/Games/GameHQ/Captures/Game Name/clip 01.mp4");
+        QCOMPARE(stored(local), QStringLiteral("portable:/Captures/Game Name/clip 01.mp4"));
+        QCOMPARE(resolved(stored(local)), local);
+    }
+
     void rowsWrittenByTheOldBugStillResolve()
     {
         // What a previous build persisted for a capture on another drive. It was

@@ -86,7 +86,7 @@ legacy input backends when it is absent.
 - Package and licenses: https://www.nuget.org/packages/Microsoft.GameInput/3.5.262
 - GameInput documentation: https://aka.ms/gameinput
 
-## Inno Setup 6.7.3
+## Inno Setup 7.1.0
 
 The Windows Setup executable and uninstaller are produced with Inno Setup.
 Its complete permissive license is included at `licenses/Inno-Setup.txt`.
