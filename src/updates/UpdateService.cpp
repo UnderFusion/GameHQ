@@ -75,25 +75,18 @@ UpdateService::UpdateService(QString owner, QString repo, QString installedVersi
         m_progress = progress;
         Q_EMIT progressChanged();
     });
-    connect(m_downloader, &UpdateDownloader::ready, this,
-            [this](const VerifiedUpdate &verified) {
-        m_verified = verified;
-        setState(State::ReadyToInstall);
-        if (m_installWhenReady) {
-            m_installWhenReady = false;
-            // Queued so the downloader finishes its own ready handling first;
-            // installAndRestart() re-checks the state and ignores a stale call.
-            QMetaObject::invokeMethod(this, &UpdateService::installAndRestart,
-                                      Qt::QueuedConnection);
-        }
-    });
+    connect(m_downloader, &UpdateDownloader::ready, this, &UpdateService::onDownloadReady);
     connect(m_downloader, &UpdateDownloader::cancelled, this, [this] {
+        if (m_state != State::Downloading)
+            return;
         m_installWhenReady = false;
         m_progress = 0;
         Q_EMIT progressChanged();
         setState(State::UpdateAvailable);
     });
     connect(m_downloader, &UpdateDownloader::failed, this, [this](const QString &reason) {
+        if (m_state != State::Downloading)
+            return;
         m_installWhenReady = false;
         m_errorText = reason;
         Q_EMIT errorChanged();
@@ -103,6 +96,31 @@ UpdateService::UpdateService(QString owner, QString repo, QString installedVersi
         setState(State::Failed);
     });
 }
+
+void UpdateService::onDownloadReady(const VerifiedUpdate &verified)
+{
+    if (m_state != State::Downloading)
+        return;
+    m_verified = verified;
+    setState(State::ReadyToInstall);
+    if (m_installWhenReady) {
+        m_installWhenReady = false;
+        // Queued so the downloader finishes its own ready handling first;
+        // installAndRestart() re-checks the state and ignores a stale call.
+        QMetaObject::invokeMethod(this, &UpdateService::installAndRestart,
+                                  Qt::QueuedConnection);
+    }
+}
+
+#ifdef GAMEHQ_UPDATE_SERVICE_TEST_HOOKS
+void UpdateService::deliverVerifiedDownloadForTesting(const VerifiedUpdate &verified)
+{
+    if (!m_release.has_value())
+        return;
+    setState(State::Downloading);
+    onDownloadReady(verified);
+}
+#endif
 
 QString UpdateService::stateName() const
 {
@@ -202,6 +220,20 @@ void UpdateService::scheduleChannelCheck()
     m_channelCheckTimer->start(static_cast<int>(qMin<qint64>(delay, std::numeric_limits<int>::max())));
 }
 
+// A revalidation answer counts only while the preparation that asked for it
+// still waits in Quiescent. After a cancellation, approving would install
+// without the capture quiescence, and treating it as discovery would replace
+// the ReadyToInstall package; it is dropped and frees the source instead.
+bool UpdateService::discardStaleRevalidation()
+{
+    if (!m_revalidatingInstall || m_state == State::Quiescent)
+        return false;
+    m_revalidatingInstall = false;
+    qInfo() << "UpdateService: discarding a revalidation answer after the installation was cancelled";
+    scheduleChannelCheck();
+    return true;
+}
+
 bool UpdateService::finishObsoleteChannelCheck()
 {
     if (!m_channelCheckPending || m_revalidatingInstall || m_state != State::Checking)
@@ -269,12 +301,16 @@ void UpdateService::setReleaseApiBase(const QString &base)
 
 void UpdateService::checkNow()
 {
-    if (m_state == State::Checking)
+    // A download, a verified package or an accepted installation owns the
+    // service. Discovery would replace its state (a later answer reset
+    // ReadyToInstall to UpdateAvailable, a cooldown fallback did so at once),
+    // and a pre-install revalidation owns the source until it answers.
+    if (busy()) {
+        if (m_state != State::Checking)
+            qInfo() << "UpdateService: check ignored while" << stateName()
+                    << (m_revalidatingInstall ? "(revalidating)" : "");
         return;
-    // A pre-install revalidation owns the source until it answers; letting an
-    // automatic check overlap would apply its result to the wrong request.
-    if (m_revalidatingInstall)
-        return;
+    }
     // Inside a rate-limit cooldown a request is guaranteed to fail and spends
     // quota that is already gone. Say when it can be tried instead.
     if (UpdateSchedule::inCooldown(m_nextAllowedCheck, QDateTime::currentDateTimeUtc())) {
@@ -307,6 +343,8 @@ QString UpdateService::conditionalEtag() const
 
 void UpdateService::restoreCachedRelease()
 {
+    if (busy())
+        return;
     QFile cached(m_releaseCachePath);
     if (!cached.open(QIODevice::ReadOnly) || cached.size() > 1024 * 1024)
         return;
@@ -363,6 +401,8 @@ void UpdateService::applyRelease(const ReleaseInfo &release)
 
 void UpdateService::onSucceeded(const ReleaseInfo &release, const QString &etag)
 {
+    if (discardStaleRevalidation())
+        return;
     if (finishObsoleteChannelCheck())
         return;
     // A newer release that is still uploading its assets is not a completed
@@ -384,7 +424,10 @@ void UpdateService::onSucceeded(const ReleaseInfo &release, const QString &etag)
     }
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
-        const bool unchanged = m_release.has_value() && channelAccepts(release)
+        // Judged on the channel the download was accepted on (the request
+        // was pinned to it), so leaving the beta channel mid-install does not
+        // turn the accepted beta into a "changed" release.
+        const bool unchanged = m_release.has_value() && !release.draft
             && release.prerelease == m_release->prerelease
             && identityOf(release) == identityOf(*m_release)
             && release.version == m_release->version
@@ -420,6 +463,8 @@ void UpdateService::onSucceeded(const ReleaseInfo &release, const QString &etag)
 
 void UpdateService::onUnchanged(const QString & /*etag*/)
 {
+    if (discardStaleRevalidation())
+        return;
     if (finishObsoleteChannelCheck())
         return;
     if (m_revalidatingInstall) {
@@ -454,6 +499,8 @@ void UpdateService::onUnchanged(const QString & /*etag*/)
 
 void UpdateService::onNotFound()
 {
+    if (discardStaleRevalidation())
+        return;
     if (finishObsoleteChannelCheck())
         return;
     QFile::remove(m_releaseCachePath);
@@ -476,6 +523,8 @@ void UpdateService::onNotFound()
 
 void UpdateService::onRateLimited(qint64 resetEpochSeconds)
 {
+    if (discardStaleRevalidation())
+        return;
     const QDateTime resetAt = resetEpochSeconds > 0
         ? QDateTime::fromSecsSinceEpoch(resetEpochSeconds, QTimeZone::UTC)
         : QDateTime();
@@ -501,6 +550,8 @@ void UpdateService::onRateLimited(qint64 resetEpochSeconds)
 
 void UpdateService::onFailed(const QString &errorText)
 {
+    if (discardStaleRevalidation())
+        return;
     if (finishObsoleteChannelCheck())
         return;
     if (m_revalidatingInstall) {
@@ -531,7 +582,9 @@ void UpdateService::onFailed(const QString &errorText)
 
 void UpdateService::downloadUpdate()
 {
-    if (!m_release.has_value() || m_downloader->isActive())
+    // Idle states only: Failed retries, UpdateAvailable starts. A ready
+    // package or an accepted installation is never replaced by a new download.
+    if (!m_release.has_value() || busy() || m_downloader->isActive())
         return;
     QString preflightError;
     if (!UpdatePreflight::check(m_packageRoot, m_release->zipSize, preflightError)) {
@@ -555,6 +608,13 @@ void UpdateService::downloadAndInstall()
         installAndRestart();
         return;
     }
+    // A running download installs once it is verified.
+    if (m_state == State::Downloading) {
+        m_installWhenReady = true;
+        return;
+    }
+    if (busy())
+        return;
     // Set before starting: a verified package already staged can report
     // ready synchronously from inside downloadUpdate().
     m_installWhenReady = true;
@@ -565,6 +625,8 @@ void UpdateService::downloadAndInstall()
 
 void UpdateService::cancelDownload()
 {
+    if (m_state != State::Downloading)
+        return;
     m_downloader->cancel();
 }
 
@@ -572,6 +634,12 @@ void UpdateService::installAndRestart()
 {
     if (m_state != State::ReadyToInstall)
         return;
+    // A cancelled attempt's revalidation is still on the wire; a new attempt
+    // would take its answer as its own. It lands within the transfer timeout.
+    if (m_revalidatingInstall) {
+        qInfo() << "UpdateService: install deferred until the previous revalidation answers";
+        return;
+    }
     QString preflightError;
     if (!UpdatePreflight::check(m_packageRoot, m_release ? m_release->zipSize : 0,
                                 preflightError)) {
@@ -594,7 +662,9 @@ void UpdateService::markQuiescent()
     setState(State::Quiescent);
     Q_EMIT quiescenceReached();
     m_revalidatingInstall = true;
-    m_source->checkLatest(QString());
+    // Ask on the channel the package was accepted on: a channel change while
+    // the request is in flight must not decide this installation.
+    m_source->checkLatest(QString(), m_includeBetas || (m_release && m_release->prerelease));
 }
 
 void UpdateService::markInstalling()
@@ -614,7 +684,8 @@ void UpdateService::cancelPreparation(const QString &reason)
 
 void UpdateService::skipVersion()
 {
-    if (!m_release.has_value())
+    // Skipping is an answer to an offer, not to a download or installation.
+    if (!m_release.has_value() || busy())
         return;
     m_skippedVersion = identityOf(*m_release);
     Q_EMIT versionSkipped(m_skippedVersion);

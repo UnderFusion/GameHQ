@@ -106,6 +106,18 @@ identical after any update, successful or rolled back.
    Discovery only locates candidate URLs; it never establishes trust. A release
    that does not publish both `gamehq-release.json` and `gamehq-release.sig`
    is skipped, because nothing could authorise it.
+   **Command policy:** `UpdateService` itself enforces which command may run
+   in which state; QML enablement only mirrors it. Discovery commands
+   (`checkNow()`, `skipVersion()`, `downloadUpdate()`) run only from `Idle`,
+   `UpToDate`, `UpdateAvailable` or `Failed`, and are ignored while a check,
+   download, verified package (`ReadyToInstall`), preparation, quiescence,
+   installation or pre-install revalidation owns the service - a GitHub
+   cooldown no longer resets an active state to the offer. A channel change in
+   those states is recorded and its check deferred; the pre-install
+   revalidation is pinned to the channel the package was accepted on.
+   `cancelDownload()` acts only on `Downloading`, `installAndRestart()` only on
+   `ReadyToInstall`, and a revalidation answer that arrives after its
+   preparation was cancelled is discarded, never treated as an approval.
    **Beta channel:** `updates.include_betas` (default off; Settings → General
    and Settings → About) also admits GitHub pre-releases tagged
    `v<VERSION>-betaN`. A pre-release with any other tag, or a `-betaN` tag

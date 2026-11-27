@@ -25,6 +25,12 @@ GitHubReleaseSource::GitHubReleaseSource(QString owner, QString repo, QObject *p
 
 void GitHubReleaseSource::checkLatest(const QString &ifNoneMatchEtag)
 {
+    checkLatest(ifNoneMatchEtag, m_includeBetas);
+}
+
+void GitHubReleaseSource::checkLatest(const QString &ifNoneMatchEtag, bool includeBetas)
+{
+    m_requestIncludeBetas = includeBetas;
     m_best.reset();
     m_firstPageEtag.clear();
     sendRequest(ifNoneMatchEtag, kMaxAttempts, 1);
@@ -116,7 +122,7 @@ void GitHubReleaseSource::handleReply(QNetworkReply *reply, const QString &ifNon
         m_firstPageEtag = QString::fromUtf8(reply->rawHeader("ETag"));
 
     const QJsonArray releases = doc.array();
-    const auto candidate = ReleaseCatalog::selectBest(releases, m_includeBetas);
+    const auto candidate = ReleaseCatalog::selectBest(releases, m_requestIncludeBetas);
     // Pages arrive newest first, so the first page that yields a candidate
     // already holds the highest version; keep looking only while nothing has
     // been found. A repo that publishes a plugin release between every app

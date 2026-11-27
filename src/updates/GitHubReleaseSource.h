@@ -24,6 +24,9 @@ public:
     // Pass back the ETag from a previous succeeded() to allow a cheap
     // "304 Not Modified" short-circuit via unchanged().
     void checkLatest(const QString &ifNoneMatchEtag = QString());
+    // Same, on an explicit channel. The channel is fixed for the whole request,
+    // so a setting change cannot switch it between pages.
+    void checkLatest(const QString &ifNoneMatchEtag, bool includeBetas);
     // Whether beta pre-releases may be returned (ReleaseCatalog::selectBest).
     void setIncludeBetas(bool include) { m_includeBetas = include; }
     // Tests point discovery at a local fixture server; production keeps GitHub.
@@ -49,6 +52,7 @@ private:
     QString m_repo;
     QString m_apiBase = QStringLiteral("https://api.github.com");
     bool m_includeBetas = false;
+    bool m_requestIncludeBetas = false;   // channel of the request in flight
     // Best candidate found so far in this checkLatest() call, and the ETag of
     // the first page - the only page a conditional request may be made against.
     std::optional<ReleaseInfo> m_best;

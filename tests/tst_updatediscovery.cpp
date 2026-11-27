@@ -1,6 +1,8 @@
 #include "updates/UpdateService.h"
+#include "updates/ReleaseCatalog.h"
 
 #include <QDateTime>
+#include <QDir>
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -69,7 +71,8 @@ private:
     QHash<QTcpSocket *, QByteArray> m_buffers;
 };
 
-QJsonObject release(const QString &tag, bool prerelease = false)
+QJsonObject release(const QString &tag, bool prerelease = false,
+                    const QString &assetBase = QStringLiteral("http://127.0.0.1:1"))
 {
     const QString version = tag.mid(1).section(QLatin1Char('-'), 0, 0);
     const QString zip = QStringLiteral("GameHQ-%1-win64-update.zip").arg(version);
@@ -79,7 +82,7 @@ QJsonObject release(const QString &tag, bool prerelease = false)
                                 QStringLiteral("gamehq-release.sig")}) {
         assets.append(QJsonObject{{QStringLiteral("name"), name},
                                   {QStringLiteral("browser_download_url"),
-                                   QStringLiteral("http://127.0.0.1:1/") + name},
+                                   assetBase + QLatin1Char('/') + name},
                                   {QStringLiteral("size"), 1024}});
     }
     return {{QStringLiteral("tag_name"), tag},
@@ -131,6 +134,106 @@ class TestUpdateDiscovery : public QObject
         return QTest::qWaitFor([&s] { return s.state() != UpdateService::State::Checking; }, 5000);
     }
 
+    // ---- Command/state guards (A03) -------------------------------------
+    // A real UpdateService driven into every operation state. Downloading uses
+    // the real downloader against an HTTPS origin that accepts and never
+    // answers; later states start from the test seam's verified package.
+    std::unique_ptr<QTcpServer> m_silent;
+
+    QString silentHttpsBase()
+    {
+        if (!m_silent) {
+            m_silent = std::make_unique<QTcpServer>();
+            if (!m_silent->listen(QHostAddress::LocalHost))
+                return {};
+            QObject::connect(m_silent.get(), &QTcpServer::newConnection, m_silent.get(), [this] {
+                while (QTcpSocket *socket = m_silent->nextPendingConnection())
+                    socket->setParent(m_silent.get());
+            });
+        }
+        return QStringLiteral("https://127.0.0.1:%1").arg(m_silent->serverPort());
+    }
+
+    // Enough of a packaged install for UpdatePreflight to accept it.
+    bool fakePackagedInstall()
+    {
+        const QString root = m_dir->filePath(QStringLiteral("app"));
+        for (const QString &rel : {QStringLiteral("GameHQ.exe"), QStringLiteral("app/GameHQ.exe"),
+                                   QStringLiteral("GameHQUpdater.exe")}) {
+            const QString path = QDir(root).filePath(rel);
+            QDir().mkpath(QFileInfo(path).absolutePath());
+            QFile f(path);
+            if (!f.open(QIODevice::WriteOnly) || f.write("MZ") != 2)
+                return false;
+        }
+        return true;
+    }
+
+    // An offer restored from the discovery cache: no request and no 5 s request
+    // guard, so every later checkNow() is a real attempt.
+    std::unique_ptr<UpdateService> offering(const QJsonObject &rel, bool betas = false)
+    {
+        const auto info = ReleaseCatalog::selectBest(QJsonArray{rel}, betas);
+        if (!info)
+            return {};
+        const QString cache = m_dir->filePath(QStringLiteral("data/release-notes-cache/discovery.json"));
+        QDir().mkpath(QFileInfo(cache).absolutePath());
+        QFile f(cache);
+        const QByteArray bytes = ReleaseCatalog::cacheSnapshot(*info);
+        if (!f.open(QIODevice::WriteOnly) || f.write(bytes) != bytes.size())
+            return {};
+        f.close();
+        auto s = service(QStringLiteral("0.7.9"));
+        s->setIncludeBetas(betas);
+        s->restoreCachedRelease();
+        return s;
+    }
+
+    static VerifiedUpdate fakeVerified(const QString &version)
+    {
+        VerifiedUpdate v;
+        v.packagePath = QStringLiteral("staged.zip");
+        v.packageSha256 = QByteArray(32, char(0x11));
+        v.version = version;
+        v.manifestPath = QStringLiteral("gamehq-release.json");
+        v.signaturePath = QStringLiteral("gamehq-release.sig");
+        v.manifestSha256 = QString(64, QLatin1Char('a'));
+        v.signature = QStringLiteral("c2ln");
+        v.keyId = QStringLiteral("gamehq-test-2026-01");
+        v.releaseSequence = 7;
+        v.artifactName = QStringLiteral("GameHQ-%1-win64-update.zip").arg(version);
+        v.artifactSize = 1024;
+        v.artifactSha256 = QString(64, QLatin1Char('b'));
+        return v;
+    }
+
+    // Every discovery-side command a user, the channel setting or the cooldown
+    // can issue. None of them may move an active operation or send a request.
+    void probeDiscoveryCommands(UpdateService &s, UpdateService::State expected)
+    {
+        const qsizetype before = m_server->requests.size();
+        QSignalSpy skipped(&s, &UpdateService::versionSkipped);
+        s.checkNow();
+        QCOMPARE(s.state(), expected);
+        s.skipVersion();
+        QCOMPARE(s.state(), expected);
+        QCOMPARE(skipped.size(), 0);
+        s.downloadUpdate();
+        QCOMPARE(s.state(), expected);
+        s.setIncludeBetas(!s.includeBetas(), true);
+        s.setIncludeBetas(!s.includeBetas(), true);
+        QCOMPARE(s.state(), expected);
+        // Inside a GitHub cooldown checkNow() used to fall back to the offer.
+        const QDateTime cooldown = s.nextAllowedCheck();
+        s.primeNextAllowedCheck(QDateTime::currentDateTimeUtc().addSecs(600));
+        s.checkNow();
+        QCOMPARE(s.state(), expected);
+        s.primeNextAllowedCheck(cooldown);
+        QTest::qWait(150);   // a deferred channel check must not fire either
+        QCOMPARE(s.state(), expected);
+        QCOMPARE(m_server->requests.size(), before);
+    }
+
 private slots:
     void init()
     {
@@ -142,6 +245,7 @@ private slots:
 
     void cleanup()
     {
+        m_silent.reset();
         m_server.reset();
         m_dir.reset();
     }
@@ -382,6 +486,164 @@ private slots:
         QCOMPARE(m_server->requests.size(), 0);
         QTRY_COMPARE_WITH_TIMEOUT(m_server->requests.size(), 1, 3000);
         QTRY_COMPARE(s->latestVersion(), QStringLiteral("0.8.1-beta1"));
+    }
+
+    void discoveryCannotInterruptADownload()
+    {
+        QVERIFY(fakePackagedInstall());
+        auto s = offering(release(QStringLiteral("v0.8.1"), false, silentHttpsBase()));
+        QVERIFY(s);
+        QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
+        s->downloadUpdate();
+        QCOMPARE(s->stateName(), QStringLiteral("Downloading"));
+        probeDiscoveryCommands(*s, UpdateService::State::Downloading);
+        if (QTest::currentTestFailed())
+            return;
+        // The one-click upgrade still applies to the running download.
+        s->downloadAndInstall();
+        QCOMPARE(s->stateName(), QStringLiteral("Downloading"));
+        s->cancelDownload();
+        QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
+        s->cancelDownload();   // nothing to cancel any more
+        QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
+    }
+
+    void discoveryCannotDiscardAVerifiedPackage()
+    {
+        QVERIFY(fakePackagedInstall());
+        auto s = offering(release(QStringLiteral("v0.8.1")));
+        QVERIFY(s);
+        s->deliverVerifiedDownloadForTesting(fakeVerified(QStringLiteral("0.8.1")));
+        QCOMPARE(s->stateName(), QStringLiteral("ReadyToInstall"));
+        probeDiscoveryCommands(*s, UpdateService::State::ReadyToInstall);
+        if (QTest::currentTestFailed())
+            return;
+        s->cancelDownload();
+        QCOMPARE(s->stateName(), QStringLiteral("ReadyToInstall"));
+        // The install command itself stays available.
+        QSignalSpy prepare(s.get(), &UpdateService::prepareForUpdateRequested);
+        s->installAndRestart();
+        QCOMPARE(s->stateName(), QStringLiteral("PreparingForUpdate"));
+        QCOMPARE(prepare.size(), 1);
+    }
+
+    void discoveryCannotInterruptPreparationOrInstallation()
+    {
+        QVERIFY(fakePackagedInstall());
+        auto s = offering(release(QStringLiteral("v0.8.1")));
+        QVERIFY(s);
+        QSignalSpy approved(s.get(), &UpdateService::installApproved);
+        s->deliverVerifiedDownloadForTesting(fakeVerified(QStringLiteral("0.8.1")));
+        s->installAndRestart();
+        QCOMPARE(s->stateName(), QStringLiteral("PreparingForUpdate"));
+        probeDiscoveryCommands(*s, UpdateService::State::PreparingForUpdate);
+        if (QTest::currentTestFailed())
+            return;
+        s->downloadAndInstall();
+        QCOMPARE(s->stateName(), QStringLiteral("PreparingForUpdate"));
+
+        Response fresh = releases({release(QStringLiteral("v0.8.1"))}, "\"fresh\"");
+        fresh.delayMs = 400;
+        m_server->queue.append(fresh);
+        s->markQuiescent();
+        QCOMPARE(s->stateName(), QStringLiteral("Quiescent"));
+        QTRY_COMPARE(m_server->requests.size(), 1);
+        // Revalidation is in flight: nothing may start a second request.
+        s->checkNow();
+        s->skipVersion();
+        s->downloadUpdate();
+        QCOMPARE(s->stateName(), QStringLiteral("Quiescent"));
+        QTRY_COMPARE_WITH_TIMEOUT(approved.size(), 1, 5000);
+        QCOMPARE(m_server->requests.size(), 1);
+
+        // Approved but not yet handed off, then handed off.
+        probeDiscoveryCommands(*s, UpdateService::State::Quiescent);
+        if (QTest::currentTestFailed())
+            return;
+        s->markInstalling();
+        QCOMPARE(s->stateName(), QStringLiteral("Installing"));
+        probeDiscoveryCommands(*s, UpdateService::State::Installing);
+        if (QTest::currentTestFailed())
+            return;
+        s->cancelDownload();
+        s->installAndRestart();
+        QCOMPARE(s->stateName(), QStringLiteral("Installing"));
+        QCOMPARE(approved.size(), 1);
+    }
+
+    void aChannelChangeDuringRevalidationKeepsTheAcceptedRelease()
+    {
+        // Installing a beta, the user turns betas off while the final check is
+        // on the wire. The download was accepted on the beta channel and must
+        // be revalidated on it, not reported as withdrawn.
+        QVERIFY(fakePackagedInstall());
+        const QJsonObject beta = release(QStringLiteral("v0.8.1-beta1"), true);
+        auto s = offering(beta, true);
+        QVERIFY(s);
+        QCOMPARE(s->latestVersion(), QStringLiteral("0.8.1-beta1"));
+        QSignalSpy approved(s.get(), &UpdateService::installApproved);
+        s->deliverVerifiedDownloadForTesting(fakeVerified(QStringLiteral("0.8.1")));
+        s->installAndRestart();
+        Response fresh = releases({beta, release(QStringLiteral("v0.7.9"))}, "\"fresh\"");
+        fresh.delayMs = 300;
+        m_server->queue.append(fresh);
+        s->markQuiescent();
+        QTRY_COMPARE(m_server->requests.size(), 1);
+        s->setIncludeBetas(false, true);
+        QTRY_COMPARE_WITH_TIMEOUT(approved.size(), 1, 5000);
+        QCOMPARE(s->stateName(), QStringLiteral("Quiescent"));
+        QVERIFY(s->errorText().isEmpty());
+    }
+
+    void aCancelledPreparationIgnoresTheLateRevalidation()
+    {
+        QVERIFY(fakePackagedInstall());
+        auto s = offering(release(QStringLiteral("v0.8.1")));
+        QVERIFY(s);
+        QSignalSpy approved(s.get(), &UpdateService::installApproved);
+        s->deliverVerifiedDownloadForTesting(fakeVerified(QStringLiteral("0.8.1")));
+        s->installAndRestart();
+        Response fresh = releases({release(QStringLiteral("v0.8.1"))}, "\"fresh\"");
+        fresh.delayMs = 300;
+        m_server->queue.append(fresh);
+        s->markQuiescent();
+        QTRY_COMPARE(m_server->requests.size(), 1);
+        s->cancelPreparation(QStringLiteral("capture could not stop"));
+        QCOMPARE(s->stateName(), QStringLiteral("ReadyToInstall"));
+        QTest::qWait(700);
+        QCOMPARE(approved.size(), 0);   // never install after a cancellation
+        QCOMPARE(s->stateName(), QStringLiteral("ReadyToInstall"));
+        QCOMPARE(s->errorText(), QStringLiteral("capture could not stop"));
+        QCOMPARE(m_server->requests.size(), 1);
+        // A fresh attempt runs its own revalidation.
+        m_server->queue.append(releases({release(QStringLiteral("v0.8.1"))}, "\"again\""));
+        s->installAndRestart();
+        s->markQuiescent();
+        QTRY_COMPARE_WITH_TIMEOUT(approved.size(), 1, 5000);
+        QCOMPARE(m_server->requests.size(), 2);
+    }
+
+    void idleStatesStillAcceptDiscoveryAndRetry()
+    {
+        // Guards must not lock out the legitimate paths: a failed download is
+        // retried, an idle service checked and an offer skipped.
+        QVERIFY(fakePackagedInstall());
+        auto s = offering(release(QStringLiteral("v0.8.1")));
+        QVERIFY(s);
+        s->downloadUpdate();   // http asset URLs fail validation at once
+        QCOMPARE(s->stateName(), QStringLiteral("Failed"));
+        QVERIFY(!s->failedDuringCheck());
+        s->downloadUpdate();
+        QCOMPARE(s->stateName(), QStringLiteral("Failed"));
+        m_server->queue.append(releases({release(QStringLiteral("v0.8.1"))}, "\"e\""));
+        s->checkNow();
+        QVERIFY(settle(*s));
+        QCOMPARE(m_server->requests.size(), 1);
+        QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
+        QSignalSpy skipped(s.get(), &UpdateService::versionSkipped);
+        s->skipVersion();
+        QCOMPARE(skipped.size(), 1);
+        QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
     }
 };
 

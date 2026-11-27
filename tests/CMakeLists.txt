@@ -981,6 +981,7 @@ gamehq_add_test(tst_updatediscovery
     "${CMAKE_SOURCE_DIR}/src/app/ReleaseNotes.cpp"
     "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp")
 target_link_libraries(tst_updatediscovery PRIVATE Qt6::Network Qt6::Gui gamehq_test_release_signer)
+target_compile_definitions(tst_updatediscovery PRIVATE GAMEHQ_UPDATE_SERVICE_TEST_HOOKS)
 
 gamehq_add_test(tst_releasecatalog
     tst_releasecatalog.cpp

@@ -146,7 +146,9 @@ SettingsPage {
                 }
                 primary: !UpdateUi.hasRelease(updates.stateName)
                 quiet: !primary
-                enabled: updates.stateName !== "Checking" && updates.stateName !== "Downloading"
+                // Mirrors UpdateService::checkNow(), which ignores discovery while a
+                // check, download, ready package or installation owns the service.
+                enabled: ["Idle", "UpToDate", "UpdateAvailable", "Failed"].includes(updates.stateName)
                 onClicked: updates.checkNow()
             }
         }

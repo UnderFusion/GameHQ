@@ -109,9 +109,17 @@ public:
     // only buys a 304 that resolves to "up to date".
     QString conditionalEtag() const;
 
+    // Command policy (docs/updater.md): discovery commands - checkNow(),
+    // skipVersion(), downloadUpdate() - run only while the service is idle
+    // (Idle, UpToDate, UpdateAvailable, Failed); while busy() they are ignored
+    // here, not only disabled in QML. A channel change while busy is recorded
+    // and its check deferred. cancelDownload() acts only on Downloading,
+    // installAndRestart() only on ReadyToInstall, and downloadAndInstall() on
+    // an idle offer, a running download or a ready package.
     Q_INVOKABLE void checkNow();
-    // True while a check, download or install owns the service. Automatic
-    // checks wait instead of interrupting it.
+    // True while a check, download or install owns the service, including a
+    // pre-install revalidation still on the wire. Automatic checks wait
+    // instead of interrupting it.
     bool busy() const;
     // Test hook: send release discovery to a local fixture instead of GitHub.
     void setReleaseApiBase(const QString &base);
@@ -126,6 +134,11 @@ public:
     void markQuiescent();
     void markInstalling();
     void cancelPreparation(const QString &reason);
+#ifdef GAMEHQ_UPDATE_SERVICE_TEST_HOOKS
+    // Test-only seam, compiled solely into tst_updatediscovery: stands in for a
+    // signed package the downloader verified, which needs an HTTPS origin.
+    void deliverVerifiedDownloadForTesting(const VerifiedUpdate &verified);
+#endif
 
 Q_SIGNALS:
     void stateChanged();
@@ -158,6 +171,8 @@ private:
     void onNotFound();
     void onRateLimited(qint64 resetEpochSeconds);
     void onFailed(const QString &errorText);
+    void onDownloadReady(const VerifiedUpdate &verified);
+    bool discardStaleRevalidation();
     void scheduleChannelCheck();
     bool finishObsoleteChannelCheck();
 
