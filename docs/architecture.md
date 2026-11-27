@@ -165,6 +165,9 @@ version contracts for supported peers. Updater state names, health and
 release signature semantics are maintained with their acceptance tests.
 [Storage](storage.md), [Stored paths](../src/config/Paths.cpp), [Playnite protocol](integration-protocol.md), [Share protocol](share-provider-api-v1.md), [Updater contract](updater.md)
 
+The proposed extension boundary builds on those existing integrations.
+[Third-party modules ADR](adr/0001-third-party-modules.md)
+
 ## QML Structure
 
 The desktop gallery entry point remains `src/ui/qml/Main.qml`, but presentational chrome is split into focused components:
