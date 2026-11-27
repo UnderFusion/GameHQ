@@ -110,7 +110,16 @@ AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
     connect(m_navigationSaveTimer, &QTimer::timeout, this, [this] { m_config->save(); });
 }
 
-AppController::~AppController() = default;
+AppController::~AppController()
+{
+    // A navigation save may still be waiting on its 500 ms debounce. The
+    // config outlives this controller (App owns both), and save() does not
+    // touch the disk when nothing is pending.
+    if (m_navigationSaveTimer && m_navigationSaveTimer->isActive())
+        m_navigationSaveTimer->stop();
+    if (m_config)
+        m_config->save();
+}
 
 QString AppController::releaseNotesTitle() const
 {

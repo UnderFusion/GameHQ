@@ -96,22 +96,48 @@ QVariant AppController::config(const QString& key, const QVariant& fallback) con
 
 void AppController::setConfig(const QString& key, const QVariant& value)
 {
+    if (!applyConfig(key, value))
+        return;
+    m_config->save();   // a no-op when the value did not change
+    if (SettingsApplyPolicy::requiresReplayBufferRestart(key))
+        emit replaySettingsChanged();
+}
+
+void AppController::setConfigValues(const QVariantMap& values)
+{
+    bool plain = false;
+    bool replayRestart = false;
+    for (auto it = values.cbegin(); it != values.cend(); ++it) {
+        if (!applyConfig(it.key(), it.value()))
+            continue;
+        plain = true;
+        replayRestart = replayRestart || SettingsApplyPolicy::requiresReplayBufferRestart(it.key());
+    }
+    if (!plain)
+        return;
+    m_config->save();
+    if (replayRestart)
+        emit replaySettingsChanged();
+}
+
+// The routing half of setConfig. Returns true when the value went into
+// ConfigManager as a plain setting and still needs saving.
+bool AppController::applyConfig(const QString& key, const QVariant& value)
+{
     switch (m_settings->change(key, value)) {
     case SettingsRouter::Outcome::Rejected:
         emit configChanged(key, m_config->value(key, false));
-        return;
+        return false;
     case SettingsRouter::Outcome::Rescan:
         rescan();
-        return;
+        return false;
     case SettingsRouter::Outcome::Consumed:
-        return;
+        return false;
     case SettingsRouter::Outcome::Plain:
         break;
     }
     m_config->setValue(key, value);
-    m_config->save();
-    if (SettingsApplyPolicy::requiresReplayBufferRestart(key))
-        emit replaySettingsChanged();
+    return true;
 }
 
 bool AppController::gameAudioSupported() const

@@ -3,6 +3,9 @@
 #include "config/SettingsCategories.h"
 
 #include <QFile>
+#include <QFileInfo>
+#include <QDir>
+#include <QDateTime>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QSignalSpy>
@@ -36,6 +39,15 @@ private:
         for (const QString& key : SettingsCategories::keys().value(category))
             cfg.resetValue(key);
     }
+
+    // Backdated so a rewrite is visible in the modification time.
+    void backdate() const
+    {
+        QFile f(path());
+        QVERIFY(f.open(QIODevice::ReadWrite));
+        QVERIFY(f.setFileTime(QDateTime(QDate(2020, 1, 1), QTime(0, 0)), QFileDevice::FileModificationTime));
+    }
+    QDateTime modified() const { return QFileInfo(path()).lastModified(); }
 
 private slots:
     void init()
@@ -395,6 +407,109 @@ private slots:
                  QStringList({QStringLiteral("D:/Old")}));
         QCOMPARE(cfg.value(ConfigKeys::InternalUpdatesPendingPostUpdateVersion).toString(),
                  QStringLiteral("9.9.9"));
+    }
+
+    // ---- t44: config.json is written only when something changed ----------
+    void anUnchangedValueDoesNotRewriteTheFile()
+    {
+        ConfigManager cfg(path());
+        QCOMPARE(cfg.loadOrQuarantine(), ConfigManager::LoadResult::Missing);
+        cfg.setValue(QStringLiteral("ui.window_width"), 1280);
+        QVERIFY(cfg.save());
+        QVERIFY(QFile::exists(path()));
+        backdate();
+        const QDateTime before = modified();
+        // What the settings UI does on every interaction: set, then save.
+        for (int i = 0; i < 50; ++i) {
+            cfg.setValue(QStringLiteral("ui.window_width"), 1280);
+            QVERIFY(cfg.save());
+        }
+        QCOMPARE(modified(), before);
+        // A real change is still written at once.
+        cfg.setValue(QStringLiteral("ui.window_width"), 1281);
+        QVERIFY(cfg.save());
+        QVERIFY(modified() != before);
+        QCOMPARE(readFile().value(QStringLiteral("ui.window_width")).toInt(), 1281);
+    }
+
+    void aReloadedFileIsCleanUntilChanged()
+    {
+        {
+            ConfigManager first(path());
+            first.setValue(QStringLiteral("ui.window_width"), 900);
+            QVERIFY(first.save());
+        }
+        backdate();
+        const QDateTime before = modified();
+        ConfigManager cfg(path());
+        QCOMPARE(cfg.loadOrQuarantine(), ConfigManager::LoadResult::Loaded);
+        QVERIFY(!cfg.hasUnsavedChanges());
+        QVERIFY(cfg.save());
+        QCOMPARE(modified(), before);
+        QCOMPARE(cfg.fileWrites(), 0);
+        QVERIFY(cfg.resetValue(QStringLiteral("ui.window_width")));
+        QVERIFY(cfg.hasUnsavedChanges());
+        QVERIFY(cfg.save());
+        QCOMPARE(cfg.fileWrites(), 1);
+        QVERIFY(!readFile().contains(QStringLiteral("ui.window_width")));
+    }
+
+    void aMissingOrCanonicalizedFileIsStillWritten()
+    {
+        // First run: defaults only, the first save still creates the file.
+        {
+            ConfigManager cfg(path());
+            QCOMPARE(cfg.loadOrQuarantine(), ConfigManager::LoadResult::Missing);
+            QVERIFY(cfg.save());
+            QVERIFY(QFile::exists(path()));
+        }
+        // An older release wrote a default explicitly: the next save drops it.
+        const QString key = ConfigKeys::StartupEnabled;
+        const QJsonValue builtIn = QJsonValue::fromVariant(ConfigManager(path()).defaultValue(key));
+        {
+            QFile f(path());
+            QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Truncate));
+            f.write(QJsonDocument(QJsonObject{{key, builtIn}}).toJson());
+        }
+        ConfigManager cfg(path());
+        QCOMPARE(cfg.loadOrQuarantine(), ConfigManager::LoadResult::Loaded);
+        QVERIFY(cfg.hasUnsavedChanges());
+        QVERIFY(cfg.save());
+        QVERIFY(!readFile().contains(key));
+    }
+
+    void aFailedSaveKeepsTheChangePending()
+    {
+        // The target path is a directory: every write fails.
+        const QString blocked = m_dir.filePath(QStringLiteral("blocked.json"));
+        QVERIFY(QDir().mkpath(blocked));
+        ConfigManager cfg(blocked);
+        cfg.setValue(QStringLiteral("ui.window_width"), 777);
+        QVERIFY(!cfg.save());
+        QVERIFY(cfg.hasUnsavedChanges());
+        QVERIFY(!cfg.save());   // retried, not silently marked clean
+        QCOMPARE(cfg.fileWrites(), 0);
+    }
+
+    void groupAndFullResetsAreWritten()
+    {
+        ConfigManager cfg(path());
+        cfg.setValue(QStringLiteral("ui.window_width"), 1000);
+        cfg.setValue(QStringLiteral("ui.window_height"), 700);
+        QVERIFY(cfg.save());
+        const int writes = cfg.fileWrites();
+        QVERIFY(cfg.resetGroup(QStringLiteral("ui.")));
+        QVERIFY(cfg.save());
+        QCOMPARE(cfg.fileWrites(), writes + 1);
+        QVERIFY(!readFile().contains(QStringLiteral("ui.window_height")));
+        cfg.setValue(QStringLiteral("ui.window_width"), 1100);
+        QVERIFY(cfg.save());
+        QVERIFY(cfg.resetAll());
+        QVERIFY(cfg.save());
+        QVERIFY(readFile().isEmpty());
+        QVERIFY(!cfg.resetAll());   // nothing left: no further write
+        QVERIFY(cfg.save());
+        QCOMPARE(cfg.fileWrites(), writes + 3);
     }
 };
 

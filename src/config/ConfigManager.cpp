@@ -117,6 +117,7 @@ QStringList ConfigManager::defaultKeys()
 bool ConfigManager::load()
 {
     m_overrides = {};
+    m_dirty = true;   // until a file is read back exactly
     QFile file(m_filePath);
     if (!file.exists())
         return true; // first run → defaults
@@ -135,12 +136,18 @@ bool ConfigManager::load()
     // away while unknown keys remain untouched for forward compatibility.
     const QJsonObject loaded = doc.object();
     const QJsonObject builtIns = defaults();
+    bool canonicalized = false;
     for (auto it = loaded.begin(); it != loaded.end(); ++it) {
         if (builtIns.contains(it.key()) && builtIns.value(it.key()) == it.value()
-            && !preservesExplicitDefault(it.key()))
+            && !preservesExplicitDefault(it.key())) {
+            canonicalized = true;
             continue;
+        }
         m_overrides.insert(it.key(), it.value());
     }
+    // The file says exactly what memory holds unless defaults were dropped;
+    // then the next save rewrites it, as before.
+    m_dirty = canonicalized;
     return true;
 }
 
@@ -149,6 +156,7 @@ ConfigManager::LoadResult ConfigManager::loadOrQuarantine()
     m_quarantinedPath.clear();
     if (!QFile::exists(m_filePath)) {
         m_overrides = {};
+        m_dirty = true;   // the first save creates the file
         return LoadResult::Missing;
     }
     if (load())
@@ -171,6 +179,7 @@ ConfigManager::LoadResult ConfigManager::loadOrQuarantine()
     }
     m_quarantinedPath = target;
     m_overrides = {};
+    m_dirty = true;
     qWarning() << "Config: preserved the unreadable settings file as" << target
                << "and started with defaults";
     return LoadResult::Quarantined;
@@ -178,13 +187,21 @@ ConfigManager::LoadResult ConfigManager::loadOrQuarantine()
 
 bool ConfigManager::save() const
 {
+    // An unchanged value used to rewrite the whole file (and its temp file
+    // and rename) on every settings interaction.
+    if (!m_dirty)
+        return true;
     QSaveFile file(m_filePath);
     if (!file.open(QIODevice::WriteOnly)) {
         qWarning() << "Config: cannot write" << m_filePath;
         return false;
     }
     file.write(QJsonDocument(m_overrides).toJson(QJsonDocument::Indented));
-    return file.commit();
+    if (!file.commit())
+        return false;   // still dirty: the next save retries
+    m_dirty = false;
+    ++m_fileWrites;
+    return true;
 }
 
 QVariant ConfigManager::value(const QString& key, const QVariant& fallback) const
@@ -243,6 +260,7 @@ void ConfigManager::setValue(const QString& key, const QVariant& value)
         m_overrides.remove(key);
     else
         m_overrides.insert(key, jsonValue);
+    m_dirty = true;
     emit valueChanged(key, this->value(key));
 }
 
@@ -277,6 +295,7 @@ bool ConfigManager::resetValue(const QString& key)
     if (!m_overrides.contains(key))
         return false;
     m_overrides.remove(key);
+    m_dirty = true;
     emit valueChanged(key, defaultValue(key));
     return true;
 }
@@ -292,6 +311,7 @@ bool ConfigManager::resetGroup(const QString& prefix)
     }
     for (const QString& key : removed) {
         m_overrides.remove(key);
+        m_dirty = true;
         emit valueChanged(key, defaultValue(key));
     }
     if (!removed.isEmpty())
@@ -313,6 +333,7 @@ bool ConfigManager::resetAll()
         return false;
     for (const QString& key : removed) {
         m_overrides.remove(key);
+        m_dirty = true;
         emit valueChanged(key, defaultValue(key));
     }
     emit groupReset(QString());

@@ -204,6 +204,9 @@ public:
     // config.json access (flat dotted keys, see ConfigManager); setConfig saves.
     Q_INVOKABLE QVariant config(const QString& key, const QVariant& fallback) const;
     Q_INVOKABLE void setConfig(const QString& key, const QVariant& value);
+    // Several values from one interaction (window geometry): applied exactly
+    // as setConfig would, then written once.
+    Q_INVOKABLE void setConfigValues(const QVariantMap& values);
     Q_INVOKABLE QVariant configDefault(const QString& key, const QVariant& fallback = {}) const;
     Q_INVOKABLE bool configIsDefault(const QString& key) const;
     Q_INVOKABLE void resetConfig(const QString& key);
@@ -263,6 +266,7 @@ private:
     // restored ones back, then updates both galleries without a reset.
     void onCaptureFoldersChanged(const QStringList& roots);
     void onFoldersReconciled(const QStringList& roots, const CaptureScanner::Delta& delta);
+    bool applyConfig(const QString& key, const QVariant& value);
     static constexpr qint64 kFolderSettleMs = 3000;
     void onScanFinished(int added);
 

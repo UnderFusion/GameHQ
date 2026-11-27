@@ -358,11 +358,14 @@ ApplicationWindow {
     }
 
     function doPersistGeometry() {
-        app.setConfig("ui.window_width", window.width)
-        app.setConfig("ui.window_height", window.height)
-        app.setConfig("ui.window_x", window.x)
-        app.setConfig("ui.window_y", window.y)
-        app.setConfig("ui.zoom_level", window.zoomLevel)
+        // One write for the whole geometry instead of one per value.
+        app.setConfigValues({
+            "ui.window_width": window.width,
+            "ui.window_height": window.height,
+            "ui.window_x": window.x,
+            "ui.window_y": window.y,
+            "ui.zoom_level": window.zoomLevel
+        })
     }
 
     // Windows can squeeze the window below its minimum when a monitor sleeps or

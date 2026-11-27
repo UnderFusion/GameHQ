@@ -22,7 +22,13 @@ public:
     // config.corrupt-<timestamp>.json before falling back to defaults.
     LoadResult loadOrQuarantine();
     bool load();   // missing file is fine → defaults
+    // Writes config.json atomically when anything changed since the last
+    // successful write; otherwise returns true without touching the disk.
+    // A failed write keeps the changes pending, so the next save retries.
     bool save() const;
+    bool hasUnsavedChanges() const { return m_dirty; }
+    // Diagnostics: successful writes of the file by this instance.
+    int fileWrites() const { return m_fileWrites; }
     bool setCaptureExecutableAllowed(const QString& path, bool allowed);
 
     // Path the last quarantine wrote, for the one-time user-facing warning.
@@ -50,4 +56,8 @@ private:
 
     QString m_filePath;
     QJsonObject m_overrides;
+    // Not yet written: nothing loaded, a missing or quarantined file, a value
+    // canonicalized on load, or a change since the last successful save.
+    mutable bool m_dirty = true;
+    mutable int m_fileWrites = 0;
 };
