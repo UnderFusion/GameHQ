@@ -191,15 +191,14 @@ CaptureCommitOutcome CaptureLibraryService::commitCapture(const QString& filePat
                                                           const QString& gameName,
                                                           const QString& executablePath)
 {
-    const int id = m_db->insertCapture(filePath, type, gameName,
-                                       QDateTime::currentDateTime().toString(Qt::ISODate),
-                                       QStringLiteral("GameHQ"), executablePath);
+    const int id = insertCommitted(filePath, type, gameName, executablePath, QString());
     // Indexed now; the preview follows. A slow or failed decode neither
     // delays this capture nor makes it fail, and the tile shows its
     // placeholder until the thumbnail arrives.
-    if (id > 0)
+    if (id > 0) {
         m_thumbnails->request(id, filePath, type);
-    refreshGalleries();
+        addToGalleries(id);
+    }
     return commitOutcome(id, filePath);
 }
 
@@ -208,13 +207,29 @@ CaptureCommitOutcome CaptureLibraryService::commitClip(const QString& filePath,
                                                        const QString& thumbnailPath,
                                                        const QString& executablePath)
 {
-    const int id = m_db->insertCapture(filePath, QStringLiteral("video"), gameName,
-                                       QDateTime::currentDateTime().toString(Qt::ISODate),
-                                       QStringLiteral("GameHQ"), executablePath);
+    const int id = insertCommitted(filePath, QStringLiteral("video"), gameName, executablePath,
+                                   thumbnailPath);
+    if (id > 0)
+        addToGalleries(id);
+    return commitOutcome(id, filePath);
+}
+
+// The row, its game and a ready thumbnail land together or not at all. A
+// commit that fails rolls back and reports no row, so commitOutcome() asks
+// the disk instead of claiming the capture is listed.
+int CaptureLibraryService::insertCommitted(const QString& filePath, const QString& type,
+                                           const QString& gameName, const QString& executablePath,
+                                           const QString& thumbnailPath)
+{
+    const bool batched = m_db->beginWriteBatch();
+    int id = m_db->insertCapture(filePath, type, gameName,
+                                 QDateTime::currentDateTime().toString(Qt::ISODate),
+                                 QStringLiteral("GameHQ"), executablePath);
     if (id > 0 && !thumbnailPath.isEmpty())
         m_db->setThumbnail(id, thumbnailPath);
-    refreshGalleries();
-    return commitOutcome(id, filePath);
+    if (batched && !m_db->commitWriteBatch())
+        id = -1;
+    return id;
 }
 
 // A rejected insert is not automatically a lost capture: the encoder may have
@@ -236,10 +251,21 @@ CaptureCommitOutcome CaptureLibraryService::commitOutcome(int insertedId,
     return onDisk ? CaptureCommitOutcome::MediaOnly : CaptureCommitOutcome::Failed;
 }
 
+// Deletions: re-read and apply the difference. Unlike a reset this keeps the
+// selection, scroll position and the overlay's current capture.
 void CaptureLibraryService::refreshGalleries()
 {
     if (m_gallery)
-        m_gallery->refresh();
+        m_gallery->sync();
     if (m_overlayGallery)
-        m_overlayGallery->refresh();
+        m_overlayGallery->sync();
+}
+
+// A new capture: one row into each view that lists it, no full re-read.
+void CaptureLibraryService::addToGalleries(int captureId)
+{
+    if (m_gallery)
+        m_gallery->addCapture(captureId);
+    if (m_overlayGallery)
+        m_overlayGallery->addCapture(captureId);
 }

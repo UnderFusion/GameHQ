@@ -1,9 +1,13 @@
 #include "ui/GalleryModel.h"
 
+#include "storage/CaptureQueries.h"
+
 #include <QDateTime>
 #include <QLocale>
 #include <QSet>
 #include <QUrl>
+
+#include <algorithm>
 
 QString GalleryModel::formattedDate(const QString& isoDate)
 {
@@ -125,6 +129,35 @@ void GalleryModel::retranslate()
 {
     if (!m_items.isEmpty())
         emit dataChanged(index(0), index(m_items.size() - 1), { DateTextRole });
+}
+
+void GalleryModel::addCapture(int captureId)
+{
+    for (const CaptureRecord& r : m_items) {
+        if (r.id == captureId)
+            return;
+    }
+    const std::optional<CaptureRecord> record = m_db->captureInView(captureId, m_category, m_gameId);
+    if (!record)
+        return;
+    // m_items is in the query's order: created_at DESC, id DESC.
+    const auto after = [&](const CaptureRecord& listed) {
+        return listed.createdAt > record->createdAt
+            || (listed.createdAt == record->createdAt && listed.id > record->id);
+    };
+    const int row = int(std::partition_point(m_items.cbegin(), m_items.cend(), after) - m_items.cbegin());
+    const bool recent = m_category == QLatin1String("recent");
+    if (recent && row >= CaptureQueries::kRecentLimit)
+        return;
+    beginInsertRows({}, row, row);
+    m_items.insert(row, *record);
+    endInsertRows();
+    if (recent && m_items.size() > CaptureQueries::kRecentLimit) {
+        const int first = CaptureQueries::kRecentLimit;
+        beginRemoveRows({}, first, int(m_items.size()) - 1);
+        m_items.resize(first);
+        endRemoveRows();
+    }
 }
 
 void GalleryModel::setThumbnail(int captureId, const QString& thumbnailPath)

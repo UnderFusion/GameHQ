@@ -40,6 +40,10 @@ public:
     void sync();
     Q_INVOKABLE void retranslate();
     Q_INVOKABLE void toggleFavorite(int row);
+    // A capture just committed: inserts that one row where the view's order
+    // puts it (newest first, id breaking ties), if the view lists it at all.
+    // No full query and no reset, so selection and scroll position survive.
+    void addCapture(int captureId);
     // A thumbnail generated after the row was listed: updates that row only.
     void setThumbnail(int captureId, const QString& thumbnailPath);
     const CaptureRecord* record(int row) const;

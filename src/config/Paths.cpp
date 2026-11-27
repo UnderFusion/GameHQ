@@ -169,6 +169,44 @@ QString repairMovedPath(const QString& path)
     return resolved;
 }
 
+MovedPathRepairer::MovedPathRepairer()
+    : m_portableRoot(portableRoot())
+{
+    const auto add = [this](const char* marker, const QString& root) {
+        const QString clean = QDir::cleanPath(QDir::fromNativeSeparators(root));
+        m_roots.append({ QString::fromLatin1(marker), clean, clean + QLatin1Char('/') });
+    };
+    add("/Captures/", capturesRoot());
+    add("/gamehq-data/thumbnails/", thumbnailsDir());
+    add("/gamehq-data/game-icons/", gameIconsDir());
+    add("/gamehq-data/replay-cache/", replayCacheDir());
+}
+
+QString MovedPathRepairer::repair(const QString& path) const
+{
+    if (path.trimmed().isEmpty())
+        return {};
+    const QString resolved = fromStoredPath(path, m_portableRoot);
+    const QString normalized = QDir::fromNativeSeparators(resolved);
+    // Already where the data lives now: nothing to repair, existing or not.
+    for (const Root& r : m_roots) {
+        if (normalized.startsWith(r.prefix, Qt::CaseInsensitive))
+            return resolved;
+    }
+    if (QFileInfo::exists(resolved))
+        return resolved;
+    for (const Root& r : m_roots) {
+        const qsizetype at = normalized.lastIndexOf(r.marker, -1, Qt::CaseInsensitive);
+        if (at < 0)
+            continue;
+        const QString rebased = QDir::cleanPath(r.root + QLatin1Char('/')
+                                                + normalized.mid(at + r.marker.size()));
+        if (QFileInfo::exists(rebased))
+            return rebased;
+    }
+    return resolved;
+}
+
 DirectoryStatus ensureDirectories()
 {
     DirectoryStatus status;

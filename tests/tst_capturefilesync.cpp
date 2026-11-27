@@ -4,6 +4,7 @@
 #include "config/CaptureLocations.h"
 #include "ui/GalleryModel.h"
 
+#include <QDateTime>
 #include <QDir>
 #include <QElapsedTimer>
 #include <QFile>
@@ -351,6 +352,27 @@ private slots:
         QCOMPARE(passes.deltas.size(), 1);
         QVERIFY(!passes.deltas.first().changed());
         QVERIFY(!lib.scanner->scanInProgress());
+    }
+
+    void aCaptureWithoutAThumbnailGetsOneFromTheNextPass()
+    {
+        // t38: a preview the scheduler refused (queue full) or never made is
+        // left to the library scan; prove the next reconcile makes it.
+        Library lib;
+        QVERIFY(lib.open());
+        const QString shot = lib.writeShot(QStringLiteral("late.png"));
+        const int id = lib.db->insertCapture(shot, QStringLiteral("screenshot"), QStringLiteral("Game A"),
+                                             QDateTime::currentDateTimeUtc().toString(Qt::ISODate),
+                                             QStringLiteral("Imported"));
+        QVERIFY(id > 0);
+        QVERIFY(lib.db->thumbnailForCapture(shot).isEmpty());
+        Passes passes;
+        record(lib.scanner.get(), passes);
+        lib.scanner->reconcileAsync({ lib.root }, 0);
+        QTRY_COMPARE(passes.deltas.size(), 1);
+        const QString thumb = lib.db->thumbnailForCapture(shot);
+        QVERIFY(!thumb.isEmpty());
+        QVERIFY(QFile::exists(thumb));
     }
 
     void shutdownCancelsALongWalk()

@@ -1,4 +1,5 @@
 #pragma once
+#include <optional>
 #include <QHash>
 #include <QObject>
 #include <QSet>
@@ -145,6 +146,9 @@ public:
     // Captures. category: all | recent | favorites | screenshots | clips.
     // gameId >= 0 filters to one game. Returns newest first.
     QVector<CaptureRecord> listCaptures(const QString& category, int gameId = -1) const;
+    // The one capture as that view lists it, or nothing if the view excludes it.
+    std::optional<CaptureRecord> captureInView(int captureId, const QString& category,
+                                               int gameId = -1) const;
     bool hasCapture(const QString& filePath) const;
     // Whole-table snapshot keyed by stored path; see CaptureQueries::captureIndex.
     QHash<QString, CaptureIndexEntry> captureIndex() const;

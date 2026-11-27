@@ -8,17 +8,17 @@
 
 namespace
 {
-CaptureRecord recordFromQuery(const QSqlQuery& q)
+CaptureRecord recordFromQuery(const QSqlQuery& q, const Paths::MovedPathRepairer& paths)
 {
     CaptureRecord r;
     r.id            = q.value(0).toInt();
-    r.filePath      = Paths::repairMovedPath(q.value(1).toString());
+    r.filePath      = paths.repair(q.value(1).toString());
     r.type          = q.value(2).toString();
     r.gameId        = q.value(3).isNull() ? -1 : q.value(3).toInt();
     r.gameName      = q.value(4).toString();
     r.createdAt     = q.value(5).toString();
     r.isFavorite    = q.value(6).toInt() != 0;
-    r.thumbnailPath = Paths::repairMovedPath(q.value(7).toString());
+    r.thumbnailPath = paths.repair(q.value(7).toString());
     r.source        = q.value(8).toString();
     if (r.gameName.isEmpty())
         r.gameName = QStringLiteral("Unknown Game");
@@ -28,7 +28,7 @@ CaptureRecord recordFromQuery(const QSqlQuery& q)
 
 QVector<CaptureRecord> CaptureQueries::listCaptures(const QSqlDatabase& db,
                                                     const QString& category,
-                                                    int gameId)
+                                                    int gameId, int onlyId)
 {
     QString sql = QStringLiteral(
         "SELECT c.id, c.file_path, c.type, c.game_id, g.display_name, "
@@ -44,22 +44,29 @@ QVector<CaptureRecord> CaptureQueries::listCaptures(const QSqlDatabase& db,
         sql += QStringLiteral(" AND c.type = 'video'");
     if (gameId >= 0)
         sql += QStringLiteral(" AND c.game_id = :game");
-    sql += QStringLiteral(" ORDER BY c.created_at DESC");
-    if (category == QLatin1String("recent"))
-        sql += QStringLiteral(" LIMIT 50");
+    if (onlyId >= 0)
+        sql += QStringLiteral(" AND c.id = :id");
+    // id breaks timestamp ties so the order is the same on every query;
+    // idx_captures_created carries the rowid, so no extra sort is needed.
+    sql += QStringLiteral(" ORDER BY c.created_at DESC, c.id DESC");
+    if (category == QLatin1String("recent") && onlyId < 0)
+        sql += QStringLiteral(" LIMIT %1").arg(kRecentLimit);
 
     QSqlQuery q(db);
     q.prepare(sql);
     if (gameId >= 0)
         q.bindValue(QStringLiteral(":game"), gameId);
+    if (onlyId >= 0)
+        q.bindValue(QStringLiteral(":id"), onlyId);
 
     QVector<CaptureRecord> out;
     if (!q.exec()) {
         qWarning() << "DB: listCaptures failed:" << q.lastError().text();
         return out;
     }
+    const Paths::MovedPathRepairer paths;
     while (q.next())
-        out.append(recordFromQuery(q));
+        out.append(recordFromQuery(q, paths));
     return out;
 }
 
@@ -83,13 +90,14 @@ QHash<QString, CaptureIndexEntry> CaptureQueries::captureIndex(const QSqlDatabas
         qWarning() << "DB: captureIndex failed:" << q.lastError().text();
         return out;
     }
+    const Paths::MovedPathRepairer paths;
     while (q.next()) {
         CaptureIndexEntry e;
         e.deleted = !q.value(2).isNull();
         // Keys stay exactly as stored: hasCapture() compares the raw column
         // against toStoredPath(path), so repairing here would break lookups.
         if (!e.deleted)
-            e.thumbnailPath = Paths::repairMovedPath(q.value(1).toString());
+            e.thumbnailPath = paths.repair(q.value(1).toString());
         out.insert(q.value(0).toString(), e);
     }
     return out;
@@ -123,8 +131,9 @@ QVector<GameEntry> CaptureQueries::listGames(const QSqlDatabase& db)
         "AND c.file_path NOT IN (SELECT file_path FROM temp.missing_captures) "
         "GROUP BY g.id, g.display_name, g.icon_path, g.executable_path "
         "ORDER BY last_used DESC"), db);
+    const Paths::MovedPathRepairer paths;
     while (q.next())
-        out.append({ q.value(0).toInt(), q.value(1).toString(), Paths::repairMovedPath(q.value(2).toString()),
+        out.append({ q.value(0).toInt(), q.value(1).toString(), paths.repair(q.value(2).toString()),
                      q.value(3).toString() });
     return out;
 }

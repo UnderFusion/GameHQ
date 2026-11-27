@@ -61,6 +61,15 @@ int CaptureDatabase::schemaVersion() const
     return q.next() ? q.value(0).toInt() : 0;
 }
 
+std::optional<CaptureRecord> CaptureDatabase::captureInView(int captureId, const QString& category,
+                                                            int gameId) const
+{
+    const QVector<CaptureRecord> one = CaptureQueries::listCaptures(m_db, category, gameId, captureId);
+    if (one.isEmpty())
+        return std::nullopt;
+    return one.first();
+}
+
 QVector<CaptureRecord> CaptureDatabase::listCaptures(const QString& category, int gameId) const
 {
     return CaptureQueries::listCaptures(m_db, category, gameId);

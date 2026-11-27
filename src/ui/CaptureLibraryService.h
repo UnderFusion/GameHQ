@@ -91,6 +91,9 @@ private:
     static void count(ItemOutcome outcome, CaptureDeletionResult& result);
     CaptureCommitOutcome commitOutcome(int insertedId, const QString& filePath) const;
     void refreshGalleries();
+    void addToGalleries(int captureId);
+    int insertCommitted(const QString& filePath, const QString& type, const QString& gameName,
+                        const QString& executablePath, const QString& thumbnailPath);
 
     CaptureDatabase* m_db;
     GalleryModel* m_gallery;
