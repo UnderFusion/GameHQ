@@ -109,17 +109,17 @@
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="168"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="200"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="202"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="644"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
       <translation>Abbrechen</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1315"></location>
-      <location filename="src/ui/qml/Main.qml" line="1334"></location>
-      <location filename="src/ui/qml/Main.qml" line="1374"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1067"></location>
+      <location filename="src/ui/qml/Main.qml" line="1324"></location>
+      <location filename="src/ui/qml/Main.qml" line="1343"></location>
+      <location filename="src/ui/qml/Main.qml" line="1383"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1134"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="17"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="37"></location>
@@ -304,7 +304,7 @@
       <translation>Fertig</translation>
     </message>
     <message id="gamehq.action.download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="213"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="215"></location>
       <source>Download</source>
       <translation>Herunterladen</translation>
     </message>
@@ -983,22 +983,22 @@
       <translation>Ein anderer Import eines portablen Profils wird bereits ausgeführt.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App_UpdateWiring.cpp" line="150"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="159"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Das Update wurde abgebrochen, weil laufende Aufnahmen nicht rechtzeitig sicher beendet wurden.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="516"></location>
+      <location filename="src/updates/UpdateService.cpp" line="589"></location>
       <source>Update check failed: %1</source>
       <translation>Updateprüfung fehlgeschlagen: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="243"></location>
+      <location filename="src/updates/UpdateService.cpp" line="291"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub hat Updateprüfungen vorübergehend eingeschränkt. GameHQ versucht es später erneut.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="237"></location>
+      <location filename="src/updates/UpdateService.cpp" line="285"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub hat Updateprüfungen vorübergehend eingeschränkt. GameHQ versucht es nach %1 erneut.</translation>
     </message>
@@ -1234,7 +1234,7 @@
       <translation>GameHQ konnte die Update-Transaktion nicht bereitstellen.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App_UpdateWiring.cpp" line="125"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="134"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ konnte die Update-Wartung nicht starten: %1</translation>
     </message>
@@ -1284,27 +1284,27 @@
       <translation>GameHQ kann Update-Dateien in dieser Installation nicht sicher schreiben.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="396"></location>
+      <location filename="src/updates/UpdateService.cpp" line="453"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>Die Version wurde nach dem Download geändert. Prüfen Sie vor der Installation erneut auf Updates.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="462"></location>
+      <location filename="src/updates/UpdateService.cpp" line="525"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>Die heruntergeladene Version wurde vor der Installation zurückgezogen.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="508"></location>
+      <location filename="src/updates/UpdateService.cpp" line="581"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>Die Version konnte nicht erneut validiert werden: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="427"></location>
+      <location filename="src/updates/UpdateService.cpp" line="486"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>Die Version konnte vor der Installation nicht aktuell erneut validiert werden.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="484"></location>
+      <location filename="src/updates/UpdateService.cpp" line="558"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub konnte diese Version vor der Installation nicht erneut validieren. Versuchen Sie es später erneut.</translation>
     </message>
@@ -1355,19 +1355,19 @@
       <translation>Ordner hinzufügen…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1376"></location>
+      <location filename="src/ui/qml/Main.qml" line="1385"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Massenauswahl</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1370"></location>
+      <location filename="src/ui/qml/Main.qml" line="1379"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Teilen</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1372"></location>
+      <location filename="src/ui/qml/Main.qml" line="1381"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Im Ordner anzeigen</translation>
@@ -1380,7 +1380,7 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1303"></location>
+      <location filename="src/ui/qml/Main.qml" line="1312"></location>
       <source>%1 · %2
 The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
       <oldsource>%1 · %2
@@ -1389,13 +1389,13 @@ The file will be moved to the Recycle Bin. Files in imported folders are left un
 Die Datei wird in den Papierkorb verschoben. Dateien in überwachten Ordnern bleiben unverändert.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1313"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1065"></location>
+      <location filename="src/ui/qml/Main.qml" line="1322"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1132"></location>
       <source>Delete capture?</source>
       <translation>Aufnahme löschen?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="561"></location>
+      <location filename="src/ui/qml/Main.qml" line="570"></location>
       <source>%n capture will be moved to the Recycle Bin.
 Files in watched folders are left untouched.</source>
       <oldsource>%n capture will be moved to the Recycle Bin.
@@ -1408,7 +1408,7 @@ Dateien in überwachten Ordnern bleiben unverändert.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1332"></location>
+      <location filename="src/ui/qml/Main.qml" line="1341"></location>
       <source>Delete selected captures?</source>
       <translation>Ausgewählte Aufnahmen löschen?</translation>
     </message>
@@ -2118,7 +2118,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Windows reserviert F12 zum Debuggen. Versuchen Sie es mit F10 oder Strg+Umschalt+F10.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1283"></location>
+      <location filename="src/ui/qml/Main.qml" line="1292"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Zu überwachenden Ordner auswählen</translation>
@@ -2398,7 +2398,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Aufnahmeaktionen</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="297"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="332"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Das Spiel ist weiterhin fokussiert und kann auf Controller-Eingaben reagieren</translation>
     </message>
@@ -2519,7 +2519,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="116"></location>
+      <location filename="src/ui/AppController.cpp" line="127"></location>
       <source>Release notes</source>
       <translation>Versionshinweise</translation>
     </message>
@@ -2529,7 +2529,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Anwendung</translation>
     </message>
     <message id="gamehq.settings.about.community.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="294"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
       <source>Community</source>
       <translation>Community</translation>
     </message>
@@ -2539,12 +2539,12 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Version, Aktualisierungsstatus, Projektressourcen und Hilfemöglichkeiten.</translation>
     </message>
     <message id="gamehq.settings.about.github_source">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="256"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="258"></location>
       <source>Source on GitHub</source>
       <translation>Quelle auf GitHub</translation>
     </message>
     <message id="gamehq.settings.about.license">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="285"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="287"></location>
       <source>GNU GPL v3 License</source>
       <translation>GNU GPL v3-Lizenz</translation>
     </message>
@@ -2559,7 +2559,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Wartung</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="243"></location>
       <source>Open source</source>
       <translation>Open Source</translation>
     </message>
@@ -2574,12 +2574,12 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Portables Profil</translation>
     </message>
     <message id="gamehq.settings.about.project.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="247"></location>
       <source>Open official GameHQ resources in your default browser.</source>
       <translation>Öffnen Sie offizielle GameHQ-Ressourcen in Ihrem Standardbrowser.</translation>
     </message>
     <message id="gamehq.settings.about.project.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="243"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
       <source>Project</source>
       <translation>Projekt</translation>
     </message>
@@ -2589,38 +2589,38 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>GameHQ ist bereit</translation>
     </message>
     <message id="gamehq.settings.about.releases">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="263"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="265"></location>
       <source>Releases</source>
       <translation>Veröffentlichungen</translation>
     </message>
     <message id="gamehq.settings.about.report_issue">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="270"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="272"></location>
       <source>Report an issue</source>
       <translation>Problem melden</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="936"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="277"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="279"></location>
       <source>Security &amp; privacy</source>
       <translation>Sicherheit und Datenschutz</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="279"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
       <source>Verification, local data, network use, and private reporting</source>
       <translation>Prüfung, lokale Daten, Netzwerknutzung und private Fehlerberichte</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="299"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="301"></location>
       <source>Enjoying %1? A GitHub star helps more players discover the project.</source>
       <translation>Gefällt Ihnen %1? Ein Stern auf GitHub hilft mehr Spielern, das Projekt zu entdecken.</translation>
     </message>
     <message id="gamehq.settings.about.support.star_on_github">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="302"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="304"></location>
       <source>Star %1 on GitHub</source>
       <translation>%1 auf GitHub einen Stern geben</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
       <source>Support the project</source>
       <translation>Projekt unterstützen</translation>
     </message>
@@ -2636,7 +2636,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Updates</translation>
     </message>
     <message id="gamehq.settings.about.website">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="249"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="251"></location>
       <source>Website</source>
       <translation>Website</translation>
     </message>
@@ -5518,7 +5518,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     </message>
     <message id="gamehq.update.applying_and_restarting">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="424"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="188"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="190"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ wendet das Update an und wird neu gestartet.</translation>
     </message>
@@ -5578,7 +5578,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Warten auf den sicheren Abschluss laufender Aufnahmen.</translation>
     </message>
     <message id="gamehq.update.beta_download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="170"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="172"></location>
       <source>Beta update download</source>
       <translation>Beta-Update herunterladen</translation>
     </message>
@@ -5602,7 +5602,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.update.check_again">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="379"></location>
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1231"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="207"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
       <source>Check again</source>
       <translation>Erneut prüfen</translation>
     </message>
@@ -5651,7 +5651,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Wählen Sie aus, wann %1 %2 installiert werden soll.</translation>
     </message>
     <message id="gamehq.update.download_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="159"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="161"></location>
       <source>Download progress</source>
       <translation>Downloadfortschritt</translation>
     </message>
@@ -5696,7 +5696,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="362"></location>
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="368"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="171"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="205"></location>
       <source>Install and restart</source>
       <translation>Installieren und neu starten</translation>
     </message>
@@ -5707,7 +5707,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     </message>
     <message id="gamehq.update.installing">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="311"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="167"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="169"></location>
       <source>Installing</source>
       <translation>Wird installiert</translation>
     </message>
@@ -5763,7 +5763,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     </message>
     <message id="gamehq.update.progress_percent">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="80"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="179"></location>
       <source>%1% complete</source>
       <translation>%1 % abgeschlossen</translation>
     </message>
@@ -5774,7 +5774,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     </message>
     <message id="gamehq.update.ready_to_install">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="304"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="162"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="164"></location>
       <source>Ready to install</source>
       <translation>Bereit zur Installation</translation>
     </message>
@@ -5795,13 +5795,13 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     </message>
     <message id="gamehq.update.restart_to_apply">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="417"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="183"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>GameHQ wird neu gestartet, um das Update anzuwenden.</translation>
     </message>
     <message id="gamehq.update.retry_download">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="382"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="210"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="212"></location>
       <source>Retry download</source>
       <translation>Download wiederholen</translation>
     </message>
@@ -5816,7 +5816,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Aktualisierungseinstellungen</translation>
     </message>
     <message id="gamehq.update.sha256_limit_warning">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="191"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="193"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
       <translation>SHA-256 erkennt Datenbeschädigungen, aber kein kompromittiertes GitHub-Konto.</translation>
     </message>
@@ -5890,7 +5890,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>VERSIONEN</translation>
     </message>
     <message id="gamehq.update.view_release_notes">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="232"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="234"></location>
       <source>View release notes</source>
       <translation>Versionshinweise anzeigen</translation>
     </message>
@@ -5901,7 +5901,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     </message>
     <message id="gamehq.update.waiting_for_capture">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="421"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="185"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>Warten auf den sicheren Abschluss laufender Aufnahmen…</translation>
     </message>

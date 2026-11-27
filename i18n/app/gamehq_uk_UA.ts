@@ -109,17 +109,17 @@
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="168"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="200"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="202"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="644"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
       <translation>Скасувати</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1315"></location>
-      <location filename="src/ui/qml/Main.qml" line="1334"></location>
-      <location filename="src/ui/qml/Main.qml" line="1374"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1067"></location>
+      <location filename="src/ui/qml/Main.qml" line="1324"></location>
+      <location filename="src/ui/qml/Main.qml" line="1343"></location>
+      <location filename="src/ui/qml/Main.qml" line="1383"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1134"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="17"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="37"></location>
@@ -304,7 +304,7 @@
       <translation>Готово</translation>
     </message>
     <message id="gamehq.action.download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="213"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="215"></location>
       <source>Download</source>
       <translation>Завантажити</translation>
     </message>
@@ -985,22 +985,22 @@
       <translation>Інший імпорт портативного профілю вже виконується.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App_UpdateWiring.cpp" line="150"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="159"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Оновлення скасовано, оскільки робота із захопленням не встигла безпечно завершитися.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="516"></location>
+      <location filename="src/updates/UpdateService.cpp" line="589"></location>
       <source>Update check failed: %1</source>
       <translation>Не вдалося перевірити оновлення: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="243"></location>
+      <location filename="src/updates/UpdateService.cpp" line="291"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub тимчасово обмежив перевірки оновлень. GameHQ спробує знову пізніше.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="237"></location>
+      <location filename="src/updates/UpdateService.cpp" line="285"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub тимчасово обмежив перевірки оновлень. GameHQ спробує знову після %1.</translation>
     </message>
@@ -1236,7 +1236,7 @@
       <translation>GameHQ не вдалося остаточно застосувати транзакцію оновлення.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App_UpdateWiring.cpp" line="125"></location>
+      <location filename="src/app/App_UpdateWiring.cpp" line="134"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ не вдалося розпочати обслуговування оновлення: %1</translation>
     </message>
@@ -1286,27 +1286,27 @@
       <translation>GameHQ не може безпечно записати файли оновлення в цьому встановленні.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="396"></location>
+      <location filename="src/updates/UpdateService.cpp" line="453"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>Випуск змінився після завантаження. Перевірте ще раз перед встановленням.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="462"></location>
+      <location filename="src/updates/UpdateService.cpp" line="525"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>Завантажений випуск було відкликано до встановлення.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="508"></location>
+      <location filename="src/updates/UpdateService.cpp" line="581"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>Не вдалося повторно перевірити випуск: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="427"></location>
+      <location filename="src/updates/UpdateService.cpp" line="486"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>Не вдалося заново перевірити випуск безпосередньо перед встановленням.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="484"></location>
+      <location filename="src/updates/UpdateService.cpp" line="558"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub не зміг повторно перевірити цей випуск перед встановленням. Спробуйте пізніше.</translation>
     </message>
@@ -1357,19 +1357,19 @@
       <translation>Додати папку…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1376"></location>
+      <location filename="src/ui/qml/Main.qml" line="1385"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Масовий вибір</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1370"></location>
+      <location filename="src/ui/qml/Main.qml" line="1379"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Поділитися</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1372"></location>
+      <location filename="src/ui/qml/Main.qml" line="1381"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Показати в папці</translation>
@@ -1382,7 +1382,7 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1303"></location>
+      <location filename="src/ui/qml/Main.qml" line="1312"></location>
       <source>%1 · %2
 The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
       <oldsource>%1 · %2
@@ -1391,13 +1391,13 @@ The file will be moved to the Recycle Bin. Files in imported folders are left un
 Файл буде переміщено до кошика. Файли у відстежуваних папках не змінюються.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1313"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1065"></location>
+      <location filename="src/ui/qml/Main.qml" line="1322"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1132"></location>
       <source>Delete capture?</source>
       <translation>Видалити медіафайл?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="561"></location>
+      <location filename="src/ui/qml/Main.qml" line="570"></location>
       <source>%n capture will be moved to the Recycle Bin.
 Files in watched folders are left untouched.</source>
       <oldsource>%n capture will be moved to the Recycle Bin.
@@ -1412,7 +1412,7 @@ Files in imported folders are left untouched.</oldsource>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1332"></location>
+      <location filename="src/ui/qml/Main.qml" line="1341"></location>
       <source>Delete selected captures?</source>
       <translation>Видалити вибрані медіафайли?</translation>
     </message>
@@ -2123,7 +2123,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>У Windows клавішу F12 зарезервовано для налагодження. Спробуйте F10 або Ctrl+Shift+F10.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1283"></location>
+      <location filename="src/ui/qml/Main.qml" line="1292"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Виберіть папку для відстеження</translation>
@@ -2403,7 +2403,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Дії захоплення</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="297"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="332"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Гра все ще у фокусі й може реагувати на введення з контролера</translation>
     </message>
@@ -2524,7 +2524,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="116"></location>
+      <location filename="src/ui/AppController.cpp" line="127"></location>
       <source>Release notes</source>
       <translation>Нотатки до випуску</translation>
     </message>
@@ -2534,7 +2534,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Застосунок</translation>
     </message>
     <message id="gamehq.settings.about.community.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="294"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
       <source>Community</source>
       <translation>Спільнота</translation>
     </message>
@@ -2544,12 +2544,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Версія, стан оновлень, ресурси проєкту та способи допомогти.</translation>
     </message>
     <message id="gamehq.settings.about.github_source">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="256"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="258"></location>
       <source>Source on GitHub</source>
       <translation>Вихідний код на GitHub</translation>
     </message>
     <message id="gamehq.settings.about.license">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="285"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="287"></location>
       <source>GNU GPL v3 License</source>
       <translation>Ліцензія GNU GPL v3</translation>
     </message>
@@ -2564,7 +2564,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Обслуговування</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="243"></location>
       <source>Open source</source>
       <translation>Відкритий код</translation>
     </message>
@@ -2579,12 +2579,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Портативний профіль</translation>
     </message>
     <message id="gamehq.settings.about.project.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="247"></location>
       <source>Open official GameHQ resources in your default browser.</source>
       <translation>Відкриття офіційних ресурсів GameHQ у типовому браузері.</translation>
     </message>
     <message id="gamehq.settings.about.project.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="243"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
       <source>Project</source>
       <translation>Проєкт</translation>
     </message>
@@ -2594,38 +2594,38 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ готовий</translation>
     </message>
     <message id="gamehq.settings.about.releases">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="263"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="265"></location>
       <source>Releases</source>
       <translation>Випуски</translation>
     </message>
     <message id="gamehq.settings.about.report_issue">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="270"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="272"></location>
       <source>Report an issue</source>
       <translation>Повідомити про проблему</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="936"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="277"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="279"></location>
       <source>Security &amp; privacy</source>
       <translation>Безпека та приватність</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="279"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
       <source>Verification, local data, network use, and private reporting</source>
       <translation>Перевірка, локальні дані, використання мережі та приватні звіти</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="299"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="301"></location>
       <source>Enjoying %1? A GitHub star helps more players discover the project.</source>
       <translation>Подобається %1? Зірка на GitHub допомагає більшій кількості гравців знайти проєкт.</translation>
     </message>
     <message id="gamehq.settings.about.support.star_on_github">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="302"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="304"></location>
       <source>Star %1 on GitHub</source>
       <translation>Поставити зірку %1 на GitHub</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
       <source>Support the project</source>
       <translation>Підтримати проєкт</translation>
     </message>
@@ -2641,7 +2641,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Оновлення</translation>
     </message>
     <message id="gamehq.settings.about.website">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="249"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="251"></location>
       <source>Website</source>
       <translation>Вебсайт</translation>
     </message>
@@ -5525,7 +5525,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.applying_and_restarting">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="424"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="188"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="190"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ застосовує оновлення й перезапуститься.</translation>
     </message>
@@ -5585,7 +5585,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Очікування безпечного завершення операцій захоплення.</translation>
     </message>
     <message id="gamehq.update.beta_download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="170"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="172"></location>
       <source>Beta update download</source>
       <translation>Завантаження бета-оновлення</translation>
     </message>
@@ -5609,7 +5609,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.check_again">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="379"></location>
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1231"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="207"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
       <source>Check again</source>
       <translation>Перевірити ще раз</translation>
     </message>
@@ -5658,7 +5658,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Виберіть, коли встановити %1 %2.</translation>
     </message>
     <message id="gamehq.update.download_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="159"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="161"></location>
       <source>Download progress</source>
       <translation>Хід завантаження</translation>
     </message>
@@ -5703,7 +5703,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="362"></location>
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="368"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="171"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="205"></location>
       <source>Install and restart</source>
       <translation>Встановити й перезапустити</translation>
     </message>
@@ -5714,7 +5714,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.installing">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="311"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="167"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="169"></location>
       <source>Installing</source>
       <translation>Встановлення</translation>
     </message>
@@ -5770,7 +5770,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.progress_percent">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="80"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="179"></location>
       <source>%1% complete</source>
       <translation>Виконано %1%</translation>
     </message>
@@ -5781,7 +5781,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.ready_to_install">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="304"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="162"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="164"></location>
       <source>Ready to install</source>
       <translation>Готово до встановлення</translation>
     </message>
@@ -5802,13 +5802,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.restart_to_apply">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="417"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="183"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>GameHQ перезапуститься, щоб застосувати оновлення.</translation>
     </message>
     <message id="gamehq.update.retry_download">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="382"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="210"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="212"></location>
       <source>Retry download</source>
       <translation>Повторити завантаження</translation>
     </message>
@@ -5823,7 +5823,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Налаштування оновлень</translation>
     </message>
     <message id="gamehq.update.sha256_limit_warning">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="191"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="193"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
       <translation>SHA-256 виявляє пошкодження даних, але не скомпрометований обліковий запис GitHub.</translation>
     </message>
@@ -5897,7 +5897,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ВЕРСІЇ</translation>
     </message>
     <message id="gamehq.update.view_release_notes">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="232"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="234"></location>
       <source>View release notes</source>
       <translation>Переглянути примітки до випуску</translation>
     </message>
@@ -5908,7 +5908,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.waiting_for_capture">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="421"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="185"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>Очікування безпечного завершення операцій захоплення...</translation>
     </message>
