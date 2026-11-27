@@ -1,5 +1,6 @@
 #include "capture/FramePumpService.h"
 #include "capture/CapturePublisher.h"
+#include "capture/ReplayExporter.h"
 #include "storage/ThumbnailService.h"
 #include <QDir>
 #include <QFile>
@@ -9,11 +10,56 @@
 #include <QSignalSpy>
 #include <QTemporaryDir>
 #include <QtTest>
+#include <objbase.h>
 
 class TestReplayThumbnail : public QObject
 {
     Q_OBJECT
 private slots:
+    void unalignedClipDecodesWholeClient()
+    {
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QImage frame;
+        QVERIFY(ReplayExporter::grabThumbnail(QStringLiteral(REPLAY_CLIENT_FIXTURE), frame));
+        QCOMPARE(frame.size(), QSize(356, 196));
+        const QColor blue = frame.pixelColor(170, 100);
+        const QColor orange = frame.pixelColor(270, 20);
+        QVERIFY(blue.blue() > 170 && blue.red() < 60);
+        QVERIFY(orange.red() > 170 && orange.blue() < 80);
+    }
+
+    void shortExportAcceptsCompleteMediaAndRejectsInvalidInputs()
+    {
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/short-export-XXXXXX");
+        QVERIFY(dir.isValid());
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        const QString segment = QStringLiteral(REPLAY_CLIENT_FIXTURE);
+        const QString clip = dir.filePath(QStringLiteral("complete.mp4"));
+        QVERIFY(ReplayExporter::concat({segment}, clip, QStringLiteral("short-complete")));
+        QImage frame;
+        QVERIFY(ReplayExporter::grabThumbnail(clip, frame));
+        QCOMPARE(frame.size(), QSize(356, 196));
+        QVERIFY(frame.pixelColor(270, 20).red() > 170);
+        QVERIFY(frame.pixelColor(170, 100).blue() > 170);
+
+        const QString broken = dir.filePath(QStringLiteral("corrupt.mp4"));
+        QFile corrupt(broken);
+        QVERIFY(corrupt.open(QIODevice::WriteOnly));
+        QCOMPARE(corrupt.write("bad media"), 9);
+        corrupt.close();
+        QVERIFY(!ReplayExporter::concat({broken}, dir.filePath(QStringLiteral("corrupt-out.mp4")),
+                                        QStringLiteral("short-corrupt")));
+        // A readable first segment must not make an export with a missing
+        // second segment or missing required audio succeed.
+        QVERIFY(!ReplayExporter::concat({segment, dir.filePath(QStringLiteral("missing.mp4"))},
+                                        dir.filePath(QStringLiteral("incomplete.mp4")),
+                                        QStringLiteral("short-incomplete")));
+        QVERIFY(!ReplayExporter::concat({segment}, dir.filePath(QStringLiteral("no-audio.mp4")),
+                                        QStringLiteral("short-missing-audio"), ReplayExporter::Audio::Required));
+    }
+
     void exportHandsBackWorkerAndPublishesMatchingThumbnail()
     {
         QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/thumbnail-XXXXXX");
@@ -32,8 +78,7 @@ private slots:
         QVERIFY(clip.isValid());
         QVERIFY(clip.finalPath.endsWith("same-second_2.mp4"));
         const QString thumbs = dir.path() + "/thumbnails";
-        const QString thumb = CapturePublisher::companionPath(clip.finalPath, thumbs, "_clip.png");
-        QVERIFY(thumb.endsWith("same-second_2_clip.png"));
+        const QString thumb = ThumbnailService::cachePath(clip.finalPath, thumbs);
 
         QThread captureThread;
         auto* worker = new FramePumpWorker;
@@ -69,7 +114,9 @@ private slots:
         QCOMPARE(failed.count(), 0);
         const auto result = saved.takeFirst();
         QCOMPARE(result.at(0).toString(), clip.finalPath);
+        QCOMPARE(result.at(1).toString(), QStringLiteral("Fixture game"));
         QCOMPARE(result.at(2).toString(), thumb);
+        QCOMPARE(result.at(3).toString(), QStringLiteral("fixture.exe"));
         QVERIFY(QFileInfo::exists(clip.finalPath));
         QVERIFY(!QFileInfo::exists(clip.pendingPath));
         const QImage image(thumb);
@@ -79,9 +126,38 @@ private slots:
         // This is the gallery/scanner reattachment path, using the published
         // clip name. It must select the exact completed companion image.
         QCOMPARE(ThumbnailService::ensureThumbnail(clip.finalPath, "video", thumbs), thumb);
+        // A clip from another game can have the same basename and timestamp.
+        // The shared cache and scanner must keep the two previews distinct.
+        QVERIFY(QDir().mkpath(dir.filePath(QStringLiteral("Other game"))));
+        const QString other = dir.filePath(QStringLiteral("Other game/same-second_2.mp4"));
+        QVERIFY(QFile::copy(QStringLiteral(REPLAY_CLIENT_FIXTURE), other));
+        const QString otherThumb = ThumbnailService::ensureThumbnail(other, "video", thumbs);
+        QCOMPARE(otherThumb, ThumbnailService::cachePath(other, thumbs));
+        QVERIFY(otherThumb != thumb);
+        const QImage otherImage(otherThumb);
+        QCOMPARE(otherImage.size(), QSize(356, 196));
+        QVERIFY(otherImage.pixelColor(270, 20).red() > 170);
+        QVERIFY(QImage(thumb).pixelColor(32, 32).blue() > 200);
         sentinel.setFileName(first.finalPath);
         QVERIFY(sentinel.open(QIODevice::ReadOnly));
         QCOMPARE(sentinel.readAll(), QByteArray("existing clip"));
+
+        const auto rejected = CapturePublisher::reserve(dir.path(), "'changed-after-finalize'", ".mp4");
+        QVERIFY(rejected.isValid());
+        const qint64 finalizedSize = QFileInfo(segment).size();
+        QFile shortened(segment);
+        QVERIFY(shortened.open(QIODevice::ReadWrite));
+        QVERIFY(shortened.resize(shortened.size() - 1));
+        shortened.close();
+        SegmentLease changed({segment}, {{segment, finalizedSize}});
+        QVERIFY(QMetaObject::invokeMethod(worker, [worker, rejected, lease = std::move(changed)]() mutable {
+            worker->runExport(std::move(lease), rejected, {}, "Fixture game", "fixture.exe",
+                              "changed-segment", 18, false);
+        }, Qt::QueuedConnection));
+        QTRY_COMPARE_WITH_TIMEOUT(failed.size(), 1, 5000);
+        QVERIFY(saved.isEmpty());
+        QVERIFY(!QFileInfo::exists(rejected.finalPath));
+        QVERIFY(!QFileInfo::exists(rejected.pendingPath));
     }
 
     void replacedScreenshotRegeneratesItsThumbnail()

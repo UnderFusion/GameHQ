@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QHash>
 #include <QStringList>
 #include <memory>
 
@@ -10,7 +11,7 @@ class SegmentLease
 {
 public:
     SegmentLease();
-    explicit SegmentLease(QStringList paths);
+    explicit SegmentLease(QStringList paths, const QHash<QString, qint64>& finalizedSizes = {});
     ~SegmentLease();
     SegmentLease(SegmentLease&&) noexcept;
     SegmentLease& operator=(SegmentLease&&) noexcept;
@@ -20,6 +21,7 @@ public:
     const QStringList& paths() const;
     bool isEmpty() const { return paths().isEmpty(); }
     quint64 ownerId() const;
+    bool filesMatchFinalizedSizes() const;
 
     static bool removeIfUnleased(const QString& path);
     static void removeWhenUnleased(const QString& path);

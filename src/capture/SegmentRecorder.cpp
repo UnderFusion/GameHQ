@@ -17,6 +17,7 @@
 #include <QElapsedTimer>
 #include <QFile>
 #include <QFileInfo>
+#include <QSet>
 
 #include <algorithm>
 #include <cstring>
@@ -142,6 +143,7 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
     m_audioChannels = audioChannels;
     m_audioLost     = false;
     m_segments.clear();
+    m_finalizedSizes.clear();
     m_curPath.clear();
     m_lastClosedMediaPath.clear();
     m_discardCurrentSegment = false;
@@ -185,6 +187,7 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
 void SegmentRecorder::restoreRing()
 {
     m_segments.clear();
+    m_finalizedSizes.clear();
     // Restore the ring from any segments left on disk by a previous session/arm.
     // Without this, every teardown (alt-tab/overlay flicker disarming the buffer)
     // wipes the in-memory m_segments list, so a save right after re-arm yields
@@ -240,6 +243,7 @@ void SegmentRecorder::restoreRing()
                 continue;
             }
             m_segments.append(full);
+            m_finalizedSizes.insert(full, QFileInfo(full).size());
         }
         // entryList already sorted chronologically; trim oldest if over capacity.
         trimRing();
@@ -765,6 +769,7 @@ void SegmentRecorder::closeSegment()
     m_failedSegmentsInARow = 0;
     if (!m_curPath.isEmpty()) {
         m_segments.append(m_curPath);
+        m_finalizedSizes.insert(m_curPath, QFileInfo(m_curPath).size());
         if (m_segVideoFrames > 0)
             m_lastClosedMediaPath = m_curPath;
     }
@@ -801,7 +806,7 @@ SegmentLease SegmentRecorder::snapshotForSave()
     closeSegment();
     // Older leased files can remain in m_segments, but are not part of a new
     // save. Acquire before reopening/returning to the worker event loop.
-    SegmentLease clip(m_segments.last(qMin(qsizetype(m_keepSegments), m_segments.size())));
+    SegmentLease clip(m_segments.last(qMin(qsizetype(m_keepSegments), m_segments.size())), m_finalizedSizes);
     if (m_failedSegmentsInARow >= kMaxFailedSegmentsInARow) {
         m_active = false;
         return clip;
@@ -1275,7 +1280,14 @@ void SegmentRecorder::noteWriteFailure(const char* what)
 
 void SegmentRecorder::trimRing()
 {
+    const auto count = m_segments.size();
     SegmentLease::trim(m_segments, m_keepSegments);
+    if (m_segments.size() != count) {
+        const QSet<QString> kept(m_segments.cbegin(), m_segments.cend());
+        m_finalizedSizes.removeIf([&kept](QHash<QString, qint64>::iterator item) {
+            return !kept.contains(item.key());
+        });
+    }
 }
 
 bool SegmentRecorder::hasClosedMedia() const
@@ -1298,6 +1310,7 @@ void SegmentRecorder::end()
         for (const QString& path : std::as_const(m_segments))
             SegmentLease::removeWhenUnleased(path);
         m_segments.clear();
+        m_finalizedSizes.clear();
     }
     if (m_encoder) { m_encoder->close(); m_encoder.reset(); }
     m_reuse = false;

@@ -12,9 +12,11 @@
 #include <QDebug>
 #include <QElapsedTimer>
 #include <QFileInfo>
+#include <QScopeGuard>
 
 #include <cstring>
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace {
@@ -194,6 +196,7 @@ bool beginConcatWriter(const std::wstring& outFile, const SegmentSource& src, Co
 }
 
 enum class CopyStatus { Ok, ReadFailed, WriteFailed };
+constexpr LONGLONG kSegmentDurationTolerance100ns = 500000; // 50 ms
 
 // Copy every compressed sample of one stream into the output, shifting sample
 // times by `offset` so the timeline stays continuous. The first sample of each
@@ -462,7 +465,8 @@ bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstrin
             PropVariantInit(&duration);
             if (SUCCEEDED(src.reader->GetPresentationAttribute(DWORD(MF_SOURCE_READER_MEDIASOURCE),
                                                                MF_PD_DURATION, &duration))
-                && duration.vt == VT_UI8 && LONGLONG(duration.uhVal.QuadPart) > segMaxEnd + 500000) {
+                && duration.vt == VT_UI8
+                && LONGLONG(duration.uhVal.QuadPart) > segMaxEnd + kSegmentDurationTolerance100ns) {
                 qWarning().noquote() << QStringLiteral("ReplaySave[%1]: segment %2 read %3 ms of %4 ms - segment incomplete")
                                             .arg(tag).arg(segmentIndex).arg(segMaxEnd / 10000)
                                             .arg(LONGLONG(duration.uhVal.QuadPart) / 10000);
@@ -557,6 +561,54 @@ bool hasReadableVideoImpl(const std::wstring& path)
     return readable;
 }
 
+bool copyRgb32Rows(QImage& out, const BYTE* buffer, DWORD length, qint64 firstRow, qint64 pitch,
+                   UINT32 width, UINT32 height)
+{
+    const qint64 rowBytes = qint64(width) * 4;
+    const qint64 lastRow = firstRow + pitch * (height - 1);
+    if (!buffer || qAbs(pitch) < rowBytes || qMin(firstRow, lastRow) < 0
+        || qMax(firstRow, lastRow) > qint64(length) - rowBytes)
+        return false;
+
+    QImage image(int(width), int(height), QImage::Format_RGB32);
+    if (image.isNull())
+        return false;
+    for (UINT32 y = 0; y < height; ++y)
+        std::memcpy(image.scanLine(int(y)), buffer + firstRow + pitch * y, size_t(rowBytes));
+    out = std::move(image);
+    return true;
+}
+
+bool copyRgb32Frame(IMFMediaBuffer* media, UINT32 width, UINT32 height, LONG defaultStride, QImage& out)
+{
+    // The packed media length does not describe the padding in a 2-D lock.
+    IMF2DBuffer2* surface = nullptr;
+    if (SUCCEEDED(media->QueryInterface(IID_IMF2DBuffer2, reinterpret_cast<void**>(&surface)))) {
+        const auto releaseSurface = qScopeGuard([surface] { surface->Release(); });
+        BYTE* scan0 = nullptr;
+        BYTE* buffer = nullptr;
+        LONG pitch = 0;
+        DWORD length = 0;
+        if (SUCCEEDED(surface->Lock2DSize(MF2DBuffer_LockFlags_Read, &scan0, &pitch, &buffer, &length))) {
+            const auto unlockSurface = qScopeGuard([surface] { surface->Unlock2D(); });
+            const auto rowStart = reinterpret_cast<quintptr>(scan0);
+            const auto bufferStart = reinterpret_cast<quintptr>(buffer);
+            return scan0 && rowStart >= bufferStart && rowStart - bufferStart <= length
+                && copyRgb32Rows(out, buffer, length, qint64(rowStart - bufferStart), pitch, width, height);
+        }
+    }
+
+    // MediaBuffer::Lock gives a contiguous view even on older 2-D buffers.
+    BYTE* data = nullptr;
+    DWORD length = 0;
+    if (FAILED(media->Lock(&data, nullptr, &length)))
+        return false;
+    const auto unlockMedia = qScopeGuard([media] { media->Unlock(); });
+    const qint64 pitch = defaultStride ? defaultStride : qint64(width) * 4;
+    const qint64 firstRow = pitch < 0 ? -pitch * (height - 1) : 0;
+    return copyRgb32Rows(out, data, length, firstRow, pitch, width, height);
+}
+
 // Decode the first frame of an MP4 to RGB32 (== BGRA == QImage::Format_RGB32).
 bool grabThumbnailImpl(const std::wstring& file, QImage& out)
 {
@@ -626,54 +678,7 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
     hr = sample->ConvertToContiguousBuffer(&buf);   // flattens multi-buffer samples
     if (FAILED(hr) || !buf) { sample->Release(); reader->Release(); if (startedMf) MFShutdown(); return false; }
 
-    bool okResult = false;
-
-    IMF2DBuffer* buf2d = nullptr;
-    if (SUCCEEDED(buf->QueryInterface(IID_IMF2DBuffer, (void**)&buf2d)) && buf2d) {
-        BYTE* scan0 = nullptr;
-        LONG  pitch = 0;
-        DWORD contiguous = 0;
-        buf->GetCurrentLength(&contiguous);
-        if (SUCCEEDED(buf2d->Lock2D(&scan0, &pitch))) {
-            QImage img((int)width, (int)height, QImage::Format_RGB32);
-            const bool bottomUp = pitch < 0;
-            const LONG absPitch = pitch < 0 ? -pitch : pitch;
-            const quint64 needed = quint64(absPitch) * (height - 1) + quint64(width) * 4;
-            const bool fits = !img.isNull() && quint64(absPitch) >= quint64(width) * 4
-                && (contiguous == 0 || needed <= contiguous);
-            for (UINT y = 0; fits && y < height; ++y) {
-                const BYTE* srcRow = bottomUp
-                    ? scan0 - (LONG)y * absPitch
-                    : scan0 + (LONG)y * absPitch;
-                memcpy(img.scanLine((int)y), srcRow, (size_t)width * 4);
-            }
-            if (fits) {
-                out = img.copy();                            // detach before Unlock
-                okResult = true;
-            }
-            buf2d->Unlock2D();
-        }
-        buf2d->Release();
-    } else {
-        BYTE* data = nullptr; DWORD len = 0;
-        if (SUCCEEDED(buf->Lock(&data, nullptr, &len))) {
-            const bool bottomUp = defStride < 0;
-            const LONG absStride = defStride < 0 ? -defStride : (defStride ? defStride : (LONG)width * 4);
-            QImage img((int)width, (int)height, QImage::Format_RGB32);
-            const quint64 needed = quint64(absStride) * (height - 1) + quint64(width) * 4;
-            const bool fits = !img.isNull() && quint64(absStride) >= quint64(width) * 4
-                && needed <= len;
-            for (UINT y = 0; fits && y < height; ++y) {
-                const UINT srcY = bottomUp ? (height - 1 - y) : y;
-                memcpy(img.scanLine((int)y), data + (size_t)srcY * absStride, (size_t)width * 4);
-            }
-            if (fits) {
-                out = img.copy();
-                okResult = true;
-            }
-            buf->Unlock();
-        }
-    }
+    const bool okResult = copyRgb32Frame(buf, width, height, defStride, out);
 
     buf->Release();
     sample->Release();

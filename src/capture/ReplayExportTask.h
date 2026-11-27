@@ -13,7 +13,7 @@
 class ReplayExportTask final : public QThread
 {
 public:
-    using Work = std::function<void(const QStringList&)>;
+    using Work = std::function<void(const SegmentLease&)>;
 
     ReplayExportTask(SegmentLease lease, Work work)
         : m_lease(std::move(lease)), m_work(std::move(work)) {}
@@ -37,7 +37,7 @@ protected:
         // much later than run() returning, or without processing queued events.
         SegmentLease lease = std::move(m_lease);
         try {
-            m_work(lease.paths());
+            m_work(lease);
         } catch (...) {
             qWarning() << "ReplayExportTask: export failed with an exception";
         }

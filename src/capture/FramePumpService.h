@@ -110,8 +110,6 @@ private:
     // saveReplayOnWorker stages, in call order.
     bool saveGuard(const QString& saveId);                     // preflight: pipe/ring/busy
     SegmentLease freezeRing(const QString& saveId);            // leased snapshot (empty = refused)
-    static QString instantThumbnail(const QString& lastSegment, const QString& thumbPath,
-                             const QString& saveId);
     void runExport(SegmentLease lease, const CapturePublisher::Reservation& reservation,
                    const QString& thumbPath,
                    const QString& game, const QString& exePath, const QString& saveId,

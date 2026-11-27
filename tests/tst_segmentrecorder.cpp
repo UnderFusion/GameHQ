@@ -1683,14 +1683,15 @@ private slots:
             QFile out(path);
             return out.open(QIODevice::WriteOnly) && out.write(bytes.left(keep)) == keep;
         };
-        // 1) The whole last fragment is gone: the index is consistent, only
-        //    the recorded duration shows the loss.
+        // 1) The whole last fragment is gone, leaving a consistent index.
         const QString noTail = dir.path() + "/no-tail.mp4";
         QVERIFY(writeCut(noTail, lastMoof));
         std::vector<Fmp4Index::Track> index;
         QVERIFY(Fmp4Index::read(noTail, index));
-        QVERIFY(!ReplayExporter::concat({ noTail }, dir.path() + "/no-tail-export.mp4",
-                                        QStringLiteral("mf-cut-tail"), ReplayExporter::Audio::Any));
+        // Media Foundation can infer a plausible duration from the remaining
+        // fragments. The live save lease carries the original finalized extent.
+        const SegmentLease noTailLease({noTail}, {{noTail, bytes.size()}});
+        QVERIFY(!noTailLease.filesMatchFinalizedSizes());
         // 2) Cut inside the first fragment's data: no usable index either.
         const QString cutEarly = dir.path() + "/cut-early.mp4";
         QVERIFY(writeCut(cutEarly, firstMoof + 4096));
@@ -2094,10 +2095,10 @@ private slots:
         auto resume = std::make_shared<QSemaphore>();
         auto bytes = std::make_shared<QByteArray>();
         ReplayExportTask task(SegmentLease(recorder->m_segments),
-            [entered, resume, bytes](const QStringList& snapshot) {
+            [entered, resume, bytes](const SegmentLease& snapshot) {
                 entered->release();
                 resume->acquire();
-                for (const QString& path : snapshot) {
+                for (const QString& path : snapshot.paths()) {
                     QFile file(path);
                     if (file.open(QIODevice::ReadOnly))
                         *bytes += file.readAll();
@@ -2136,7 +2137,7 @@ private slots:
         QTemporaryDir dir(QDir::currentPath() + "/segment-lease-XXXXXX");
         QVERIFY(dir.isValid());
         const QString path = segment(dir.path(), 0);
-        ReplayExportTask task(SegmentLease({path}), [throws](const QStringList&) {
+        ReplayExportTask task(SegmentLease({path}), [throws](const SegmentLease&) {
             if (throws)
                 throw std::runtime_error("simulated export failure");
             return;
@@ -2164,7 +2165,7 @@ private slots:
         auto resume = std::make_shared<QSemaphore>();
         auto completed = std::make_shared<std::atomic_bool>(false);
         ReplayExportTask task(SegmentLease({path}),
-            [entered, resume, completed](const QStringList&) {
+            [entered, resume, completed](const SegmentLease&) {
                 entered->release();
                 resume->acquire();
                 *completed = true;

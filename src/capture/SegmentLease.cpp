@@ -34,6 +34,7 @@ QString pathKey(const QString& path)
 struct SegmentLease::State {
     QStringList paths;
     QStringList keys;
+    QList<qint64> finalizedSizes;
     quint64 owner = 0;
 
     ~State()
@@ -57,7 +58,7 @@ SegmentLease::~SegmentLease() = default;
 SegmentLease::SegmentLease(SegmentLease&&) noexcept = default;
 SegmentLease& SegmentLease::operator=(SegmentLease&&) noexcept = default;
 
-SegmentLease::SegmentLease(QStringList paths)
+SegmentLease::SegmentLease(QStringList paths, const QHash<QString, qint64>& finalizedSizes)
     : m_state(std::make_unique<State>())
 {
     m_state->paths = std::move(paths);
@@ -67,6 +68,8 @@ SegmentLease::SegmentLease(QStringList paths)
     for (const QString& path : m_state->paths) {
         const QString key = pathKey(path);
         m_state->keys.append(key);
+        const auto recorded = finalizedSizes.constFind(path);
+        m_state->finalizedSizes.append(recorded == finalizedSizes.cend() ? QFileInfo(path).size() : *recorded);
         ++r.references[key];
     }
 }
@@ -80,6 +83,19 @@ const QStringList& SegmentLease::paths() const
 quint64 SegmentLease::ownerId() const
 {
     return m_state ? m_state->owner : 0;
+}
+
+bool SegmentLease::filesMatchFinalizedSizes() const
+{
+    if (isEmpty())
+        return false;
+    for (qsizetype i = 0; i < m_state->paths.size(); ++i) {
+        const QFileInfo info(m_state->paths.at(i));
+        const qint64 size = m_state->finalizedSizes.at(i);
+        if (size <= 0 || !info.isFile() || info.size() != size)
+            return false;
+    }
+    return true;
 }
 
 bool SegmentLease::removeIfUnleased(const QString& path)

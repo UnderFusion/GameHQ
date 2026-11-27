@@ -102,27 +102,20 @@ SegmentLease FramePumpWorker::freezeRing(const QString& saveId)
     return lease;
 }
 
-// Export-thread fallback preview from the newest leased segment. Static and
-// value-only: decoding must never access the capture worker or its pipeline.
-QString FramePumpWorker::instantThumbnail(const QString& lastSegment, const QString& thumbPath,
-                                          const QString& saveId)
+namespace
 {
-    QString instantThumb;
-    QImage instantFrame;
-    QElapsedTimer instantThumbTimer;
-    instantThumbTimer.start();
-    if (ReplayExporter::grabThumbnail(lastSegment, instantFrame) && !instantFrame.isNull()) {
-        const QImage scaled = instantFrame.width() > 640
-            ? instantFrame.scaledToWidth(640, Qt::SmoothTransformation) : instantFrame;
-        if (ThumbnailService::saveThumbnail(scaled, thumbPath, "PNG"))
-            instantThumb = thumbPath;
+bool writeThumbnail(const QString& clip, const QStringList& segments, const QString& thumbPath)
+{
+    QImage frame;
+    if (!ReplayExporter::grabThumbnail(clip, frame)
+        && (segments.isEmpty() || !ReplayExporter::grabThumbnail(segments.first(), frame))) {
+        return false;
     }
-    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: instant thumbnail ok=%2 path=%3 elapsedMs=%4")
-                             .arg(saveId)
-                             .arg(instantThumb.isEmpty() ? QStringLiteral("no") : QStringLiteral("yes"))
-                             .arg(instantThumb)
-                             .arg(instantThumbTimer.elapsed());
-    return instantThumb;
+    const QImage scaled = frame.width() > 640
+        ? frame.scaledToWidth(640, Qt::SmoothTransformation) : frame;
+    return QDir().mkpath(QFileInfo(thumbPath).absolutePath())
+        && ThumbnailService::saveThumbnail(scaled, thumbPath, "JPG", 85);
+}
 }
 
 // Remux + final thumbnail on their OWN thread: previously they ran right
@@ -148,11 +141,16 @@ void FramePumpWorker::runExport(SegmentLease lease,
 
     m_exportTask = std::make_unique<ReplayExportTask>(std::move(lease),
         [reservation, outPath, partialPath, thumbPath, saveId, result, requireAudio]
-        (const QStringList& segs) {
+        (const SegmentLease& snapshot) {
             const auto discardOnFailure = qScopeGuard([&] {
                 if (!result->ok)
                     CapturePublisher::discard(reservation);
             });
+            if (!snapshot.filesMatchFinalizedSizes()) {
+                qWarning() << "ReplaySave: finalized segment changed before export" << saveId;
+                return;
+            }
+            const auto& segs = snapshot.paths();
             const HRESULT hrCo = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
             const auto uninitialize = qScopeGuard([hrCo] {
                 if (SUCCEEDED(hrCo))
@@ -160,11 +158,6 @@ void FramePumpWorker::runExport(SegmentLease lease,
             });
             QElapsedTimer t;
             t.start();
-            // Both preview and final decode/scale/encode stay under the export
-            // task's lease. The capture worker only schedules this work.
-            QDir().mkpath(QFileInfo(thumbPath).absolutePath());
-            if (!segs.isEmpty())
-                result->finalThumb = instantThumbnail(segs.last(), thumbPath, saveId);
             // The reserved .part already exists and the MP4 sink writer
             // truncates it, so the name stays claimed for the whole export.
             if (ReplayExporter::concat(segs, partialPath, saveId, // remux, no re-encode
@@ -174,24 +167,23 @@ void FramePumpWorker::runExport(SegmentLease lease,
                     "ReplaySave[%1]: remux ok output=%2 segments=%3 elapsedMs=%4 bytes=%5")
                     .arg(saveId).arg(partialPath).arg(segs.size()).arg(t.elapsed())
                     .arg(QFileInfo(partialPath).size());
-                // Final thumbnail: the clip's actual first frame, replacing
-                // the instant preview (same file path).
-                QImage frame;
-                if (ReplayExporter::grabThumbnail(partialPath, frame) && !frame.isNull()) {
-                    const QImage scaled = frame.width() > 640
-                        ? frame.scaledToWidth(640, Qt::SmoothTransformation) : frame;
-                    if (ThumbnailService::saveThumbnail(scaled, thumbPath, "PNG"))
-                        result->finalThumb = thumbPath;
-                }
                 // Publish only a completely finalized file. A crash before
                 // this point leaves an ignored *.part, never a gallery MP4.
                 // The rename refuses to clobber, so an unrelated clip that
                 // somehow holds the name survives instead of being replaced.
+                if (!snapshot.filesMatchFinalizedSizes()) {
+                    qWarning() << "ReplaySave: finalized segment changed during export" << saveId;
+                    return;
+                }
                 QString publishError;
                 result->ok = CapturePublisher::publish(reservation, &publishError);
                 if (!result->ok)
                     qWarning() << "ReplaySave: could not publish finalized clip" << outPath
                                << publishError;
+                else if (writeThumbnail(outPath, segs, thumbPath))
+                    result->finalThumb = thumbPath;
+                else
+                    qWarning() << "ReplaySave: no preview could be generated for" << outPath;
             } else {
                 qWarning().noquote() << QStringLiteral(
                     "ReplaySave[%1]: failed - remux failed output=%2 elapsedMs=%3")
@@ -302,10 +294,9 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 g
     }
     // Derived from the reserved clip name, so the preview inherits the same
     // _2 and stays the "<clip base>_clip.png" pair ThumbnailService reattaches.
-    const QString thumbPath = CapturePublisher::companionPath(
-        reservation.finalPath, Paths::thumbnailsDir(), QStringLiteral("_clip.png"));
-    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: output path=%2 game=%3")
-                             .arg(saveId).arg(reservation.finalPath).arg(game);
+    const QString thumbPath = ThumbnailService::cachePath(reservation.finalPath, Paths::thumbnailsDir());
+    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: output path=%2 game=%3 generation=%4")
+                             .arg(saveId).arg(reservation.finalPath).arg(game).arg(generation);
 
     // Receipt already happened at service entry. No image work is needed to
     // announce that export started; clipSaved delivers the completed thumbnail.

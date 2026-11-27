@@ -66,13 +66,17 @@ bool saveThumbnail(const QImage& image, const QString& thumbnailPath,
     return output.commit();
 }
 
-QString ensureThumbnail(const QString& filePath, const QString& type,
-                        const QString& thumbnailsDir)
+QString cachePath(const QString& filePath, const QString& thumbnailsDir)
 {
     const QString hash = QString::fromLatin1(
         QCryptographicHash::hash(filePath.toUtf8(), QCryptographicHash::Md5).toHex());
-    const QString thumbPath = thumbnailsDir + QLatin1Char('/') + hash + QLatin1String(".jpg");
+    return thumbnailsDir + QLatin1Char('/') + hash + QLatin1String(".jpg");
+}
 
+QString ensureThumbnail(const QString& filePath, const QString& type,
+                        const QString& thumbnailsDir)
+{
+    const QString thumbPath = cachePath(filePath, thumbnailsDir);
     if (isCurrentThumbnail(thumbPath, filePath, type))
         return thumbPath;
     if (QFileInfo::exists(thumbPath))
@@ -80,16 +84,6 @@ QString ensureThumbnail(const QString& filePath, const QString& type,
 
     QDir().mkpath(thumbnailsDir);
     if (type == QLatin1String("video")) {
-        // Early replay builds named previews after the clip instead of the
-        // path hash. Reattach those orphaned previews before decoding again.
-        const QString legacyThumb = thumbnailsDir + QLatin1Char('/')
-                                    + QFileInfo(filePath).completeBaseName()
-                                    + QStringLiteral("_clip.png");
-        if (isUsableThumbnail(legacyThumb))
-            return legacyThumb;
-        if (QFileInfo::exists(legacyThumb))
-            QFile::remove(legacyThumb);
-
         bool saved = false;
         QThread* worker = QThread::create([&] {
 #ifdef Q_OS_WIN

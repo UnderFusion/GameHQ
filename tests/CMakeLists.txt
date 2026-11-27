@@ -1714,7 +1714,8 @@ gamehq_add_test(tst_replaythumbnail tst_replaythumbnail.cpp ${GAMEHQ_CAPTURE_TES
 get_target_property(GAMEHQ_CAPTURE_TEST_LIBRARIES tst_captureacknowledgement LINK_LIBRARIES)
 target_link_libraries(tst_replaythumbnail PRIVATE ${GAMEHQ_CAPTURE_TEST_LIBRARIES})
 target_compile_definitions(tst_replaythumbnail PRIVATE UNICODE _UNICODE
-    REPLAY_THUMB_FIXTURE="${CMAKE_SOURCE_DIR}/tests/fixtures/replay-thumbnail.mp4")
+    REPLAY_THUMB_FIXTURE="${CMAKE_SOURCE_DIR}/tests/fixtures/replay-thumbnail.mp4"
+    REPLAY_CLIENT_FIXTURE="${CMAKE_SOURCE_DIR}/tests/fixtures/replay-client.mp4")
 set_target_properties(tst_replaythumbnail PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests/replaythumbnail")
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/tests/replaythumbnail/portable.flag" CONTENT "")

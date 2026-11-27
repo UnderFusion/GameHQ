@@ -198,6 +198,7 @@ private:
 
     // on-disk ring (Step 5): finalized segment file paths, oldest first
     QStringList m_segments;
+    QHash<QString, qint64> m_finalizedSizes;
     QString     m_curPath;                   // current in-flight segment file
     int         m_keepSegments = 12;         // ceil(lengthSeconds / segmentSeconds)
     // Vets a segment found on disk before restoreRing() admits it; null means

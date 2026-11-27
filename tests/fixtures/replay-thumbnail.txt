@@ -1,3 +1,6 @@
 Synthetic test media, generated locally for p3-4; no user/game recording.
 64x64 blue frames, H.264/yuv420p, 10 fps, 0.3 seconds, no audio.
 Generation: ffmpeg -f lavfi -i color=c=blue:s=64x64:r=10:d=0.3 -an -c:v libx264 -pix_fmt yuv420p -movflags +faststart -metadata creation_time=1970-01-01T00:00:00Z replay-thumbnail.mp4
+
+replay-client.mp4 is a 10-frame fragmented H.264 clip with a 356x196 blue client and an orange top-right patch.
+Generation: ffmpeg -f lavfi -i color=c=0x1244d8:s=356x196:r=30:d=0.333 -vf drawbox=x=248:y=8:w=90:h=45:color=0xdd5522:t=fill -c:v libx264 -crf 18 -pix_fmt yuv420p -g 5 -movflags +frag_keyframe+empty_moov+default_base_moof replay-client.mp4

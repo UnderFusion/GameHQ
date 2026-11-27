@@ -27,6 +27,29 @@ class CaptureAcknowledgementTest : public QObject
 {
     Q_OBJECT
 private slots:
+    void staleWorkerCommandsCannotReadOrStopTheCurrentTarget()
+    {
+        FramePumpWorker worker;
+        worker.m_pumpGeneration = 8;
+        worker.m_pipe = new FramePumpWorker::Pipeline;
+        worker.m_pipe->gameName = QStringLiteral("Current game");
+        auto* current = worker.m_pipe;
+        QSignalSpy shotFailed(&worker, &FramePumpWorker::windowScreenshotFailed);
+        QSignalSpy replayFailed(&worker, &FramePumpWorker::clipFailed);
+        QSignalSpy saveFinished(&worker, &FramePumpWorker::saveRequestFinished);
+        worker.captureScreenshotOnWorker(7, 11);
+        worker.saveReplayOnWorker({}, 7, 12, 13);
+        worker.stopPumpForGeneration(7);
+        QCOMPARE(worker.m_pipe, current);
+        QCOMPARE(worker.m_pumpGeneration, 8ULL);
+        QVERIFY(!worker.m_screenshotPending);
+        QCOMPARE(shotFailed.size(), 1);
+        QCOMPARE(shotFailed.first().at(1).toULongLong(), 11ULL);
+        QCOMPARE(replayFailed.size(), 1);
+        QCOMPARE(saveFinished.size(), 1);
+        QCOMPARE(saveFinished.first().at(0).toULongLong(), 12ULL);
+    }
+
     void busyFramePoolYieldsToQueuedCaptureControls()
     {
         // Windows can supply a new frame as soon as the last one is released.
@@ -382,6 +405,9 @@ private slots:
         QVERIFY2(clipFailed.isEmpty(), qPrintable(clipFailed.value(0).value(1).toString()));
         QCOMPARE(saved.constFirst().at(1).toString(), target.gameName);
         const QString clipPath = saved.constFirst().at(0).toString();
+        const QImage preview(saved.constFirst().at(2).toString());
+        QCOMPARE(preview.size(), QSize(client.right & ~1, client.bottom & ~1));
+        QVERIFY(preview.pixelColor(preview.width() / 2, preview.height() / 2).blue() > 100);
         QVERIFY(ReplayExporter::hasReadableVideo(clipPath));
         QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
         const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
@@ -396,6 +422,13 @@ private slots:
         UINT32 width = 0, height = 0;
         QVERIFY(SUCCEEDED(MFGetAttributeSize(video, MF_MT_FRAME_SIZE, &width, &height)));
         QCOMPARE(QSize(int(width), int(height)), QSize(client.right & ~1, client.bottom & ~1));
+        QImage replayFrame;
+        QVERIFY(ReplayExporter::grabThumbnail(clipPath, replayFrame));
+        QCOMPARE(replayFrame.size(), preview.size());
+        const QColor middle = replayFrame.pixelColor(replayFrame.width() / 2, replayFrame.height() / 2);
+        const QColor edge = replayFrame.pixelColor(2, 2);
+        QVERIFY(middle.blue() > middle.green() && middle.green() > middle.red());
+        QVERIFY(edge.blue() > edge.green() && edge.green() > edge.red());
     }
 
     void removingAnAllowedGameStopsAutoAndColdManualCapture()
