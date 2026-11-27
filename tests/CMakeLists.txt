@@ -1509,6 +1509,12 @@ add_test(NAME tst_i18nlocalelifecycle
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_locale_lifecycle.py")
 set_tests_properties(tst_i18nlocalelifecycle PROPERTIES TIMEOUT 180)
 
+# t37/A07: SDR screenshot readback against an off-screen pattern DC.
+gamehq_add_test(tst_gdireadback
+    tst_gdireadback.cpp
+    "${CMAKE_SOURCE_DIR}/src/capture/GdiReadback.cpp")
+target_link_libraries(tst_gdireadback PRIVATE Qt6::Gui gdi32 user32)
+
 # Real service entry points, deterministic update gate, no capture hardware.
 gamehq_add_test(tst_captureacknowledgement
     tst_captureacknowledgement.cpp
@@ -1516,6 +1522,7 @@ gamehq_add_test(tst_captureacknowledgement
     "${CMAKE_SOURCE_DIR}/src/capture/FramePumpPipeline.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplaySaveCoordinator.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ScreenshotService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/GdiReadback.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureRequest.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CapturePublisher.cpp"

@@ -2,6 +2,7 @@
 
 #include "capture/CapturePublisher.h"
 #include "capture/CaptureUtil.h"
+#include "capture/GdiReadback.h"
 #include "capture/HdrCapabilities.h"
 #include "config/ConfigKeys.h"
 #include "config/ConfigManager.h"
@@ -282,37 +283,10 @@ QImage ScreenshotService::grabRect(void* hwndPtr, int x, int y, int w, int h) co
     Q_UNUSED(hwndPtr);
     if (w <= 0 || h <= 0)
         return {};
-
     HDC screen = GetDC(nullptr);
     if (!screen)
         return {};
-
-    HDC mem = CreateCompatibleDC(screen);
-    HBITMAP bmp = CreateCompatibleBitmap(screen, w, h);
-    QImage img;
-
-    if (mem && bmp) {
-        HGDIOBJ old = SelectObject(mem, bmp);
-        if (BitBlt(mem, 0, 0, w, h, screen, x, y, SRCCOPY | CAPTUREBLT)) {
-            BITMAPINFO bi = {};
-            bi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-            bi.bmiHeader.biWidth = w;
-            bi.bmiHeader.biHeight = -h;   // top-down
-            bi.bmiHeader.biPlanes = 1;
-            bi.bmiHeader.biBitCount = 32;
-            bi.bmiHeader.biCompression = BI_RGB;
-
-            QImage buffer(w, h, QImage::Format_RGB32);   // 0xffRRGGBB == BGRA in memory
-            if (GetDIBits(mem, bmp, 0, h, buffer.bits(), &bi, DIB_RGB_COLORS))
-                img = buffer.copy();
-        }
-        SelectObject(mem, old);
-    }
-
-    if (bmp)
-        DeleteObject(bmp);
-    if (mem)
-        DeleteDC(mem);
+    const QImage img = GdiReadback::readRect(screen, x, y, w, h);
     ReleaseDC(nullptr, screen);
     return img;
 }
