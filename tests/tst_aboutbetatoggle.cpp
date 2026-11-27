@@ -134,8 +134,8 @@ Window {
             if (item->isVisible()) return item;
         return nullptr;
     }
-    void checkSynchronized(bool value) {
-        QCOMPARE(m_app->config(m_key, false).toBool(), value);
+    void checkSynchronized(bool value, const char *action = "Beta preference differs from the expected value") {
+        QVERIFY2(m_app->config(m_key, false).toBool() == value, action);
         for (const auto &row : {QStringLiteral("generalBeta"), QStringLiteral("aboutBeta")}) {
             QObject *toggle = nullptr;
             for (auto *item : m_window->findChild<QObject *>(row)->findChildren<QObject *>())
@@ -165,11 +165,10 @@ Window {
 private slots:
     void initTestCase() {
         QVERIFY(m_dir.isValid());
-        const QString qm = qEnvironmentVariable("GAMEHQ_TEST_ENGLISH_QM");
-        if (!qm.isEmpty()) {
-            QVERIFY(m_english.load(qm));
-            QCoreApplication::installTranslator(&m_english);
-        }
+        // The production catalog supplies both the rendered text and the
+        // labels that determine the compact dialog's layout and hit targets.
+        QVERIFY(m_english.load(QStringLiteral(":/i18n/gamehq_en_US.qm")));
+        QVERIFY(QCoreApplication::installTranslator(&m_english));
     }
     void init() {
         QFile::remove(m_dir.filePath(QStringLiteral("config.json")));
@@ -190,11 +189,12 @@ private slots:
         savePreview(QStringLiteral("beta-toggle-compact.png"));
         const QPoint center = toggle->mapToScene(QPointF(toggle->width() / 2, toggle->height() / 2)).toPoint();
         QTest::mouseClick(m_window.get(), Qt::LeftButton, Qt::NoModifier, center);
-        checkSynchronized(true);
+        checkSynchronized(true, "Mouse click did not enable beta updates");
+        QVERIFY(toggle->hasActiveFocus());
         QTest::keyClick(m_window.get(), Qt::Key_Space);
-        checkSynchronized(false);
+        checkSynchronized(false, "Space did not disable beta updates");
         QVERIFY(QMetaObject::invokeMethod(m_dialog, "padConfirm"));
-        checkSynchronized(true);
+        checkSynchronized(true, "Controller confirm did not enable beta updates");
         m_app->setConfig(m_key, false); // the same config path used by either settings page
         checkSynchronized(false);
     }
@@ -261,7 +261,7 @@ private slots:
         QCOMPARE(m_updates->downloadRequests, 1);
         m_updates->insert(QStringLiteral("progress"), 42);
         QTRY_VERIFY(progress->isVisible());
-        QVERIFY(status->property("text").toString().contains(QStringLiteral("42")));
+        QTRY_COMPARE(status->property("text").toString(), QStringLiteral("Downloading 42%"));
         const QPointF pinned = card->mapToScene(QPointF(0, 0));
         flick->setProperty("contentY", flick->property("contentHeight").toReal() - flick->height());
         QCOMPARE(card->mapToScene(QPointF(0, 0)), pinned);

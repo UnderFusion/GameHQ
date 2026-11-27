@@ -51,6 +51,9 @@ gamehq_add_test(tst_aboutbetatoggle tst_aboutbetatoggle.cpp
 target_link_libraries(tst_aboutbetatoggle PRIVATE Qt6::Quick Qt6::Qml)
 target_compile_definitions(tst_aboutbetatoggle PRIVATE GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
 set_tests_properties(tst_aboutbetatoggle PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_QUICK_BACKEND=software")
+gamehq_add_id_translations(tst_aboutbetatoggle
+    TS_FILES "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_en_US.ts"
+    LUPDATE_OPTIONS -no-obsolete)
 
 # Include the existing QML layout suites in the complete CTest run.
 find_program(GAMEHQ_QMLTESTRUNNER NAMES qmltestrunner HINTS "${CMAKE_PREFIX_PATH}/bin" REQUIRED)
