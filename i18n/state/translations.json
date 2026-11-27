@@ -19704,13 +19704,13 @@
         "gamehq.settings.capture.background.description": {
           "domain": "application",
           "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
-          "translation_hash": "41b3611f3ea5fc69e48291fb7b2b0bbd2049f2ebad196f0ab1119d1bcca2bfc7",
-          "status": "machine_translated",
+          "translation_hash": "4ae81defe1182490e1c6d579dd4aea4573746fb39b43bedcbf4ca03605ce946b",
+          "status": "contextually_reviewed",
           "provenance": {
-            "kind": "machine",
-            "actor": "codex"
+            "kind": "agent",
+            "actor": "claude-opus-5-5-background-capture-contextual-review"
           },
-          "updated_at": "2026-11-27T21:07:00Z"
+          "updated_at": "2026-11-27T23:45:00Z"
         },
         "gamehq.settings.capture.background.title": {
           "domain": "application",

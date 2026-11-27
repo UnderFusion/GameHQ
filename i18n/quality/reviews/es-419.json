@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-es-419; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review; claude-opus-5-5-replay-audio-failure-contextual-review; claude-opus-5-5-game-audio-source-contextual-review; claude-aud-review-startup-dialogs; claude-opus-5-5-aud-c4-delete-policy-contextual-review; codex-gameplay-capture-contextual-review; codex-gamehq-shortcut-contextual-review; claude-opus-5-5-tray-status-contextual-review",
+    "actor": "codex-gpt-5-contextual-es-419; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review; claude-opus-5-5-replay-audio-failure-contextual-review; claude-opus-5-5-game-audio-source-contextual-review; claude-aud-review-startup-dialogs; claude-opus-5-5-aud-c4-delete-policy-contextual-review; codex-gameplay-capture-contextual-review; codex-gamehq-shortcut-contextual-review; claude-opus-5-5-tray-status-contextual-review; claude-opus-5-5-background-capture-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "reviewed Spanish reference adapted row by row to neutral Latin American Spanish",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-11-26T18:00:00Z"
+    "recorded_at": "2026-11-27T23:45:00Z"
   },
   "baseline": {
     "path": "git:461cb7acc0249374e6efd90d5438177a80697d20:i18n/app/gamehq_es_419.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_es_419.ts",
-    "sha256": "27401f0ce8a98c42e8f755c89531e1f64b4c4e523614ae2ee16ae32793762ddb",
-    "message_count": 1133
+    "sha256": "8a1b7f435470a2f2dd063a1e21a0be7b9f7e51d3f320aee09fd615723352e592",
+    "message_count": 1141
   },
   "coverage": [
     {
@@ -217,9 +217,9 @@
       "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
       "translation_hash": "2b20f074408368114a662100524c683dc01ace29aec481db741a40da1caf55d0",
       "locations": [
-        "src/ui/qml/Main.qml:1296",
         "src/ui/qml/Main.qml:1324",
-        "src/ui/qml/Main.qml:1355",
+        "src/ui/qml/Main.qml:1343",
+        "src/ui/qml/Main.qml:1383",
         "src/ui/qml/OverlayWindow.qml:1134",
         "src/ui/qml/components/ConfirmDialog.qml:17",
         "src/ui/qml/components/DesktopGalleryHeader.qml:73",
@@ -530,7 +530,7 @@
       "source_hash": "b25fc86b0bf18eb34805662eb6f503dbff1e9849c6ac0d6dccb3618f6b95dbce",
       "translation_hash": "36e8717409376005274d6029aed1980c996e4d462e50ad9a6e31b6c589e4bfe7",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:210"
+        "src/ui/qml/settings/InputSettingsPage.qml:216"
       ],
       "decision": "corrected"
     },
@@ -914,6 +914,7 @@
       "locations": [
         "src/ui/qml/components/BindingCard.qml:151",
         "src/ui/qml/components/ShareDestinationsSection.qml:98",
+        "src/ui/qml/settings/CaptureSettingsPage.qml:104",
         "src/ui/qml/settings/LibrarySettingsPage.qml:108"
       ],
       "decision": "corrected"
@@ -1053,10 +1054,10 @@
       "source_hash": "4cfed223295b5219d303dac5d23c18f474b9d7e7984280084951c2ad1bd87b0d",
       "translation_hash": "82c67d214a74ae85344ca0ed875850f39b418bd748ee45444238249b58d78b25",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:298",
-        "src/ui/qml/settings/InputSettingsPage.qml:300",
-        "src/ui/qml/settings/InputSettingsPage.qml:302",
-        "src/ui/qml/settings/InputSettingsPage.qml:304"
+        "src/ui/qml/settings/InputSettingsPage.qml:304",
+        "src/ui/qml/settings/InputSettingsPage.qml:306",
+        "src/ui/qml/settings/InputSettingsPage.qml:308",
+        "src/ui/qml/settings/InputSettingsPage.qml:310"
       ],
       "decision": "accepted"
     },
@@ -1065,10 +1066,10 @@
       "source_hash": "591eb4a8e70712754cd6489f59f90a14569072d4d757f07d8c034f5a23a303c6",
       "translation_hash": "24d15b3ecd496ed9c30af71334620d60d06283a880bd9535845bc3427e447467",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:319",
-        "src/ui/qml/settings/InputSettingsPage.qml:321",
-        "src/ui/qml/settings/InputSettingsPage.qml:338",
-        "src/ui/qml/settings/InputSettingsPage.qml:340"
+        "src/ui/qml/settings/InputSettingsPage.qml:325",
+        "src/ui/qml/settings/InputSettingsPage.qml:327",
+        "src/ui/qml/settings/InputSettingsPage.qml:344",
+        "src/ui/qml/settings/InputSettingsPage.qml:346"
       ],
       "decision": "accepted"
     },
@@ -1077,8 +1078,8 @@
       "source_hash": "7a00581113e552a46c465bf5fd3bf012eb25352f7ecd48504430a508764c1545",
       "translation_hash": "a48c203c883bc4053cca4dc775762040d12f8c0e6c02fb3bf7a4528026af9f66",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:317",
-        "src/ui/qml/settings/InputSettingsPage.qml:336"
+        "src/ui/qml/settings/InputSettingsPage.qml:323",
+        "src/ui/qml/settings/InputSettingsPage.qml:342"
       ],
       "decision": "corrected"
     },
@@ -1087,8 +1088,8 @@
       "source_hash": "cb44226967f783a144a3951c6bc1464bfacf215f927dd1c3f83cc21f61e39451",
       "translation_hash": "7e49b90789e7c545ded11adc2717decbc296eb7f4352069ef401c74285ca6d4b",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:323",
-        "src/ui/qml/settings/InputSettingsPage.qml:342"
+        "src/ui/qml/settings/InputSettingsPage.qml:329",
+        "src/ui/qml/settings/InputSettingsPage.qml:348"
       ],
       "decision": "corrected"
     },
@@ -1187,7 +1188,7 @@
       "translation_hash": "a505ab1ea38b2a3fdc7f98c7e51106a82be54e5f521e67df4c095dd36a797d36",
       "locations": [
         "src/ui/AppController_Settings.cpp:44",
-        "src/ui/AppController_Settings.cpp:66"
+        "src/ui/AppController_Settings.cpp:76"
       ],
       "decision": "corrected"
     },
@@ -1470,7 +1471,7 @@
       "source_hash": "0dba63208cb43bc28a86511c32a4de853601f1ddbbcef954446521724a3c9e05",
       "translation_hash": "6a52ead03dccdb0a43cfe50de49ca7da71f139f9cd73ffd720e3d93b9660fbeb",
       "locations": [
-        "src/ui/AppController_Profile.cpp:54"
+        "src/ui/AppController_Profile.cpp:55"
       ],
       "decision": "corrected"
     },
@@ -1515,7 +1516,7 @@
       "source_hash": "fe6f0d290986e06ccc270db9e18571d4abc8f612c519c8ca74171b3d65aa50a1",
       "translation_hash": "e33df647953d19da21ca262c8700f7a543a46b9cb64b8aebaec627c124a90625",
       "locations": [
-        "src/ui/AppController_Profile.cpp:60"
+        "src/ui/AppController_Profile.cpp:61"
       ],
       "decision": "corrected"
     },
@@ -1524,7 +1525,7 @@
       "source_hash": "1571f20c3af9614f85fadd28fbc9b678a39d46c4b37abe72623d22948afac7a5",
       "translation_hash": "c5547aef490239c56d1142a7a264499b6ccd356e2b9e6030ed81fa9a53f9a50f",
       "locations": [
-        "src/ui/AppController_Profile.cpp:69"
+        "src/ui/AppController_Profile.cpp:70"
       ],
       "decision": "corrected"
     },
@@ -1578,7 +1579,7 @@
       "source_hash": "9c8968987a0b1a0a56c99f79bed21adc97b2ed5f3b500e1b062b43b6a41f9135",
       "translation_hash": "914f10b5277adab01e8489034aee9c6228f6e4bcaa5b898151ececa3c77e9fef",
       "locations": [
-        "src/ui/AppController_Profile.cpp:80"
+        "src/ui/AppController_Profile.cpp:81"
       ],
       "decision": "corrected"
     },
@@ -1587,7 +1588,7 @@
       "source_hash": "66c004093f52f58648fba2ee6e62561204b1c10391be2802967e028b9e69afd5",
       "translation_hash": "25b2c74e510622dda653005a330b71e5461a911852b4396a5254bee89fa0c719",
       "locations": [
-        "src/ui/AppController_Profile.cpp:90"
+        "src/ui/AppController_Profile.cpp:91"
       ],
       "decision": "corrected"
     },
@@ -2389,7 +2390,7 @@
       "source_hash": "71e48f5d88c620a5129e51bad78fa7ea07224b5370e9efdf0dfe83b4ebaac8ba",
       "translation_hash": "4fef203b159a7f8ed921aee597d845ad4c0c266cb540c18a3a8e6d6ff393d5e0",
       "locations": [
-        "src/ui/qml/Main.qml:1357",
+        "src/ui/qml/Main.qml:1385",
         "src/ui/qml/components/DesktopGalleryHeader.qml:40"
       ],
       "decision": "corrected"
@@ -2399,7 +2400,7 @@
       "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
       "translation_hash": "f7ff983b1326a79c6fd32fdd0949f361e95eea60834bd889abc5fb6f82149cba",
       "locations": [
-        "src/ui/qml/Main.qml:1351",
+        "src/ui/qml/Main.qml:1379",
         "src/ui/qml/components/OverlayActionMenu.qml:15"
       ],
       "decision": "accepted"
@@ -2409,7 +2410,7 @@
       "source_hash": "a5aba3b31aac37525488e0d1b3b9d34a18cf32b5b7531b3ae0f6acdfda4b1f65",
       "translation_hash": "6d7921f16bc96131782a78b5ac147e5102185d331f1ae5b47111be08a492e0de",
       "locations": [
-        "src/ui/qml/Main.qml:1353",
+        "src/ui/qml/Main.qml:1381",
         "src/ui/qml/components/OverlayActionMenu.qml:17"
       ],
       "decision": "corrected"
@@ -2430,7 +2431,7 @@
       "source_hash": "78ec4fedffd6a94965727328871a1fb8a9b0a4ef0b8621024ada89cd87cb89a2",
       "translation_hash": "84ebd68da40849436799a3f0627c810c3f9b2f0ec36216308bf6ba5ddb08b420",
       "locations": [
-        "src/ui/qml/Main.qml:1284"
+        "src/ui/qml/Main.qml:1312"
       ],
       "decision": "corrected"
     },
@@ -2439,7 +2440,7 @@
       "source_hash": "dc9d379e0965e3e2dde43ccdee2a9b0fd4028f5ede83e5f947221da301f2280e",
       "translation_hash": "0350d16b45d59a93b534793bfa4be1c510ef68cae83aed118bb6adb653466558",
       "locations": [
-        "src/ui/qml/Main.qml:1294",
+        "src/ui/qml/Main.qml:1322",
         "src/ui/qml/OverlayWindow.qml:1132"
       ],
       "decision": "corrected"
@@ -2449,7 +2450,7 @@
       "source_hash": "8d82e4e85db8ae65f31e33d5fd48188a644aeb2bd9684840f9c7ac4c124734de",
       "translation_hash": "502ca771eb8333ea6efc96c8e0c0940b21c4e3ce95ebb47f492dc0c423b1f03a",
       "locations": [
-        "src/ui/qml/Main.qml:542"
+        "src/ui/qml/Main.qml:570"
       ],
       "decision": "corrected"
     },
@@ -2458,7 +2459,7 @@
       "source_hash": "4acca6ec2298ea62a7bd3accc3ba79d900afc0400e7deb982f420c11054e12e9",
       "translation_hash": "d6b4dc91adb12fed13463747ab24a95acc7a5f06460336c59b92e41d8f79e07e",
       "locations": [
-        "src/ui/qml/Main.qml:1313"
+        "src/ui/qml/Main.qml:1341"
       ],
       "decision": "corrected"
     },
@@ -3689,7 +3690,7 @@
       "source_hash": "2b75fa0e1934ad730f1f748b51ec5a495fd45d37f982204595d51432a6cb4978",
       "translation_hash": "ad6b4f8226be8683e8e26d68d9773f21191f7422dec6fac56b5c884680967241",
       "locations": [
-        "src/ui/qml/Main.qml:1264",
+        "src/ui/qml/Main.qml:1292",
         "src/ui/qml/settings/LibrarySettingsPage.qml:149"
       ],
       "decision": "corrected"
@@ -3886,7 +3887,7 @@
       "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
       "translation_hash": "9c24135e26c60f1996c3fab0045c91aee71f732c5dbcebb243ccb75d34c3e7cc",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:321"
+        "src/app/App_CaptureWiring.cpp:336"
       ],
       "decision": "corrected"
     },
@@ -3895,7 +3896,7 @@
       "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
       "translation_hash": "39941268bbba91d9480b6e771386d60709d81c64651e50f4c272c1c2ab7910dd",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:328"
+        "src/app/App_CaptureWiring.cpp:343"
       ],
       "decision": "corrected"
     },
@@ -3904,8 +3905,8 @@
       "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c",
       "translation_hash": "c7666f67ed0c742b455ad1cb230960cec15d1687698ac4fc6a8d3b171ea8d54a",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:334",
-        "src/app/App_CaptureWiring.cpp:365"
+        "src/app/App_CaptureWiring.cpp:349",
+        "src/app/App_CaptureWiring.cpp:380"
       ],
       "decision": "accepted"
     },
@@ -3914,7 +3915,7 @@
       "source_hash": "845e80a39da710f549cb3abf2de7510c0a6fda671968968bdc6419dd1307deca",
       "translation_hash": "33350446b5d5c8650e5466cfefc2e7a278045551fc9df1e73c1483397b85d7b3",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:352"
+        "src/app/App_CaptureWiring.cpp:367"
       ],
       "decision": "accepted"
     },
@@ -3923,7 +3924,7 @@
       "source_hash": "8c6cad7d11c45f59071df17e5c6069878384d35e24a9bf256d68098828da0461",
       "translation_hash": "317f0ca56b2a0cade1f526872e3ccf11bded9e0c6f466f432444e92f35b04d98",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:359"
+        "src/app/App_CaptureWiring.cpp:374"
       ],
       "decision": "accepted"
     },
@@ -3941,7 +3942,7 @@
       "source_hash": "70f15a1f370f36b7ae94c36f7554d7f52a2851b84bd9ec34f651d0f0db3ba819",
       "translation_hash": "e7b083a2f3120b81472836b54284fab7e9f135e742f044ef12a8e4a6f17441e7",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:126"
+        "src/app/App_CaptureWiring.cpp:132"
       ],
       "decision": "accepted"
     },
@@ -3950,7 +3951,7 @@
       "source_hash": "24172ec755fb25eba2e71647ce6cb1c03c19b1ae3169fe820e0e10e2f2181e54",
       "translation_hash": "e057db4933bba94b3a6ae69ee5c8de2b57b1d5db16d39e144cf377984e31ebc6",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:120"
+        "src/app/App_CaptureWiring.cpp:126"
       ],
       "decision": "accepted"
     },
@@ -3959,7 +3960,7 @@
       "source_hash": "325239770a27469c01e08ea81ff86629b5cb52ce27d016b2fc1b1c79a29a202d",
       "translation_hash": "252027e648fe510894e9b2a0a753c1d318864b3150799cbd006fd15a6d127bd7",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:110"
+        "src/app/App_CaptureWiring.cpp:116"
       ],
       "decision": "accepted"
     },
@@ -3968,7 +3969,7 @@
       "source_hash": "f5a508cd116c4ab3b6a707c6a7ce2ae6baa636e8ee6090a66a64077fb0373555",
       "translation_hash": "9de67eeade3bf4799ab272f437894ee59847983751788cda083eac063baf1893",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:233"
+        "src/app/App_CaptureWiring.cpp:246"
       ],
       "decision": "accepted"
     },
@@ -3977,7 +3978,7 @@
       "source_hash": "a5cadb8e899f7085ce4c5d89a59153e9260d60a119c1cb944889bfda65a3de2d",
       "translation_hash": "f0ebf31ba88177f140802cc2e5182b5fc517a0f81e8370b4f59d967f83b20a4d",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:296"
+        "src/app/App_CaptureWiring.cpp:311"
       ],
       "decision": "corrected"
     },
@@ -3986,7 +3987,7 @@
       "source_hash": "dc859d868d5b382daeb3213ecc28d0fe5473b37463b7a4aeb3172d5dcb154dbe",
       "translation_hash": "9a5acbc01a0ea6607dea415062708bbd5f8c7fc2a77c39e1e5abb8272b626e90",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:37"
+        "src/app/App_CaptureWiring.cpp:43"
       ],
       "decision": "accepted"
     },
@@ -3995,7 +3996,7 @@
       "source_hash": "91d2dfd1bd809733d933cc096f08b1bf0703faa6b4cb6e6ea03b405792e995b3",
       "translation_hash": "9fff8440b1b84c450d3525e2b12a6d324c8ce409b5b266f8db03b03e3b8316a3",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:31"
+        "src/app/App_CaptureWiring.cpp:37"
       ],
       "decision": "accepted"
     },
@@ -4004,7 +4005,7 @@
       "source_hash": "2ff38415d72f5b04d96d41e8dd83a4327ed7062907b04f3cf612deda93db4630",
       "translation_hash": "69ee4139d1052d32d7c0ceacea648975dc30fbdb61e580e6a997f0ffe0a12c66",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:43"
+        "src/app/App_CaptureWiring.cpp:49"
       ],
       "decision": "accepted"
     },
@@ -4013,7 +4014,7 @@
       "source_hash": "6ae16902e0117b3d363219386368e72ecff2301942819100b62b8ff66d6af182",
       "translation_hash": "faa3511abede9de35258521d2e1d891e7877e40c4f96a71de5dc5a34beef1991",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:67"
+        "src/app/App_CaptureWiring.cpp:73"
       ],
       "decision": "accepted"
     },
@@ -4022,7 +4023,7 @@
       "source_hash": "9ccdc7978dd0e4a6eca85483c87a1fd9dcc18ea5a428eb4ad521adc8e90aa5d2",
       "translation_hash": "8283936ef0140d46497d15fc63488f5e3701487b524ecb269a40639f7dd33dd6",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:49"
+        "src/app/App_CaptureWiring.cpp:55"
       ],
       "decision": "accepted"
     },
@@ -4031,7 +4032,7 @@
       "source_hash": "4e6e1bdfd75e07ff4edc62b276a7e8d9519ae37528f7185a0421da527ae820c8",
       "translation_hash": "8333ca4feeecd90664d65bf3c65b60ae3ffa03a96256f113369b64a4e0db7368",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:55"
+        "src/app/App_CaptureWiring.cpp:61"
       ],
       "decision": "accepted"
     },
@@ -4040,7 +4041,7 @@
       "source_hash": "6c6956d0e486f5f8991e45a9da1dd1bb451ef4fffe8a14c322686e85113a0080",
       "translation_hash": "1e6441a0c958378cff0ce5247040a9dbbf48e2ef037c4a63c9a9a16090153490",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:61"
+        "src/app/App_CaptureWiring.cpp:67"
       ],
       "decision": "accepted"
     },
@@ -4049,7 +4050,7 @@
       "source_hash": "31ad76835b430f39144432cd0679793eec93a84118095c13d3ea858874b0b9c6",
       "translation_hash": "08bfe8f588290f5192747d19c18c3c1a79f31fbf73f60f2e954e4f81e1f1503a",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:25"
+        "src/app/App_CaptureWiring.cpp:31"
       ],
       "decision": "accepted"
     },
@@ -4067,7 +4068,7 @@
       "source_hash": "24027af1461f776395f7cb1b22b0fbd39e73873acf6d2c67aeff45a8590528a2",
       "translation_hash": "bc2797bc0472620099e642d0d874b59229d0159630527af52375503d50b3ce78",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:142"
+        "src/app/App_CaptureWiring.cpp:148"
       ],
       "decision": "corrected"
     },
@@ -4076,7 +4077,7 @@
       "source_hash": "6f61bb786cd7ac2c687dc8bf5d27725786abb51e8e56033209c19650b6b91202",
       "translation_hash": "0bd3534e75d69cec2e72e3c6bf9595a468f73cb48f99891ed0772ebd62970c2f",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:228"
+        "src/app/App_CaptureWiring.cpp:241"
       ],
       "decision": "accepted"
     },
@@ -4085,7 +4086,7 @@
       "source_hash": "51884f334bd43b288a81f4d1380315616704f3104e581b63941881a6f406cdd4",
       "translation_hash": "8b40f6fe2bb99030ff79c1b8c979264f2360b457c8783a9d1e7fd4c0da4b2981",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:277"
+        "src/app/App_CaptureWiring.cpp:292"
       ],
       "decision": "corrected"
     },
@@ -4094,7 +4095,7 @@
       "source_hash": "f60cb0e0cb16f7a2b36b4f0e6c64a2057b6aa27d22f91e9d5a3e8cc31558171c",
       "translation_hash": "cf971ba69e63c8862d3c7b32c87fa289120528730b84742bd65093ccbc9b6018",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:135"
+        "src/app/App_CaptureWiring.cpp:141"
       ],
       "decision": "accepted"
     },
@@ -4103,7 +4104,7 @@
       "source_hash": "1af428084c0f9ec0675945efff01910d599ea64c5f35a42ba7e23cc5015ce702",
       "translation_hash": "eafe1aabdbb9471b9daf5f9b6847ee800f38dedde2e40a2327a6cb43c405d7c1",
       "locations": [
-        "src/app/App_CaptureWiring.cpp:177"
+        "src/app/App_CaptureWiring.cpp:183"
       ],
       "decision": "corrected"
     },
@@ -4112,7 +4113,7 @@
       "source_hash": "827bad6a8e7fc94ea5c4f6b7993ff178eb0dc445e6468ab83c68caa3d37d6df8",
       "translation_hash": "2d03562795986f0ab217703d6c1f20114f81b7b9ab63f09fbb090aaa9526052e",
       "locations": [
-        "src/app/App.cpp:248"
+        "src/app/App.cpp:292"
       ],
       "decision": "corrected"
     },
@@ -4121,7 +4122,7 @@
       "source_hash": "c1df9e7b183b26b477a5ec92c3cc871804461f3dceaf1c724992bb57e1569645",
       "translation_hash": "0f5bd86c49e7f3dce418c7a91e88f9ce860a1b503c7966f6e1961249eda81639",
       "locations": [
-        "src/app/App.cpp:243"
+        "src/app/App.cpp:287"
       ],
       "decision": "corrected"
     },
@@ -4130,7 +4131,7 @@
       "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
       "translation_hash": "9bf39e45f0c112903f8110f66c43a5d2a2c1b86c2af432b4aa1ee11ad14a4eea",
       "locations": [
-        "src/app/App.cpp:275"
+        "src/app/App.cpp:319"
       ],
       "decision": "accepted"
     },
@@ -4583,7 +4584,7 @@
       "translation_hash": "754b07d0f7f45b773d6285c94f8de90dc813c7590290244126645dd156d0189d",
       "locations": [
         "src/ui/qml/settings/AboutSettingsPage.qml:69",
-        "src/ui/qml/settings/GeneralSettingsPage.qml:173"
+        "src/ui/qml/settings/GeneralSettingsPage.qml:218"
       ],
       "decision": "accepted"
     },
@@ -5027,7 +5028,25 @@
       "translation_hash": "0bbf56dc01686605db4f2fffb3ce592aaed8bb6c88d59adb324d177ee94a363b",
       "locations": [
         "src/ui/qml/settings/CaptureSettingsPage.qml:92",
-        "src/ui/qml/settings/CaptureSettingsPage.qml:236"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:243"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.capture.background.description",
+      "source_hash": "d1151532c647994148879800e3a354ebe3f51781e6059aa33581cb9d082693b9",
+      "translation_hash": "e4fe4eb283ca67b16ba031f491d34c958d29ea3e10b536e8c7d7ff32049f7e75",
+      "locations": [
+        "src/ui/qml/settings/CaptureSettingsPage.qml:113"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.capture.background.title",
+      "source_hash": "4660e99fa3c9ab8cc7776b0c27706fc75f2afea899cfe71f17d2cb8436d2a103",
+      "translation_hash": "11585f476d1a7f3ce41b64b008b35900071466b1992febb758e406d704fa6c25",
+      "locations": [
+        "src/ui/qml/settings/CaptureSettingsPage.qml:111"
       ],
       "decision": "accepted"
     },
@@ -5036,7 +5055,7 @@
       "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
       "translation_hash": "951a3856eac0d8eacc922f86af78464e6ea5ef7df34266eb842858742a5d668d",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:35"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:49"
       ],
       "decision": "accepted"
     },
@@ -5045,7 +5064,7 @@
       "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
       "translation_hash": "2d34be1594217b4c84099ede259bc0d4e20c3443413c8c3ba18cd9423b7871f5",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:76"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:122"
       ],
       "decision": "accepted"
     },
@@ -5054,7 +5073,7 @@
       "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
       "translation_hash": "5a47bc7350a709a6adefb5fed41e4e44c5977fa93c28f6a6b9c65cf410e9ac53",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:29"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:43"
       ],
       "decision": "accepted"
     },
@@ -5063,7 +5082,7 @@
       "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
       "translation_hash": "4ab58b83038349965630f595fa7e00b8a12f3f0257957aabba0b5824c7ab71ab",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:81"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:127"
       ],
       "decision": "accepted"
     },
@@ -5072,7 +5091,7 @@
       "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
       "translation_hash": "317c290f6380177a707fd74a1e0142d86010d85a14e35896372e210e2440cfd4",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:38"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:52"
       ],
       "decision": "accepted"
     },
@@ -5081,7 +5100,7 @@
       "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
       "translation_hash": "9c7b7c7cef9080cbe00c0eb651eb61d4006d7a75a48aaa10470075957fd1fe4e",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:74"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:120"
       ],
       "decision": "accepted"
     },
@@ -5090,7 +5109,7 @@
       "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
       "translation_hash": "d03261ccde24c5cda1e6c1d749aed0b56fa412e78ac09d66ba46acb923c1edee",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:79"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:125"
       ],
       "decision": "accepted"
     },
@@ -5099,7 +5118,7 @@
       "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
       "translation_hash": "2402d3f8d869c58f2da65951aa7bc248786736b15ce36314fef9f73d27dec581",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:41"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:55"
       ],
       "decision": "accepted"
     },
@@ -5108,7 +5127,7 @@
       "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
       "translation_hash": "9bfb85f99acac0993a7bac6d834ed069139decc8c7265c868feabd8d14d32e2b",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:32"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:46"
       ],
       "decision": "accepted"
     },
@@ -5126,7 +5145,7 @@
       "source_hash": "6ac5bfb3cf7887a776f213ab3c25c85fa3054b0f6c835073ea2b8dbb2ddc4c3e",
       "translation_hash": "24fb7105988e1f059735dcb1af31e813834e815cb4cbb0eb8065f4ad774b66e5",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:139"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:185"
       ],
       "decision": "corrected"
     },
@@ -5135,7 +5154,7 @@
       "source_hash": "1933b110d76d7853546120eb1dba8f58525b28e4d105dbc7c32bbfcd792c2ec0",
       "translation_hash": "af5a96b13b40eb7d0e97f99fe0aff500c923e0b1b92cf2746a15a04118c41213",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:135"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:181"
       ],
       "decision": "corrected"
     },
@@ -5144,7 +5163,7 @@
       "source_hash": "84a66f71c679e87865b73a1aa264a87bfb79ae6721fe78326e0ee5dfa1448244",
       "translation_hash": "25fddd99bb0293bd6d7710f55d84b3d834f4d5d0249753c42b4b25e90d11c502",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:147"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:193"
       ],
       "decision": "corrected"
     },
@@ -5153,7 +5172,7 @@
       "source_hash": "2210b8dbc6e952a47de1bb6807b7b5501f60ffe70c82702ec05f4325663c734f",
       "translation_hash": "8f69f136cd58c5e271eb7a54ab1acbbf07fb039a394cac27970b8aaafa90396b",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:142"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:188"
       ],
       "decision": "corrected"
     },
@@ -5162,7 +5181,7 @@
       "source_hash": "e95395b3a4ac831ae603127e93f9514d8651a04fd43ffcd083c73537c9985195",
       "translation_hash": "3f68c77fb2ab434f4e643894fe0e8f1ab2904f2191be6e0566ec71c3fde38a16",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:137"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:183"
       ],
       "decision": "accepted"
     },
@@ -5171,7 +5190,7 @@
       "source_hash": "93b0ad6a05b19668f10d419150b7e471f828220ece035386f3ea9faec140044e",
       "translation_hash": "9301e3ed220593811957ff57b9bcd408f2a5fc48ac13f6405c0b083cf240381f",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:101"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:147"
       ],
       "decision": "corrected"
     },
@@ -5180,7 +5199,7 @@
       "source_hash": "609645ae560885fbffda5c818ec183641c9040ae65804794e1d41ae1a1260073",
       "translation_hash": "2e7e4d6ed8ba292913a7065699c71920cf30a52ed7c59fdf251a429cc16b4246",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:97"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:143"
       ],
       "decision": "accepted"
     },
@@ -5189,7 +5208,7 @@
       "source_hash": "4fe6202ae6c4b60b1fddc591be86670e380dcbc75db6244f8756b0d6ea30a20d",
       "translation_hash": "f37128713ec7d9ad7f682ae4d383dc2c025fab5911a5f4b3ff2bb5d40158124d",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:104"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:150"
       ],
       "decision": "accepted"
     },
@@ -5198,7 +5217,7 @@
       "source_hash": "b34250f0367480cbc22b504cce870cec906ef5cf694a9d6037ee24ebecf6806a",
       "translation_hash": "bcb09e955d38c444e158e4aa99b85f4c5e7f6e5de920742a4164862bac337420",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:113"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:159"
       ],
       "decision": "corrected"
     },
@@ -5207,7 +5226,7 @@
       "source_hash": "9ffbea44636a14d5e09217d38b3457a316583e1cff2bb11543c6f6cb0be78880",
       "translation_hash": "70922c8aaab1e9114f41f8174e076c0cb28d4c3bfeb02812f44b19297fe8ed18",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:119"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:165"
       ],
       "decision": "accepted"
     },
@@ -5216,7 +5235,7 @@
       "source_hash": "5064bdfa0b2a72d07bde6a14152a918955b1a04e36aa2868d34d34288eb5c9f0",
       "translation_hash": "be669ad49c56fea887f664774f9dfdca391894900e4b8c0048d4ef272e4d9c74",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:111"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:157"
       ],
       "decision": "corrected"
     },
@@ -5225,7 +5244,7 @@
       "source_hash": "3e5bc31eeb2b88be592cdf3dbfe768cbcafdd5d20b1003eb6a07c645b4fa5ade",
       "translation_hash": "320b9a13f270fc51e9604aab0c86d7fbe3bc4be84b791832d970dc57897eb4a1",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:99"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:145"
       ],
       "decision": "accepted"
     },
@@ -5234,7 +5253,7 @@
       "source_hash": "4993d5b1fde638d9b6fe8bfd24b1e584ad4eb4173c3660c0de1f20463f726150",
       "translation_hash": "df3f841f9340043e1c4634cc4d74c2b9d4ab8b9dd414357f91f875e588db877c",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:66"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:82"
       ],
       "decision": "accepted"
     },
@@ -5243,7 +5262,7 @@
       "source_hash": "4d774eadbbd1205bfec85c931c92187fdf406ba64ac2e05c2428a6b01e0cfe30",
       "translation_hash": "d8e4666be889379477f3c5558e993b6946a3d18d6288254521fc73b7abe0fa9f",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:51"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:65"
       ],
       "decision": "corrected"
     },
@@ -5252,7 +5271,7 @@
       "source_hash": "d5a054d5222689725955daf8d80e754da1f57526b689994a61aa15d7fe1c2ddf",
       "translation_hash": "e92d367cde79c5f8b0e8168c1b8eb752d44dfcbe66dd539e3eaf5bbca0c64873",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:47"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:61"
       ],
       "decision": "accepted"
     },
@@ -5261,7 +5280,7 @@
       "source_hash": "d5a054d5222689725955daf8d80e754da1f57526b689994a61aa15d7fe1c2ddf",
       "translation_hash": "e92d367cde79c5f8b0e8168c1b8eb752d44dfcbe66dd539e3eaf5bbca0c64873",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:54"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:68"
       ],
       "decision": "accepted"
     },
@@ -5270,7 +5289,7 @@
       "source_hash": "b319298f36ba4c562f789cea096095e7b0dbe1ebf3cc7668adb2763a5be57280",
       "translation_hash": "0578c276dcafdc1f283beb3016fa2e01c5983fa29a597b107623e05e531445f3",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:62"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:78"
       ],
       "decision": "corrected"
     },
@@ -5279,7 +5298,7 @@
       "source_hash": "12e5b85b22463dc99eaf92f93e2a61f63a9809ba785a218a694c9cfc4e4799c9",
       "translation_hash": "d5089e6c7df4e2b2b7b160ad70c5ad2d1fb6600e398b88c7071248d26375ea14",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:56"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:70"
       ],
       "decision": "corrected"
     },
@@ -5288,7 +5307,7 @@
       "source_hash": "d50210f115da97ade4c26e99fb6088eb0ae3e04e587619b49ca661bc197b766c",
       "translation_hash": "e199d9e2dbe85f2ff4f0fb0cc0c0cec9a5030c022e34a00fbbd1e24c68fe2f30",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:49"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:63"
       ],
       "decision": "accepted"
     },
@@ -5297,7 +5316,8 @@
       "source_hash": "483835b16031a8c2d63ac1008745be8afdf9592dcd2aa0ed8066f40151e561e7",
       "translation_hash": "e30516ce55eb11ebd8faa63afa4bfe636fe0f0995dce09330de1c914c170eac7",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:64"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:80",
+        "src/ui/qml/settings/CaptureSettingsPage.qml:89"
       ],
       "decision": "corrected"
     },
@@ -5306,7 +5326,7 @@
       "source_hash": "1f121b462eaaa5f3f86922ab79373edc58eaaf8b4e7ce3ee1aef63e0c05a8b59",
       "translation_hash": "2c0c06e62fd8d1d518e579327ad5da262d9eaa3126eacb8c4cb6ef174dc5cb61",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:204"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:258"
       ],
       "decision": "corrected"
     },
@@ -5315,7 +5335,7 @@
       "source_hash": "1f00f38c7b2f2df2628406c2318bfceae4dfe367f6feff789a55beabdd4b33fa",
       "translation_hash": "fcd851c92e4ca45fde078ae995d530a0c6c052f51303ae630b2e3a9573e37942",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:197"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:251"
       ],
       "decision": "corrected"
     },
@@ -5324,7 +5344,7 @@
       "source_hash": "c05aaac50dbda69d12fe6a1cc56a812ebdd488480258251c0ad9200ef2a5f8ea",
       "translation_hash": "6b4e1590e632922b6274a4c09e43e345fd5856c52b971878c9e65f2de886f81d",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:158"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:204"
       ],
       "decision": "corrected"
     },
@@ -5333,7 +5353,7 @@
       "source_hash": "d1e819dc3f83c285cbbd35fcfc62aa4b5b2b0546432a4129531485363eb72acb",
       "translation_hash": "9cde00bd739527a13257d9b610e15543e54c1d455b1ea4c82a22281b5b5b3aaa",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:154"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:200"
       ],
       "decision": "accepted"
     },
@@ -5342,7 +5362,7 @@
       "source_hash": "248ca995299cb59069e10f8f491190c672df4155ef54ca68559557512480c18e",
       "translation_hash": "a3cdffa0880ded9c53f3288626e0e2b445a061a5f8b78dabc4d94119a7ca8a32",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:173"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:219"
       ],
       "decision": "corrected"
     },
@@ -5351,7 +5371,7 @@
       "source_hash": "113704fa1f2848c9a11659f5056c4a62d40ca521edb625276cb4280fb9d9702c",
       "translation_hash": "4df10aa882cf03a3f3cdfda708ab5c34aaab5c23b49dc759b48d976140b3ffac",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:162"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:208"
       ],
       "decision": "corrected"
     },
@@ -5360,7 +5380,7 @@
       "source_hash": "e1592bd45700346021646ccaab11282de5ea6d69b7dd6bff137f39c7dac81eea",
       "translation_hash": "16a8a40a7ede9e3c59978161583f07a0463b738ede33cd3ac6b2199527cd3387",
       "locations": [
-        "src/ui/qml/settings/CaptureSettingsPage.qml:156"
+        "src/ui/qml/settings/CaptureSettingsPage.qml:202"
       ],
       "decision": "corrected"
     },
@@ -6097,7 +6117,7 @@
       "source_hash": "badcb83617f95ae25dad09632c73d3401a28cca5a4d56b18aea9588a27fbf5aa",
       "translation_hash": "3335fc0eea09130eb495738c9d91a711ef588c2687ea1bb33a4675cd0ad9f524",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:486"
+        "src/ui/qml/settings/InputSettingsPage.qml:492"
       ],
       "decision": "accepted"
     },
@@ -6106,7 +6126,7 @@
       "source_hash": "b33018ce453a54cc4b1e9a41b67fe4705d400e7dbcc5fde5d07311800409df93",
       "translation_hash": "2dfe5d0f32efbd8fd4970c1160f20c0c778e2478df332fb3a788b65a358bf097",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:527"
+        "src/ui/qml/settings/InputSettingsPage.qml:533"
       ],
       "decision": "corrected"
     },
@@ -6115,7 +6135,7 @@
       "source_hash": "2320b34c9a791280689b4b0e50138262ca0cd31f8f87508c8cd51b3f46664029",
       "translation_hash": "3ae5dea9164a05a663f8eb369f535ee058921b735927fae0dcef29d60e4bf6a7",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:536"
+        "src/ui/qml/settings/InputSettingsPage.qml:542"
       ],
       "decision": "corrected"
     },
@@ -6124,7 +6144,7 @@
       "source_hash": "c7c1ecfef8aaa1a91e1e955eb67cab24813ce38228ead17988a532e9b4844a5b",
       "translation_hash": "a989e4f20bf01e6dec32643e1e7d274765c325300b8945b7003375cc62018b21",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:431"
+        "src/ui/qml/settings/InputSettingsPage.qml:437"
       ],
       "decision": "corrected"
     },
@@ -6133,7 +6153,7 @@
       "source_hash": "3a98ca69875904ae521f8c1224fe957bc2a4c319981ccba004f196ff4afc696f",
       "translation_hash": "ada2eb738065f76c09a0da1f02210f0a40fb55b97deb5f3ffeb8789330819119",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:427"
+        "src/ui/qml/settings/InputSettingsPage.qml:433"
       ],
       "decision": "corrected"
     },
@@ -6143,8 +6163,8 @@
       "translation_hash": "adc333d5e97a5daf1f16de0e7c41181a3c9cf56b012465d5688d6fc1ce84663e",
       "locations": [
         "src/ui/qml/components/BindingCard.qml:250",
-        "src/ui/qml/settings/InputSettingsPage.qml:561",
-        "src/ui/qml/settings/InputSettingsPage.qml:578"
+        "src/ui/qml/settings/InputSettingsPage.qml:567",
+        "src/ui/qml/settings/InputSettingsPage.qml:584"
       ],
       "decision": "corrected"
     },
@@ -6153,7 +6173,7 @@
       "source_hash": "34595c6321afacd38a7154044d2d9a3a19224c9185ec6559833116549c97bfbe",
       "translation_hash": "4798f14b90ccf4f90937665bf69467a00033b343485fa4b4e57d538efb373c47",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:555"
+        "src/ui/qml/settings/InputSettingsPage.qml:561"
       ],
       "decision": "corrected"
     },
@@ -6162,7 +6182,7 @@
       "source_hash": "93971d119bfdbce75488b9d5a4dbd3bf8ab0037747d2b134053e56d10f2f3543",
       "translation_hash": "75dbb5b987fc13058dd198f3ed2fb56b22b83bf9e7456a3c7acf0eee3875ca97",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:572"
+        "src/ui/qml/settings/InputSettingsPage.qml:578"
       ],
       "decision": "accepted"
     },
@@ -6171,7 +6191,7 @@
       "source_hash": "400057d4b7eac6dbc7a9f5b31238709ece919d8219384989e75bf1a475fbddf6",
       "translation_hash": "ada2eb738065f76c09a0da1f02210f0a40fb55b97deb5f3ffeb8789330819119",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:429"
+        "src/ui/qml/settings/InputSettingsPage.qml:435"
       ],
       "decision": "accepted"
     },
@@ -6180,7 +6200,7 @@
       "source_hash": "03a5ac99a63dc49e56ea0ec74db3cc520a9c56cd495797de32627edd235c90c8",
       "translation_hash": "54ff668b9feca4559ea3dda1d17cefc6273025cbd88fdacf816f745d595c2440",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:623"
+        "src/ui/qml/settings/InputSettingsPage.qml:629"
       ],
       "decision": "corrected"
     },
@@ -6279,7 +6299,7 @@
       "source_hash": "5df7a8c2fe3c0269d45eda0e04e32ffabae30c7a9b2993842f6ad323085df824",
       "translation_hash": "a60e1e7f789ca5ed3d7f735d6e4b5d4c7d86626eac385d9b27c6c8077686d6cf",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:329"
+        "src/ui/qml/settings/InputSettingsPage.qml:335"
       ],
       "decision": "corrected"
     },
@@ -6288,7 +6308,7 @@
       "source_hash": "b4712c37bdc453d8c524213d97d63379eb4ece5872b733dab3ed932583903577",
       "translation_hash": "b4cb37f3e478d188280eb004f9cda4bda7bec6a98066844e12851d1a7adc0f4c",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:331"
+        "src/ui/qml/settings/InputSettingsPage.qml:337"
       ],
       "decision": "corrected"
     },
@@ -6297,7 +6317,7 @@
       "source_hash": "9a116352354d9018bcddf25cb9cb7d5ac234df7a9016b91e41f83d6d719c0f59",
       "translation_hash": "dcc6462d962fd8c2ae2f8ee11c8200391db1ffccbfbc01f073b5b183470cac42",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:288"
+        "src/ui/qml/settings/InputSettingsPage.qml:294"
       ],
       "decision": "corrected"
     },
@@ -6306,7 +6326,7 @@
       "source_hash": "d161c9907929a65feaa80a9d1b287fd2fc1b49354113782ba01ab0d8e9b4e549",
       "translation_hash": "3ffaf484c6791c24297996042355f0748e3aff745dcfba432bed6bdd773ed345",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:284"
+        "src/ui/qml/settings/InputSettingsPage.qml:290"
       ],
       "decision": "corrected"
     },
@@ -6315,7 +6335,7 @@
       "source_hash": "3e670e49c36879ede4ed345948e559cb21d02851bbf13c6fd96173d47ce2ddb0",
       "translation_hash": "5ff9bec04c84fd5fe48406e6e2f04b0470ce9cc9fdeda96c4a5b50dfc9381b0e",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:291"
+        "src/ui/qml/settings/InputSettingsPage.qml:297"
       ],
       "decision": "corrected"
     },
@@ -6324,7 +6344,7 @@
       "source_hash": "7ebeddd897b70a37d07c2965a9cd8dbdcc6b74947a7470a38ef4df7bcbec4b4f",
       "translation_hash": "fe9677a80794d1ecc5a03a67bd6394f8c868426e79b44a2e801fab41289ebea4",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:293"
+        "src/ui/qml/settings/InputSettingsPage.qml:299"
       ],
       "decision": "corrected"
     },
@@ -6333,7 +6353,7 @@
       "source_hash": "2c0d6dc84e45db6fa48bb5dc18ebd412bebb00a545440fd6ebd03efa4adfab4c",
       "translation_hash": "fce80be4a3e6945c3a7a17cea20930d57248dc92e05e9d23e708019d00250f93",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:310"
+        "src/ui/qml/settings/InputSettingsPage.qml:316"
       ],
       "decision": "corrected"
     },
@@ -6342,7 +6362,7 @@
       "source_hash": "6a1e6379220934e3badf9a27c6eedf4b7d0cff3c3b60201349e2c7fcabfc9470",
       "translation_hash": "b14a0b354053dff8dc03e3c312b619d5e3a36f9bbb8fca631c819578e08047b6",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:312"
+        "src/ui/qml/settings/InputSettingsPage.qml:318"
       ],
       "decision": "corrected"
     },
@@ -6351,7 +6371,7 @@
       "source_hash": "8f906e902dbc0712fe495f9e6a3aa1063fda808e46e58d4faa7f2c8eb1e9e163",
       "translation_hash": "8461a90eefdc5afb3b68dce84a407b9d7b846bf4e58b8ec7396056a92f77b50a",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:286"
+        "src/ui/qml/settings/InputSettingsPage.qml:292"
       ],
       "decision": "corrected"
     },
@@ -6360,7 +6380,7 @@
       "source_hash": "38b126d6e74d2bbb8e425d644476883b6a3bd8d13fc8a5d634d67452d1fc5876",
       "translation_hash": "1ed88b90d6844bd1fe8324d7245dac223234b3e4ef558f912e7cc2fd6426b7ab",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:120"
+        "src/ui/qml/settings/InputSettingsPage.qml:126"
       ],
       "decision": "accepted"
     },
@@ -6370,7 +6390,7 @@
       "translation_hash": "674e730524e404b91391fa686892a85fd680a04dc1f27ad1f7584a48b412ec64",
       "locations": [
         "src/ui/qml/components/ControllerWarningBanner.qml:94",
-        "src/ui/qml/settings/InputSettingsPage.qml:129"
+        "src/ui/qml/settings/InputSettingsPage.qml:135"
       ],
       "decision": "corrected"
     },
@@ -6381,7 +6401,7 @@
       "locations": [
         "src/ui/qml/Main.qml:178",
         "src/ui/qml/components/ControllerWarningBanner.qml:69",
-        "src/ui/qml/settings/InputSettingsPage.qml:122"
+        "src/ui/qml/settings/InputSettingsPage.qml:128"
       ],
       "decision": "corrected"
     },
@@ -6589,7 +6609,7 @@
       "source_hash": "1898142d805a25edc334a07a19fb8a743b328f0311f715bbbed0a80b33c72285",
       "translation_hash": "cb47dbbfaa6ce367c94193c9d51b4350da8409d6743f4302df436973c40f8a6d",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:155"
+        "src/ui/qml/settings/InputSettingsPage.qml:161"
       ],
       "decision": "accepted"
     },
@@ -6598,7 +6618,7 @@
       "source_hash": "b0feac57788f5633ce1739c9d480eef65c10c5277cf440c9bd52a9b8f0ef6da3",
       "translation_hash": "24376e3ebd12dd7e8a95fb9823ee4d2f1ed6a45b30dd2950bed860857ee5e3d9",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:180"
+        "src/ui/qml/settings/InputSettingsPage.qml:186"
       ],
       "decision": "corrected"
     },
@@ -6607,7 +6627,7 @@
       "source_hash": "1c1dbf98f322a2bf07971ca5c1799b1f13722a83c02556dd39fff80a3b291a61",
       "translation_hash": "4ff127cf8166b31091e816b30b4852966a2044d793127d3bf20ca6f4f2da5753",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:152"
+        "src/ui/qml/settings/InputSettingsPage.qml:158"
       ],
       "decision": "accepted"
     },
@@ -6616,7 +6636,7 @@
       "source_hash": "fa201de76a6dfd18fe804029d47bb7c5ceb1921fecb53149ba76c5d63d237342",
       "translation_hash": "419d26402c929eeab64abef562143a1efefc8404516ad32e7708e0703086a2ec",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:177"
+        "src/ui/qml/settings/InputSettingsPage.qml:183"
       ],
       "decision": "corrected"
     },
@@ -6625,7 +6645,7 @@
       "source_hash": "8c538fe45e16b56d09f60aa0e2341331a127677484b39d65b7abfec9dd7dff38",
       "translation_hash": "57958faac62352697a8b953260760c46844ab5b4f630ac8238975bbdc8a9e11d",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:167"
+        "src/ui/qml/settings/InputSettingsPage.qml:173"
       ],
       "decision": "corrected"
     },
@@ -6634,7 +6654,7 @@
       "source_hash": "a28f639b17fcb4c338b04fed8a3de474ac715f7357397c12365f196f191bdbf6",
       "translation_hash": "a6e18adb643b9b153bf5329e3763335936b8f616bae19461f75e978cc244c956",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:192"
+        "src/ui/qml/settings/InputSettingsPage.qml:198"
       ],
       "decision": "corrected"
     },
@@ -6643,7 +6663,7 @@
       "source_hash": "874b972f4dfab6faa1545573c7eaa5199653d98a99f0cdcabff5a7723c7ae958",
       "translation_hash": "7a9a0ec20874bd34faa7697ad53891013616d2b4cbfeca2bce00700360f1b334",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:161"
+        "src/ui/qml/settings/InputSettingsPage.qml:167"
       ],
       "decision": "accepted"
     },
@@ -6652,7 +6672,7 @@
       "source_hash": "ace6e8ea45abac508307999fc4a13c615574f631c4c67b5b4320187e7affca4d",
       "translation_hash": "64e6b7198f785092b6680f7bb86086bd8c295a410a89183164f25c2d77517857",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:186"
+        "src/ui/qml/settings/InputSettingsPage.qml:192"
       ],
       "decision": "corrected"
     },
@@ -6661,7 +6681,7 @@
       "source_hash": "3d5960aeb421e0ce30d2a3720ec675eddeb3ea32d4ac1fe84779462ed3364419",
       "translation_hash": "fc2859022bb8b1271470e8c450cf97ecacaa919d27ca9194776c2d426b809584",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:158"
+        "src/ui/qml/settings/InputSettingsPage.qml:164"
       ],
       "decision": "corrected"
     },
@@ -6670,7 +6690,7 @@
       "source_hash": "43b31741ec99a6ce28a6505faf1959986295d609f275003aea710889253ab07a",
       "translation_hash": "687ea99f165340243677a793bb734563d225f4863a070ac736b02cb389c5317f",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:183"
+        "src/ui/qml/settings/InputSettingsPage.qml:189"
       ],
       "decision": "corrected"
     },
@@ -6679,7 +6699,7 @@
       "source_hash": "64b5b0ace35e64e38da357edfa271818308a5e80a8c3b1cee0307688d9b19135",
       "translation_hash": "57d966d436f99422ae4dd568c9c7969d49b8f81453e91ef62248dadf19a2f3ee",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:164"
+        "src/ui/qml/settings/InputSettingsPage.qml:170"
       ],
       "decision": "corrected"
     },
@@ -6688,7 +6708,7 @@
       "source_hash": "de30329f85bb002b21b0f9287a518ed2e2a23755c8ac71f0dfd7d76a0271734f",
       "translation_hash": "e52933d2a7cfea60733d876bc4a0232c91cbcf893fe957ccc1012bac50f4b834",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:189"
+        "src/ui/qml/settings/InputSettingsPage.qml:195"
       ],
       "decision": "corrected"
     },
@@ -6697,7 +6717,7 @@
       "source_hash": "3919e48ab095d962bbd208cbcde1057c31725d326429a7c06165f58921ab6e48",
       "translation_hash": "8a9a496714558debe378e7ad041655ac75f520a13febbee38d4d3b4d7785634d",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:170"
+        "src/ui/qml/settings/InputSettingsPage.qml:176"
       ],
       "decision": "accepted"
     },
@@ -6706,7 +6726,7 @@
       "source_hash": "49599e99fae1eebef3a2fb74a829e98a9ec29575c41f35d9af24bd96441d761b",
       "translation_hash": "189ba66262ed935e4d431c2e6f0c24a54dfa55787ecffe2555cb63b8f9abf1fd",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:195"
+        "src/ui/qml/settings/InputSettingsPage.qml:201"
       ],
       "decision": "accepted"
     },
@@ -6913,7 +6933,7 @@
       "source_hash": "563ef11e7f1d51d747c7e57505d23bda249664d19b61210defcbcb4675918ea7",
       "translation_hash": "9d35d252f785d8a23726f07e46b06b1f908337943a68f6690a4b8f9f71e3acf4",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:255"
+        "src/ui/qml/settings/InputSettingsPage.qml:261"
       ],
       "decision": "corrected"
     },
@@ -6922,7 +6942,7 @@
       "source_hash": "a9ee182ed2eee62959bf3dfa2db7179a3de6fde8951aac4ba4dd720d11226774",
       "translation_hash": "e14c72aeca22e37ce23601387e8041fbe674539306243f716aa1c643ac976527",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:257"
+        "src/ui/qml/settings/InputSettingsPage.qml:263"
       ],
       "decision": "corrected"
     },
@@ -6931,7 +6951,7 @@
       "source_hash": "902fce28d80980fe2c42d5649466896bcc294cccdd92be22625b870dc1eaebf0",
       "translation_hash": "96e81786f1a8c31eb8f8a5c1117d7d8197e36e8e4272402f8acf4525388ffd9c",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:260"
+        "src/ui/qml/settings/InputSettingsPage.qml:266"
       ],
       "decision": "corrected"
     },
@@ -6940,7 +6960,7 @@
       "source_hash": "05472f27b6d66adfd95d7c0880441a4140a38cb0719cf2a2ce2df74796d1ced6",
       "translation_hash": "1e71f0351237eda9c08fa09f03a10a909b009c2d92e42b1447134d0ebe238431",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:219"
+        "src/ui/qml/settings/InputSettingsPage.qml:225"
       ],
       "decision": "accepted"
     },
@@ -6949,7 +6969,7 @@
       "source_hash": "b17cf60c8746a339db04cfb7dd7921a8fa42592aaa0bd9062459b011f7620203",
       "translation_hash": "3a6a6454788274f2ec5b47f49379459fd0a2feb21e8b9047c8b2ee492fc75573",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:267"
+        "src/ui/qml/settings/InputSettingsPage.qml:273"
       ],
       "decision": "corrected"
     },
@@ -6958,7 +6978,7 @@
       "source_hash": "956f162334d5261550202052938258ba92f3e083ad9b8a8b29c0672b00e35d4f",
       "translation_hash": "2fd871f3f4bb04538039824b4ab0af6f778163032fb9415c3da88661492bfa94",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:225"
+        "src/ui/qml/settings/InputSettingsPage.qml:231"
       ],
       "decision": "corrected"
     },
@@ -6967,7 +6987,7 @@
       "source_hash": "055fb11e42b6337f4e2aa925fe085fe380bb3164b76f638f3865ca5f902d1176",
       "translation_hash": "d44cc9824fcdf1bedc1ec1272f15b3545a5e24a0e2b17c15366b0bf6002074b9",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:271"
+        "src/ui/qml/settings/InputSettingsPage.qml:277"
       ],
       "decision": "corrected"
     },
@@ -6976,7 +6996,7 @@
       "source_hash": "4cad8c3506da2dc5afad1cced2c201c62b2df777daa44c9c73111a52250e5b56",
       "translation_hash": "f32cd8e68a591da69d19b514b40b4304883df72e4886350148ef651326d96ea2",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:236"
+        "src/ui/qml/settings/InputSettingsPage.qml:242"
       ],
       "decision": "corrected"
     },
@@ -6985,7 +7005,7 @@
       "source_hash": "84f24c34fda42f4518f5584d29f4b781e538a5f910892f25a97a0a34823227f1",
       "translation_hash": "b5caceed45d3833b874d6a5f43a9ad733e69306c60c0155413c91111d2c8feaa",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:243"
+        "src/ui/qml/settings/InputSettingsPage.qml:249"
       ],
       "decision": "corrected"
     },
@@ -6994,7 +7014,7 @@
       "source_hash": "c4463df32df777ec42c97b85e6df5ee596d6d8959114938555b5b792494b82b9",
       "translation_hash": "314b5ee6bfd6b214ca3d9afd4abade191a2dbc768329083d9bfa9824747fa6e6",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:240"
+        "src/ui/qml/settings/InputSettingsPage.qml:246"
       ],
       "decision": "corrected"
     },
@@ -7013,7 +7033,7 @@
       "source_hash": "899273e09a566b6252883e3cc49426ec1e203f8ea272786a67988e058c69b182",
       "translation_hash": "3d545b486dbc33d529e79d740fa06bc469bfb8273a30ccc0dd65427172aa87fa",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:221"
+        "src/ui/qml/settings/InputSettingsPage.qml:227"
       ],
       "decision": "corrected"
     },
@@ -7515,7 +7535,7 @@
       "source_hash": "6e1bdfacdf87e1c1f906eaf58aaa059e50e19ec6c5f3f68b78a9806a5d1116d8",
       "translation_hash": "cd0d533de775887a1b74e4814bc504b16f02967687df09f8fe2df6c59c3954e7",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:418"
+        "src/ui/qml/settings/InputSettingsPage.qml:424"
       ],
       "decision": "accepted"
     },
@@ -7524,7 +7544,7 @@
       "source_hash": "63d430ec3881359ab4f201c6fb28c5345c87423c88c3228968e5319cf914c0f5",
       "translation_hash": "feb0cd69be98a7bce98bc301aea2f6e053122fe0722d99bab695570ac24912ef",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:415"
+        "src/ui/qml/settings/InputSettingsPage.qml:421"
       ],
       "decision": "accepted"
     },
@@ -7560,7 +7580,7 @@
       "source_hash": "5654e5f323b2e6827a41ea9a4626e3143e905a0b2a48f644634476418964af07",
       "translation_hash": "2b65023f4207843edd079417adb0250fc6f040e7b207ff7f0dd650c2623c7f01",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:412"
+        "src/ui/qml/settings/InputSettingsPage.qml:418"
       ],
       "decision": "accepted"
     },
@@ -7578,7 +7598,7 @@
       "source_hash": "20f882afc682708bc40f13fe7fce10c65445006b36dbc1d087380fba6a6f276c",
       "translation_hash": "40f4d0a3f289efd2164b85dc61f9beade195cc9bba3e2299b714e80303ae9cb6",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:384"
+        "src/ui/qml/settings/InputSettingsPage.qml:390"
       ],
       "decision": "accepted"
     },
@@ -7587,7 +7607,7 @@
       "source_hash": "f43703be9001fd2a9498ab810464410585dbfccb30e30e1a07ea6e74f21e5957",
       "translation_hash": "409b8c5b9083bdf3f95c3009757a594fe7dfd129902611c917c5faab801d8326",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:382"
+        "src/ui/qml/settings/InputSettingsPage.qml:388"
       ],
       "decision": "accepted"
     },
@@ -7596,7 +7616,7 @@
       "source_hash": "ce913f47c802ec78d114f732b0c3fdf7ff6b68f7a376d076a61e68aaa1d35195",
       "translation_hash": "544a3845b84c9126bf836de62648510586bdfc9ff9e51cc2b96e09938758bb7b",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:394"
+        "src/ui/qml/settings/InputSettingsPage.qml:400"
       ],
       "decision": "accepted"
     },
@@ -7605,7 +7625,7 @@
       "source_hash": "82d54c2d62805f5d78ac872ac0e53587dc22a4d45664c71845654e1a309d965c",
       "translation_hash": "1b24f2644449f54f044c5f4b4ce3e7e044a9cb239b71afb1276bd707404de45b",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:392"
+        "src/ui/qml/settings/InputSettingsPage.qml:398"
       ],
       "decision": "accepted"
     },
@@ -7750,7 +7770,7 @@
       "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
       "translation_hash": "a4ee07e6289a14f7e1973f82be995e1687edcd33f5b2ab53451b8303dd05a352",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:354"
+        "src/ui/qml/settings/InputSettingsPage.qml:360"
       ],
       "decision": "accepted"
     },
@@ -7759,7 +7779,7 @@
       "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
       "translation_hash": "cbffd2483d6f01bf435966beb3526cd01b5ab1b79725a06d5a194b4c8b3b28c5",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:352"
+        "src/ui/qml/settings/InputSettingsPage.qml:358"
       ],
       "decision": "accepted"
     },
@@ -7778,7 +7798,7 @@
       "source_hash": "f8d07b7ff7e6b343ed7e4f8055b98ae0559ce2c90a7b4593d4ddcc9239e8b191",
       "translation_hash": "0dbd769b77b91ba61c056cf3d889a1947588be9c5aaad82c0068c96c4a291dff",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:364"
+        "src/ui/qml/settings/InputSettingsPage.qml:370"
       ],
       "decision": "accepted"
     },
@@ -7787,7 +7807,7 @@
       "source_hash": "d499ebe75f41d643a3d91a612f4ef623145de6503500b5bfff36a68309fdc26d",
       "translation_hash": "6af88765ec8b608164a90ff99532606e9682d57ce462f21a4983d273d1080fa5",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:367"
+        "src/ui/qml/settings/InputSettingsPage.qml:373"
       ],
       "decision": "accepted"
     },
@@ -7796,7 +7816,7 @@
       "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
       "translation_hash": "ae06bbf138d6857d4313edd1de511419d3f48a3ec7c3423afa45fa74ab01073c",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:362"
+        "src/ui/qml/settings/InputSettingsPage.qml:368"
       ],
       "decision": "accepted"
     },
@@ -7931,7 +7951,7 @@
       "source_hash": "1a4abf1ae3a4dc9d496461d5acf96d1642dfdf53c7fc654bc4a848b2f5166b6d",
       "translation_hash": "f43f555e6de7ed1bee36f2aafe3626500386617ddf813a6df4626630df8a103e",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:375"
+        "src/ui/qml/settings/InputSettingsPage.qml:381"
       ],
       "decision": "accepted"
     },
@@ -7940,7 +7960,7 @@
       "source_hash": "9ca0e9db997108ece670c308389aed9e57c0f0fc6aa0d1945447c9a02e418dbc",
       "translation_hash": "bbd160ba50006610da9e01f01d7b6f492992b17b10e0c2d1e51c8a3a1c49d191",
       "locations": [
-        "src/ui/qml/settings/InputSettingsPage.qml:373"
+        "src/ui/qml/settings/InputSettingsPage.qml:379"
       ],
       "decision": "accepted"
     },
@@ -9540,11 +9560,20 @@
       "decision": "accepted"
     },
     {
+      "id": "gamehq.tray.automatic_capture",
+      "source_hash": "1462110ffbc3c1b227cb241437f195df6ca444df7fff42932bce1f528aeea2fe",
+      "translation_hash": "ae56d5390552ce5bda8d72b45adfe5fd219dcfb3c540a948e391f7f37c5972f0",
+      "locations": [
+        "src/tray/TrayIcon.cpp:278"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.tray.exit",
       "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a",
       "translation_hash": "d192ab37e0c518d0ab68fd745571469dc7538844a850151cbb26d295d3969ac7",
       "locations": [
-        "src/tray/TrayIcon.cpp:200"
+        "src/tray/TrayIcon.cpp:282"
       ],
       "decision": "corrected"
     },
@@ -9553,16 +9582,25 @@
       "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
       "translation_hash": "1f21292d5ae800bdcb7b6ad6288b1c2dd1b95941d9200ac369afa29926da4fd4",
       "locations": [
-        "src/tray/TrayIcon.cpp:184"
+        "src/tray/TrayIcon.cpp:257"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.tray.pin_current_game",
+      "source_hash": "6ab7488f239ea02ac2fc4cedf7f5f05afbb75fe7e3260a3f832aae0151e76a40",
+      "translation_hash": "56a9d3792728bded4f81608e5eecaef1609630cd117d367488acc5531171f1ef",
+      "locations": [
+        "src/tray/TrayIcon.cpp:272"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.tray.rescan_captures",
       "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b",
       "translation_hash": "3297a9b867cbee16a06d81c7aa1ae5f13ca44df8917c762ddd0f7a2367d13ee5",
       "locations": [
-        "src/tray/TrayIcon.cpp:188"
+        "src/tray/TrayIcon.cpp:261"
       ],
       "decision": "corrected"
     },
@@ -9571,16 +9609,34 @@
       "source_hash": "6f33ed88c5e0d53c493a9d6f5f61da79157b680e32bb05742a94a18d4587ea86",
       "translation_hash": "9a831d5bd2822db4f4cada4cb7072c210eae2627c01ae3411509e1153416e511",
       "locations": [
-        "src/tray/TrayIcon.cpp:196"
+        "src/tray/TrayIcon.cpp:269"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.tray.select_capture_target",
+      "source_hash": "d205ce968665d7c5445ad1a449cf57eb070892256a5e857e2bcf770ce9c3aba5",
+      "translation_hash": "5e6b008c948a51e430f581865f2447c0c9cb861d13b27271af24d7ed177af5db",
+      "locations": [
+        "src/tray/TrayIcon.cpp:275"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.tray.status.capture.paused",
+      "source_hash": "a18633edfb5f9cc3bafb90bfe3d647bf79d63e3211c6f1116e303af0996014d3",
+      "translation_hash": "adf377fcb653eaf86bc85e8b1324db6f2317fd893b1d902bdd80d76ec39cab42",
+      "locations": [
+        "src/tray/TrayStatus.cpp:196"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.tray.status.capture.ready",
       "source_hash": "37ab13a58a5828d1a7ab6532f7bfcf71e30128c8172a03562433a6b53d4e40c8",
       "translation_hash": "e69676442de6c4db77f7cd501334cd825282c659fe5a6c5b06d826df4fcda829",
       "locations": [
-        "src/tray/TrayStatus.cpp:170"
+        "src/tray/TrayStatus.cpp:201"
       ],
       "decision": "accepted"
     },
@@ -9589,7 +9645,7 @@
       "source_hash": "e417793779664afc2df0f059d43971f457259091623369cff1449ff5962db118",
       "translation_hash": "d4cf4dafe31acb3caf648507640ba4867da77ddc80cb700ab583b959ab746cd5",
       "locations": [
-        "src/tray/TrayStatus.cpp:189"
+        "src/tray/TrayStatus.cpp:211"
       ],
       "decision": "accepted"
     },
@@ -9598,7 +9654,7 @@
       "source_hash": "610cd250f5812fb70864b96013bc95d3a1953e2ba30e2dbabf2e90948edc7b5d",
       "translation_hash": "7b7ce7d02486b8254505c1dfe6d2b5f7af599c719dd8b94848780e12a1536308",
       "locations": [
-        "src/tray/TrayStatus.cpp:175"
+        "src/tray/TrayStatus.cpp:206"
       ],
       "decision": "accepted"
     },
@@ -9607,7 +9663,7 @@
       "source_hash": "10670b9bb81d5fbcecb36c8840e4c17709e36615d62ef6db14560d940181ba9e",
       "translation_hash": "6ae84512a3f081d1c2fbed45016050fdeab4123400af1ebff0d69e518fda498f",
       "locations": [
-        "src/tray/TrayStatus.cpp:182"
+        "src/tray/TrayStatus.cpp:218"
       ],
       "decision": "accepted"
     },
@@ -9616,7 +9672,16 @@
       "source_hash": "96fedff499225cc8e7c91d614d8c461a4dcf8b4440867c0bb1ebcdbc0c042a42",
       "translation_hash": "f88d6c8995c9c95472302fa907fb8ad7b9a3116fbd0dce0ae447a4425dd65957",
       "locations": [
-        "src/tray/TrayStatus.cpp:196"
+        "src/tray/TrayStatus.cpp:232"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.tray.status.state.background",
+      "source_hash": "08c9c260205ae333be2345d599ca56247b84feda42ad8c6afb61aa3527001097",
+      "translation_hash": "43c0dcbec2b7f81c3b126d66d192da7ad216cfe383bbff636616269a8d490ef5",
+      "locations": [
+        "src/tray/TrayStatus.cpp:179"
       ],
       "decision": "accepted"
     },
@@ -9625,7 +9690,7 @@
       "source_hash": "10993d9832fad2d266254628e69f220160a855d02444a713f5f0ac0a4d4f2531",
       "translation_hash": "7f2a39a701421e450d289773572ae53159caa8bd1aaaf46fc86019b3b8f74dc2",
       "locations": [
-        "src/tray/TrayStatus.cpp:147"
+        "src/tray/TrayStatus.cpp:168"
       ],
       "decision": "accepted"
     },
@@ -9634,7 +9699,7 @@
       "source_hash": "4a5cf68849fce0164c53d67c805bb1aeab34c2092d9b77769bc296fdb35daca1",
       "translation_hash": "bb366f2cafa6bf1c06a585b5ca84563a89e2297ec861f7be0ddc0a743b134518",
       "locations": [
-        "src/tray/TrayStatus.cpp:142"
+        "src/tray/TrayStatus.cpp:163"
       ],
       "decision": "accepted"
     },
@@ -9643,7 +9708,7 @@
       "source_hash": "813ce566a846e3d98a75b580ef2762343f7116f806c021d68e2c7ef1e899a1f3",
       "translation_hash": "0fedbd5179ab33d6fc9356fef0f74150ab2c91ebf4574602457c035b17ca8b5f",
       "locations": [
-        "src/tray/TrayStatus.cpp:156"
+        "src/tray/TrayStatus.cpp:183"
       ],
       "decision": "accepted"
     },
@@ -9652,7 +9717,16 @@
       "source_hash": "2a99ff7d2150f8069e6f1c5d3648d4c9e5e9825c9596e1ad8f518eda3b965b8a",
       "translation_hash": "6e4538e3806b17e61559924b948921df8b9b9c0c37623d29b848fd140056ae59",
       "locations": [
-        "src/tray/TrayStatus.cpp:160"
+        "src/tray/TrayStatus.cpp:187"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.tray.status.state.pinned",
+      "source_hash": "9dd2ff16ddf6634debf3924ceae17aee5ed9dfd2182a1af642e0021e33966f5a",
+      "translation_hash": "b7ca969713ef36cb45889b41f39cd9a8833576611de2ecf65d595ff99279edca",
+      "locations": [
+        "src/tray/TrayStatus.cpp:176"
       ],
       "decision": "accepted"
     },
@@ -9661,7 +9735,7 @@
       "source_hash": "1af428084c0f9ec0675945efff01910d599ea64c5f35a42ba7e23cc5015ce702",
       "translation_hash": "eafe1aabdbb9471b9daf5f9b6847ee800f38dedde2e40a2327a6cb43c405d7c1",
       "locations": [
-        "src/tray/TrayStatus.cpp:137"
+        "src/tray/TrayStatus.cpp:158"
       ],
       "decision": "accepted"
     },
@@ -9670,7 +9744,7 @@
       "source_hash": "adaba9df9ad6f945276f5ebeba743b41eac1746b88055f7c24187cc166d57a09",
       "translation_hash": "b1ccc7491cc40ecd1fa5c8c8e940a98da401c60e0fdd165c746c442af345eec7",
       "locations": [
-        "src/tray/TrayStatus.cpp:214"
+        "src/tray/TrayStatus.cpp:250"
       ],
       "decision": "accepted"
     },
@@ -9679,7 +9753,7 @@
       "source_hash": "8abd2b0f58c6585253024fb181f76659a027a1ac6c5f3c018834ce29b65de188",
       "translation_hash": "38e6bb399a375d532d5ae72068bcefd0cece5c3efd732677b0ea3a9a7b874300",
       "locations": [
-        "src/tray/TrayStatus.cpp:204"
+        "src/tray/TrayStatus.cpp:240"
       ],
       "decision": "accepted"
     },
@@ -9688,7 +9762,7 @@
       "source_hash": "ca050bc6036367f8a5d05038ea2dcd1a65c66afeb54c99297f1e85afe83ec296",
       "translation_hash": "0c0bf31dbe6d7de06b29108b81ba6f8b143b4dd519fef1ee90224e91f1214a77",
       "locations": [
-        "src/tray/TrayStatus.cpp:209"
+        "src/tray/TrayStatus.cpp:245"
       ],
       "decision": "accepted"
     },
@@ -9697,7 +9771,7 @@
       "source_hash": "b4d2d96a50a5206cb63031ec9c8c292948433a8c0824884abc08eeac5928927c",
       "translation_hash": "bc22905cb39e8684f5606293df3572ee1bbdcd86e8067df0d32dcb544ddaebde",
       "locations": [
-        "src/tray/TrayIcon.cpp:192"
+        "src/tray/TrayIcon.cpp:265"
       ],
       "decision": "corrected"
     },
@@ -9865,7 +9939,7 @@
       "translation_hash": "9871e734ca436d5b944a0c2ac9d208900fc56ea464997b421d2602e8b92e3cb3",
       "locations": [
         "src/ui/qml/settings/AboutSettingsPage.qml:122",
-        "src/ui/qml/settings/GeneralSettingsPage.qml:178"
+        "src/ui/qml/settings/GeneralSettingsPage.qml:223"
       ],
       "decision": "corrected"
     },
@@ -9875,7 +9949,7 @@
       "translation_hash": "ddba77f4aae76a2f69372aeafa052b8c0bc2527ec08a2634e14160e53b32ad32",
       "locations": [
         "src/ui/qml/settings/AboutSettingsPage.qml:120",
-        "src/ui/qml/settings/GeneralSettingsPage.qml:176"
+        "src/ui/qml/settings/GeneralSettingsPage.qml:221"
       ],
       "decision": "corrected"
     },
@@ -16665,8 +16739,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_es_419.ts",
-      "sha256": "27401f0ce8a98c42e8f755c89531e1f64b4c4e523614ae2ee16ae32793762ddb",
-      "reviewed_units": 1133
+      "sha256": "8a1b7f435470a2f2dd063a1e21a0be7b9f7e51d3f320aee09fd615723352e592",
+      "reviewed_units": 1141
     },
     {
       "surface": "installer",

@@ -2886,7 +2886,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.settings.capture.background.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
       <source>Keep capturing the last active game when you switch to another app.</source>
-      <translation>Das zuletzt aktive Spiel weiter erfassen, wenn du zu einer anderen App wechselst.</translation>
+      <translation>Das zuletzt aktive Spiel weiter erfassen, wenn Sie zu einer anderen App wechseln.</translation>
     </message>
     <message id="gamehq.settings.capture.background.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="111"></location>
