@@ -18,9 +18,11 @@ import sqlite3
 import subprocess
 import sys
 import time
+from typing import TYPE_CHECKING
 import zipfile
 
-import psutil
+if TYPE_CHECKING:
+    import psutil
 
 REPO = Path(__file__).resolve().parents[1]
 OWNED_ROOTS: set[Path] = set()
@@ -218,6 +220,8 @@ def handoff(transaction: Path, helper: Path) -> None:
 
 
 def main() -> None:
+    global psutil
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--old-portable")
     parser.add_argument("--release-dir")
@@ -238,6 +242,8 @@ def main() -> None:
                               scoped(args.test_helper), args.version)
         print(json.dumps(result, indent=2))
         return
+    import psutil
+
     if args.handoff:
         handoff(scoped(args.handoff), scoped(args.test_helper))
         return
