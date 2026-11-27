@@ -295,7 +295,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--build-dir", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True, help="New evidence directory")
-    parser.add_argument("--profile", choices=("headless", "ci"), default="headless")
+    parser.add_argument("--profile", choices=("headless", "concurrency", "ci"), default="headless")
     parser.add_argument("--jobs", type=int, default=1)
     args = parser.parse_args()
     if args.jobs < 1:
@@ -355,16 +355,18 @@ def main() -> int:
         for key in ("GAMEHQ_PUBLIC_RELEASES_FIXTURE", "GAMEHQ_EXPECTED_STABLE_VERSION"):
             env.pop(key, None)
         receipt["environment"]["publicReleaseFeed"] = "tracked synthetic API fixture"
-        if args.profile == "headless":
+        if args.profile != "ci":
             scratch = out / "scratch"
             scratch.mkdir()
             env.update(QT_QPA_PLATFORM="offscreen", QT_QUICK_BACKEND="software",
                        GAMEHQ_AUDIO_E2E="0", TEMP=str(scratch), TMP=str(scratch))
+        repeats = tuple(Suite(f"concurrency-{i}", "integration", CONCURRENCY) for i in range(1, 4))
+        if args.profile == "headless":
             suites = HEADLESS
+        elif args.profile == "concurrency":
+            suites = repeats
         else:
-            suites = (Suite("native", "ci-mixed"),) + tuple(
-                Suite(f"concurrency-{i}", "integration", CONCURRENCY) for i in range(1, 4)
-            )
+            suites = (Suite("native", "ci-mixed"),) + repeats
         receipt["environment"]["testOptions"] = {
             key: env.get(key) for key in ("QT_QPA_PLATFORM", "QT_QUICK_BACKEND", "GAMEHQ_AUDIO_E2E")
         }

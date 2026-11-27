@@ -58,6 +58,12 @@ The `ci` profile is for an isolated Windows runner. It includes the full
 registered CTest suite, including native window cases. Use the headless
 profile on a shared desktop.
 
+The `concurrency` profile runs the same three focused rounds as CI in
+offscreen mode. In addition to the targets above, build
+`tst_integrationservice`, `tst_capturepublisher`,
+`tst_capturedatabaserepair` and `tst_processidentity`. Use
+`--profile concurrency --output-dir out-evidence/concurrency-receipt`.
+
 ## What the receipts prove
 
 | Run type | Evidence |
