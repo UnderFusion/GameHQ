@@ -225,7 +225,11 @@ ID3D11Texture2D* copyClientTexture(ID3D11Texture2D* source, ID3D11Texture2D*& ta
         desc.MipLevels = desc.ArraySize = desc.SampleDesc.Count = 1;
         desc.SampleDesc.Quality = 0;
         desc.Usage = D3D11_USAGE_DEFAULT;
-        desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+        // The recorder's D3D11 video processor creates an input view on this
+        // texture for the reused hardware encoder (#39). Without render-target
+        // binding the driver rejects that view with E_INVALIDARG and every SDR
+        // session silently falls back to a new encoder per segment.
+        desc.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_RENDER_TARGET;
         desc.CPUAccessFlags = desc.MiscFlags = 0;
         if (FAILED(device->CreateTexture2D(&desc, nullptr, &target)))
             return nullptr;
