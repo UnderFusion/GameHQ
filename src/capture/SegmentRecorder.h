@@ -175,6 +175,8 @@ private:
     void writeEncodedFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
                            ID3D11DeviceContext* ctx, long long gpts);
     void writeEncoderOutput(std::vector<IMFSample*>& samples);
+    void writeHeldVideo(long long nextSegPts);
+    void releaseHeldVideo();
     void drainEncoderIntoSegment(bool keep);
     bool scaleFrame(ID3D11Texture2D* tex);   // Blt source -> m_scaled (GPU)
     void releaseGpuScaler();
@@ -271,6 +273,10 @@ private:
     bool m_forceKeyframe = false;            // next encoded frame starts a segment
     std::unique_ptr<HwH264Encoder> m_encoder;
     IMFMediaType* m_passthroughType = nullptr;   // immutable copy; read by the prep thread
+    // Reused encoder: the newest encoded sample waits until the next one
+    // arrives, so its duration covers the real gap before that frame.
+    IMFSample*    m_heldVideo = nullptr;
+    long long     m_heldVideoPts = 0;
     ID3D11Device* m_dev = nullptr;           // borrowed (pipeline owns)
     unsigned m_segDroppedFrames = 0;
     unsigned m_segInFlightPeak = 0;          // reused encoder: buffering peak, frames

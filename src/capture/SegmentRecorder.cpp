@@ -378,6 +378,7 @@ void SegmentRecorder::stopEncoderReuse(const QString& why)
     m_reuse = false;
     if (m_writer)
         noteWriteFailure("video");
+    releaseHeldVideo();
     if (m_encoder) { m_encoder->close(); m_encoder.reset(); }
     joinPrep();   // the prep thread may still read m_passthroughType
     if (m_passthroughType) { m_passthroughType->Release(); m_passthroughType = nullptr; }
@@ -725,6 +726,7 @@ void SegmentRecorder::closeSegment()
     // segment is being discarded anyway.
     if (m_reuse)
         drainEncoderIntoSegment(!m_discardCurrentSegment && !m_segmentWriteFailed);
+    releaseHeldVideo();   // reuse stopped mid-segment: that segment is discarded
 
     const bool writeFailed = m_segmentWriteFailed;
     m_segmentWriteFailed = false;
@@ -1082,15 +1084,43 @@ void SegmentRecorder::writeEncoderOutput(std::vector<IMFSample*>& samples)
         // should arrive; never write a sample before t=0 if one does.
         if (segPts >= 0 && m_writer && !m_segmentWriteFailed) {
             HwH264Encoder::shiftSampleTime(s, -m_segStartPts);
-            s->SetSampleDuration(m_frameInterval);
-            if (ok("WriteSample(video passthrough)", writeSample(DWORD(m_videoStream), s)))
-                ++m_segVideoFrames;
-            else
-                noteWriteFailure("video");
+            // The pass-through MP4 sink lays samples out by their durations.
+            // A nominal duration after a frame gap (static scene, loading
+            // screen, WGC sending no frames) collapsed the gap: the segment
+            // then read shorter than its own duration and every replay
+            // spanning it failed to export. Hold each sample until the next
+            // one fixes its real duration.
+            writeHeldVideo(segPts);
+            m_heldVideo = s;
+            m_heldVideoPts = segPts;
+            continue;
         }
         s->Release();
     }
     samples.clear();
+}
+
+void SegmentRecorder::writeHeldVideo(long long nextSegPts)
+{
+    if (!m_heldVideo)
+        return;
+    const long long gap = nextSegPts - m_heldVideoPts;
+    m_heldVideo->SetSampleDuration(gap > 0 ? gap : m_frameInterval);
+    if (m_writer && !m_segmentWriteFailed) {
+        if (ok("WriteSample(video passthrough)", writeSample(DWORD(m_videoStream), m_heldVideo)))
+            ++m_segVideoFrames;
+        else
+            noteWriteFailure("video");
+    }
+    releaseHeldVideo();
+}
+
+void SegmentRecorder::releaseHeldVideo()
+{
+    if (m_heldVideo) {
+        m_heldVideo->Release();
+        m_heldVideo = nullptr;
+    }
 }
 
 void SegmentRecorder::drainEncoderIntoSegment(bool keep)
@@ -1103,8 +1133,10 @@ void SegmentRecorder::drainEncoderIntoSegment(bool keep)
     const bool drained = m_encoder->drain(encoded, 2000);
     if (keep) {
         writeEncoderOutput(encoded);
+        writeHeldVideo(-1);   // the segment's last frame keeps the nominal duration
     } else {
         for (IMFSample* s : encoded) s->Release();
+        releaseHeldVideo();
     }
     if (!drained)
         stopEncoderReuse(m_encoder->failure().isEmpty() ? QStringLiteral("drain failed")
@@ -1312,6 +1344,7 @@ void SegmentRecorder::end()
         m_segments.clear();
         m_finalizedSizes.clear();
     }
+    releaseHeldVideo();
     if (m_encoder) { m_encoder->close(); m_encoder.reset(); }
     m_reuse = false;
     if (m_passthroughType) { m_passthroughType->Release(); m_passthroughType = nullptr; }
