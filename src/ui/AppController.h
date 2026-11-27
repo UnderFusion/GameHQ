@@ -12,7 +12,7 @@
 #include "ui/NavigationState.h"
 
 class CaptureDatabase;
-class CaptureScanner;
+#include "storage/CaptureScanner.h"
 class CaptureFolderWatcher;
 class SoundEngine;
 class CaptureLocations;
@@ -262,6 +262,8 @@ private:
     // Folder-watcher path: indexes new files, hides vanished ones and brings
     // restored ones back, then updates both galleries without a reset.
     void onCaptureFoldersChanged(const QStringList& roots);
+    void onFoldersReconciled(const QStringList& roots, const CaptureScanner::Delta& delta);
+    static constexpr qint64 kFolderSettleMs = 3000;
     void onScanFinished(int added);
 
     CaptureDatabase* m_db;

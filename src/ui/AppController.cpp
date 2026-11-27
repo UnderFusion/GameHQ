@@ -88,6 +88,8 @@ AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
             this, &AppController::captureLocationsChanged);
 
     connect(m_scanner, &CaptureScanner::scanFinished, this, &AppController::onScanFinished);
+    connect(m_scanner, &CaptureScanner::foldersReconciled,
+            this, &AppController::onFoldersReconciled);
     // Armed by rescan(), which runs whenever the set of capture roots can change.
     m_folderWatcher = new CaptureFolderWatcher(this);
     connect(m_folderWatcher, &CaptureFolderWatcher::rootsChanged,
@@ -321,10 +323,17 @@ void AppController::onCaptureFoldersChanged(const QStringList& roots)
 {
     // A capture GameHQ just wrote is committed by its own service with the
     // game's executable path; give that commit time to land first.
-    constexpr qint64 kSettleMs = 3000;
-    const CaptureScanner::Delta delta = m_scanner->reconcile(roots, kSettleMs);
+    constexpr qint64 kSettleMs = kFolderSettleMs;
+    // The walk, thumbnails and existence checks run on the scanner's worker;
+    // a large or offline folder used to freeze the window until they ended.
+    m_scanner->reconcileAsync(roots, kSettleMs);
+}
+
+void AppController::onFoldersReconciled(const QStringList& roots,
+                                        const CaptureScanner::Delta& delta)
+{
     if (delta.deferred)
-        m_folderWatcher->recheckLater(roots, kSettleMs + 500);
+        m_folderWatcher->recheckLater(roots, kFolderSettleMs + 500);
     if (!delta.changed())
         return;
     m_gallery->sync();

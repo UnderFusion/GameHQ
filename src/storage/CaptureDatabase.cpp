@@ -118,6 +118,20 @@ bool CaptureDatabase::setFavorite(int captureId, bool favorite)
     return q.exec();
 }
 
+bool CaptureDatabase::beginWriteBatch()
+{
+    return m_db.transaction();
+}
+
+bool CaptureDatabase::commitWriteBatch()
+{
+    if (m_db.commit())
+        return true;
+    qWarning() << "DB: write batch commit failed:" << m_db.lastError().text();
+    m_db.rollback();
+    return false;
+}
+
 bool CaptureDatabase::setThumbnail(int captureId, const QString& thumbnailPath)
 {
     QSqlQuery q(m_db);

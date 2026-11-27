@@ -158,6 +158,11 @@ public:
                       const QString& source, const QString& executablePath = QString());
     bool setFavorite(int captureId, bool favorite);
     bool setThumbnail(int captureId, const QString& thumbnailPath);
+    // Groups a run of the small writes above into one commit; an insert each
+    // used to cost a journal sync. Not nestable, and no call inside the batch
+    // may open its own transaction (setCapturesMissing does).
+    bool beginWriteBatch();
+    bool commitWriteBatch();
     QString thumbnailForCapture(const QString& filePath) const;
     bool setThumbnailForCapture(const QString& filePath, const QString& thumbnailPath);
     bool deleteCapture(int captureId);   // removes the DB row (file handled by caller)
