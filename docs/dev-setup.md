@@ -78,6 +78,9 @@ assembly are documented in [packaging.md](packaging.md).
 
 ## Tests
 
+Use the regression evidence runner for a revision-bound receipt or a
+desktop-safe checkpoint. [Regression and release evidence](testing/regression-evidence.md)
+
 Automated tests are opt-in, so a normal build and `start.bat` are unaffected.
 Configure once with the flag on, then build and run:
 
@@ -116,8 +119,8 @@ drive child processes (`tst_integrationservice`, `tst_integrationclient`,
 (`tst_updatertransaction`, `tst_updateinstaller`). Without a bound, one hung
 test consumes the whole CI job budget and reports nothing useful.
 
-CI also re-runs the concurrency-sensitive suites three times each
-(`ctest --repeat until-fail:3 -R 'tst_(integrationservice|integrationclient|integrationprotocol|capturepublisher|capturedatabaserepair|processidentity|portableprofileimporter|updatertransaction)'`).
+CI also re-runs the concurrency-sensitive suites in three separately
+reported rounds.
 A race in an IPC handshake, an interrupted update, importer recovery, capture
 naming or database repair passes most runs; one green run is not evidence it is
 gone. Run the same command locally before touching any of those paths.
@@ -138,9 +141,8 @@ Scope is **pure logic only** — no database, no GUI, no game process:
 `tst_gameidentity` (folder names, identity keys, path→game inference),
 `tst_configmanager` (defaults vs overrides, reset, save/reload, forward
 compatibility) and `tst_gamerowrepair` (duplicate display-name preference).
-Each test compiles the few sources it needs directly, since `GameHQ` is an
-executable with no library to link against. If a unit needs half the app to
-build, it is not pure logic and does not belong here.
+Each test links the narrow shared libraries it needs and compiles fixture
+sources directly where no shared target exists.
 
 The one deliberate exception is storage: correctness there is about what
 survives a failure, which cannot be checked without a real database. Those

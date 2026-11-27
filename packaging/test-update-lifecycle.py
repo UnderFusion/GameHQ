@@ -39,8 +39,40 @@ def write_json(path: Path, value: object) -> None:
 
 
 def digest(path: Path) -> str:
+    sha256 = hashlib.sha256()
     with path.open("rb") as stream:
-        return hashlib.file_digest(stream, "sha256").hexdigest()
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            sha256.update(chunk)
+    return sha256.hexdigest()
+
+
+def check_inputs(old: Path, releases: Path, helper: Path, version: str) -> dict:
+    """Check disposable input layout and identity without starting any program."""
+    package = scoped(releases / f"GameHQ-{version}-win64-update.zip")
+    manifest_path = scoped(releases / "gamehq-release.json")
+    signature = scoped(releases / "gamehq-release.sig")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest["productId"] != "underfusion.gamehq" or manifest["version"] != version:
+        raise ValueError("Manifest product or version does not match the requested lifecycle run")
+    with zipfile.ZipFile(old) as archive:
+        names = {entry.replace("\\", "/").casefold() for entry in archive.namelist()}
+    if not {"gamehq.exe", "app/gamehq.exe", "portable.flag"}.issubset(names):
+        raise ValueError("Old portable archive needs its launcher, application and portable marker")
+    artifacts = [item for item in manifest["artifacts"]
+                 if item["kind"] == "update" and item["fileName"] == package.name]
+    package_hash = digest(package)
+    if len(artifacts) != 1 or artifacts[0]["sha256"] != package_hash \
+            or artifacts[0]["size"] != package.stat().st_size:
+        raise ValueError("Update package size or digest does not match the manifest")
+    return {
+        "status": "inputs_checked",
+        "scope": "Input layout and digests only. Signature and live lifecycle are separate checks.",
+        "version": version,
+        "inputSha256": {
+            "oldPortable": digest(old), "helper": digest(helper), "updatePackage": package_hash,
+            "manifest": digest(manifest_path), "signatureFile": digest(signature),
+        },
+    }
 
 
 def app_process(root: Path) -> psutil.Process | None:
@@ -194,7 +226,18 @@ def main() -> None:
     parser.add_argument("--version", default="0.8.1")
     parser.add_argument("--handoff")
     parser.add_argument("--fixture-setup", help="Installer compiled with isolated acceptance registry identity")
+    parser.add_argument("--check-inputs", action="store_true",
+                        help="Report the input layout and digests without launching the app or helper")
     args = parser.parse_args()
+    if args.check_inputs:
+        if not all((args.old_portable, args.release_dir, args.test_helper)) or args.handoff or args.fixture_setup:
+            parser.error("--check-inputs needs --old-portable, --release-dir and --test-helper only")
+        if not args.version or Path(args.version).name != args.version:
+            parser.error("--version must be a release version, not a path")
+        result = check_inputs(scoped(args.old_portable), scoped(args.release_dir),
+                              scoped(args.test_helper), args.version)
+        print(json.dumps(result, indent=2))
+        return
     if args.handoff:
         handoff(scoped(args.handoff), scoped(args.test_helper))
         return

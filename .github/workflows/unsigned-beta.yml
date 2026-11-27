@@ -133,6 +133,7 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release `
             -DGAMEHQ_BUILD_TESTS=ON `
             -DGAMEHQ_ENABLE_PSEUDO_LOCALES=OFF `
+            -DGAMEHQ_RELEASE_TRUST_TEST_KEYS=OFF `
             "-DCMAKE_PREFIX_PATH=$qt" `
             "-DCMAKE_C_COMPILER=$mingw\gcc.exe" `
             "-DCMAKE_CXX_COMPILER=$mingw\g++.exe" `
@@ -145,19 +146,24 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $PSNativeCommandUseErrorActionPreference = $true
           $qt = "$PWD\tools\Qt\6.8.3\mingw_64"
-          $env:PATH = "$qt\bin;$env:PATH"
-          ctest --test-dir out --output-on-failure
-          # The concurrency-sensitive suites again, three times each. A race in
-          # IPC handshakes, updater interruption, importer recovery, capture
-          # naming, process identity or database repair passes most runs; one
-          # pass is not evidence that it is gone. Every test is time-limited in
-          # tests/CMakeLists.txt, so a hang fails here instead of eating the
-          # job budget.
-          ctest --test-dir out --repeat until-fail:3 --output-on-failure `
-            -R 'tst_(integrationservice|integrationclient|integrationprotocol|capturepublisher|capturedatabaserepair|processidentity|portableprofileimporter|updatertransaction)'
+          $mingw = "$PWD\tools\Qt\Tools\mingw1310_64\bin"
+          $env:PATH = "$mingw;$qt\bin;$env:PATH"
+          python -B tools/testing/test_run_regression.py
+          python tools/testing/run_regression.py --build-dir out `
+            --output-dir out/test-evidence --profile ci
           dotnet restore integrations/playnite/tests/GameHQ.Playnite.Tests/GameHQ.Playnite.Tests.csproj --locked-mode
           dotnet test integrations/playnite/tests/GameHQ.Playnite.Tests/GameHQ.Playnite.Tests.csproj `
-            --configuration Release --no-restore
+            --configuration Release --no-restore --logger 'trx;LogFileName=Playnite.trx' `
+            --results-directory "$PWD\out\test-evidence\playnite"
+
+      - name: Upload automated regression evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: GameHQ-regression-${{ github.sha }}
+          retention-days: 7
+          if-no-files-found: warn
+          path: out/test-evidence/
 
       - name: Bootstrap pinned Inno Setup
         shell: pwsh

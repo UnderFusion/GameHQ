@@ -109,7 +109,6 @@ QJsonArray publishedWith(const QJsonObject &latest)
             release(QStringLiteral("v0.7.9"))};
 }
 
-constexpr int kRequestGuardMs = 5100; // UpdateService refuses re-checks within 5 s
 }
 
 class TestUpdateDiscovery : public QObject
@@ -301,8 +300,7 @@ private slots:
         QVERIFY(settle(*s));
         QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
 
-        QTest::qWait(kRequestGuardMs);
-        s->checkNow();
+        again(*s);
         QVERIFY(settle(*s));
         QCOMPARE(m_server->requests.size(), 2);
         QVERIFY(m_server->requests.at(1).toLower().contains("if-none-match: \"e1\""));
@@ -322,8 +320,7 @@ private slots:
         s->skipVersion();
         QCOMPARE(s->stateName(), QStringLiteral("UpToDate"));
 
-        QTest::qWait(kRequestGuardMs);
-        s->checkNow();
+        again(*s);
         QVERIFY(settle(*s));
         QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
         QCOMPARE(s->latestVersion(), QStringLiteral("0.8.1"));
@@ -339,16 +336,14 @@ private slots:
         s->checkNow();
         QVERIFY(settle(*s));
 
-        QTest::qWait(kRequestGuardMs);
-        s->checkNow();
+        again(*s);
         QVERIFY(settle(*s));
         QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
         QCOMPARE(s->latestVersion(), QStringLiteral("0.8.1"));
         QVERIFY(s->nextAllowedCheck().isValid());
 
         // Inside the cooldown nothing reaches the network.
-        QTest::qWait(kRequestGuardMs);
-        s->checkNow();
+        again(*s);
         QCOMPARE(m_server->requests.size(), 2);
         QVERIFY(!s->errorText().isEmpty());
         QCOMPARE(s->stateName(), QStringLiteral("UpdateAvailable"));
@@ -383,12 +378,13 @@ private slots:
 
     void publishedStableFeedOffersTheHotfix()
     {
-        // Release acceptance replays the actual downloaded GitHub response
-        // through UpdateService without contacting GitHub from a native test.
-        const QString path = qEnvironmentVariable("GAMEHQ_PUBLIC_RELEASES_FIXTURE");
-        if (path.isEmpty())
-            QSKIP("Set GAMEHQ_PUBLIC_RELEASES_FIXTURE for public release acceptance");
-        const QString expected = qEnvironmentVariable("GAMEHQ_EXPECTED_STABLE_VERSION");
+        // Clean checkouts replay a curated public API response. An explicit
+        // external capture can be replayed without a native test contacting GitHub.
+        const QString captured = qEnvironmentVariable("GAMEHQ_PUBLIC_RELEASES_FIXTURE");
+        const QString path = captured.isEmpty()
+            ? QStringLiteral(GAMEHQ_PUBLIC_RELEASES_TEST_FIXTURE) : captured;
+        const QString expected = captured.isEmpty()
+            ? QStringLiteral("0.8.1") : qEnvironmentVariable("GAMEHQ_EXPECTED_STABLE_VERSION");
         QVERIFY(!expected.isEmpty());
         QFile file(path);
         QVERIFY(file.open(QIODevice::ReadOnly));

@@ -459,6 +459,8 @@ initialization, orderly shutdown and two ordinary launches. Its disposable
 profile includes settings, a library game, a favorite capture and capture bytes;
 all are compared after the update and each restart. Test trust is not release
 signing or publication approval.
+The desktop-safe transaction tests and full lifecycle input check have
+separate instructions. [Regression and release evidence](testing/regression-evidence.md)
 
 ## Unsupported locations
 

@@ -6,6 +6,8 @@
 find_package(Qt6 REQUIRED COMPONENTS Test)
 find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
 
+set(GAMEHQ_QT_TEST_REPORT_DIR "${CMAKE_BINARY_DIR}/Testing/GameHQ-Qt")
+file(MAKE_DIRECTORY "${GAMEHQ_QT_TEST_REPORT_DIR}")
 
 function(gamehq_add_test name)
     add_executable(${name} ${ARGN})
@@ -17,7 +19,8 @@ function(gamehq_add_test name)
     # and a GUI-subsystem test exe still passes but writes its results to a
     # console it does not have — ctest then reports a pass with no output.
     set_target_properties(${name} PROPERTIES WIN32_EXECUTABLE FALSE)
-    add_test(NAME ${name} COMMAND ${name})
+    add_test(NAME ${name} COMMAND ${name}
+        -o -,txt -o "${GAMEHQ_QT_TEST_REPORT_DIR}/${name}.xml,junitxml")
     # The test exes are not deployed with windeployqt, so a plain `ctest` run
     # cannot resolve Qt6Core.dll and Windows answers with one modal "DLL was
     # not found" box per test — ctest then hangs until every box is dismissed.
@@ -54,7 +57,8 @@ find_program(GAMEHQ_QMLTESTRUNNER NAMES qmltestrunner HINTS "${CMAKE_PREFIX_PATH
 foreach(suite IN ITEMS interfacescaling overlaylayout)
     add_test(NAME tst_${suite}
         COMMAND "${GAMEHQ_QMLTESTRUNNER}" -input "${CMAKE_SOURCE_DIR}/tests/qml/tst_${suite}.qml"
-                -import "${CMAKE_SOURCE_DIR}/tests/qml/imports" -platform offscreen)
+                -import "${CMAKE_SOURCE_DIR}/tests/qml/imports" -platform offscreen
+                -o -,txt -o "${GAMEHQ_QT_TEST_REPORT_DIR}/tst_${suite}.xml,junitxml")
     set_tests_properties(tst_${suite} PROPERTIES TIMEOUT 120)
 endforeach()
 
@@ -1032,7 +1036,8 @@ gamehq_add_test(tst_updatediscovery
     "${CMAKE_SOURCE_DIR}/src/app/ReleaseNotes.cpp"
     "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp")
 target_link_libraries(tst_updatediscovery PRIVATE Qt6::Network Qt6::Gui gamehq_test_release_signer)
-target_compile_definitions(tst_updatediscovery PRIVATE GAMEHQ_UPDATE_SERVICE_TEST_HOOKS)
+target_compile_definitions(tst_updatediscovery PRIVATE GAMEHQ_UPDATE_SERVICE_TEST_HOOKS
+    GAMEHQ_PUBLIC_RELEASES_TEST_FIXTURE="${CMAKE_CURRENT_SOURCE_DIR}/fixtures/public-releases-stable.json")
 
 gamehq_add_test(tst_releasecatalog
     tst_releasecatalog.cpp
@@ -1097,6 +1102,14 @@ gamehq_add_test(tst_segmentrecorder
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentLease.cpp")
 target_link_libraries(tst_segmentrecorder PRIVATE
     Qt6::Gui d3d11 dxguid ole32 oleaut32 mfplat mfreadwrite mfuuid uuid ksuser mmdevapi)
+# Only generated media. The full suite also opens real audio endpoints.
+add_test(NAME tst_segmentrecorder_synthetic COMMAND tst_segmentrecorder
+    silentStretchKeepsAudioContinuousAndInSync captureGapKeepsTheVideoTimeline
+    reusedEncoderWritesIndependentSegments exportRecoversSamplesMediaFoundationSkips
+    -o -,txt -o "${GAMEHQ_QT_TEST_REPORT_DIR}/tst_segmentrecorder_synthetic.xml,junitxml")
+set_tests_properties(tst_segmentrecorder_synthetic PROPERTIES
+    TIMEOUT 120
+    ENVIRONMENT_MODIFICATION "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
 # Separate tone-playing process for the opt-in game-audio test: process
 # loopback must capture it on any output device and nothing else.
 add_executable(audio_tone_fixture audio_tone_fixture.cpp)
