@@ -4,6 +4,15 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
+### 0.8.2 Beta 3 draft
+
+- Replay capture reuses a hardware encoder where supported, reducing memory and stopping Windows handle growth in the measured NVIDIA run. Capture releases Windows frame resources on teardown.
+- Replay export restores audio and video samples skipped at the ends of some segments. Recording can ride out brief encoder stalls and falls back to per-segment encoding if reuse fails.
+- Large watched folders, new capture entries and screenshot thumbnails take less work on the interface thread. Controller delivery and local integration work are bounded, and unchanged settings avoid repeat disk writes.
+- Update offers are cleared when a release is withdrawn. Capture can resume when update preparation is cancelled or fails.
+- Windows packages use Qt 6.11.3 and FFmpeg 7.1.5, including the upstream fixes for CVE-2026-105946 and CVE-2026-8461.
+- Long recordings with hardware encoder reuse still need validation on AMD GPUs. See the [Beta 3 release-note draft](docs/releases/0.8.2-beta3.md).
+
 ## [0.8.2] - 2026-11-24
 
 Beta 2 (`v0.8.2-beta2`) adds fixes for community reports #33, #34, #36 and #37 and a Discord report about games paused by Playnite Console Overlay. Use it with GameHQ Integration 0.4.14 for Playnite, published as the `playnite-v0.4.14` pre-release. Beta 1 (`v0.8.2-beta1`) tested native Share/Guide routing and update-dialog feedback. GameHQ 0.8.1 remains Latest Stable; real-device confirmation is required before 0.8.2 Stable.
