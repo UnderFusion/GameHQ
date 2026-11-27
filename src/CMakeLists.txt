@@ -1,3 +1,9 @@
+add_library(gamehq_game_identity STATIC core/GameIdentity.cpp core/GameIdentity.h)
+set_target_properties(gamehq_game_identity PROPERTIES AUTOMOC OFF AUTOUIC OFF)
+target_include_directories(gamehq_game_identity PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(gamehq_game_identity PUBLIC Qt6::Core)
+gamehq_enable_warnings(gamehq_game_identity)
+
 qt_add_executable(GameHQ
     main.cpp
     app/App.cpp            app/App.h
@@ -34,7 +40,6 @@ qt_add_executable(GameHQ
     config/CaptureLocations.cpp config/CaptureLocations.h
     core/ApplicationMutex.cpp core/ApplicationMutex.h
     core/ProcessIdentity.cpp core/ProcessIdentity.h
-    core/GameIdentity.cpp core/GameIdentity.h
     core/UpdateMaintenance.cpp core/UpdateMaintenance.h
     core/UpdaterHandshake.cpp core/UpdaterHandshake.h
     core/WindowPlacement.cpp core/WindowPlacement.h
@@ -405,6 +410,7 @@ target_compile_definitions(GameHQ PRIVATE
 )
 
 target_link_libraries(GameHQ PRIVATE
+    gamehq_game_identity
     gamehq_release_trust
     Qt6::Core Qt6::Gui Qt6::Quick Qt6::Sql Qt6::Widgets Qt6::Svg
     Qt6::Multimedia Qt6::Network

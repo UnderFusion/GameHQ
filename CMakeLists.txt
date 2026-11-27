@@ -223,7 +223,7 @@ if(WIN32)
     enable_language(RC)
 endif()
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS
+find_package(Qt6 6.8 REQUIRED COMPONENTS
     Core Gui Quick Sql Widgets Svg Multimedia Network LinguistTools)
 
 qt_standard_project_setup(REQUIRES 6.5)

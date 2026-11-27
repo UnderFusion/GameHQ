@@ -1,10 +1,8 @@
 # First automated test target (0.5.71) — pure logic only: no database, no GUI,
 # no game process. See docs/dev-setup.md for the run command.
 #
-# GameHQ is an executable, not a library, so there is nothing to link against.
-# Each test compiles the handful of sources it actually needs straight into its
-# own exe. That keeps the tests honest about their dependencies: if a unit needs
-# half the app to build, it is not pure logic and does not belong here.
+# Tests link narrow shared targets when available. Other fixtures compile only
+# the sources they exercise and declare their platform dependencies explicitly.
 find_package(Qt6 REQUIRED COMPONENTS Test)
 find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
 
@@ -60,9 +58,7 @@ foreach(suite IN ITEMS interfacescaling overlaylayout)
     set_tests_properties(tst_${suite} PROPERTIES TIMEOUT 120)
 endforeach()
 
-gamehq_add_test(tst_gameidentity
-    tst_gameidentity.cpp
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+gamehq_add_test(tst_gameidentity tst_gameidentity.cpp)
 
 # p7-1: every built-in key is explicitly live or restart-required. The policy
 # stays pure; group tests prove mixed replay resets request one rebuild only.
@@ -240,8 +236,7 @@ gamehq_add_test(tst_gameinputrouter
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_gameinputrouter PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 gamehq_add_test(tst_gamepadcontrols
@@ -306,8 +301,7 @@ gamehq_add_test(tst_controlleracceptance
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_controlleracceptance PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 target_include_directories(tst_gameinputrouter PRIVATE
@@ -452,7 +446,6 @@ target_sources(tst_inputengineshutdown PRIVATE
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Migrations.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase_Bindings.cpp"
@@ -481,8 +474,7 @@ gamehq_add_test(tst_windowplacement
 
 gamehq_add_test(tst_gamepins
     tst_gamepins.cpp
-    "${CMAKE_SOURCE_DIR}/src/core/GamePins.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/core/GamePins.cpp")
 
 gamehq_add_test(tst_portableprofileimporter
     tst_portableprofileimporter.cpp
@@ -491,8 +483,7 @@ target_link_libraries(tst_portableprofileimporter PRIVATE Qt6::Sql gamehq_releas
 
 gamehq_add_test(tst_gamerowrepair
     tst_gamerowrepair.cpp
-    "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp")
 # GameRowRepair.cpp's other half (normalizeDuplicateNames) talks to QSqlDatabase,
 # so the translation unit needs Qt::Sql to link even though the tested function
 # does not touch it.
@@ -608,8 +599,7 @@ gamehq_add_test(tst_gamemetadatabackfill
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_gamemetadatabackfill PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 gamehq_add_test(tst_gameiconcache
@@ -633,8 +623,7 @@ gamehq_add_test(tst_captureiconrefresh
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_captureiconrefresh PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 # Capture deletion: file/DB failure paths with an injected filesystem seam.
@@ -660,8 +649,7 @@ gamehq_add_test(tst_capturelibrarydeletion
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 # ThumbnailService pulls ReplayExporter in for video thumbnails, which needs
 # the Media Foundation import libraries even though no test decodes a clip.
 target_link_libraries(tst_capturelibrarydeletion PRIVATE
@@ -690,8 +678,7 @@ gamehq_add_test(tst_capturecommitoutcome
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_capturecommitoutcome PRIVATE
     Qt6::Sql Qt6::Gui Qt6::Widgets ole32 mfplat mfreadwrite mfuuid mf)
 
@@ -718,8 +705,7 @@ gamehq_add_test(tst_thumbnailscheduler
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_thumbnailscheduler PRIVATE
     Qt6::Sql Qt6::Gui Qt6::Widgets ole32 mfplat mfreadwrite mfuuid mf)
 
@@ -746,8 +732,7 @@ gamehq_add_test(tst_galleryscale
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_galleryscale PRIVATE
     Qt6::Sql Qt6::Gui Qt6::Widgets ole32 psapi mfplat mfreadwrite mfuuid mf)
 
@@ -772,8 +757,7 @@ gamehq_add_test(tst_capturefilesync
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_capturefilesync PRIVATE
     Qt6::Sql Qt6::Gui Qt6::Widgets ole32 mfplat mfreadwrite mfuuid mf)
 
@@ -791,8 +775,7 @@ gamehq_add_test(tst_capturedatabaserepair
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_capturedatabaserepair PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 gamehq_add_test(tst_bindingeditor
@@ -823,8 +806,7 @@ gamehq_add_test(tst_bindingeditor
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_bindingeditor PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 qt_add_translations(tst_bindingeditor
     TS_FILES
@@ -859,8 +841,7 @@ gamehq_add_test(tst_actioncatalog
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_actioncatalog PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 # Schema v3 -> v4 compatibility: every stored activation keeps its meaning.
@@ -884,8 +865,7 @@ gamehq_add_test(tst_bindingmigration
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_bindingmigration PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 # Mapping-preset storage (schema v8): transactional CRUD, typed targets and the
@@ -910,8 +890,7 @@ gamehq_add_test(tst_mappingpresetstorage
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_mappingpresetstorage PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 # Mapping-preset model (cpo-p06): the library/assignment facade, the reserved
@@ -939,8 +918,7 @@ gamehq_add_test(tst_mappingpresetmodel
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_mappingpresetmodel PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 # The real MappingPresetSection.qml driven by the real model: the cpo-p06
@@ -969,8 +947,7 @@ gamehq_add_test(tst_mappingpresetsection
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_mappingpresetsection PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets Qt6::Qml Qt6::Quick)
 # The QML file is read from the source tree; the GameHQ module (Theme, the
 # settings row/button/combobox components it imports) comes from the build tree,
@@ -1004,8 +981,7 @@ gamehq_add_test(tst_presetmaterializer
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_presetmaterializer PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 # Assignment resolution (cpo-p04): the winner rule game -> controller ->
@@ -1032,8 +1008,7 @@ gamehq_add_test(tst_mappingassignmentresolver
     "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
-    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp")
 target_link_libraries(tst_mappingassignmentresolver PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 # Stand-in for app\GameHQ.exe: it reports the arguments Windows actually handed
@@ -1615,7 +1590,6 @@ gamehq_add_test(tst_captureacknowledgement
     "${CMAKE_SOURCE_DIR}/src/config/CaptureLocations.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
-    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp"
     "${CMAKE_SOURCE_DIR}/src/games/GameDetector.cpp"
     "${CMAKE_SOURCE_DIR}/src/games/SteamAppLookup.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp"
@@ -2001,3 +1975,39 @@ gamehq_add_test(tst_traystatus
 target_compile_definitions(tst_traystatus PRIVATE
     GAMEHQ_VERSION="${GAMEHQ_VERSION_FULL}")
 target_link_libraries(tst_traystatus PRIVATE Qt6::Gui)
+
+# Game identity is shared by these fixtures, including targets built from
+# copied input and capture source lists. Keep the dependency explicit.
+foreach(target IN ITEMS
+        tst_actioncatalog
+        tst_bindingeditor
+        tst_bindingmigration
+        tst_captureacknowledgement
+        tst_capturecommitoutcome
+        tst_capturedatabaserepair
+        tst_capturefilesync
+        tst_captureiconrefresh
+        tst_capturelibrarydeletion
+        tst_controlleracceptance
+        tst_controllerclip_e2e
+        tst_controllerstatelifetime
+        tst_galleryscale
+        tst_gameidentity
+        tst_gameinputrouter
+        tst_gamemetadatabackfill
+        tst_gamepins
+        tst_gamerowrepair
+        tst_gamesessionpresets
+        tst_inputengineshutdown
+        tst_inputreleasehandoff
+        tst_mappingassignmentresolver
+        tst_mappingpresetmodel
+        tst_mappingpresetsection
+        tst_mappingpresetstorage
+        tst_presetmaterializer
+        tst_presetswitch
+        tst_replaythumbnail
+        tst_thumbnailscheduler
+    )
+    target_link_libraries(${target} PRIVATE gamehq_game_identity)
+endforeach()

@@ -46,6 +46,18 @@ Pseudo-locales are off in this configuration. Add
 CI configurations must leave it off (see
 [localization/architecture.md](localization/architecture.md) section 8).
 
+## Build dependencies
+
+`App` wires production services, and UI code calls those service interfaces.
+Storage and platform adapters can use shared domain types and policies.
+Shared domain code has no dependency on UI, storage, or platform services.
+The `gamehq_game_identity` library starts this split with a single translation
+unit and a public dependency on Qt Core. Its tests link the same target as
+GameHQ. Test signers and test trust libraries stay on the test side of the
+build graph.
+
+Configuration requires Qt 6.8 because the QML module uses policy QTP0004.
+
 ## Assemble runtime and run
 
 The real executable needs its Qt libraries, plugins, and QML imports in one
