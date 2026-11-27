@@ -1,4 +1,5 @@
 #include "storage/CaptureScanner.h"
+#include "core/ShutdownWait.h"
 #include "storage/CaptureDatabase.h"
 #include "storage/ThumbnailService.h"
 #include "config/CaptureLocations.h"
@@ -46,7 +47,7 @@ CaptureScanner::~CaptureScanner()
     // The worker posts its result to this object; finish it before going.
     // Cancelled first, so the wait is one file's work, not a whole library.
     m_cancel->store(true);
-    m_pool.waitForDone();
+    ShutdownWait::untilDone("library scan", [this](int ms) { return m_pool.waitForDone(ms); });
 }
 
 namespace

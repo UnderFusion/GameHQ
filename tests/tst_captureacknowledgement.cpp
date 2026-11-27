@@ -6,6 +6,7 @@
 #include "config/CaptureLocations.h"
 #include "config/ConfigKeys.h"
 #include "integration/ExternalGameContext.h"
+#include <QDirIterator>
 #include <QImage>
 #include <QSignalSpy>
 #include <QSemaphore>
@@ -199,6 +200,38 @@ private slots:
         QVERIFY(!pump.m_owners.needsSession());
         QVERIFY(!pump.m_targetGame.valid);
         QVERIFY(!pump.m_buffer.confirm(generation, ReplayBufferState::Ready));
+    }
+
+    void aScreenshotStillEncodingAtExitIsWrittenInFull()
+    {
+        // t41: destroying the service right after a capture (app exit) must
+        // finish the write, not drop it or leave a partial file.
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/exit-XXXXXX");
+        QVERIFY(dir.isValid());
+        ConfigManager config(dir.path() + "/config.json");
+        config.setValue(ConfigKeys::StorageScreenshotsRoot, dir.path());
+        CaptureLocations locations(&config);
+        QImage big(3840, 2160, QImage::Format_RGB32);
+        for (int y = 0; y < big.height(); ++y)
+            for (int x = 0; x < big.width(); x += 7)
+                big.setPixel(x, y, qRgb(x & 0xff, y & 0xff, (x ^ y) & 0xff));
+        QElapsedTimer t;
+        {
+            ScreenshotService shots(&config, &locations);
+            shots.saveImage(big, "Fixture", {}, 303);
+            t.start();
+        }   // destroyed while the encode runs
+        const qint64 exitMs = t.elapsed();
+        QStringList written;
+        QDirIterator it(dir.path(), {"*.png", "*.jpg", "*.jpeg", "*.webp"}, QDir::Files,
+                        QDirIterator::Subdirectories);
+        while (it.hasNext())
+            written.append(it.next());
+        qInfo() << "service destroyed during a 4K encode; destructor waited" << exitMs << "ms";
+        QCOMPARE(written.size(), 1);
+        const QImage back(written.first());
+        QVERIFY(!back.isNull());
+        QCOMPARE(back.size(), QSize(3840, 2160));
     }
 
     void concurrentScreenshotEncodesRetainTheirOwnIds()

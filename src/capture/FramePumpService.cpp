@@ -1,4 +1,5 @@
 #include "capture/FramePumpService.h"
+#include "core/ShutdownWait.h"
 
 #include "capture/AudioCapture.h"
 #include "capture/AudioSourcePolicy.h"
@@ -368,7 +369,10 @@ void FramePumpService::restartBuffer()
 FramePumpService::~FramePumpService()
 {
     shutdownForExit();
-    m_thread.wait();
+    // An export, a segment rotation or an encoder call may still be running;
+    // the worker finishes them (no file is cut short) before it quits.
+    ShutdownWait::untilDone("capture worker (export/encoder/audio)",
+                            [this](int ms) { return m_thread.wait(ms); });
     delete m_worker;
 }
 

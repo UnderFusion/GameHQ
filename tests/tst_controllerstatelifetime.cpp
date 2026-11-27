@@ -242,6 +242,39 @@ private slots:
         weakCycle();                          // the next lifecycle retires it
         QVERIFY(rt().retainedState().total() <= baseline.total());
     }
+
+    // t41 follow-up: GameInput always supplies its app-local device id, so a
+    // GameInput-only reconnect is a strong identity and returns to the same
+    // route; nothing accumulates even though such routes are never pruned.
+    void gameInputOnlyReconnectsReuseOneRoute()
+    {
+        auto& registry = engine->m_providers.registry();
+        ModernInput::ProviderObservation obs;
+        obs.provider = ModernInput::ControllerProvider::GameInput;
+        obs.providerDeviceId = QStringLiteral("gameinput-device-1");
+        obs.appLocalDeviceId = obs.providerDeviceId;
+        obs.capabilities = ModernInput::ControllerCapability::StandardControls;
+        const QString first = registry.observe(obs);
+        QVERIFY(!first.isEmpty());
+        const QString group = QStringLiteral("controller");
+        const auto use = [&](const QString& route) {
+            rt().press(group, route, ControlId::FaceSouth, ActionCatalog::Scope::Global);
+            rt().release(group, route, ControlId::FaceSouth);
+        };
+        use(first);
+        QVERIFY(registry.removeProvider(obs.provider, obs.providerDeviceId));
+        const BindingRuntime::RetainedState baseline = rt().retainedState();
+        const int controllers = int(registry.controllers().size());
+        for (int i = 0; i < 2000; ++i) {
+            const QString route = registry.observe(obs);
+            QCOMPARE(route, first);
+            use(route);
+            QVERIFY(registry.removeProvider(obs.provider, obs.providerDeviceId));
+        }
+        QCOMPARE(int(registry.controllers().size()), controllers);
+        QCOMPARE(rt().retainedState().total(), baseline.total());
+        QCOMPARE(rt().retainedState().recognizerStates, baseline.recognizerStates);
+    }
 };
 
 QTEST_MAIN(ControllerStateLifetimeTest)

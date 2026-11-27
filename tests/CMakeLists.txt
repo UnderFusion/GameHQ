@@ -1654,6 +1654,9 @@ target_link_libraries(tst_inputreleasehandoff PRIVATE ${PRESET_SWITCH_LIBS})
 target_include_directories(tst_inputreleasehandoff PRIVATE "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
 target_compile_definitions(tst_inputreleasehandoff PRIVATE UNICODE _UNICODE)
 
+# t41/A11: shutdown waits report and never abandon.
+gamehq_add_test(tst_shutdownwait tst_shutdownwait.cpp)
+
 # t40/A10: per-controller state across thousands of weak reconnects.
 gamehq_add_test(tst_controllerstatelifetime tst_controllerstatelifetime.cpp ${PRESET_SWITCH_SOURCES}
     "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoff.cpp")

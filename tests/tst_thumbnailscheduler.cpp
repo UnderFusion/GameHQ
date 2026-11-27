@@ -12,6 +12,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QTemporaryDir>
+#include <QRegularExpression>
 #include <QTest>
 #include <QThread>
 
@@ -239,6 +240,30 @@ private slots:
         QVERIFY2(ms < 1000, qPrintable(QString::number(ms)));
         QTest::qWait(50);
         QCOMPARE(delivered, 0);                     // no callback into the dead scheduler
+    }
+
+    void aDecodeOutlastingTheGraceIsFinishedNotAbandoned()
+    {
+        // t41: destruction waits for a running decode however long it takes
+        // and logs the dependency holding the exit; its file is complete.
+        ControlledDecoder dec;
+        dec.sleepMs->store(2400);   // longer than the 2 s shutdown grace
+        auto s = std::make_unique<ThumbnailScheduler>(thumbs(), dec.decoder());
+        const QString shot = writeImage(file("slow-exit.png"), 640, 360, Qt::red);
+        QVERIFY(s->request(1, shot, QStringLiteral("screenshot")));
+        QTRY_COMPARE(dec.running->load(), 1);
+        QTest::ignoreMessage(QtWarningMsg,
+                             QRegularExpression("Shutdown: thumbnail decodes still running after"));
+        QTest::ignoreMessage(QtWarningMsg,
+                             QRegularExpression("Shutdown: thumbnail decodes finished after"));
+        QElapsedTimer t;
+        t.start();
+        s.reset();
+        QVERIFY(t.elapsed() >= 2000);
+        QCOMPARE(dec.running->load(), 0);
+        QVERIFY(ThumbnailService::isUsableThumbnail(
+            ThumbnailService::ensureThumbnail(shot, QStringLiteral("screenshot"), thumbs())));
+        QCOMPARE(QDir(thumbs()).entryList(QDir::Files).size(), 1);   // written once, by the decode
     }
 
     // ---- CaptureLibraryService: commit first, preview later ----------------

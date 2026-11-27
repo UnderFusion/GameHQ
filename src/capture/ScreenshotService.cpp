@@ -1,4 +1,5 @@
 #include "capture/ScreenshotService.h"
+#include "core/ShutdownWait.h"
 
 #include "capture/CapturePublisher.h"
 #include "capture/CaptureUtil.h"
@@ -47,7 +48,9 @@ ScreenshotService::~ScreenshotService()
 {
     // ~QThreadPool would wait too, but do it explicitly while the full object
     // is still alive: workers touch m_pendingWrites and emit signals.
-    m_encodePool.waitForDone();
+    // A screenshot still encoding is written in full, never dropped.
+    ShutdownWait::untilDone("screenshot encode",
+                            [this](int ms) { return m_encodePool.waitForDone(ms); });
 }
 
 void ScreenshotService::capture(const CaptureRequest& request)

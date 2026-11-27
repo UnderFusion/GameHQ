@@ -1,4 +1,5 @@
 #include "input/SonyHidReaderPolicy.h"
+#include "core/ShutdownWait.h"
 #include "input/DualSenseDevice.h"
 #include "input/DualSenseDeviceInternal.h"
 
@@ -95,7 +96,8 @@ DualSenseDevice::~DualSenseDevice()
 {
     // A PnP scan in flight still uses m_api; its queued result is dropped
     // with this object's posted events.
-    m_pnpScanPool->waitForDone();
+    ShutdownWait::untilDone("Sony PnP scan",
+                            [this](int ms) { return m_pnpScanPool->waitForDone(ms); });
 
     // Join every reader worker before anything they could post to goes away.
     m_hidReaders.clear();

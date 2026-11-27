@@ -1,4 +1,5 @@
 #include "storage/ThumbnailScheduler.h"
+#include "core/ShutdownWait.h"
 #include "storage/ThumbnailService.h"
 
 #include <QDebug>
@@ -40,7 +41,7 @@ ThumbnailScheduler::~ThumbnailScheduler()
     // never killed) and their results are discarded with this object.
     m_closing->store(true);
     m_queue.clear();
-    m_pool.waitForDone();
+    ShutdownWait::untilDone("thumbnail decodes", [this](int ms) { return m_pool.waitForDone(ms); });
 }
 
 bool ThumbnailScheduler::request(int captureId, const QString& filePath, const QString& type)
