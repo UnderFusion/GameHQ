@@ -9,7 +9,9 @@
 #include "config/ConfigKeys.h"
 #include "core/ProcessIdentity.h"
 #include "integration/ExternalGameContext.h"
+#include <QDir>
 #include <QDirIterator>
+#include <QFileInfo>
 #include <QImage>
 #include <QSignalSpy>
 #include <QSemaphore>
@@ -22,6 +24,129 @@
 #include <mfidl.h>
 #include <mfreadwrite.h>
 #include <algorithm>
+
+namespace {
+
+// The fixture window paints RGB(0, 70, 220). Encoded H.264 shifts the exact
+// value, so accept any clearly blue pixel and reject desktop, taskbar, title
+// bar or black padding.
+bool isFixtureBlue(const QColor& c)
+{
+    return c.blue() > 150 && c.red() < 70 && c.green() < 130 && c.blue() > c.green() + 60;
+}
+
+// Samples the four corners and edge midpoints, one pixel inside the border.
+// The repaint patch in the top-right area is far from every sample.
+QString nonFixtureEdge(const QImage& image)
+{
+    const int w = image.width();
+    const int h = image.height();
+    const QPoint samples[] = {{1, 1}, {w - 2, 1}, {1, h - 2}, {w - 2, h - 2},
+                              {w / 2, 1}, {w / 2, h - 2}, {1, h / 2}, {w - 2, h / 2},
+                              {w / 2, h / 2}};
+    for (const QPoint& p : samples) {
+        const QColor c = image.pixelColor(p);
+        if (!isFixtureBlue(c))
+            return QStringLiteral("(%1,%2)=%3").arg(p.x()).arg(p.y()).arg(c.name());
+    }
+    return {};
+}
+
+// Decodes every video frame of an MP4 to RGB32 through Media Foundation.
+// The caller owns COM and MFStartup.
+QList<QImage> decodeAllFrames(const QString& path, QString* error)
+{
+    QList<QImage> frames;
+    IMFAttributes* attributes = nullptr;
+    if (FAILED(MFCreateAttributes(&attributes, 1))) {
+        *error = QStringLiteral("MFCreateAttributes failed");
+        return frames;
+    }
+    attributes->SetUINT32(MF_SOURCE_READER_ENABLE_ADVANCED_VIDEO_PROCESSING, TRUE);
+    IMFSourceReader* reader = nullptr;
+    const HRESULT opened = MFCreateSourceReaderFromURL(path.toStdWString().c_str(), attributes, &reader);
+    attributes->Release();
+    if (FAILED(opened)) {
+        *error = QStringLiteral("open failed 0x%1").arg(quint32(opened), 8, 16, QLatin1Char('0'));
+        return frames;
+    }
+    const auto releaseReader = qScopeGuard([&] { reader->Release(); });
+    IMFMediaType* rgb = nullptr;
+    MFCreateMediaType(&rgb);
+    rgb->SetGUID(MF_MT_MAJOR_TYPE, MFMediaType_Video);
+    rgb->SetGUID(MF_MT_SUBTYPE, MFVideoFormat_RGB32);
+    const HRESULT typed = reader->SetCurrentMediaType(MF_SOURCE_READER_FIRST_VIDEO_STREAM, nullptr, rgb);
+    rgb->Release();
+    if (FAILED(typed)) {
+        *error = QStringLiteral("RGB32 output refused");
+        return frames;
+    }
+    IMFMediaType* current = nullptr;
+    if (FAILED(reader->GetCurrentMediaType(MF_SOURCE_READER_FIRST_VIDEO_STREAM, &current))) {
+        *error = QStringLiteral("no current type");
+        return frames;
+    }
+    UINT32 width = 0, height = 0;
+    MFGetAttributeSize(current, MF_MT_FRAME_SIZE, &width, &height);
+    UINT32 strideValue = width * 4;
+    const bool hasStride = SUCCEEDED(current->GetUINT32(MF_MT_DEFAULT_STRIDE, &strideValue));
+    current->Release();
+    const LONG stride = hasStride ? LONG(qint32(strideValue)) : LONG(width * 4);
+    for (int guard = 0; guard < 10000; ++guard) {
+        DWORD flags = 0;
+        IMFSample* sample = nullptr;
+        if (FAILED(reader->ReadSample(MF_SOURCE_READER_FIRST_VIDEO_STREAM, 0, nullptr, &flags, nullptr,
+                                      &sample))) {
+            *error = QStringLiteral("ReadSample failed after %1 frames").arg(frames.size());
+            break;
+        }
+        if (flags & MF_SOURCE_READERF_ENDOFSTREAM) {
+            if (sample)
+                sample->Release();
+            break;
+        }
+        if (!sample)
+            continue;
+        IMFMediaBuffer* buffer = nullptr;
+        if (SUCCEEDED(sample->GetBufferByIndex(0, &buffer))) {
+            QImage image(int(width), int(height), QImage::Format_RGB32);
+            bool copied = false;
+            IMF2DBuffer* planar = nullptr;
+            if (SUCCEEDED(buffer->QueryInterface(IID_PPV_ARGS(&planar)))) {
+                BYTE* scan0 = nullptr;
+                LONG pitch = 0;
+                if (SUCCEEDED(planar->Lock2D(&scan0, &pitch))) {
+                    for (UINT32 y = 0; y < height; ++y)
+                        memcpy(image.scanLine(int(y)), scan0 + LONG(y) * pitch, size_t(width) * 4);
+                    planar->Unlock2D();
+                    copied = true;
+                }
+                planar->Release();
+            }
+            BYTE* data = nullptr;
+            DWORD length = 0;
+            if (!copied && SUCCEEDED(buffer->Lock(&data, nullptr, &length))) {
+                const LONG absolute = std::abs(stride);
+                if (length >= DWORD(absolute) * height) {
+                    for (UINT32 y = 0; y < height; ++y) {
+                        const BYTE* row = stride >= 0 ? data + y * absolute
+                                                      : data + (height - 1 - y) * absolute;
+                        memcpy(image.scanLine(int(y)), row, size_t(width) * 4);
+                    }
+                    copied = true;
+                }
+                buffer->Unlock();
+            }
+            if (copied)
+                frames.append(image);
+            buffer->Release();
+        }
+        sample->Release();
+    }
+    return frames;
+}
+
+} // namespace
 
 class CaptureAcknowledgementTest : public QObject
 {
@@ -429,6 +554,261 @@ private slots:
         const QColor edge = replayFrame.pixelColor(2, 2);
         QVERIFY(middle.blue() > middle.green() && middle.green() > middle.red());
         QVERIFY(edge.blue() > edge.green() && edge.green() > edge.red());
+    }
+
+    // Issue #40: a game that moves or resizes while capture is active. The
+    // fixture stays at the bottom of the z-order without activation, so other
+    // windows genuinely cover it and the desktop focus is never touched.
+    void captureFollowsTheClientWhileTheWindowMovesAndResizes()
+    {
+        if (!qEnvironmentVariableIsSet("GAMEHQ_TEST_WGC_NATIVE"))
+            QSKIP("Requires an interactive Windows desktop and a WGC-capable GPU");
+        QVERIFY(GameDetector::onInputDesktop());
+        const auto previousDpi = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+        QVERIFY(previousDpi);
+        const auto restoreDpi = qScopeGuard([&] { SetThreadDpiAwarenessContext(previousDpi); });
+        const HINSTANCE instance = GetModuleHandleW(nullptr);
+        const HBRUSH blue = CreateSolidBrush(RGB(0, 70, 220));
+        QVERIFY(blue);
+        const auto deleteBrush = qScopeGuard([&] { DeleteObject(blue); });
+        WNDCLASSW windowClass{};
+        windowClass.lpfnWndProc = DefWindowProcW;
+        windowClass.hInstance = instance;
+        windowClass.hbrBackground = blue;
+        windowClass.lpszClassName = L"GameHQMovingCaptureFixture";
+        QVERIFY(RegisterClassW(&windowClass));
+        const auto unregister = qScopeGuard([&] { UnregisterClassW(windowClass.lpszClassName, instance); });
+        const HWND game = CreateWindowExW(WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW, windowClass.lpszClassName,
+            L"Moving fixture", WS_OVERLAPPEDWINDOW, 160, 160, 380, 260, nullptr, nullptr, instance, nullptr);
+        QVERIFY(game);
+        const auto destroyGame = qScopeGuard([&] { DestroyWindow(game); });
+        // Windows 11 rounds the bottom corners of framed windows, which also
+        // rounds the client's bottom corners in WGC. Square the fixture so
+        // every edge pixel is checked strictly (DWMWA_WINDOW_CORNER_PREFERENCE
+        // = 33, DWMWCP_DONOTROUND = 1; older builds ignore the attribute).
+        const DWORD squareCorners = 1;
+        DwmSetWindowAttribute(game, 33, &squareCorners, sizeof(squareCorners));
+        QVERIFY(SetWindowPos(game, HWND_BOTTOM, 0, 0, 0, 0,
+                             SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_SHOWWINDOW));
+        UpdateWindow(game);
+        QVERIFY(SUCCEEDED(DwmFlush()));
+        MONITORINFO monitor{sizeof(MONITORINFO)};
+        QVERIFY(GetMonitorInfoW(MonitorFromWindow(game, MONITOR_DEFAULTTONEAREST), &monitor));
+        const RECT screen = monitor.rcMonitor;
+        const RECT work = monitor.rcWork;
+
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/wgc-move-XXXXXX");
+        QVERIFY(dir.isValid());
+        ConfigManager config(dir.filePath("config.json"));
+        config.setValue(ConfigKeys::CaptureMode, QStringLiteral("whitelist"));
+        QVERIFY(config.setCaptureExecutableAllowed(QCoreApplication::applicationFilePath(), true));
+        config.setValue(ConfigKeys::ReplayAuto, true);
+        config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, false);
+        config.setValue(ConfigKeys::AudioSource, QStringLiteral("off"));
+        CaptureLocations locations(&config);
+        QVERIFY(locations.setBaseRoot(CaptureLocations::Kind::Clips, dir.path()));
+        RECT client{};
+        QVERIFY(GetClientRect(game, &client));
+        const QSize clientSize(client.right, client.bottom);
+        ForegroundGame target;
+        target.valid = true;
+        target.hwnd = game;
+        target.pid = GetCurrentProcessId();
+        QVERIFY(ProcessIdentity::creationTimeOf(GetCurrentProcess(), target.processStarted));
+        target.w = client.right;
+        target.h = client.bottom;
+        target.executablePath = QCoreApplication::applicationFilePath();
+        target.gameName = QStringLiteral("Moving fixture");
+        FramePumpService pump(&config, &locations);
+        pump.m_autoTimer->stop();
+        QStringList restarts;
+        connect(pump.m_worker, &FramePumpWorker::restartRequested, this,
+                [&restarts](quint64, const QString& reason) { restarts.append(reason); },
+                Qt::QueuedConnection);
+        QList<bool> pauses;
+        connect(pump.m_worker, &FramePumpWorker::capturePausedChanged, this,
+                [&pauses](quint64, bool paused) { pauses.append(paused); }, Qt::QueuedConnection);
+        pump.pinTarget(target);
+        QVERIFY(pump.hasPinnedTarget());
+
+        // Keep WGC delivering frames: toggle a small patch away from the edges.
+        QTimer repaint;
+        bool alternate = false;
+        connect(&repaint, &QTimer::timeout, this, [&] {
+            RECT now{};
+            GetClientRect(game, &now);
+            const HDC dc = GetDC(game);
+            if (!dc)
+                return;
+            RECT patch{now.right - 24, 8, now.right - 8, 24};
+            FillRect(dc, &patch, alternate ? blue : GetSysColorBrush(COLOR_WINDOW));
+            ReleaseDC(game, dc);
+            alternate = !alternate;
+        });
+        repaint.setTimerType(Qt::PreciseTimer);
+        repaint.start(16);
+        pump.restartBuffer();
+        QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() == ReplayBufferState::Recording, 7000);
+
+        QSignalSpy ready(&pump, &FramePumpService::windowScreenshotReady);
+        QSignalSpy failed(&pump, &FramePumpService::windowScreenshotFailed);
+        quint64 nextShot = 1;
+        auto shoot = [&](QImage* image, QString* reason) {
+            const qsizetype before = ready.size() + failed.size();
+            const quint64 id = nextShot++;
+            pump.captureWindowScreenshot(id);
+            QElapsedTimer clock;
+            clock.start();
+            while (ready.size() + failed.size() == before && clock.elapsed() < 7000)
+                QTest::qWait(20);
+            if (failed.size() + ready.size() == before) {
+                *reason = QStringLiteral("screenshot %1 timed out").arg(id);
+                return false;
+            }
+            if (!failed.isEmpty() && failed.last().at(1).toULongLong() == id) {
+                *reason = failed.last().at(0).toString();
+                return false;
+            }
+            *image = qvariant_cast<QImage>(ready.last().at(0));
+            return true;
+        };
+        auto verifyClip = [&](const QSize& expected, QString* reason) {
+            QSignalSpy saved(&pump, &FramePumpService::clipSaved);
+            QSignalSpy clipFailed(&pump, &FramePumpService::clipFailed);
+            pump.saveReplay(CaptureRequest::create(CaptureRequest::Source::Ui));
+            QElapsedTimer clock;
+            clock.start();
+            while (saved.isEmpty() && clipFailed.isEmpty() && clock.elapsed() < 15000)
+                QTest::qWait(20);
+            if (saved.isEmpty()) {
+                *reason = clipFailed.isEmpty() ? QStringLiteral("save timed out")
+                                               : clipFailed.constFirst().at(1).toString();
+                return false;
+            }
+            const QString clipPath = saved.constFirst().at(0).toString();
+            if (!ReplayExporter::hasReadableVideo(clipPath)) {
+                *reason = QStringLiteral("unreadable clip");
+                return false;
+            }
+            const QImage preview(saved.constFirst().at(2).toString());
+            if (preview.isNull() || !nonFixtureEdge(preview).isEmpty()) {
+                *reason = QStringLiteral("preview %1").arg(preview.isNull() ? QStringLiteral("missing")
+                                                                            : nonFixtureEdge(preview));
+                return false;
+            }
+            QString decodeError;
+            const QList<QImage> frames = decodeAllFrames(clipPath, &decodeError);
+            if (frames.size() < 10) {
+                *reason = QStringLiteral("only %1 frames decoded %2").arg(frames.size()).arg(decodeError);
+                return false;
+            }
+            const QString evidence = qEnvironmentVariable("GAMEHQ_TEST_EVIDENCE_DIR");
+            if (!evidence.isEmpty()) {
+                static int clipIndex = 0;
+                QFile::copy(clipPath, QDir(evidence).filePath(
+                    QStringLiteral("moving-fixture-%1.mp4").arg(++clipIndex)));
+            }
+            QStringList badFrames;
+            for (qsizetype i = 0; i < frames.size(); ++i) {
+                const QString bad = nonFixtureEdge(frames[i]);
+                if (!bad.isEmpty())
+                    badFrames.append(QStringLiteral("%1:%2").arg(i).arg(bad));
+            }
+            if (!badFrames.isEmpty())
+                qWarning().noquote() << "foreign frames" << frames.size() << badFrames.join(u' ');
+            const QSize even(expected.width() & ~1, expected.height() & ~1);
+            for (qsizetype i = 0; i < frames.size(); ++i) {
+                if (frames[i].size() != even) {
+                    *reason = QStringLiteral("frame %1 is %2x%3, expected %4x%5").arg(i)
+                        .arg(frames[i].width()).arg(frames[i].height()).arg(even.width()).arg(even.height());
+                    return false;
+                }
+                const QString bad = nonFixtureEdge(frames[i]);
+                if (!bad.isEmpty()) {
+                    *reason = QStringLiteral("frame %1 of %2 has foreign pixel %3")
+                        .arg(i).arg(frames.size()).arg(bad);
+                    return false;
+                }
+            }
+            qInfo().noquote() << QStringLiteral("clip %1: %2 frames at %3x%4 verified")
+                .arg(QFileInfo(clipPath).fileName()).arg(frames.size()).arg(even.width()).arg(even.height());
+            return true;
+        };
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
+
+        // Moves keep the client size, so neither the pipeline nor the
+        // encoder may restart. Each position keeps most of the window on the
+        // starting monitor so its DPI, and therefore its client size, holds.
+        struct Move { const char* name; int x; int y; };
+        const Move moves[] = {
+            {"left edge off screen", int(screen.left) - 120, 200},
+            {"below the work area", int(work.right) - 260, int(work.bottom) - 90},
+            {"below the monitor", int(screen.left) + 200, int(screen.bottom) - 110},
+            {"delayed reposition back", 160, 160},
+        };
+        for (const Move& move : moves) {
+            QVERIFY(SetWindowPos(game, nullptr, move.x, move.y, 0, 0,
+                                 SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE));
+            QVERIFY(SUCCEEDED(DwmFlush()));
+            QTest::qWait(300);
+            RECT moved{};
+            QVERIFY(GetClientRect(game, &moved));
+            QCOMPARE(QSize(moved.right, moved.bottom), clientSize);
+            QImage image;
+            QString reason;
+            QVERIFY2(shoot(&image, &reason), qPrintable(QStringLiteral("%1: %2").arg(move.name, reason)));
+            QCOMPARE(image.size(), clientSize);
+            const QString bad = nonFixtureEdge(image);
+            QVERIFY2(bad.isEmpty(), qPrintable(QStringLiteral("%1: %2").arg(move.name, bad)));
+        }
+        QVERIFY2(restarts.isEmpty(), qPrintable(restarts.join(u"; ")));
+        QCOMPARE(pump.bufferState(), ReplayBufferState::Recording);
+        QString clipReason;
+        QVERIFY2(verifyClip(clientSize, &clipReason), qPrintable(QStringLiteral("moves: ") + clipReason));
+        QVERIFY2(restarts.isEmpty(), qPrintable(restarts.join(u"; ")));
+
+        // A resize must re-arm once at the new client size; frames of the
+        // old size must never reach the replay or a screenshot.
+        QVERIFY(SetWindowPos(game, nullptr, 0, 0, 470, 330, SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE));
+        RECT resized{};
+        QVERIFY(GetClientRect(game, &resized));
+        const QSize resizedClient(resized.right, resized.bottom);
+        QVERIFY(resizedClient != clientSize);
+        QTRY_VERIFY_WITH_TIMEOUT(!restarts.isEmpty(), 5000);
+        QVERIFY2(restarts.size() == 1, qPrintable(restarts.join(u"; ")));
+        QCOMPARE(restarts.constFirst(), QStringLiteral("Game resolution changed"));
+        QTest::qWait(200);
+        QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() == ReplayBufferState::Recording, 7000);
+        QImage resizedShot;
+        QVERIFY2(shoot(&resizedShot, &clipReason), qPrintable(QStringLiteral("resize: ") + clipReason));
+        QCOMPARE(resizedShot.size(), resizedClient);
+        QVERIFY2(nonFixtureEdge(resizedShot).isEmpty(), qPrintable(nonFixtureEdge(resizedShot)));
+        QTest::qWait(900);
+        QVERIFY2(verifyClip(resizedClient, &clipReason), qPrintable(QStringLiteral("resize: ") + clipReason));
+        QCOMPARE(restarts.size(), 1);
+
+        // Minimize stops valid frames. Capture must keep the pinned target and
+        // resume cleanly after a restore without activation.
+        ShowWindow(game, SW_SHOWMINNOACTIVE);
+        QTest::qWait(3000);
+        QVERIFY(pump.hasPinnedTarget());
+        ShowWindow(game, SW_SHOWNOACTIVATE);
+        QVERIFY(SetWindowPos(game, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE));
+        QVERIFY(SUCCEEDED(DwmFlush()));
+        QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() == ReplayBufferState::Recording
+                                     && !pump.m_capturePaused, 10000);
+        QTest::qWait(1200);
+        QImage restoredShot;
+        QVERIFY2(shoot(&restoredShot, &clipReason), qPrintable(QStringLiteral("restore: ") + clipReason));
+        QCOMPARE(restoredShot.size(), resizedClient);
+        QVERIFY2(nonFixtureEdge(restoredShot).isEmpty(), qPrintable(nonFixtureEdge(restoredShot)));
+        QVERIFY2(verifyClip(resizedClient, &clipReason), qPrintable(QStringLiteral("restore: ") + clipReason));
+        qInfo().noquote() << QStringLiteral("restarts=[%1] pauses=%2")
+            .arg(restarts.join(u"; ")).arg(pauses.size());
+        QVERIFY(pump.hasPinnedTarget());
     }
 
     void removingAnAllowedGameStopsAutoAndColdManualCapture()
