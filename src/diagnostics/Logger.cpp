@@ -6,7 +6,6 @@
 #include <QFileInfo>
 #include <QMutex>
 #include <QStringList>
-#include <QTextStream>
 
 #include <cstdio>
 
@@ -17,12 +16,14 @@ QMutex g_mutex;
 QtMessageHandler g_previous = nullptr;
 QString g_logDirectory;
 bool g_handlerInstalled = false;
-// Lines logged between beginBuffering() and install(). Bounded so a process
-// that never reaches install() cannot grow without limit.
-QStringList g_pending;
+// Lines logged between beginBuffering() and install(), already encoded.
+// Bounded so a process that never reaches install() cannot grow without limit.
+QList<QByteArray> g_pending;
 constexpr qsizetype kMaxPendingLines = 1000;
 // Tracked rather than stat'ed: every line is flushed already, and asking the
-// filesystem for the size on each one would double that cost.
+// filesystem for the size on each one would double that cost. Counted in the
+// encoded bytes actually written, so rotation happens at kMaxLogBytes on
+// disk: counting characters let UTF-8 text run past the limit.
 qint64 g_bytesInFile = 0;
 
 const QString& logFileName()
@@ -47,7 +48,9 @@ const char* levelName(QtMsgType type)
 bool openLogFile()
 {
     g_logFile.setFileName(g_logDirectory + QLatin1Char('/') + logFileName());
-    if (!g_logFile.open(QIODevice::Append | QIODevice::Text)) {
+    // Binary: the line ending is written explicitly, so the byte count is
+    // exact (text mode added a \r the counter never saw).
+    if (!g_logFile.open(QIODevice::Append)) {
         g_bytesInFile = 0;
         return false;
     }
@@ -55,20 +58,34 @@ bool openLogFile()
     return true;
 }
 
-// Caller holds g_mutex.
-void writeLine(const QString& line)
+// The bytes of one log line, CRLF-terminated as the log has always been on
+// Windows. Built before taking the lock, so the lock covers the write only.
+QByteArray encodeLine(QtMsgType type, const QString& msg)
 {
-    QTextStream out(&g_logFile);
-    out << line << '\n';
-    out.flush();
-    g_bytesInFile += line.size() + 1;
+    QByteArray line = QDateTime::currentDateTime().toString(Qt::ISODateWithMs).toLatin1();
+    line += ' ';
+    line += levelName(type);
+    line += ' ';
+    line += msg.toUtf8();
+    line += "\r\n";
+    return line;
+}
+
+// Caller holds g_mutex. Flushed at once: the line reaches the operating
+// system before the call returns, so it survives a crash of this process
+// (it is not an fsync, so it does not survive power loss).
+void writeLine(const QByteArray& line)
+{
+    const qint64 written = g_logFile.write(line);
+    g_logFile.flush();
+    if (written > 0)
+        g_bytesInFile += written;
 }
 
 // Caller holds g_mutex.
-void writeLineToStderr(const QString& line)
+void writeLineToStderr(const QByteArray& line)
 {
-    std::fputs(qPrintable(line), stderr);
-    std::fputc('\n', stderr);
+    std::fwrite(line.constData(), 1, size_t(line.size()), stderr);
 }
 
 // Caller holds g_mutex.
@@ -86,8 +103,7 @@ void rotateIfFull()
 
 void handler(QtMsgType type, const QMessageLogContext& ctx, const QString& msg)
 {
-    const QString line = QDateTime::currentDateTime().toString(Qt::ISODateWithMs)
-        + QLatin1Char(' ') + QLatin1String(levelName(type)) + QLatin1Char(' ') + msg;
+    const QByteArray line = encodeLine(type, msg);
     {
         QMutexLocker lock(&g_mutex);
         if (g_logFile.isOpen()) {
@@ -142,7 +158,7 @@ void install(const QString& logsDir)
         opened = openLogFile();
         // Buffered lines keep their original timestamps and go first, in
         // order, so the file reads as if it had been open all along.
-        for (const QString& line : std::as_const(g_pending)) {
+        for (const QByteArray& line : std::as_const(g_pending)) {
             if (opened) {
                 rotateIfFull();
                 if (g_logFile.isOpen())

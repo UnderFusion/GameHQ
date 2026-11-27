@@ -76,3 +76,29 @@ abandon it in-process.
 - `tst_capturefilesync`: a scan cancelled at shutdown stops within one file.
 - `tst_inputengineshutdown`, `tst_gameinputdelivery`: input teardown order and
   the GameInput hand-off.
+
+## Logging
+
+`Logger` writes synchronously on the calling thread. Each line is formatted
+and UTF-8 encoded before the lock is taken; the lock covers one `write` and a
+flush. The flush hands the line to the operating system before the call
+returns, so it survives a crash of GameHQ (it is not an fsync: it does not
+survive power loss). `QtFatalMsg` lines are written the same way before Qt
+aborts.
+
+Measured (`tst_logperf`, local SSD): one thread p50 about 10 µs and p99 about
+45 µs per line; four threads logging at once p50 about 45 µs and p99 about
+210 µs. Occasional millisecond spikes come from the disk. Hot paths log
+lifecycle events only (device connects and disconnects, backend changes,
+capture transitions), never per packet or per frame, so this cost is not on
+an input or frame path. An asynchronous writer was therefore not added: it
+would add a thread and a shutdown dependency, and it would risk losing the
+last lines before a crash.
+
+Residual risk: a disk that stalls for a long time (a hung network drive, a
+long antivirus hold) blocks the thread that logs, and the other threads
+waiting on the lock, for that long.
+
+Rotation counts the encoded bytes actually written (CRLF included), so
+`gamehq.log` rotates at 8 MiB on disk. It used to count characters, which let
+UTF-8 text run about 30% over the limit.

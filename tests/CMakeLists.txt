@@ -1068,6 +1068,11 @@ gamehq_add_test(tst_logrotation
     tst_logrotation.cpp
     "${CMAKE_SOURCE_DIR}/src/diagnostics/Logger.cpp")
 
+# t43/A13: caller-side cost of logging, concurrency and byte-accurate rotation.
+gamehq_add_test(tst_logperf
+    tst_logperf.cpp
+    "${CMAKE_SOURCE_DIR}/src/diagnostics/Logger.cpp")
+
 # Crash-dump naming and retention (pure helpers; nothing crashes here).
 # Child process that installs CrashDump and then really crashes.
 add_executable(crashdump_fixture crashdump_fixture.cpp
