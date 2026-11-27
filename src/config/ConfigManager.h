@@ -36,7 +36,7 @@ public:
 
     QVariant value(const QString& key, const QVariant& fallback = {}) const;
     bool hasExplicitValue(const QString& key) const;
-    void setValue(const QString& key, const QVariant& value);
+    bool setValue(const QString& key, const QVariant& value);
     QVariant defaultValue(const QString& key, const QVariant& fallback = {}) const;
     bool isDefault(const QString& key) const;
     bool resetValue(const QString& key);

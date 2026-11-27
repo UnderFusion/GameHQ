@@ -358,6 +358,7 @@ ApplicationWindow {
     }
 
     function doPersistGeometry() {
+        persistTimer.stop()
         // One write for the whole geometry instead of one per value.
         app.setConfigValues({
             "ui.window_width": window.width,
@@ -366,6 +367,11 @@ ApplicationWindow {
             "ui.window_y": window.y,
             "ui.zoom_level": window.zoomLevel
         })
+    }
+
+    function flushPendingGeometry() {
+        if (persistTimer.running)
+            window.doPersistGeometry()
     }
 
     // Windows can squeeze the window below its minimum when a monitor sleeps or

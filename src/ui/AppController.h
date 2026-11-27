@@ -266,7 +266,7 @@ private:
     // restored ones back, then updates both galleries without a reset.
     void onCaptureFoldersChanged(const QStringList& roots);
     void onFoldersReconciled(const QStringList& roots, const CaptureScanner::Delta& delta);
-    bool applyConfig(const QString& key, const QVariant& value);
+    bool routeConfigChange(const QString& key, const QVariant& value);
     static constexpr qint64 kFolderSettleMs = 3000;
     void onScanFinished(int added);
 

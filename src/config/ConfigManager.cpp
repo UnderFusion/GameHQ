@@ -196,9 +196,16 @@ bool ConfigManager::save() const
         qWarning() << "Config: cannot write" << m_filePath;
         return false;
     }
-    file.write(QJsonDocument(m_overrides).toJson(QJsonDocument::Indented));
-    if (!file.commit())
+    const QByteArray contents = QJsonDocument(m_overrides).toJson(QJsonDocument::Indented);
+    if (file.write(contents) != contents.size()) {
+        qWarning() << "Config: cannot write" << m_filePath << file.errorString();
+        file.cancelWriting();
+        return false;
+    }
+    if (!file.commit()) {
+        qWarning() << "Config: cannot replace" << m_filePath << file.errorString();
         return false;   // still dirty: the next save retries
+    }
     m_dirty = false;
     ++m_fileWrites;
     return true;
@@ -247,11 +254,11 @@ bool ConfigManager::setCaptureExecutableAllowed(const QString& path, bool allowe
     return false;
 }
 
-void ConfigManager::setValue(const QString& key, const QVariant& value)
+bool ConfigManager::setValue(const QString& key, const QVariant& value)
 {
     if (this->value(key) == value
         && (m_overrides.contains(key) || !preservesExplicitDefault(key)))
-        return;
+        return false;
 
     const QJsonValue jsonValue = QJsonValue::fromVariant(value);
     const QJsonObject builtIns = defaults();
@@ -262,6 +269,7 @@ void ConfigManager::setValue(const QString& key, const QVariant& value)
         m_overrides.insert(key, jsonValue);
     m_dirty = true;
     emit valueChanged(key, this->value(key));
+    return true;
 }
 
 QVariant ConfigManager::defaultValue(const QString& key, const QVariant& fallback) const

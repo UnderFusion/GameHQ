@@ -344,6 +344,11 @@ bool App::init()
         qCritical() << "Failed to load QML root — aborting startup";
         return false;
     }
+    // Tray Exit and the updater can quit without a QML window-close event.
+    auto* mainWindow = m_engine.rootObjects().first();
+    connect(qApp, &QCoreApplication::aboutToQuit, mainWindow, [mainWindow] {
+        QMetaObject::invokeMethod(mainWindow, "flushPendingGeometry");
+    });
     if (m_pendingOpenGallery)
         openGallery();
     else if (m_pendingActivation)

@@ -489,6 +489,13 @@ private slots:
         QVERIFY(cfg.hasUnsavedChanges());
         QVERIFY(!cfg.save());   // retried, not silently marked clean
         QCOMPARE(cfg.fileWrites(), 0);
+        QVERIFY(QDir().rmdir(blocked));
+        QVERIFY(cfg.save());
+        QCOMPARE(cfg.fileWrites(), 1);
+        QVERIFY(!cfg.hasUnsavedChanges());
+        ConfigManager restarted(blocked);
+        QCOMPARE(restarted.loadOrQuarantine(), ConfigManager::LoadResult::Loaded);
+        QCOMPARE(restarted.value(ConfigKeys::UiWindowWidth).toInt(), 777);
     }
 
     void groupAndFullResetsAreWritten()
