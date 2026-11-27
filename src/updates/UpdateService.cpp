@@ -43,7 +43,10 @@ UpdateService::UpdateService(QString owner, QString repo, QString installedVersi
     , m_notes(new RemoteReleaseNotes(owner, repo,
           QFileInfo(trustStatePath).absolutePath() + QStringLiteral("/release-notes-cache"), this))
     , m_source(new GitHubReleaseSource(std::move(owner), std::move(repo), this))
-    , m_downloader(new UpdateDownloader(stagingRoot, std::move(trustStatePath), this))
+    // Copied, not moved: m_releaseCachePath below is initialised later from the
+    // same path, and a moved-from string put the discovery cache at the root
+    // of the working directory's drive instead of beside the trust state.
+    , m_downloader(new UpdateDownloader(stagingRoot, trustStatePath, this))
     , m_installedVersion(std::move(installedVersion))
     , m_packageRoot(QDir(stagingRoot).absoluteFilePath(QStringLiteral("../..")))
     , m_releaseCachePath(QFileInfo(trustStatePath).absolutePath() + QStringLiteral("/release-notes-cache/discovery.json"))

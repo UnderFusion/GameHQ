@@ -156,6 +156,24 @@ private slots:
         QVERIFY(restored->prerelease);
     }
 
+    void theSnapshotKeepsEveryFieldRevalidationCompares()
+    {
+        auto beta = ReleaseCatalog::selectBest(
+            QJsonArray{ betaRelease(QStringLiteral("v0.7.10-beta3")) }, true);
+        QVERIFY(beta.has_value());
+        beta->checksumUrl = QStringLiteral("https://example.invalid/") + beta->zipName
+            + QStringLiteral(".sha256");
+        const auto restored = ReleaseCatalog::restoreSnapshot(ReleaseCatalog::cacheSnapshot(*beta));
+        QVERIFY(restored.has_value());
+        QCOMPARE(restored->version, beta->version);
+        QCOMPARE(restored->zipName, beta->zipName);
+        QCOMPARE(restored->zipUrl, beta->zipUrl);
+        QCOMPARE(restored->zipSize, beta->zipSize);
+        QCOMPARE(restored->checksumUrl, beta->checksumUrl);
+        QCOMPARE(restored->manifestUrl, beta->manifestUrl);
+        QCOMPARE(restored->signatureUrl, beta->signatureUrl);
+    }
+
     void aPageWithoutAnAppReleaseYieldsNothing()
     {
         QCOMPARE(ReleaseCatalog::selectBest(QJsonArray{}), std::nullopt);

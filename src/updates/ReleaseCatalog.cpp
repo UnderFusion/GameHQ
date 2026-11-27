@@ -127,6 +127,10 @@ QByteArray ReleaseCatalog::cacheSnapshot(const ReleaseInfo &release)
         assets.append(QJsonObject{{"name", name}, {"browser_download_url", url}, {"size", size}});
     };
     asset(release.zipName, release.zipUrl, release.zipSize);
+    // Install revalidation compares the checksum URL too, so a snapshot that
+    // dropped it made every restored offer look changed after download.
+    if (!release.checksumUrl.isEmpty())
+        asset(release.zipName + QStringLiteral(".sha256"), release.checksumUrl, 0);
     asset(QStringLiteral("gamehq-release.json"), release.manifestUrl, 0);
     asset(QStringLiteral("gamehq-release.sig"), release.signatureUrl, 0);
     QJsonObject object{{"tag_name", release.tag}, {"name", release.name},
