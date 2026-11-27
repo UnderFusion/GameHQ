@@ -2,7 +2,7 @@
 
 #include "config/Paths.h"
 #include "storage/CaptureDatabase.h"
-#include "storage/ThumbnailService.h"
+#include "storage/ThumbnailScheduler.h"
 #include "ui/GalleryModel.h"
 #include "ui/ShellActions.h"
 
@@ -22,13 +22,28 @@ CaptureFileOps CaptureFileOps::systemOps()
 }
 
 CaptureLibraryService::CaptureLibraryService(CaptureDatabase* db, GalleryModel* gallery,
-                                             GalleryModel* overlayGallery, CaptureFileOps fileOps)
+                                             GalleryModel* overlayGallery, CaptureFileOps fileOps,
+                                             std::unique_ptr<ThumbnailScheduler> thumbnails)
     : m_db(db)
     , m_gallery(gallery)
     , m_overlayGallery(overlayGallery)
     , m_fileOps(std::move(fileOps))
+    , m_thumbnails(thumbnails ? std::move(thumbnails)
+                              : std::make_unique<ThumbnailScheduler>(Paths::thumbnailsDir()))
 {
+    // The scheduler is owned here, so this connection ends with the service.
+    QObject::connect(m_thumbnails.get(), &ThumbnailScheduler::thumbnailReady, m_thumbnails.get(),
+                     [this](int id, const QString& filePath, const QString& thumb) {
+                         if (!m_db->setLiveThumbnail(id, filePath, thumb))
+                             return;   // deleted or replaced while it was generated
+                         if (m_gallery)
+                             m_gallery->setThumbnail(id, thumb);
+                         if (m_overlayGallery)
+                             m_overlayGallery->setThumbnail(id, thumb);
+                     });
 }
+
+CaptureLibraryService::~CaptureLibraryService() = default;
 
 // One capture, in the only order that stays recoverable: the media file first
 // (a file that cannot be moved keeps its library row, so the capture never
@@ -179,12 +194,11 @@ CaptureCommitOutcome CaptureLibraryService::commitCapture(const QString& filePat
     const int id = m_db->insertCapture(filePath, type, gameName,
                                        QDateTime::currentDateTime().toString(Qt::ISODate),
                                        QStringLiteral("GameHQ"), executablePath);
-    if (id > 0) {
-        const QString thumb = ThumbnailService::ensureThumbnail(
-            filePath, type, Paths::thumbnailsDir());
-        if (!thumb.isEmpty())
-            m_db->setThumbnail(id, thumb);
-    }
+    // Indexed now; the preview follows. A slow or failed decode neither
+    // delays this capture nor makes it fail, and the tile shows its
+    // placeholder until the thumbnail arrives.
+    if (id > 0)
+        m_thumbnails->request(id, filePath, type);
     refreshGalleries();
     return commitOutcome(id, filePath);
 }

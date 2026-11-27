@@ -161,6 +161,7 @@ qt_add_executable(GameHQ
     storage/GameMetadataBackfill.cpp storage/GameMetadataBackfill.h
     storage/GameRowRepair.cpp storage/GameRowRepair.h
     storage/ThumbnailService.cpp storage/ThumbnailService.h
+    storage/ThumbnailScheduler.cpp storage/ThumbnailScheduler.h
     tray/TrayIcon.cpp      tray/TrayIcon.h
     tray/TrayIconRenderer.cpp tray/TrayIconRenderer.h
     tray/TrayStatus.cpp    tray/TrayStatus.h

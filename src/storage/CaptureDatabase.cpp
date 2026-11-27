@@ -141,6 +141,18 @@ bool CaptureDatabase::setThumbnail(int captureId, const QString& thumbnailPath)
     return q.exec();
 }
 
+bool CaptureDatabase::setLiveThumbnail(int captureId, const QString& filePath,
+                                       const QString& thumbnailPath)
+{
+    QSqlQuery q(m_db);
+    q.prepare(QStringLiteral("UPDATE captures SET thumbnail_path = :t "
+                             "WHERE id = :id AND file_path = :p AND deleted_at IS NULL"));
+    q.bindValue(QStringLiteral(":t"), Paths::toStoredPath(thumbnailPath));
+    q.bindValue(QStringLiteral(":id"), captureId);
+    q.bindValue(QStringLiteral(":p"), Paths::toStoredPath(filePath));
+    return q.exec() && q.numRowsAffected() > 0;
+}
+
 QString CaptureDatabase::thumbnailForCapture(const QString& filePath) const
 {
     QSqlQuery q(m_db);

@@ -1,9 +1,12 @@
 #pragma once
 
+#include "storage/ThumbnailScheduler.h"
+
 #include <QString>
 #include <QVariantList>
 
 #include <functional>
+#include <memory>
 
 class CaptureDatabase;
 class GalleryModel;
@@ -54,8 +57,13 @@ struct CaptureFileOps
 class CaptureLibraryService
 {
 public:
+    // thumbnails: the scheduler for screenshot previews; null uses one on the
+    // application's thumbnail cache.
     CaptureLibraryService(CaptureDatabase* db, GalleryModel* gallery, GalleryModel* overlayGallery,
-                          CaptureFileOps fileOps = CaptureFileOps::systemOps());
+                          CaptureFileOps fileOps = CaptureFileOps::systemOps(),
+                          std::unique_ptr<ThumbnailScheduler> thumbnails = {});
+    ~CaptureLibraryService();
+    ThumbnailScheduler* thumbnails() const { return m_thumbnails.get(); }
 
     CaptureDeletionResult deleteCapture(GalleryModel* model, int row);
     CaptureDeletionResult deleteCaptures(GalleryModel* model, const QVariantList& rows);
@@ -88,4 +96,5 @@ private:
     GalleryModel* m_gallery;
     GalleryModel* m_overlayGallery;
     CaptureFileOps m_fileOps;
+    std::unique_ptr<ThumbnailScheduler> m_thumbnails;
 };

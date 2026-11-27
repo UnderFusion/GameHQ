@@ -40,6 +40,8 @@ public:
     void sync();
     Q_INVOKABLE void retranslate();
     Q_INVOKABLE void toggleFavorite(int row);
+    // A thumbnail generated after the row was listed: updates that row only.
+    void setThumbnail(int captureId, const QString& thumbnailPath);
     const CaptureRecord* record(int row) const;
 
     // Convenience accessor for QML code outside a delegate context (e.g. the

@@ -127,6 +127,21 @@ void GalleryModel::retranslate()
         emit dataChanged(index(0), index(m_items.size() - 1), { DateTextRole });
 }
 
+void GalleryModel::setThumbnail(int captureId, const QString& thumbnailPath)
+{
+    for (int row = 0; row < m_items.size(); ++row) {
+        CaptureRecord& r = m_items[row];
+        if (r.id != captureId)
+            continue;
+        if (r.thumbnailPath == thumbnailPath)
+            return;
+        r.thumbnailPath = thumbnailPath;
+        const QModelIndex idx = index(row);
+        emit dataChanged(idx, idx, { ThumbnailRole });
+        return;
+    }
+}
+
 void GalleryModel::toggleFavorite(int row)
 {
     if (row < 0 || row >= m_items.size())

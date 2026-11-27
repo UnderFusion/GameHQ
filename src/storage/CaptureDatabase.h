@@ -158,6 +158,9 @@ public:
                       const QString& source, const QString& executablePath = QString());
     bool setFavorite(int captureId, bool favorite);
     bool setThumbnail(int captureId, const QString& thumbnailPath);
+    // Only while that row still exists for that file and is not deleted: a
+    // preview finished after its capture was removed or replaced is dropped.
+    bool setLiveThumbnail(int captureId, const QString& filePath, const QString& thumbnailPath);
     // Groups a run of the small writes above into one commit; an insert each
     // used to cost a journal sync. Not nestable, and no call inside the batch
     // may open its own transaction (setCapturesMissing does).
