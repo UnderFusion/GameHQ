@@ -4,6 +4,12 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
+### 0.8.2 Beta 5
+
+- Screenshots and replays have separate **Show mouse cursor** settings: screenshots off and replays on by default (#41). A screenshot never changes the pointer in an ongoing recording, and game-drawn cursors and crosshairs are always kept. The settings are hidden on Windows 10 before version 2004, which always captures the pointer.
+- On multi-GPU PCs, GameHQ no longer retries a hardware encoder that already refused the recording settings, cutting the Windows handles kept per game switch from about four to about one on the test system.
+- The Windows pointer was confirmed visually only for the default combination; AMD-only encoder behavior and one unreproduced test crash remain open. See the [Beta 5 release notes](docs/releases/0.8.2-beta5.md).
+
 ### 0.8.2 Beta 4
 
 - Optional background capture keeps capturing the last active game after you switch apps. The tray can pin a game, select a capture target and return to automatic capture, and its tooltip shows pinned, background and paused states.
