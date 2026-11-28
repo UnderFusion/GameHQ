@@ -94,6 +94,23 @@ QString encoderKey(IMFActivate* act, const HwH264Encoder::Settings& s, QHash<QSt
         .arg(s.width).arg(s.height).arg(s.fps).arg(s.bitrate);
 }
 
+// Media-type rejections that only depend on the encoder and the requested
+// types. Anything else (device loss, busy hardware, memory) is retried.
+bool isTypeIncompatibility(HRESULT hr)
+{
+    switch (hr) {
+    case MF_E_INVALIDMEDIATYPE:
+    case MF_E_INVALIDTYPE:
+    case MF_E_UNSUPPORTED_D3D_TYPE:
+    case MF_E_TRANSFORM_NOT_POSSIBLE_FOR_CURRENT_OUTPUT_MEDIATYPE:
+    case MF_E_TRANSFORM_NOT_POSSIBLE_FOR_CURRENT_INPUT_MEDIATYPE:
+    case MF_E_TRANSFORM_NOT_POSSIBLE_FOR_CURRENT_MEDIATYPE_COMBINATION:
+        return true;
+    default:
+        return false;
+    }
+}
+
 bool wasRefused(const QString& key)
 {
     QMutexLocker lock(&g_refusedMutex);
@@ -240,11 +257,11 @@ bool HwH264Encoder::tryActivate(IMFActivate* act, const Settings& s, QString* wh
     IMFMediaType* out = videoType(MFVideoFormat_H264, s, true);
     hr = out ? m_mft->SetOutputType(0, out, 0) : E_OUTOFMEMORY;
     if (out) out->Release();
-    if (FAILED(hr)) return reject(hrText("SetOutputType", hr), hr != E_OUTOFMEMORY);
+    if (FAILED(hr)) return reject(hrText("SetOutputType", hr), isTypeIncompatibility(hr));
     IMFMediaType* in = videoType(MFVideoFormat_NV12, s, false);
     hr = in ? m_mft->SetInputType(0, in, 0) : E_OUTOFMEMORY;
     if (in) in->Release();
-    if (FAILED(hr)) return reject(hrText("SetInputType(NV12)", hr), hr != E_OUTOFMEMORY);
+    if (FAILED(hr)) return reject(hrText("SetInputType(NV12)", hr), isTypeIncompatibility(hr));
 
     MFT_OUTPUT_STREAM_INFO info{};
     m_mft->GetOutputStreamInfo(0, &info);

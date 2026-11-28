@@ -633,6 +633,9 @@ private slots:
         config.setValue(ConfigKeys::ReplayAuto, false);
         config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, false);
         config.setValue(ConfigKeys::AudioSource, QStringLiteral("off"));
+        // Pixel checks must not see the owner's pointer; the replay draws it
+        // by default (#41).
+        config.setValue(ConfigKeys::ReplayCursor, false);
         CaptureLocations locations(&config);
         QVERIFY(locations.setBaseRoot(CaptureLocations::Kind::Clips, dir.path()));
         RECT client{};
@@ -776,6 +779,9 @@ private slots:
         config.setValue(ConfigKeys::ReplayAuto, true);
         config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, false);
         config.setValue(ConfigKeys::AudioSource, QStringLiteral("off"));
+        // Pixel checks must not see the owner's pointer; the replay draws it
+        // by default (#41).
+        config.setValue(ConfigKeys::ReplayCursor, false);
         CaptureLocations locations(&config);
         QVERIFY(locations.setBaseRoot(CaptureLocations::Kind::Clips, dir.path()));
         RECT client{};
@@ -1027,6 +1033,9 @@ private slots:
         config.setValue(ConfigKeys::ReplayAuto, true);
         config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, false);
         config.setValue(ConfigKeys::AudioSource, QStringLiteral("off"));
+        // Pixel checks must not see the owner's pointer; the replay draws it
+        // by default (#41).
+        config.setValue(ConfigKeys::ReplayCursor, false);
         CaptureLocations locations(&config);
         QVERIFY(locations.setBaseRoot(CaptureLocations::Kind::Clips, dir.path()));
         RECT client{};
@@ -1087,9 +1096,9 @@ private slots:
     // Issues #38 and #39: switching the pinned game repeatedly must keep one
     // capture session, attribute every screenshot and replay frame to the
     // pinned window, and return memory and handles to a flat level.
-    // "one-shot": default settings, screenshots differ from the replay's
-    // pointer setting (#41). "live": matching settings, so screenshots read
-    // the replay session's frame exactly like Beta 4.
+    // "one-shot": screenshot and replay pointer settings differ (#41), so
+    // screenshots use one-shot sessions. "live": matching settings, so
+    // screenshots read the replay session's frame exactly like Beta 4.
     void pinSwitchesKeepAttributionAndFlatResources_data()
     {
         QTest::addColumn<bool>("screenshotCursor");
@@ -1151,7 +1160,12 @@ private slots:
         config.setValue(ConfigKeys::ReplayAuto, true);
         config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, false);
         config.setValue(ConfigKeys::AudioSource, QStringLiteral("off"));
-        config.setValue(ConfigKeys::CaptureScreenshotCursor, screenshotCursor);
+        // Pixel checks must not see the owner's pointer; the replay draws it
+        // by default (#41).
+        config.setValue(ConfigKeys::ReplayCursor, false);
+        // one-shot: settings differ (screenshot pointer on, replay off);
+        // live: both off. Neither lets the owner's pointer into a checked pixel.
+        config.setValue(ConfigKeys::CaptureScreenshotCursor, !screenshotCursor);
         CaptureLocations locations(&config);
         QVERIFY(locations.setBaseRoot(CaptureLocations::Kind::Clips, dir.path()));
         auto targetFor = [&](HWND hwnd, const QString& name) {
@@ -1212,6 +1226,7 @@ private slots:
         QList<HandleEntry> warmCensus;
         int warmThreads = 0;
         qint64 steadyHandles = 0;
+        qint64 steadyEndHandles = 0;
         qint64 warmPrivate = 0, warmHandles = 0, peakPrivate = 0, peakHandles = 0;
         QStringList series;
         quint64 shot = 1;
@@ -1268,6 +1283,10 @@ private slots:
             // of the export pipeline; steady growth is measured after it.
             if (i == 5)
                 steadyHandles = handles;
+            // Switch 19 saves again; its export threads may still be alive at
+            // the sample, so the steady window ends before it.
+            if (i == kSwitches - 2)
+                steadyEndHandles = handles;
             if (i > 3) {
                 peakPrivate = std::max(peakPrivate, privateBytes);
                 peakHandles = std::max(peakHandles, handles);
@@ -1302,7 +1321,7 @@ private slots:
         // vendor encoder that leaks on every refused activation. With refused
         // encoders skipped, ~1 per switch remains (Windows keeps an ALPC port
         // per capture item). Allow driver variance, catch a return of the leak.
-        const qint64 steadyPerTenSwitches = (endHandles - steadyHandles) * 10 / (kSwitches - 1 - 5);
+        const qint64 steadyPerTenSwitches = (steadyEndHandles - steadyHandles) * 10 / (kSwitches - 2 - 5);
         qInfo().noquote() << QStringLiteral("steady growth: %1 handles per 10 switches").arg(steadyPerTenSwitches);
         QVERIFY2(steadyPerTenSwitches < 30, qPrintable(series.join(u' ')));
         QVERIFY2(endPrivate - warmPrivate < 48ll * 1024 * 1024, qPrintable(series.join(u' ')));
