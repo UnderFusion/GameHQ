@@ -173,13 +173,18 @@ QImage cropShellIconPadding(const QImage& source)
     const QImage image = source.convertToFormat(QImage::Format_ARGB32);
     const int width = image.width();
     const int height = image.height();
+    int left = width;
+    int top = -1;
     int right = -1;
     int bottom = -1;
     for (int y = 0; y < height; ++y) {
         const auto* line = reinterpret_cast<const QRgb*>(image.constScanLine(y));
         for (int x = 0; x < width; ++x) {
             if (qAlpha(line[x]) != 0) {
+                left = qMin(left, x);
                 right = qMax(right, x);
+                if (top < 0)
+                    top = y;
                 bottom = y;
             }
         }
@@ -187,6 +192,10 @@ QImage cropShellIconPadding(const QImage& source)
     if (right < 0 || right >= width / 2 || bottom >= height / 2)
         return source;
     const int extent = qMax(right, bottom) + 1;
+    // The pasted frame starts at the tile's origin, so its artwork begins in
+    // the first half of that frame. Art floating further in is a real design.
+    if (left * 2 >= extent || top * 2 >= extent)
+        return source;
     static const int kFrameSizes[] = { 16, 20, 24, 32, 40, 48, 64, 72, 96, 128 };
     int side = extent;
     for (const int size : kFrameSizes) {
@@ -248,7 +257,7 @@ QString GameIconCache::iconPathForExecutable(const QString& executablePath)
         const QIcon icon = provider.icon(QFileInfo(executablePath));
         // Ask for the jumbo size so a padded tile is recognisable before any
         // downscale shrinks the real glyph to a few pixels.
-        QImage image = icon.pixmap(QSize(256, 256)).toImage();
+        QImage image = icon.pixmap(QSize(256, 256), 1.0).toImage();
         image.setDevicePixelRatio(1.0);
         const QSize before = image.size();
         image = cropShellIconPadding(image);

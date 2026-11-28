@@ -302,6 +302,8 @@ void IntegrationServiceTest::storeUrlLaunchIdentifiesAProcessStartedInItsFolder(
     QVERIFY(!match(99, QStringLiteral("D:/Steam/steam.exe"), starting.addSecs(20))
                  .authorizesWindowedCapture());
     QVERIFY(!match(0, game, starting.addSecs(20)).authorizesWindowedCapture());
+    // A bundled tool opened long after the launch is not the launched game.
+    QVERIFY(!match(99, game, starting.addSecs(3600)).authorizesWindowedCapture());
 
     // A reconnect snapshot keeps the launch time it already knew.
     QJsonObject snapshot = session;
@@ -315,6 +317,13 @@ void IntegrationServiceTest::storeUrlLaunchIdentifiesAProcessStartedInItsFolder(
     QVERIFY(context.upsert(source, other, QStringLiteral("started"), error));
     QVERIFY(!match(99, game, starting.addSecs(20)).authorizesWindowedCapture());
     QVERIFY(context.remove(source, QStringLiteral("second-launch")));
+
+    // A coarse library root vouches for nothing below it.
+    QJsonObject coarse = session;
+    coarse[QStringLiteral("installDirectory")] = QStringLiteral("D:/Steam");
+    QVERIFY(context.replaceSource(source, QJsonArray{coarse}, error));
+    QVERIFY(!match(99, game, starting.addSecs(20)).authorizesWindowedCapture());
+    QVERIFY(context.replaceSource(source, QJsonArray{session}, error));
 
     // A launch that named its process or executable keeps the stricter rules.
     session[QStringLiteral("startedProcessId")] = 123;

@@ -30,6 +30,17 @@ bool boundedString(const QJsonObject &object, const QString &key, int maximum,
     return true;
 }
 
+// How long after a store-URL launch request the game's own process may start.
+constexpr qint64 kLaunchWindowSecs = 10 * 60;
+
+// A folder at least two levels below its drive ("D:/Steam/Game", not
+// "D:/Games"): a coarse library root would vouch for every program under it.
+bool isSpecificInstallDirectory(const QString &directory)
+{
+    const QString clean = QDir::cleanPath(QDir::fromNativeSeparators(directory));
+    return clean.split(QLatin1Char('/'), Qt::SkipEmptyParts).size() >= 3;
+}
+
 bool pathInside(const QString &candidate, const QString &directory)
 {
     if (candidate.isEmpty() || directory.isEmpty())
@@ -355,8 +366,10 @@ ExternalGameMatch ExternalGameContext::matchForeground(
         const ExternalGameSession* candidate = nullptr;
         bool ambiguous = false;
         for (const ExternalGameSession &session : snapshot) {
-            if (!pathInside(executablePath, session.installDirectory))
+            if (!pathInside(executablePath, session.installDirectory)
+                || !isSpecificInstallDirectory(session.installDirectory)) {
                 continue;
+            }
             if (candidate) {
                 ambiguous = true;
                 break;
@@ -371,7 +384,11 @@ ExternalGameMatch ExternalGameContext::matchForeground(
                 ? candidate->launchRequestedAtUtc.addSecs(-5)
                 : candidate->occurredAtUtc.isValid() ? candidate->occurredAtUtc.addSecs(-120)
                                                      : QDateTime();
-            if (earliest.isValid() && processStartedUtc.toUTC() >= earliest)
+            // A program first started long after the launch (a bundled tool,
+            // a crash reporter) is not the game the launch started.
+            const QDateTime started = processStartedUtc.toUTC();
+            if (earliest.isValid() && started >= earliest
+                && started <= earliest.addSecs(kLaunchWindowSecs))
                 return { MatchConfidence::LaunchedInstallDirectory, *candidate };
         }
     }

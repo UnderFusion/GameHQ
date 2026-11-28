@@ -202,6 +202,14 @@ private slots:
                 centred.setPixel(x, y, qRgba(10, 200, 10, 255));
         QCOMPARE(GameIconCache::cropShellIconPaddingForTesting(centred).size(), QSize(256, 256));
 
+        // A badge inside the top-left quadrant but away from the origin.
+        QImage badge(256, 256, QImage::Format_ARGB32);
+        badge.fill(Qt::transparent);
+        for (int y = 64; y < 128; ++y)
+            for (int x = 64; x < 128; ++x)
+                badge.setPixel(x, y, qRgba(200, 200, 10, 255));
+        QCOMPARE(GameIconCache::cropShellIconPaddingForTesting(badge).size(), QSize(256, 256));
+
         QImage empty(256, 256, QImage::Format_ARGB32);
         empty.fill(Qt::transparent);
         QCOMPARE(GameIconCache::cropShellIconPaddingForTesting(empty).size(), QSize(256, 256));
