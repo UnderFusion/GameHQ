@@ -10,6 +10,7 @@
 #include <QLocalServer>
 #include <QLocalSocket>
 #include <QRegularExpression>
+#include <QTimeZone>
 #include <QtEndian>
 
 class IntegrationServiceTest : public QObject
@@ -22,6 +23,7 @@ private slots:
     void externalIdentityRequiresProcessOrSafeGamePath();
     void unknownStartedProcessIdKeepsTheSession();
     void startedFileActionIdentifiesOnlyItsOwnWindow();
+    void storeUrlLaunchIdentifiesAProcessStartedInItsFolder();
     void xboxShellFallbackStaysNarrow();
     void overlappingPlayniteReconnectKeepsLiveState();
     void handlerDisconnectDuringBufferedFramesIsSafe();
@@ -265,6 +267,64 @@ void IntegrationServiceTest::startedFileActionIdentifiesOnlyItsOwnWindow()
     QVERIFY(!match(99, game).authorizesWindowedCapture());
     context.clearSource(source);
     QVERIFY(!match(99, game).authorizesWindowedCapture());
+}
+
+// #43: Playnite starts a Steam game through a steam:// URL, so it reports
+// neither the game's process nor an executable. A windowed game started inside
+// the install folder during that launch is the game; nothing older is.
+void IntegrationServiceTest::storeUrlLaunchIdentifiesAProcessStartedInItsFolder()
+{
+    integration::ExternalGameContext context;
+    const QString source = QStringLiteral("GameHQ.Playnite");
+    const QString game = QStringLiteral("D:/Steam/steamapps/common/Example/example_win64.exe");
+    const QDateTime starting = QDateTime(QDate(2026, 11, 28), QTime(1, 0, 0), QTimeZone::UTC);
+    QJsonObject session{
+        { QStringLiteral("sessionId"), QStringLiteral("steam-launch") },
+        { QStringLiteral("installDirectory"), QStringLiteral("D:/Steam/steamapps/common/Example") },
+        { QStringLiteral("occurredAtUtc"), starting.toString(Qt::ISODate) }
+    };
+    const auto match = [&](quint32 pid, const QString& path, const QDateTime& started) {
+        return context.matchForeground(pid, path, false, {}, started);
+    };
+    QString error;
+    QVERIFY(context.upsert(source, session, QStringLiteral("starting"), error));
+    QVERIFY(!match(99, game, starting.addSecs(20)).authorizesWindowedCapture());
+    session[QStringLiteral("occurredAtUtc")] = starting.addSecs(40).toString(Qt::ISODate);
+    QVERIFY(context.upsert(source, session, QStringLiteral("started"), error));
+
+    QCOMPARE(match(99, game, starting.addSecs(20)).confidence,
+             integration::MatchConfidence::LaunchedInstallDirectory);
+    QVERIFY(match(99, game, starting.addSecs(20)).authorizesWindowedCapture());
+    // A process already running before the launch, an unknown start time, a
+    // path outside the folder or a missing pid never authorise.
+    QVERIFY(!match(99, game, starting.addSecs(-600)).authorizesWindowedCapture());
+    QVERIFY(!match(99, game, QDateTime()).authorizesWindowedCapture());
+    QVERIFY(!match(99, QStringLiteral("D:/Steam/steam.exe"), starting.addSecs(20))
+                 .authorizesWindowedCapture());
+    QVERIFY(!match(0, game, starting.addSecs(20)).authorizesWindowedCapture());
+
+    // A reconnect snapshot keeps the launch time it already knew.
+    QJsonObject snapshot = session;
+    snapshot.remove(QStringLiteral("occurredAtUtc"));
+    QVERIFY(context.replaceSource(source, QJsonArray{snapshot}, error));
+    QVERIFY(match(99, game, starting.addSecs(20)).authorizesWindowedCapture());
+
+    // Two running sessions sharing the folder are ambiguous.
+    QJsonObject other = session;
+    other[QStringLiteral("sessionId")] = QStringLiteral("second-launch");
+    QVERIFY(context.upsert(source, other, QStringLiteral("started"), error));
+    QVERIFY(!match(99, game, starting.addSecs(20)).authorizesWindowedCapture());
+    QVERIFY(context.remove(source, QStringLiteral("second-launch")));
+
+    // A launch that named its process or executable keeps the stricter rules.
+    session[QStringLiteral("startedProcessId")] = 123;
+    QVERIFY(context.upsert(source, session, QStringLiteral("started"), error));
+    QVERIFY(!match(99, game, starting.addSecs(20)).authorizesWindowedCapture());
+    session[QStringLiteral("startedProcessId")] = 0;
+    session[QStringLiteral("launchExecutable")] = game;
+    QVERIFY(context.upsert(source, session, QStringLiteral("started"), error));
+    QVERIFY(!match(99, QStringLiteral("D:/Steam/steamapps/common/Example/helper.exe"),
+                   starting.addSecs(20)).authorizesWindowedCapture());
 }
 
 void IntegrationServiceTest::externalIdentityRequiresProcessOrSafeGamePath()

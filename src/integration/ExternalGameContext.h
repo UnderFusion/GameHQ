@@ -27,11 +27,16 @@ struct ExternalGameSession
     QString selectedRomFile;
     quint32 startedProcessId = 0;
     QDateTime occurredAtUtc;
+    QDateTime launchRequestedAtUtc; // the "starting" event, kept across later phases
     QString phase;
     quint64 sequence = 0;   // insertion/update order, for evicting the oldest
 };
 
-enum class MatchConfidence { None, InstallDirectory, LaunchExecutable, DescendantProcess, ExactProcess };
+// LaunchedInstallDirectory: a store-URL launch (Steam and similar) that Playnite
+// could tie to neither a process nor an executable, matched by a process that
+// started inside the game's folder during that launch (#43).
+enum class MatchConfidence { None, InstallDirectory, LaunchedInstallDirectory, LaunchExecutable,
+                             DescendantProcess, ExactProcess };
 
 struct ExternalGameMatch
 {
@@ -41,7 +46,8 @@ struct ExternalGameMatch
     {
         return confidence == MatchConfidence::ExactProcess
             || confidence == MatchConfidence::DescendantProcess
-            || confidence == MatchConfidence::LaunchExecutable;
+            || confidence == MatchConfidence::LaunchExecutable
+            || confidence == MatchConfidence::LaunchedInstallDirectory;
     }
 };
 
@@ -77,7 +83,8 @@ public:
     QList<ExternalGameSession> launchedSessions() const;
     ExternalGameMatch matchForeground(
         quint32 foregroundPid, const QString &executablePath, bool alreadyGame,
-        const std::function<bool(quint32, quint32)> &isDescendant) const;
+        const std::function<bool(quint32, quint32)> &isDescendant,
+        const QDateTime &processStartedUtc = QDateTime()) const;
 
 signals:
     void changed();

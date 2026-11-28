@@ -7,7 +7,9 @@
 #include "integration/ExternalGameContext.h"
 
 #include <QDebug>
+#include <QDateTime>
 #include <QDir>
+#include <QTimeZone>
 #include <QFile>
 #include <QFileInfo>
 #include <QMutex>
@@ -514,6 +516,17 @@ bool playniteGameBehindShell(const integration::ExternalGameContext& context,
     return false;
 }
 
+// Process creation FILETIME (100 ns ticks since 1601) as a UTC time; invalid
+// when the creation time could not be read.
+QDateTime processStartedUtc(quint64 fileTime)
+{
+    constexpr qint64 kEpochDeltaMs = 11644473600000LL; // 1601-01-01 to 1970-01-01
+    if (fileTime == 0)
+        return {};
+    return QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(fileTime / 10000) - kEpochDeltaMs,
+                                          QTimeZone::UTC);
+}
+
 // current() runs on every capture tick; log only when the outcome changes.
 std::atomic<quintptr> g_lastShellOutcome{0};
 
@@ -561,7 +574,7 @@ ForegroundGame GameDetector::current()
             static_cast<quint32>(g.pid), g.executablePath, g.isGame,
             [](quint32 child, quint32 ancestor) {
                 return isDescendantProcess(child, ancestor);
-            });
+            }, processStartedUtc(g.processStarted));
         if (match.confidence != integration::MatchConfidence::None) {
             g.hasExternalIdentity = true;
             g.externalSource = match.session.sourceId;
@@ -649,7 +662,8 @@ bool GameDetector::canRetainCaptureTarget(const ForegroundGame& target, const Co
         const auto* context = g_externalContext.load();
         if (!context) return false;
         const auto match = context->matchForeground(target.pid, target.executablePath,
-                                                    target.isGame, isDescendantProcess);
+                                                    target.isGame, isDescendantProcess,
+                                                    processStartedUtc(target.processStarted));
         return match.confidence != integration::MatchConfidence::None
             && match.session.sourceId == target.externalSource
             && match.session.sessionId == target.externalSessionId

@@ -166,6 +166,11 @@ bool ExternalGameContext::upsert(const QString &sourceId, const QJsonObject &obj
             m_sessions.erase(oldest);
         }
     }
+    const auto previous = m_sessions.constFind(sessionKey);
+    if (previous != m_sessions.cend() && previous->launchRequestedAtUtc.isValid())
+        session.launchRequestedAtUtc = previous->launchRequestedAtUtc;
+    else if (phase == QStringLiteral("starting"))
+        session.launchRequestedAtUtc = session.occurredAtUtc;
     session.sequence = m_nextSequence++;
     m_sessions.insert(sessionKey, session);
     locker.unlock();
@@ -201,6 +206,16 @@ bool ExternalGameContext::replaceSource(const QString &sourceId, const QJsonArra
     }
     {
         QWriteLocker locker(&m_lock);
+        // A reconnect snapshot carries no event times; keep the ones already
+        // known for the same launch so its timing evidence survives.
+        for (ExternalGameSession &session : parsed) {
+            const auto known = m_sessions.constFind(key(sourceId, session.sessionId));
+            if (known == m_sessions.cend())
+                continue;
+            if (!session.occurredAtUtc.isValid())
+                session.occurredAtUtc = known->occurredAtUtc;
+            session.launchRequestedAtUtc = known->launchRequestedAtUtc;
+        }
         for (auto it = m_sessions.begin(); it != m_sessions.end();) {
             if (it->sourceId == sourceId)
                 it = m_sessions.erase(it);
@@ -290,7 +305,8 @@ QList<ExternalGameSession> ExternalGameContext::launchedSessions() const
 
 ExternalGameMatch ExternalGameContext::matchForeground(
     quint32 foregroundPid, const QString &executablePath, bool alreadyGame,
-    const std::function<bool(quint32, quint32)> &isDescendant) const
+    const std::function<bool(quint32, quint32)> &isDescendant,
+    const QDateTime &processStartedUtc) const
 {
     const QList<ExternalGameSession> snapshot = sessions();
     for (const ExternalGameSession &session : snapshot) {
@@ -327,6 +343,37 @@ ExternalGameMatch ExternalGameContext::matchForeground(
         }
         if (candidate && !ambiguous)
             return { MatchConfidence::LaunchExecutable, *candidate };
+    }
+    // A Steam (or other store URL) launch gives Playnite neither the game's
+    // process nor its executable, so a windowed game never matched above and
+    // "Any games" skipped it (#43). Accept the install folder only when the
+    // launch named nothing more specific, exactly one running session holds the
+    // path, and the process started during that launch: a tool already running
+    // from the folder, or a second game sharing it, stays unauthorised.
+    if (foregroundPid && processStartedUtc.isValid()
+        && executablePath.endsWith(QStringLiteral(".exe"), Qt::CaseInsensitive)) {
+        const ExternalGameSession* candidate = nullptr;
+        bool ambiguous = false;
+        for (const ExternalGameSession &session : snapshot) {
+            if (!pathInside(executablePath, session.installDirectory))
+                continue;
+            if (candidate) {
+                ambiguous = true;
+                break;
+            }
+            candidate = &session;
+        }
+        if (candidate && !ambiguous && candidate->phase == QStringLiteral("started")
+            && candidate->startedProcessId == 0 && candidate->launchExecutable.isEmpty()) {
+            // The "starting" event precedes the process; without it, Playnite
+            // reports "started" shortly after the process appears.
+            const QDateTime earliest = candidate->launchRequestedAtUtc.isValid()
+                ? candidate->launchRequestedAtUtc.addSecs(-5)
+                : candidate->occurredAtUtc.isValid() ? candidate->occurredAtUtc.addSecs(-120)
+                                                     : QDateTime();
+            if (earliest.isValid() && processStartedUtc.toUTC() >= earliest)
+                return { MatchConfidence::LaunchedInstallDirectory, *candidate };
+        }
     }
     if (alreadyGame) {
         for (const ExternalGameSession &session : snapshot) {
