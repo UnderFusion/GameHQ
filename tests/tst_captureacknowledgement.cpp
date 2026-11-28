@@ -646,6 +646,10 @@ private slots:
         target.h = client.bottom;
         target.executablePath = QCoreApplication::applicationFilePath();
         target.gameName = QStringLiteral("Fixture");
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
         FramePumpService pump(&config, &locations);
         pump.m_autoTimer->stop();
         pump.pinTarget(target);
@@ -705,10 +709,6 @@ private slots:
         QCOMPARE(preview.size(), QSize(client.right & ~1, client.bottom & ~1));
         QVERIFY(preview.pixelColor(preview.width() / 2, preview.height() / 2).blue() > 100);
         QVERIFY(ReplayExporter::hasReadableVideo(clipPath));
-        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
-        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
-        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
-        const auto shutdown = qScopeGuard([] { MFShutdown(); });
         IMFSourceReader* reader = nullptr;
         QVERIFY(SUCCEEDED(MFCreateSourceReaderFromURL(clipPath.toStdWString().c_str(), nullptr, &reader)));
         const auto releaseReader = qScopeGuard([&] { reader->Release(); });
@@ -790,15 +790,23 @@ private slots:
         target.h = client.bottom;
         target.executablePath = QCoreApplication::applicationFilePath();
         target.gameName = QStringLiteral("Moving fixture");
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
         ReuseStopCounter reuseStops;
         FramePumpService pump(&config, &locations);
         pump.m_autoTimer->stop();
         QStringList restarts;
-        connect(pump.m_worker, &FramePumpWorker::restartRequested, this,
+        QList<bool> pauses;
+        // Context for the queued worker signals. Declared after the lists the
+        // lambdas capture, so it is destroyed first and Qt discards calls still
+        // posted while ~FramePumpService drains the worker (b5-crash).
+        QObject workerSignals;
+        connect(pump.m_worker, &FramePumpWorker::restartRequested, &workerSignals,
                 [&restarts](quint64, const QString& reason) { restarts.append(reason); },
                 Qt::QueuedConnection);
-        QList<bool> pauses;
-        connect(pump.m_worker, &FramePumpWorker::capturePausedChanged, this,
+        connect(pump.m_worker, &FramePumpWorker::capturePausedChanged, &workerSignals,
                 [&pauses](quint64, bool paused) { pauses.append(paused); }, Qt::QueuedConnection);
         pump.pinTarget(target);
         QVERIFY(pump.hasPinnedTarget());
@@ -906,10 +914,6 @@ private slots:
                 .arg(QFileInfo(clipPath).fileName()).arg(frames.size()).arg(even.width()).arg(even.height());
             return true;
         };
-        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
-        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
-        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
-        const auto shutdown = qScopeGuard([] { MFShutdown(); });
 
         // Moves keep the client size, so neither the pipeline nor the
         // encoder may restart. Each position keeps most of the window on the
@@ -1036,6 +1040,10 @@ private slots:
         target.h = client.bottom;
         target.executablePath = QCoreApplication::applicationFilePath();
         target.gameName = QStringLiteral("Static fixture");
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
         ReuseStopCounter reuseStops;
         FramePumpService pump(&config, &locations);
         pump.m_autoTimer->stop();
@@ -1068,10 +1076,6 @@ private slots:
                                                                        : clipFailed.constFirst().at(1).toString()));
         const QString clipPath = saved.constFirst().at(0).toString();
         QVERIFY(ReplayExporter::hasReadableVideo(clipPath));
-        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
-        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
-        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
-        const auto shutdown = qScopeGuard([] { MFShutdown(); });
         QString error;
         const QList<QImage> frames = decodeAllFrames(clipPath, &error);
         QVERIFY2(frames.size() >= 10, qPrintable(error));
@@ -1166,6 +1170,10 @@ private slots:
         };
         const ForegroundGame targetA = targetFor(gameA, QStringLiteral("Soak A"));
         const ForegroundGame targetB = targetFor(gameB, QStringLiteral("Soak B"));
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
         ReuseStopCounter reuseStops;
         FramePumpService pump(&config, &locations);
         pump.m_autoTimer->stop();
@@ -1189,10 +1197,6 @@ private slots:
         QSignalSpy failed(&pump, &FramePumpService::windowScreenshotFailed);
         QSignalSpy saved(&pump, &FramePumpService::clipSaved);
         QSignalSpy clipFailed(&pump, &FramePumpService::clipFailed);
-        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
-        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
-        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
-        const auto shutdown = qScopeGuard([] { MFShutdown(); });
         auto sample = [](qint64* privateBytes, qint64* handles) {
             PROCESS_MEMORY_COUNTERS_EX counters{};
             counters.cb = sizeof(counters);
@@ -1456,12 +1460,17 @@ private slots:
         target.h = clientSize.height();
         target.executablePath = QCoreApplication::applicationFilePath();
         target.gameName = QStringLiteral("Cursor fixture");
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
         ReuseStopCounter reuseStops;
         PointerLog pointerLog;
         FramePumpService pump(&config, &locations);
         pump.m_autoTimer->stop();
         QStringList restarts;
-        connect(pump.m_worker, &FramePumpWorker::restartRequested, this,
+        QObject workerSignals;   // destroyed before `restarts` (b5-crash)
+        connect(pump.m_worker, &FramePumpWorker::restartRequested, &workerSignals,
                 [&restarts](quint64, const QString& reason) { restarts.append(reason); },
                 Qt::QueuedConnection);
         pump.pinTarget(target);
@@ -1479,10 +1488,6 @@ private slots:
                      qPrintable(start.join(u'|')));
         }
         bool replaySessionCursor = true;
-        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
-        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
-        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
-        const auto shutdown = qScopeGuard([] { MFShutdown(); });
 
         QSignalSpy ready(&pump, &FramePumpService::windowScreenshotReady);
         QSignalSpy failed(&pump, &FramePumpService::windowScreenshotFailed);

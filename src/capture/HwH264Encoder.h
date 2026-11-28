@@ -96,6 +96,9 @@ private:
     Settings                m_settings;
     QString                 m_name;
     bool                    m_providesSamples = false;
+    // Set by tryActivate: the refusal depends only on this encoder and the
+    // requested types (not on a transient activation or streaming failure).
+    bool                    m_refusalDeterministic = false;
     unsigned long           m_outBufferSize = 0;
     int                     m_needInput = 0;
     bool                    m_draining = false;

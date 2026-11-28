@@ -90,8 +90,8 @@ QString encoderKey(IMFActivate* act, const HwH264Encoder::Settings& s, QHash<QSt
         .arg(clsid.Data1, 8, 16, QLatin1Char('0')).arg(clsid.Data2, 4, 16, QLatin1Char('0'))
         .arg(QString::fromLatin1(QByteArray(reinterpret_cast<const char*>(luid), int(luidSize)).toHex()));
     const int occurrence = (*seen)[identity]++;
-    return QStringLiteral("%1#%2@%3x%4@%5").arg(identity).arg(occurrence)
-        .arg(s.width).arg(s.height).arg(s.fps);
+    return QStringLiteral("%1#%2@%3x%4@%5@%6").arg(identity).arg(occurrence)
+        .arg(s.width).arg(s.height).arg(s.fps).arg(s.bitrate);
 }
 
 bool wasRefused(const QString& key)
@@ -103,6 +103,11 @@ bool wasRefused(const QString& key)
 void setRefused(const QString& key, bool refused)
 {
     QMutexLocker lock(&g_refusedMutex);
+    // A handful of encoders x the sizes a session uses; the bound only guards
+    // against pathological resolution churn.
+    constexpr qsizetype kMaxRefusals = 64;
+    if (refused && g_refused.size() >= kMaxRefusals)
+        g_refused.clear();
     if (refused)
         g_refused.insert(key);
     else
@@ -160,9 +165,13 @@ bool HwH264Encoder::open(const Settings& s, QString* why)
             break;
         }
         rejected << reason;
-        setRefused(keys[i], true);
-        qInfo().noquote() << QStringLiteral("HwH264Encoder: %1 - not tried again for %2x%3 at %4 fps")
-                                 .arg(reason).arg(s.width).arg(s.height).arg(s.fps);
+        // Only a type refusal is a property of the encoder and settings; an
+        // activation, streaming or priming failure may pass next time.
+        if (m_refusalDeterministic) {
+            setRefused(keys[i], true);
+            qInfo().noquote() << QStringLiteral("HwH264Encoder: %1 - not tried again for %2x%3 at %4 fps, %5 bps")
+                                     .arg(reason).arg(s.width).arg(s.height).arg(s.fps).arg(s.bitrate);
+        }
     }
     for (const UINT32 i : std::as_const(skipped)) {
         if (m_mft)
@@ -199,7 +208,9 @@ bool HwH264Encoder::tryActivate(IMFActivate* act, const Settings& s, QString* wh
         encName = QString::fromWCharArray(name);
         CoTaskMemFree(name);
     }
-    const auto reject = [&](const QString& r) {
+    m_refusalDeterministic = false;
+    const auto reject = [&](const QString& r, bool deterministic = false) {
+        m_refusalDeterministic = deterministic;
         *why = encName + QStringLiteral(": ") + r;
         releaseMft();
         act->ShutdownObject();
@@ -213,7 +224,7 @@ bool HwH264Encoder::tryActivate(IMFActivate* act, const Settings& s, QString* wh
     if (FAILED(m_mft->GetAttributes(&attrs)) || !attrs
         || MFGetAttributeUINT32(attrs, MF_TRANSFORM_ASYNC, FALSE) == FALSE) {
         if (attrs) attrs->Release();
-        return reject(QStringLiteral("not an asynchronous MFT"));
+        return reject(QStringLiteral("not an asynchronous MFT"), true);
     }
     attrs->SetUINT32(MF_TRANSFORM_ASYNC_UNLOCK, TRUE);
     // The sink writer sets MF_LOW_LATENCY on the encoder too; keep parity.
@@ -221,7 +232,7 @@ bool HwH264Encoder::tryActivate(IMFActivate* act, const Settings& s, QString* wh
     attrs->Release();
 
     hr = m_mft->QueryInterface(IID_PPV_ARGS(&m_events));
-    if (FAILED(hr)) return reject(hrText("IMFMediaEventGenerator", hr));
+    if (FAILED(hr)) return reject(hrText("IMFMediaEventGenerator", hr), true);
 
     // Same encoder hint SegmentRecorder passes to SetInputMediaType.
     setCodecValue(m_mft, CODECAPI_AVEncCommonRealTime, TRUE);
@@ -229,11 +240,11 @@ bool HwH264Encoder::tryActivate(IMFActivate* act, const Settings& s, QString* wh
     IMFMediaType* out = videoType(MFVideoFormat_H264, s, true);
     hr = out ? m_mft->SetOutputType(0, out, 0) : E_OUTOFMEMORY;
     if (out) out->Release();
-    if (FAILED(hr)) return reject(hrText("SetOutputType", hr));
+    if (FAILED(hr)) return reject(hrText("SetOutputType", hr), hr != E_OUTOFMEMORY);
     IMFMediaType* in = videoType(MFVideoFormat_NV12, s, false);
     hr = in ? m_mft->SetInputType(0, in, 0) : E_OUTOFMEMORY;
     if (in) in->Release();
-    if (FAILED(hr)) return reject(hrText("SetInputType(NV12)", hr));
+    if (FAILED(hr)) return reject(hrText("SetInputType(NV12)", hr), hr != E_OUTOFMEMORY);
 
     MFT_OUTPUT_STREAM_INFO info{};
     m_mft->GetOutputStreamInfo(0, &info);
