@@ -4,6 +4,11 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
+### 0.8.2 Beta 6
+
+- Game icons from executables without a large icon fill their square instead of showing as a tiny glyph in a corner; library icons are re-extracted once (#42).
+- With **Any games**, windowed Steam games launched from Playnite are captured when their program starts inside the game's folder during that launch (#43). See the [Beta 6 release notes](docs/releases/0.8.2-beta6.md).
+
 ### 0.8.2 Beta 5
 
 - Screenshots and replays have separate **Show mouse cursor** settings: screenshots off and replays on by default (#41). A screenshot never changes the pointer in an ongoing recording, and game-drawn cursors and crosshairs are always kept. The settings are hidden on Windows 10 before version 2004, which always captures the pointer.
