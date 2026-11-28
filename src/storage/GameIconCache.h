@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QImage>
 #include <QString>
 #include <QStringList>
 
@@ -18,4 +19,6 @@ public:
     static QStringList manifestLogoReferencesForTesting(const QString& manifestPath);
     static QString resolveManifestAssetForTesting(const QString& manifestDir,
                                                    const QString& reference);
+    // Exposed for testing: the jumbo-tile padding crop applied to shell icons.
+    static QImage cropShellIconPaddingForTesting(const QImage& image);
 };

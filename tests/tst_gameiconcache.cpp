@@ -171,6 +171,42 @@ private slots:
         QVERIFY(resolved.isEmpty());
     }
 
+    void paddedJumboTileIsCroppedToTheIconFrame()
+    {
+        // #42: a 48 px icon painted into the corner of a transparent 256 px tile.
+        QImage tile(256, 256, QImage::Format_ARGB32);
+        tile.fill(Qt::transparent);
+        for (int y = 2; y < 46; ++y)
+            for (int x = 3; x < 45; ++x)
+                tile.setPixel(x, y, qRgba(200, 40, 40, 255));
+        const QImage cropped = GameIconCache::cropShellIconPaddingForTesting(tile);
+        QCOMPARE(cropped.size(), QSize(48, 48));
+        QCOMPARE(qAlpha(cropped.pixel(3, 2)), 255);
+        QCOMPARE(qAlpha(cropped.pixel(0, 0)), 0);
+    }
+
+    void fullSizeAndCentredIconsAreLeftAlone()
+    {
+        QImage full(256, 256, QImage::Format_ARGB32);
+        full.fill(Qt::transparent);
+        for (int y = 20; y < 236; ++y)
+            for (int x = 20; x < 236; ++x)
+                full.setPixel(x, y, qRgba(10, 120, 200, 255));
+        QCOMPARE(GameIconCache::cropShellIconPaddingForTesting(full).size(), QSize(256, 256));
+
+        // Deliberately small artwork centred in the tile is the author's choice.
+        QImage centred(256, 256, QImage::Format_ARGB32);
+        centred.fill(Qt::transparent);
+        for (int y = 100; y < 156; ++y)
+            for (int x = 100; x < 156; ++x)
+                centred.setPixel(x, y, qRgba(10, 200, 10, 255));
+        QCOMPARE(GameIconCache::cropShellIconPaddingForTesting(centred).size(), QSize(256, 256));
+
+        QImage empty(256, 256, QImage::Format_ARGB32);
+        empty.fill(Qt::transparent);
+        QCOMPARE(GameIconCache::cropShellIconPaddingForTesting(empty).size(), QSize(256, 256));
+    }
+
     void formatVersionIsNonEmptyAndStable()
     {
         // Cache-key input for CaptureDatabase's re-extraction sentinel; it must

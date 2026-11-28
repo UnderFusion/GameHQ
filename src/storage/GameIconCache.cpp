@@ -156,7 +156,48 @@ QPixmap packageLogoPixmap(const QString& executablePath)
 // The extractor's format version. It keys the on-disk cache below and is also
 // persisted next to every pinned icon path, so a library filled in by an older
 // extractor can be spotted and re-extracted.
-const QByteArray kCacheFormat = QByteArrayLiteral("v3");
+// v4: shell icons padded into the corner of a jumbo tile are cropped (#42).
+const QByteArray kCacheFormat = QByteArrayLiteral("v4");
+
+// The shell's 256 px ("jumbo") image list does not scale an executable whose
+// icon resource has no 256 px frame. It paints the largest frame it has, often
+// 32 or 48 px, into the top-left corner of a transparent 256 px tile, and the
+// library then showed a tiny glyph in an empty square (#42). Content confined
+// to the top-left quadrant is that artifact: crop the smallest standard icon
+// square that holds it, keeping the icon's own margin, and let the caller scale
+// it. Anything else, including icons with deliberate padding, is left alone.
+QImage cropShellIconPadding(const QImage& source)
+{
+    if (source.isNull())
+        return source;
+    const QImage image = source.convertToFormat(QImage::Format_ARGB32);
+    const int width = image.width();
+    const int height = image.height();
+    int right = -1;
+    int bottom = -1;
+    for (int y = 0; y < height; ++y) {
+        const auto* line = reinterpret_cast<const QRgb*>(image.constScanLine(y));
+        for (int x = 0; x < width; ++x) {
+            if (qAlpha(line[x]) != 0) {
+                right = qMax(right, x);
+                bottom = y;
+            }
+        }
+    }
+    if (right < 0 || right >= width / 2 || bottom >= height / 2)
+        return source;
+    const int extent = qMax(right, bottom) + 1;
+    static const int kFrameSizes[] = { 16, 20, 24, 32, 40, 48, 64, 72, 96, 128 };
+    int side = extent;
+    for (const int size : kFrameSizes) {
+        if (size >= extent) {
+            side = size;
+            break;
+        }
+    }
+    side = qMin(side, qMin(width, height));
+    return image.copy(0, 0, side, side);
+}
 
 } // namespace
 
@@ -174,6 +215,11 @@ QString GameIconCache::resolveManifestAssetForTesting(const QString& manifestDir
                                                        const QString& reference)
 {
     return resolveManifestAsset(manifestDir, reference);
+}
+
+QImage GameIconCache::cropShellIconPaddingForTesting(const QImage& image)
+{
+    return cropShellIconPadding(image);
 }
 
 QString GameIconCache::iconPathForExecutable(const QString& executablePath)
@@ -200,7 +246,19 @@ QString GameIconCache::iconPathForExecutable(const QString& executablePath)
     if (pixmap.isNull()) {
         QFileIconProvider provider;
         const QIcon icon = provider.icon(QFileInfo(executablePath));
-        pixmap = icon.pixmap(64, 64);
+        // Ask for the jumbo size so a padded tile is recognisable before any
+        // downscale shrinks the real glyph to a few pixels.
+        QImage image = icon.pixmap(QSize(256, 256)).toImage();
+        image.setDevicePixelRatio(1.0);
+        const QSize before = image.size();
+        image = cropShellIconPadding(image);
+        if (!image.isNull() && image.size() != before) {
+            qInfo() << "GameIconCache: cropped a" << image.width() << "px icon out of a padded"
+                    << before.width() << "px shell tile for" << executablePath;
+        }
+        if (!image.isNull() && image.width() < 64)
+            image = image.scaled(64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        pixmap = QPixmap::fromImage(image);
     }
     if (pixmap.isNull()) {
         qWarning() << "GameIconCache: no icon resource found in executable:" << executablePath;
