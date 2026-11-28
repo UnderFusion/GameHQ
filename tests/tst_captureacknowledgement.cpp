@@ -1,6 +1,7 @@
 #include "capture/FramePumpService.h"
 #include "capture/FramePumpPipeline.h"
 #include "capture/ReplayExporter.h"
+#include "capture/HwH264Encoder.h"
 #include "capture/ScreenshotService.h"
 #include "capture/WindowCaptureGeometry.h"
 #include <QtTest>
@@ -25,6 +26,8 @@
 #define PSAPI_VERSION 2
 #endif
 #include <psapi.h>
+#include <tlhelp32.h>
+#include <winternl.h>
 #include <dwmapi.h>
 #include <mfapi.h>
 #include <mfidl.h>
@@ -200,6 +203,112 @@ struct PointerLog
         return std::exchange(g_pointerLog, {});
     }
 };
+
+// Per-type census of this process's kernel handles (b4-handles). Uses the
+// documented-by-convention SystemExtendedHandleInformation (64) and
+// ObjectTypeInformation (2); names are never queried, so no call can block.
+struct HandleEntry { quintptr value; USHORT typeIndex; };
+
+QList<HandleEntry> ownHandles()
+{
+    struct Entry {
+        PVOID object; ULONG_PTR pid; ULONG_PTR handle; ULONG access;
+        USHORT creatorBackTraceIndex; USHORT typeIndex; ULONG attributes; ULONG reserved;
+    };
+    struct Table { ULONG_PTR count; ULONG_PTR reserved; Entry entries[1]; };
+    using NtQuerySystemInformationFn = LONG (NTAPI*)(ULONG, PVOID, ULONG, PULONG);
+    static const auto query = reinterpret_cast<NtQuerySystemInformationFn>(reinterpret_cast<void*>(
+        GetProcAddress(GetModuleHandleW(L"ntdll.dll"), "NtQuerySystemInformation")));
+    QList<HandleEntry> result;
+    if (!query)
+        return result;
+    QByteArray buffer(1 << 22, Qt::Uninitialized);
+    ULONG needed = 0;
+    LONG status = 0;
+    while ((status = query(64, buffer.data(), ULONG(buffer.size()), &needed)) == LONG(0xC0000004))
+        buffer.resize(qMax<qsizetype>(buffer.size() * 2, qsizetype(needed) + (1 << 20)));
+    if (status < 0)
+        return result;
+    const auto* table = reinterpret_cast<const Table*>(buffer.constData());
+    const ULONG_PTR self = GetCurrentProcessId();
+    for (ULONG_PTR i = 0; i < table->count; ++i) {
+        if (table->entries[i].pid == self)
+            result.append({ quintptr(table->entries[i].handle), table->entries[i].typeIndex });
+    }
+    return result;
+}
+
+QString handleTypeName(USHORT typeIndex, const QList<HandleEntry>& handles)
+{
+    static QHash<USHORT, QString> names;
+    if (const auto it = names.constFind(typeIndex); it != names.constEnd())
+        return *it;
+    using NtQueryObjectFn = LONG (NTAPI*)(HANDLE, ULONG, PVOID, ULONG, PULONG);
+    static const auto query = reinterpret_cast<NtQueryObjectFn>(reinterpret_cast<void*>(
+        GetProcAddress(GetModuleHandleW(L"ntdll.dll"), "NtQueryObject")));
+    QString name = QStringLiteral("type%1").arg(typeIndex);
+    for (const HandleEntry& entry : handles) {
+        if (entry.typeIndex != typeIndex || !query)
+            continue;
+        alignas(8) unsigned char info[1024];
+        ULONG length = 0;
+        if (query(reinterpret_cast<HANDLE>(entry.value), 2, info, sizeof(info), &length) >= 0) {
+            const auto* text = reinterpret_cast<const UNICODE_STRING*>(info);
+            name = QString::fromWCharArray(text->Buffer, text->Length / 2);
+            break;
+        }
+    }
+    names.insert(typeIndex, name);
+    return name;
+}
+
+// "Event+3 Thread+2" for handles present now but not in `before`.
+QString handleGrowth(const QList<HandleEntry>& before, const QList<HandleEntry>& after)
+{
+    QSet<quintptr> known;
+    for (const HandleEntry& entry : before)
+        known.insert(entry.value);
+    QMap<QString, int> added;
+    QMap<QString, int> removed;
+    QSet<quintptr> now;
+    for (const HandleEntry& entry : after) {
+        now.insert(entry.value);
+        if (!known.contains(entry.value))
+            ++added[handleTypeName(entry.typeIndex, after)];
+    }
+    for (const HandleEntry& entry : before) {
+        if (!now.contains(entry.value))
+            ++removed[handleTypeName(entry.typeIndex, before)];
+    }
+    QStringList parts;
+    QSet<QString> types;
+    for (auto it = added.cbegin(); it != added.cend(); ++it) types.insert(it.key());
+    for (auto it = removed.cbegin(); it != removed.cend(); ++it) types.insert(it.key());
+    QStringList sorted(types.cbegin(), types.cend());
+    sorted.sort();
+    for (const QString& type : sorted) {
+        const int net = added.value(type) - removed.value(type);
+        if (net != 0)
+            parts.append(QStringLiteral("%1%2%3").arg(type, net > 0 ? QStringLiteral("+") : QString())
+                             .arg(net));
+    }
+    return parts.isEmpty() ? QStringLiteral("none") : parts.join(u' ');
+}
+
+int threadCount()
+{
+    const HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, 0);
+    if (snapshot == INVALID_HANDLE_VALUE)
+        return -1;
+    THREADENTRY32 entry{sizeof(THREADENTRY32)};
+    int count = 0;
+    const DWORD self = GetCurrentProcessId();
+    for (BOOL ok = Thread32First(snapshot, &entry); ok; ok = Thread32Next(snapshot, &entry))
+        if (entry.th32OwnerProcessID == self)
+            ++count;
+    CloseHandle(snapshot);
+    return count;
+}
 
 struct ReuseStopCounter
 {
@@ -974,8 +1083,19 @@ private slots:
     // Issues #38 and #39: switching the pinned game repeatedly must keep one
     // capture session, attribute every screenshot and replay frame to the
     // pinned window, and return memory and handles to a flat level.
+    // "one-shot": default settings, screenshots differ from the replay's
+    // pointer setting (#41). "live": matching settings, so screenshots read
+    // the replay session's frame exactly like Beta 4.
+    void pinSwitchesKeepAttributionAndFlatResources_data()
+    {
+        QTest::addColumn<bool>("screenshotCursor");
+        QTest::newRow("one-shot") << false;
+        QTest::newRow("live") << true;
+    }
+
     void pinSwitchesKeepAttributionAndFlatResources()
     {
+        QFETCH(bool, screenshotCursor);
         if (!qEnvironmentVariableIsSet("GAMEHQ_TEST_WGC_NATIVE"))
             QSKIP("Requires an interactive Windows desktop and a WGC-capable GPU");
         QVERIFY(GameDetector::onInputDesktop());
@@ -1027,6 +1147,7 @@ private slots:
         config.setValue(ConfigKeys::ReplayAuto, true);
         config.setValue(ConfigKeys::InternalCaptureExperimentalHdr, false);
         config.setValue(ConfigKeys::AudioSource, QStringLiteral("off"));
+        config.setValue(ConfigKeys::CaptureScreenshotCursor, screenshotCursor);
         CaptureLocations locations(&config);
         QVERIFY(locations.setBaseRoot(CaptureLocations::Kind::Clips, dir.path()));
         auto targetFor = [&](HWND hwnd, const QString& name) {
@@ -1084,6 +1205,9 @@ private slots:
         };
 
         constexpr int kSwitches = 20;
+        QList<HandleEntry> warmCensus;
+        int warmThreads = 0;
+        qint64 steadyHandles = 0;
         qint64 warmPrivate = 0, warmHandles = 0, peakPrivate = 0, peakHandles = 0;
         QStringList series;
         quint64 shot = 1;
@@ -1133,7 +1257,13 @@ private slots:
             if (i == 3) {
                 warmPrivate = privateBytes;
                 warmHandles = handles;
+                warmCensus = ownHandles();
+                warmThreads = threadCount();
             }
+            // Switch 4 performs the first replay export, a one-time warm-up
+            // of the export pipeline; steady growth is measured after it.
+            if (i == 5)
+                steadyHandles = handles;
             if (i > 3) {
                 peakPrivate = std::max(peakPrivate, privateBytes);
                 peakHandles = std::max(peakHandles, handles);
@@ -1141,12 +1271,20 @@ private slots:
         }
         qint64 endPrivate = 0, endHandles = 0;
         sample(&endPrivate, &endHandles);
+        const QList<HandleEntry> endCensus = ownHandles();
+        const int endThreads = threadCount();
         pump.useAutomaticCapture();
         QVERIFY(!pump.hasPinnedTarget());
         QTRY_VERIFY_WITH_TIMEOUT(pump.bufferState() != ReplayBufferState::Recording, 7000);
         QTest::qWait(1500);
         qint64 idlePrivate = 0, idleHandles = 0;
         sample(&idlePrivate, &idleHandles);
+        const QList<HandleEntry> idleCensus = ownHandles();
+        qInfo().noquote() << QStringLiteral("handle census (%1): warm->end [%2] threads %3->%4; "
+                                            "warm->idle [%5] threads %6")
+            .arg(screenshotCursor ? QStringLiteral("live") : QStringLiteral("one-shot"))
+            .arg(handleGrowth(warmCensus, endCensus)).arg(warmThreads).arg(endThreads)
+            .arg(handleGrowth(warmCensus, idleCensus)).arg(threadCount());
         qInfo().noquote() << QStringLiteral("soak warm=%1MB/%2h peak=%3MB/%4h end=%5MB/%6h idle=%7MB/%8h series %9")
             .arg(warmPrivate >> 20).arg(warmHandles).arg(peakPrivate >> 20).arg(peakHandles)
             .arg(endPrivate >> 20).arg(endHandles).arg(idlePrivate >> 20).arg(idleHandles)
@@ -1156,6 +1294,13 @@ private slots:
         // an RTX 5090 is about +4 handles per switch while capture runs, all
         // released when capture stops; fail on anything near the old growth.
         QVERIFY2(endHandles - warmHandles < (kSwitches - 4) * 10, qPrintable(series.join(u' ')));
+        // b4-handles: Beta 4 kept ~4.5 handles per switch, mostly from a
+        // vendor encoder that leaks on every refused activation. With refused
+        // encoders skipped, ~1 per switch remains (Windows keeps an ALPC port
+        // per capture item). Allow driver variance, catch a return of the leak.
+        const qint64 steadyPerTenSwitches = (endHandles - steadyHandles) * 10 / (kSwitches - 1 - 5);
+        qInfo().noquote() << QStringLiteral("steady growth: %1 handles per 10 switches").arg(steadyPerTenSwitches);
+        QVERIFY2(steadyPerTenSwitches < 30, qPrintable(series.join(u' ')));
         QVERIFY2(endPrivate - warmPrivate < 48ll * 1024 * 1024, qPrintable(series.join(u' ')));
         QVERIFY2(idleHandles < warmHandles + 30, qPrintable(series.join(u' ')));
         QVERIFY2(idlePrivate < warmPrivate + 16ll * 1024 * 1024, qPrintable(series.join(u' ')));
@@ -1692,6 +1837,188 @@ private slots:
             QCOMPARE(image.size(), id == 101 ? QSize(32, 32) : QSize(64, 64));
         }
         QCOMPARE(ids, QSet<quint64>({101, 202}));
+    }
+
+    // b4-handles attribution: repeats each layer of a capture pipeline
+    // build/teardown in isolation and reports which kernel handle types
+    // outlive it. Diagnostic only; asserts nothing about drivers.
+    void handleGrowthByPipelineLayer()
+    {
+        if (!qEnvironmentVariableIsSet("GAMEHQ_TEST_HANDLE_PROBE"))
+            QSKIP("Diagnostic probe; set GAMEHQ_TEST_HANDLE_PROBE with GAMEHQ_TEST_WGC_NATIVE");
+        QVERIFY(SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)));
+        const auto uninitialize = qScopeGuard([] { CoUninitialize(); });
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_FULL)));
+        const auto shutdown = qScopeGuard([] { MFShutdown(); });
+        const HWND window = CreateWindowExW(WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW, L"STATIC", L"probe",
+                                            WS_POPUP, 40, 40, 320, 240, nullptr, nullptr, nullptr, nullptr);
+        QVERIFY(window);
+        const auto destroy = qScopeGuard([&] { DestroyWindow(window); });
+        SetWindowPos(window, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/handle-probe-XXXXXX");
+        QVERIFY(dir.isValid());
+        FramePumpWorker worker;
+
+        enum class Layer { Device, Session, SessionNoAccess, Encoder, EnumOnly, EncoderOnly,
+                           BareActivate, ItemOnly };
+        QString encoderName;
+        auto build = [&](Layer layer) {
+            auto pipe = std::make_unique<FramePumpWorker::Pipeline>();
+            pipe->processStarted = 0;
+            if (layer == Layer::EnumOnly) {
+                MFT_REGISTER_TYPE_INFO out{ MFMediaType_Video, MFVideoFormat_H264 };
+                IMFActivate** acts = nullptr;
+                UINT32 count = 0;
+                if (FAILED(MFTEnumEx(MFT_CATEGORY_VIDEO_ENCODER,
+                                     MFT_ENUM_FLAG_HARDWARE | MFT_ENUM_FLAG_SORTANDFILTER,
+                                     nullptr, &out, &acts, &count)))
+                    return false;
+                for (UINT32 i = 0; i < count; ++i)
+                    acts[i]->Release();
+                CoTaskMemFree(acts);
+                return true;
+            }
+            if (layer == Layer::BareActivate) {
+                // Nothing of GameHQ's: activate the first hardware encoder,
+                // then shut it down exactly as Media Foundation documents.
+                MFT_REGISTER_TYPE_INFO out{ MFMediaType_Video, MFVideoFormat_H264 };
+                IMFActivate** acts = nullptr;
+                UINT32 count = 0;
+                if (FAILED(MFTEnumEx(MFT_CATEGORY_VIDEO_ENCODER,
+                                     MFT_ENUM_FLAG_HARDWARE | MFT_ENUM_FLAG_SORTANDFILTER,
+                                     nullptr, &out, &acts, &count)) || count == 0)
+                    return false;
+                WCHAR* name = nullptr;
+                UINT32 length = 0;
+                if (SUCCEEDED(acts[0]->GetAllocatedString(MFT_FRIENDLY_NAME_Attribute, &name, &length))) {
+                    encoderName = QString::fromWCharArray(name);
+                    CoTaskMemFree(name);
+                }
+                IMFTransform* mft = nullptr;
+                const bool activated = SUCCEEDED(acts[0]->ActivateObject(IID_PPV_ARGS(&mft))) && mft;
+                if (mft)
+                    mft->Release();
+                acts[0]->ShutdownObject();
+                for (UINT32 i = 0; i < count; ++i)
+                    acts[i]->Release();
+                CoTaskMemFree(acts);
+                return activated;
+            }
+            if (layer == Layer::EncoderOnly) {
+                HwH264Encoder encoder;
+                QString why;
+                const bool opened = encoder.open({320, 240, 30, 4000000}, &why);
+                encoder.close();
+                return opened;
+            }
+            if (!worker.createDevices(pipe.get()))
+                return false;
+            if (layer == Layer::ItemOnly) {
+                int w = 0, h = 0;
+                ProcessIdentity::creationTimeOf(GetCurrentProcess(), pipe->processStarted);
+                return worker.createCaptureItem(pipe.get(), window, GetCurrentProcessId(), &w, &h);
+            }
+            if (layer == Layer::Session || layer == Layer::SessionNoAccess) {
+                int w = 0, h = 0;
+                pipe->processStarted = 0;
+                ProcessIdentity::creationTimeOf(GetCurrentProcess(), pipe->processStarted);
+                if (!worker.createCaptureItem(pipe.get(), window, GetCurrentProcessId(), &w, &h))
+                    return false;
+                pipe->clientSize = QSize(w, h);
+                if (!worker.createSession(pipe.get(), window, w, h, false,
+                                          CaptureBorder::SessionPolicy(layer == Layer::Session)))
+                    return false;
+                QTest::qWait(60);
+            }
+            if (layer == Layer::Encoder) {
+                D3D11_TEXTURE2D_DESC desc{};
+                desc.Width = 320; desc.Height = 240; desc.MipLevels = desc.ArraySize = 1;
+                desc.Format = DXGI_FORMAT_B8G8R8A8_UNORM; desc.SampleDesc.Count = 1;
+                desc.Usage = D3D11_USAGE_DEFAULT;
+                desc.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_RENDER_TARGET;
+                ID3D11Texture2D* texture = nullptr;
+                if (FAILED(pipe->d3dDevice->CreateTexture2D(&desc, nullptr, &texture)))
+                    return false;
+                auto* recorder = new SegmentRecorder();
+                const bool begun = recorder->begin(320, 240, 320, 240, 30, 4, 5, 30,
+                                                   dir.filePath(QStringLiteral("cache")),
+                                                   pipe->d3dDevice, pipe->d3dCtx, 0, 0,
+                                                   SegmentRecorder::CacheHistory::SessionOnly);
+                for (int f = 0; begun && f < 20; ++f)
+                    recorder->writeFrame(texture, pipe->d3dDevice, pipe->d3dCtx, qint64(f) * 333333);
+                recorder->end();
+                delete recorder;
+                texture->Release();
+                if (!begun)
+                    return false;
+            }
+            return true;
+        };
+        const struct { const char* name; Layer layer; } layers[] = {
+            {"D3D11 device + WinRT bridge", Layer::Device},
+            {"device + WGC item, frame pool, session", Layer::Session},
+            {"device + WGC session without border access request", Layer::SessionNoAccess},
+            {"device + H.264 segment recorder", Layer::Encoder},
+            {"MFTEnumEx hardware H.264 only", Layer::EnumOnly},
+            {"HwH264Encoder open + close only", Layer::EncoderOnly},
+            {"bare MFT ActivateObject + ShutdownObject", Layer::BareActivate},
+            {"device + WGC capture item only", Layer::ItemOnly},
+        };
+        // Every hardware H.264 encoder on its own: activate + shut down.
+        {
+            MFT_REGISTER_TYPE_INFO out{ MFMediaType_Video, MFVideoFormat_H264 };
+            IMFActivate** acts = nullptr;
+            UINT32 count = 0;
+            QVERIFY(SUCCEEDED(MFTEnumEx(MFT_CATEGORY_VIDEO_ENCODER,
+                                        MFT_ENUM_FLAG_HARDWARE | MFT_ENUM_FLAG_SORTANDFILTER,
+                                        nullptr, &out, &acts, &count)));
+            for (UINT32 index = 0; index < count; ++index) {
+                WCHAR* name = nullptr;
+                UINT32 length = 0;
+                QString label = QStringLiteral("#%1").arg(index);
+                if (SUCCEEDED(acts[index]->GetAllocatedString(MFT_FRIENDLY_NAME_Attribute, &name, &length))) {
+                    label += QLatin1Char(' ') + QString::fromWCharArray(name);
+                    CoTaskMemFree(name);
+                }
+                auto once = [&] {
+                    IMFTransform* mft = nullptr;
+                    const HRESULT hr = acts[index]->ActivateObject(IID_PPV_ARGS(&mft));
+                    if (mft)
+                        mft->Release();
+                    acts[index]->ShutdownObject();
+                    return hr;
+                };
+                const HRESULT first = once();
+                once();
+                QTest::qWait(300);
+                const QList<HandleEntry> before = ownHandles();
+                for (int i = 0; i < 20; ++i)
+                    once();
+                QTest::qWait(1500);
+                qInfo().noquote() << QStringLiteral("probe encoder %1 (activate hr=0x%2) x20: [%3]")
+                    .arg(label).arg(quint32(first), 8, 16, QLatin1Char('0'))
+                    .arg(handleGrowth(before, ownHandles()));
+            }
+            for (UINT32 index = 0; index < count; ++index)
+                acts[index]->Release();
+            CoTaskMemFree(acts);
+        }
+        for (const auto& entry : layers) {
+            for (int i = 0; i < 3; ++i)
+                QVERIFY2(build(entry.layer), entry.name);
+            QTest::qWait(300);
+            const QList<HandleEntry> before = ownHandles();
+            const int threadsBefore = threadCount();
+            constexpr int kRounds = 20;
+            for (int i = 0; i < kRounds; ++i)
+                QVERIFY2(build(entry.layer), entry.name);
+            QTest::qWait(1500);
+            const QList<HandleEntry> after = ownHandles();
+            qInfo().noquote() << QStringLiteral("probe %1 x%2: %3 -> %4 handles [%5] threads %6->%7")
+                .arg(QLatin1String(entry.name) + (entry.layer == Layer::BareActivate
+                                                      ? QStringLiteral(" (%1)").arg(encoderName) : QString())).arg(kRounds).arg(before.size()).arg(after.size())
+                .arg(handleGrowth(before, after)).arg(threadsBefore).arg(threadCount());
+        }
     }
 
     void receiptPrecedesRejection_data()

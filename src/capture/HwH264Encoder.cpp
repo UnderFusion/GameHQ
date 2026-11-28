@@ -10,6 +10,9 @@
 
 #include <QDebug>
 #include <QElapsedTimer>
+#include <QHash>
+#include <QMutex>
+#include <QSet>
 #include <QStringList>
 #include <QThread>
 
@@ -63,6 +66,49 @@ void setCodecValue(IMFTransform* mft, const GUID& key, ULONG value)
     codec->Release();
 }
 
+// MFT_ENUM_ADAPTER_LUID: which GPU a hardware MFT belongs to.
+const GUID kAdapterLuid = {0x1d39518c, 0xe220, 0x4da8, {0xa0, 0x7f, 0xba, 0x17, 0x25, 0x52, 0xd6, 0xb1}};
+
+// Encoders that refused a configuration earlier in this process. Some vendor
+// MFTs keep an event, a thread-pool wait and a registry key after every
+// ActivateObject/ShutdownObject pair (measured: AMDh264Encoder on an
+// AMD + NVIDIA PC, +3 handles per attempt). Retrying a known refusal on
+// every capture rebuild therefore grew the handle count (b4-handles).
+QMutex g_refusedMutex;
+QSet<QString> g_refused;
+
+// Identity of one enumerated encoder for one configuration: CLSID, adapter
+// and its position among identical entries, plus size and rate.
+QString encoderKey(IMFActivate* act, const HwH264Encoder::Settings& s, QHash<QString, int>* seen)
+{
+    GUID clsid{};
+    act->GetGUID(MFT_TRANSFORM_CLSID_Attribute, &clsid);
+    unsigned char luid[8] = {};
+    UINT32 luidSize = 0;
+    act->GetBlob(kAdapterLuid, luid, sizeof(luid), &luidSize);
+    const QString identity = QStringLiteral("%1-%2-%3")
+        .arg(clsid.Data1, 8, 16, QLatin1Char('0')).arg(clsid.Data2, 4, 16, QLatin1Char('0'))
+        .arg(QString::fromLatin1(QByteArray(reinterpret_cast<const char*>(luid), int(luidSize)).toHex()));
+    const int occurrence = (*seen)[identity]++;
+    return QStringLiteral("%1#%2@%3x%4@%5").arg(identity).arg(occurrence)
+        .arg(s.width).arg(s.height).arg(s.fps);
+}
+
+bool wasRefused(const QString& key)
+{
+    QMutexLocker lock(&g_refusedMutex);
+    return g_refused.contains(key);
+}
+
+void setRefused(const QString& key, bool refused)
+{
+    QMutexLocker lock(&g_refusedMutex);
+    if (refused)
+        g_refused.insert(key);
+    else
+        g_refused.remove(key);
+}
+
 } // namespace
 
 HwH264Encoder::~HwH264Encoder()
@@ -95,16 +141,45 @@ bool HwH264Encoder::open(const Settings& s, QString* why)
         return false;
     }
     QStringList rejected;
-    for (UINT32 i = 0; i < count; ++i) {
-        if (!m_mft) {
-            QString reason;
-            if (tryActivate(acts[i], s, &reason)) {
-                m_act = acts[i];
-                continue;   // keep this activation's reference
-            }
-            rejected << reason;
+    QHash<QString, int> seen;
+    QStringList keys;
+    for (UINT32 i = 0; i < count; ++i)
+        keys << encoderKey(acts[i], s, &seen);
+    // Known refusals are skipped first, and only retried when nothing else
+    // accepts, so a transient refusal can never disable the last encoder.
+    QList<UINT32> skipped;
+    UINT32 chosen = count;
+    for (UINT32 i = 0; i < count && !m_mft; ++i) {
+        if (wasRefused(keys[i])) {
+            skipped << i;
+            continue;
         }
-        acts[i]->Release();
+        QString reason;
+        if (tryActivate(acts[i], s, &reason)) {
+            chosen = i;
+            break;
+        }
+        rejected << reason;
+        setRefused(keys[i], true);
+        qInfo().noquote() << QStringLiteral("HwH264Encoder: %1 - not tried again for %2x%3 at %4 fps")
+                                 .arg(reason).arg(s.width).arg(s.height).arg(s.fps);
+    }
+    for (const UINT32 i : std::as_const(skipped)) {
+        if (m_mft)
+            break;
+        QString reason;
+        if (tryActivate(acts[i], s, &reason)) {
+            chosen = i;
+            setRefused(keys[i], false);
+            break;
+        }
+        rejected << reason;
+    }
+    for (UINT32 i = 0; i < count; ++i) {
+        if (i == chosen)
+            m_act = acts[i];   // keep this activation's reference
+        else
+            acts[i]->Release();
     }
     CoTaskMemFree(acts);
     if (!m_mft) {
